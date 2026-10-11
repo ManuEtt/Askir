@@ -4,6 +4,7 @@
 #include "Simulation/AskirSimulationSubsystem.h"
 #include "Quest/AskirQuestData.h"
 #include "Progression/AskirProgressionComponent.h"
+#include "Mission/AskirDornfeldMissionComponent.h"
 #include "AskirSaveGame.generated.h"
 // Stable asset references survive across sessions without serializing transient UObject pointers.
 USTRUCT(BlueprintType)
@@ -14,11 +15,23 @@ struct FAskirSavedInventoryEntry
     UPROPERTY(SaveGame) int32 Quantity = 0;
 };
 
+USTRUCT(BlueprintType)
+struct FAskirLootState
+{
+ GENERATED_BODY()
+ UPROPERTY(SaveGame) TArray<FName> CollectedPickups;
+ UPROPERTY(SaveGame) TArray<FName> OpenedChests;
+};
+
 UCLASS()
 class ASKIR_API UAskirSaveGame:public USaveGame
 {
     GENERATED_BODY()
 public:
+    /** Save format version; increment when persistent structures change. */
+    UPROPERTY(SaveGame) int32 SaveFormatVersion = 1;
+    /** Level at the time of capture; helps diagnose cross-map restores. */
+    UPROPERTY(SaveGame) FName SavedMapName = NAME_None;
     // V15 persistent village/social snapshot. Runtime Save/Load mapping is still required.
     UPROPERTY(SaveGame) int32 SavedWorldDay=1;
     UPROPERTY(SaveGame) int32 SavedWorldHour=8;
@@ -42,4 +55,7 @@ public:
     UPROPERTY(SaveGame)FName SavedLegacyActiveQuestID=NAME_None;
     UPROPERTY(SaveGame)TSet<FName> SavedClaimedRewards;
     UPROPERTY(SaveGame)int32 SavedPlayerGold=0;
+    UPROPERTY(SaveGame) FAskirDornfeldMissionSave SavedDornfeldMission;
+    /** Map package -> persistent IDs for looted actors. */
+    UPROPERTY(SaveGame)TMap<FName,FAskirLootState> SavedLootByMap;
 };

@@ -13,11 +13,46 @@
 #include "Kismet/GameplayStatics.h"
 #include "UObject/ConstructorHelpers.h"
 #include "EngineUtils.h"
+#include "Travel/AskirWorldTravelSubsystem.h"
+#include "Travel/AskirWorldPortal.h"
+#include "Engine/GameInstance.h"
+#include "TimerManager.h"
 
 void AAskirGameMode::BeginPlay()
 {
  Super::BeginPlay();
- BuildDemoScene();
+ const FString Map=UGameplayStatics::GetCurrentLevelName(this,true);
+ if(!Map.StartsWith(TEXT("L")))BuildDemoScene();
+ if(UGameInstance* Instance=GetGameInstance())
+ {
+  if(UAskirWorldTravelSubsystem* State=Instance->GetSubsystem<UAskirWorldTravelSubsystem>())
+  {
+   FName FromMap;
+   if(State->ConsumeArrival(FName(*Map),FromMap))
+   {
+    // Restore inventory, quest, progression and world state before setting portal arrival.
+    // Position is deliberately excluded: source-map coordinates are invalid here.
+    if(State->bRestoreTravelSnapshot)
+    {
+     if(!LoadGame(TEXT("AskirTravelSnapshot"), false))
+     {
+      UE_LOG(LogTemp, Error, TEXT("Askir travel snapshot restore failed in %s"), *Map);
+     }
+     State->bRestoreTravelSnapshot=false;
+    }
+    // Spawn the player next to the reciprocal portal, never inside its overlap trigger.
+    for(TActorIterator<AAskirWorldPortal> It(GetWorld());It;++It)
+    {
+     if(It->DestinationMap==FromMap)
+     {
+      if(APawn* Pawn=UGameplayStatics::GetPlayerPawn(this,0))
+       Pawn->SetActorLocation(It->GetActorLocation()+FVector(0.f,420.f,40.f),false);
+      break;
+     }
+    }
+   }
+  }
+ }
 }
 void AAskirGameMode::MakeBlock(FVector Position,FVector Size)
 {

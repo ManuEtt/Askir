@@ -22,6 +22,13 @@ public:
     UFUNCTION(BlueprintPure) float GetMaxHealth()const{return MaxHealth;}
     UFUNCTION(BlueprintPure) float GetHealthPercent()const;
     UFUNCTION(BlueprintPure) bool IsDead()const{return bDead;}
+    /** The actor responsible for the most recent positive health damage. */
+    /** Returns a recent valid causer only; old hits cannot credit environmental deaths. */
+    UFUNCTION(BlueprintPure,Category="Askir|Combat") AActor* GetLastDamageCauser() const;
+    /** Time window in seconds for attributing a kill to a recent hit. */
+    UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="Askir|Combat|Attribution",meta=(ClampMin="0.0",ClampMax="60.0")) float KillCreditWindowSeconds=8.f;
+    /** Explicitly clears attribution, e.g. on scripted environmental death. */
+    UFUNCTION(BlueprintCallable,Category="Askir|Combat|Attribution") void ClearDamageAttribution();
     UPROPERTY(BlueprintAssignable) FAskirDamageTaken OnDamageTaken;
     UPROPERTY(BlueprintAssignable) FAskirDeath OnDeath;
 protected:
@@ -30,6 +37,8 @@ protected:
     UPROPERTY(EditAnywhere) float PhysicalResistance=0;
     UPROPERTY(EditAnywhere) float MagicResistance=0;
 private:
+    TWeakObjectPtr<AActor> LastDamageCauser;
+    double LastDamageTimeSeconds=-1.0;
     bool bDead=false;
     float DodgeInvulnerableUntil=-1.f;
 };

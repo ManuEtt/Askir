@@ -1,7 +1,10 @@
+#include "Mission/AskirDornfeldMissionComponent.h"
 #include "Demo/AskirDemoInteractable.h"
 #include "Characters/AskirNPC.h"
 #include "Engine/Engine.h"
 #include "Engine/StaticMeshActor.h"
+#include "Loot/AskirLootPickup.h"
+#include "Loot/AskirLootChest.h"
 #include "Components/StaticMeshComponent.h"
 #include "GameFramework/PlayerStart.h"
 #include "GameFramework/PlayerController.h"
@@ -36,6 +39,7 @@ bool AAskirGameMode::SaveGame(const FString& SlotName)
 
     UAskirSaveGame* Save = Cast<UAskirSaveGame>(UGameplayStatics::CreateSaveGameObject(UAskirSaveGame::StaticClass()));
     if (!Save) return false;
+    Save->SavedMapName = FName(*UGameplayStatics::GetCurrentLevelName(this, true));
 
     if (Player->ProgressionComponent) Save->SavedProgression = Player->ProgressionComponent->CaptureProgress();
     Save->DemoStage=DemoStage;
@@ -69,6 +73,7 @@ bool AAskirGameMode::SaveGame(const FString& SlotName)
         Save->SavedClaimedRewards = Player->QuestComponent->ClaimedRewards;
     }
     if (Player->TradeComponent) Save->SavedPlayerGold=Player->TradeComponent->Gold;
+    if (Player->DornfeldMission) Save->SavedDornfeldMission=Player->DornfeldMission->CaptureMission();
     if (auto* Rep=Player->FindComponentByClass<UAskirReputationComponent>())
         for (const auto& Standing:Rep->Standings)Save->SavedFactionReputation.Add(Standing.Faction,Standing.Reputation);
     if (auto* Dialogue=Player->FindComponentByClass<UAskirDialogueComponent>())
@@ -82,15 +87,44 @@ bool AAskirGameMode::SaveGame(const FString& SlotName)
                 Save->CompletedOneShotWorldEvents.AddUnique(Event.EventID);
         break;
     }
+    // Carry previously recorded map loot forward instead of replacing the whole map ledger.
+    if (UGameplayStatics::DoesSaveGameExist(SlotName, 0))
+    {
+        if (const UAskirSaveGame* Previous = Cast<UAskirSaveGame>(UGameplayStatics::LoadGameFromSlot(SlotName, 0)))
+            Save->SavedLootByMap = Previous->SavedLootByMap;
+    }
+    // Stable IDs are assigned per placed actor in the level editor. Missing IDs are ignored.
+    const FName MapKey(*UGameplayStatics::GetCurrentLevelName(this,true));
+    FAskirLootState& LootState=Save->SavedLootByMap.FindOrAdd(MapKey);
+    TSet<FName> SeenIDs;
+    for(TActorIterator<AAskirLootPickup> It(GetWorld());It;++It)
+    {
+        if(It->PersistentLootID.IsNone())continue;
+        if(SeenIDs.Contains(It->PersistentLootID)) {UE_LOG(LogTemp,Warning,TEXT("Duplicate persistent loot ID: %s"),*It->PersistentLootID.ToString());continue;}
+        SeenIDs.Add(It->PersistentLootID);
+        if(It->IsCollected())LootState.CollectedPickups.Add(It->PersistentLootID);
+    }
+    for(TActorIterator<AAskirLootChest> It(GetWorld());It;++It)
+    {
+        if(It->PersistentLootID.IsNone())continue;
+        if(SeenIDs.Contains(It->PersistentLootID)) {UE_LOG(LogTemp,Warning,TEXT("Duplicate persistent loot ID: %s"),*It->PersistentLootID.ToString());continue;}
+        SeenIDs.Add(It->PersistentLootID);
+        if(It->IsOpened())LootState.OpenedChests.Add(It->PersistentLootID);
+    }
     return UGameplayStatics::SaveGameToSlot(Save, SlotName, 0);
 }
 
-bool AAskirGameMode::LoadGame(const FString& SlotName)
+bool AAskirGameMode::LoadGame(const FString& SlotName, bool bRestorePosition)
 {
     if (SlotName.IsEmpty() || !GetWorld() || !UGameplayStatics::DoesSaveGameExist(SlotName, 0)) return false;
     UAskirSaveGame* Save = Cast<UAskirSaveGame>(UGameplayStatics::LoadGameFromSlot(SlotName, 0));
     AAskirCharacter* Player = Cast<AAskirCharacter>(UGameplayStatics::GetPlayerPawn(this, 0));
     if (!Save || !Player) return false;
+    if (Save->SaveFormatVersion < 1 || Save->SaveFormatVersion > 1)
+    {
+        UE_LOG(LogTemp, Warning, TEXT("Askir unsupported save version: %d"), Save->SaveFormatVersion);
+        return false;
+    }
 
     // Resolve item assets before modifying the current game state. Missing assets
     // abort loading instead of silently discarding the player's inventory.
@@ -114,7 +148,7 @@ bool AAskirGameMode::LoadGame(const FString& SlotName)
     for(AAskirDemoInteractable* Obj:DemoObjects)
         if(Obj) Obj->SetUsed((Obj->Kind==EAskirDemoObject::Supplies && DemoSupplies>0));
     if (Player->ProgressionComponent) Player->ProgressionComponent->RestoreProgress(Save->SavedProgression);
-    Player->SetActorLocationAndRotation(Save->PlayerLocation, Save->PlayerRotation);
+    if (bRestorePosition) Player->SetActorLocationAndRotation(Save->PlayerLocation, Save->PlayerRotation);
     Player->Stamina = FMath::Clamp(Save->PlayerStamina, 0.f, Player->MaxStamina);
     if (Player->CombatComponent) Player->CombatComponent->RestoreHealth(Save->PlayerHealth);
     if (Player->InventoryComponent)
@@ -131,6 +165,7 @@ bool AAskirGameMode::LoadGame(const FString& SlotName)
         Player->QuestComponent->ClaimedRewards = Save->SavedClaimedRewards;
     }
     if (Player->TradeComponent) Player->TradeComponent->Gold=FMath::Max(0,Save->SavedPlayerGold);
+    if (Player->DornfeldMission) Player->DornfeldMission->RestoreMission(Save->SavedDornfeldMission);
     if (UAskirSimulationSubsystem* Sim = GetWorld()->GetSubsystem<UAskirSimulationSubsystem>())
         Sim->RestoreWorldState(Save->WorldState);
     if (auto* Rep=Player->FindComponentByClass<UAskirReputationComponent>())
@@ -148,6 +183,14 @@ bool AAskirGameMode::LoadGame(const FString& SlotName)
                 Event.LastTriggeredDay=FMath::Max(1,Save->SavedWorldDay);
         It->RefreshResidents();
         break;
+    }
+    const FName MapKey(*UGameplayStatics::GetCurrentLevelName(this,true));
+    if(const FAskirLootState* LootState=Save->SavedLootByMap.Find(MapKey))
+    {
+        for(TActorIterator<AAskirLootPickup> It(GetWorld());It;++It)
+            if(!It->PersistentLootID.IsNone())It->RestoreLootState(LootState->CollectedPickups.Contains(It->PersistentLootID));
+        for(TActorIterator<AAskirLootChest> It(GetWorld());It;++It)
+            if(!It->PersistentLootID.IsNone())It->RestoreLootState(LootState->OpenedChests.Contains(It->PersistentLootID));
     }
     return true;
 }

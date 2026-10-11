@@ -1,0 +1,1176 @@
+{
+  "schema_version": 1,
+  "engine": "5.6",
+  "status": "editor_generation_pending",
+  "world_note": "Chapter assignments are provisional and require lore approval. Unreal editor script creates blockout maps only, not finished playable levels.",
+  "levels": [
+    {
+      "id": "L01",
+      "map_name": "L01_Dornfeld",
+      "display_name": "Dornfeld",
+      "continent": "Ardem",
+      "chapter": 1,
+      "biome": "village",
+      "story_mission": "M01-01",
+      "exits": [
+        "L02_Dornfelder_Umland"
+      ],
+      "world_position": [
+        0,
+        5000
+      ],
+      "layout_seed": 3600,
+      "required_gameplay": [
+        "player_start",
+        "navigation",
+        "story_objective",
+        "return_route"
+      ],
+      "implementation_status": "editor_generation_pending",
+      "notes": "Blockout and transition markers only; actual quest actors must be wired in editor",
+      "story_role": "Einführung und NPC-Hub",
+      "points_of_interest": [
+        {
+          "id": "L01_POI_01",
+          "kind": "story",
+          "mission": "M01-01"
+        },
+        {
+          "id": "L01_POI_02",
+          "kind": "exploration",
+          "mission": null
+        }
+      ]
+    },
+    {
+      "id": "L02",
+      "map_name": "L02_Dornfelder_Umland",
+      "display_name": "Dornfelder Umland",
+      "continent": "Ardem",
+      "chapter": 1,
+      "biome": "wilderness",
+      "story_mission": "M01-02",
+      "exits": [
+        "L01_Dornfeld",
+        "L03_Grauwald"
+      ],
+      "world_position": [
+        3000,
+        5000
+      ],
+      "layout_seed": 3601,
+      "required_gameplay": [
+        "player_start",
+        "navigation",
+        "story_objective",
+        "return_route"
+      ],
+      "implementation_status": "editor_generation_pending",
+      "notes": "Blockout and transition markers only; actual quest actors must be wired in editor",
+      "story_role": "Erkundung und Ressourcen",
+      "points_of_interest": [
+        {
+          "id": "L02_POI_01",
+          "kind": "story",
+          "mission": "M01-02"
+        },
+        {
+          "id": "L02_POI_02",
+          "kind": "exploration",
+          "mission": null
+        }
+      ]
+    },
+    {
+      "id": "L03",
+      "map_name": "L03_Grauwald",
+      "display_name": "Grauwald",
+      "continent": "Ardem",
+      "chapter": 1,
+      "biome": "forest",
+      "story_mission": "M01-03",
+      "exits": [
+        "L02_Dornfelder_Umland",
+        "L04_Alte_Brunnenkrypta"
+      ],
+      "world_position": [
+        6000,
+        5000
+      ],
+      "layout_seed": 3602,
+      "required_gameplay": [
+        "player_start",
+        "navigation",
+        "story_objective",
+        "return_route"
+      ],
+      "implementation_status": "editor_generation_pending",
+      "notes": "Blockout and transition markers only; actual quest actors must be wired in editor",
+      "story_role": "Konflikt und Gegner",
+      "points_of_interest": [
+        {
+          "id": "L03_POI_01",
+          "kind": "story",
+          "mission": "M01-03"
+        },
+        {
+          "id": "L03_POI_02",
+          "kind": "exploration",
+          "mission": null
+        }
+      ]
+    },
+    {
+      "id": "L04",
+      "map_name": "L04_Alte_Brunnenkrypta",
+      "display_name": "Alte Brunnenkrypta",
+      "continent": "Ardem",
+      "chapter": 1,
+      "biome": "dungeon",
+      "story_mission": "M01-04",
+      "exits": [
+        "L03_Grauwald",
+        "L05_Verlassene_Silbermine"
+      ],
+      "world_position": [
+        9000,
+        5000
+      ],
+      "layout_seed": 3603,
+      "required_gameplay": [
+        "player_start",
+        "navigation",
+        "story_objective",
+        "return_route"
+      ],
+      "implementation_status": "editor_generation_pending",
+      "notes": "Blockout and transition markers only; actual quest actors must be wired in editor",
+      "story_role": "Storydungeon und Enthüllung",
+      "points_of_interest": [
+        {
+          "id": "L04_POI_01",
+          "kind": "story",
+          "mission": "M01-04"
+        },
+        {
+          "id": "L04_POI_02",
+          "kind": "exploration",
+          "mission": null
+        }
+      ]
+    },
+    {
+      "id": "L05",
+      "map_name": "L05_Verlassene_Silbermine",
+      "display_name": "Verlassene Silbermine",
+      "continent": "Ardem",
+      "chapter": 1,
+      "biome": "dungeon",
+      "story_mission": "M01-03",
+      "exits": [
+        "L04_Alte_Brunnenkrypta",
+        "L06_Falkenwacht"
+      ],
+      "world_position": [
+        12000,
+        5000
+      ],
+      "layout_seed": 3604,
+      "required_gameplay": [
+        "player_start",
+        "navigation",
+        "story_objective",
+        "return_route"
+      ],
+      "implementation_status": "editor_generation_pending",
+      "notes": "Blockout and transition markers only; actual quest actors must be wired in editor",
+      "story_role": "Nebenquests und Geheimnisse",
+      "points_of_interest": [
+        {
+          "id": "L05_POI_01",
+          "kind": "story",
+          "mission": "M01-03"
+        },
+        {
+          "id": "L05_POI_02",
+          "kind": "exploration",
+          "mission": null
+        }
+      ]
+    },
+    {
+      "id": "L06",
+      "map_name": "L06_Falkenwacht",
+      "display_name": "Falkenwacht",
+      "continent": "Ardem",
+      "chapter": 1,
+      "biome": "city",
+      "story_mission": "M01-04",
+      "exits": [
+        "L05_Verlassene_Silbermine",
+        "L07_Nordpass"
+      ],
+      "world_position": [
+        15000,
+        5000
+      ],
+      "layout_seed": 3605,
+      "required_gameplay": [
+        "player_start",
+        "navigation",
+        "story_objective",
+        "return_route"
+      ],
+      "implementation_status": "editor_generation_pending",
+      "notes": "Blockout and transition markers only; actual quest actors must be wired in editor",
+      "story_role": "Kapitelhöhepunkt und Übergang",
+      "points_of_interest": [
+        {
+          "id": "L06_POI_01",
+          "kind": "story",
+          "mission": "M01-04"
+        },
+        {
+          "id": "L06_POI_02",
+          "kind": "exploration",
+          "mission": null
+        }
+      ]
+    },
+    {
+      "id": "L07",
+      "map_name": "L07_Nordpass",
+      "display_name": "Nordpass",
+      "continent": "Ardem",
+      "chapter": 2,
+      "biome": "mountain",
+      "story_mission": "M02-01",
+      "exits": [
+        "L06_Falkenwacht",
+        "L08_Ruinen_von_Eldrath"
+      ],
+      "world_position": [
+        0,
+        10000
+      ],
+      "layout_seed": 3606,
+      "required_gameplay": [
+        "player_start",
+        "navigation",
+        "story_objective",
+        "return_route"
+      ],
+      "implementation_status": "editor_generation_pending",
+      "notes": "Blockout and transition markers only; actual quest actors must be wired in editor",
+      "story_role": "Einführung und NPC-Hub",
+      "points_of_interest": [
+        {
+          "id": "L07_POI_01",
+          "kind": "story",
+          "mission": "M02-01"
+        },
+        {
+          "id": "L07_POI_02",
+          "kind": "exploration",
+          "mission": null
+        }
+      ]
+    },
+    {
+      "id": "L08",
+      "map_name": "L08_Ruinen_von_Eldrath",
+      "display_name": "Ruinen von Eldrath",
+      "continent": "Ardem",
+      "chapter": 2,
+      "biome": "ruins",
+      "story_mission": "M02-01",
+      "exits": [
+        "L07_Nordpass",
+        "L09_Nebelmoor"
+      ],
+      "world_position": [
+        3000,
+        10000
+      ],
+      "layout_seed": 3607,
+      "required_gameplay": [
+        "player_start",
+        "navigation",
+        "story_objective",
+        "return_route"
+      ],
+      "implementation_status": "editor_generation_pending",
+      "notes": "Blockout and transition markers only; actual quest actors must be wired in editor",
+      "story_role": "Erkundung und Ressourcen",
+      "points_of_interest": [
+        {
+          "id": "L08_POI_01",
+          "kind": "story",
+          "mission": "M02-01"
+        },
+        {
+          "id": "L08_POI_02",
+          "kind": "exploration",
+          "mission": null
+        }
+      ]
+    },
+    {
+      "id": "L09",
+      "map_name": "L09_Nebelmoor",
+      "display_name": "Nebelmoor",
+      "continent": "Ardem",
+      "chapter": 2,
+      "biome": "swamp",
+      "story_mission": "M02-02",
+      "exits": [
+        "L08_Ruinen_von_Eldrath",
+        "L10_Krypta_der_Sieben"
+      ],
+      "world_position": [
+        6000,
+        10000
+      ],
+      "layout_seed": 3608,
+      "required_gameplay": [
+        "player_start",
+        "navigation",
+        "story_objective",
+        "return_route"
+      ],
+      "implementation_status": "editor_generation_pending",
+      "notes": "Blockout and transition markers only; actual quest actors must be wired in editor",
+      "story_role": "Konflikt und Gegner",
+      "points_of_interest": [
+        {
+          "id": "L09_POI_01",
+          "kind": "story",
+          "mission": "M02-02"
+        },
+        {
+          "id": "L09_POI_02",
+          "kind": "exploration",
+          "mission": null
+        }
+      ]
+    },
+    {
+      "id": "L10",
+      "map_name": "L10_Krypta_der_Sieben",
+      "display_name": "Krypta der Sieben",
+      "continent": "Ardem",
+      "chapter": 2,
+      "biome": "dungeon",
+      "story_mission": "M02-03",
+      "exits": [
+        "L09_Nebelmoor",
+        "L11_Verlorenes_Kloster"
+      ],
+      "world_position": [
+        9000,
+        10000
+      ],
+      "layout_seed": 3609,
+      "required_gameplay": [
+        "player_start",
+        "navigation",
+        "story_objective",
+        "return_route"
+      ],
+      "implementation_status": "editor_generation_pending",
+      "notes": "Blockout and transition markers only; actual quest actors must be wired in editor",
+      "story_role": "Storydungeon und Enthüllung",
+      "points_of_interest": [
+        {
+          "id": "L10_POI_01",
+          "kind": "story",
+          "mission": "M02-03"
+        },
+        {
+          "id": "L10_POI_02",
+          "kind": "exploration",
+          "mission": null
+        }
+      ]
+    },
+    {
+      "id": "L11",
+      "map_name": "L11_Verlorenes_Kloster",
+      "display_name": "Verlorenes Kloster",
+      "continent": "Ardem",
+      "chapter": 2,
+      "biome": "ruins",
+      "story_mission": "M02-04",
+      "exits": [
+        "L10_Krypta_der_Sieben",
+        "L12_Kuestenhafen_Ardem"
+      ],
+      "world_position": [
+        12000,
+        10000
+      ],
+      "layout_seed": 3610,
+      "required_gameplay": [
+        "player_start",
+        "navigation",
+        "story_objective",
+        "return_route"
+      ],
+      "implementation_status": "editor_generation_pending",
+      "notes": "Blockout and transition markers only; actual quest actors must be wired in editor",
+      "story_role": "Nebenquests und Geheimnisse",
+      "points_of_interest": [
+        {
+          "id": "L11_POI_01",
+          "kind": "story",
+          "mission": "M02-04"
+        },
+        {
+          "id": "L11_POI_02",
+          "kind": "exploration",
+          "mission": null
+        }
+      ]
+    },
+    {
+      "id": "L12",
+      "map_name": "L12_Kuestenhafen_Ardem",
+      "display_name": "Kuestenhafen Ardem",
+      "continent": "Ardem",
+      "chapter": 2,
+      "biome": "city",
+      "story_mission": "M02-04",
+      "exits": [
+        "L11_Verlorenes_Kloster",
+        "L13_Hafen_von_Thalor"
+      ],
+      "world_position": [
+        15000,
+        10000
+      ],
+      "layout_seed": 3611,
+      "required_gameplay": [
+        "player_start",
+        "navigation",
+        "story_objective",
+        "return_route"
+      ],
+      "implementation_status": "editor_generation_pending",
+      "notes": "Blockout and transition markers only; actual quest actors must be wired in editor",
+      "story_role": "Kapitelhöhepunkt und Übergang",
+      "points_of_interest": [
+        {
+          "id": "L12_POI_01",
+          "kind": "story",
+          "mission": "M02-04"
+        },
+        {
+          "id": "L12_POI_02",
+          "kind": "exploration",
+          "mission": null
+        }
+      ]
+    },
+    {
+      "id": "L13",
+      "map_name": "L13_Hafen_von_Thalor",
+      "display_name": "Hafen von Thalor",
+      "continent": "Thalor",
+      "chapter": 3,
+      "biome": "city",
+      "story_mission": "M03-01",
+      "exits": [
+        "L12_Kuestenhafen_Ardem",
+        "L14_Sonnenebene"
+      ],
+      "world_position": [
+        0,
+        15000
+      ],
+      "layout_seed": 3612,
+      "required_gameplay": [
+        "player_start",
+        "navigation",
+        "story_objective",
+        "return_route"
+      ],
+      "implementation_status": "editor_generation_pending",
+      "notes": "Blockout and transition markers only; actual quest actors must be wired in editor",
+      "story_role": "Einführung und NPC-Hub",
+      "points_of_interest": [
+        {
+          "id": "L13_POI_01",
+          "kind": "story",
+          "mission": "M03-01"
+        },
+        {
+          "id": "L13_POI_02",
+          "kind": "exploration",
+          "mission": null
+        }
+      ]
+    },
+    {
+      "id": "L14",
+      "map_name": "L14_Sonnenebene",
+      "display_name": "Sonnenebene",
+      "continent": "Thalor",
+      "chapter": 3,
+      "biome": "wilderness",
+      "story_mission": "M03-01",
+      "exits": [
+        "L13_Hafen_von_Thalor",
+        "L15_Kristallhoehlen"
+      ],
+      "world_position": [
+        3000,
+        15000
+      ],
+      "layout_seed": 3613,
+      "required_gameplay": [
+        "player_start",
+        "navigation",
+        "story_objective",
+        "return_route"
+      ],
+      "implementation_status": "editor_generation_pending",
+      "notes": "Blockout and transition markers only; actual quest actors must be wired in editor",
+      "story_role": "Erkundung und Ressourcen",
+      "points_of_interest": [
+        {
+          "id": "L14_POI_01",
+          "kind": "story",
+          "mission": "M03-01"
+        },
+        {
+          "id": "L14_POI_02",
+          "kind": "exploration",
+          "mission": null
+        }
+      ]
+    },
+    {
+      "id": "L15",
+      "map_name": "L15_Kristallhoehlen",
+      "display_name": "Kristallhoehlen",
+      "continent": "Thalor",
+      "chapter": 3,
+      "biome": "dungeon",
+      "story_mission": "M03-02",
+      "exits": [
+        "L14_Sonnenebene",
+        "L16_Vergessene_Bibliothek"
+      ],
+      "world_position": [
+        6000,
+        15000
+      ],
+      "layout_seed": 3614,
+      "required_gameplay": [
+        "player_start",
+        "navigation",
+        "story_objective",
+        "return_route"
+      ],
+      "implementation_status": "editor_generation_pending",
+      "notes": "Blockout and transition markers only; actual quest actors must be wired in editor",
+      "story_role": "Konflikt und Gegner",
+      "points_of_interest": [
+        {
+          "id": "L15_POI_01",
+          "kind": "story",
+          "mission": "M03-02"
+        },
+        {
+          "id": "L15_POI_02",
+          "kind": "exploration",
+          "mission": null
+        }
+      ]
+    },
+    {
+      "id": "L16",
+      "map_name": "L16_Vergessene_Bibliothek",
+      "display_name": "Vergessene Bibliothek",
+      "continent": "Thalor",
+      "chapter": 3,
+      "biome": "ruins",
+      "story_mission": "M03-02",
+      "exits": [
+        "L15_Kristallhoehlen",
+        "L17_Wuestenruinen_SarKel"
+      ],
+      "world_position": [
+        9000,
+        15000
+      ],
+      "layout_seed": 3615,
+      "required_gameplay": [
+        "player_start",
+        "navigation",
+        "story_objective",
+        "return_route"
+      ],
+      "implementation_status": "editor_generation_pending",
+      "notes": "Blockout and transition markers only; actual quest actors must be wired in editor",
+      "story_role": "Storydungeon und Enthüllung",
+      "points_of_interest": [
+        {
+          "id": "L16_POI_01",
+          "kind": "story",
+          "mission": "M03-02"
+        },
+        {
+          "id": "L16_POI_02",
+          "kind": "exploration",
+          "mission": null
+        }
+      ]
+    },
+    {
+      "id": "L17",
+      "map_name": "L17_Wuestenruinen_SarKel",
+      "display_name": "Wuestenruinen SarKel",
+      "continent": "Thalor",
+      "chapter": 3,
+      "biome": "ruins",
+      "story_mission": "M03-03",
+      "exits": [
+        "L16_Vergessene_Bibliothek",
+        "L18_Tempel_des_Zweiten_Siegels"
+      ],
+      "world_position": [
+        12000,
+        15000
+      ],
+      "layout_seed": 3616,
+      "required_gameplay": [
+        "player_start",
+        "navigation",
+        "story_objective",
+        "return_route"
+      ],
+      "implementation_status": "editor_generation_pending",
+      "notes": "Blockout and transition markers only; actual quest actors must be wired in editor",
+      "story_role": "Nebenquests und Geheimnisse",
+      "points_of_interest": [
+        {
+          "id": "L17_POI_01",
+          "kind": "story",
+          "mission": "M03-03"
+        },
+        {
+          "id": "L17_POI_02",
+          "kind": "exploration",
+          "mission": null
+        }
+      ]
+    },
+    {
+      "id": "L18",
+      "map_name": "L18_Tempel_des_Zweiten_Siegels",
+      "display_name": "Tempel des Zweiten Siegels",
+      "continent": "Thalor",
+      "chapter": 3,
+      "biome": "dungeon",
+      "story_mission": "M03-04",
+      "exits": [
+        "L17_Wuestenruinen_SarKel",
+        "L19_Grenzfestung_Velis"
+      ],
+      "world_position": [
+        15000,
+        15000
+      ],
+      "layout_seed": 3617,
+      "required_gameplay": [
+        "player_start",
+        "navigation",
+        "story_objective",
+        "return_route"
+      ],
+      "implementation_status": "editor_generation_pending",
+      "notes": "Blockout and transition markers only; actual quest actors must be wired in editor",
+      "story_role": "Kapitelhöhepunkt und Übergang",
+      "points_of_interest": [
+        {
+          "id": "L18_POI_01",
+          "kind": "story",
+          "mission": "M03-04"
+        },
+        {
+          "id": "L18_POI_02",
+          "kind": "exploration",
+          "mission": null
+        }
+      ]
+    },
+    {
+      "id": "L19",
+      "map_name": "L19_Grenzfestung_Velis",
+      "display_name": "Grenzfestung Velis",
+      "continent": "Velis",
+      "chapter": 4,
+      "biome": "fortress",
+      "story_mission": "M04-01",
+      "exits": [
+        "L18_Tempel_des_Zweiten_Siegels",
+        "L20_Verbrannte_Lande"
+      ],
+      "world_position": [
+        0,
+        20000
+      ],
+      "layout_seed": 3618,
+      "required_gameplay": [
+        "player_start",
+        "navigation",
+        "story_objective",
+        "return_route"
+      ],
+      "implementation_status": "editor_generation_pending",
+      "notes": "Blockout and transition markers only; actual quest actors must be wired in editor",
+      "story_role": "Einführung und NPC-Hub",
+      "points_of_interest": [
+        {
+          "id": "L19_POI_01",
+          "kind": "story",
+          "mission": "M04-01"
+        },
+        {
+          "id": "L19_POI_02",
+          "kind": "exploration",
+          "mission": null
+        }
+      ]
+    },
+    {
+      "id": "L20",
+      "map_name": "L20_Verbrannte_Lande",
+      "display_name": "Verbrannte Lande",
+      "continent": "Velis",
+      "chapter": 4,
+      "biome": "wilderness",
+      "story_mission": "M04-01",
+      "exits": [
+        "L19_Grenzfestung_Velis",
+        "L21_Schwarzwald_Velis"
+      ],
+      "world_position": [
+        3000,
+        20000
+      ],
+      "layout_seed": 3619,
+      "required_gameplay": [
+        "player_start",
+        "navigation",
+        "story_objective",
+        "return_route"
+      ],
+      "implementation_status": "editor_generation_pending",
+      "notes": "Blockout and transition markers only; actual quest actors must be wired in editor",
+      "story_role": "Erkundung und Ressourcen",
+      "points_of_interest": [
+        {
+          "id": "L20_POI_01",
+          "kind": "story",
+          "mission": "M04-01"
+        },
+        {
+          "id": "L20_POI_02",
+          "kind": "exploration",
+          "mission": null
+        }
+      ]
+    },
+    {
+      "id": "L21",
+      "map_name": "L21_Schwarzwald_Velis",
+      "display_name": "Schwarzwald Velis",
+      "continent": "Velis",
+      "chapter": 4,
+      "biome": "forest",
+      "story_mission": "M04-02",
+      "exits": [
+        "L20_Verbrannte_Lande",
+        "L22_Unterirdische_Zwergenstadt"
+      ],
+      "world_position": [
+        6000,
+        20000
+      ],
+      "layout_seed": 3620,
+      "required_gameplay": [
+        "player_start",
+        "navigation",
+        "story_objective",
+        "return_route"
+      ],
+      "implementation_status": "editor_generation_pending",
+      "notes": "Blockout and transition markers only; actual quest actors must be wired in editor",
+      "story_role": "Konflikt und Gegner",
+      "points_of_interest": [
+        {
+          "id": "L21_POI_01",
+          "kind": "story",
+          "mission": "M04-02"
+        },
+        {
+          "id": "L21_POI_02",
+          "kind": "exploration",
+          "mission": null
+        }
+      ]
+    },
+    {
+      "id": "L22",
+      "map_name": "L22_Unterirdische_Zwergenstadt",
+      "display_name": "Unterirdische Zwergenstadt",
+      "continent": "Velis",
+      "chapter": 4,
+      "biome": "city",
+      "story_mission": "M04-02",
+      "exits": [
+        "L21_Schwarzwald_Velis",
+        "L23_Blutsteinminen"
+      ],
+      "world_position": [
+        9000,
+        20000
+      ],
+      "layout_seed": 3621,
+      "required_gameplay": [
+        "player_start",
+        "navigation",
+        "story_objective",
+        "return_route"
+      ],
+      "implementation_status": "editor_generation_pending",
+      "notes": "Blockout and transition markers only; actual quest actors must be wired in editor",
+      "story_role": "Storydungeon und Enthüllung",
+      "points_of_interest": [
+        {
+          "id": "L22_POI_01",
+          "kind": "story",
+          "mission": "M04-02"
+        },
+        {
+          "id": "L22_POI_02",
+          "kind": "exploration",
+          "mission": null
+        }
+      ]
+    },
+    {
+      "id": "L23",
+      "map_name": "L23_Blutsteinminen",
+      "display_name": "Blutsteinminen",
+      "continent": "Velis",
+      "chapter": 4,
+      "biome": "dungeon",
+      "story_mission": "M04-03",
+      "exits": [
+        "L22_Unterirdische_Zwergenstadt",
+        "L24_Festung_der_Schattenlegion"
+      ],
+      "world_position": [
+        12000,
+        20000
+      ],
+      "layout_seed": 3622,
+      "required_gameplay": [
+        "player_start",
+        "navigation",
+        "story_objective",
+        "return_route"
+      ],
+      "implementation_status": "editor_generation_pending",
+      "notes": "Blockout and transition markers only; actual quest actors must be wired in editor",
+      "story_role": "Nebenquests und Geheimnisse",
+      "points_of_interest": [
+        {
+          "id": "L23_POI_01",
+          "kind": "story",
+          "mission": "M04-03"
+        },
+        {
+          "id": "L23_POI_02",
+          "kind": "exploration",
+          "mission": null
+        }
+      ]
+    },
+    {
+      "id": "L24",
+      "map_name": "L24_Festung_der_Schattenlegion",
+      "display_name": "Festung der Schattenlegion",
+      "continent": "Velis",
+      "chapter": 4,
+      "biome": "fortress",
+      "story_mission": "M04-04",
+      "exits": [
+        "L23_Blutsteinminen",
+        "L25_Aschenfeste"
+      ],
+      "world_position": [
+        15000,
+        20000
+      ],
+      "layout_seed": 3623,
+      "required_gameplay": [
+        "player_start",
+        "navigation",
+        "story_objective",
+        "return_route"
+      ],
+      "implementation_status": "editor_generation_pending",
+      "notes": "Blockout and transition markers only; actual quest actors must be wired in editor",
+      "story_role": "Kapitelhöhepunkt und Übergang",
+      "points_of_interest": [
+        {
+          "id": "L24_POI_01",
+          "kind": "story",
+          "mission": "M04-04"
+        },
+        {
+          "id": "L24_POI_02",
+          "kind": "exploration",
+          "mission": null
+        }
+      ]
+    },
+    {
+      "id": "L25",
+      "map_name": "L25_Aschenfeste",
+      "display_name": "Aschenfeste",
+      "continent": "Velis",
+      "chapter": 5,
+      "biome": "city",
+      "story_mission": "M05-01",
+      "exits": [
+        "L24_Festung_der_Schattenlegion",
+        "L26_Tal_der_gefallenen_Koenige"
+      ],
+      "world_position": [
+        0,
+        25000
+      ],
+      "layout_seed": 3624,
+      "required_gameplay": [
+        "player_start",
+        "navigation",
+        "story_objective",
+        "return_route"
+      ],
+      "implementation_status": "editor_generation_pending",
+      "notes": "Blockout and transition markers only; actual quest actors must be wired in editor",
+      "story_role": "Einführung und NPC-Hub",
+      "points_of_interest": [
+        {
+          "id": "L25_POI_01",
+          "kind": "story",
+          "mission": "M05-01"
+        },
+        {
+          "id": "L25_POI_02",
+          "kind": "exploration",
+          "mission": null
+        }
+      ]
+    },
+    {
+      "id": "L26",
+      "map_name": "L26_Tal_der_gefallenen_Koenige",
+      "display_name": "Tal der gefallenen Koenige",
+      "continent": "Velis",
+      "chapter": 5,
+      "biome": "ruins",
+      "story_mission": "M05-01",
+      "exits": [
+        "L25_Aschenfeste",
+        "L27_Tempel_des_Vierten_Siegels"
+      ],
+      "world_position": [
+        3000,
+        25000
+      ],
+      "layout_seed": 3625,
+      "required_gameplay": [
+        "player_start",
+        "navigation",
+        "story_objective",
+        "return_route"
+      ],
+      "implementation_status": "editor_generation_pending",
+      "notes": "Blockout and transition markers only; actual quest actors must be wired in editor",
+      "story_role": "Erkundung und Ressourcen",
+      "points_of_interest": [
+        {
+          "id": "L26_POI_01",
+          "kind": "story",
+          "mission": "M05-01"
+        },
+        {
+          "id": "L26_POI_02",
+          "kind": "exploration",
+          "mission": null
+        }
+      ]
+    },
+    {
+      "id": "L27",
+      "map_name": "L27_Tempel_des_Vierten_Siegels",
+      "display_name": "Tempel des Vierten Siegels",
+      "continent": "Velis",
+      "chapter": 5,
+      "biome": "dungeon",
+      "story_mission": "M05-02",
+      "exits": [
+        "L26_Tal_der_gefallenen_Koenige",
+        "L28_Verlorene_Koenigsstadt"
+      ],
+      "world_position": [
+        6000,
+        25000
+      ],
+      "layout_seed": 3626,
+      "required_gameplay": [
+        "player_start",
+        "navigation",
+        "story_objective",
+        "return_route"
+      ],
+      "implementation_status": "editor_generation_pending",
+      "notes": "Blockout and transition markers only; actual quest actors must be wired in editor",
+      "story_role": "Konflikt und Gegner",
+      "points_of_interest": [
+        {
+          "id": "L27_POI_01",
+          "kind": "story",
+          "mission": "M05-02"
+        },
+        {
+          "id": "L27_POI_02",
+          "kind": "exploration",
+          "mission": null
+        }
+      ]
+    },
+    {
+      "id": "L28",
+      "map_name": "L28_Verlorene_Koenigsstadt",
+      "display_name": "Verlorene Koenigsstadt",
+      "continent": "Velis",
+      "chapter": 5,
+      "biome": "ruins",
+      "story_mission": "M05-03",
+      "exits": [
+        "L27_Tempel_des_Vierten_Siegels",
+        "L29_Heiligtum_der_Krone"
+      ],
+      "world_position": [
+        9000,
+        25000
+      ],
+      "layout_seed": 3627,
+      "required_gameplay": [
+        "player_start",
+        "navigation",
+        "story_objective",
+        "return_route"
+      ],
+      "implementation_status": "editor_generation_pending",
+      "notes": "Blockout and transition markers only; actual quest actors must be wired in editor",
+      "story_role": "Storydungeon und Enthüllung",
+      "points_of_interest": [
+        {
+          "id": "L28_POI_01",
+          "kind": "story",
+          "mission": "M05-03"
+        },
+        {
+          "id": "L28_POI_02",
+          "kind": "exploration",
+          "mission": null
+        }
+      ]
+    },
+    {
+      "id": "L29",
+      "map_name": "L29_Heiligtum_der_Krone",
+      "display_name": "Heiligtum der Krone",
+      "continent": "Velis",
+      "chapter": 5,
+      "biome": "dungeon",
+      "story_mission": "M05-04",
+      "exits": [
+        "L28_Verlorene_Koenigsstadt",
+        "L30_Thronsaal_von_Askir"
+      ],
+      "world_position": [
+        12000,
+        25000
+      ],
+      "layout_seed": 3628,
+      "required_gameplay": [
+        "player_start",
+        "navigation",
+        "story_objective",
+        "return_route"
+      ],
+      "implementation_status": "editor_generation_pending",
+      "notes": "Blockout and transition markers only; actual quest actors must be wired in editor",
+      "story_role": "Nebenquests und Geheimnisse",
+      "points_of_interest": [
+        {
+          "id": "L29_POI_01",
+          "kind": "story",
+          "mission": "M05-04"
+        },
+        {
+          "id": "L29_POI_02",
+          "kind": "exploration",
+          "mission": null
+        }
+      ]
+    },
+    {
+      "id": "L30",
+      "map_name": "L30_Thronsaal_von_Askir",
+      "display_name": "Thronsaal von Askir",
+      "continent": "Velis",
+      "chapter": 5,
+      "biome": "boss",
+      "story_mission": "M05-04",
+      "exits": [
+        "L29_Heiligtum_der_Krone"
+      ],
+      "world_position": [
+        15000,
+        25000
+      ],
+      "layout_seed": 3629,
+      "required_gameplay": [
+        "player_start",
+        "navigation",
+        "story_objective",
+        "return_route"
+      ],
+      "implementation_status": "editor_generation_pending",
+      "notes": "Blockout and transition markers only; actual quest actors must be wired in editor",
+      "story_role": "Kapitelhöhepunkt und Übergang",
+      "points_of_interest": [
+        {
+          "id": "L30_POI_01",
+          "kind": "story",
+          "mission": "M05-04"
+        },
+        {
+          "id": "L30_POI_02",
+          "kind": "exploration",
+          "mission": null
+        }
+      ]
+    }
+  ]
+}

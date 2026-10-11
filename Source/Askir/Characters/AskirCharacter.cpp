@@ -1,3 +1,4 @@
+#include "Mission/AskirDornfeldMissionComponent.h"
 #include "Animation/AskirAnimationStateComponent.h"
 #include "Simulation/AskirNeedsComponent.h"
 #include "Game/AskirGameMode.h"
@@ -49,6 +50,7 @@ AAskirCharacter::AAskirCharacter()
     GuardComponent=CreateDefaultSubobject<UAskirGuardComponent>(TEXT("Guard"));
     InventoryComponent=CreateDefaultSubobject<UAskirInventoryComponent>(TEXT("InventoryComponent"));
     QuestComponent=CreateDefaultSubobject<UAskirQuestComponent>(TEXT("QuestComponent"));
+    DornfeldMission=CreateDefaultSubobject<UAskirDornfeldMissionComponent>(TEXT("DornfeldMission"));
 }
 void AAskirCharacter::BeginPlay(){Super::BeginPlay();Stamina=FMath::Max(0.f,MaxStamina);if(CombatComponent)CombatComponent->OnDeath.AddDynamic(this,&AAskirCharacter::HandleDeath);}
 void AAskirCharacter::Tick(float DeltaSeconds)

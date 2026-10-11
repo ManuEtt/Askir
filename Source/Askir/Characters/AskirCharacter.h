@@ -4,7 +4,7 @@
 #include "Combat/AskirDamageTypes.h"
 #include "TimerManager.h"
 #include "AskirCharacter.generated.h"
-class UAskirGuardComponent; class USpringArmComponent; class UCameraComponent; class UAskirCombatComponent; class UAskirInventoryComponent; class UAskirQuestComponent; class UAskirProgressionComponent;
+class UAskirDornfeldMissionComponent; class UAskirGuardComponent; class USpringArmComponent; class UCameraComponent; class UAskirCombatComponent; class UAskirInventoryComponent; class UAskirQuestComponent; class UAskirProgressionComponent;
 class UAskirSurvivalComponent;
 class UAskirEquipmentComponent;
 class UAskirStealthComponent;
@@ -94,6 +94,7 @@ public:
     UFUNCTION(BlueprintCallable,Category="Askir|Integrated|Crafting") bool TrainCraftingAtCamp();
     UFUNCTION(BlueprintCallable,Category="Askir|Integrated|Crafting") bool CraftRepairKit(int32 Cost);
     UFUNCTION(BlueprintCallable,Category="Askir|Integrated|Crafting") bool TradeCraftForSupplies(int32 SupplyAmount);
+    UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Askir|Dornfeld") TObjectPtr<UAskirDornfeldMissionComponent> DornfeldMission;
     UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Askir|Animation") TObjectPtr<UAskirAnimationStateComponent> AnimationState;
     UPROPERTY(EditAnywhere)float WalkSpeed=450;
     UPROPERTY(EditAnywhere)float SprintSpeed=700;

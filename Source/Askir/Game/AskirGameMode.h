@@ -12,6 +12,8 @@ public:
     AAskirGameMode();
     virtual void BeginPlay() override;
     virtual void Tick(float DeltaSeconds) override;
+    UFUNCTION(BlueprintCallable) bool SaveGame(const FString& SlotName);
+    UFUNCTION(BlueprintCallable) bool LoadGame(const FString& SlotName, bool bRestorePosition=true);
     UFUNCTION(BlueprintCallable) void DemoInteract();
     UFUNCTION(BlueprintCallable) void DemoQuickSave();
     UFUNCTION(BlueprintCallable) void DemoQuickLoad();
@@ -27,6 +29,5 @@ private:
     UPROPERTY() TArray<TObjectPtr<AAskirDemoInteractable>> DemoObjects;
     float HudAccumulator=0.f;
     bool bDemoSceneReady=false;
-    UFUNCTION(BlueprintCallable)bool SaveGame(const FString&SlotName);
-    UFUNCTION(BlueprintCallable)bool LoadGame(const FString&SlotName);
+
 };

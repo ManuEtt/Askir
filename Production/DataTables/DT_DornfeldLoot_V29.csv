@@ -1,0 +1,5 @@
+﻿Name,ItemId,Quantity,Source,QuestObjective
+Shard_01,Brunnenscherbe,1,Brunnen,COLLECT_SHARDS
+Shard_02,Brunnenscherbe,1,Brunnen,COLLECT_SHARDS
+Shard_03,Brunnenscherbe,1,Keller,COLLECT_SHARDS
+Cellar_Chest,Dorfwächter-Amulett,1,Truhe,OPEN_CHEST

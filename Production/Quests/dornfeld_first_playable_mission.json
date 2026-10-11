@@ -1,0 +1,42 @@
+{
+  "id": "DORNFELD_BRUNNEN",
+  "title": "Das Flüstern im Brunnen",
+  "stages": [
+    {
+      "id": "TALK_ELDER",
+      "type": "dialogue",
+      "npc": "Dorfälteste Mara",
+      "text": "Seit drei Nächten flüstert der Brunnen. Findet heraus, was dahintersteckt."
+    },
+    {
+      "id": "COLLECT_SHARDS",
+      "type": "collect",
+      "count": 3,
+      "item": "Brunnenscherbe",
+      "location": "Dornfeld-Brunnen"
+    },
+    {
+      "id": "DEFEAT_GUARDIANS",
+      "type": "encounter",
+      "count": 2,
+      "enemy": "Schattenwächter"
+    },
+    {
+      "id": "OPEN_CHEST",
+      "type": "loot",
+      "location": "Verlassener Keller"
+    },
+    {
+      "id": "RETURN_TO_ELDER",
+      "type": "dialogue",
+      "npc": "Dorfälteste Mara",
+      "text": "Ihr habt Dornfeld eine Nacht ohne Furcht geschenkt."
+    }
+  ],
+  "reward": {
+    "gold": 90,
+    "xp": 180,
+    "item": "Dorfwächter-Amulett"
+  },
+  "note": "Design- und Editor-Setup-Daten, keine automatisch platzierte .umap."
+}
