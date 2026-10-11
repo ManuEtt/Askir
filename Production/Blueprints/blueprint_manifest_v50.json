@@ -1,0 +1,175 @@
+{
+  "version": 50,
+  "engine": "5.6",
+  "asset_root": "/Game/Askir/Blueprints",
+  "blueprints": [
+    {
+      "category": "Core",
+      "name": "BP_AskirPlayer",
+      "native_parent": "AskirCharacter",
+      "native_path": "/Script/Askir.AskirCharacter",
+      "asset_path": "/Game/Askir/Blueprints/Core/BP_AskirPlayer"
+    },
+    {
+      "category": "Core",
+      "name": "BP_AskirGameMode",
+      "native_parent": "AskirGameMode",
+      "native_path": "/Script/Askir.AskirGameMode",
+      "asset_path": "/Game/Askir/Blueprints/Core/BP_AskirGameMode"
+    },
+    {
+      "category": "Core",
+      "name": "BP_AskirNPC",
+      "native_parent": "AskirNPC",
+      "native_path": "/Script/Askir.AskirNPC",
+      "asset_path": "/Game/Askir/Blueprints/Core/BP_AskirNPC"
+    },
+    {
+      "category": "Core",
+      "name": "BP_AskirNPCAdvanced",
+      "native_parent": "AskirNPCAdvanced",
+      "native_path": "/Script/Askir.AskirNPCAdvanced",
+      "asset_path": "/Game/Askir/Blueprints/Core/BP_AskirNPCAdvanced"
+    },
+    {
+      "category": "AI",
+      "name": "BP_EnemyAIController",
+      "native_parent": "AskirEnemyAIController",
+      "native_path": "/Script/Askir.AskirEnemyAIController",
+      "asset_path": "/Game/Askir/Blueprints/AI/BP_EnemyAIController"
+    },
+    {
+      "category": "AI",
+      "name": "BP_CivilianAIController",
+      "native_parent": "AskirCivilianAIController",
+      "native_path": "/Script/Askir.AskirCivilianAIController",
+      "asset_path": "/Game/Askir/Blueprints/AI/BP_CivilianAIController"
+    },
+    {
+      "category": "Enemies",
+      "name": "BP_Bandit",
+      "native_parent": "AskirCharacter",
+      "native_path": "/Script/Askir.AskirCharacter",
+      "asset_path": "/Game/Askir/Blueprints/Enemies/BP_Bandit"
+    },
+    {
+      "category": "Enemies",
+      "name": "BP_Wolf",
+      "native_parent": "AskirCharacter",
+      "native_path": "/Script/Askir.AskirCharacter",
+      "asset_path": "/Game/Askir/Blueprints/Enemies/BP_Wolf"
+    },
+    {
+      "category": "Enemies",
+      "name": "BP_Skeleton",
+      "native_parent": "AskirCharacter",
+      "native_path": "/Script/Askir.AskirCharacter",
+      "asset_path": "/Game/Askir/Blueprints/Enemies/BP_Skeleton"
+    },
+    {
+      "category": "Enemies",
+      "name": "BP_Cultist",
+      "native_parent": "AskirCharacter",
+      "native_path": "/Script/Askir.AskirCharacter",
+      "asset_path": "/Game/Askir/Blueprints/Enemies/BP_Cultist"
+    },
+    {
+      "category": "Enemies",
+      "name": "BP_EliteGuard",
+      "native_parent": "AskirCharacter",
+      "native_path": "/Script/Askir.AskirCharacter",
+      "asset_path": "/Game/Askir/Blueprints/Enemies/BP_EliteGuard"
+    },
+    {
+      "category": "Enemies",
+      "name": "BP_AskirBoss",
+      "native_parent": "AskirCharacter",
+      "native_path": "/Script/Askir.AskirCharacter",
+      "asset_path": "/Game/Askir/Blueprints/Enemies/BP_AskirBoss"
+    },
+    {
+      "category": "NPC",
+      "name": "BP_Villager",
+      "native_parent": "AskirNPC",
+      "native_path": "/Script/Askir.AskirNPC",
+      "asset_path": "/Game/Askir/Blueprints/NPC/BP_Villager"
+    },
+    {
+      "category": "NPC",
+      "name": "BP_Merchant",
+      "native_parent": "AskirNPC",
+      "native_path": "/Script/Askir.AskirNPC",
+      "asset_path": "/Game/Askir/Blueprints/NPC/BP_Merchant"
+    },
+    {
+      "category": "NPC",
+      "name": "BP_QuestNPC",
+      "native_parent": "AskirNPC",
+      "native_path": "/Script/Askir.AskirNPC",
+      "asset_path": "/Game/Askir/Blueprints/NPC/BP_QuestNPC"
+    },
+    {
+      "category": "NPC",
+      "name": "BP_Guard",
+      "native_parent": "AskirNPC",
+      "native_path": "/Script/Askir.AskirNPC",
+      "asset_path": "/Game/Askir/Blueprints/NPC/BP_Guard"
+    },
+    {
+      "category": "NPC",
+      "name": "BP_Companion",
+      "native_parent": "AskirNPC",
+      "native_path": "/Script/Askir.AskirNPC",
+      "asset_path": "/Game/Askir/Blueprints/NPC/BP_Companion"
+    },
+    {
+      "category": "Quests",
+      "name": "BP_QuestGiver",
+      "native_parent": "AskirQuestGiver",
+      "native_path": "/Script/Askir.AskirQuestGiver",
+      "asset_path": "/Game/Askir/Blueprints/Quests/BP_QuestGiver"
+    },
+    {
+      "category": "World",
+      "name": "BP_WorldPortal",
+      "native_parent": "AskirWorldPortal",
+      "native_path": "/Script/Askir.AskirWorldPortal",
+      "asset_path": "/Game/Askir/Blueprints/World/BP_WorldPortal"
+    },
+    {
+      "category": "World",
+      "name": "BP_LootChest",
+      "native_parent": "AskirLootChest",
+      "native_path": "/Script/Askir.AskirLootChest",
+      "asset_path": "/Game/Askir/Blueprints/World/BP_LootChest"
+    },
+    {
+      "category": "World",
+      "name": "BP_LootPickup",
+      "native_parent": "AskirLootPickup",
+      "native_path": "/Script/Askir.AskirLootPickup",
+      "asset_path": "/Game/Askir/Blueprints/World/BP_LootPickup"
+    },
+    {
+      "category": "Encounters",
+      "name": "BP_EncounterZone",
+      "native_parent": "AskirEncounterZone",
+      "native_path": "/Script/Askir.AskirEncounterZone",
+      "asset_path": "/Game/Askir/Blueprints/Encounters/BP_EncounterZone"
+    },
+    {
+      "category": "Encounters",
+      "name": "BP_EncounterSpawner",
+      "native_parent": "AskirEncounterSpawner",
+      "native_path": "/Script/Askir.AskirEncounterSpawner",
+      "asset_path": "/Game/Askir/Blueprints/Encounters/BP_EncounterSpawner"
+    },
+    {
+      "category": "World",
+      "name": "BP_DemoInteractable",
+      "native_parent": "AskirDemoInteractable",
+      "native_path": "/Script/Askir.AskirDemoInteractable",
+      "asset_path": "/Game/Askir/Blueprints/World/BP_DemoInteractable"
+    }
+  ]
+}

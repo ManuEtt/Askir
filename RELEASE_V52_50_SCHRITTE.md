@@ -1,0 +1,54 @@
+# Askir V52 – Themen 1351–1400
+
+Blueprint configuration and integrity milestone; not a completed playable game.
+
+- 1351: Validate native parent and asset path for `BP_AskirPlayer` – offline implemented.
+- 1352: Validate native parent and asset path for `BP_AskirGameMode` – offline implemented.
+- 1353: Validate native parent and asset path for `BP_AskirNPC` – offline implemented.
+- 1354: Validate native parent and asset path for `BP_AskirNPCAdvanced` – offline implemented.
+- 1355: Validate native parent and asset path for `BP_EnemyAIController` – offline implemented.
+- 1356: Validate native parent and asset path for `BP_CivilianAIController` – offline implemented.
+- 1357: Validate native parent and asset path for `BP_Bandit` – offline implemented.
+- 1358: Validate native parent and asset path for `BP_Wolf` – offline implemented.
+- 1359: Validate native parent and asset path for `BP_Skeleton` – offline implemented.
+- 1360: Validate native parent and asset path for `BP_Cultist` – offline implemented.
+- 1361: Validate native parent and asset path for `BP_EliteGuard` – offline implemented.
+- 1362: Validate native parent and asset path for `BP_AskirBoss` – offline implemented.
+- 1363: Validate native parent and asset path for `BP_Villager` – offline implemented.
+- 1364: Validate native parent and asset path for `BP_Merchant` – offline implemented.
+- 1365: Validate native parent and asset path for `BP_QuestNPC` – offline implemented.
+- 1366: Validate native parent and asset path for `BP_Guard` – offline implemented.
+- 1367: Validate native parent and asset path for `BP_Companion` – offline implemented.
+- 1368: Validate native parent and asset path for `BP_QuestGiver` – offline implemented.
+- 1369: Validate native parent and asset path for `BP_WorldPortal` – offline implemented.
+- 1370: Validate native parent and asset path for `BP_LootChest` – offline implemented.
+- 1371: Validate native parent and asset path for `BP_LootPickup` – offline implemented.
+- 1372: Validate native parent and asset path for `BP_EncounterZone` – offline implemented.
+- 1373: Validate native parent and asset path for `BP_EncounterSpawner` – offline implemented.
+- 1374: Validate native parent and asset path for `BP_DemoInteractable` – offline implemented.
+- 1375: Enemy AI preset `BP_Bandit` – data implemented; Unreal runtime tuning not yet wired.
+- 1376: Enemy AI preset `BP_Wolf` – data implemented; Unreal runtime tuning not yet wired.
+- 1377: Enemy AI preset `BP_Skeleton` – data implemented; Unreal runtime tuning not yet wired.
+- 1378: Detect missing Blueprint assets – implemented in editor script or documented guardrail.
+- 1379: Avoid overwriting existing Blueprints – implemented in editor script or documented guardrail.
+- 1380: Verify AI controller generated class – implemented in editor script or documented guardrail.
+- 1381: Guard against missing C++ parent classes – implemented in editor script or documented guardrail.
+- 1382: Keep dry-run enabled by default – implemented in editor script or documented guardrail.
+- 1383: Assign enemy AI controller to pawns – implemented in editor script or documented guardrail.
+- 1384: Enable AI auto-possession for spawned pawns – implemented in editor script or documented guardrail.
+- 1385: Save modified Blueprint assets – implemented in editor script or documented guardrail.
+- 1386: Log per-asset errors – implemented in editor script or documented guardrail.
+- 1387: Keep individual AI tuning separate from shared controller – implemented in editor script or documented guardrail.
+- 1388: Manifest validation.
+- 1389: Native header validation.
+- 1390: AI preset constraint validation.
+- 1391: Unreal compilation and PIE tests (pending).
+- 1392: Per-enemy controller subclasses (pending).
+- 1393: Enemy-specific attack tuning in Unreal (pending).
+- 1394: Behavior tree authoring (pending).
+- 1395: Blackboard authoring (pending).
+- 1396: Animation blueprint hookup (pending).
+- 1397: Quest completion callbacks (pending).
+- 1398: Save/load encounter state in UE (pending).
+- 1399: NavMesh test for 30 maps (pending).
+- 1400: Full encounter PIE regression (pending).
