@@ -1,7 +1,7 @@
 {
   "version": 56,
   "boss_pawn": "/Game/Askir/Blueprints/Enemies/BP_AskirBoss",
-  "boss_controller": "/Game/Askir/Blueprints/AI/BP_AI_AskirBoss",
+  "boss_controller": "/Game/Askir/Blueprints/AI/BP_AI_AskirBossPhases",
   "native_class": "/Script/Askir.AskirBossAIController",
   "phases": [
     {

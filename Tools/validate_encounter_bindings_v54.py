@@ -8,7 +8,7 @@ def validate():
     ai=json.loads((ROOT/'Production/Blueprints/ai_profiles_v53.json').read_text(encoding='utf-8'))['profiles']
     rows=json.loads((ROOT/'Production/Levels/encounter_blueprint_bindings_v54.json').read_text(encoding='utf-8'))['encounters']
     expected={(p['map_name'],e['encounter_id']):e for p in source for e in p['encounters']}
-    allowed={p['pawn_path']+'_C' for p in ai}
+    allowed={p['pawn_path'] + '.' + p['pawn_path'].rsplit('/', 1)[-1] + '_C' for p in ai}
     assert len(expected)==len(rows)==90
     assert len({r['encounter_id'] for r in rows})==90
     for r in rows:

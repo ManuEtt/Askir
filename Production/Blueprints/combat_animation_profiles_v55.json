@@ -136,7 +136,7 @@
       "pawn": "BP_AskirBoss",
       "pawn_asset": "/Game/Askir/Blueprints/Enemies/BP_AskirBoss",
       "pawn_generated_class": "/Game/Askir/Blueprints/Enemies/BP_AskirBoss.BP_AskirBoss_C",
-      "controller_asset": "/Game/Askir/Blueprints/AI/BP_AI_AskirBoss",
+      "controller_asset": "/Game/Askir/Blueprints/AI/BP_AI_AskirBossPhases",
       "attack_distance_cm": 160,
       "attack_interval_seconds": 1.5,
       "decision_interval_seconds": 0.3,

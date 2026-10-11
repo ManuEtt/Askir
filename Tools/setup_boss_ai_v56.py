@@ -3,7 +3,7 @@ DRY_RUN prevents all writes; rerun with False after backup and inspection.
 """
 import unreal
 DRY_RUN = True
-CONTROLLER_PATH = "/Game/Askir/Blueprints/AI/BP_AI_AskirBoss"
+CONTROLLER_PATH = "/Game/Askir/Blueprints/AI/BP_AI_AskirBossPhases"
 PAWN_PATH = "/Game/Askir/Blueprints/Enemies/BP_AskirBoss"
 NATIVE_PATH = "/Script/Askir.AskirBossAIController"
 
@@ -21,10 +21,14 @@ def run():
     if not controller:
         factory = unreal.BlueprintFactory()
         factory.set_editor_property("parent_class", native)
-        controller = unreal.AssetToolsHelpers.get_asset_tools().create_asset("BP_AI_AskirBoss", "/Game/Askir/Blueprints/AI", unreal.Blueprint, factory)
+        controller = unreal.AssetToolsHelpers.get_asset_tools().create_asset("BP_AI_AskirBossPhases", "/Game/Askir/Blueprints/AI", unreal.Blueprint, factory)
     if not controller:
         raise RuntimeError("Could not create boss controller Blueprint")
-    controller_class = unreal.load_class(None, CONTROLLER_PATH + ".BP_AI_AskirBoss_C")
+    # Use a distinct BP name: V53 already creates BP_AI_AskirBoss with
+    # AAskirEnemyAIController as parent. Reusing it silently loses boss phases.
+    if not controller.generated_class().is_child_of(native):
+        raise RuntimeError("Boss controller has wrong native parent; do not overwrite")
+    controller_class = unreal.load_class(None, CONTROLLER_PATH + ".BP_AI_AskirBossPhases_C")
     pawn_blueprint = lib.load_asset(PAWN_PATH)
     if not controller_class or not pawn_blueprint:
         raise RuntimeError("Missing generated classes")
