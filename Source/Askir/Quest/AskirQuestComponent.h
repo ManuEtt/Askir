@@ -3,4 +3,27 @@
 #include "Components/ActorComponent.h"
 #include "Quest/AskirQuestData.h"
 #include "AskirQuestComponent.generated.h"
-UCLASS(ClassGroup=(Askir),BlueprintType,meta=(BlueprintSpawnableComponent))class ASKIR_API UAskirQuestComponent:public UActorComponent{GENERATED_BODY()public:UAskirQuestComponent();UFUNCTION(BlueprintCallable)bool StartQuest(UAskirQuestData*Q);UFUNCTION(BlueprintCallable)bool AdvanceObjective(FName ID,int32 Amount=1); UFUNCTION(BlueprintPure)bool AreObjectivesComplete()const;UFUNCTION(BlueprintCallable)bool CompleteQuest(UAskirQuestData*Q);UFUNCTION(BlueprintPure)EAskirQuestState GetState(UAskirQuestData*Q)const;UPROPERTY(EditAnywhere,BlueprintReadWrite,SaveGame)TMap<FName,EAskirQuestState> QuestStates;UPROPERTY(EditAnywhere,BlueprintReadWrite,SaveGame)TArray<FAskirQuestObjective> ActiveObjectives;};
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FAskirQuestProgressChanged,FName,QuestID,FName,ObjectiveID);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FAskirQuestCompleted,FName,QuestID);
+UCLASS(ClassGroup=(Askir),BlueprintType,meta=(BlueprintSpawnableComponent))
+class ASKIR_API UAskirQuestComponent:public UActorComponent
+{
+ GENERATED_BODY()
+public:
+ UAskirQuestComponent();
+ UFUNCTION(BlueprintCallable,Category="Askir|Quest") bool StartQuest(UAskirQuestData* Quest);
+ UFUNCTION(BlueprintCallable,Category="Askir|Quest") bool AdvanceObjective(FName ObjectiveID,int32 Amount=1);
+ UFUNCTION(BlueprintCallable,Category="Askir|Quest") bool AdvanceQuestObjective(FName QuestID,FName ObjectiveID,int32 Amount=1);
+ UFUNCTION(BlueprintPure,Category="Askir|Quest") bool AreObjectivesComplete()const;
+ UFUNCTION(BlueprintPure,Category="Askir|Quest") bool AreQuestObjectivesComplete(FName QuestID)const;
+ UFUNCTION(BlueprintCallable,Category="Askir|Quest") bool CompleteQuest(UAskirQuestData* Quest);
+ UFUNCTION(BlueprintPure,Category="Askir|Quest") EAskirQuestState GetState(UAskirQuestData* Quest)const;
+ UFUNCTION(BlueprintPure,Category="Askir|Quest") EAskirQuestState GetStateByID(FName QuestID)const;
+ UFUNCTION(BlueprintPure,Category="Askir|Quest") TArray<FAskirQuestObjective> GetObjectivesForQuest(FName QuestID)const;
+ UPROPERTY(BlueprintAssignable,Category="Askir|Quest") FAskirQuestProgressChanged OnQuestProgressChanged;
+ UPROPERTY(BlueprintAssignable,Category="Askir|Quest") FAskirQuestCompleted OnQuestCompleted;
+ UPROPERTY(EditAnywhere,BlueprintReadWrite,SaveGame,Category="Askir|Quest") TMap<FName,EAskirQuestState> QuestStates;
+ UPROPERTY(EditAnywhere,BlueprintReadWrite,SaveGame,Category="Askir|Quest") TArray<FAskirQuestObjective> ActiveObjectives;
+ UPROPERTY(EditAnywhere,BlueprintReadWrite,SaveGame,Category="Askir|Quest") TMap<FName,FAskirQuestObjectiveList> ObjectivesByQuest;
+ UPROPERTY(EditAnywhere,BlueprintReadWrite,SaveGame,Category="Askir|Quest") FName LegacyActiveQuestID=NAME_None;
+};

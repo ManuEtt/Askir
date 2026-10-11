@@ -63,6 +63,8 @@ bool AAskirGameMode::SaveGame(const FString& SlotName)
     {
         Save->SavedQuestStates = Player->QuestComponent->QuestStates;
         Save->SavedActiveObjectives = Player->QuestComponent->ActiveObjectives;
+        Save->SavedObjectivesByQuest = Player->QuestComponent->ObjectivesByQuest;
+        Save->SavedLegacyActiveQuestID = Player->QuestComponent->LegacyActiveQuestID;
     }
     if (auto* Rep=Player->FindComponentByClass<UAskirReputationComponent>())
         for (const auto& Standing:Rep->Standings)Save->SavedFactionReputation.Add(Standing.Faction,Standing.Reputation);
@@ -121,6 +123,8 @@ bool AAskirGameMode::LoadGame(const FString& SlotName)
     {
         Player->QuestComponent->QuestStates = Save->SavedQuestStates;
         Player->QuestComponent->ActiveObjectives = Save->SavedActiveObjectives;
+        Player->QuestComponent->ObjectivesByQuest = Save->SavedObjectivesByQuest;
+        Player->QuestComponent->LegacyActiveQuestID = Save->SavedLegacyActiveQuestID;
     }
     if (UAskirSimulationSubsystem* Sim = GetWorld()->GetSubsystem<UAskirSimulationSubsystem>())
         Sim->RestoreWorldState(Save->WorldState);

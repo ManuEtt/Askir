@@ -1,4 +1,8 @@
 #include "Characters/AskirNPC.h"
+#include "NPC/AskirDailyRoutineComponent.h"
+#include "NPC/AskirInteractionComponent.h"
+#include "NPC/AskirDialogueComponent.h"
+#include "AI/AskirCivilianAIController.h"
 #include "AIController.h"
 #include "Combat/AskirCombatComponent.h"
 #include "Quest/AskirQuestComponent.h"
@@ -9,6 +13,10 @@
 AAskirNPC::AAskirNPC()
 {
     PrimaryActorTick.bCanEverTick = true;
+    CreateDefaultSubobject<UAskirDailyRoutineComponent>(TEXT("DailyRoutine"));
+    CreateDefaultSubobject<UAskirInteractionComponent>(TEXT("Interaction"));
+    CreateDefaultSubobject<UAskirDialogueComponent>(TEXT("Dialogue"));
+
     AutoPossessAI = EAutoPossessAI::PlacedInWorldOrSpawned;
 }
 

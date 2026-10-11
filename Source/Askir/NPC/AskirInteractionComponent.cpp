@@ -4,7 +4,7 @@ UAskirInteractionComponent::UAskirInteractionComponent(){PrimaryComponentTick.bC
 bool UAskirInteractionComponent::CanInteract(AActor* Interactor) const
 {
  const AActor* Owner=GetOwner();
- return IsValid(Interactor)&&IsValid(Owner)&&Interactor!=Owner&&
+ return FMath::IsFinite(MaxInteractionDistance)&&IsValid(Interactor)&&IsValid(Owner)&&Interactor!=Owner&&
  FVector::DistSquared(Interactor->GetActorLocation(),Owner->GetActorLocation())<=FMath::Square(FMath::Max(0.f,MaxInteractionDistance));
 }
 bool UAskirInteractionComponent::Interact(AActor* Interactor)

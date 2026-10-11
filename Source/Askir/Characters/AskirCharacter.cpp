@@ -15,6 +15,8 @@
 #include "Progression/AskirProgressionComponent.h"
 #include "Characters/AskirCharacter.h"
 #include "Camera/CameraComponent.h"
+#include "NPC/AskirInteractionComponent.h"
+#include "NPC/AskirDialogueComponent.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Components/CapsuleComponent.h"
@@ -174,6 +176,29 @@ void AAskirCharacter::ReceiveAskirDamage(const FAskirDamageInfo&I)
 }
 bool AAskirCharacter::IsDead()const{return CombatComponent&&CombatComponent->IsDead();}
 void AAskirCharacter::HandleDeath(){CancelPendingAttack();if(AnimationState)AnimationState->RegisterDeath();StopBlock();GetCharacterMovement()->DisableMovement();GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);}
-void AAskirCharacter::DemoInteractInput(){if(AAskirGameMode* GM=Cast<AAskirGameMode>(UGameplayStatics::GetGameMode(this)))GM->DemoInteract();}
+void AAskirCharacter::DemoInteractInput()
+{
+ if(!GetWorld()||!Camera||IsDead())return;
+ const FVector Start=Camera->GetComponentLocation();
+ const FVector End=Start+Camera->GetForwardVector()*400.f;
+ FHitResult Hit;
+ FCollisionQueryParams Query(SCENE_QUERY_STAT(AskirInteract),false,this);
+ if(GetWorld()->LineTraceSingleByChannel(Hit,Start,End,ECC_Visibility,Query))
+ {
+  AActor* Target=Hit.GetActor();
+  if(IsValid(Target))
+  {
+   if(UAskirInteractionComponent* Interaction=Target->FindComponentByClass<UAskirInteractionComponent>())
+   {
+    if(Interaction->Interact(this))
+    {
+     if(UAskirDialogueComponent* Dialogue=Target->FindComponentByClass<UAskirDialogueComponent>())Dialogue->BeginDialogue();
+     return;
+    }
+   }
+  }
+ }
+ if(AAskirGameMode* GM=Cast<AAskirGameMode>(UGameplayStatics::GetGameMode(this)))GM->DemoInteract();
+}
 void AAskirCharacter::DemoSaveInput(){if(AAskirGameMode* GM=Cast<AAskirGameMode>(UGameplayStatics::GetGameMode(this)))GM->DemoQuickSave();}
 void AAskirCharacter::DemoLoadInput(){if(AAskirGameMode* GM=Cast<AAskirGameMode>(UGameplayStatics::GetGameMode(this)))GM->DemoQuickLoad();}

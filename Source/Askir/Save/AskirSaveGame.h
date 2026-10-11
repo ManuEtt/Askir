@@ -38,4 +38,6 @@ public:
     UPROPERTY(SaveGame)TArray<FAskirSavedInventoryEntry> SavedInventory;
     UPROPERTY(SaveGame)TMap<FName,EAskirQuestState> SavedQuestStates;
     UPROPERTY(SaveGame)TArray<FAskirQuestObjective> SavedActiveObjectives;
+    UPROPERTY(SaveGame)TMap<FName,FAskirQuestObjectiveList> SavedObjectivesByQuest;
+    UPROPERTY(SaveGame)FName SavedLegacyActiveQuestID=NAME_None;
 };
