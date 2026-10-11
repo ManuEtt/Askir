@@ -1,0 +1,386 @@
+[
+  {
+    "id": "loot_01",
+    "rolls": 2,
+    "entries": [
+      {
+        "item_id": "item_001",
+        "weight": 65,
+        "min": 1,
+        "max": 2
+      },
+      {
+        "item_id": "item_002",
+        "weight": 25,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "item_id": "item_003",
+        "weight": 10,
+        "min": 1,
+        "max": 1
+      }
+    ]
+  },
+  {
+    "id": "loot_02",
+    "rolls": 2,
+    "entries": [
+      {
+        "item_id": "item_004",
+        "weight": 65,
+        "min": 1,
+        "max": 2
+      },
+      {
+        "item_id": "item_005",
+        "weight": 25,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "item_id": "item_006",
+        "weight": 10,
+        "min": 1,
+        "max": 1
+      }
+    ]
+  },
+  {
+    "id": "loot_03",
+    "rolls": 2,
+    "entries": [
+      {
+        "item_id": "item_007",
+        "weight": 65,
+        "min": 1,
+        "max": 2
+      },
+      {
+        "item_id": "item_008",
+        "weight": 25,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "item_id": "item_009",
+        "weight": 10,
+        "min": 1,
+        "max": 1
+      }
+    ]
+  },
+  {
+    "id": "loot_04",
+    "rolls": 2,
+    "entries": [
+      {
+        "item_id": "item_010",
+        "weight": 65,
+        "min": 1,
+        "max": 2
+      },
+      {
+        "item_id": "item_011",
+        "weight": 25,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "item_id": "item_012",
+        "weight": 10,
+        "min": 1,
+        "max": 1
+      }
+    ]
+  },
+  {
+    "id": "loot_05",
+    "rolls": 2,
+    "entries": [
+      {
+        "item_id": "item_013",
+        "weight": 65,
+        "min": 1,
+        "max": 2
+      },
+      {
+        "item_id": "item_014",
+        "weight": 25,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "item_id": "item_015",
+        "weight": 10,
+        "min": 1,
+        "max": 1
+      }
+    ]
+  },
+  {
+    "id": "loot_06",
+    "rolls": 2,
+    "entries": [
+      {
+        "item_id": "item_016",
+        "weight": 65,
+        "min": 1,
+        "max": 2
+      },
+      {
+        "item_id": "item_017",
+        "weight": 25,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "item_id": "item_018",
+        "weight": 10,
+        "min": 1,
+        "max": 1
+      }
+    ]
+  },
+  {
+    "id": "loot_07",
+    "rolls": 2,
+    "entries": [
+      {
+        "item_id": "item_019",
+        "weight": 65,
+        "min": 1,
+        "max": 2
+      },
+      {
+        "item_id": "item_020",
+        "weight": 25,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "item_id": "item_021",
+        "weight": 10,
+        "min": 1,
+        "max": 1
+      }
+    ]
+  },
+  {
+    "id": "loot_08",
+    "rolls": 2,
+    "entries": [
+      {
+        "item_id": "item_022",
+        "weight": 65,
+        "min": 1,
+        "max": 2
+      },
+      {
+        "item_id": "item_023",
+        "weight": 25,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "item_id": "item_024",
+        "weight": 10,
+        "min": 1,
+        "max": 1
+      }
+    ]
+  },
+  {
+    "id": "loot_09",
+    "rolls": 2,
+    "entries": [
+      {
+        "item_id": "item_025",
+        "weight": 65,
+        "min": 1,
+        "max": 2
+      },
+      {
+        "item_id": "item_026",
+        "weight": 25,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "item_id": "item_027",
+        "weight": 10,
+        "min": 1,
+        "max": 1
+      }
+    ]
+  },
+  {
+    "id": "loot_10",
+    "rolls": 2,
+    "entries": [
+      {
+        "item_id": "item_028",
+        "weight": 65,
+        "min": 1,
+        "max": 2
+      },
+      {
+        "item_id": "item_029",
+        "weight": 25,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "item_id": "item_030",
+        "weight": 10,
+        "min": 1,
+        "max": 1
+      }
+    ]
+  },
+  {
+    "id": "loot_11",
+    "rolls": 2,
+    "entries": [
+      {
+        "item_id": "item_031",
+        "weight": 65,
+        "min": 1,
+        "max": 2
+      },
+      {
+        "item_id": "item_032",
+        "weight": 25,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "item_id": "item_033",
+        "weight": 10,
+        "min": 1,
+        "max": 1
+      }
+    ]
+  },
+  {
+    "id": "loot_12",
+    "rolls": 2,
+    "entries": [
+      {
+        "item_id": "item_034",
+        "weight": 65,
+        "min": 1,
+        "max": 2
+      },
+      {
+        "item_id": "item_035",
+        "weight": 25,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "item_id": "item_036",
+        "weight": 10,
+        "min": 1,
+        "max": 1
+      }
+    ]
+  },
+  {
+    "id": "loot_13",
+    "rolls": 2,
+    "entries": [
+      {
+        "item_id": "item_037",
+        "weight": 65,
+        "min": 1,
+        "max": 2
+      },
+      {
+        "item_id": "item_038",
+        "weight": 25,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "item_id": "item_039",
+        "weight": 10,
+        "min": 1,
+        "max": 1
+      }
+    ]
+  },
+  {
+    "id": "loot_14",
+    "rolls": 2,
+    "entries": [
+      {
+        "item_id": "item_040",
+        "weight": 65,
+        "min": 1,
+        "max": 2
+      },
+      {
+        "item_id": "item_041",
+        "weight": 25,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "item_id": "item_042",
+        "weight": 10,
+        "min": 1,
+        "max": 1
+      }
+    ]
+  },
+  {
+    "id": "loot_15",
+    "rolls": 2,
+    "entries": [
+      {
+        "item_id": "item_043",
+        "weight": 65,
+        "min": 1,
+        "max": 2
+      },
+      {
+        "item_id": "item_044",
+        "weight": 25,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "item_id": "item_045",
+        "weight": 10,
+        "min": 1,
+        "max": 1
+      }
+    ]
+  },
+  {
+    "id": "loot_16",
+    "rolls": 2,
+    "entries": [
+      {
+        "item_id": "item_046",
+        "weight": 65,
+        "min": 1,
+        "max": 2
+      },
+      {
+        "item_id": "item_047",
+        "weight": 25,
+        "min": 1,
+        "max": 1
+      },
+      {
+        "item_id": "item_048",
+        "weight": 10,
+        "min": 1,
+        "max": 1
+      }
+    ]
+  }
+]

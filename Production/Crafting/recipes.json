@@ -1,0 +1,382 @@
+[
+  {
+    "id": "recipe_01",
+    "name": "Rezept 1: Consumable von Askir 3",
+    "station": "alchemy",
+    "ingredients": [
+      {
+        "item_id": "item_004",
+        "count": 2
+      },
+      {
+        "item_id": "item_005",
+        "count": 1
+      }
+    ],
+    "output": {
+      "item_id": "item_003",
+      "count": 1
+    }
+  },
+  {
+    "id": "recipe_02",
+    "name": "Rezept 2: Quest von Askir 5",
+    "station": "camp",
+    "ingredients": [
+      {
+        "item_id": "item_007",
+        "count": 2
+      },
+      {
+        "item_id": "item_008",
+        "count": 1
+      }
+    ],
+    "output": {
+      "item_id": "item_005",
+      "count": 1
+    }
+  },
+  {
+    "id": "recipe_03",
+    "name": "Rezept 3: Armor von Askir 7",
+    "station": "workbench",
+    "ingredients": [
+      {
+        "item_id": "item_010",
+        "count": 2
+      },
+      {
+        "item_id": "item_011",
+        "count": 1
+      }
+    ],
+    "output": {
+      "item_id": "item_007",
+      "count": 1
+    }
+  },
+  {
+    "id": "recipe_04",
+    "name": "Rezept 4: Consumable von Askir 9",
+    "station": "forge",
+    "ingredients": [
+      {
+        "item_id": "item_013",
+        "count": 2
+      },
+      {
+        "item_id": "item_014",
+        "count": 1
+      }
+    ],
+    "output": {
+      "item_id": "item_009",
+      "count": 1
+    }
+  },
+  {
+    "id": "recipe_05",
+    "name": "Rezept 5: Quest von Askir 11",
+    "station": "alchemy",
+    "ingredients": [
+      {
+        "item_id": "item_016",
+        "count": 2
+      },
+      {
+        "item_id": "item_017",
+        "count": 1
+      }
+    ],
+    "output": {
+      "item_id": "item_011",
+      "count": 1
+    }
+  },
+  {
+    "id": "recipe_06",
+    "name": "Rezept 6: Armor von Askir 13",
+    "station": "camp",
+    "ingredients": [
+      {
+        "item_id": "item_019",
+        "count": 2
+      },
+      {
+        "item_id": "item_020",
+        "count": 1
+      }
+    ],
+    "output": {
+      "item_id": "item_013",
+      "count": 1
+    }
+  },
+  {
+    "id": "recipe_07",
+    "name": "Rezept 7: Consumable von Askir 15",
+    "station": "workbench",
+    "ingredients": [
+      {
+        "item_id": "item_022",
+        "count": 2
+      },
+      {
+        "item_id": "item_023",
+        "count": 1
+      }
+    ],
+    "output": {
+      "item_id": "item_015",
+      "count": 1
+    }
+  },
+  {
+    "id": "recipe_08",
+    "name": "Rezept 8: Quest von Askir 17",
+    "station": "forge",
+    "ingredients": [
+      {
+        "item_id": "item_025",
+        "count": 2
+      },
+      {
+        "item_id": "item_026",
+        "count": 1
+      }
+    ],
+    "output": {
+      "item_id": "item_017",
+      "count": 1
+    }
+  },
+  {
+    "id": "recipe_09",
+    "name": "Rezept 9: Armor von Askir 19",
+    "station": "alchemy",
+    "ingredients": [
+      {
+        "item_id": "item_028",
+        "count": 2
+      },
+      {
+        "item_id": "item_029",
+        "count": 1
+      }
+    ],
+    "output": {
+      "item_id": "item_019",
+      "count": 1
+    }
+  },
+  {
+    "id": "recipe_10",
+    "name": "Rezept 10: Consumable von Askir 21",
+    "station": "camp",
+    "ingredients": [
+      {
+        "item_id": "item_031",
+        "count": 2
+      },
+      {
+        "item_id": "item_032",
+        "count": 1
+      }
+    ],
+    "output": {
+      "item_id": "item_021",
+      "count": 1
+    }
+  },
+  {
+    "id": "recipe_11",
+    "name": "Rezept 11: Quest von Askir 23",
+    "station": "workbench",
+    "ingredients": [
+      {
+        "item_id": "item_034",
+        "count": 2
+      },
+      {
+        "item_id": "item_035",
+        "count": 1
+      }
+    ],
+    "output": {
+      "item_id": "item_023",
+      "count": 1
+    }
+  },
+  {
+    "id": "recipe_12",
+    "name": "Rezept 12: Armor von Askir 25",
+    "station": "forge",
+    "ingredients": [
+      {
+        "item_id": "item_037",
+        "count": 2
+      },
+      {
+        "item_id": "item_038",
+        "count": 1
+      }
+    ],
+    "output": {
+      "item_id": "item_025",
+      "count": 1
+    }
+  },
+  {
+    "id": "recipe_13",
+    "name": "Rezept 13: Consumable von Askir 27",
+    "station": "alchemy",
+    "ingredients": [
+      {
+        "item_id": "item_040",
+        "count": 2
+      },
+      {
+        "item_id": "item_041",
+        "count": 1
+      }
+    ],
+    "output": {
+      "item_id": "item_027",
+      "count": 1
+    }
+  },
+  {
+    "id": "recipe_14",
+    "name": "Rezept 14: Quest von Askir 29",
+    "station": "camp",
+    "ingredients": [
+      {
+        "item_id": "item_043",
+        "count": 2
+      },
+      {
+        "item_id": "item_044",
+        "count": 1
+      }
+    ],
+    "output": {
+      "item_id": "item_029",
+      "count": 1
+    }
+  },
+  {
+    "id": "recipe_15",
+    "name": "Rezept 15: Armor von Askir 31",
+    "station": "workbench",
+    "ingredients": [
+      {
+        "item_id": "item_046",
+        "count": 2
+      },
+      {
+        "item_id": "item_047",
+        "count": 1
+      }
+    ],
+    "output": {
+      "item_id": "item_031",
+      "count": 1
+    }
+  },
+  {
+    "id": "recipe_16",
+    "name": "Rezept 16: Consumable von Askir 33",
+    "station": "forge",
+    "ingredients": [
+      {
+        "item_id": "item_049",
+        "count": 2
+      },
+      {
+        "item_id": "item_050",
+        "count": 1
+      }
+    ],
+    "output": {
+      "item_id": "item_033",
+      "count": 1
+    }
+  },
+  {
+    "id": "recipe_17",
+    "name": "Rezept 17: Quest von Askir 35",
+    "station": "alchemy",
+    "ingredients": [
+      {
+        "item_id": "item_052",
+        "count": 2
+      },
+      {
+        "item_id": "item_053",
+        "count": 1
+      }
+    ],
+    "output": {
+      "item_id": "item_035",
+      "count": 1
+    }
+  },
+  {
+    "id": "recipe_18",
+    "name": "Rezept 18: Armor von Askir 37",
+    "station": "camp",
+    "ingredients": [
+      {
+        "item_id": "item_055",
+        "count": 2
+      },
+      {
+        "item_id": "item_056",
+        "count": 1
+      }
+    ],
+    "output": {
+      "item_id": "item_037",
+      "count": 1
+    }
+  },
+  {
+    "id": "recipe_19",
+    "name": "Rezept 19: Consumable von Askir 39",
+    "station": "workbench",
+    "ingredients": [
+      {
+        "item_id": "item_058",
+        "count": 2
+      },
+      {
+        "item_id": "item_059",
+        "count": 1
+      }
+    ],
+    "output": {
+      "item_id": "item_039",
+      "count": 1
+    }
+  },
+  {
+    "id": "recipe_20",
+    "name": "Rezept 20: Quest von Askir 41",
+    "station": "forge",
+    "ingredients": [
+      {
+        "item_id": "item_001",
+        "count": 2
+      },
+      {
+        "item_id": "item_002",
+        "count": 1
+      }
+    ],
+    "output": {
+      "item_id": "item_041",
+      "count": 1
+    }
+  }
+]

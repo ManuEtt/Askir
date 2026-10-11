@@ -1,0 +1,178 @@
+[
+  {
+    "id": "enemy_01",
+    "name": "Grauwolf",
+    "level": 2,
+    "health": 77,
+    "attack": 10,
+    "ai_archetype": "ranged",
+    "loot_table": "loot_01",
+    "xp": 45,
+    "description": "Grauwolf bedroht Reisende in den Grenzlanden."
+  },
+  {
+    "id": "enemy_02",
+    "name": "Wegelagerer",
+    "level": 4,
+    "health": 99,
+    "attack": 13,
+    "ai_archetype": "caster",
+    "loot_table": "loot_02",
+    "xp": 60,
+    "description": "Wegelagerer bedroht Reisende in den Grenzlanden."
+  },
+  {
+    "id": "enemy_03",
+    "name": "Aschenkriecher",
+    "level": 6,
+    "health": 121,
+    "attack": 16,
+    "ai_archetype": "boss",
+    "loot_table": "loot_03",
+    "xp": 75,
+    "description": "Aschenkriecher bedroht Reisende in den Grenzlanden."
+  },
+  {
+    "id": "enemy_04",
+    "name": "Nebelgeist",
+    "level": 8,
+    "health": 143,
+    "attack": 19,
+    "ai_archetype": "melee",
+    "loot_table": "loot_04",
+    "xp": 90,
+    "description": "Nebelgeist bedroht Reisende in den Grenzlanden."
+  },
+  {
+    "id": "enemy_05",
+    "name": "Knochenwächter",
+    "level": 10,
+    "health": 165,
+    "attack": 22,
+    "ai_archetype": "ranged",
+    "loot_table": "loot_05",
+    "xp": 105,
+    "description": "Knochenwächter bedroht Reisende in den Grenzlanden."
+  },
+  {
+    "id": "enemy_06",
+    "name": "Sumpfbestie",
+    "level": 12,
+    "health": 187,
+    "attack": 25,
+    "ai_archetype": "caster",
+    "loot_table": "loot_06",
+    "xp": 120,
+    "description": "Sumpfbestie bedroht Reisende in den Grenzlanden."
+  },
+  {
+    "id": "enemy_07",
+    "name": "Sturmrufer",
+    "level": 14,
+    "health": 209,
+    "attack": 28,
+    "ai_archetype": "boss",
+    "loot_table": "loot_07",
+    "xp": 135,
+    "description": "Sturmrufer bedroht Reisende in den Grenzlanden."
+  },
+  {
+    "id": "enemy_08",
+    "name": "Eisgolem",
+    "level": 16,
+    "health": 231,
+    "attack": 31,
+    "ai_archetype": "melee",
+    "loot_table": "loot_08",
+    "xp": 150,
+    "description": "Eisgolem bedroht Reisende in den Grenzlanden."
+  },
+  {
+    "id": "enemy_09",
+    "name": "Schattenjäger",
+    "level": 18,
+    "health": 253,
+    "attack": 34,
+    "ai_archetype": "ranged",
+    "loot_table": "loot_09",
+    "xp": 165,
+    "description": "Schattenjäger bedroht Reisende in den Grenzlanden."
+  },
+  {
+    "id": "enemy_10",
+    "name": "Glaswächter",
+    "level": 20,
+    "health": 275,
+    "attack": 37,
+    "ai_archetype": "caster",
+    "loot_table": "loot_10",
+    "xp": 180,
+    "description": "Glaswächter bedroht Reisende in den Grenzlanden."
+  },
+  {
+    "id": "enemy_11",
+    "name": "Höhlenkrabbler",
+    "level": 22,
+    "health": 297,
+    "attack": 40,
+    "ai_archetype": "boss",
+    "loot_table": "loot_11",
+    "xp": 195,
+    "description": "Höhlenkrabbler bedroht Reisende in den Grenzlanden."
+  },
+  {
+    "id": "enemy_12",
+    "name": "Aschenritter",
+    "level": 24,
+    "health": 319,
+    "attack": 43,
+    "ai_archetype": "melee",
+    "loot_table": "loot_12",
+    "xp": 210,
+    "description": "Aschenritter bedroht Reisende in den Grenzlanden."
+  },
+  {
+    "id": "enemy_13",
+    "name": "Kultmagier",
+    "level": 26,
+    "health": 341,
+    "attack": 46,
+    "ai_archetype": "ranged",
+    "loot_table": "loot_13",
+    "xp": 225,
+    "description": "Kultmagier bedroht Reisende in den Grenzlanden."
+  },
+  {
+    "id": "enemy_14",
+    "name": "Waldtroll",
+    "level": 28,
+    "health": 363,
+    "attack": 49,
+    "ai_archetype": "caster",
+    "loot_table": "loot_14",
+    "xp": 240,
+    "description": "Waldtroll bedroht Reisende in den Grenzlanden."
+  },
+  {
+    "id": "enemy_15",
+    "name": "Runenbestie",
+    "level": 30,
+    "health": 385,
+    "attack": 52,
+    "ai_archetype": "boss",
+    "loot_table": "loot_15",
+    "xp": 255,
+    "description": "Runenbestie bedroht Reisende in den Grenzlanden."
+  },
+  {
+    "id": "enemy_16",
+    "name": "Kryptenfürst",
+    "level": 32,
+    "health": 407,
+    "attack": 55,
+    "ai_archetype": "melee",
+    "loot_table": "loot_16",
+    "xp": 270,
+    "description": "Kryptenfürst bedroht Reisende in den Grenzlanden."
+  }
+]

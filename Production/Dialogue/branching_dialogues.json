@@ -1,0 +1,986 @@
+[
+  {
+    "id": "D_SQ_001",
+    "npc": "Torben",
+    "start": "n1",
+    "nodes": [
+      {
+        "id": "n1",
+        "text": "Gut, dass du hier bist. Die verlorene Lieferung bereitet uns Sorgen.",
+        "choices": [
+          {
+            "text": "Erzähl mir mehr.",
+            "next": "n2"
+          },
+          {
+            "text": "Nicht jetzt.",
+            "next": "end"
+          }
+        ]
+      },
+      {
+        "id": "n2",
+        "text": "Bitte kümmere dich darum. Ich vertraue dir, aber sei vorsichtig.",
+        "choices": [
+          {
+            "text": "Ich übernehme das.",
+            "quest_start": "SQ_001",
+            "next": "end"
+          },
+          {
+            "text": "Ich muss nachdenken.",
+            "next": "end"
+          }
+        ]
+      },
+      {
+        "id": "end",
+        "text": "Mögen die alten Wege dich schützen.",
+        "choices": []
+      }
+    ]
+  },
+  {
+    "id": "D_SQ_002",
+    "npc": "Edda",
+    "start": "n1",
+    "nodes": [
+      {
+        "id": "n1",
+        "text": "Gut, dass du hier bist. Wölfe am Nordtor bereitet uns Sorgen.",
+        "choices": [
+          {
+            "text": "Erzähl mir mehr.",
+            "next": "n2"
+          },
+          {
+            "text": "Nicht jetzt.",
+            "next": "end"
+          }
+        ]
+      },
+      {
+        "id": "n2",
+        "text": "Bitte kümmere dich darum. Ich vertraue dir, aber sei vorsichtig.",
+        "choices": [
+          {
+            "text": "Ich übernehme das.",
+            "quest_start": "SQ_002",
+            "next": "end"
+          },
+          {
+            "text": "Ich muss nachdenken.",
+            "next": "end"
+          }
+        ]
+      },
+      {
+        "id": "end",
+        "text": "Mögen die alten Wege dich schützen.",
+        "choices": []
+      }
+    ]
+  },
+  {
+    "id": "D_SQ_003",
+    "npc": "Rurik",
+    "start": "n1",
+    "nodes": [
+      {
+        "id": "n1",
+        "text": "Gut, dass du hier bist. Heilkräuter für Mara bereitet uns Sorgen.",
+        "choices": [
+          {
+            "text": "Erzähl mir mehr.",
+            "next": "n2"
+          },
+          {
+            "text": "Nicht jetzt.",
+            "next": "end"
+          }
+        ]
+      },
+      {
+        "id": "n2",
+        "text": "Bitte kümmere dich darum. Ich vertraue dir, aber sei vorsichtig.",
+        "choices": [
+          {
+            "text": "Ich übernehme das.",
+            "quest_start": "SQ_003",
+            "next": "end"
+          },
+          {
+            "text": "Ich muss nachdenken.",
+            "next": "end"
+          }
+        ]
+      },
+      {
+        "id": "end",
+        "text": "Mögen die alten Wege dich schützen.",
+        "choices": []
+      }
+    ]
+  },
+  {
+    "id": "D_SQ_004",
+    "npc": "Selene",
+    "start": "n1",
+    "nodes": [
+      {
+        "id": "n1",
+        "text": "Gut, dass du hier bist. Der stumme Schmied bereitet uns Sorgen.",
+        "choices": [
+          {
+            "text": "Erzähl mir mehr.",
+            "next": "n2"
+          },
+          {
+            "text": "Nicht jetzt.",
+            "next": "end"
+          }
+        ]
+      },
+      {
+        "id": "n2",
+        "text": "Bitte kümmere dich darum. Ich vertraue dir, aber sei vorsichtig.",
+        "choices": [
+          {
+            "text": "Ich übernehme das.",
+            "quest_start": "SQ_004",
+            "next": "end"
+          },
+          {
+            "text": "Ich muss nachdenken.",
+            "next": "end"
+          }
+        ]
+      },
+      {
+        "id": "end",
+        "text": "Mögen die alten Wege dich schützen.",
+        "choices": []
+      }
+    ]
+  },
+  {
+    "id": "D_SQ_005",
+    "npc": "Korin",
+    "start": "n1",
+    "nodes": [
+      {
+        "id": "n1",
+        "text": "Gut, dass du hier bist. Spuren im Schnee bereitet uns Sorgen.",
+        "choices": [
+          {
+            "text": "Erzähl mir mehr.",
+            "next": "n2"
+          },
+          {
+            "text": "Nicht jetzt.",
+            "next": "end"
+          }
+        ]
+      },
+      {
+        "id": "n2",
+        "text": "Bitte kümmere dich darum. Ich vertraue dir, aber sei vorsichtig.",
+        "choices": [
+          {
+            "text": "Ich übernehme das.",
+            "quest_start": "SQ_005",
+            "next": "end"
+          },
+          {
+            "text": "Ich muss nachdenken.",
+            "next": "end"
+          }
+        ]
+      },
+      {
+        "id": "end",
+        "text": "Mögen die alten Wege dich schützen.",
+        "choices": []
+      }
+    ]
+  },
+  {
+    "id": "D_SQ_006",
+    "npc": "Mara",
+    "start": "n1",
+    "nodes": [
+      {
+        "id": "n1",
+        "text": "Gut, dass du hier bist. Ein Brief nach Falkenwacht bereitet uns Sorgen.",
+        "choices": [
+          {
+            "text": "Erzähl mir mehr.",
+            "next": "n2"
+          },
+          {
+            "text": "Nicht jetzt.",
+            "next": "end"
+          }
+        ]
+      },
+      {
+        "id": "n2",
+        "text": "Bitte kümmere dich darum. Ich vertraue dir, aber sei vorsichtig.",
+        "choices": [
+          {
+            "text": "Ich übernehme das.",
+            "quest_start": "SQ_006",
+            "next": "end"
+          },
+          {
+            "text": "Ich muss nachdenken.",
+            "next": "end"
+          }
+        ]
+      },
+      {
+        "id": "end",
+        "text": "Mögen die alten Wege dich schützen.",
+        "choices": []
+      }
+    ]
+  },
+  {
+    "id": "D_SQ_007",
+    "npc": "Torben",
+    "start": "n1",
+    "nodes": [
+      {
+        "id": "n1",
+        "text": "Gut, dass du hier bist. Der alte Grenzstein bereitet uns Sorgen.",
+        "choices": [
+          {
+            "text": "Erzähl mir mehr.",
+            "next": "n2"
+          },
+          {
+            "text": "Nicht jetzt.",
+            "next": "end"
+          }
+        ]
+      },
+      {
+        "id": "n2",
+        "text": "Bitte kümmere dich darum. Ich vertraue dir, aber sei vorsichtig.",
+        "choices": [
+          {
+            "text": "Ich übernehme das.",
+            "quest_start": "SQ_007",
+            "next": "end"
+          },
+          {
+            "text": "Ich muss nachdenken.",
+            "next": "end"
+          }
+        ]
+      },
+      {
+        "id": "end",
+        "text": "Mögen die alten Wege dich schützen.",
+        "choices": []
+      }
+    ]
+  },
+  {
+    "id": "D_SQ_008",
+    "npc": "Edda",
+    "start": "n1",
+    "nodes": [
+      {
+        "id": "n1",
+        "text": "Gut, dass du hier bist. Das gestohlene Amulett bereitet uns Sorgen.",
+        "choices": [
+          {
+            "text": "Erzähl mir mehr.",
+            "next": "n2"
+          },
+          {
+            "text": "Nicht jetzt.",
+            "next": "end"
+          }
+        ]
+      },
+      {
+        "id": "n2",
+        "text": "Bitte kümmere dich darum. Ich vertraue dir, aber sei vorsichtig.",
+        "choices": [
+          {
+            "text": "Ich übernehme das.",
+            "quest_start": "SQ_008",
+            "next": "end"
+          },
+          {
+            "text": "Ich muss nachdenken.",
+            "next": "end"
+          }
+        ]
+      },
+      {
+        "id": "end",
+        "text": "Mögen die alten Wege dich schützen.",
+        "choices": []
+      }
+    ]
+  },
+  {
+    "id": "D_SQ_009",
+    "npc": "Rurik",
+    "start": "n1",
+    "nodes": [
+      {
+        "id": "n1",
+        "text": "Gut, dass du hier bist. Asche im Brunnen bereitet uns Sorgen.",
+        "choices": [
+          {
+            "text": "Erzähl mir mehr.",
+            "next": "n2"
+          },
+          {
+            "text": "Nicht jetzt.",
+            "next": "end"
+          }
+        ]
+      },
+      {
+        "id": "n2",
+        "text": "Bitte kümmere dich darum. Ich vertraue dir, aber sei vorsichtig.",
+        "choices": [
+          {
+            "text": "Ich übernehme das.",
+            "quest_start": "SQ_009",
+            "next": "end"
+          },
+          {
+            "text": "Ich muss nachdenken.",
+            "next": "end"
+          }
+        ]
+      },
+      {
+        "id": "end",
+        "text": "Mögen die alten Wege dich schützen.",
+        "choices": []
+      }
+    ]
+  },
+  {
+    "id": "D_SQ_010",
+    "npc": "Selene",
+    "start": "n1",
+    "nodes": [
+      {
+        "id": "n1",
+        "text": "Gut, dass du hier bist. Die Nachtwache bereitet uns Sorgen.",
+        "choices": [
+          {
+            "text": "Erzähl mir mehr.",
+            "next": "n2"
+          },
+          {
+            "text": "Nicht jetzt.",
+            "next": "end"
+          }
+        ]
+      },
+      {
+        "id": "n2",
+        "text": "Bitte kümmere dich darum. Ich vertraue dir, aber sei vorsichtig.",
+        "choices": [
+          {
+            "text": "Ich übernehme das.",
+            "quest_start": "SQ_010",
+            "next": "end"
+          },
+          {
+            "text": "Ich muss nachdenken.",
+            "next": "end"
+          }
+        ]
+      },
+      {
+        "id": "end",
+        "text": "Mögen die alten Wege dich schützen.",
+        "choices": []
+      }
+    ]
+  },
+  {
+    "id": "D_SQ_011",
+    "npc": "Korin",
+    "start": "n1",
+    "nodes": [
+      {
+        "id": "n1",
+        "text": "Gut, dass du hier bist. Die letzte Ernte bereitet uns Sorgen.",
+        "choices": [
+          {
+            "text": "Erzähl mir mehr.",
+            "next": "n2"
+          },
+          {
+            "text": "Nicht jetzt.",
+            "next": "end"
+          }
+        ]
+      },
+      {
+        "id": "n2",
+        "text": "Bitte kümmere dich darum. Ich vertraue dir, aber sei vorsichtig.",
+        "choices": [
+          {
+            "text": "Ich übernehme das.",
+            "quest_start": "SQ_011",
+            "next": "end"
+          },
+          {
+            "text": "Ich muss nachdenken.",
+            "next": "end"
+          }
+        ]
+      },
+      {
+        "id": "end",
+        "text": "Mögen die alten Wege dich schützen.",
+        "choices": []
+      }
+    ]
+  },
+  {
+    "id": "D_SQ_012",
+    "npc": "Mara",
+    "start": "n1",
+    "nodes": [
+      {
+        "id": "n1",
+        "text": "Gut, dass du hier bist. Das Lied der Ruine bereitet uns Sorgen.",
+        "choices": [
+          {
+            "text": "Erzähl mir mehr.",
+            "next": "n2"
+          },
+          {
+            "text": "Nicht jetzt.",
+            "next": "end"
+          }
+        ]
+      },
+      {
+        "id": "n2",
+        "text": "Bitte kümmere dich darum. Ich vertraue dir, aber sei vorsichtig.",
+        "choices": [
+          {
+            "text": "Ich übernehme das.",
+            "quest_start": "SQ_012",
+            "next": "end"
+          },
+          {
+            "text": "Ich muss nachdenken.",
+            "next": "end"
+          }
+        ]
+      },
+      {
+        "id": "end",
+        "text": "Mögen die alten Wege dich schützen.",
+        "choices": []
+      }
+    ]
+  },
+  {
+    "id": "D_SQ_013",
+    "npc": "Torben",
+    "start": "n1",
+    "nodes": [
+      {
+        "id": "n1",
+        "text": "Gut, dass du hier bist. Ein Händler in Not bereitet uns Sorgen.",
+        "choices": [
+          {
+            "text": "Erzähl mir mehr.",
+            "next": "n2"
+          },
+          {
+            "text": "Nicht jetzt.",
+            "next": "end"
+          }
+        ]
+      },
+      {
+        "id": "n2",
+        "text": "Bitte kümmere dich darum. Ich vertraue dir, aber sei vorsichtig.",
+        "choices": [
+          {
+            "text": "Ich übernehme das.",
+            "quest_start": "SQ_013",
+            "next": "end"
+          },
+          {
+            "text": "Ich muss nachdenken.",
+            "next": "end"
+          }
+        ]
+      },
+      {
+        "id": "end",
+        "text": "Mögen die alten Wege dich schützen.",
+        "choices": []
+      }
+    ]
+  },
+  {
+    "id": "D_SQ_014",
+    "npc": "Edda",
+    "start": "n1",
+    "nodes": [
+      {
+        "id": "n1",
+        "text": "Gut, dass du hier bist. Die versiegelte Tür bereitet uns Sorgen.",
+        "choices": [
+          {
+            "text": "Erzähl mir mehr.",
+            "next": "n2"
+          },
+          {
+            "text": "Nicht jetzt.",
+            "next": "end"
+          }
+        ]
+      },
+      {
+        "id": "n2",
+        "text": "Bitte kümmere dich darum. Ich vertraue dir, aber sei vorsichtig.",
+        "choices": [
+          {
+            "text": "Ich übernehme das.",
+            "quest_start": "SQ_014",
+            "next": "end"
+          },
+          {
+            "text": "Ich muss nachdenken.",
+            "next": "end"
+          }
+        ]
+      },
+      {
+        "id": "end",
+        "text": "Mögen die alten Wege dich schützen.",
+        "choices": []
+      }
+    ]
+  },
+  {
+    "id": "D_SQ_015",
+    "npc": "Rurik",
+    "start": "n1",
+    "nodes": [
+      {
+        "id": "n1",
+        "text": "Gut, dass du hier bist. Pilze im Grauwald bereitet uns Sorgen.",
+        "choices": [
+          {
+            "text": "Erzähl mir mehr.",
+            "next": "n2"
+          },
+          {
+            "text": "Nicht jetzt.",
+            "next": "end"
+          }
+        ]
+      },
+      {
+        "id": "n2",
+        "text": "Bitte kümmere dich darum. Ich vertraue dir, aber sei vorsichtig.",
+        "choices": [
+          {
+            "text": "Ich übernehme das.",
+            "quest_start": "SQ_015",
+            "next": "end"
+          },
+          {
+            "text": "Ich muss nachdenken.",
+            "next": "end"
+          }
+        ]
+      },
+      {
+        "id": "end",
+        "text": "Mögen die alten Wege dich schützen.",
+        "choices": []
+      }
+    ]
+  },
+  {
+    "id": "D_SQ_016",
+    "npc": "Selene",
+    "start": "n1",
+    "nodes": [
+      {
+        "id": "n1",
+        "text": "Gut, dass du hier bist. Das gebrochene Schwert bereitet uns Sorgen.",
+        "choices": [
+          {
+            "text": "Erzähl mir mehr.",
+            "next": "n2"
+          },
+          {
+            "text": "Nicht jetzt.",
+            "next": "end"
+          }
+        ]
+      },
+      {
+        "id": "n2",
+        "text": "Bitte kümmere dich darum. Ich vertraue dir, aber sei vorsichtig.",
+        "choices": [
+          {
+            "text": "Ich übernehme das.",
+            "quest_start": "SQ_016",
+            "next": "end"
+          },
+          {
+            "text": "Ich muss nachdenken.",
+            "next": "end"
+          }
+        ]
+      },
+      {
+        "id": "end",
+        "text": "Mögen die alten Wege dich schützen.",
+        "choices": []
+      }
+    ]
+  },
+  {
+    "id": "D_SQ_017",
+    "npc": "Korin",
+    "start": "n1",
+    "nodes": [
+      {
+        "id": "n1",
+        "text": "Gut, dass du hier bist. Der falsche Bote bereitet uns Sorgen.",
+        "choices": [
+          {
+            "text": "Erzähl mir mehr.",
+            "next": "n2"
+          },
+          {
+            "text": "Nicht jetzt.",
+            "next": "end"
+          }
+        ]
+      },
+      {
+        "id": "n2",
+        "text": "Bitte kümmere dich darum. Ich vertraue dir, aber sei vorsichtig.",
+        "choices": [
+          {
+            "text": "Ich übernehme das.",
+            "quest_start": "SQ_017",
+            "next": "end"
+          },
+          {
+            "text": "Ich muss nachdenken.",
+            "next": "end"
+          }
+        ]
+      },
+      {
+        "id": "end",
+        "text": "Mögen die alten Wege dich schützen.",
+        "choices": []
+      }
+    ]
+  },
+  {
+    "id": "D_SQ_018",
+    "npc": "Mara",
+    "start": "n1",
+    "nodes": [
+      {
+        "id": "n1",
+        "text": "Gut, dass du hier bist. Der verschwundene Jäger bereitet uns Sorgen.",
+        "choices": [
+          {
+            "text": "Erzähl mir mehr.",
+            "next": "n2"
+          },
+          {
+            "text": "Nicht jetzt.",
+            "next": "end"
+          }
+        ]
+      },
+      {
+        "id": "n2",
+        "text": "Bitte kümmere dich darum. Ich vertraue dir, aber sei vorsichtig.",
+        "choices": [
+          {
+            "text": "Ich übernehme das.",
+            "quest_start": "SQ_018",
+            "next": "end"
+          },
+          {
+            "text": "Ich muss nachdenken.",
+            "next": "end"
+          }
+        ]
+      },
+      {
+        "id": "end",
+        "text": "Mögen die alten Wege dich schützen.",
+        "choices": []
+      }
+    ]
+  },
+  {
+    "id": "D_SQ_019",
+    "npc": "Torben",
+    "start": "n1",
+    "nodes": [
+      {
+        "id": "n1",
+        "text": "Gut, dass du hier bist. Das Licht im Turm bereitet uns Sorgen.",
+        "choices": [
+          {
+            "text": "Erzähl mir mehr.",
+            "next": "n2"
+          },
+          {
+            "text": "Nicht jetzt.",
+            "next": "end"
+          }
+        ]
+      },
+      {
+        "id": "n2",
+        "text": "Bitte kümmere dich darum. Ich vertraue dir, aber sei vorsichtig.",
+        "choices": [
+          {
+            "text": "Ich übernehme das.",
+            "quest_start": "SQ_019",
+            "next": "end"
+          },
+          {
+            "text": "Ich muss nachdenken.",
+            "next": "end"
+          }
+        ]
+      },
+      {
+        "id": "end",
+        "text": "Mögen die alten Wege dich schützen.",
+        "choices": []
+      }
+    ]
+  },
+  {
+    "id": "D_SQ_020",
+    "npc": "Edda",
+    "start": "n1",
+    "nodes": [
+      {
+        "id": "n1",
+        "text": "Gut, dass du hier bist. Der Eid der Hüter bereitet uns Sorgen.",
+        "choices": [
+          {
+            "text": "Erzähl mir mehr.",
+            "next": "n2"
+          },
+          {
+            "text": "Nicht jetzt.",
+            "next": "end"
+          }
+        ]
+      },
+      {
+        "id": "n2",
+        "text": "Bitte kümmere dich darum. Ich vertraue dir, aber sei vorsichtig.",
+        "choices": [
+          {
+            "text": "Ich übernehme das.",
+            "quest_start": "SQ_020",
+            "next": "end"
+          },
+          {
+            "text": "Ich muss nachdenken.",
+            "next": "end"
+          }
+        ]
+      },
+      {
+        "id": "end",
+        "text": "Mögen die alten Wege dich schützen.",
+        "choices": []
+      }
+    ]
+  },
+  {
+    "id": "D_SQ_021",
+    "npc": "Rurik",
+    "start": "n1",
+    "nodes": [
+      {
+        "id": "n1",
+        "text": "Gut, dass du hier bist. Der Preis der Kohle bereitet uns Sorgen.",
+        "choices": [
+          {
+            "text": "Erzähl mir mehr.",
+            "next": "n2"
+          },
+          {
+            "text": "Nicht jetzt.",
+            "next": "end"
+          }
+        ]
+      },
+      {
+        "id": "n2",
+        "text": "Bitte kümmere dich darum. Ich vertraue dir, aber sei vorsichtig.",
+        "choices": [
+          {
+            "text": "Ich übernehme das.",
+            "quest_start": "SQ_021",
+            "next": "end"
+          },
+          {
+            "text": "Ich muss nachdenken.",
+            "next": "end"
+          }
+        ]
+      },
+      {
+        "id": "end",
+        "text": "Mögen die alten Wege dich schützen.",
+        "choices": []
+      }
+    ]
+  },
+  {
+    "id": "D_SQ_022",
+    "npc": "Selene",
+    "start": "n1",
+    "nodes": [
+      {
+        "id": "n1",
+        "text": "Gut, dass du hier bist. Die Rabenfeder bereitet uns Sorgen.",
+        "choices": [
+          {
+            "text": "Erzähl mir mehr.",
+            "next": "n2"
+          },
+          {
+            "text": "Nicht jetzt.",
+            "next": "end"
+          }
+        ]
+      },
+      {
+        "id": "n2",
+        "text": "Bitte kümmere dich darum. Ich vertraue dir, aber sei vorsichtig.",
+        "choices": [
+          {
+            "text": "Ich übernehme das.",
+            "quest_start": "SQ_022",
+            "next": "end"
+          },
+          {
+            "text": "Ich muss nachdenken.",
+            "next": "end"
+          }
+        ]
+      },
+      {
+        "id": "end",
+        "text": "Mögen die alten Wege dich schützen.",
+        "choices": []
+      }
+    ]
+  },
+  {
+    "id": "D_SQ_023",
+    "npc": "Korin",
+    "start": "n1",
+    "nodes": [
+      {
+        "id": "n1",
+        "text": "Gut, dass du hier bist. Der vergessene Pfad bereitet uns Sorgen.",
+        "choices": [
+          {
+            "text": "Erzähl mir mehr.",
+            "next": "n2"
+          },
+          {
+            "text": "Nicht jetzt.",
+            "next": "end"
+          }
+        ]
+      },
+      {
+        "id": "n2",
+        "text": "Bitte kümmere dich darum. Ich vertraue dir, aber sei vorsichtig.",
+        "choices": [
+          {
+            "text": "Ich übernehme das.",
+            "quest_start": "SQ_023",
+            "next": "end"
+          },
+          {
+            "text": "Ich muss nachdenken.",
+            "next": "end"
+          }
+        ]
+      },
+      {
+        "id": "end",
+        "text": "Mögen die alten Wege dich schützen.",
+        "choices": []
+      }
+    ]
+  },
+  {
+    "id": "D_SQ_024",
+    "npc": "Mara",
+    "start": "n1",
+    "nodes": [
+      {
+        "id": "n1",
+        "text": "Gut, dass du hier bist. Ein Bündnis aus Salz bereitet uns Sorgen.",
+        "choices": [
+          {
+            "text": "Erzähl mir mehr.",
+            "next": "n2"
+          },
+          {
+            "text": "Nicht jetzt.",
+            "next": "end"
+          }
+        ]
+      },
+      {
+        "id": "n2",
+        "text": "Bitte kümmere dich darum. Ich vertraue dir, aber sei vorsichtig.",
+        "choices": [
+          {
+            "text": "Ich übernehme das.",
+            "quest_start": "SQ_024",
+            "next": "end"
+          },
+          {
+            "text": "Ich muss nachdenken.",
+            "next": "end"
+          }
+        ]
+      },
+      {
+        "id": "end",
+        "text": "Mögen die alten Wege dich schützen.",
+        "choices": []
+      }
+    ]
+  }
+]

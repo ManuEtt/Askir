@@ -1,0 +1,1274 @@
+[
+  {
+    "id": "SQ_001",
+    "title": "Die verlorene Lieferung",
+    "description": "Torben bittet dich um Hilfe: die verlorene lieferung. Finde die Wahrheit und kehre zurück.",
+    "giver": "Torben",
+    "prerequisite": null,
+    "objectives": [
+      {
+        "id": "SQ_001_A",
+        "type": "kill",
+        "target": "target_001",
+        "count": 2
+      },
+      {
+        "id": "SQ_001_B",
+        "type": "talk",
+        "target": "Torben",
+        "count": 1
+      }
+    ],
+    "triggers": [
+      "interact",
+      "objective_event",
+      "return_to_giver"
+    ],
+    "rewards": {
+      "xp": 100,
+      "gold": 16,
+      "item": "item_002"
+    },
+    "choices": [
+      {
+        "id": "help",
+        "text": "Ich helfe dir.",
+        "reputation": {
+          "Waldhüter": 2
+        }
+      },
+      {
+        "id": "bargain",
+        "text": "Nur gegen einen angemessenen Lohn.",
+        "reputation": {
+          "Freie Händler": 2
+        }
+      }
+    ],
+    "state_flow": [
+      "available",
+      "active",
+      "completed",
+      "reward_claimed"
+    ]
+  },
+  {
+    "id": "SQ_002",
+    "title": "Wölfe am Nordtor",
+    "description": "Edda bittet dich um Hilfe: wölfe am nordtor. Finde die Wahrheit und kehre zurück.",
+    "giver": "Edda",
+    "prerequisite": null,
+    "objectives": [
+      {
+        "id": "SQ_002_A",
+        "type": "talk",
+        "target": "target_002",
+        "count": 3
+      },
+      {
+        "id": "SQ_002_B",
+        "type": "talk",
+        "target": "Edda",
+        "count": 1
+      }
+    ],
+    "triggers": [
+      "interact",
+      "objective_event",
+      "return_to_giver"
+    ],
+    "rewards": {
+      "xp": 125,
+      "gold": 20,
+      "item": "item_003"
+    },
+    "choices": [
+      {
+        "id": "help",
+        "text": "Ich helfe dir.",
+        "reputation": {
+          "Waldhüter": 2
+        }
+      },
+      {
+        "id": "bargain",
+        "text": "Nur gegen einen angemessenen Lohn.",
+        "reputation": {
+          "Freie Händler": 2
+        }
+      }
+    ],
+    "state_flow": [
+      "available",
+      "active",
+      "completed",
+      "reward_claimed"
+    ]
+  },
+  {
+    "id": "SQ_003",
+    "title": "Heilkräuter für Mara",
+    "description": "Rurik bittet dich um Hilfe: heilkräuter für mara. Finde die Wahrheit und kehre zurück.",
+    "giver": "Rurik",
+    "prerequisite": null,
+    "objectives": [
+      {
+        "id": "SQ_003_A",
+        "type": "explore",
+        "target": "target_003",
+        "count": 1
+      },
+      {
+        "id": "SQ_003_B",
+        "type": "talk",
+        "target": "Rurik",
+        "count": 1
+      }
+    ],
+    "triggers": [
+      "interact",
+      "objective_event",
+      "return_to_giver"
+    ],
+    "rewards": {
+      "xp": 150,
+      "gold": 24,
+      "item": "item_004"
+    },
+    "choices": [
+      {
+        "id": "help",
+        "text": "Ich helfe dir.",
+        "reputation": {
+          "Waldhüter": 2
+        }
+      },
+      {
+        "id": "bargain",
+        "text": "Nur gegen einen angemessenen Lohn.",
+        "reputation": {
+          "Freie Händler": 2
+        }
+      }
+    ],
+    "state_flow": [
+      "available",
+      "active",
+      "completed",
+      "reward_claimed"
+    ]
+  },
+  {
+    "id": "SQ_004",
+    "title": "Der stumme Schmied",
+    "description": "Selene bittet dich um Hilfe: der stumme schmied. Finde die Wahrheit und kehre zurück.",
+    "giver": "Selene",
+    "prerequisite": "SQ_003",
+    "objectives": [
+      {
+        "id": "SQ_004_A",
+        "type": "craft",
+        "target": "target_004",
+        "count": 2
+      },
+      {
+        "id": "SQ_004_B",
+        "type": "talk",
+        "target": "Selene",
+        "count": 1
+      }
+    ],
+    "triggers": [
+      "interact",
+      "objective_event",
+      "return_to_giver"
+    ],
+    "rewards": {
+      "xp": 175,
+      "gold": 28,
+      "item": "item_005"
+    },
+    "choices": [
+      {
+        "id": "help",
+        "text": "Ich helfe dir.",
+        "reputation": {
+          "Waldhüter": 2
+        }
+      },
+      {
+        "id": "bargain",
+        "text": "Nur gegen einen angemessenen Lohn.",
+        "reputation": {
+          "Freie Händler": 2
+        }
+      }
+    ],
+    "state_flow": [
+      "available",
+      "active",
+      "completed",
+      "reward_claimed"
+    ]
+  },
+  {
+    "id": "SQ_005",
+    "title": "Spuren im Schnee",
+    "description": "Korin bittet dich um Hilfe: spuren im schnee. Finde die Wahrheit und kehre zurück.",
+    "giver": "Korin",
+    "prerequisite": null,
+    "objectives": [
+      {
+        "id": "SQ_005_A",
+        "type": "deliver",
+        "target": "target_005",
+        "count": 3
+      },
+      {
+        "id": "SQ_005_B",
+        "type": "talk",
+        "target": "Korin",
+        "count": 1
+      }
+    ],
+    "triggers": [
+      "interact",
+      "objective_event",
+      "return_to_giver"
+    ],
+    "rewards": {
+      "xp": 200,
+      "gold": 32,
+      "item": "item_006"
+    },
+    "choices": [
+      {
+        "id": "help",
+        "text": "Ich helfe dir.",
+        "reputation": {
+          "Waldhüter": 2
+        }
+      },
+      {
+        "id": "bargain",
+        "text": "Nur gegen einen angemessenen Lohn.",
+        "reputation": {
+          "Freie Händler": 2
+        }
+      }
+    ],
+    "state_flow": [
+      "available",
+      "active",
+      "completed",
+      "reward_claimed"
+    ]
+  },
+  {
+    "id": "SQ_006",
+    "title": "Ein Brief nach Falkenwacht",
+    "description": "Mara bittet dich um Hilfe: ein brief nach falkenwacht. Finde die Wahrheit und kehre zurück.",
+    "giver": "Mara",
+    "prerequisite": null,
+    "objectives": [
+      {
+        "id": "SQ_006_A",
+        "type": "collect",
+        "target": "target_006",
+        "count": 1
+      },
+      {
+        "id": "SQ_006_B",
+        "type": "talk",
+        "target": "Mara",
+        "count": 1
+      }
+    ],
+    "triggers": [
+      "interact",
+      "objective_event",
+      "return_to_giver"
+    ],
+    "rewards": {
+      "xp": 225,
+      "gold": 36,
+      "item": "item_007"
+    },
+    "choices": [
+      {
+        "id": "help",
+        "text": "Ich helfe dir.",
+        "reputation": {
+          "Waldhüter": 2
+        }
+      },
+      {
+        "id": "bargain",
+        "text": "Nur gegen einen angemessenen Lohn.",
+        "reputation": {
+          "Freie Händler": 2
+        }
+      }
+    ],
+    "state_flow": [
+      "available",
+      "active",
+      "completed",
+      "reward_claimed"
+    ]
+  },
+  {
+    "id": "SQ_007",
+    "title": "Der alte Grenzstein",
+    "description": "Torben bittet dich um Hilfe: der alte grenzstein. Finde die Wahrheit und kehre zurück.",
+    "giver": "Torben",
+    "prerequisite": null,
+    "objectives": [
+      {
+        "id": "SQ_007_A",
+        "type": "kill",
+        "target": "target_007",
+        "count": 2
+      },
+      {
+        "id": "SQ_007_B",
+        "type": "talk",
+        "target": "Torben",
+        "count": 1
+      }
+    ],
+    "triggers": [
+      "interact",
+      "objective_event",
+      "return_to_giver"
+    ],
+    "rewards": {
+      "xp": 250,
+      "gold": 40,
+      "item": "item_008"
+    },
+    "choices": [
+      {
+        "id": "help",
+        "text": "Ich helfe dir.",
+        "reputation": {
+          "Waldhüter": 2
+        }
+      },
+      {
+        "id": "bargain",
+        "text": "Nur gegen einen angemessenen Lohn.",
+        "reputation": {
+          "Freie Händler": 2
+        }
+      }
+    ],
+    "state_flow": [
+      "available",
+      "active",
+      "completed",
+      "reward_claimed"
+    ]
+  },
+  {
+    "id": "SQ_008",
+    "title": "Das gestohlene Amulett",
+    "description": "Edda bittet dich um Hilfe: das gestohlene amulett. Finde die Wahrheit und kehre zurück.",
+    "giver": "Edda",
+    "prerequisite": "SQ_007",
+    "objectives": [
+      {
+        "id": "SQ_008_A",
+        "type": "talk",
+        "target": "target_008",
+        "count": 3
+      },
+      {
+        "id": "SQ_008_B",
+        "type": "talk",
+        "target": "Edda",
+        "count": 1
+      }
+    ],
+    "triggers": [
+      "interact",
+      "objective_event",
+      "return_to_giver"
+    ],
+    "rewards": {
+      "xp": 275,
+      "gold": 44,
+      "item": "item_009"
+    },
+    "choices": [
+      {
+        "id": "help",
+        "text": "Ich helfe dir.",
+        "reputation": {
+          "Waldhüter": 2
+        }
+      },
+      {
+        "id": "bargain",
+        "text": "Nur gegen einen angemessenen Lohn.",
+        "reputation": {
+          "Freie Händler": 2
+        }
+      }
+    ],
+    "state_flow": [
+      "available",
+      "active",
+      "completed",
+      "reward_claimed"
+    ]
+  },
+  {
+    "id": "SQ_009",
+    "title": "Asche im Brunnen",
+    "description": "Rurik bittet dich um Hilfe: asche im brunnen. Finde die Wahrheit und kehre zurück.",
+    "giver": "Rurik",
+    "prerequisite": null,
+    "objectives": [
+      {
+        "id": "SQ_009_A",
+        "type": "explore",
+        "target": "target_009",
+        "count": 1
+      },
+      {
+        "id": "SQ_009_B",
+        "type": "talk",
+        "target": "Rurik",
+        "count": 1
+      }
+    ],
+    "triggers": [
+      "interact",
+      "objective_event",
+      "return_to_giver"
+    ],
+    "rewards": {
+      "xp": 300,
+      "gold": 48,
+      "item": "item_010"
+    },
+    "choices": [
+      {
+        "id": "help",
+        "text": "Ich helfe dir.",
+        "reputation": {
+          "Waldhüter": 2
+        }
+      },
+      {
+        "id": "bargain",
+        "text": "Nur gegen einen angemessenen Lohn.",
+        "reputation": {
+          "Freie Händler": 2
+        }
+      }
+    ],
+    "state_flow": [
+      "available",
+      "active",
+      "completed",
+      "reward_claimed"
+    ]
+  },
+  {
+    "id": "SQ_010",
+    "title": "Die Nachtwache",
+    "description": "Selene bittet dich um Hilfe: die nachtwache. Finde die Wahrheit und kehre zurück.",
+    "giver": "Selene",
+    "prerequisite": null,
+    "objectives": [
+      {
+        "id": "SQ_010_A",
+        "type": "craft",
+        "target": "target_010",
+        "count": 2
+      },
+      {
+        "id": "SQ_010_B",
+        "type": "talk",
+        "target": "Selene",
+        "count": 1
+      }
+    ],
+    "triggers": [
+      "interact",
+      "objective_event",
+      "return_to_giver"
+    ],
+    "rewards": {
+      "xp": 325,
+      "gold": 52,
+      "item": "item_011"
+    },
+    "choices": [
+      {
+        "id": "help",
+        "text": "Ich helfe dir.",
+        "reputation": {
+          "Waldhüter": 2
+        }
+      },
+      {
+        "id": "bargain",
+        "text": "Nur gegen einen angemessenen Lohn.",
+        "reputation": {
+          "Freie Händler": 2
+        }
+      }
+    ],
+    "state_flow": [
+      "available",
+      "active",
+      "completed",
+      "reward_claimed"
+    ]
+  },
+  {
+    "id": "SQ_011",
+    "title": "Die letzte Ernte",
+    "description": "Korin bittet dich um Hilfe: die letzte ernte. Finde die Wahrheit und kehre zurück.",
+    "giver": "Korin",
+    "prerequisite": null,
+    "objectives": [
+      {
+        "id": "SQ_011_A",
+        "type": "deliver",
+        "target": "target_011",
+        "count": 3
+      },
+      {
+        "id": "SQ_011_B",
+        "type": "talk",
+        "target": "Korin",
+        "count": 1
+      }
+    ],
+    "triggers": [
+      "interact",
+      "objective_event",
+      "return_to_giver"
+    ],
+    "rewards": {
+      "xp": 350,
+      "gold": 56,
+      "item": "item_012"
+    },
+    "choices": [
+      {
+        "id": "help",
+        "text": "Ich helfe dir.",
+        "reputation": {
+          "Waldhüter": 2
+        }
+      },
+      {
+        "id": "bargain",
+        "text": "Nur gegen einen angemessenen Lohn.",
+        "reputation": {
+          "Freie Händler": 2
+        }
+      }
+    ],
+    "state_flow": [
+      "available",
+      "active",
+      "completed",
+      "reward_claimed"
+    ]
+  },
+  {
+    "id": "SQ_012",
+    "title": "Das Lied der Ruine",
+    "description": "Mara bittet dich um Hilfe: das lied der ruine. Finde die Wahrheit und kehre zurück.",
+    "giver": "Mara",
+    "prerequisite": "SQ_011",
+    "objectives": [
+      {
+        "id": "SQ_012_A",
+        "type": "collect",
+        "target": "target_012",
+        "count": 1
+      },
+      {
+        "id": "SQ_012_B",
+        "type": "talk",
+        "target": "Mara",
+        "count": 1
+      }
+    ],
+    "triggers": [
+      "interact",
+      "objective_event",
+      "return_to_giver"
+    ],
+    "rewards": {
+      "xp": 375,
+      "gold": 60,
+      "item": "item_013"
+    },
+    "choices": [
+      {
+        "id": "help",
+        "text": "Ich helfe dir.",
+        "reputation": {
+          "Waldhüter": 2
+        }
+      },
+      {
+        "id": "bargain",
+        "text": "Nur gegen einen angemessenen Lohn.",
+        "reputation": {
+          "Freie Händler": 2
+        }
+      }
+    ],
+    "state_flow": [
+      "available",
+      "active",
+      "completed",
+      "reward_claimed"
+    ]
+  },
+  {
+    "id": "SQ_013",
+    "title": "Ein Händler in Not",
+    "description": "Torben bittet dich um Hilfe: ein händler in not. Finde die Wahrheit und kehre zurück.",
+    "giver": "Torben",
+    "prerequisite": null,
+    "objectives": [
+      {
+        "id": "SQ_013_A",
+        "type": "kill",
+        "target": "target_013",
+        "count": 2
+      },
+      {
+        "id": "SQ_013_B",
+        "type": "talk",
+        "target": "Torben",
+        "count": 1
+      }
+    ],
+    "triggers": [
+      "interact",
+      "objective_event",
+      "return_to_giver"
+    ],
+    "rewards": {
+      "xp": 400,
+      "gold": 64,
+      "item": "item_014"
+    },
+    "choices": [
+      {
+        "id": "help",
+        "text": "Ich helfe dir.",
+        "reputation": {
+          "Waldhüter": 2
+        }
+      },
+      {
+        "id": "bargain",
+        "text": "Nur gegen einen angemessenen Lohn.",
+        "reputation": {
+          "Freie Händler": 2
+        }
+      }
+    ],
+    "state_flow": [
+      "available",
+      "active",
+      "completed",
+      "reward_claimed"
+    ]
+  },
+  {
+    "id": "SQ_014",
+    "title": "Die versiegelte Tür",
+    "description": "Edda bittet dich um Hilfe: die versiegelte tür. Finde die Wahrheit und kehre zurück.",
+    "giver": "Edda",
+    "prerequisite": null,
+    "objectives": [
+      {
+        "id": "SQ_014_A",
+        "type": "talk",
+        "target": "target_014",
+        "count": 3
+      },
+      {
+        "id": "SQ_014_B",
+        "type": "talk",
+        "target": "Edda",
+        "count": 1
+      }
+    ],
+    "triggers": [
+      "interact",
+      "objective_event",
+      "return_to_giver"
+    ],
+    "rewards": {
+      "xp": 425,
+      "gold": 68,
+      "item": "item_015"
+    },
+    "choices": [
+      {
+        "id": "help",
+        "text": "Ich helfe dir.",
+        "reputation": {
+          "Waldhüter": 2
+        }
+      },
+      {
+        "id": "bargain",
+        "text": "Nur gegen einen angemessenen Lohn.",
+        "reputation": {
+          "Freie Händler": 2
+        }
+      }
+    ],
+    "state_flow": [
+      "available",
+      "active",
+      "completed",
+      "reward_claimed"
+    ]
+  },
+  {
+    "id": "SQ_015",
+    "title": "Pilze im Grauwald",
+    "description": "Rurik bittet dich um Hilfe: pilze im grauwald. Finde die Wahrheit und kehre zurück.",
+    "giver": "Rurik",
+    "prerequisite": null,
+    "objectives": [
+      {
+        "id": "SQ_015_A",
+        "type": "explore",
+        "target": "target_015",
+        "count": 1
+      },
+      {
+        "id": "SQ_015_B",
+        "type": "talk",
+        "target": "Rurik",
+        "count": 1
+      }
+    ],
+    "triggers": [
+      "interact",
+      "objective_event",
+      "return_to_giver"
+    ],
+    "rewards": {
+      "xp": 450,
+      "gold": 72,
+      "item": "item_016"
+    },
+    "choices": [
+      {
+        "id": "help",
+        "text": "Ich helfe dir.",
+        "reputation": {
+          "Waldhüter": 2
+        }
+      },
+      {
+        "id": "bargain",
+        "text": "Nur gegen einen angemessenen Lohn.",
+        "reputation": {
+          "Freie Händler": 2
+        }
+      }
+    ],
+    "state_flow": [
+      "available",
+      "active",
+      "completed",
+      "reward_claimed"
+    ]
+  },
+  {
+    "id": "SQ_016",
+    "title": "Das gebrochene Schwert",
+    "description": "Selene bittet dich um Hilfe: das gebrochene schwert. Finde die Wahrheit und kehre zurück.",
+    "giver": "Selene",
+    "prerequisite": "SQ_015",
+    "objectives": [
+      {
+        "id": "SQ_016_A",
+        "type": "craft",
+        "target": "target_016",
+        "count": 2
+      },
+      {
+        "id": "SQ_016_B",
+        "type": "talk",
+        "target": "Selene",
+        "count": 1
+      }
+    ],
+    "triggers": [
+      "interact",
+      "objective_event",
+      "return_to_giver"
+    ],
+    "rewards": {
+      "xp": 475,
+      "gold": 76,
+      "item": "item_017"
+    },
+    "choices": [
+      {
+        "id": "help",
+        "text": "Ich helfe dir.",
+        "reputation": {
+          "Waldhüter": 2
+        }
+      },
+      {
+        "id": "bargain",
+        "text": "Nur gegen einen angemessenen Lohn.",
+        "reputation": {
+          "Freie Händler": 2
+        }
+      }
+    ],
+    "state_flow": [
+      "available",
+      "active",
+      "completed",
+      "reward_claimed"
+    ]
+  },
+  {
+    "id": "SQ_017",
+    "title": "Der falsche Bote",
+    "description": "Korin bittet dich um Hilfe: der falsche bote. Finde die Wahrheit und kehre zurück.",
+    "giver": "Korin",
+    "prerequisite": null,
+    "objectives": [
+      {
+        "id": "SQ_017_A",
+        "type": "deliver",
+        "target": "target_017",
+        "count": 3
+      },
+      {
+        "id": "SQ_017_B",
+        "type": "talk",
+        "target": "Korin",
+        "count": 1
+      }
+    ],
+    "triggers": [
+      "interact",
+      "objective_event",
+      "return_to_giver"
+    ],
+    "rewards": {
+      "xp": 500,
+      "gold": 80,
+      "item": "item_018"
+    },
+    "choices": [
+      {
+        "id": "help",
+        "text": "Ich helfe dir.",
+        "reputation": {
+          "Waldhüter": 2
+        }
+      },
+      {
+        "id": "bargain",
+        "text": "Nur gegen einen angemessenen Lohn.",
+        "reputation": {
+          "Freie Händler": 2
+        }
+      }
+    ],
+    "state_flow": [
+      "available",
+      "active",
+      "completed",
+      "reward_claimed"
+    ]
+  },
+  {
+    "id": "SQ_018",
+    "title": "Der verschwundene Jäger",
+    "description": "Mara bittet dich um Hilfe: der verschwundene jäger. Finde die Wahrheit und kehre zurück.",
+    "giver": "Mara",
+    "prerequisite": null,
+    "objectives": [
+      {
+        "id": "SQ_018_A",
+        "type": "collect",
+        "target": "target_018",
+        "count": 1
+      },
+      {
+        "id": "SQ_018_B",
+        "type": "talk",
+        "target": "Mara",
+        "count": 1
+      }
+    ],
+    "triggers": [
+      "interact",
+      "objective_event",
+      "return_to_giver"
+    ],
+    "rewards": {
+      "xp": 525,
+      "gold": 84,
+      "item": "item_001"
+    },
+    "choices": [
+      {
+        "id": "help",
+        "text": "Ich helfe dir.",
+        "reputation": {
+          "Waldhüter": 2
+        }
+      },
+      {
+        "id": "bargain",
+        "text": "Nur gegen einen angemessenen Lohn.",
+        "reputation": {
+          "Freie Händler": 2
+        }
+      }
+    ],
+    "state_flow": [
+      "available",
+      "active",
+      "completed",
+      "reward_claimed"
+    ]
+  },
+  {
+    "id": "SQ_019",
+    "title": "Das Licht im Turm",
+    "description": "Torben bittet dich um Hilfe: das licht im turm. Finde die Wahrheit und kehre zurück.",
+    "giver": "Torben",
+    "prerequisite": null,
+    "objectives": [
+      {
+        "id": "SQ_019_A",
+        "type": "kill",
+        "target": "target_019",
+        "count": 2
+      },
+      {
+        "id": "SQ_019_B",
+        "type": "talk",
+        "target": "Torben",
+        "count": 1
+      }
+    ],
+    "triggers": [
+      "interact",
+      "objective_event",
+      "return_to_giver"
+    ],
+    "rewards": {
+      "xp": 550,
+      "gold": 88,
+      "item": "item_002"
+    },
+    "choices": [
+      {
+        "id": "help",
+        "text": "Ich helfe dir.",
+        "reputation": {
+          "Waldhüter": 2
+        }
+      },
+      {
+        "id": "bargain",
+        "text": "Nur gegen einen angemessenen Lohn.",
+        "reputation": {
+          "Freie Händler": 2
+        }
+      }
+    ],
+    "state_flow": [
+      "available",
+      "active",
+      "completed",
+      "reward_claimed"
+    ]
+  },
+  {
+    "id": "SQ_020",
+    "title": "Der Eid der Hüter",
+    "description": "Edda bittet dich um Hilfe: der eid der hüter. Finde die Wahrheit und kehre zurück.",
+    "giver": "Edda",
+    "prerequisite": "SQ_019",
+    "objectives": [
+      {
+        "id": "SQ_020_A",
+        "type": "talk",
+        "target": "target_020",
+        "count": 3
+      },
+      {
+        "id": "SQ_020_B",
+        "type": "talk",
+        "target": "Edda",
+        "count": 1
+      }
+    ],
+    "triggers": [
+      "interact",
+      "objective_event",
+      "return_to_giver"
+    ],
+    "rewards": {
+      "xp": 575,
+      "gold": 92,
+      "item": "item_003"
+    },
+    "choices": [
+      {
+        "id": "help",
+        "text": "Ich helfe dir.",
+        "reputation": {
+          "Waldhüter": 2
+        }
+      },
+      {
+        "id": "bargain",
+        "text": "Nur gegen einen angemessenen Lohn.",
+        "reputation": {
+          "Freie Händler": 2
+        }
+      }
+    ],
+    "state_flow": [
+      "available",
+      "active",
+      "completed",
+      "reward_claimed"
+    ]
+  },
+  {
+    "id": "SQ_021",
+    "title": "Der Preis der Kohle",
+    "description": "Rurik bittet dich um Hilfe: der preis der kohle. Finde die Wahrheit und kehre zurück.",
+    "giver": "Rurik",
+    "prerequisite": null,
+    "objectives": [
+      {
+        "id": "SQ_021_A",
+        "type": "explore",
+        "target": "target_021",
+        "count": 1
+      },
+      {
+        "id": "SQ_021_B",
+        "type": "talk",
+        "target": "Rurik",
+        "count": 1
+      }
+    ],
+    "triggers": [
+      "interact",
+      "objective_event",
+      "return_to_giver"
+    ],
+    "rewards": {
+      "xp": 600,
+      "gold": 96,
+      "item": "item_004"
+    },
+    "choices": [
+      {
+        "id": "help",
+        "text": "Ich helfe dir.",
+        "reputation": {
+          "Waldhüter": 2
+        }
+      },
+      {
+        "id": "bargain",
+        "text": "Nur gegen einen angemessenen Lohn.",
+        "reputation": {
+          "Freie Händler": 2
+        }
+      }
+    ],
+    "state_flow": [
+      "available",
+      "active",
+      "completed",
+      "reward_claimed"
+    ]
+  },
+  {
+    "id": "SQ_022",
+    "title": "Die Rabenfeder",
+    "description": "Selene bittet dich um Hilfe: die rabenfeder. Finde die Wahrheit und kehre zurück.",
+    "giver": "Selene",
+    "prerequisite": null,
+    "objectives": [
+      {
+        "id": "SQ_022_A",
+        "type": "craft",
+        "target": "target_022",
+        "count": 2
+      },
+      {
+        "id": "SQ_022_B",
+        "type": "talk",
+        "target": "Selene",
+        "count": 1
+      }
+    ],
+    "triggers": [
+      "interact",
+      "objective_event",
+      "return_to_giver"
+    ],
+    "rewards": {
+      "xp": 625,
+      "gold": 100,
+      "item": "item_005"
+    },
+    "choices": [
+      {
+        "id": "help",
+        "text": "Ich helfe dir.",
+        "reputation": {
+          "Waldhüter": 2
+        }
+      },
+      {
+        "id": "bargain",
+        "text": "Nur gegen einen angemessenen Lohn.",
+        "reputation": {
+          "Freie Händler": 2
+        }
+      }
+    ],
+    "state_flow": [
+      "available",
+      "active",
+      "completed",
+      "reward_claimed"
+    ]
+  },
+  {
+    "id": "SQ_023",
+    "title": "Der vergessene Pfad",
+    "description": "Korin bittet dich um Hilfe: der vergessene pfad. Finde die Wahrheit und kehre zurück.",
+    "giver": "Korin",
+    "prerequisite": null,
+    "objectives": [
+      {
+        "id": "SQ_023_A",
+        "type": "deliver",
+        "target": "target_023",
+        "count": 3
+      },
+      {
+        "id": "SQ_023_B",
+        "type": "talk",
+        "target": "Korin",
+        "count": 1
+      }
+    ],
+    "triggers": [
+      "interact",
+      "objective_event",
+      "return_to_giver"
+    ],
+    "rewards": {
+      "xp": 650,
+      "gold": 104,
+      "item": "item_006"
+    },
+    "choices": [
+      {
+        "id": "help",
+        "text": "Ich helfe dir.",
+        "reputation": {
+          "Waldhüter": 2
+        }
+      },
+      {
+        "id": "bargain",
+        "text": "Nur gegen einen angemessenen Lohn.",
+        "reputation": {
+          "Freie Händler": 2
+        }
+      }
+    ],
+    "state_flow": [
+      "available",
+      "active",
+      "completed",
+      "reward_claimed"
+    ]
+  },
+  {
+    "id": "SQ_024",
+    "title": "Ein Bündnis aus Salz",
+    "description": "Mara bittet dich um Hilfe: ein bündnis aus salz. Finde die Wahrheit und kehre zurück.",
+    "giver": "Mara",
+    "prerequisite": "SQ_023",
+    "objectives": [
+      {
+        "id": "SQ_024_A",
+        "type": "collect",
+        "target": "target_024",
+        "count": 1
+      },
+      {
+        "id": "SQ_024_B",
+        "type": "talk",
+        "target": "Mara",
+        "count": 1
+      }
+    ],
+    "triggers": [
+      "interact",
+      "objective_event",
+      "return_to_giver"
+    ],
+    "rewards": {
+      "xp": 675,
+      "gold": 108,
+      "item": "item_007"
+    },
+    "choices": [
+      {
+        "id": "help",
+        "text": "Ich helfe dir.",
+        "reputation": {
+          "Waldhüter": 2
+        }
+      },
+      {
+        "id": "bargain",
+        "text": "Nur gegen einen angemessenen Lohn.",
+        "reputation": {
+          "Freie Händler": 2
+        }
+      }
+    ],
+    "state_flow": [
+      "available",
+      "active",
+      "completed",
+      "reward_claimed"
+    ]
+  }
+]

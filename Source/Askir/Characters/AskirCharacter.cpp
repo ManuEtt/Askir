@@ -14,6 +14,7 @@
 #include "Survival/AskirSurvivalComponent.h"
 #include "Progression/AskirProgressionComponent.h"
 #include "Characters/AskirCharacter.h"
+#include "Combat/AskirGuardComponent.h"
 #include "Camera/CameraComponent.h"
 #include "NPC/AskirInteractionComponent.h"
 #include "NPC/AskirDialogueComponent.h"
@@ -44,7 +45,8 @@ AAskirCharacter::AAskirCharacter()
     GetCharacterMovement()->JumpZVelocity=600;
     CameraBoom=CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));CameraBoom->SetupAttachment(RootComponent);CameraBoom->TargetArmLength=330.f;CameraBoom->bUsePawnControlRotation=true;
     Camera=CreateDefaultSubobject<UCameraComponent>(TEXT("Camera"));Camera->SetupAttachment(CameraBoom);Camera->bUsePawnControlRotation=false;
-    CombatComponent=CreateDefaultSubobject<UAskirCombatComponent>(TEXT("CombatComponent"));
+    CombatComponent=CreateDefaultSubobject<UAskirCombatComponent>(TEXT("Combat"));
+    GuardComponent=CreateDefaultSubobject<UAskirGuardComponent>(TEXT("Guard"));
     InventoryComponent=CreateDefaultSubobject<UAskirInventoryComponent>(TEXT("InventoryComponent"));
     QuestComponent=CreateDefaultSubobject<UAskirQuestComponent>(TEXT("QuestComponent"));
 }
@@ -152,6 +154,7 @@ void AAskirCharacter::Dodge()
     const float Now=GetWorld()->GetTimeSeconds();
     if(Now-LastDodgeTime<FMath::Max(0.f,DodgeCooldown)||!SpendStamina(DodgeCost))return;
     LastDodgeTime=Now;
+    if(CombatComponent)CombatComponent->GrantDodgeInvulnerability(DodgeInvulnerabilitySeconds);
     if(AnimationState)AnimationState->BeginDodge();
     OnDodgeStarted();
     FVector Direction=GetLastMovementInputVector().GetSafeNormal2D();
@@ -171,7 +174,7 @@ void AAskirCharacter::ReceiveAskirDamage(const FAskirDamageInfo&I)
         if(SpendStamina(Cost))Applied.Damage*=1.f-FMath::Clamp(BlockDamageReduction,0.f,1.f);
         else StopBlock();
     }
-    if(AnimationState&&Applied.Damage>0.f)AnimationState->RegisterHit();
+    if(AnimationState&&Applied.Damage>0.f && !CombatComponent->IsDodgeInvulnerable())AnimationState->RegisterHit();
     CombatComponent->ApplyDamage(Applied);
 }
 bool AAskirCharacter::IsDead()const{return CombatComponent&&CombatComponent->IsDead();}

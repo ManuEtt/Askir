@@ -1,3 +1,5 @@
+#include "Inventory/AskirInventoryComponent.h"
+#include "Progression/AskirProgressionComponent.h"
 #include "Characters/AskirNPC.h"
 #include "NPC/AskirDailyRoutineComponent.h"
 #include "NPC/AskirInteractionComponent.h"
@@ -222,6 +224,23 @@ void AAskirNPC::HandleNPCDeath()
         if (UAskirQuestComponent* Quests = LastDamageCauser->FindComponentByClass<UAskirQuestComponent>())
         {
             Quests->AdvanceObjective(DefeatObjectiveID, 1);
+        }
+    }
+    // Grant rewards exactly once to the actor responsible for the killing blow.
+    if (!bRewardsGranted)
+    {
+        bRewardsGranted=true;
+        if (AActor* Recipient=LastDamageCauser.Get())
+        {
+            const int32 XP=FMath::Max(0,KillExperience);
+            if (XP>0)
+                if (UAskirProgressionComponent* Progression=Recipient->FindComponentByClass<UAskirProgressionComponent>())
+                    Progression->AwardExperience(XP);
+            bool bItemGranted=false;
+            if (GuaranteedDrop && GuaranteedDropQuantity>0 && FMath::FRand() < FMath::Clamp(DropChance,0.f,1.f))
+                if (UAskirInventoryComponent* Inventory=Recipient->FindComponentByClass<UAskirInventoryComponent>())
+                    bItemGranted=Inventory->AddItem(GuaranteedDrop,GuaranteedDropQuantity);
+            OnEnemyRewardsGranted(Recipient,XP,bItemGranted);
         }
     }
     CancelPendingAttack();

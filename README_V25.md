@@ -1,0 +1,1 @@
+Askir RPG V25: vollständiges UE5.6-Quellprojekt auf Basis V24. Neuer Encounter-Wave-Spawner, Gegner-Todestracking und Quest-Event. Siehe RELEASE_V25_50_SCHRITTE.md und V25_UNREAL_TESTPLAN.md. Unreal-Kompilierung nicht ausgeführt.

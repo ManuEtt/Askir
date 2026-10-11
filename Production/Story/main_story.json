@@ -1,0 +1,86 @@
+[
+  {
+    "chapter": 1,
+    "title": "Die Asche im Brunnen",
+    "twist": "Der Dorfbrunnen enthält ein vergessenes Siegel.",
+    "missions": [
+      "M01-01",
+      "M01-02",
+      "M01-03",
+      "M01-04"
+    ],
+    "choice": {
+      "protect": "Bewahre die Erinnerungen der Menschen",
+      "sacrifice": "Opfere Erinnerungen für Macht"
+    },
+    "outcomes": []
+  },
+  {
+    "chapter": 2,
+    "title": "Der Preis des Friedens",
+    "twist": "Die Kronenwacht verbirgt einen alten Pakt.",
+    "missions": [
+      "M02-01",
+      "M02-02",
+      "M02-03",
+      "M02-04"
+    ],
+    "choice": {
+      "protect": "Bewahre die Erinnerungen der Menschen",
+      "sacrifice": "Opfere Erinnerungen für Macht"
+    },
+    "outcomes": []
+  },
+  {
+    "chapter": 3,
+    "title": "Stimmen aus Glas",
+    "twist": "Ein Verbündeter dient dem Aschenzirkel.",
+    "missions": [
+      "M03-01",
+      "M03-02",
+      "M03-03",
+      "M03-04"
+    ],
+    "choice": {
+      "protect": "Bewahre die Erinnerungen der Menschen",
+      "sacrifice": "Opfere Erinnerungen für Macht"
+    },
+    "outcomes": []
+  },
+  {
+    "chapter": 4,
+    "title": "Der Sturmthron",
+    "twist": "Die Siegel öffnen den Weg zur Krone.",
+    "missions": [
+      "M04-01",
+      "M04-02",
+      "M04-03",
+      "M04-04"
+    ],
+    "choice": {
+      "protect": "Bewahre die Erinnerungen der Menschen",
+      "sacrifice": "Opfere Erinnerungen für Macht"
+    },
+    "outcomes": []
+  },
+  {
+    "chapter": 5,
+    "title": "Das letzte Wort",
+    "twist": "Der Spieler entscheidet über die Zukunft Askirs.",
+    "missions": [
+      "M05-01",
+      "M05-02",
+      "M05-03",
+      "M05-04"
+    ],
+    "choice": {
+      "protect": "Bewahre die Erinnerungen der Menschen",
+      "sacrifice": "Opfere Erinnerungen für Macht"
+    },
+    "outcomes": [
+      "Krone vereinen",
+      "Krone zerstören",
+      "Krone teilen"
+    ]
+  }
+]

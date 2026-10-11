@@ -1,0 +1,25 @@
+﻿Name,Title,Description,ObjectiveId,RequiredCount,ExperienceReward,GoldReward
+SQ_001,Die verlorene Lieferung,Torben bittet dich um Hilfe: die verlorene lieferung. Finde die Wahrheit und kehre zurück.,SQ_001_A,2,100,16
+SQ_002,Wölfe am Nordtor,Edda bittet dich um Hilfe: wölfe am nordtor. Finde die Wahrheit und kehre zurück.,SQ_002_A,3,125,20
+SQ_003,Heilkräuter für Mara,Rurik bittet dich um Hilfe: heilkräuter für mara. Finde die Wahrheit und kehre zurück.,SQ_003_A,1,150,24
+SQ_004,Der stumme Schmied,Selene bittet dich um Hilfe: der stumme schmied. Finde die Wahrheit und kehre zurück.,SQ_004_A,2,175,28
+SQ_005,Spuren im Schnee,Korin bittet dich um Hilfe: spuren im schnee. Finde die Wahrheit und kehre zurück.,SQ_005_A,3,200,32
+SQ_006,Ein Brief nach Falkenwacht,Mara bittet dich um Hilfe: ein brief nach falkenwacht. Finde die Wahrheit und kehre zurück.,SQ_006_A,1,225,36
+SQ_007,Der alte Grenzstein,Torben bittet dich um Hilfe: der alte grenzstein. Finde die Wahrheit und kehre zurück.,SQ_007_A,2,250,40
+SQ_008,Das gestohlene Amulett,Edda bittet dich um Hilfe: das gestohlene amulett. Finde die Wahrheit und kehre zurück.,SQ_008_A,3,275,44
+SQ_009,Asche im Brunnen,Rurik bittet dich um Hilfe: asche im brunnen. Finde die Wahrheit und kehre zurück.,SQ_009_A,1,300,48
+SQ_010,Die Nachtwache,Selene bittet dich um Hilfe: die nachtwache. Finde die Wahrheit und kehre zurück.,SQ_010_A,2,325,52
+SQ_011,Die letzte Ernte,Korin bittet dich um Hilfe: die letzte ernte. Finde die Wahrheit und kehre zurück.,SQ_011_A,3,350,56
+SQ_012,Das Lied der Ruine,Mara bittet dich um Hilfe: das lied der ruine. Finde die Wahrheit und kehre zurück.,SQ_012_A,1,375,60
+SQ_013,Ein Händler in Not,Torben bittet dich um Hilfe: ein händler in not. Finde die Wahrheit und kehre zurück.,SQ_013_A,2,400,64
+SQ_014,Die versiegelte Tür,Edda bittet dich um Hilfe: die versiegelte tür. Finde die Wahrheit und kehre zurück.,SQ_014_A,3,425,68
+SQ_015,Pilze im Grauwald,Rurik bittet dich um Hilfe: pilze im grauwald. Finde die Wahrheit und kehre zurück.,SQ_015_A,1,450,72
+SQ_016,Das gebrochene Schwert,Selene bittet dich um Hilfe: das gebrochene schwert. Finde die Wahrheit und kehre zurück.,SQ_016_A,2,475,76
+SQ_017,Der falsche Bote,Korin bittet dich um Hilfe: der falsche bote. Finde die Wahrheit und kehre zurück.,SQ_017_A,3,500,80
+SQ_018,Der verschwundene Jäger,Mara bittet dich um Hilfe: der verschwundene jäger. Finde die Wahrheit und kehre zurück.,SQ_018_A,1,525,84
+SQ_019,Das Licht im Turm,Torben bittet dich um Hilfe: das licht im turm. Finde die Wahrheit und kehre zurück.,SQ_019_A,2,550,88
+SQ_020,Der Eid der Hüter,Edda bittet dich um Hilfe: der eid der hüter. Finde die Wahrheit und kehre zurück.,SQ_020_A,3,575,92
+SQ_021,Der Preis der Kohle,Rurik bittet dich um Hilfe: der preis der kohle. Finde die Wahrheit und kehre zurück.,SQ_021_A,1,600,96
+SQ_022,Die Rabenfeder,Selene bittet dich um Hilfe: die rabenfeder. Finde die Wahrheit und kehre zurück.,SQ_022_A,2,625,100
+SQ_023,Der vergessene Pfad,Korin bittet dich um Hilfe: der vergessene pfad. Finde die Wahrheit und kehre zurück.,SQ_023_A,3,650,104
+SQ_024,Ein Bündnis aus Salz,Mara bittet dich um Hilfe: ein bündnis aus salz. Finde die Wahrheit und kehre zurück.,SQ_024_A,1,675,108

@@ -1,0 +1,242 @@
+[
+  {
+    "id": "feuer_1",
+    "name": "FeuerStoß",
+    "element": "Feuer",
+    "mana_cost": 14,
+    "cooldown_seconds": 2.5,
+    "power": 21,
+    "effect": "projectile",
+    "description": "Bündelt feuermagie zu einem stoß."
+  },
+  {
+    "id": "feuer_2",
+    "name": "FeuerSchild",
+    "element": "Feuer",
+    "mana_cost": 20,
+    "cooldown_seconds": 5.0,
+    "power": 30,
+    "effect": "shield",
+    "description": "Bündelt feuermagie zu einem schild."
+  },
+  {
+    "id": "feuer_3",
+    "name": "FeuerKlinge",
+    "element": "Feuer",
+    "mana_cost": 26,
+    "cooldown_seconds": 7.5,
+    "power": 39,
+    "effect": "melee_arc",
+    "description": "Bündelt feuermagie zu einem klinge."
+  },
+  {
+    "id": "feuer_4",
+    "name": "FeuerNova",
+    "element": "Feuer",
+    "mana_cost": 32,
+    "cooldown_seconds": 10.0,
+    "power": 48,
+    "effect": "area",
+    "description": "Bündelt feuermagie zu einem nova."
+  },
+  {
+    "id": "eis_1",
+    "name": "EisStoß",
+    "element": "Eis",
+    "mana_cost": 14,
+    "cooldown_seconds": 2.5,
+    "power": 21,
+    "effect": "projectile",
+    "description": "Bündelt eismagie zu einem stoß."
+  },
+  {
+    "id": "eis_2",
+    "name": "EisSchild",
+    "element": "Eis",
+    "mana_cost": 20,
+    "cooldown_seconds": 5.0,
+    "power": 30,
+    "effect": "shield",
+    "description": "Bündelt eismagie zu einem schild."
+  },
+  {
+    "id": "eis_3",
+    "name": "EisKlinge",
+    "element": "Eis",
+    "mana_cost": 26,
+    "cooldown_seconds": 7.5,
+    "power": 39,
+    "effect": "melee_arc",
+    "description": "Bündelt eismagie zu einem klinge."
+  },
+  {
+    "id": "eis_4",
+    "name": "EisNova",
+    "element": "Eis",
+    "mana_cost": 32,
+    "cooldown_seconds": 10.0,
+    "power": 48,
+    "effect": "area",
+    "description": "Bündelt eismagie zu einem nova."
+  },
+  {
+    "id": "sturm_1",
+    "name": "SturmStoß",
+    "element": "Sturm",
+    "mana_cost": 14,
+    "cooldown_seconds": 2.5,
+    "power": 21,
+    "effect": "projectile",
+    "description": "Bündelt sturmmagie zu einem stoß."
+  },
+  {
+    "id": "sturm_2",
+    "name": "SturmSchild",
+    "element": "Sturm",
+    "mana_cost": 20,
+    "cooldown_seconds": 5.0,
+    "power": 30,
+    "effect": "shield",
+    "description": "Bündelt sturmmagie zu einem schild."
+  },
+  {
+    "id": "sturm_3",
+    "name": "SturmKlinge",
+    "element": "Sturm",
+    "mana_cost": 26,
+    "cooldown_seconds": 7.5,
+    "power": 39,
+    "effect": "melee_arc",
+    "description": "Bündelt sturmmagie zu einem klinge."
+  },
+  {
+    "id": "sturm_4",
+    "name": "SturmNova",
+    "element": "Sturm",
+    "mana_cost": 32,
+    "cooldown_seconds": 10.0,
+    "power": 48,
+    "effect": "area",
+    "description": "Bündelt sturmmagie zu einem nova."
+  },
+  {
+    "id": "erde_1",
+    "name": "ErdeStoß",
+    "element": "Erde",
+    "mana_cost": 14,
+    "cooldown_seconds": 2.5,
+    "power": 21,
+    "effect": "projectile",
+    "description": "Bündelt erdemagie zu einem stoß."
+  },
+  {
+    "id": "erde_2",
+    "name": "ErdeSchild",
+    "element": "Erde",
+    "mana_cost": 20,
+    "cooldown_seconds": 5.0,
+    "power": 30,
+    "effect": "shield",
+    "description": "Bündelt erdemagie zu einem schild."
+  },
+  {
+    "id": "erde_3",
+    "name": "ErdeKlinge",
+    "element": "Erde",
+    "mana_cost": 26,
+    "cooldown_seconds": 7.5,
+    "power": 39,
+    "effect": "melee_arc",
+    "description": "Bündelt erdemagie zu einem klinge."
+  },
+  {
+    "id": "erde_4",
+    "name": "ErdeNova",
+    "element": "Erde",
+    "mana_cost": 32,
+    "cooldown_seconds": 10.0,
+    "power": 48,
+    "effect": "area",
+    "description": "Bündelt erdemagie zu einem nova."
+  },
+  {
+    "id": "licht_1",
+    "name": "LichtStoß",
+    "element": "Licht",
+    "mana_cost": 14,
+    "cooldown_seconds": 2.5,
+    "power": 21,
+    "effect": "projectile",
+    "description": "Bündelt lichtmagie zu einem stoß."
+  },
+  {
+    "id": "licht_2",
+    "name": "LichtSchild",
+    "element": "Licht",
+    "mana_cost": 20,
+    "cooldown_seconds": 5.0,
+    "power": 30,
+    "effect": "shield",
+    "description": "Bündelt lichtmagie zu einem schild."
+  },
+  {
+    "id": "licht_3",
+    "name": "LichtKlinge",
+    "element": "Licht",
+    "mana_cost": 26,
+    "cooldown_seconds": 7.5,
+    "power": 39,
+    "effect": "melee_arc",
+    "description": "Bündelt lichtmagie zu einem klinge."
+  },
+  {
+    "id": "licht_4",
+    "name": "LichtNova",
+    "element": "Licht",
+    "mana_cost": 32,
+    "cooldown_seconds": 10.0,
+    "power": 48,
+    "effect": "area",
+    "description": "Bündelt lichtmagie zu einem nova."
+  },
+  {
+    "id": "schatten_1",
+    "name": "SchattenStoß",
+    "element": "Schatten",
+    "mana_cost": 14,
+    "cooldown_seconds": 2.5,
+    "power": 21,
+    "effect": "projectile",
+    "description": "Bündelt schattenmagie zu einem stoß."
+  },
+  {
+    "id": "schatten_2",
+    "name": "SchattenSchild",
+    "element": "Schatten",
+    "mana_cost": 20,
+    "cooldown_seconds": 5.0,
+    "power": 30,
+    "effect": "shield",
+    "description": "Bündelt schattenmagie zu einem schild."
+  },
+  {
+    "id": "schatten_3",
+    "name": "SchattenKlinge",
+    "element": "Schatten",
+    "mana_cost": 26,
+    "cooldown_seconds": 7.5,
+    "power": 39,
+    "effect": "melee_arc",
+    "description": "Bündelt schattenmagie zu einem klinge."
+  },
+  {
+    "id": "schatten_4",
+    "name": "SchattenNova",
+    "element": "Schatten",
+    "mana_cost": 32,
+    "cooldown_seconds": 10.0,
+    "power": 48,
+    "effect": "area",
+    "description": "Bündelt schattenmagie zu einem nova."
+  }
+]

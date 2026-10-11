@@ -1,0 +1,61 @@
+{
+  "basis": "V27",
+  "engine": "5.6",
+  "files_before": 235,
+  "cpp": 54,
+  "headers": 57,
+  "source_folders": {
+    "AskirEditor.Target.cs": 1,
+    "Askir.Target.cs": 1,
+    "Askir.cpp": 1,
+    "Askir.h": 1,
+    "Askir.Build.cs": 1,
+    "Equipment": 2,
+    "Morale": 2,
+    "Demo": 2,
+    "Core": 3,
+    "Inventory": 3,
+    "Exploration": 2,
+    "Crafting": 2,
+    "Camp": 2,
+    "Travel": 2,
+    "Interaction": 4,
+    "Trade": 2,
+    "AI": 6,
+    "Save": 2,
+    "Animation": 6,
+    "Quest": 5,
+    "Game": 3,
+    "Combat": 5,
+    "Characters": 7,
+    "Simulation": 6,
+    "Dialogue": 1,
+    "Social": 6,
+    "Progression": 2,
+    "Companion": 2,
+    "World": 12,
+    "Survival": 2,
+    "Stealth": 2,
+    "Economy": 10,
+    "NPC": 6
+  },
+  "art_source_extensions": {
+    ".obj": 26,
+    ".glb": 26,
+    ".json": 3
+  },
+  "native_uassets": 0,
+  "umaps": 0,
+  "datatables_native": 0,
+  "plugin_descriptors": [],
+  "config_files": [
+    "Config/DefaultGame.ini",
+    "Config/DefaultInput.ini",
+    "Config/DefaultEngine.ini"
+  ],
+  "known_limits": [
+    "Kein Unreal Editor/UBT verfügbar: keine Kompilierung möglich",
+    "Keine nativen Blueprint-, Level-, SoundCue- oder Niagara-uassets im Ausgangsprojekt",
+    "ArtSource Modelle sind Quelldaten und müssen importiert werden"
+  ]
+}

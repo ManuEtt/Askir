@@ -1,0 +1,1 @@
+Askir V27: Dodge-Schadensimmunität und NPC-Killbelohnungen (XP und optionale Itemdrops). Vollständiges UE5.6-Quellprojekt, unkompiliert. Details: RELEASE_V27_50_SCHRITTE.md und V27_UNREAL_TESTPLAN.md.

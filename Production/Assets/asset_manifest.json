@@ -1,0 +1,5218 @@
+[
+  {
+    "name": "SK_enemy_01",
+    "purpose": "Enemy mesh Grauwolf",
+    "format": "FBX",
+    "path": "Content/Askir/Characters/Enemies",
+    "parameters": {
+      "rig": "humanoid_or_creature",
+      "lods": 3,
+      "collision": "capsule"
+    }
+  },
+  {
+    "name": "SK_enemy_02",
+    "purpose": "Enemy mesh Wegelagerer",
+    "format": "FBX",
+    "path": "Content/Askir/Characters/Enemies",
+    "parameters": {
+      "rig": "humanoid_or_creature",
+      "lods": 3,
+      "collision": "capsule"
+    }
+  },
+  {
+    "name": "SK_enemy_03",
+    "purpose": "Enemy mesh Aschenkriecher",
+    "format": "FBX",
+    "path": "Content/Askir/Characters/Enemies",
+    "parameters": {
+      "rig": "humanoid_or_creature",
+      "lods": 3,
+      "collision": "capsule"
+    }
+  },
+  {
+    "name": "SK_enemy_04",
+    "purpose": "Enemy mesh Nebelgeist",
+    "format": "FBX",
+    "path": "Content/Askir/Characters/Enemies",
+    "parameters": {
+      "rig": "humanoid_or_creature",
+      "lods": 3,
+      "collision": "capsule"
+    }
+  },
+  {
+    "name": "SK_enemy_05",
+    "purpose": "Enemy mesh Knochenwächter",
+    "format": "FBX",
+    "path": "Content/Askir/Characters/Enemies",
+    "parameters": {
+      "rig": "humanoid_or_creature",
+      "lods": 3,
+      "collision": "capsule"
+    }
+  },
+  {
+    "name": "SK_enemy_06",
+    "purpose": "Enemy mesh Sumpfbestie",
+    "format": "FBX",
+    "path": "Content/Askir/Characters/Enemies",
+    "parameters": {
+      "rig": "humanoid_or_creature",
+      "lods": 3,
+      "collision": "capsule"
+    }
+  },
+  {
+    "name": "SK_enemy_07",
+    "purpose": "Enemy mesh Sturmrufer",
+    "format": "FBX",
+    "path": "Content/Askir/Characters/Enemies",
+    "parameters": {
+      "rig": "humanoid_or_creature",
+      "lods": 3,
+      "collision": "capsule"
+    }
+  },
+  {
+    "name": "SK_enemy_08",
+    "purpose": "Enemy mesh Eisgolem",
+    "format": "FBX",
+    "path": "Content/Askir/Characters/Enemies",
+    "parameters": {
+      "rig": "humanoid_or_creature",
+      "lods": 3,
+      "collision": "capsule"
+    }
+  },
+  {
+    "name": "SK_enemy_09",
+    "purpose": "Enemy mesh Schattenjäger",
+    "format": "FBX",
+    "path": "Content/Askir/Characters/Enemies",
+    "parameters": {
+      "rig": "humanoid_or_creature",
+      "lods": 3,
+      "collision": "capsule"
+    }
+  },
+  {
+    "name": "SK_enemy_10",
+    "purpose": "Enemy mesh Glaswächter",
+    "format": "FBX",
+    "path": "Content/Askir/Characters/Enemies",
+    "parameters": {
+      "rig": "humanoid_or_creature",
+      "lods": 3,
+      "collision": "capsule"
+    }
+  },
+  {
+    "name": "SK_enemy_11",
+    "purpose": "Enemy mesh Höhlenkrabbler",
+    "format": "FBX",
+    "path": "Content/Askir/Characters/Enemies",
+    "parameters": {
+      "rig": "humanoid_or_creature",
+      "lods": 3,
+      "collision": "capsule"
+    }
+  },
+  {
+    "name": "SK_enemy_12",
+    "purpose": "Enemy mesh Aschenritter",
+    "format": "FBX",
+    "path": "Content/Askir/Characters/Enemies",
+    "parameters": {
+      "rig": "humanoid_or_creature",
+      "lods": 3,
+      "collision": "capsule"
+    }
+  },
+  {
+    "name": "SK_enemy_13",
+    "purpose": "Enemy mesh Kultmagier",
+    "format": "FBX",
+    "path": "Content/Askir/Characters/Enemies",
+    "parameters": {
+      "rig": "humanoid_or_creature",
+      "lods": 3,
+      "collision": "capsule"
+    }
+  },
+  {
+    "name": "SK_enemy_14",
+    "purpose": "Enemy mesh Waldtroll",
+    "format": "FBX",
+    "path": "Content/Askir/Characters/Enemies",
+    "parameters": {
+      "rig": "humanoid_or_creature",
+      "lods": 3,
+      "collision": "capsule"
+    }
+  },
+  {
+    "name": "SK_enemy_15",
+    "purpose": "Enemy mesh Runenbestie",
+    "format": "FBX",
+    "path": "Content/Askir/Characters/Enemies",
+    "parameters": {
+      "rig": "humanoid_or_creature",
+      "lods": 3,
+      "collision": "capsule"
+    }
+  },
+  {
+    "name": "SK_enemy_16",
+    "purpose": "Enemy mesh Kryptenfürst",
+    "format": "FBX",
+    "path": "Content/Askir/Characters/Enemies",
+    "parameters": {
+      "rig": "humanoid_or_creature",
+      "lods": 3,
+      "collision": "capsule"
+    }
+  },
+  {
+    "name": "Buildings_001",
+    "purpose": "Buildings game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Buildings",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Buildings_002",
+    "purpose": "Buildings game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Buildings",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Buildings_003",
+    "purpose": "Buildings game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Buildings",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Buildings_004",
+    "purpose": "Buildings game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Buildings",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Buildings_005",
+    "purpose": "Buildings game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Buildings",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Buildings_006",
+    "purpose": "Buildings game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Buildings",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Buildings_007",
+    "purpose": "Buildings game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Buildings",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Buildings_008",
+    "purpose": "Buildings game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Buildings",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Buildings_009",
+    "purpose": "Buildings game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Buildings",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Buildings_010",
+    "purpose": "Buildings game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Buildings",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Buildings_011",
+    "purpose": "Buildings game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Buildings",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Buildings_012",
+    "purpose": "Buildings game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Buildings",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Buildings_013",
+    "purpose": "Buildings game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Buildings",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Buildings_014",
+    "purpose": "Buildings game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Buildings",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Buildings_015",
+    "purpose": "Buildings game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Buildings",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Buildings_016",
+    "purpose": "Buildings game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Buildings",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Buildings_017",
+    "purpose": "Buildings game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Buildings",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Buildings_018",
+    "purpose": "Buildings game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Buildings",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Buildings_019",
+    "purpose": "Buildings game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Buildings",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Buildings_020",
+    "purpose": "Buildings game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Buildings",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Buildings_021",
+    "purpose": "Buildings game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Buildings",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Buildings_022",
+    "purpose": "Buildings game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Buildings",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Buildings_023",
+    "purpose": "Buildings game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Buildings",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Buildings_024",
+    "purpose": "Buildings game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Buildings",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Buildings_025",
+    "purpose": "Buildings game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Buildings",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Buildings_026",
+    "purpose": "Buildings game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Buildings",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Buildings_027",
+    "purpose": "Buildings game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Buildings",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Buildings_028",
+    "purpose": "Buildings game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Buildings",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Buildings_029",
+    "purpose": "Buildings game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Buildings",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Buildings_030",
+    "purpose": "Buildings game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Buildings",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Buildings_031",
+    "purpose": "Buildings game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Buildings",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Buildings_032",
+    "purpose": "Buildings game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Buildings",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Buildings_033",
+    "purpose": "Buildings game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Buildings",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Buildings_034",
+    "purpose": "Buildings game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Buildings",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Buildings_035",
+    "purpose": "Buildings game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Buildings",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Nature_001",
+    "purpose": "Nature game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Nature",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Nature_002",
+    "purpose": "Nature game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Nature",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Nature_003",
+    "purpose": "Nature game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Nature",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Nature_004",
+    "purpose": "Nature game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Nature",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Nature_005",
+    "purpose": "Nature game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Nature",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Nature_006",
+    "purpose": "Nature game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Nature",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Nature_007",
+    "purpose": "Nature game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Nature",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Nature_008",
+    "purpose": "Nature game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Nature",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Nature_009",
+    "purpose": "Nature game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Nature",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Nature_010",
+    "purpose": "Nature game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Nature",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Nature_011",
+    "purpose": "Nature game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Nature",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Nature_012",
+    "purpose": "Nature game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Nature",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Nature_013",
+    "purpose": "Nature game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Nature",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Nature_014",
+    "purpose": "Nature game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Nature",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Nature_015",
+    "purpose": "Nature game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Nature",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Nature_016",
+    "purpose": "Nature game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Nature",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Nature_017",
+    "purpose": "Nature game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Nature",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Nature_018",
+    "purpose": "Nature game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Nature",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Nature_019",
+    "purpose": "Nature game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Nature",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Nature_020",
+    "purpose": "Nature game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Nature",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Nature_021",
+    "purpose": "Nature game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Nature",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Nature_022",
+    "purpose": "Nature game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Nature",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Nature_023",
+    "purpose": "Nature game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Nature",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Nature_024",
+    "purpose": "Nature game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Nature",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Nature_025",
+    "purpose": "Nature game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Nature",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Nature_026",
+    "purpose": "Nature game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Nature",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Nature_027",
+    "purpose": "Nature game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Nature",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Nature_028",
+    "purpose": "Nature game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Nature",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Nature_029",
+    "purpose": "Nature game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Nature",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Nature_030",
+    "purpose": "Nature game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Nature",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Nature_031",
+    "purpose": "Nature game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Nature",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Nature_032",
+    "purpose": "Nature game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Nature",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Nature_033",
+    "purpose": "Nature game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Nature",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Nature_034",
+    "purpose": "Nature game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Nature",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Nature_035",
+    "purpose": "Nature game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Nature",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Nature_036",
+    "purpose": "Nature game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Nature",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Nature_037",
+    "purpose": "Nature game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Nature",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Nature_038",
+    "purpose": "Nature game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Nature",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Nature_039",
+    "purpose": "Nature game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Nature",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Nature_040",
+    "purpose": "Nature game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Nature",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Nature_041",
+    "purpose": "Nature game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Nature",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Nature_042",
+    "purpose": "Nature game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Nature",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Nature_043",
+    "purpose": "Nature game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Nature",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Nature_044",
+    "purpose": "Nature game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Nature",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Nature_045",
+    "purpose": "Nature game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Nature",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Characters_001",
+    "purpose": "Characters game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Characters",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Characters_002",
+    "purpose": "Characters game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Characters",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Characters_003",
+    "purpose": "Characters game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Characters",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Characters_004",
+    "purpose": "Characters game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Characters",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Characters_005",
+    "purpose": "Characters game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Characters",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Characters_006",
+    "purpose": "Characters game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Characters",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Characters_007",
+    "purpose": "Characters game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Characters",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Characters_008",
+    "purpose": "Characters game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Characters",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Characters_009",
+    "purpose": "Characters game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Characters",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Characters_010",
+    "purpose": "Characters game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Characters",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Characters_011",
+    "purpose": "Characters game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Characters",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Characters_012",
+    "purpose": "Characters game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Characters",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Characters_013",
+    "purpose": "Characters game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Characters",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Characters_014",
+    "purpose": "Characters game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Characters",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Characters_015",
+    "purpose": "Characters game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Characters",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Characters_016",
+    "purpose": "Characters game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Characters",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Characters_017",
+    "purpose": "Characters game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Characters",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Characters_018",
+    "purpose": "Characters game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Characters",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Characters_019",
+    "purpose": "Characters game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Characters",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Characters_020",
+    "purpose": "Characters game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Characters",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Characters_021",
+    "purpose": "Characters game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Characters",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Characters_022",
+    "purpose": "Characters game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Characters",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Characters_023",
+    "purpose": "Characters game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Characters",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Characters_024",
+    "purpose": "Characters game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Characters",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_001",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_002",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_003",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_004",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_005",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_006",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_007",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_008",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_009",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_010",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_011",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_012",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_013",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_014",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_015",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_016",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_017",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_018",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_019",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_020",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_021",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_022",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_023",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_024",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_025",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_026",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_027",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_028",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_029",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_030",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_031",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_032",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_033",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_034",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_035",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_036",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_037",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_038",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_039",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_040",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_041",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_042",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_043",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_044",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_045",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_046",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_047",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_048",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_049",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_050",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_051",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_052",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_053",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_054",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_055",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_056",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_057",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_058",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_059",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_060",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_061",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_062",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_063",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_064",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_065",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_066",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_067",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_068",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_069",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_070",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_071",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Animations_072",
+    "purpose": "Animations game asset",
+    "format": "FBX",
+    "path": "Content/Askir/Animations",
+    "parameters": {
+      "skeleton": "SK_Humanoid",
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "Textures_001",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_002",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_003",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_004",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_005",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_006",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_007",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_008",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_009",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_010",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_011",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_012",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_013",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_014",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_015",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_016",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_017",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_018",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_019",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_020",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_021",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_022",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_023",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_024",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_025",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_026",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_027",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_028",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_029",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_030",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_031",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_032",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_033",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_034",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_035",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_036",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_037",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_038",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_039",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_040",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_041",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_042",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_043",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_044",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_045",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_046",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_047",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_048",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_049",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_050",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_051",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_052",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_053",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_054",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_055",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_056",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_057",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_058",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_059",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_060",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_061",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_062",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_063",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_064",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_065",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_066",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_067",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_068",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_069",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_070",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_071",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_072",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_073",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_074",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_075",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_076",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_077",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_078",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_079",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_080",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_081",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_082",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_083",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_084",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_085",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_086",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_087",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_088",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_089",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Textures_090",
+    "purpose": "Textures game asset",
+    "format": "PNG",
+    "path": "Content/Askir/Textures",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": "2048",
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "UI_001",
+    "purpose": "UI game asset",
+    "format": "PNG",
+    "path": "Content/Askir/UI",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "UI_002",
+    "purpose": "UI game asset",
+    "format": "PNG",
+    "path": "Content/Askir/UI",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "UI_003",
+    "purpose": "UI game asset",
+    "format": "PNG",
+    "path": "Content/Askir/UI",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "UI_004",
+    "purpose": "UI game asset",
+    "format": "PNG",
+    "path": "Content/Askir/UI",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "UI_005",
+    "purpose": "UI game asset",
+    "format": "PNG",
+    "path": "Content/Askir/UI",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "UI_006",
+    "purpose": "UI game asset",
+    "format": "PNG",
+    "path": "Content/Askir/UI",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "UI_007",
+    "purpose": "UI game asset",
+    "format": "PNG",
+    "path": "Content/Askir/UI",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "UI_008",
+    "purpose": "UI game asset",
+    "format": "PNG",
+    "path": "Content/Askir/UI",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "UI_009",
+    "purpose": "UI game asset",
+    "format": "PNG",
+    "path": "Content/Askir/UI",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "UI_010",
+    "purpose": "UI game asset",
+    "format": "PNG",
+    "path": "Content/Askir/UI",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "UI_011",
+    "purpose": "UI game asset",
+    "format": "PNG",
+    "path": "Content/Askir/UI",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "UI_012",
+    "purpose": "UI game asset",
+    "format": "PNG",
+    "path": "Content/Askir/UI",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "UI_013",
+    "purpose": "UI game asset",
+    "format": "PNG",
+    "path": "Content/Askir/UI",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "UI_014",
+    "purpose": "UI game asset",
+    "format": "PNG",
+    "path": "Content/Askir/UI",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "UI_015",
+    "purpose": "UI game asset",
+    "format": "PNG",
+    "path": "Content/Askir/UI",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "UI_016",
+    "purpose": "UI game asset",
+    "format": "PNG",
+    "path": "Content/Askir/UI",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "UI_017",
+    "purpose": "UI game asset",
+    "format": "PNG",
+    "path": "Content/Askir/UI",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "UI_018",
+    "purpose": "UI game asset",
+    "format": "PNG",
+    "path": "Content/Askir/UI",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "UI_019",
+    "purpose": "UI game asset",
+    "format": "PNG",
+    "path": "Content/Askir/UI",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "UI_020",
+    "purpose": "UI game asset",
+    "format": "PNG",
+    "path": "Content/Askir/UI",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "UI_021",
+    "purpose": "UI game asset",
+    "format": "PNG",
+    "path": "Content/Askir/UI",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "UI_022",
+    "purpose": "UI game asset",
+    "format": "PNG",
+    "path": "Content/Askir/UI",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "UI_023",
+    "purpose": "UI game asset",
+    "format": "PNG",
+    "path": "Content/Askir/UI",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "UI_024",
+    "purpose": "UI game asset",
+    "format": "PNG",
+    "path": "Content/Askir/UI",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "UI_025",
+    "purpose": "UI game asset",
+    "format": "PNG",
+    "path": "Content/Askir/UI",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "UI_026",
+    "purpose": "UI game asset",
+    "format": "PNG",
+    "path": "Content/Askir/UI",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "UI_027",
+    "purpose": "UI game asset",
+    "format": "PNG",
+    "path": "Content/Askir/UI",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "UI_028",
+    "purpose": "UI game asset",
+    "format": "PNG",
+    "path": "Content/Askir/UI",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "UI_029",
+    "purpose": "UI game asset",
+    "format": "PNG",
+    "path": "Content/Askir/UI",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "UI_030",
+    "purpose": "UI game asset",
+    "format": "PNG",
+    "path": "Content/Askir/UI",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "UI_031",
+    "purpose": "UI game asset",
+    "format": "PNG",
+    "path": "Content/Askir/UI",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "UI_032",
+    "purpose": "UI game asset",
+    "format": "PNG",
+    "path": "Content/Askir/UI",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "UI_033",
+    "purpose": "UI game asset",
+    "format": "PNG",
+    "path": "Content/Askir/UI",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "UI_034",
+    "purpose": "UI game asset",
+    "format": "PNG",
+    "path": "Content/Askir/UI",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "UI_035",
+    "purpose": "UI game asset",
+    "format": "PNG",
+    "path": "Content/Askir/UI",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": "PBR"
+    }
+  },
+  {
+    "name": "Audio_SFX_001",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_002",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_003",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_004",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_005",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_006",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_007",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_008",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_009",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_010",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_011",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_012",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_013",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_014",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_015",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_016",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_017",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_018",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_019",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_020",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_021",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_022",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_023",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_024",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_025",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_026",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_027",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_028",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_029",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_030",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_031",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_032",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_033",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_034",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_035",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_036",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_037",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_038",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_039",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_040",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_041",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_042",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_043",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_044",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_045",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_046",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_047",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_048",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_049",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_050",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_051",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_052",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_053",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_054",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_055",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_056",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_057",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_058",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_059",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_060",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_061",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_062",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_063",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_064",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_065",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_066",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_067",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_068",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_069",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_070",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_071",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_072",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_073",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_074",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_SFX_075",
+    "purpose": "Audio/SFX game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/SFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_Music_001",
+    "purpose": "Audio/Music game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/Music",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_Music_002",
+    "purpose": "Audio/Music game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/Music",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_Music_003",
+    "purpose": "Audio/Music game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/Music",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_Music_004",
+    "purpose": "Audio/Music game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/Music",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_Music_005",
+    "purpose": "Audio/Music game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/Music",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_Music_006",
+    "purpose": "Audio/Music game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/Music",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_Music_007",
+    "purpose": "Audio/Music game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/Music",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_Music_008",
+    "purpose": "Audio/Music game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/Music",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_Music_009",
+    "purpose": "Audio/Music game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/Music",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_Music_010",
+    "purpose": "Audio/Music game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/Music",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_Music_011",
+    "purpose": "Audio/Music game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/Music",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_Music_012",
+    "purpose": "Audio/Music game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/Music",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_Music_013",
+    "purpose": "Audio/Music game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/Music",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_Music_014",
+    "purpose": "Audio/Music game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/Music",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_Music_015",
+    "purpose": "Audio/Music game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/Music",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "Audio_Music_016",
+    "purpose": "Audio/Music game asset",
+    "format": "WAV",
+    "path": "Content/Askir/Audio/Music",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": "48kHz PCM",
+      "shader": null
+    }
+  },
+  {
+    "name": "VFX_001",
+    "purpose": "VFX game asset",
+    "format": "Niagara",
+    "path": "Content/Askir/VFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "VFX_002",
+    "purpose": "VFX game asset",
+    "format": "Niagara",
+    "path": "Content/Askir/VFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "VFX_003",
+    "purpose": "VFX game asset",
+    "format": "Niagara",
+    "path": "Content/Askir/VFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "VFX_004",
+    "purpose": "VFX game asset",
+    "format": "Niagara",
+    "path": "Content/Askir/VFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "VFX_005",
+    "purpose": "VFX game asset",
+    "format": "Niagara",
+    "path": "Content/Askir/VFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "VFX_006",
+    "purpose": "VFX game asset",
+    "format": "Niagara",
+    "path": "Content/Askir/VFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "VFX_007",
+    "purpose": "VFX game asset",
+    "format": "Niagara",
+    "path": "Content/Askir/VFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "VFX_008",
+    "purpose": "VFX game asset",
+    "format": "Niagara",
+    "path": "Content/Askir/VFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "VFX_009",
+    "purpose": "VFX game asset",
+    "format": "Niagara",
+    "path": "Content/Askir/VFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "VFX_010",
+    "purpose": "VFX game asset",
+    "format": "Niagara",
+    "path": "Content/Askir/VFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "VFX_011",
+    "purpose": "VFX game asset",
+    "format": "Niagara",
+    "path": "Content/Askir/VFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "VFX_012",
+    "purpose": "VFX game asset",
+    "format": "Niagara",
+    "path": "Content/Askir/VFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "VFX_013",
+    "purpose": "VFX game asset",
+    "format": "Niagara",
+    "path": "Content/Askir/VFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "VFX_014",
+    "purpose": "VFX game asset",
+    "format": "Niagara",
+    "path": "Content/Askir/VFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "VFX_015",
+    "purpose": "VFX game asset",
+    "format": "Niagara",
+    "path": "Content/Askir/VFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "VFX_016",
+    "purpose": "VFX game asset",
+    "format": "Niagara",
+    "path": "Content/Askir/VFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "VFX_017",
+    "purpose": "VFX game asset",
+    "format": "Niagara",
+    "path": "Content/Askir/VFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "VFX_018",
+    "purpose": "VFX game asset",
+    "format": "Niagara",
+    "path": "Content/Askir/VFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "VFX_019",
+    "purpose": "VFX game asset",
+    "format": "Niagara",
+    "path": "Content/Askir/VFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "VFX_020",
+    "purpose": "VFX game asset",
+    "format": "Niagara",
+    "path": "Content/Askir/VFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "VFX_021",
+    "purpose": "VFX game asset",
+    "format": "Niagara",
+    "path": "Content/Askir/VFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "VFX_022",
+    "purpose": "VFX game asset",
+    "format": "Niagara",
+    "path": "Content/Askir/VFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "VFX_023",
+    "purpose": "VFX game asset",
+    "format": "Niagara",
+    "path": "Content/Askir/VFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "VFX_024",
+    "purpose": "VFX game asset",
+    "format": "Niagara",
+    "path": "Content/Askir/VFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "VFX_025",
+    "purpose": "VFX game asset",
+    "format": "Niagara",
+    "path": "Content/Askir/VFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "VFX_026",
+    "purpose": "VFX game asset",
+    "format": "Niagara",
+    "path": "Content/Askir/VFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "VFX_027",
+    "purpose": "VFX game asset",
+    "format": "Niagara",
+    "path": "Content/Askir/VFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  },
+  {
+    "name": "VFX_028",
+    "purpose": "VFX game asset",
+    "format": "Niagara",
+    "path": "Content/Askir/VFX",
+    "parameters": {
+      "skeleton": null,
+      "texture_size": null,
+      "audio": null,
+      "shader": null
+    }
+  }
+]

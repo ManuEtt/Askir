@@ -1,0 +1,722 @@
+[
+  {
+    "id": "L_01",
+    "name": "Dornfeld",
+    "biome": "village",
+    "dimensions_m": [
+      1200,
+      1200
+    ],
+    "gameplay_goal": "Sprich mit Mara und untersuche den Brunnen",
+    "story_chapter": 1,
+    "zones": [
+      "entry",
+      "hub",
+      "encounter",
+      "secret",
+      "boss_arena"
+    ],
+    "placements": [
+      {
+        "id": "Dornfeld_NPC_0",
+        "type": "npc",
+        "archetype": "Mara",
+        "x": 0,
+        "y": 0,
+        "z": 100
+      },
+      {
+        "id": "Dornfeld_NPC_1",
+        "type": "npc",
+        "archetype": "Rurik",
+        "x": 500,
+        "y": 270,
+        "z": 100
+      },
+      {
+        "id": "Dornfeld_NPC_2",
+        "type": "npc",
+        "archetype": "Torben",
+        "x": 1000,
+        "y": 540,
+        "z": 100
+      },
+      {
+        "id": "Dornfeld_NPC_3",
+        "type": "npc",
+        "archetype": "Mara",
+        "x": 1500,
+        "y": 810,
+        "z": 100
+      },
+      {
+        "id": "Dornfeld_Enemy_0",
+        "type": "enemy",
+        "archetype": "enemy_02",
+        "x": 1000,
+        "y": -500,
+        "z": 100
+      },
+      {
+        "id": "Dornfeld_Enemy_1",
+        "type": "enemy",
+        "archetype": "enemy_03",
+        "x": 1350,
+        "y": -350,
+        "z": 100
+      },
+      {
+        "id": "Dornfeld_Enemy_2",
+        "type": "enemy",
+        "archetype": "enemy_04",
+        "x": 1700,
+        "y": -200,
+        "z": 100
+      },
+      {
+        "id": "Dornfeld_Enemy_3",
+        "type": "enemy",
+        "archetype": "enemy_05",
+        "x": 2050,
+        "y": -50,
+        "z": 100
+      },
+      {
+        "id": "Dornfeld_Enemy_4",
+        "type": "enemy",
+        "archetype": "enemy_06",
+        "x": 2400,
+        "y": 100,
+        "z": 100
+      },
+      {
+        "id": "Dornfeld_Enemy_5",
+        "type": "enemy",
+        "archetype": "enemy_07",
+        "x": 2750,
+        "y": 250,
+        "z": 100
+      },
+      {
+        "id": "Dornfeld_Loot_0",
+        "type": "loot",
+        "archetype": "item_002",
+        "x": -200,
+        "y": 700,
+        "z": 100
+      },
+      {
+        "id": "Dornfeld_Loot_1",
+        "type": "loot",
+        "archetype": "item_003",
+        "x": 0,
+        "y": 700,
+        "z": 100
+      },
+      {
+        "id": "Dornfeld_Loot_2",
+        "type": "loot",
+        "archetype": "item_004",
+        "x": 200,
+        "y": 700,
+        "z": 100
+      },
+      {
+        "id": "Dornfeld_Loot_3",
+        "type": "loot",
+        "archetype": "item_005",
+        "x": 400,
+        "y": 700,
+        "z": 100
+      },
+      {
+        "id": "Dornfeld_Loot_4",
+        "type": "loot",
+        "archetype": "item_006",
+        "x": 600,
+        "y": 700,
+        "z": 100
+      }
+    ],
+    "navigation": "NavMeshBoundsVolume required",
+    "boss": "enemy_04",
+    "loot_budget": 5,
+    "world_partition": false
+  },
+  {
+    "id": "L_02",
+    "name": "Grauwald",
+    "biome": "forest",
+    "dimensions_m": [
+      1200,
+      1200
+    ],
+    "gameplay_goal": "Finde den verlorenen Pfad",
+    "story_chapter": 2,
+    "zones": [
+      "entry",
+      "hub",
+      "encounter",
+      "secret",
+      "boss_arena"
+    ],
+    "placements": [
+      {
+        "id": "Grauwald_NPC_0",
+        "type": "npc",
+        "archetype": "Mara",
+        "x": 0,
+        "y": 0,
+        "z": 100
+      },
+      {
+        "id": "Grauwald_NPC_1",
+        "type": "npc",
+        "archetype": "Rurik",
+        "x": 500,
+        "y": 270,
+        "z": 100
+      },
+      {
+        "id": "Grauwald_NPC_2",
+        "type": "npc",
+        "archetype": "Torben",
+        "x": 1000,
+        "y": 540,
+        "z": 100
+      },
+      {
+        "id": "Grauwald_NPC_3",
+        "type": "npc",
+        "archetype": "Mara",
+        "x": 1500,
+        "y": 810,
+        "z": 100
+      },
+      {
+        "id": "Grauwald_Enemy_0",
+        "type": "enemy",
+        "archetype": "enemy_03",
+        "x": 1000,
+        "y": -500,
+        "z": 100
+      },
+      {
+        "id": "Grauwald_Enemy_1",
+        "type": "enemy",
+        "archetype": "enemy_04",
+        "x": 1350,
+        "y": -350,
+        "z": 100
+      },
+      {
+        "id": "Grauwald_Enemy_2",
+        "type": "enemy",
+        "archetype": "enemy_05",
+        "x": 1700,
+        "y": -200,
+        "z": 100
+      },
+      {
+        "id": "Grauwald_Enemy_3",
+        "type": "enemy",
+        "archetype": "enemy_06",
+        "x": 2050,
+        "y": -50,
+        "z": 100
+      },
+      {
+        "id": "Grauwald_Enemy_4",
+        "type": "enemy",
+        "archetype": "enemy_07",
+        "x": 2400,
+        "y": 100,
+        "z": 100
+      },
+      {
+        "id": "Grauwald_Enemy_5",
+        "type": "enemy",
+        "archetype": "enemy_08",
+        "x": 2750,
+        "y": 250,
+        "z": 100
+      },
+      {
+        "id": "Grauwald_Loot_0",
+        "type": "loot",
+        "archetype": "item_003",
+        "x": -200,
+        "y": 700,
+        "z": 100
+      },
+      {
+        "id": "Grauwald_Loot_1",
+        "type": "loot",
+        "archetype": "item_004",
+        "x": 0,
+        "y": 700,
+        "z": 100
+      },
+      {
+        "id": "Grauwald_Loot_2",
+        "type": "loot",
+        "archetype": "item_005",
+        "x": 200,
+        "y": 700,
+        "z": 100
+      },
+      {
+        "id": "Grauwald_Loot_3",
+        "type": "loot",
+        "archetype": "item_006",
+        "x": 400,
+        "y": 700,
+        "z": 100
+      },
+      {
+        "id": "Grauwald_Loot_4",
+        "type": "loot",
+        "archetype": "item_007",
+        "x": 600,
+        "y": 700,
+        "z": 100
+      }
+    ],
+    "navigation": "NavMeshBoundsVolume required",
+    "boss": "enemy_07",
+    "loot_budget": 5,
+    "world_partition": true
+  },
+  {
+    "id": "L_03",
+    "name": "Krypta der Sieben",
+    "biome": "dungeon",
+    "dimensions_m": [
+      1200,
+      1200
+    ],
+    "gameplay_goal": "Besiege den Kryptenfürsten",
+    "story_chapter": 3,
+    "zones": [
+      "entry",
+      "hub",
+      "encounter",
+      "secret",
+      "boss_arena"
+    ],
+    "placements": [
+      {
+        "id": "Krypta der Sieben_NPC_0",
+        "type": "npc",
+        "archetype": "Mara",
+        "x": 0,
+        "y": 0,
+        "z": 100
+      },
+      {
+        "id": "Krypta der Sieben_NPC_1",
+        "type": "npc",
+        "archetype": "Rurik",
+        "x": 500,
+        "y": 270,
+        "z": 100
+      },
+      {
+        "id": "Krypta der Sieben_NPC_2",
+        "type": "npc",
+        "archetype": "Torben",
+        "x": 1000,
+        "y": 540,
+        "z": 100
+      },
+      {
+        "id": "Krypta der Sieben_NPC_3",
+        "type": "npc",
+        "archetype": "Mara",
+        "x": 1500,
+        "y": 810,
+        "z": 100
+      },
+      {
+        "id": "Krypta der Sieben_Enemy_0",
+        "type": "enemy",
+        "archetype": "enemy_04",
+        "x": 1000,
+        "y": -500,
+        "z": 100
+      },
+      {
+        "id": "Krypta der Sieben_Enemy_1",
+        "type": "enemy",
+        "archetype": "enemy_05",
+        "x": 1350,
+        "y": -350,
+        "z": 100
+      },
+      {
+        "id": "Krypta der Sieben_Enemy_2",
+        "type": "enemy",
+        "archetype": "enemy_06",
+        "x": 1700,
+        "y": -200,
+        "z": 100
+      },
+      {
+        "id": "Krypta der Sieben_Enemy_3",
+        "type": "enemy",
+        "archetype": "enemy_07",
+        "x": 2050,
+        "y": -50,
+        "z": 100
+      },
+      {
+        "id": "Krypta der Sieben_Enemy_4",
+        "type": "enemy",
+        "archetype": "enemy_08",
+        "x": 2400,
+        "y": 100,
+        "z": 100
+      },
+      {
+        "id": "Krypta der Sieben_Enemy_5",
+        "type": "enemy",
+        "archetype": "enemy_09",
+        "x": 2750,
+        "y": 250,
+        "z": 100
+      },
+      {
+        "id": "Krypta der Sieben_Loot_0",
+        "type": "loot",
+        "archetype": "item_004",
+        "x": -200,
+        "y": 700,
+        "z": 100
+      },
+      {
+        "id": "Krypta der Sieben_Loot_1",
+        "type": "loot",
+        "archetype": "item_005",
+        "x": 0,
+        "y": 700,
+        "z": 100
+      },
+      {
+        "id": "Krypta der Sieben_Loot_2",
+        "type": "loot",
+        "archetype": "item_006",
+        "x": 200,
+        "y": 700,
+        "z": 100
+      },
+      {
+        "id": "Krypta der Sieben_Loot_3",
+        "type": "loot",
+        "archetype": "item_007",
+        "x": 400,
+        "y": 700,
+        "z": 100
+      },
+      {
+        "id": "Krypta der Sieben_Loot_4",
+        "type": "loot",
+        "archetype": "item_008",
+        "x": 600,
+        "y": 700,
+        "z": 100
+      }
+    ],
+    "navigation": "NavMeshBoundsVolume required",
+    "boss": "enemy_10",
+    "loot_budget": 5,
+    "world_partition": false
+  },
+  {
+    "id": "L_04",
+    "name": "Falkenwacht",
+    "biome": "city",
+    "dimensions_m": [
+      1200,
+      1200
+    ],
+    "gameplay_goal": "Entscheide über den Handelspakt",
+    "story_chapter": 4,
+    "zones": [
+      "entry",
+      "hub",
+      "encounter",
+      "secret",
+      "boss_arena"
+    ],
+    "placements": [
+      {
+        "id": "Falkenwacht_NPC_0",
+        "type": "npc",
+        "archetype": "Mara",
+        "x": 0,
+        "y": 0,
+        "z": 100
+      },
+      {
+        "id": "Falkenwacht_NPC_1",
+        "type": "npc",
+        "archetype": "Rurik",
+        "x": 500,
+        "y": 270,
+        "z": 100
+      },
+      {
+        "id": "Falkenwacht_NPC_2",
+        "type": "npc",
+        "archetype": "Torben",
+        "x": 1000,
+        "y": 540,
+        "z": 100
+      },
+      {
+        "id": "Falkenwacht_NPC_3",
+        "type": "npc",
+        "archetype": "Mara",
+        "x": 1500,
+        "y": 810,
+        "z": 100
+      },
+      {
+        "id": "Falkenwacht_Enemy_0",
+        "type": "enemy",
+        "archetype": "enemy_05",
+        "x": 1000,
+        "y": -500,
+        "z": 100
+      },
+      {
+        "id": "Falkenwacht_Enemy_1",
+        "type": "enemy",
+        "archetype": "enemy_06",
+        "x": 1350,
+        "y": -350,
+        "z": 100
+      },
+      {
+        "id": "Falkenwacht_Enemy_2",
+        "type": "enemy",
+        "archetype": "enemy_07",
+        "x": 1700,
+        "y": -200,
+        "z": 100
+      },
+      {
+        "id": "Falkenwacht_Enemy_3",
+        "type": "enemy",
+        "archetype": "enemy_08",
+        "x": 2050,
+        "y": -50,
+        "z": 100
+      },
+      {
+        "id": "Falkenwacht_Enemy_4",
+        "type": "enemy",
+        "archetype": "enemy_09",
+        "x": 2400,
+        "y": 100,
+        "z": 100
+      },
+      {
+        "id": "Falkenwacht_Enemy_5",
+        "type": "enemy",
+        "archetype": "enemy_10",
+        "x": 2750,
+        "y": 250,
+        "z": 100
+      },
+      {
+        "id": "Falkenwacht_Loot_0",
+        "type": "loot",
+        "archetype": "item_005",
+        "x": -200,
+        "y": 700,
+        "z": 100
+      },
+      {
+        "id": "Falkenwacht_Loot_1",
+        "type": "loot",
+        "archetype": "item_006",
+        "x": 0,
+        "y": 700,
+        "z": 100
+      },
+      {
+        "id": "Falkenwacht_Loot_2",
+        "type": "loot",
+        "archetype": "item_007",
+        "x": 200,
+        "y": 700,
+        "z": 100
+      },
+      {
+        "id": "Falkenwacht_Loot_3",
+        "type": "loot",
+        "archetype": "item_008",
+        "x": 400,
+        "y": 700,
+        "z": 100
+      },
+      {
+        "id": "Falkenwacht_Loot_4",
+        "type": "loot",
+        "archetype": "item_009",
+        "x": 600,
+        "y": 700,
+        "z": 100
+      }
+    ],
+    "navigation": "NavMeshBoundsVolume required",
+    "boss": "enemy_13",
+    "loot_budget": 5,
+    "world_partition": true
+  },
+  {
+    "id": "L_05",
+    "name": "Aschenfeste",
+    "biome": "fortress",
+    "dimensions_m": [
+      1200,
+      1200
+    ],
+    "gameplay_goal": "Stelle den Anführer des Aschenzirkels",
+    "story_chapter": 5,
+    "zones": [
+      "entry",
+      "hub",
+      "encounter",
+      "secret",
+      "boss_arena"
+    ],
+    "placements": [
+      {
+        "id": "Aschenfeste_NPC_0",
+        "type": "npc",
+        "archetype": "Mara",
+        "x": 0,
+        "y": 0,
+        "z": 100
+      },
+      {
+        "id": "Aschenfeste_NPC_1",
+        "type": "npc",
+        "archetype": "Rurik",
+        "x": 500,
+        "y": 270,
+        "z": 100
+      },
+      {
+        "id": "Aschenfeste_NPC_2",
+        "type": "npc",
+        "archetype": "Torben",
+        "x": 1000,
+        "y": 540,
+        "z": 100
+      },
+      {
+        "id": "Aschenfeste_NPC_3",
+        "type": "npc",
+        "archetype": "Mara",
+        "x": 1500,
+        "y": 810,
+        "z": 100
+      },
+      {
+        "id": "Aschenfeste_Enemy_0",
+        "type": "enemy",
+        "archetype": "enemy_06",
+        "x": 1000,
+        "y": -500,
+        "z": 100
+      },
+      {
+        "id": "Aschenfeste_Enemy_1",
+        "type": "enemy",
+        "archetype": "enemy_07",
+        "x": 1350,
+        "y": -350,
+        "z": 100
+      },
+      {
+        "id": "Aschenfeste_Enemy_2",
+        "type": "enemy",
+        "archetype": "enemy_08",
+        "x": 1700,
+        "y": -200,
+        "z": 100
+      },
+      {
+        "id": "Aschenfeste_Enemy_3",
+        "type": "enemy",
+        "archetype": "enemy_09",
+        "x": 2050,
+        "y": -50,
+        "z": 100
+      },
+      {
+        "id": "Aschenfeste_Enemy_4",
+        "type": "enemy",
+        "archetype": "enemy_10",
+        "x": 2400,
+        "y": 100,
+        "z": 100
+      },
+      {
+        "id": "Aschenfeste_Enemy_5",
+        "type": "enemy",
+        "archetype": "enemy_11",
+        "x": 2750,
+        "y": 250,
+        "z": 100
+      },
+      {
+        "id": "Aschenfeste_Loot_0",
+        "type": "loot",
+        "archetype": "item_006",
+        "x": -200,
+        "y": 700,
+        "z": 100
+      },
+      {
+        "id": "Aschenfeste_Loot_1",
+        "type": "loot",
+        "archetype": "item_007",
+        "x": 0,
+        "y": 700,
+        "z": 100
+      },
+      {
+        "id": "Aschenfeste_Loot_2",
+        "type": "loot",
+        "archetype": "item_008",
+        "x": 200,
+        "y": 700,
+        "z": 100
+      },
+      {
+        "id": "Aschenfeste_Loot_3",
+        "type": "loot",
+        "archetype": "item_009",
+        "x": 400,
+        "y": 700,
+        "z": 100
+      },
+      {
+        "id": "Aschenfeste_Loot_4",
+        "type": "loot",
+        "archetype": "item_010",
+        "x": 600,
+        "y": 700,
+        "z": 100
+      }
+    ],
+    "navigation": "NavMeshBoundsVolume required",
+    "boss": "enemy_16",
+    "loot_budget": 5,
+    "world_partition": false
+  }
+]

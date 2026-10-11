@@ -22,6 +22,9 @@ public:
  UFUNCTION(BlueprintPure,Category="Askir|Quest") TArray<FAskirQuestObjective> GetObjectivesForQuest(FName QuestID)const;
  UPROPERTY(BlueprintAssignable,Category="Askir|Quest") FAskirQuestProgressChanged OnQuestProgressChanged;
  UPROPERTY(BlueprintAssignable,Category="Askir|Quest") FAskirQuestCompleted OnQuestCompleted;
+ UFUNCTION(BlueprintCallable,Category="Askir|Quest") bool TurnInQuestWithRewards(UAskirQuestData* Quest);
+ UFUNCTION(BlueprintPure,Category="Askir|Quest") bool HasClaimedReward(FName QuestID)const;
+ UPROPERTY(EditAnywhere,BlueprintReadWrite,SaveGame,Category="Askir|Quest") TSet<FName> ClaimedRewards;
  UPROPERTY(EditAnywhere,BlueprintReadWrite,SaveGame,Category="Askir|Quest") TMap<FName,EAskirQuestState> QuestStates;
  UPROPERTY(EditAnywhere,BlueprintReadWrite,SaveGame,Category="Askir|Quest") TArray<FAskirQuestObjective> ActiveObjectives;
  UPROPERTY(EditAnywhere,BlueprintReadWrite,SaveGame,Category="Askir|Quest") TMap<FName,FAskirQuestObjectiveList> ObjectivesByQuest;

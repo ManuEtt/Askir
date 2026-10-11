@@ -1,4 +1,9 @@
 #include "Quest/AskirQuestComponent.h"
+#include "Quest/AskirQuestData.h"
+#include "Trade/AskirTradeComponent.h"
+#include "Progression/AskirProgressionComponent.h"
+#include "Inventory/AskirInventoryComponent.h"
+#include "Inventory/AskirItemData.h"
 UAskirQuestComponent::UAskirQuestComponent(){PrimaryComponentTick.bCanEverTick=false;}
 bool UAskirQuestComponent::StartQuest(UAskirQuestData* Quest)
 {
@@ -63,4 +68,32 @@ TArray<FAskirQuestObjective> UAskirQuestComponent::GetObjectivesForQuest(FName Q
 {
  if(const FAskirQuestObjectiveList* List=ObjectivesByQuest.Find(QuestID))return List->Objectives;
  return {};
+}
+
+bool UAskirQuestComponent::HasClaimedReward(FName QuestID)const
+{
+ return !QuestID.IsNone()&&ClaimedRewards.Contains(QuestID);
+}
+bool UAskirQuestComponent::TurnInQuestWithRewards(UAskirQuestData* Quest)
+{
+ if(!IsValid(Quest)||Quest->QuestID.IsNone()||HasClaimedReward(Quest->QuestID)||!AreQuestObjectivesComplete(Quest->QuestID))return false;
+ AActor* Owner=GetOwner();if(!IsValid(Owner))return false;
+ UAskirTradeComponent* Wallet=Owner->FindComponentByClass<UAskirTradeComponent>();
+ UAskirProgressionComponent* Progression=Owner->FindComponentByClass<UAskirProgressionComponent>();
+ UAskirInventoryComponent* Bag=Owner->FindComponentByClass<UAskirInventoryComponent>();
+ if(Quest->GoldReward<0||Quest->ExperienceReward<0||Quest->RewardItemQuantity<0)return false;
+ if(Quest->GoldReward>0&&(!Wallet||int64(Wallet->Gold)+Quest->GoldReward>MAX_int32))return false;
+ if(Quest->ExperienceReward>0&&!Progression)return false;
+ if(Quest->RewardItemQuantity>0&&(!IsValid(Quest->RewardItem)||!Bag))return false;
+ // Preflight completed before mutating quest state; inventory AddItem is currently unbounded.
+ if(Quest->RewardItemQuantity>0&&!Bag->AddItem(Quest->RewardItem,Quest->RewardItemQuantity))return false;
+ if(!CompleteQuest(Quest))
+ {
+  if(Quest->RewardItemQuantity>0)Bag->RemoveItem(Quest->RewardItem,Quest->RewardItemQuantity);
+  return false;
+ }
+ ClaimedRewards.Add(Quest->QuestID);
+ if(Quest->GoldReward>0)Wallet->EarnGold(Quest->GoldReward);
+ if(Quest->ExperienceReward>0)Progression->AwardExperience(Quest->ExperienceReward);
+ return true;
 }

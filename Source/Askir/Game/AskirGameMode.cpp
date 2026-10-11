@@ -15,6 +15,7 @@
 #include "Inventory/AskirInventoryComponent.h"
 #include "Inventory/AskirItemData.h"
 #include "Quest/AskirQuestComponent.h"
+#include "Trade/AskirTradeComponent.h"
 #include "Simulation/AskirSimulationSubsystem.h"
 #include "Kismet/GameplayStatics.h"
 #include "World/AskirVillageDirector.h"
@@ -65,7 +66,9 @@ bool AAskirGameMode::SaveGame(const FString& SlotName)
         Save->SavedActiveObjectives = Player->QuestComponent->ActiveObjectives;
         Save->SavedObjectivesByQuest = Player->QuestComponent->ObjectivesByQuest;
         Save->SavedLegacyActiveQuestID = Player->QuestComponent->LegacyActiveQuestID;
+        Save->SavedClaimedRewards = Player->QuestComponent->ClaimedRewards;
     }
+    if (Player->TradeComponent) Save->SavedPlayerGold=Player->TradeComponent->Gold;
     if (auto* Rep=Player->FindComponentByClass<UAskirReputationComponent>())
         for (const auto& Standing:Rep->Standings)Save->SavedFactionReputation.Add(Standing.Faction,Standing.Reputation);
     if (auto* Dialogue=Player->FindComponentByClass<UAskirDialogueComponent>())
@@ -125,7 +128,9 @@ bool AAskirGameMode::LoadGame(const FString& SlotName)
         Player->QuestComponent->ActiveObjectives = Save->SavedActiveObjectives;
         Player->QuestComponent->ObjectivesByQuest = Save->SavedObjectivesByQuest;
         Player->QuestComponent->LegacyActiveQuestID = Save->SavedLegacyActiveQuestID;
+        Player->QuestComponent->ClaimedRewards = Save->SavedClaimedRewards;
     }
+    if (Player->TradeComponent) Player->TradeComponent->Gold=FMath::Max(0,Save->SavedPlayerGold);
     if (UAskirSimulationSubsystem* Sim = GetWorld()->GetSubsystem<UAskirSimulationSubsystem>())
         Sim->RestoreWorldState(Save->WorldState);
     if (auto* Rep=Player->FindComponentByClass<UAskirReputationComponent>())

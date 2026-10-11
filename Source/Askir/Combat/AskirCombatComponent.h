@@ -13,6 +13,8 @@ public:
     UAskirCombatComponent();
     UFUNCTION(BlueprintCallable) float ApplyDamage(const FAskirDamageInfo& Info);
     UFUNCTION(BlueprintCallable) void Heal(float Amount);
+    UFUNCTION(BlueprintCallable, Category="Askir|Combat") void GrantDodgeInvulnerability(float Duration);
+    UFUNCTION(BlueprintPure, Category="Askir|Combat") bool IsDodgeInvulnerable() const;
     UFUNCTION(BlueprintCallable) void Kill();
     UFUNCTION(BlueprintCallable) void ResetHealth();
     UFUNCTION(BlueprintCallable) void RestoreHealth(float SavedHealth);
@@ -29,4 +31,5 @@ protected:
     UPROPERTY(EditAnywhere) float MagicResistance=0;
 private:
     bool bDead=false;
+    float DodgeInvulnerableUntil=-1.f;
 };

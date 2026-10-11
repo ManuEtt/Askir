@@ -1,0 +1,10 @@
+{
+  "dodge_invulnerability_declared": true,
+  "dodge_damage_gate": true,
+  "dodge_character_hook": true,
+  "xp_award": true,
+  "item_award": true,
+  "once_only": true,
+  "quest_preserved": true,
+  "50_items": true
+}

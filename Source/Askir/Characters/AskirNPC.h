@@ -4,6 +4,7 @@
 #include "Characters/AskirCharacter.h"
 #include "AskirNPC.generated.h"
 
+class UAskirItemData;
 UENUM(BlueprintType)
 enum class EAskirNPCState : uint8
 {
@@ -13,6 +14,7 @@ enum class EAskirNPCState : uint8
     Returning
 };
 
+class UAskirItemData;
 UENUM(BlueprintType)
 enum class EAskirEnemyStyle : uint8
 {
@@ -32,6 +34,11 @@ public:
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Askir|NPC") FText NPCName;
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Askir|Quest") FName DefeatObjectiveID;
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Askir|Rewards", meta=(ClampMin="0")) int32 KillExperience=20;
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Askir|Rewards") TObjectPtr<UAskirItemData> GuaranteedDrop=nullptr;
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Askir|Rewards", meta=(ClampMin="0")) int32 GuaranteedDropQuantity=1;
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Askir|Rewards", meta=(ClampMin="0", ClampMax="1")) float DropChance=1.f;
+    UFUNCTION(BlueprintImplementableEvent, Category="Askir|Rewards") void OnEnemyRewardsGranted(AActor* Recipient, int32 Experience, bool bItemGranted);
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Askir|AI") bool bHostile = false;
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Askir|AI", meta=(ClampMin="0")) float DetectionRadius = 1400.f;
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Askir|AI", meta=(ClampMin="0")) float LoseTargetRadius = 2000.f;
@@ -81,4 +88,5 @@ private:
     float StaggerEndTime = -1.f;
     float NextStaggerAllowedTime = 0.f;
     TWeakObjectPtr<AActor> LastDamageCauser;
+    bool bRewardsGranted=false;
 };

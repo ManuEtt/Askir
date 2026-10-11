@@ -13,7 +13,7 @@ bool AAskirQuestGiver::Interact_Implementation(AActor* Interactor)
  UAskirQuestComponent* Quests=Interactor->FindComponentByClass<UAskirQuestComponent>();if(!Quests)return false;
  const EAskirQuestState State=Quests->GetState(Quest);
  if(State==EAskirQuestState::Inactive||State==EAskirQuestState::Available)return Quests->StartQuest(Quest);
- if(State==EAskirQuestState::Active&&bAllowTurnIn)return Quests->CompleteQuest(Quest);
+ if(State==EAskirQuestState::Active&&bAllowTurnIn)return Quests->TurnInQuestWithRewards(Quest);
  return false;
 }
 FText AAskirQuestGiver::GetInteractionText_Implementation()const

@@ -1,0 +1,602 @@
+[
+  {
+    "id": "item_001",
+    "name": "Armor von Askir 1",
+    "description": "Ein armor-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "armor",
+    "rarity": "uncommon",
+    "value": 10,
+    "stack_max": 1,
+    "weight": 0.35
+  },
+  {
+    "id": "item_002",
+    "name": "Ingredient von Askir 2",
+    "description": "Ein ingredient-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "ingredient",
+    "rarity": "rare",
+    "value": 17,
+    "stack_max": 99,
+    "weight": 0.6
+  },
+  {
+    "id": "item_003",
+    "name": "Consumable von Askir 3",
+    "description": "Ein consumable-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "consumable",
+    "rarity": "epic",
+    "value": 24,
+    "stack_max": 99,
+    "weight": 0.85
+  },
+  {
+    "id": "item_004",
+    "name": "Material von Askir 4",
+    "description": "Ein material-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "material",
+    "rarity": "common",
+    "value": 31,
+    "stack_max": 99,
+    "weight": 1.1
+  },
+  {
+    "id": "item_005",
+    "name": "Quest von Askir 5",
+    "description": "Ein quest-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "quest",
+    "rarity": "uncommon",
+    "value": 38,
+    "stack_max": 99,
+    "weight": 1.35
+  },
+  {
+    "id": "item_006",
+    "name": "Weapon von Askir 6",
+    "description": "Ein weapon-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "weapon",
+    "rarity": "rare",
+    "value": 45,
+    "stack_max": 1,
+    "weight": 1.6
+  },
+  {
+    "id": "item_007",
+    "name": "Armor von Askir 7",
+    "description": "Ein armor-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "armor",
+    "rarity": "epic",
+    "value": 52,
+    "stack_max": 1,
+    "weight": 1.85
+  },
+  {
+    "id": "item_008",
+    "name": "Ingredient von Askir 8",
+    "description": "Ein ingredient-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "ingredient",
+    "rarity": "common",
+    "value": 59,
+    "stack_max": 99,
+    "weight": 0.1
+  },
+  {
+    "id": "item_009",
+    "name": "Consumable von Askir 9",
+    "description": "Ein consumable-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "consumable",
+    "rarity": "uncommon",
+    "value": 66,
+    "stack_max": 99,
+    "weight": 0.35
+  },
+  {
+    "id": "item_010",
+    "name": "Material von Askir 10",
+    "description": "Ein material-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "material",
+    "rarity": "rare",
+    "value": 73,
+    "stack_max": 99,
+    "weight": 0.6
+  },
+  {
+    "id": "item_011",
+    "name": "Quest von Askir 11",
+    "description": "Ein quest-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "quest",
+    "rarity": "epic",
+    "value": 80,
+    "stack_max": 99,
+    "weight": 0.85
+  },
+  {
+    "id": "item_012",
+    "name": "Weapon von Askir 12",
+    "description": "Ein weapon-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "weapon",
+    "rarity": "common",
+    "value": 87,
+    "stack_max": 1,
+    "weight": 1.1
+  },
+  {
+    "id": "item_013",
+    "name": "Armor von Askir 13",
+    "description": "Ein armor-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "armor",
+    "rarity": "uncommon",
+    "value": 94,
+    "stack_max": 1,
+    "weight": 1.35
+  },
+  {
+    "id": "item_014",
+    "name": "Ingredient von Askir 14",
+    "description": "Ein ingredient-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "ingredient",
+    "rarity": "rare",
+    "value": 101,
+    "stack_max": 99,
+    "weight": 1.6
+  },
+  {
+    "id": "item_015",
+    "name": "Consumable von Askir 15",
+    "description": "Ein consumable-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "consumable",
+    "rarity": "epic",
+    "value": 108,
+    "stack_max": 99,
+    "weight": 1.85
+  },
+  {
+    "id": "item_016",
+    "name": "Material von Askir 16",
+    "description": "Ein material-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "material",
+    "rarity": "common",
+    "value": 115,
+    "stack_max": 99,
+    "weight": 0.1
+  },
+  {
+    "id": "item_017",
+    "name": "Quest von Askir 17",
+    "description": "Ein quest-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "quest",
+    "rarity": "uncommon",
+    "value": 122,
+    "stack_max": 99,
+    "weight": 0.35
+  },
+  {
+    "id": "item_018",
+    "name": "Weapon von Askir 18",
+    "description": "Ein weapon-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "weapon",
+    "rarity": "rare",
+    "value": 129,
+    "stack_max": 1,
+    "weight": 0.6
+  },
+  {
+    "id": "item_019",
+    "name": "Armor von Askir 19",
+    "description": "Ein armor-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "armor",
+    "rarity": "epic",
+    "value": 136,
+    "stack_max": 1,
+    "weight": 0.85
+  },
+  {
+    "id": "item_020",
+    "name": "Ingredient von Askir 20",
+    "description": "Ein ingredient-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "ingredient",
+    "rarity": "common",
+    "value": 143,
+    "stack_max": 99,
+    "weight": 1.1
+  },
+  {
+    "id": "item_021",
+    "name": "Consumable von Askir 21",
+    "description": "Ein consumable-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "consumable",
+    "rarity": "uncommon",
+    "value": 150,
+    "stack_max": 99,
+    "weight": 1.35
+  },
+  {
+    "id": "item_022",
+    "name": "Material von Askir 22",
+    "description": "Ein material-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "material",
+    "rarity": "rare",
+    "value": 157,
+    "stack_max": 99,
+    "weight": 1.6
+  },
+  {
+    "id": "item_023",
+    "name": "Quest von Askir 23",
+    "description": "Ein quest-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "quest",
+    "rarity": "epic",
+    "value": 164,
+    "stack_max": 99,
+    "weight": 1.85
+  },
+  {
+    "id": "item_024",
+    "name": "Weapon von Askir 24",
+    "description": "Ein weapon-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "weapon",
+    "rarity": "common",
+    "value": 171,
+    "stack_max": 1,
+    "weight": 0.1
+  },
+  {
+    "id": "item_025",
+    "name": "Armor von Askir 25",
+    "description": "Ein armor-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "armor",
+    "rarity": "uncommon",
+    "value": 178,
+    "stack_max": 1,
+    "weight": 0.35
+  },
+  {
+    "id": "item_026",
+    "name": "Ingredient von Askir 26",
+    "description": "Ein ingredient-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "ingredient",
+    "rarity": "rare",
+    "value": 185,
+    "stack_max": 99,
+    "weight": 0.6
+  },
+  {
+    "id": "item_027",
+    "name": "Consumable von Askir 27",
+    "description": "Ein consumable-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "consumable",
+    "rarity": "epic",
+    "value": 192,
+    "stack_max": 99,
+    "weight": 0.85
+  },
+  {
+    "id": "item_028",
+    "name": "Material von Askir 28",
+    "description": "Ein material-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "material",
+    "rarity": "common",
+    "value": 199,
+    "stack_max": 99,
+    "weight": 1.1
+  },
+  {
+    "id": "item_029",
+    "name": "Quest von Askir 29",
+    "description": "Ein quest-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "quest",
+    "rarity": "uncommon",
+    "value": 206,
+    "stack_max": 99,
+    "weight": 1.35
+  },
+  {
+    "id": "item_030",
+    "name": "Weapon von Askir 30",
+    "description": "Ein weapon-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "weapon",
+    "rarity": "rare",
+    "value": 213,
+    "stack_max": 1,
+    "weight": 1.6
+  },
+  {
+    "id": "item_031",
+    "name": "Armor von Askir 31",
+    "description": "Ein armor-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "armor",
+    "rarity": "epic",
+    "value": 220,
+    "stack_max": 1,
+    "weight": 1.85
+  },
+  {
+    "id": "item_032",
+    "name": "Ingredient von Askir 32",
+    "description": "Ein ingredient-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "ingredient",
+    "rarity": "common",
+    "value": 227,
+    "stack_max": 99,
+    "weight": 0.1
+  },
+  {
+    "id": "item_033",
+    "name": "Consumable von Askir 33",
+    "description": "Ein consumable-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "consumable",
+    "rarity": "uncommon",
+    "value": 234,
+    "stack_max": 99,
+    "weight": 0.35
+  },
+  {
+    "id": "item_034",
+    "name": "Material von Askir 34",
+    "description": "Ein material-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "material",
+    "rarity": "rare",
+    "value": 241,
+    "stack_max": 99,
+    "weight": 0.6
+  },
+  {
+    "id": "item_035",
+    "name": "Quest von Askir 35",
+    "description": "Ein quest-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "quest",
+    "rarity": "epic",
+    "value": 248,
+    "stack_max": 99,
+    "weight": 0.85
+  },
+  {
+    "id": "item_036",
+    "name": "Weapon von Askir 36",
+    "description": "Ein weapon-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "weapon",
+    "rarity": "common",
+    "value": 255,
+    "stack_max": 1,
+    "weight": 1.1
+  },
+  {
+    "id": "item_037",
+    "name": "Armor von Askir 37",
+    "description": "Ein armor-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "armor",
+    "rarity": "uncommon",
+    "value": 262,
+    "stack_max": 1,
+    "weight": 1.35
+  },
+  {
+    "id": "item_038",
+    "name": "Ingredient von Askir 38",
+    "description": "Ein ingredient-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "ingredient",
+    "rarity": "rare",
+    "value": 269,
+    "stack_max": 99,
+    "weight": 1.6
+  },
+  {
+    "id": "item_039",
+    "name": "Consumable von Askir 39",
+    "description": "Ein consumable-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "consumable",
+    "rarity": "epic",
+    "value": 276,
+    "stack_max": 99,
+    "weight": 1.85
+  },
+  {
+    "id": "item_040",
+    "name": "Material von Askir 40",
+    "description": "Ein material-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "material",
+    "rarity": "common",
+    "value": 283,
+    "stack_max": 99,
+    "weight": 0.1
+  },
+  {
+    "id": "item_041",
+    "name": "Quest von Askir 41",
+    "description": "Ein quest-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "quest",
+    "rarity": "uncommon",
+    "value": 290,
+    "stack_max": 99,
+    "weight": 0.35
+  },
+  {
+    "id": "item_042",
+    "name": "Weapon von Askir 42",
+    "description": "Ein weapon-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "weapon",
+    "rarity": "rare",
+    "value": 297,
+    "stack_max": 1,
+    "weight": 0.6
+  },
+  {
+    "id": "item_043",
+    "name": "Armor von Askir 43",
+    "description": "Ein armor-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "armor",
+    "rarity": "epic",
+    "value": 304,
+    "stack_max": 1,
+    "weight": 0.85
+  },
+  {
+    "id": "item_044",
+    "name": "Ingredient von Askir 44",
+    "description": "Ein ingredient-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "ingredient",
+    "rarity": "common",
+    "value": 311,
+    "stack_max": 99,
+    "weight": 1.1
+  },
+  {
+    "id": "item_045",
+    "name": "Consumable von Askir 45",
+    "description": "Ein consumable-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "consumable",
+    "rarity": "uncommon",
+    "value": 318,
+    "stack_max": 99,
+    "weight": 1.35
+  },
+  {
+    "id": "item_046",
+    "name": "Material von Askir 46",
+    "description": "Ein material-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "material",
+    "rarity": "rare",
+    "value": 325,
+    "stack_max": 99,
+    "weight": 1.6
+  },
+  {
+    "id": "item_047",
+    "name": "Quest von Askir 47",
+    "description": "Ein quest-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "quest",
+    "rarity": "epic",
+    "value": 332,
+    "stack_max": 99,
+    "weight": 1.85
+  },
+  {
+    "id": "item_048",
+    "name": "Weapon von Askir 48",
+    "description": "Ein weapon-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "weapon",
+    "rarity": "common",
+    "value": 339,
+    "stack_max": 1,
+    "weight": 0.1
+  },
+  {
+    "id": "item_049",
+    "name": "Armor von Askir 49",
+    "description": "Ein armor-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "armor",
+    "rarity": "uncommon",
+    "value": 346,
+    "stack_max": 1,
+    "weight": 0.35
+  },
+  {
+    "id": "item_050",
+    "name": "Ingredient von Askir 50",
+    "description": "Ein ingredient-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "ingredient",
+    "rarity": "rare",
+    "value": 353,
+    "stack_max": 99,
+    "weight": 0.6
+  },
+  {
+    "id": "item_051",
+    "name": "Consumable von Askir 51",
+    "description": "Ein consumable-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "consumable",
+    "rarity": "epic",
+    "value": 360,
+    "stack_max": 99,
+    "weight": 0.85
+  },
+  {
+    "id": "item_052",
+    "name": "Material von Askir 52",
+    "description": "Ein material-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "material",
+    "rarity": "common",
+    "value": 367,
+    "stack_max": 99,
+    "weight": 1.1
+  },
+  {
+    "id": "item_053",
+    "name": "Quest von Askir 53",
+    "description": "Ein quest-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "quest",
+    "rarity": "uncommon",
+    "value": 374,
+    "stack_max": 99,
+    "weight": 1.35
+  },
+  {
+    "id": "item_054",
+    "name": "Weapon von Askir 54",
+    "description": "Ein weapon-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "weapon",
+    "rarity": "rare",
+    "value": 381,
+    "stack_max": 1,
+    "weight": 1.6
+  },
+  {
+    "id": "item_055",
+    "name": "Armor von Askir 55",
+    "description": "Ein armor-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "armor",
+    "rarity": "epic",
+    "value": 388,
+    "stack_max": 1,
+    "weight": 1.85
+  },
+  {
+    "id": "item_056",
+    "name": "Ingredient von Askir 56",
+    "description": "Ein ingredient-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "ingredient",
+    "rarity": "common",
+    "value": 395,
+    "stack_max": 99,
+    "weight": 0.1
+  },
+  {
+    "id": "item_057",
+    "name": "Consumable von Askir 57",
+    "description": "Ein consumable-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "consumable",
+    "rarity": "uncommon",
+    "value": 402,
+    "stack_max": 99,
+    "weight": 0.35
+  },
+  {
+    "id": "item_058",
+    "name": "Material von Askir 58",
+    "description": "Ein material-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "material",
+    "rarity": "rare",
+    "value": 409,
+    "stack_max": 99,
+    "weight": 0.6
+  },
+  {
+    "id": "item_059",
+    "name": "Quest von Askir 59",
+    "description": "Ein quest-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "quest",
+    "rarity": "epic",
+    "value": 416,
+    "stack_max": 99,
+    "weight": 0.85
+  },
+  {
+    "id": "item_060",
+    "name": "Weapon von Askir 60",
+    "description": "Ein weapon-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "category": "weapon",
+    "rarity": "common",
+    "value": 423,
+    "stack_max": 1,
+    "weight": 1.1
+  }
+]

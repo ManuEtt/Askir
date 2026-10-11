@@ -1,0 +1,60 @@
+{
+  "title": "Askir – Die zersplitterte Krone",
+  "continents": [
+    {
+      "id": "ardem",
+      "name": "Ardem",
+      "regions": [
+        "Nordmark",
+        "Grauwald",
+        "Sonnenküste",
+        "Eisbruch"
+      ]
+    },
+    {
+      "id": "thalor",
+      "name": "Thalor",
+      "regions": [
+        "Salzsteppe",
+        "Glaswüste",
+        "Roter Hafen"
+      ]
+    },
+    {
+      "id": "velis",
+      "name": "Velis",
+      "regions": [
+        "Nebelsümpfe",
+        "Hochinseln",
+        "Sternenwald"
+      ]
+    }
+  ],
+  "cities": [
+    "Dornfeld",
+    "Falkenwacht",
+    "Hafen Asche",
+    "Königsfurt",
+    "Veyra",
+    "Tor Alun",
+    "Schattenhafen",
+    "Steinbruch"
+  ],
+  "dungeons": [
+    "Krypta der Sieben",
+    "Verlassene Mine",
+    "Spiegelgewölbe",
+    "Aschenfeste",
+    "Versunkener Tempel",
+    "Herz des Sturms"
+  ],
+  "factions": [
+    "Kronenwacht",
+    "Freie Händler",
+    "Aschenzirkel",
+    "Waldhüter",
+    "Orden der Flamme",
+    "Sturmkinder"
+  ],
+  "premise": "Die Krone Askirs ist in fünf Siegel gespalten. Jedes Siegel bewahrt eine Erinnerung, und jede Erinnerung fordert ein Opfer."
+}

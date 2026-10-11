@@ -40,4 +40,6 @@ public:
     UPROPERTY(SaveGame)TArray<FAskirQuestObjective> SavedActiveObjectives;
     UPROPERTY(SaveGame)TMap<FName,FAskirQuestObjectiveList> SavedObjectivesByQuest;
     UPROPERTY(SaveGame)FName SavedLegacyActiveQuestID=NAME_None;
+    UPROPERTY(SaveGame)TSet<FName> SavedClaimedRewards;
+    UPROPERTY(SaveGame)int32 SavedPlayerGold=0;
 };

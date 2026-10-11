@@ -4,7 +4,7 @@
 #include "Combat/AskirDamageTypes.h"
 #include "TimerManager.h"
 #include "AskirCharacter.generated.h"
-class USpringArmComponent; class UCameraComponent; class UAskirCombatComponent; class UAskirInventoryComponent; class UAskirQuestComponent; class UAskirProgressionComponent;
+class UAskirGuardComponent; class USpringArmComponent; class UCameraComponent; class UAskirCombatComponent; class UAskirInventoryComponent; class UAskirQuestComponent; class UAskirProgressionComponent;
 class UAskirSurvivalComponent;
 class UAskirEquipmentComponent;
 class UAskirStealthComponent;
@@ -29,6 +29,7 @@ public:
     UPROPERTY(VisibleAnywhere) TObjectPtr<USpringArmComponent> CameraBoom;
     UPROPERTY(VisibleAnywhere) TObjectPtr<UCameraComponent> Camera;
     UPROPERTY(VisibleAnywhere) TObjectPtr<UAskirCombatComponent> CombatComponent;
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Askir|Combat") TObjectPtr<UAskirGuardComponent> GuardComponent;
     UPROPERTY(VisibleAnywhere) TObjectPtr<UAskirInventoryComponent> InventoryComponent;
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Askir|Quest") TObjectPtr<UAskirQuestComponent> QuestComponent;
     UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Askir|Progression") TObjectPtr<UAskirProgressionComponent> ProgressionComponent;
@@ -111,6 +112,7 @@ public:
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Askir|Combat") float DodgeCost=25.f;
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Askir|Combat") float DodgeStrength=650.f;
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Askir|Combat") float DodgeCooldown=0.85f;
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Askir|Combat", meta=(ClampMin="0.0", ClampMax="0.5")) float DodgeInvulnerabilitySeconds=0.22f;
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Askir|Combat") float BlockDamageReduction=0.6f;
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Askir|Combat") float BlockStaminaPerDamage=0.5f;
     UFUNCTION(BlueprintPure, Category="Askir|Stamina") float GetStaminaPercent()const{return MaxStamina>0.f?Stamina/MaxStamina:0.f;}
