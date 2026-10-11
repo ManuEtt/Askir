@@ -86,6 +86,17 @@ bool AAskirCharacter::SpendStamina(float Cost)
     LastStaminaUseTime=GetWorld()->GetTimeSeconds();
     return true;
 }
+void AAskirCharacter::SetImpactFromAnimationNotify(bool bEnabled){bUseAnimationNotifyForImpact=bEnabled;}
+void AAskirCharacter::AbortPendingAttack(){CancelPendingAttack();}
+void AAskirCharacter::FallbackPendingAttackToTimer()
+{
+    if(!bPendingAttack||!GetWorld())return;
+    bUseAnimationNotifyForImpact=false;
+    GetWorldTimerManager().ClearTimer(PendingImpactTimer);
+    const float Delay=bPendingHeavyAttack?HeavyImpactDelay:LightImpactDelay;
+    GetWorldTimerManager().SetTimer(PendingImpactTimer,this,&AAskirCharacter::ResolvePendingAttackImpact,
+        FMath::Max(0.01f,Delay),false);
+}
 void AAskirCharacter::Attack(){PerformAttack(1.f,LightAttackCost,AttackCooldown,false);}
 void AAskirCharacter::HeavyAttack(){PerformAttack(HeavyDamageMultiplier,HeavyAttackCost,HeavyAttackCooldown,true);}
 void AAskirCharacter::PerformAttack(float DamageMultiplier,float Cost,float Cooldown,bool bHeavyAttack)

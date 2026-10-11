@@ -124,6 +124,9 @@ public:
     UFUNCTION(BlueprintImplementableEvent, Category="Askir|Combat|Feedback") void OnDodgeStarted();
     UFUNCTION(BlueprintImplementableEvent, Category="Askir|Combat|Feedback") void OnBlockStateChanged(bool bIsBlocking);
     UFUNCTION(BlueprintCallable)void Attack();
+    UFUNCTION(BlueprintCallable, Category="Askir|Combat|Timing") void SetImpactFromAnimationNotify(bool bEnabled);
+    UFUNCTION(BlueprintCallable, Category="Askir|Combat|Timing") void FallbackPendingAttackToTimer();
+    UFUNCTION(BlueprintCallable, Category="Askir|Combat|Timing") void AbortPendingAttack();
     UFUNCTION(BlueprintCallable)void HeavyAttack();
     UFUNCTION(BlueprintCallable)void Dodge();
     UFUNCTION(BlueprintCallable)void StartBlock();

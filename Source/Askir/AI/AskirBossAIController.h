@@ -38,6 +38,13 @@ public:
     UFUNCTION(BlueprintImplementableEvent, Category="Askir|Boss|Stagger") void OnBossAttackInterrupted(int32 Phase, float StaggerSeconds);
     UFUNCTION(BlueprintPure, Category="Askir|Boss|Stagger") bool IsBossStaggered() const;
     UFUNCTION(BlueprintCallable, Category="Askir|Boss|Stagger") void InterruptBossAttack();
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Askir|Boss|Animation") TObjectPtr<class UAnimMontage> AttackMontage = nullptr;
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Askir|Boss|Animation") TObjectPtr<class UAnimMontage> StaggerMontage = nullptr;
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Askir|Boss|Animation", meta=(ClampMin="0.1")) float AttackMontagePlayRate = 1.f;
+    /** Enable only when the attack montage has an AskirAttackImpact notify. */
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Askir|Boss|Animation") bool bImpactFromMontageNotify = false;
+    UFUNCTION(BlueprintImplementableEvent, Category="Askir|Boss|Animation") void OnBossAttackCommitted(int32 Phase, bool bMontageStarted);
+    UFUNCTION(BlueprintImplementableEvent, Category="Askir|Boss|Animation") void OnBossStaggerAnimation(int32 Phase, bool bMontageStarted);
     UFUNCTION(BlueprintImplementableEvent, Category="Askir|Boss") void OnBossPhaseChanged(int32 OldPhase, int32 NewPhase);
     UFUNCTION(BlueprintPure, Category="Askir|Boss") int32 GetBossPhase() const { return CurrentPhase; }
 protected:
@@ -53,5 +60,6 @@ private:
     float InitialAttackInterval = 1.4f;
     float InitialAttackDistance = 165.f;
     void UpdatePhase();
+    bool CommitAnimatedAttack(AAskirCharacter* Enemy, AAskirCharacter* Victim);
     float LastTelegraphTime = -1000.f;
 };

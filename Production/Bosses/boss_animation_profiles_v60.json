@@ -1,0 +1,56 @@
+{
+  "schema_version": 60,
+  "profiles": [
+    {
+      "boss_id": "Aschenwaechter",
+      "telegraph_windup_seconds": 0.38,
+      "stagger_seconds": 1.2,
+      "montage_play_rate": 1.0,
+      "attack_montage_asset": null,
+      "stagger_montage_asset": null,
+      "impact_notify_enabled": false,
+      "animation_status": "requires_imported_montages"
+    },
+    {
+      "boss_id": "Kryptenhueter",
+      "telegraph_windup_seconds": 0.5,
+      "stagger_seconds": 1.5,
+      "montage_play_rate": 0.85,
+      "attack_montage_asset": null,
+      "stagger_montage_asset": null,
+      "impact_notify_enabled": false,
+      "animation_status": "requires_imported_montages"
+    },
+    {
+      "boss_id": "Waldhueter",
+      "telegraph_windup_seconds": 0.3,
+      "stagger_seconds": 0.9,
+      "montage_play_rate": 1.15,
+      "attack_montage_asset": null,
+      "stagger_montage_asset": null,
+      "impact_notify_enabled": false,
+      "animation_status": "requires_imported_montages"
+    },
+    {
+      "boss_id": "Blutstein_Champion",
+      "telegraph_windup_seconds": 0.42,
+      "stagger_seconds": 1.35,
+      "montage_play_rate": 1.05,
+      "attack_montage_asset": null,
+      "stagger_montage_asset": null,
+      "impact_notify_enabled": false,
+      "animation_status": "requires_imported_montages"
+    },
+    {
+      "boss_id": "Kronen_Usurpator",
+      "telegraph_windup_seconds": 0.6,
+      "stagger_seconds": 1.8,
+      "montage_play_rate": 0.95,
+      "attack_montage_asset": null,
+      "stagger_montage_asset": null,
+      "impact_notify_enabled": false,
+      "animation_status": "requires_imported_montages"
+    }
+  ],
+  "notes": "Montages are deliberately null; Unreal assets not included. Damage uses existing timer fallback unless notify explicitly enabled."
+}

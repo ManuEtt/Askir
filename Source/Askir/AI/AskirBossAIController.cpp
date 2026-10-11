@@ -3,6 +3,9 @@
 #include "AI/AskirBossAIController.h"
 #include "Characters/AskirCharacter.h"
 #include "Combat/AskirCombatComponent.h"
+#include "Animation/AnimInstance.h"
+#include "Animation/AnimMontage.h"
+#include "Components/SkeletalMeshComponent.h"
 
 void AAskirBossAIController::OnPossess(APawn* InPawn)
 {
@@ -71,7 +74,7 @@ bool AAskirBossAIController::TryStartAttack(AAskirCharacter* Enemy, AAskirCharac
 {
     if (bTelegraphPending || IsBossStaggered() || !IsValid(Enemy) || !IsValid(Victim) || Enemy->IsDead() || Victim->IsDead() || !GetWorld()) return false;
     const float Windup = FMath::Clamp(TelegraphWindupSeconds, 0.f, 5.f);
-    if (Windup <= KINDA_SMALL_NUMBER) return Super::TryStartAttack(Enemy, Victim);
+    if (Windup <= KINDA_SMALL_NUMBER) return CommitAnimatedAttack(Enemy, Victim);
     TelegraphTarget = Victim;
     bTelegraphPending = true;
     TriggerAttackTelegraph();
@@ -95,7 +98,23 @@ void AAskirBossAIController::ResolveTelegraphedAttack()
     const FVector Start = Enemy->GetActorLocation() + FVector(0.f, 0.f, 60.f);
     const FVector End = Victim->GetActorLocation() + FVector(0.f, 0.f, 60.f);
     if (GetWorld()->LineTraceSingleByChannel(Hit, Start, End, ECC_Visibility, Params) && Hit.GetActor() != Victim) return;
-    Super::TryStartAttack(Enemy, Victim);
+    CommitAnimatedAttack(Enemy, Victim);
+}
+
+bool AAskirBossAIController::CommitAnimatedAttack(AAskirCharacter* Enemy, AAskirCharacter* Victim)
+{
+    if (!IsValid(Enemy) || !IsValid(Victim) || Enemy->IsDead() || Victim->IsDead()) return false;
+    UAnimInstance* Anim = Enemy->GetMesh() ? Enemy->GetMesh()->GetAnimInstance() : nullptr;
+    const bool bCanPlay = IsValid(AttackMontage) && IsValid(Anim);
+    Enemy->SetImpactFromAnimationNotify(bCanPlay && bImpactFromMontageNotify);
+    const bool bCommitted = Super::TryStartAttack(Enemy, Victim);
+    bool bStarted = false;
+    if (bCommitted && bCanPlay)
+        bStarted = Anim->Montage_Play(AttackMontage, FMath::Max(0.1f, AttackMontagePlayRate)) > 0.f;
+    if (bCommitted && !bStarted && bImpactFromMontageNotify)
+        Enemy->FallbackPendingAttackToTimer();
+    if (bCommitted) OnBossAttackCommitted(CurrentPhase, bStarted);
+    return bCommitted;
 }
 
 void AAskirBossAIController::CancelTelegraphedAttack()
@@ -121,6 +140,17 @@ void AAskirBossAIController::InterruptBossAttack()
 {
     if (!bTelegraphPending || !GetWorld()) return;
     CancelTelegraphedAttack();
+    if (IsValid(BossPawn.Get()))
+    {
+        BossPawn->AbortPendingAttack();
+        if (UAnimInstance* Anim = BossPawn->GetMesh() ? BossPawn->GetMesh()->GetAnimInstance() : nullptr)
+        {
+            if (IsValid(AttackMontage)) Anim->Montage_Stop(0.12f, AttackMontage);
+            const bool bStarted = IsValid(StaggerMontage) && Anim->Montage_Play(StaggerMontage) > 0.f;
+            OnBossStaggerAnimation(CurrentPhase, bStarted);
+        }
+        else OnBossStaggerAnimation(CurrentPhase, false);
+    }
     const float Duration = FMath::Max(0.f, StaggerDurationSeconds);
     StaggerUntilTime = GetWorld()->GetTimeSeconds() + Duration;
     OnBossAttackInterrupted(CurrentPhase, Duration);
