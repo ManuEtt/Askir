@@ -1,0 +1,2 @@
+#include "World/AskirWorldEventSubsystem.h"
+void UAskirWorldEventSubsystem::CreateEvent(FName ID,FText D,int32 Dur,float Sev){FAskirWorldEvent E;E.EventID=ID;E.Description=D;E.DurationMinutes=FMath::Max(1,Dur);E.Severity=FMath::Clamp(Sev,0.f,100.f);ActiveEvents.Add(E);OnWorldEventCreated.Broadcast(E);} void UAskirWorldEventSubsystem::AdvanceEvents(int32 M){for(int32 I=ActiveEvents.Num()-1;I>=0;--I){ActiveEvents[I].DurationMinutes-=M;if(ActiveEvents[I].DurationMinutes<=0)ActiveEvents.RemoveAt(I);}}

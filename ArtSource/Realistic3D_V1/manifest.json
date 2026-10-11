@@ -1,0 +1,74 @@
+[
+  {
+    "asset": "SM_WoodenCrate",
+    "glb": "SM_WoodenCrate.glb",
+    "obj": "SM_WoodenCrate.obj",
+    "triangles": 108,
+    "units": "meters",
+    "up": "Z"
+  },
+  {
+    "asset": "SM_Barrel",
+    "glb": "SM_Barrel.glb",
+    "obj": "SM_Barrel.obj",
+    "triangles": 176,
+    "units": "meters",
+    "up": "Z"
+  },
+  {
+    "asset": "SM_StoneWall",
+    "glb": "SM_StoneWall.glb",
+    "obj": "SM_StoneWall.obj",
+    "triangles": 120,
+    "units": "meters",
+    "up": "Z"
+  },
+  {
+    "asset": "SM_Campfire",
+    "glb": "SM_Campfire.glb",
+    "obj": "SM_Campfire.obj",
+    "triangles": 112,
+    "units": "meters",
+    "up": "Z"
+  },
+  {
+    "asset": "SM_PineTree",
+    "glb": "SM_PineTree.glb",
+    "obj": "SM_PineTree.obj",
+    "triangles": 112,
+    "units": "meters",
+    "up": "Z"
+  },
+  {
+    "asset": "SM_IronSword",
+    "glb": "SM_IronSword.glb",
+    "obj": "SM_IronSword.obj",
+    "triangles": 120,
+    "units": "meters",
+    "up": "Z"
+  },
+  {
+    "asset": "SM_RoundShield",
+    "glb": "SM_RoundShield.glb",
+    "obj": "SM_RoundShield.obj",
+    "triangles": 144,
+    "units": "meters",
+    "up": "Z"
+  },
+  {
+    "asset": "SM_StoneWell",
+    "glb": "SM_StoneWell.glb",
+    "obj": "SM_StoneWell.obj",
+    "triangles": 164,
+    "units": "meters",
+    "up": "Z"
+  },
+  {
+    "asset": "SM_TimberHut",
+    "glb": "SM_TimberHut.glb",
+    "obj": "SM_TimberHut.obj",
+    "triangles": 60,
+    "units": "meters",
+    "up": "Z"
+  }
+]

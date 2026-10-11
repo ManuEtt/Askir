@@ -1,0 +1,80 @@
+[
+  {
+    "name": "SM_Barrel",
+    "parts": 19,
+    "triangles": 976,
+    "glb_bytes": 20956
+  },
+  {
+    "name": "SM_Campfire",
+    "parts": 20,
+    "triangles": 420,
+    "glb_bytes": 16332
+  },
+  {
+    "name": "SM_CharacterGuard_Preview",
+    "parts": 25,
+    "triangles": 1512,
+    "glb_bytes": 33264
+  },
+  {
+    "name": "SM_CharacterHero_Preview",
+    "parts": 24,
+    "triangles": 1472,
+    "glb_bytes": 31824
+  },
+  {
+    "name": "SM_CharacterMerchant_Preview",
+    "parts": 25,
+    "triangles": 1484,
+    "glb_bytes": 32716
+  },
+  {
+    "name": "SM_CharacterRaider_Preview",
+    "parts": 25,
+    "triangles": 1820,
+    "glb_bytes": 35532
+  },
+  {
+    "name": "SM_IronSword",
+    "parts": 8,
+    "triangles": 276,
+    "glb_bytes": 8728
+  },
+  {
+    "name": "SM_PineTree",
+    "parts": 19,
+    "triangles": 472,
+    "glb_bytes": 15648
+  },
+  {
+    "name": "SM_RoundShield",
+    "parts": 18,
+    "triangles": 912,
+    "glb_bytes": 19260
+  },
+  {
+    "name": "SM_StoneWall",
+    "parts": 26,
+    "triangles": 312,
+    "glb_bytes": 17188
+  },
+  {
+    "name": "SM_StoneWell",
+    "parts": 19,
+    "triangles": 388,
+    "glb_bytes": 16520
+  },
+  {
+    "name": "SM_TimberHut",
+    "parts": 24,
+    "triangles": 736,
+    "glb_bytes": 19668
+  },
+  {
+    "name": "SM_WoodenCrate",
+    "parts": 19,
+    "triangles": 284,
+    "glb_bytes": 14296
+  }
+]

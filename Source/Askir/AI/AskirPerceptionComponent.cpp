@@ -1,0 +1,4 @@
+#include "AI/AskirPerceptionComponent.h"
+UAskirPerceptionComponent::UAskirPerceptionComponent(){PrimaryComponentTick.bCanEverTick=true;}
+void UAskirPerceptionComponent::Remember(AActor*A,float T,float C){if(!A)return;for(auto&M:Memories)if(M.Actor==A){M.LastKnownLocation=A->GetActorLocation();M.Threat=T;M.Confidence=C;M.LastSeenTime=GetWorld()->GetTimeSeconds();return;}FAskirMemory M;M.Actor=A;M.LastKnownLocation=A->GetActorLocation();M.Threat=T;M.Confidence=C;M.LastSeenTime=GetWorld()->GetTimeSeconds();Memories.Add(M);}
+void UAskirPerceptionComponent::TickComponent(float D,ELevelTick T,FActorComponentTickFunction*F){Super::TickComponent(D,T,F);double N=GetWorld()->GetTimeSeconds();for(int32 I=Memories.Num()-1;I>=0;--I)if(N-Memories[I].LastSeenTime>ForgetAfterSeconds)Memories.RemoveAt(I);}

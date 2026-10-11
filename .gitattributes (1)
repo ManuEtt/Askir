@@ -1,0 +1,13 @@
+* text=auto
+*.h text eol=lf
+*.cpp text eol=lf
+*.cs text eol=lf
+*.py text eol=lf
+*.md text eol=lf
+*.glb binary
+*.obj binary
+*.fbx binary
+*.uasset binary
+*.umap binary
+*.png binary
+*.jpg binary

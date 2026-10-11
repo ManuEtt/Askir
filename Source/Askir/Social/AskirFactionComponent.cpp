@@ -1,0 +1,2 @@
+#include "Social/AskirFactionComponent.h"
+UAskirFactionComponent::UAskirFactionComponent(){PrimaryComponentTick.bCanEverTick=false;} bool UAskirFactionComponent::IsHostileTo(FName F)const{return GetStanding(F)<-50;} void UAskirFactionComponent::SetStanding(FName F,float V){Standings.Add(F,FMath::Clamp(V,-100.f,100.f));} float UAskirFactionComponent::GetStanding(FName F)const{if(const float*V=Standings.Find(F))return *V;return 0;}

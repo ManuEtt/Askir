@@ -1,0 +1,4 @@
+#include "Simulation/AskirNeedsComponent.h"
+UAskirNeedsComponent::UAskirNeedsComponent(){PrimaryComponentTick.bCanEverTick=false;}
+void UAskirNeedsComponent::AdvanceNeeds(float M){if(M<=0)return;Needs.Hunger=FMath::Clamp(Needs.Hunger+HungerRate*M,0.f,100.f);Needs.Thirst=FMath::Clamp(Needs.Thirst+ThirstRate*M,0.f,100.f);Needs.Fatigue=FMath::Clamp(Needs.Fatigue+FatigueRate*M,0.f,100.f);Needs.Stress=FMath::Clamp(Needs.Stress+(Needs.Safety<.3f?.04f:.01f)*M,0.f,100.f);}
+void UAskirNeedsComponent::SatisfyHunger(float A){Needs.Hunger=FMath::Clamp(Needs.Hunger-FMath::Max(0.f,A),0.f,100.f);} void UAskirNeedsComponent::SatisfyThirst(float A){Needs.Thirst=FMath::Clamp(Needs.Thirst-FMath::Max(0.f,A),0.f,100.f);} void UAskirNeedsComponent::Rest(float M){Needs.Fatigue=FMath::Clamp(Needs.Fatigue-M*.12f,0.f,100.f);Needs.Stress=FMath::Clamp(Needs.Stress-M*.03f,0.f,100.f);} float UAskirNeedsComponent::GetUrgency()const{return FMath::Max3(Needs.Hunger,Needs.Thirst,Needs.Fatigue);}

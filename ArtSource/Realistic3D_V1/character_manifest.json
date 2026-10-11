@@ -1,0 +1,30 @@
+[
+  {
+    "asset": "SM_CharacterHero_Preview",
+    "role": "Hero",
+    "triangles": 1400,
+    "rigged": false,
+    "animated": false
+  },
+  {
+    "asset": "SM_CharacterGuard_Preview",
+    "role": "Guard",
+    "triangles": 1400,
+    "rigged": false,
+    "animated": false
+  },
+  {
+    "asset": "SM_CharacterMerchant_Preview",
+    "role": "Merchant",
+    "triangles": 1400,
+    "rigged": false,
+    "animated": false
+  },
+  {
+    "asset": "SM_CharacterRaider_Preview",
+    "role": "Raider",
+    "triangles": 1708,
+    "rigged": false,
+    "animated": false
+  }
+]
