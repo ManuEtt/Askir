@@ -15,6 +15,7 @@ public:
  UPROPERTY(Transient) TObjectPtr<AAskirEncounterSpawner> Spawner;
  UPROPERTY(Transient) TObjectPtr<UAskirCombatComponent> Combat;
  UFUNCTION() void HandleDeath();
+ virtual void OnComponentDestroyed(bool bDestroyingHierarchy) override;
 };
 /** Optional runtime enemy waves driven by AAskirEncounterZone. Configure in editor. */
 UCLASS(BlueprintType)
@@ -37,11 +38,14 @@ public:
  void NotifyEnemyDefeated();
 protected:
  virtual void BeginPlay() override;
+ virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
 private:
  bool SpawnWave();
+ void FinishEncounter();
  UPROPERTY(Transient) TObjectPtr<AActor> ActivePlayer;
  UPROPERTY(Transient) TArray<TObjectPtr<APawn>> LivingEnemies;
  int32 WavesStarted=0;
  bool bRunning=false;
  bool bFinished=false;
+ bool bTransitioningWave=false;
 };

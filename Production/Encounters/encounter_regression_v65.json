@@ -1,0 +1,305 @@
+{
+  "version": "V65",
+  "cases": [
+    {
+      "topic": 2001,
+      "boss": "AshenWarden",
+      "scenario": "zone_activation",
+      "status": "documented_not_pie_tested"
+    },
+    {
+      "topic": 2002,
+      "boss": "AshenWarden",
+      "scenario": "player_validation",
+      "status": "documented_not_pie_tested"
+    },
+    {
+      "topic": 2003,
+      "boss": "AshenWarden",
+      "scenario": "spawn_controller",
+      "status": "documented_not_pie_tested"
+    },
+    {
+      "topic": 2004,
+      "boss": "AshenWarden",
+      "scenario": "spawn_collision_failure",
+      "status": "documented_not_pie_tested"
+    },
+    {
+      "topic": 2005,
+      "boss": "AshenWarden",
+      "scenario": "combat_component_missing",
+      "status": "documented_not_pie_tested"
+    },
+    {
+      "topic": 2006,
+      "boss": "AshenWarden",
+      "scenario": "enemy_death",
+      "status": "documented_not_pie_tested"
+    },
+    {
+      "topic": 2007,
+      "boss": "AshenWarden",
+      "scenario": "multiple_deaths_same_frame",
+      "status": "documented_not_pie_tested"
+    },
+    {
+      "topic": 2008,
+      "boss": "AshenWarden",
+      "scenario": "wave_transition",
+      "status": "documented_not_pie_tested"
+    },
+    {
+      "topic": 2009,
+      "boss": "AshenWarden",
+      "scenario": "wave_spawn_failure",
+      "status": "documented_not_pie_tested"
+    },
+    {
+      "topic": 2010,
+      "boss": "AshenWarden",
+      "scenario": "completion_quest_once",
+      "status": "documented_not_pie_tested"
+    },
+    {
+      "topic": 2011,
+      "boss": "CryptKeeper",
+      "scenario": "zone_activation",
+      "status": "documented_not_pie_tested"
+    },
+    {
+      "topic": 2012,
+      "boss": "CryptKeeper",
+      "scenario": "player_validation",
+      "status": "documented_not_pie_tested"
+    },
+    {
+      "topic": 2013,
+      "boss": "CryptKeeper",
+      "scenario": "spawn_controller",
+      "status": "documented_not_pie_tested"
+    },
+    {
+      "topic": 2014,
+      "boss": "CryptKeeper",
+      "scenario": "spawn_collision_failure",
+      "status": "documented_not_pie_tested"
+    },
+    {
+      "topic": 2015,
+      "boss": "CryptKeeper",
+      "scenario": "combat_component_missing",
+      "status": "documented_not_pie_tested"
+    },
+    {
+      "topic": 2016,
+      "boss": "CryptKeeper",
+      "scenario": "enemy_death",
+      "status": "documented_not_pie_tested"
+    },
+    {
+      "topic": 2017,
+      "boss": "CryptKeeper",
+      "scenario": "multiple_deaths_same_frame",
+      "status": "documented_not_pie_tested"
+    },
+    {
+      "topic": 2018,
+      "boss": "CryptKeeper",
+      "scenario": "wave_transition",
+      "status": "documented_not_pie_tested"
+    },
+    {
+      "topic": 2019,
+      "boss": "CryptKeeper",
+      "scenario": "wave_spawn_failure",
+      "status": "documented_not_pie_tested"
+    },
+    {
+      "topic": 2020,
+      "boss": "CryptKeeper",
+      "scenario": "completion_quest_once",
+      "status": "documented_not_pie_tested"
+    },
+    {
+      "topic": 2021,
+      "boss": "ForestAncient",
+      "scenario": "zone_activation",
+      "status": "documented_not_pie_tested"
+    },
+    {
+      "topic": 2022,
+      "boss": "ForestAncient",
+      "scenario": "player_validation",
+      "status": "documented_not_pie_tested"
+    },
+    {
+      "topic": 2023,
+      "boss": "ForestAncient",
+      "scenario": "spawn_controller",
+      "status": "documented_not_pie_tested"
+    },
+    {
+      "topic": 2024,
+      "boss": "ForestAncient",
+      "scenario": "spawn_collision_failure",
+      "status": "documented_not_pie_tested"
+    },
+    {
+      "topic": 2025,
+      "boss": "ForestAncient",
+      "scenario": "combat_component_missing",
+      "status": "documented_not_pie_tested"
+    },
+    {
+      "topic": 2026,
+      "boss": "ForestAncient",
+      "scenario": "enemy_death",
+      "status": "documented_not_pie_tested"
+    },
+    {
+      "topic": 2027,
+      "boss": "ForestAncient",
+      "scenario": "multiple_deaths_same_frame",
+      "status": "documented_not_pie_tested"
+    },
+    {
+      "topic": 2028,
+      "boss": "ForestAncient",
+      "scenario": "wave_transition",
+      "status": "documented_not_pie_tested"
+    },
+    {
+      "topic": 2029,
+      "boss": "ForestAncient",
+      "scenario": "wave_spawn_failure",
+      "status": "documented_not_pie_tested"
+    },
+    {
+      "topic": 2030,
+      "boss": "ForestAncient",
+      "scenario": "completion_quest_once",
+      "status": "documented_not_pie_tested"
+    },
+    {
+      "topic": 2031,
+      "boss": "BloodstoneChampion",
+      "scenario": "zone_activation",
+      "status": "documented_not_pie_tested"
+    },
+    {
+      "topic": 2032,
+      "boss": "BloodstoneChampion",
+      "scenario": "player_validation",
+      "status": "documented_not_pie_tested"
+    },
+    {
+      "topic": 2033,
+      "boss": "BloodstoneChampion",
+      "scenario": "spawn_controller",
+      "status": "documented_not_pie_tested"
+    },
+    {
+      "topic": 2034,
+      "boss": "BloodstoneChampion",
+      "scenario": "spawn_collision_failure",
+      "status": "documented_not_pie_tested"
+    },
+    {
+      "topic": 2035,
+      "boss": "BloodstoneChampion",
+      "scenario": "combat_component_missing",
+      "status": "documented_not_pie_tested"
+    },
+    {
+      "topic": 2036,
+      "boss": "BloodstoneChampion",
+      "scenario": "enemy_death",
+      "status": "documented_not_pie_tested"
+    },
+    {
+      "topic": 2037,
+      "boss": "BloodstoneChampion",
+      "scenario": "multiple_deaths_same_frame",
+      "status": "documented_not_pie_tested"
+    },
+    {
+      "topic": 2038,
+      "boss": "BloodstoneChampion",
+      "scenario": "wave_transition",
+      "status": "documented_not_pie_tested"
+    },
+    {
+      "topic": 2039,
+      "boss": "BloodstoneChampion",
+      "scenario": "wave_spawn_failure",
+      "status": "documented_not_pie_tested"
+    },
+    {
+      "topic": 2040,
+      "boss": "BloodstoneChampion",
+      "scenario": "completion_quest_once",
+      "status": "documented_not_pie_tested"
+    },
+    {
+      "topic": 2041,
+      "boss": "CrownUsurper",
+      "scenario": "zone_activation",
+      "status": "documented_not_pie_tested"
+    },
+    {
+      "topic": 2042,
+      "boss": "CrownUsurper",
+      "scenario": "player_validation",
+      "status": "documented_not_pie_tested"
+    },
+    {
+      "topic": 2043,
+      "boss": "CrownUsurper",
+      "scenario": "spawn_controller",
+      "status": "documented_not_pie_tested"
+    },
+    {
+      "topic": 2044,
+      "boss": "CrownUsurper",
+      "scenario": "spawn_collision_failure",
+      "status": "documented_not_pie_tested"
+    },
+    {
+      "topic": 2045,
+      "boss": "CrownUsurper",
+      "scenario": "combat_component_missing",
+      "status": "documented_not_pie_tested"
+    },
+    {
+      "topic": 2046,
+      "boss": "CrownUsurper",
+      "scenario": "enemy_death",
+      "status": "documented_not_pie_tested"
+    },
+    {
+      "topic": 2047,
+      "boss": "CrownUsurper",
+      "scenario": "multiple_deaths_same_frame",
+      "status": "documented_not_pie_tested"
+    },
+    {
+      "topic": 2048,
+      "boss": "CrownUsurper",
+      "scenario": "wave_transition",
+      "status": "documented_not_pie_tested"
+    },
+    {
+      "topic": 2049,
+      "boss": "CrownUsurper",
+      "scenario": "wave_spawn_failure",
+      "status": "documented_not_pie_tested"
+    },
+    {
+      "topic": 2050,
+      "boss": "CrownUsurper",
+      "scenario": "completion_quest_once",
+      "status": "documented_not_pie_tested"
+    }
+  ]
+}

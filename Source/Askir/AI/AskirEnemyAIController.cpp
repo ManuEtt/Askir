@@ -163,5 +163,5 @@ bool AAskirEnemyAIController::TryStartAttack(AAskirCharacter* Enemy, AAskirChara
 {
     if (!IsValid(Enemy) || !IsValid(Victim) || Enemy->IsDead() || Victim->IsDead()) return false;
     Enemy->Attack();
-    return true;
+    return Enemy->HasPendingAttack();
 }

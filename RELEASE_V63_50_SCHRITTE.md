@@ -1,0 +1,54 @@
+# Askir V63: 50 Entwicklungsthemen 1901–1950
+
+Die folgenden Punkte sind **50 konkrete Regression-Szenarien** (fünf Bossprofile × zehn Prüffälle), nicht 50 unabhängig implementierte Spielmechaniken. Die Engine-Tests stehen noch aus.
+
+1901. AshenWarden: repossess_clears_old_damage_delegate — Offline-Vertrag dokumentiert, PIE offen.
+1902. AshenWarden: windup_telegraph_not_suppressed — Offline-Vertrag dokumentiert, PIE offen.
+1903. AshenWarden: stagger_cancels_windup — Offline-Vertrag dokumentiert, PIE offen.
+1904. AshenWarden: stagger_cancels_committed_hit — Offline-Vertrag dokumentiert, PIE offen.
+1905. AshenWarden: notify_watchdog_misses_safely — Offline-Vertrag dokumentiert, PIE offen.
+1906. AshenWarden: fallback_to_timer_on_montage_failure — Offline-Vertrag dokumentiert, PIE offen.
+1907. AshenWarden: failed_stamina_does_not_play_montage — Offline-Vertrag dokumentiert, PIE offen.
+1908. AshenWarden: failed_cooldown_does_not_play_montage — Offline-Vertrag dokumentiert, PIE offen.
+1909. AshenWarden: phase_transition_during_windup — Offline-Vertrag dokumentiert, PIE offen.
+1910. AshenWarden: pending_cancel_resets_notify_mode — Offline-Vertrag dokumentiert, PIE offen.
+1911. CryptKeeper: repossess_clears_old_damage_delegate — Offline-Vertrag dokumentiert, PIE offen.
+1912. CryptKeeper: windup_telegraph_not_suppressed — Offline-Vertrag dokumentiert, PIE offen.
+1913. CryptKeeper: stagger_cancels_windup — Offline-Vertrag dokumentiert, PIE offen.
+1914. CryptKeeper: stagger_cancels_committed_hit — Offline-Vertrag dokumentiert, PIE offen.
+1915. CryptKeeper: notify_watchdog_misses_safely — Offline-Vertrag dokumentiert, PIE offen.
+1916. CryptKeeper: fallback_to_timer_on_montage_failure — Offline-Vertrag dokumentiert, PIE offen.
+1917. CryptKeeper: failed_stamina_does_not_play_montage — Offline-Vertrag dokumentiert, PIE offen.
+1918. CryptKeeper: failed_cooldown_does_not_play_montage — Offline-Vertrag dokumentiert, PIE offen.
+1919. CryptKeeper: phase_transition_during_windup — Offline-Vertrag dokumentiert, PIE offen.
+1920. CryptKeeper: pending_cancel_resets_notify_mode — Offline-Vertrag dokumentiert, PIE offen.
+1921. ForestAncient: repossess_clears_old_damage_delegate — Offline-Vertrag dokumentiert, PIE offen.
+1922. ForestAncient: windup_telegraph_not_suppressed — Offline-Vertrag dokumentiert, PIE offen.
+1923. ForestAncient: stagger_cancels_windup — Offline-Vertrag dokumentiert, PIE offen.
+1924. ForestAncient: stagger_cancels_committed_hit — Offline-Vertrag dokumentiert, PIE offen.
+1925. ForestAncient: notify_watchdog_misses_safely — Offline-Vertrag dokumentiert, PIE offen.
+1926. ForestAncient: fallback_to_timer_on_montage_failure — Offline-Vertrag dokumentiert, PIE offen.
+1927. ForestAncient: failed_stamina_does_not_play_montage — Offline-Vertrag dokumentiert, PIE offen.
+1928. ForestAncient: failed_cooldown_does_not_play_montage — Offline-Vertrag dokumentiert, PIE offen.
+1929. ForestAncient: phase_transition_during_windup — Offline-Vertrag dokumentiert, PIE offen.
+1930. ForestAncient: pending_cancel_resets_notify_mode — Offline-Vertrag dokumentiert, PIE offen.
+1931. BloodstoneChampion: repossess_clears_old_damage_delegate — Offline-Vertrag dokumentiert, PIE offen.
+1932. BloodstoneChampion: windup_telegraph_not_suppressed — Offline-Vertrag dokumentiert, PIE offen.
+1933. BloodstoneChampion: stagger_cancels_windup — Offline-Vertrag dokumentiert, PIE offen.
+1934. BloodstoneChampion: stagger_cancels_committed_hit — Offline-Vertrag dokumentiert, PIE offen.
+1935. BloodstoneChampion: notify_watchdog_misses_safely — Offline-Vertrag dokumentiert, PIE offen.
+1936. BloodstoneChampion: fallback_to_timer_on_montage_failure — Offline-Vertrag dokumentiert, PIE offen.
+1937. BloodstoneChampion: failed_stamina_does_not_play_montage — Offline-Vertrag dokumentiert, PIE offen.
+1938. BloodstoneChampion: failed_cooldown_does_not_play_montage — Offline-Vertrag dokumentiert, PIE offen.
+1939. BloodstoneChampion: phase_transition_during_windup — Offline-Vertrag dokumentiert, PIE offen.
+1940. BloodstoneChampion: pending_cancel_resets_notify_mode — Offline-Vertrag dokumentiert, PIE offen.
+1941. CrownUsurper: repossess_clears_old_damage_delegate — Offline-Vertrag dokumentiert, PIE offen.
+1942. CrownUsurper: windup_telegraph_not_suppressed — Offline-Vertrag dokumentiert, PIE offen.
+1943. CrownUsurper: stagger_cancels_windup — Offline-Vertrag dokumentiert, PIE offen.
+1944. CrownUsurper: stagger_cancels_committed_hit — Offline-Vertrag dokumentiert, PIE offen.
+1945. CrownUsurper: notify_watchdog_misses_safely — Offline-Vertrag dokumentiert, PIE offen.
+1946. CrownUsurper: fallback_to_timer_on_montage_failure — Offline-Vertrag dokumentiert, PIE offen.
+1947. CrownUsurper: failed_stamina_does_not_play_montage — Offline-Vertrag dokumentiert, PIE offen.
+1948. CrownUsurper: failed_cooldown_does_not_play_montage — Offline-Vertrag dokumentiert, PIE offen.
+1949. CrownUsurper: phase_transition_during_windup — Offline-Vertrag dokumentiert, PIE offen.
+1950. CrownUsurper: pending_cancel_resets_notify_mode — Offline-Vertrag dokumentiert, PIE offen.

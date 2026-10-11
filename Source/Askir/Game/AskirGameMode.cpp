@@ -82,6 +82,7 @@ bool AAskirGameMode::SaveGame(const FString& SlotName)
         Save->SavedObjectivesByQuest = Player->QuestComponent->ObjectivesByQuest;
         Save->SavedLegacyActiveQuestID = Player->QuestComponent->LegacyActiveQuestID;
         Save->SavedClaimedRewards = Player->QuestComponent->ClaimedRewards;
+        Save->SavedCompletedEncounters = Player->QuestComponent->CompletedEncounters;
     }
     if (Player->TradeComponent) Save->SavedPlayerGold=Player->TradeComponent->Gold;
     if (Player->DornfeldMission) Save->SavedDornfeldMission=Player->DornfeldMission->CaptureMission();
@@ -179,6 +180,7 @@ bool AAskirGameMode::LoadGame(const FString& SlotName, bool bRestorePosition)
         Player->QuestComponent->ObjectivesByQuest = Save->SavedObjectivesByQuest;
         Player->QuestComponent->LegacyActiveQuestID = Save->SavedLegacyActiveQuestID;
         Player->QuestComponent->ClaimedRewards = Save->SavedClaimedRewards;
+        Player->QuestComponent->CompletedEncounters = Save->SavedCompletedEncounters;
     }
     if (UAskirEquipmentComponent* Gear = Player->FindComponentByClass<UAskirEquipmentComponent>())
     {

@@ -117,7 +117,16 @@ void AAskirCharacter::PerformAttack(float DamageMultiplier,float Cost,float Cool
     const float Delay=bUseAnimationNotifyForImpact
         ? FMath::Max(2.0f, (bHeavyAttack?HeavyImpactDelay:LightImpactDelay)*3.0f)
         : FMath::Max(0.01f,bHeavyAttack?HeavyImpactDelay:LightImpactDelay);
-    GetWorldTimerManager().SetTimer(PendingImpactTimer,this,&AAskirCharacter::ResolvePendingAttackImpact,Delay,false);
+    GetWorldTimerManager().SetTimer(PendingImpactTimer,this,
+        bUseAnimationNotifyForImpact ? &AAskirCharacter::ExpireUnresolvedAnimationAttack : &AAskirCharacter::ResolvePendingAttackImpact,Delay,false);
+}
+void AAskirCharacter::ExpireUnresolvedAnimationAttack()
+{
+    // A missing montage notify is a missed hit, never delayed unavoidable damage.
+    if (!bPendingAttack) return;
+    const bool bHeavy = bPendingHeavyAttack;
+    CancelPendingAttack();
+    OnAttackMissed(bHeavy);
 }
 void AAskirCharacter::ResolvePendingAttackImpact()
 {
@@ -159,6 +168,7 @@ void AAskirCharacter::ResolvePendingAttackImpact()
 void AAskirCharacter::CancelPendingAttack()
 {
     bPendingAttack=false;
+    bUseAnimationNotifyForImpact=false;
     GetWorldTimerManager().ClearTimer(PendingImpactTimer);
 }
 void AAskirCharacter::Dodge()

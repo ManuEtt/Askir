@@ -1,0 +1,305 @@
+{
+  "version": "V64",
+  "scenarios": [
+    {
+      "topic": 1951,
+      "boss": "AshenWarden",
+      "scenario": "phase1_baseline",
+      "execution": "planned_unreal_pie"
+    },
+    {
+      "topic": 1952,
+      "boss": "AshenWarden",
+      "scenario": "phase2_scaling",
+      "execution": "planned_unreal_pie"
+    },
+    {
+      "topic": 1953,
+      "boss": "AshenWarden",
+      "scenario": "phase3_scaling",
+      "execution": "planned_unreal_pie"
+    },
+    {
+      "topic": 1954,
+      "boss": "AshenWarden",
+      "scenario": "repossess_resets_scaling",
+      "execution": "planned_unreal_pie"
+    },
+    {
+      "topic": 1955,
+      "boss": "AshenWarden",
+      "scenario": "dead_boss_cancels_attack",
+      "execution": "planned_unreal_pie"
+    },
+    {
+      "topic": 1956,
+      "boss": "AshenWarden",
+      "scenario": "unpossess_cancels_hit",
+      "execution": "planned_unreal_pie"
+    },
+    {
+      "topic": 1957,
+      "boss": "AshenWarden",
+      "scenario": "telegraph_cancel",
+      "execution": "planned_unreal_pie"
+    },
+    {
+      "topic": 1958,
+      "boss": "AshenWarden",
+      "scenario": "stagger_cancel",
+      "execution": "planned_unreal_pie"
+    },
+    {
+      "topic": 1959,
+      "boss": "AshenWarden",
+      "scenario": "missing_notify_timeout",
+      "execution": "planned_unreal_pie"
+    },
+    {
+      "topic": 1960,
+      "boss": "AshenWarden",
+      "scenario": "blueprint_controller_default",
+      "execution": "planned_unreal_pie"
+    },
+    {
+      "topic": 1961,
+      "boss": "CryptKeeper",
+      "scenario": "phase1_baseline",
+      "execution": "planned_unreal_pie"
+    },
+    {
+      "topic": 1962,
+      "boss": "CryptKeeper",
+      "scenario": "phase2_scaling",
+      "execution": "planned_unreal_pie"
+    },
+    {
+      "topic": 1963,
+      "boss": "CryptKeeper",
+      "scenario": "phase3_scaling",
+      "execution": "planned_unreal_pie"
+    },
+    {
+      "topic": 1964,
+      "boss": "CryptKeeper",
+      "scenario": "repossess_resets_scaling",
+      "execution": "planned_unreal_pie"
+    },
+    {
+      "topic": 1965,
+      "boss": "CryptKeeper",
+      "scenario": "dead_boss_cancels_attack",
+      "execution": "planned_unreal_pie"
+    },
+    {
+      "topic": 1966,
+      "boss": "CryptKeeper",
+      "scenario": "unpossess_cancels_hit",
+      "execution": "planned_unreal_pie"
+    },
+    {
+      "topic": 1967,
+      "boss": "CryptKeeper",
+      "scenario": "telegraph_cancel",
+      "execution": "planned_unreal_pie"
+    },
+    {
+      "topic": 1968,
+      "boss": "CryptKeeper",
+      "scenario": "stagger_cancel",
+      "execution": "planned_unreal_pie"
+    },
+    {
+      "topic": 1969,
+      "boss": "CryptKeeper",
+      "scenario": "missing_notify_timeout",
+      "execution": "planned_unreal_pie"
+    },
+    {
+      "topic": 1970,
+      "boss": "CryptKeeper",
+      "scenario": "blueprint_controller_default",
+      "execution": "planned_unreal_pie"
+    },
+    {
+      "topic": 1971,
+      "boss": "ForestAncient",
+      "scenario": "phase1_baseline",
+      "execution": "planned_unreal_pie"
+    },
+    {
+      "topic": 1972,
+      "boss": "ForestAncient",
+      "scenario": "phase2_scaling",
+      "execution": "planned_unreal_pie"
+    },
+    {
+      "topic": 1973,
+      "boss": "ForestAncient",
+      "scenario": "phase3_scaling",
+      "execution": "planned_unreal_pie"
+    },
+    {
+      "topic": 1974,
+      "boss": "ForestAncient",
+      "scenario": "repossess_resets_scaling",
+      "execution": "planned_unreal_pie"
+    },
+    {
+      "topic": 1975,
+      "boss": "ForestAncient",
+      "scenario": "dead_boss_cancels_attack",
+      "execution": "planned_unreal_pie"
+    },
+    {
+      "topic": 1976,
+      "boss": "ForestAncient",
+      "scenario": "unpossess_cancels_hit",
+      "execution": "planned_unreal_pie"
+    },
+    {
+      "topic": 1977,
+      "boss": "ForestAncient",
+      "scenario": "telegraph_cancel",
+      "execution": "planned_unreal_pie"
+    },
+    {
+      "topic": 1978,
+      "boss": "ForestAncient",
+      "scenario": "stagger_cancel",
+      "execution": "planned_unreal_pie"
+    },
+    {
+      "topic": 1979,
+      "boss": "ForestAncient",
+      "scenario": "missing_notify_timeout",
+      "execution": "planned_unreal_pie"
+    },
+    {
+      "topic": 1980,
+      "boss": "ForestAncient",
+      "scenario": "blueprint_controller_default",
+      "execution": "planned_unreal_pie"
+    },
+    {
+      "topic": 1981,
+      "boss": "BloodstoneChampion",
+      "scenario": "phase1_baseline",
+      "execution": "planned_unreal_pie"
+    },
+    {
+      "topic": 1982,
+      "boss": "BloodstoneChampion",
+      "scenario": "phase2_scaling",
+      "execution": "planned_unreal_pie"
+    },
+    {
+      "topic": 1983,
+      "boss": "BloodstoneChampion",
+      "scenario": "phase3_scaling",
+      "execution": "planned_unreal_pie"
+    },
+    {
+      "topic": 1984,
+      "boss": "BloodstoneChampion",
+      "scenario": "repossess_resets_scaling",
+      "execution": "planned_unreal_pie"
+    },
+    {
+      "topic": 1985,
+      "boss": "BloodstoneChampion",
+      "scenario": "dead_boss_cancels_attack",
+      "execution": "planned_unreal_pie"
+    },
+    {
+      "topic": 1986,
+      "boss": "BloodstoneChampion",
+      "scenario": "unpossess_cancels_hit",
+      "execution": "planned_unreal_pie"
+    },
+    {
+      "topic": 1987,
+      "boss": "BloodstoneChampion",
+      "scenario": "telegraph_cancel",
+      "execution": "planned_unreal_pie"
+    },
+    {
+      "topic": 1988,
+      "boss": "BloodstoneChampion",
+      "scenario": "stagger_cancel",
+      "execution": "planned_unreal_pie"
+    },
+    {
+      "topic": 1989,
+      "boss": "BloodstoneChampion",
+      "scenario": "missing_notify_timeout",
+      "execution": "planned_unreal_pie"
+    },
+    {
+      "topic": 1990,
+      "boss": "BloodstoneChampion",
+      "scenario": "blueprint_controller_default",
+      "execution": "planned_unreal_pie"
+    },
+    {
+      "topic": 1991,
+      "boss": "CrownUsurper",
+      "scenario": "phase1_baseline",
+      "execution": "planned_unreal_pie"
+    },
+    {
+      "topic": 1992,
+      "boss": "CrownUsurper",
+      "scenario": "phase2_scaling",
+      "execution": "planned_unreal_pie"
+    },
+    {
+      "topic": 1993,
+      "boss": "CrownUsurper",
+      "scenario": "phase3_scaling",
+      "execution": "planned_unreal_pie"
+    },
+    {
+      "topic": 1994,
+      "boss": "CrownUsurper",
+      "scenario": "repossess_resets_scaling",
+      "execution": "planned_unreal_pie"
+    },
+    {
+      "topic": 1995,
+      "boss": "CrownUsurper",
+      "scenario": "dead_boss_cancels_attack",
+      "execution": "planned_unreal_pie"
+    },
+    {
+      "topic": 1996,
+      "boss": "CrownUsurper",
+      "scenario": "unpossess_cancels_hit",
+      "execution": "planned_unreal_pie"
+    },
+    {
+      "topic": 1997,
+      "boss": "CrownUsurper",
+      "scenario": "telegraph_cancel",
+      "execution": "planned_unreal_pie"
+    },
+    {
+      "topic": 1998,
+      "boss": "CrownUsurper",
+      "scenario": "stagger_cancel",
+      "execution": "planned_unreal_pie"
+    },
+    {
+      "topic": 1999,
+      "boss": "CrownUsurper",
+      "scenario": "missing_notify_timeout",
+      "execution": "planned_unreal_pie"
+    },
+    {
+      "topic": 2000,
+      "boss": "CrownUsurper",
+      "scenario": "blueprint_controller_default",
+      "execution": "planned_unreal_pie"
+    }
+  ]
+}

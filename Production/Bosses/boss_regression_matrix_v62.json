@@ -1,0 +1,306 @@
+{
+  "version": "V62",
+  "notes": "50 documented regression scenarios; UE PIE execution outstanding.",
+  "cases": [
+    {
+      "topic": 1851,
+      "boss": "AshenWarden",
+      "scenario": "no_montage_timer_fallback",
+      "status": "offline_contract_only"
+    },
+    {
+      "topic": 1852,
+      "boss": "AshenWarden",
+      "scenario": "valid_montage_notify",
+      "status": "offline_contract_only"
+    },
+    {
+      "topic": 1853,
+      "boss": "AshenWarden",
+      "scenario": "montage_start_failure",
+      "status": "offline_contract_only"
+    },
+    {
+      "topic": 1854,
+      "boss": "AshenWarden",
+      "scenario": "missing_notify_timeout",
+      "status": "offline_contract_only"
+    },
+    {
+      "topic": 1855,
+      "boss": "AshenWarden",
+      "scenario": "duplicate_notify_guard",
+      "status": "offline_contract_only"
+    },
+    {
+      "topic": 1856,
+      "boss": "AshenWarden",
+      "scenario": "stamina_rejection",
+      "status": "offline_contract_only"
+    },
+    {
+      "topic": 1857,
+      "boss": "AshenWarden",
+      "scenario": "cooldown_rejection",
+      "status": "offline_contract_only"
+    },
+    {
+      "topic": 1858,
+      "boss": "AshenWarden",
+      "scenario": "dead_target_at_resolve",
+      "status": "offline_contract_only"
+    },
+    {
+      "topic": 1859,
+      "boss": "AshenWarden",
+      "scenario": "stagger_cancels_pending",
+      "status": "offline_contract_only"
+    },
+    {
+      "topic": 1860,
+      "boss": "AshenWarden",
+      "scenario": "controller_unpossess_cleanup",
+      "status": "offline_contract_only"
+    },
+    {
+      "topic": 1861,
+      "boss": "CryptKeeper",
+      "scenario": "no_montage_timer_fallback",
+      "status": "offline_contract_only"
+    },
+    {
+      "topic": 1862,
+      "boss": "CryptKeeper",
+      "scenario": "valid_montage_notify",
+      "status": "offline_contract_only"
+    },
+    {
+      "topic": 1863,
+      "boss": "CryptKeeper",
+      "scenario": "montage_start_failure",
+      "status": "offline_contract_only"
+    },
+    {
+      "topic": 1864,
+      "boss": "CryptKeeper",
+      "scenario": "missing_notify_timeout",
+      "status": "offline_contract_only"
+    },
+    {
+      "topic": 1865,
+      "boss": "CryptKeeper",
+      "scenario": "duplicate_notify_guard",
+      "status": "offline_contract_only"
+    },
+    {
+      "topic": 1866,
+      "boss": "CryptKeeper",
+      "scenario": "stamina_rejection",
+      "status": "offline_contract_only"
+    },
+    {
+      "topic": 1867,
+      "boss": "CryptKeeper",
+      "scenario": "cooldown_rejection",
+      "status": "offline_contract_only"
+    },
+    {
+      "topic": 1868,
+      "boss": "CryptKeeper",
+      "scenario": "dead_target_at_resolve",
+      "status": "offline_contract_only"
+    },
+    {
+      "topic": 1869,
+      "boss": "CryptKeeper",
+      "scenario": "stagger_cancels_pending",
+      "status": "offline_contract_only"
+    },
+    {
+      "topic": 1870,
+      "boss": "CryptKeeper",
+      "scenario": "controller_unpossess_cleanup",
+      "status": "offline_contract_only"
+    },
+    {
+      "topic": 1871,
+      "boss": "ForestAncient",
+      "scenario": "no_montage_timer_fallback",
+      "status": "offline_contract_only"
+    },
+    {
+      "topic": 1872,
+      "boss": "ForestAncient",
+      "scenario": "valid_montage_notify",
+      "status": "offline_contract_only"
+    },
+    {
+      "topic": 1873,
+      "boss": "ForestAncient",
+      "scenario": "montage_start_failure",
+      "status": "offline_contract_only"
+    },
+    {
+      "topic": 1874,
+      "boss": "ForestAncient",
+      "scenario": "missing_notify_timeout",
+      "status": "offline_contract_only"
+    },
+    {
+      "topic": 1875,
+      "boss": "ForestAncient",
+      "scenario": "duplicate_notify_guard",
+      "status": "offline_contract_only"
+    },
+    {
+      "topic": 1876,
+      "boss": "ForestAncient",
+      "scenario": "stamina_rejection",
+      "status": "offline_contract_only"
+    },
+    {
+      "topic": 1877,
+      "boss": "ForestAncient",
+      "scenario": "cooldown_rejection",
+      "status": "offline_contract_only"
+    },
+    {
+      "topic": 1878,
+      "boss": "ForestAncient",
+      "scenario": "dead_target_at_resolve",
+      "status": "offline_contract_only"
+    },
+    {
+      "topic": 1879,
+      "boss": "ForestAncient",
+      "scenario": "stagger_cancels_pending",
+      "status": "offline_contract_only"
+    },
+    {
+      "topic": 1880,
+      "boss": "ForestAncient",
+      "scenario": "controller_unpossess_cleanup",
+      "status": "offline_contract_only"
+    },
+    {
+      "topic": 1881,
+      "boss": "BloodstoneChampion",
+      "scenario": "no_montage_timer_fallback",
+      "status": "offline_contract_only"
+    },
+    {
+      "topic": 1882,
+      "boss": "BloodstoneChampion",
+      "scenario": "valid_montage_notify",
+      "status": "offline_contract_only"
+    },
+    {
+      "topic": 1883,
+      "boss": "BloodstoneChampion",
+      "scenario": "montage_start_failure",
+      "status": "offline_contract_only"
+    },
+    {
+      "topic": 1884,
+      "boss": "BloodstoneChampion",
+      "scenario": "missing_notify_timeout",
+      "status": "offline_contract_only"
+    },
+    {
+      "topic": 1885,
+      "boss": "BloodstoneChampion",
+      "scenario": "duplicate_notify_guard",
+      "status": "offline_contract_only"
+    },
+    {
+      "topic": 1886,
+      "boss": "BloodstoneChampion",
+      "scenario": "stamina_rejection",
+      "status": "offline_contract_only"
+    },
+    {
+      "topic": 1887,
+      "boss": "BloodstoneChampion",
+      "scenario": "cooldown_rejection",
+      "status": "offline_contract_only"
+    },
+    {
+      "topic": 1888,
+      "boss": "BloodstoneChampion",
+      "scenario": "dead_target_at_resolve",
+      "status": "offline_contract_only"
+    },
+    {
+      "topic": 1889,
+      "boss": "BloodstoneChampion",
+      "scenario": "stagger_cancels_pending",
+      "status": "offline_contract_only"
+    },
+    {
+      "topic": 1890,
+      "boss": "BloodstoneChampion",
+      "scenario": "controller_unpossess_cleanup",
+      "status": "offline_contract_only"
+    },
+    {
+      "topic": 1891,
+      "boss": "CrownUsurper",
+      "scenario": "no_montage_timer_fallback",
+      "status": "offline_contract_only"
+    },
+    {
+      "topic": 1892,
+      "boss": "CrownUsurper",
+      "scenario": "valid_montage_notify",
+      "status": "offline_contract_only"
+    },
+    {
+      "topic": 1893,
+      "boss": "CrownUsurper",
+      "scenario": "montage_start_failure",
+      "status": "offline_contract_only"
+    },
+    {
+      "topic": 1894,
+      "boss": "CrownUsurper",
+      "scenario": "missing_notify_timeout",
+      "status": "offline_contract_only"
+    },
+    {
+      "topic": 1895,
+      "boss": "CrownUsurper",
+      "scenario": "duplicate_notify_guard",
+      "status": "offline_contract_only"
+    },
+    {
+      "topic": 1896,
+      "boss": "CrownUsurper",
+      "scenario": "stamina_rejection",
+      "status": "offline_contract_only"
+    },
+    {
+      "topic": 1897,
+      "boss": "CrownUsurper",
+      "scenario": "cooldown_rejection",
+      "status": "offline_contract_only"
+    },
+    {
+      "topic": 1898,
+      "boss": "CrownUsurper",
+      "scenario": "dead_target_at_resolve",
+      "status": "offline_contract_only"
+    },
+    {
+      "topic": 1899,
+      "boss": "CrownUsurper",
+      "scenario": "stagger_cancels_pending",
+      "status": "offline_contract_only"
+    },
+    {
+      "topic": 1900,
+      "boss": "CrownUsurper",
+      "scenario": "controller_unpossess_cleanup",
+      "status": "offline_contract_only"
+    }
+  ]
+}

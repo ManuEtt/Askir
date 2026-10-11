@@ -16,6 +16,12 @@ void AAskirEncounterSpawner::BeginPlay()
  Super::BeginPlay();
  if(IsValid(Zone))Zone->OnEncounterTriggered.AddDynamic(this,&AAskirEncounterSpawner::HandleEncounterTriggered);
 }
+void AAskirEncounterSpawner::EndPlay(const EEndPlayReason::Type EndPlayReason)
+{
+ if(IsValid(Zone))Zone->OnEncounterTriggered.RemoveDynamic(this,&AAskirEncounterSpawner::HandleEncounterTriggered);
+ bRunning=false;ActivePlayer=nullptr;LivingEnemies.Reset();
+ Super::EndPlay(EndPlayReason);
+}
 void AAskirEncounterSpawner::HandleEncounterTriggered(AActor* Player,FName EncounterID)
 {
  StartForPlayer(Player,EncounterID);
@@ -24,6 +30,10 @@ bool AAskirEncounterSpawner::StartForPlayer(AActor* Player,FName EncounterID)
 {
  const APawn* Pawn=Cast<APawn>(Player);
  if(bRunning||bFinished||!IsValid(Pawn)||!Pawn->IsPlayerControlled()||!EnemyClass||!GetWorld())return false;
+ // A completed persistent encounter cannot be restarted by revisiting the zone.
+ if(IsValid(Zone) && !Zone->EncounterID.IsNone())
+  if(const UAskirQuestComponent* Quests=Player->FindComponentByClass<UAskirQuestComponent>())
+   if(Quests->HasCompletedEncounter(Zone->EncounterID))return false;
  ActivePlayer=Player;
  WavesStarted=0;
  bRunning=true;
@@ -43,11 +53,13 @@ bool AAskirEncounterSpawner::SpawnWave()
   FActorSpawnParameters Params;Params.SpawnCollisionHandlingOverride=ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButDontSpawnIfColliding;
   APawn* Enemy=World->SpawnActor<APawn>(EnemyClass,Position,GetActorRotation(),Params);
   if(!IsValid(Enemy))continue;
+  Enemy->SpawnDefaultController();
   UAskirCombatComponent* Combat=Enemy->FindComponentByClass<UAskirCombatComponent>();
   if(!IsValid(Combat)) {Enemy->Destroy();continue;}
   UAskirEncounterEnemyTracker* Tracker=NewObject<UAskirEncounterEnemyTracker>(Enemy);
   Tracker->Spawner=this;
   Tracker->Combat=Combat;
+  Enemy->AddInstanceComponent(Tracker);
   Tracker->RegisterComponent();
   Combat->OnDeath.AddDynamic(Tracker,&UAskirEncounterEnemyTracker::HandleDeath);
   LivingEnemies.Add(Enemy);
@@ -56,6 +68,11 @@ bool AAskirEncounterSpawner::SpawnWave()
  ++WavesStarted;
  return true;
 }
+void UAskirEncounterEnemyTracker::OnComponentDestroyed(bool bDestroyingHierarchy)
+{
+ if(IsValid(Combat))Combat->OnDeath.RemoveDynamic(this,&UAskirEncounterEnemyTracker::HandleDeath);
+ Super::OnComponentDestroyed(bDestroyingHierarchy);
+}
 void UAskirEncounterEnemyTracker::HandleDeath()
 {
  if(IsValid(Combat))Combat->OnDeath.RemoveDynamic(this,&UAskirEncounterEnemyTracker::HandleDeath);
@@ -63,7 +80,8 @@ void UAskirEncounterEnemyTracker::HandleDeath()
 }
 void AAskirEncounterSpawner::NotifyEnemyDefeated()
 {
- if(!bRunning)return;
+ if(!bRunning||bTransitioningWave)return;
+ TGuardValue<bool> TransitionGuard(bTransitioningWave,true);
  for(int32 Index=LivingEnemies.Num()-1;Index>=0;--Index)
  {
   APawn* Enemy=LivingEnemies[Index].Get();
@@ -71,12 +89,29 @@ void AAskirEncounterSpawner::NotifyEnemyDefeated()
   if(!Combat||Combat->IsDead())LivingEnemies.RemoveAtSwap(Index);
  }
  if(!LivingEnemies.IsEmpty())return;
- if(WavesStarted<FMath::Clamp(WaveCount,1,10)&&SpawnWave())return;
+ if(WavesStarted<FMath::Clamp(WaveCount,1,10))
+ {
+  if(SpawnWave())return;
+  // A failed spawn is not a completed encounter: allow an explicit retry.
+  bRunning=false;ActivePlayer=nullptr;LivingEnemies.Reset();
+  return;
+ }
+ FinishEncounter();
+}
+void AAskirEncounterSpawner::FinishEncounter()
+{
+ if(!bRunning||bFinished)return;
  bRunning=false;bFinished=true;
- if(IsValid(ActivePlayer)&&!CompletionQuestID.IsNone()&&!CompletionObjectiveID.IsNone())
+ if(IsValid(ActivePlayer))
  {
   if(UAskirQuestComponent* Quests=ActivePlayer->FindComponentByClass<UAskirQuestComponent>())
-   Quests->AdvanceQuestObjective(CompletionQuestID,CompletionObjectiveID,1);
+  {
+   // Register completion first; the same encounter may never award twice.
+   const FName ID=IsValid(Zone)?Zone->EncounterID:NAME_None;
+   const bool bNewCompletion=ID.IsNone() || Quests->MarkEncounterCompleted(ID);
+   if(bNewCompletion && !CompletionQuestID.IsNone() && !CompletionObjectiveID.IsNone())
+    Quests->AdvanceQuestObjective(CompletionQuestID,CompletionObjectiveID,1);
+  }
  }
  OnEncounterFinished.Broadcast(ActivePlayer.Get(),IsValid(Zone)?Zone->EncounterID:NAME_None);
 }
@@ -84,5 +119,6 @@ void AAskirEncounterSpawner::ResetSpawner()
 {
  // Does not destroy already spawned enemies; avoid resetting during active combat.
  if(bRunning)return;
+ bTransitioningWave=false;
  bFinished=false;WavesStarted=0;ActivePlayer=nullptr;LivingEnemies.Reset();
 }

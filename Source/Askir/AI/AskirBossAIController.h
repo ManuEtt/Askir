@@ -35,6 +35,8 @@ public:
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Askir|Boss|Stagger", meta=(ClampMin="0.0")) float StaggerDamageThreshold = 20.f;
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Askir|Boss|Stagger", meta=(ClampMin="0.0")) float StaggerDurationSeconds = 1.25f;
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Askir|Boss|Stagger") bool bAllowWindupInterrupt = true;
+    /** Optionally interrupt a committed montage attack while its hit is still pending. */
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Askir|Boss|Stagger") bool bAllowCommittedAttackInterrupt = true;
     UFUNCTION(BlueprintImplementableEvent, Category="Askir|Boss|Stagger") void OnBossAttackInterrupted(int32 Phase, float StaggerSeconds);
     UFUNCTION(BlueprintPure, Category="Askir|Boss|Stagger") bool IsBossStaggered() const;
     UFUNCTION(BlueprintCallable, Category="Askir|Boss|Stagger") void InterruptBossAttack();

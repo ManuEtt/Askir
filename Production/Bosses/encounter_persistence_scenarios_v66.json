@@ -1,0 +1,305 @@
+{
+  "version": "V66",
+  "scenarios": [
+    {
+      "topic": 2051,
+      "boss": "AshenWarden",
+      "scenario": "first_clear",
+      "execution": "pending_unreal_pie"
+    },
+    {
+      "topic": 2052,
+      "boss": "AshenWarden",
+      "scenario": "reload_after_clear",
+      "execution": "pending_unreal_pie"
+    },
+    {
+      "topic": 2053,
+      "boss": "AshenWarden",
+      "scenario": "reenter_zone",
+      "execution": "pending_unreal_pie"
+    },
+    {
+      "topic": 2054,
+      "boss": "AshenWarden",
+      "scenario": "duplicate_death_event",
+      "execution": "pending_unreal_pie"
+    },
+    {
+      "topic": 2055,
+      "boss": "AshenWarden",
+      "scenario": "wave_transition",
+      "execution": "pending_unreal_pie"
+    },
+    {
+      "topic": 2056,
+      "boss": "AshenWarden",
+      "scenario": "spawn_failure_retry",
+      "execution": "pending_unreal_pie"
+    },
+    {
+      "topic": 2057,
+      "boss": "AshenWarden",
+      "scenario": "missing_quest_component",
+      "execution": "pending_unreal_pie"
+    },
+    {
+      "topic": 2058,
+      "boss": "AshenWarden",
+      "scenario": "quest_objective_increment",
+      "execution": "pending_unreal_pie"
+    },
+    {
+      "topic": 2059,
+      "boss": "AshenWarden",
+      "scenario": "no_double_reward",
+      "execution": "pending_unreal_pie"
+    },
+    {
+      "topic": 2060,
+      "boss": "AshenWarden",
+      "scenario": "empty_encounter_id",
+      "execution": "pending_unreal_pie"
+    },
+    {
+      "topic": 2061,
+      "boss": "CryptKeeper",
+      "scenario": "first_clear",
+      "execution": "pending_unreal_pie"
+    },
+    {
+      "topic": 2062,
+      "boss": "CryptKeeper",
+      "scenario": "reload_after_clear",
+      "execution": "pending_unreal_pie"
+    },
+    {
+      "topic": 2063,
+      "boss": "CryptKeeper",
+      "scenario": "reenter_zone",
+      "execution": "pending_unreal_pie"
+    },
+    {
+      "topic": 2064,
+      "boss": "CryptKeeper",
+      "scenario": "duplicate_death_event",
+      "execution": "pending_unreal_pie"
+    },
+    {
+      "topic": 2065,
+      "boss": "CryptKeeper",
+      "scenario": "wave_transition",
+      "execution": "pending_unreal_pie"
+    },
+    {
+      "topic": 2066,
+      "boss": "CryptKeeper",
+      "scenario": "spawn_failure_retry",
+      "execution": "pending_unreal_pie"
+    },
+    {
+      "topic": 2067,
+      "boss": "CryptKeeper",
+      "scenario": "missing_quest_component",
+      "execution": "pending_unreal_pie"
+    },
+    {
+      "topic": 2068,
+      "boss": "CryptKeeper",
+      "scenario": "quest_objective_increment",
+      "execution": "pending_unreal_pie"
+    },
+    {
+      "topic": 2069,
+      "boss": "CryptKeeper",
+      "scenario": "no_double_reward",
+      "execution": "pending_unreal_pie"
+    },
+    {
+      "topic": 2070,
+      "boss": "CryptKeeper",
+      "scenario": "empty_encounter_id",
+      "execution": "pending_unreal_pie"
+    },
+    {
+      "topic": 2071,
+      "boss": "ForestAncient",
+      "scenario": "first_clear",
+      "execution": "pending_unreal_pie"
+    },
+    {
+      "topic": 2072,
+      "boss": "ForestAncient",
+      "scenario": "reload_after_clear",
+      "execution": "pending_unreal_pie"
+    },
+    {
+      "topic": 2073,
+      "boss": "ForestAncient",
+      "scenario": "reenter_zone",
+      "execution": "pending_unreal_pie"
+    },
+    {
+      "topic": 2074,
+      "boss": "ForestAncient",
+      "scenario": "duplicate_death_event",
+      "execution": "pending_unreal_pie"
+    },
+    {
+      "topic": 2075,
+      "boss": "ForestAncient",
+      "scenario": "wave_transition",
+      "execution": "pending_unreal_pie"
+    },
+    {
+      "topic": 2076,
+      "boss": "ForestAncient",
+      "scenario": "spawn_failure_retry",
+      "execution": "pending_unreal_pie"
+    },
+    {
+      "topic": 2077,
+      "boss": "ForestAncient",
+      "scenario": "missing_quest_component",
+      "execution": "pending_unreal_pie"
+    },
+    {
+      "topic": 2078,
+      "boss": "ForestAncient",
+      "scenario": "quest_objective_increment",
+      "execution": "pending_unreal_pie"
+    },
+    {
+      "topic": 2079,
+      "boss": "ForestAncient",
+      "scenario": "no_double_reward",
+      "execution": "pending_unreal_pie"
+    },
+    {
+      "topic": 2080,
+      "boss": "ForestAncient",
+      "scenario": "empty_encounter_id",
+      "execution": "pending_unreal_pie"
+    },
+    {
+      "topic": 2081,
+      "boss": "BloodstoneChampion",
+      "scenario": "first_clear",
+      "execution": "pending_unreal_pie"
+    },
+    {
+      "topic": 2082,
+      "boss": "BloodstoneChampion",
+      "scenario": "reload_after_clear",
+      "execution": "pending_unreal_pie"
+    },
+    {
+      "topic": 2083,
+      "boss": "BloodstoneChampion",
+      "scenario": "reenter_zone",
+      "execution": "pending_unreal_pie"
+    },
+    {
+      "topic": 2084,
+      "boss": "BloodstoneChampion",
+      "scenario": "duplicate_death_event",
+      "execution": "pending_unreal_pie"
+    },
+    {
+      "topic": 2085,
+      "boss": "BloodstoneChampion",
+      "scenario": "wave_transition",
+      "execution": "pending_unreal_pie"
+    },
+    {
+      "topic": 2086,
+      "boss": "BloodstoneChampion",
+      "scenario": "spawn_failure_retry",
+      "execution": "pending_unreal_pie"
+    },
+    {
+      "topic": 2087,
+      "boss": "BloodstoneChampion",
+      "scenario": "missing_quest_component",
+      "execution": "pending_unreal_pie"
+    },
+    {
+      "topic": 2088,
+      "boss": "BloodstoneChampion",
+      "scenario": "quest_objective_increment",
+      "execution": "pending_unreal_pie"
+    },
+    {
+      "topic": 2089,
+      "boss": "BloodstoneChampion",
+      "scenario": "no_double_reward",
+      "execution": "pending_unreal_pie"
+    },
+    {
+      "topic": 2090,
+      "boss": "BloodstoneChampion",
+      "scenario": "empty_encounter_id",
+      "execution": "pending_unreal_pie"
+    },
+    {
+      "topic": 2091,
+      "boss": "CrownUsurper",
+      "scenario": "first_clear",
+      "execution": "pending_unreal_pie"
+    },
+    {
+      "topic": 2092,
+      "boss": "CrownUsurper",
+      "scenario": "reload_after_clear",
+      "execution": "pending_unreal_pie"
+    },
+    {
+      "topic": 2093,
+      "boss": "CrownUsurper",
+      "scenario": "reenter_zone",
+      "execution": "pending_unreal_pie"
+    },
+    {
+      "topic": 2094,
+      "boss": "CrownUsurper",
+      "scenario": "duplicate_death_event",
+      "execution": "pending_unreal_pie"
+    },
+    {
+      "topic": 2095,
+      "boss": "CrownUsurper",
+      "scenario": "wave_transition",
+      "execution": "pending_unreal_pie"
+    },
+    {
+      "topic": 2096,
+      "boss": "CrownUsurper",
+      "scenario": "spawn_failure_retry",
+      "execution": "pending_unreal_pie"
+    },
+    {
+      "topic": 2097,
+      "boss": "CrownUsurper",
+      "scenario": "missing_quest_component",
+      "execution": "pending_unreal_pie"
+    },
+    {
+      "topic": 2098,
+      "boss": "CrownUsurper",
+      "scenario": "quest_objective_increment",
+      "execution": "pending_unreal_pie"
+    },
+    {
+      "topic": 2099,
+      "boss": "CrownUsurper",
+      "scenario": "no_double_reward",
+      "execution": "pending_unreal_pie"
+    },
+    {
+      "topic": 2100,
+      "boss": "CrownUsurper",
+      "scenario": "empty_encounter_id",
+      "execution": "pending_unreal_pie"
+    }
+  ]
+}

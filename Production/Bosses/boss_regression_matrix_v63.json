@@ -1,0 +1,305 @@
+{
+  "version": "V63",
+  "cases": [
+    {
+      "topic": 1901,
+      "boss": "AshenWarden",
+      "scenario": "repossess_clears_old_damage_delegate",
+      "status": "documented_not_PIE_tested"
+    },
+    {
+      "topic": 1902,
+      "boss": "AshenWarden",
+      "scenario": "windup_telegraph_not_suppressed",
+      "status": "documented_not_PIE_tested"
+    },
+    {
+      "topic": 1903,
+      "boss": "AshenWarden",
+      "scenario": "stagger_cancels_windup",
+      "status": "documented_not_PIE_tested"
+    },
+    {
+      "topic": 1904,
+      "boss": "AshenWarden",
+      "scenario": "stagger_cancels_committed_hit",
+      "status": "documented_not_PIE_tested"
+    },
+    {
+      "topic": 1905,
+      "boss": "AshenWarden",
+      "scenario": "notify_watchdog_misses_safely",
+      "status": "documented_not_PIE_tested"
+    },
+    {
+      "topic": 1906,
+      "boss": "AshenWarden",
+      "scenario": "fallback_to_timer_on_montage_failure",
+      "status": "documented_not_PIE_tested"
+    },
+    {
+      "topic": 1907,
+      "boss": "AshenWarden",
+      "scenario": "failed_stamina_does_not_play_montage",
+      "status": "documented_not_PIE_tested"
+    },
+    {
+      "topic": 1908,
+      "boss": "AshenWarden",
+      "scenario": "failed_cooldown_does_not_play_montage",
+      "status": "documented_not_PIE_tested"
+    },
+    {
+      "topic": 1909,
+      "boss": "AshenWarden",
+      "scenario": "phase_transition_during_windup",
+      "status": "documented_not_PIE_tested"
+    },
+    {
+      "topic": 1910,
+      "boss": "AshenWarden",
+      "scenario": "pending_cancel_resets_notify_mode",
+      "status": "documented_not_PIE_tested"
+    },
+    {
+      "topic": 1911,
+      "boss": "CryptKeeper",
+      "scenario": "repossess_clears_old_damage_delegate",
+      "status": "documented_not_PIE_tested"
+    },
+    {
+      "topic": 1912,
+      "boss": "CryptKeeper",
+      "scenario": "windup_telegraph_not_suppressed",
+      "status": "documented_not_PIE_tested"
+    },
+    {
+      "topic": 1913,
+      "boss": "CryptKeeper",
+      "scenario": "stagger_cancels_windup",
+      "status": "documented_not_PIE_tested"
+    },
+    {
+      "topic": 1914,
+      "boss": "CryptKeeper",
+      "scenario": "stagger_cancels_committed_hit",
+      "status": "documented_not_PIE_tested"
+    },
+    {
+      "topic": 1915,
+      "boss": "CryptKeeper",
+      "scenario": "notify_watchdog_misses_safely",
+      "status": "documented_not_PIE_tested"
+    },
+    {
+      "topic": 1916,
+      "boss": "CryptKeeper",
+      "scenario": "fallback_to_timer_on_montage_failure",
+      "status": "documented_not_PIE_tested"
+    },
+    {
+      "topic": 1917,
+      "boss": "CryptKeeper",
+      "scenario": "failed_stamina_does_not_play_montage",
+      "status": "documented_not_PIE_tested"
+    },
+    {
+      "topic": 1918,
+      "boss": "CryptKeeper",
+      "scenario": "failed_cooldown_does_not_play_montage",
+      "status": "documented_not_PIE_tested"
+    },
+    {
+      "topic": 1919,
+      "boss": "CryptKeeper",
+      "scenario": "phase_transition_during_windup",
+      "status": "documented_not_PIE_tested"
+    },
+    {
+      "topic": 1920,
+      "boss": "CryptKeeper",
+      "scenario": "pending_cancel_resets_notify_mode",
+      "status": "documented_not_PIE_tested"
+    },
+    {
+      "topic": 1921,
+      "boss": "ForestAncient",
+      "scenario": "repossess_clears_old_damage_delegate",
+      "status": "documented_not_PIE_tested"
+    },
+    {
+      "topic": 1922,
+      "boss": "ForestAncient",
+      "scenario": "windup_telegraph_not_suppressed",
+      "status": "documented_not_PIE_tested"
+    },
+    {
+      "topic": 1923,
+      "boss": "ForestAncient",
+      "scenario": "stagger_cancels_windup",
+      "status": "documented_not_PIE_tested"
+    },
+    {
+      "topic": 1924,
+      "boss": "ForestAncient",
+      "scenario": "stagger_cancels_committed_hit",
+      "status": "documented_not_PIE_tested"
+    },
+    {
+      "topic": 1925,
+      "boss": "ForestAncient",
+      "scenario": "notify_watchdog_misses_safely",
+      "status": "documented_not_PIE_tested"
+    },
+    {
+      "topic": 1926,
+      "boss": "ForestAncient",
+      "scenario": "fallback_to_timer_on_montage_failure",
+      "status": "documented_not_PIE_tested"
+    },
+    {
+      "topic": 1927,
+      "boss": "ForestAncient",
+      "scenario": "failed_stamina_does_not_play_montage",
+      "status": "documented_not_PIE_tested"
+    },
+    {
+      "topic": 1928,
+      "boss": "ForestAncient",
+      "scenario": "failed_cooldown_does_not_play_montage",
+      "status": "documented_not_PIE_tested"
+    },
+    {
+      "topic": 1929,
+      "boss": "ForestAncient",
+      "scenario": "phase_transition_during_windup",
+      "status": "documented_not_PIE_tested"
+    },
+    {
+      "topic": 1930,
+      "boss": "ForestAncient",
+      "scenario": "pending_cancel_resets_notify_mode",
+      "status": "documented_not_PIE_tested"
+    },
+    {
+      "topic": 1931,
+      "boss": "BloodstoneChampion",
+      "scenario": "repossess_clears_old_damage_delegate",
+      "status": "documented_not_PIE_tested"
+    },
+    {
+      "topic": 1932,
+      "boss": "BloodstoneChampion",
+      "scenario": "windup_telegraph_not_suppressed",
+      "status": "documented_not_PIE_tested"
+    },
+    {
+      "topic": 1933,
+      "boss": "BloodstoneChampion",
+      "scenario": "stagger_cancels_windup",
+      "status": "documented_not_PIE_tested"
+    },
+    {
+      "topic": 1934,
+      "boss": "BloodstoneChampion",
+      "scenario": "stagger_cancels_committed_hit",
+      "status": "documented_not_PIE_tested"
+    },
+    {
+      "topic": 1935,
+      "boss": "BloodstoneChampion",
+      "scenario": "notify_watchdog_misses_safely",
+      "status": "documented_not_PIE_tested"
+    },
+    {
+      "topic": 1936,
+      "boss": "BloodstoneChampion",
+      "scenario": "fallback_to_timer_on_montage_failure",
+      "status": "documented_not_PIE_tested"
+    },
+    {
+      "topic": 1937,
+      "boss": "BloodstoneChampion",
+      "scenario": "failed_stamina_does_not_play_montage",
+      "status": "documented_not_PIE_tested"
+    },
+    {
+      "topic": 1938,
+      "boss": "BloodstoneChampion",
+      "scenario": "failed_cooldown_does_not_play_montage",
+      "status": "documented_not_PIE_tested"
+    },
+    {
+      "topic": 1939,
+      "boss": "BloodstoneChampion",
+      "scenario": "phase_transition_during_windup",
+      "status": "documented_not_PIE_tested"
+    },
+    {
+      "topic": 1940,
+      "boss": "BloodstoneChampion",
+      "scenario": "pending_cancel_resets_notify_mode",
+      "status": "documented_not_PIE_tested"
+    },
+    {
+      "topic": 1941,
+      "boss": "CrownUsurper",
+      "scenario": "repossess_clears_old_damage_delegate",
+      "status": "documented_not_PIE_tested"
+    },
+    {
+      "topic": 1942,
+      "boss": "CrownUsurper",
+      "scenario": "windup_telegraph_not_suppressed",
+      "status": "documented_not_PIE_tested"
+    },
+    {
+      "topic": 1943,
+      "boss": "CrownUsurper",
+      "scenario": "stagger_cancels_windup",
+      "status": "documented_not_PIE_tested"
+    },
+    {
+      "topic": 1944,
+      "boss": "CrownUsurper",
+      "scenario": "stagger_cancels_committed_hit",
+      "status": "documented_not_PIE_tested"
+    },
+    {
+      "topic": 1945,
+      "boss": "CrownUsurper",
+      "scenario": "notify_watchdog_misses_safely",
+      "status": "documented_not_PIE_tested"
+    },
+    {
+      "topic": 1946,
+      "boss": "CrownUsurper",
+      "scenario": "fallback_to_timer_on_montage_failure",
+      "status": "documented_not_PIE_tested"
+    },
+    {
+      "topic": 1947,
+      "boss": "CrownUsurper",
+      "scenario": "failed_stamina_does_not_play_montage",
+      "status": "documented_not_PIE_tested"
+    },
+    {
+      "topic": 1948,
+      "boss": "CrownUsurper",
+      "scenario": "failed_cooldown_does_not_play_montage",
+      "status": "documented_not_PIE_tested"
+    },
+    {
+      "topic": 1949,
+      "boss": "CrownUsurper",
+      "scenario": "phase_transition_during_windup",
+      "status": "documented_not_PIE_tested"
+    },
+    {
+      "topic": 1950,
+      "boss": "CrownUsurper",
+      "scenario": "pending_cancel_resets_notify_mode",
+      "status": "documented_not_PIE_tested"
+    }
+  ]
+}

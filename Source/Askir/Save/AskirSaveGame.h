@@ -60,6 +60,8 @@ public:
     UPROPERTY(SaveGame)TMap<FName,FAskirQuestObjectiveList> SavedObjectivesByQuest;
     UPROPERTY(SaveGame)FName SavedLegacyActiveQuestID=NAME_None;
     UPROPERTY(SaveGame)TSet<FName> SavedClaimedRewards;
+    /** V66: persistent encounter completion ledger; absent in older saves. */
+    UPROPERTY(SaveGame)TSet<FName> SavedCompletedEncounters;
     UPROPERTY(SaveGame)int32 SavedPlayerGold=0;
     UPROPERTY(SaveGame) FAskirDornfeldMissionSave SavedDornfeldMission;
     /** Map package -> persistent IDs for looted actors. */

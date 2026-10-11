@@ -1,0 +1,305 @@
+{
+  "schema_version": 61,
+  "scenarios": [
+    {
+      "topic": 1801,
+      "boss_id": "Aschenwaechter",
+      "check": "telegraph",
+      "kind": "verification_scenario"
+    },
+    {
+      "topic": 1802,
+      "boss_id": "Aschenwaechter",
+      "check": "phase_1",
+      "kind": "verification_scenario"
+    },
+    {
+      "topic": 1803,
+      "boss_id": "Aschenwaechter",
+      "check": "phase_2",
+      "kind": "verification_scenario"
+    },
+    {
+      "topic": 1804,
+      "boss_id": "Aschenwaechter",
+      "check": "phase_3",
+      "kind": "verification_scenario"
+    },
+    {
+      "topic": 1805,
+      "boss_id": "Aschenwaechter",
+      "check": "attack_montage_optional",
+      "kind": "verification_scenario"
+    },
+    {
+      "topic": 1806,
+      "boss_id": "Aschenwaechter",
+      "check": "stagger_montage_optional",
+      "kind": "verification_scenario"
+    },
+    {
+      "topic": 1807,
+      "boss_id": "Aschenwaechter",
+      "check": "notify_watchdog_cancels",
+      "kind": "verification_scenario"
+    },
+    {
+      "topic": 1808,
+      "boss_id": "Aschenwaechter",
+      "check": "committed_attack_interrupt",
+      "kind": "verification_scenario"
+    },
+    {
+      "topic": 1809,
+      "boss_id": "Aschenwaechter",
+      "check": "timer_fallback",
+      "kind": "verification_scenario"
+    },
+    {
+      "topic": 1810,
+      "boss_id": "Aschenwaechter",
+      "check": "no_double_hit",
+      "kind": "verification_scenario"
+    },
+    {
+      "topic": 1811,
+      "boss_id": "Kryptenhueter",
+      "check": "telegraph",
+      "kind": "verification_scenario"
+    },
+    {
+      "topic": 1812,
+      "boss_id": "Kryptenhueter",
+      "check": "phase_1",
+      "kind": "verification_scenario"
+    },
+    {
+      "topic": 1813,
+      "boss_id": "Kryptenhueter",
+      "check": "phase_2",
+      "kind": "verification_scenario"
+    },
+    {
+      "topic": 1814,
+      "boss_id": "Kryptenhueter",
+      "check": "phase_3",
+      "kind": "verification_scenario"
+    },
+    {
+      "topic": 1815,
+      "boss_id": "Kryptenhueter",
+      "check": "attack_montage_optional",
+      "kind": "verification_scenario"
+    },
+    {
+      "topic": 1816,
+      "boss_id": "Kryptenhueter",
+      "check": "stagger_montage_optional",
+      "kind": "verification_scenario"
+    },
+    {
+      "topic": 1817,
+      "boss_id": "Kryptenhueter",
+      "check": "notify_watchdog_cancels",
+      "kind": "verification_scenario"
+    },
+    {
+      "topic": 1818,
+      "boss_id": "Kryptenhueter",
+      "check": "committed_attack_interrupt",
+      "kind": "verification_scenario"
+    },
+    {
+      "topic": 1819,
+      "boss_id": "Kryptenhueter",
+      "check": "timer_fallback",
+      "kind": "verification_scenario"
+    },
+    {
+      "topic": 1820,
+      "boss_id": "Kryptenhueter",
+      "check": "no_double_hit",
+      "kind": "verification_scenario"
+    },
+    {
+      "topic": 1821,
+      "boss_id": "Waldhueter",
+      "check": "telegraph",
+      "kind": "verification_scenario"
+    },
+    {
+      "topic": 1822,
+      "boss_id": "Waldhueter",
+      "check": "phase_1",
+      "kind": "verification_scenario"
+    },
+    {
+      "topic": 1823,
+      "boss_id": "Waldhueter",
+      "check": "phase_2",
+      "kind": "verification_scenario"
+    },
+    {
+      "topic": 1824,
+      "boss_id": "Waldhueter",
+      "check": "phase_3",
+      "kind": "verification_scenario"
+    },
+    {
+      "topic": 1825,
+      "boss_id": "Waldhueter",
+      "check": "attack_montage_optional",
+      "kind": "verification_scenario"
+    },
+    {
+      "topic": 1826,
+      "boss_id": "Waldhueter",
+      "check": "stagger_montage_optional",
+      "kind": "verification_scenario"
+    },
+    {
+      "topic": 1827,
+      "boss_id": "Waldhueter",
+      "check": "notify_watchdog_cancels",
+      "kind": "verification_scenario"
+    },
+    {
+      "topic": 1828,
+      "boss_id": "Waldhueter",
+      "check": "committed_attack_interrupt",
+      "kind": "verification_scenario"
+    },
+    {
+      "topic": 1829,
+      "boss_id": "Waldhueter",
+      "check": "timer_fallback",
+      "kind": "verification_scenario"
+    },
+    {
+      "topic": 1830,
+      "boss_id": "Waldhueter",
+      "check": "no_double_hit",
+      "kind": "verification_scenario"
+    },
+    {
+      "topic": 1831,
+      "boss_id": "Blutstein_Champion",
+      "check": "telegraph",
+      "kind": "verification_scenario"
+    },
+    {
+      "topic": 1832,
+      "boss_id": "Blutstein_Champion",
+      "check": "phase_1",
+      "kind": "verification_scenario"
+    },
+    {
+      "topic": 1833,
+      "boss_id": "Blutstein_Champion",
+      "check": "phase_2",
+      "kind": "verification_scenario"
+    },
+    {
+      "topic": 1834,
+      "boss_id": "Blutstein_Champion",
+      "check": "phase_3",
+      "kind": "verification_scenario"
+    },
+    {
+      "topic": 1835,
+      "boss_id": "Blutstein_Champion",
+      "check": "attack_montage_optional",
+      "kind": "verification_scenario"
+    },
+    {
+      "topic": 1836,
+      "boss_id": "Blutstein_Champion",
+      "check": "stagger_montage_optional",
+      "kind": "verification_scenario"
+    },
+    {
+      "topic": 1837,
+      "boss_id": "Blutstein_Champion",
+      "check": "notify_watchdog_cancels",
+      "kind": "verification_scenario"
+    },
+    {
+      "topic": 1838,
+      "boss_id": "Blutstein_Champion",
+      "check": "committed_attack_interrupt",
+      "kind": "verification_scenario"
+    },
+    {
+      "topic": 1839,
+      "boss_id": "Blutstein_Champion",
+      "check": "timer_fallback",
+      "kind": "verification_scenario"
+    },
+    {
+      "topic": 1840,
+      "boss_id": "Blutstein_Champion",
+      "check": "no_double_hit",
+      "kind": "verification_scenario"
+    },
+    {
+      "topic": 1841,
+      "boss_id": "Kronen_Usurpator",
+      "check": "telegraph",
+      "kind": "verification_scenario"
+    },
+    {
+      "topic": 1842,
+      "boss_id": "Kronen_Usurpator",
+      "check": "phase_1",
+      "kind": "verification_scenario"
+    },
+    {
+      "topic": 1843,
+      "boss_id": "Kronen_Usurpator",
+      "check": "phase_2",
+      "kind": "verification_scenario"
+    },
+    {
+      "topic": 1844,
+      "boss_id": "Kronen_Usurpator",
+      "check": "phase_3",
+      "kind": "verification_scenario"
+    },
+    {
+      "topic": 1845,
+      "boss_id": "Kronen_Usurpator",
+      "check": "attack_montage_optional",
+      "kind": "verification_scenario"
+    },
+    {
+      "topic": 1846,
+      "boss_id": "Kronen_Usurpator",
+      "check": "stagger_montage_optional",
+      "kind": "verification_scenario"
+    },
+    {
+      "topic": 1847,
+      "boss_id": "Kronen_Usurpator",
+      "check": "notify_watchdog_cancels",
+      "kind": "verification_scenario"
+    },
+    {
+      "topic": 1848,
+      "boss_id": "Kronen_Usurpator",
+      "check": "committed_attack_interrupt",
+      "kind": "verification_scenario"
+    },
+    {
+      "topic": 1849,
+      "boss_id": "Kronen_Usurpator",
+      "check": "timer_fallback",
+      "kind": "verification_scenario"
+    },
+    {
+      "topic": 1850,
+      "boss_id": "Kronen_Usurpator",
+      "check": "no_double_hit",
+      "kind": "verification_scenario"
+    }
+  ]
+}

@@ -153,6 +153,7 @@ private:
     bool bPendingHeavyAttack=false;
     FTimerHandle PendingImpactTimer;
     void CancelPendingAttack();
+    void ExpireUnresolvedAnimationAttack();
     float LastAttackTime=-1000.f;
     float LastDodgeTime=-1000.f;
     float LastStaminaUseTime=-1000.f;

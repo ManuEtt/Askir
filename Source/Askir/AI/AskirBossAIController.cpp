@@ -9,12 +9,23 @@
 
 void AAskirBossAIController::OnPossess(APawn* InPawn)
 {
-    Super::OnPossess(InPawn);
+    // A controller can be reused; remove callbacks from the previous pawn first.
+    if (IsValid(BossPawn.Get()) && IsValid(BossPawn->CombatComponent))
+        BossPawn->CombatComponent->OnDamageTaken.RemoveDynamic(this, &AAskirBossAIController::HandleBossDamage);
     CancelTelegraphedAttack();
+    Super::OnPossess(InPawn);
     BossPawn = Cast<AAskirCharacter>(InPawn);
     StaggerUntilTime = -1.f;
     if (IsValid(BossPawn.Get()) && IsValid(BossPawn->CombatComponent))
         BossPawn->CombatComponent->OnDamageTaken.AddDynamic(this, &AAskirBossAIController::HandleBossDamage);
+    // A controller can be reused after a phase-three fight. Restore its Blueprint
+    // class defaults before capturing phase-one baselines for the new pawn.
+    const AAskirBossAIController* Defaults = GetClass()->GetDefaultObject<AAskirBossAIController>();
+    if (IsValid(Defaults))
+    {
+        AttackInterval = Defaults->AttackInterval;
+        AttackDistance = Defaults->AttackDistance;
+    }
     CurrentPhase = 1;
     LastTelegraphTime = -1000.f;
     InitialAttackInterval = AttackInterval;
@@ -24,7 +35,12 @@ void AAskirBossAIController::OnPossess(APawn* InPawn)
 
 void AAskirBossAIController::Tick(float DeltaSeconds)
 {
-    if (IsValid(BossPawn.Get()) && BossPawn->IsDead()) CancelTelegraphedAttack();
+    if (IsValid(BossPawn.Get()) && BossPawn->IsDead())
+    {
+        CancelTelegraphedAttack();
+        BossPawn->AbortPendingAttack();
+        return; // Never schedule another attack from a dead boss.
+    }
     // Apply transitions before the base AI chooses its next attack.
     UpdatePhase();
     Super::Tick(DeltaSeconds);
@@ -55,7 +71,6 @@ void AAskirBossAIController::TriggerAttackTelegraph()
 {
     if (!IsValid(BossPawn.Get()) || BossPawn->IsDead() || !GetWorld()) return;
     const float Now = GetWorld()->GetTimeSeconds();
-    if (Now - LastTelegraphTime < FMath::Max(0.05f, AttackInterval)) return;
     LastTelegraphTime = Now;
     OnBossAttackTelegraph(CurrentPhase, FMath::Clamp(TelegraphWindupSeconds, 0.f, 5.f));
 }
@@ -63,8 +78,13 @@ void AAskirBossAIController::TriggerAttackTelegraph()
 void AAskirBossAIController::OnUnPossess()
 {
     CancelTelegraphedAttack();
-    if (IsValid(BossPawn.Get()) && IsValid(BossPawn->CombatComponent))
-        BossPawn->CombatComponent->OnDamageTaken.RemoveDynamic(this, &AAskirBossAIController::HandleBossDamage);
+    if (IsValid(BossPawn.Get()))
+    {
+        BossPawn->AbortPendingAttack();
+        BossPawn->SetImpactFromAnimationNotify(false);
+        if (IsValid(BossPawn->CombatComponent))
+            BossPawn->CombatComponent->OnDamageTaken.RemoveDynamic(this, &AAskirBossAIController::HandleBossDamage);
+    }
     BossPawn.Reset();
     StaggerUntilTime = -1.f;
     Super::OnUnPossess();
@@ -90,7 +110,7 @@ void AAskirBossAIController::ResolveTelegraphedAttack()
     AAskirCharacter* Enemy = BossPawn.Get();
     AAskirCharacter* Victim = TelegraphTarget.Get();
     TelegraphTarget.Reset();
-    if (!IsValid(Enemy) || !IsValid(Victim) || Enemy->IsDead() || Victim->IsDead() || GetPawn() != Enemy) return;
+    if (!GetWorld() || !IsValid(Enemy) || !IsValid(Victim) || Enemy->IsDead() || Victim->IsDead() || GetPawn() != Enemy) return;
     // Recheck range and visibility at the end of the windup: no phantom hits after dodging.
     if (FVector::DistSquared(Enemy->GetActorLocation(), Victim->GetActorLocation()) > FMath::Square(FMath::Max(1.f, AttackDistance))) return;
     FHitResult Hit;
@@ -98,6 +118,8 @@ void AAskirBossAIController::ResolveTelegraphedAttack()
     const FVector Start = Enemy->GetActorLocation() + FVector(0.f, 0.f, 60.f);
     const FVector End = Victim->GetActorLocation() + FVector(0.f, 0.f, 60.f);
     if (GetWorld()->LineTraceSingleByChannel(Hit, Start, End, ECC_Visibility, Params) && Hit.GetActor() != Victim) return;
+    // The windup can expire while stamina or attack cooldown still blocks the pawn.
+    // In that case the boss returns to its normal decision loop without playing a montage.
     CommitAnimatedAttack(Enemy, Victim);
 }
 
@@ -107,7 +129,11 @@ bool AAskirBossAIController::CommitAnimatedAttack(AAskirCharacter* Enemy, AAskir
     UAnimInstance* Anim = Enemy->GetMesh() ? Enemy->GetMesh()->GetAnimInstance() : nullptr;
     const bool bCanPlay = IsValid(AttackMontage) && IsValid(Anim);
     Enemy->SetImpactFromAnimationNotify(bCanPlay && bImpactFromMontageNotify);
-    const bool bCommitted = Super::TryStartAttack(Enemy, Victim);
+    // The base AI reports that Attack() was invoked, not whether stamina/cooldown
+    // actually allowed an attack. Require a pending hit before playing a montage.
+    const bool bRequested = Super::TryStartAttack(Enemy, Victim);
+    const bool bCommitted = bRequested && Enemy->HasPendingAttack();
+    if (!bCommitted) Enemy->SetImpactFromAnimationNotify(false);
     bool bStarted = false;
     if (bCommitted && bCanPlay)
         bStarted = Anim->Montage_Play(AttackMontage, FMath::Max(0.1f, AttackMontagePlayRate)) > 0.f;
@@ -131,14 +157,18 @@ bool AAskirBossAIController::IsBossStaggered() const
 
 void AAskirBossAIController::HandleBossDamage(const FAskirDamageInfo& DamageInfo)
 {
-    if (!bAllowWindupInterrupt || !bTelegraphPending || !IsValid(BossPawn.Get()) || BossPawn->IsDead()) return;
+    if (!IsValid(BossPawn.Get()) || BossPawn->IsDead()) return;
+    const bool bWindup = bTelegraphPending && bAllowWindupInterrupt;
+    const bool bCommitted = bAllowCommittedAttackInterrupt && BossPawn->HasPendingAttack();
+    if (!bWindup && !bCommitted) return;
     if (DamageInfo.Damage <= 0.f || DamageInfo.Damage < FMath::Max(0.f, StaggerDamageThreshold)) return;
     InterruptBossAttack();
 }
 
 void AAskirBossAIController::InterruptBossAttack()
 {
-    if (!bTelegraphPending || !GetWorld()) return;
+    if (!GetWorld() || !IsValid(BossPawn.Get())) return;
+    if (!bTelegraphPending && !BossPawn->HasPendingAttack()) return;
     CancelTelegraphedAttack();
     if (IsValid(BossPawn.Get()))
     {

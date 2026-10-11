@@ -25,6 +25,10 @@ public:
  UFUNCTION(BlueprintCallable,Category="Askir|Quest") bool TurnInQuestWithRewards(UAskirQuestData* Quest);
  UFUNCTION(BlueprintPure,Category="Askir|Quest") bool HasClaimedReward(FName QuestID)const;
  UPROPERTY(EditAnywhere,BlueprintReadWrite,SaveGame,Category="Askir|Quest") TSet<FName> ClaimedRewards;
+ /** Persistent one-shot encounter completion IDs; independent of quest rewards. */
+ UPROPERTY(EditAnywhere,BlueprintReadWrite,SaveGame,Category="Askir|Encounter") TSet<FName> CompletedEncounters;
+ UFUNCTION(BlueprintPure,Category="Askir|Encounter") bool HasCompletedEncounter(FName EncounterID) const { return !EncounterID.IsNone() && CompletedEncounters.Contains(EncounterID); }
+ UFUNCTION(BlueprintCallable,Category="Askir|Encounter") bool MarkEncounterCompleted(FName EncounterID) { if(EncounterID.IsNone() || CompletedEncounters.Contains(EncounterID))return false; CompletedEncounters.Add(EncounterID); return true; }
  UPROPERTY(EditAnywhere,BlueprintReadWrite,SaveGame,Category="Askir|Quest") TMap<FName,EAskirQuestState> QuestStates;
  UPROPERTY(EditAnywhere,BlueprintReadWrite,SaveGame,Category="Askir|Quest") TArray<FAskirQuestObjective> ActiveObjectives;
  UPROPERTY(EditAnywhere,BlueprintReadWrite,SaveGame,Category="Askir|Quest") TMap<FName,FAskirQuestObjectiveList> ObjectivesByQuest;
