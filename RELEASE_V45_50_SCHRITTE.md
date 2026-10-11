@@ -1,0 +1,54 @@
+# Askir V45 – Themen 1101–1150
+
+25 Themen auf Code-/Datenebene bearbeitet; 25 Themen offen. Keine UE-Kompilierung und keine .umap-Dateien.
+
+- **1101** Kanonischen Map-Pfad definiert — Bearbeitet (offline, UE ungetestet)
+- **1102** V36-Generator an V42-Pfad angepasst — Bearbeitet (offline, UE ungetestet)
+- **1103** Portal-C++-Pfad abgeglichen — Bearbeitet (offline, UE ungetestet)
+- **1104** V43-Portal-Skript abgeglichen — Bearbeitet (offline, UE ungetestet)
+- **1105** V44-Encounter-Skript abgeglichen — Bearbeitet (offline, UE ungetestet)
+- **1106** Neue Cook-Liste für 30 Karten erzeugt — Bearbeitet (offline, UE ungetestet)
+- **1107** Historische Cook-Liste als veraltet markiert — Bearbeitet (offline, UE ungetestet)
+- **1108** Kartenanzahl validiert — Bearbeitet (offline, UE ungetestet)
+- **1109** Eindeutige Kartennamen validiert — Bearbeitet (offline, UE ungetestet)
+- **1110** Design-/Manifestnamen abgeglichen — Bearbeitet (offline, UE ungetestet)
+- **1111** Ausgänge beider Datensätze verglichen — Bearbeitet (offline, UE ungetestet)
+- **1112** Generatorpfad automatisiert geprüft — Bearbeitet (offline, UE ungetestet)
+- **1113** Portal-Skript-Pfad geprüft — Bearbeitet (offline, UE ungetestet)
+- **1114** Encounter-Skript-Pfad geprüft — Bearbeitet (offline, UE ungetestet)
+- **1115** C++-Reisepfad geprüft — Bearbeitet (offline, UE ungetestet)
+- **1116** Cook-Liste gegen Manifest geprüft — Bearbeitet (offline, UE ungetestet)
+- **1117** Offline-Preflight erstellt — Bearbeitet (offline, UE ungetestet)
+- **1118** Fehlende Pfadkonsistenz als Fehler definiert — Bearbeitet (offline, UE ungetestet)
+- **1119** Regressionstest für Cook-Pfad erstellt — Bearbeitet (offline, UE ungetestet)
+- **1120** Regressionstest für Generatorpfad erstellt — Bearbeitet (offline, UE ungetestet)
+- **1121** Unreal-Pipeline-Vorschau erstellt — Bearbeitet (offline, UE ungetestet)
+- **1122** Schreiboperationen im Runner gesperrt — Bearbeitet (offline, UE ungetestet)
+- **1123** Manuelle Editorreihenfolge dokumentiert — Bearbeitet (offline, UE ungetestet)
+- **1124** Abhängigkeit von C++-Kompilierung dokumentiert — Bearbeitet (offline, UE ungetestet)
+- **1125** Sicherungsanforderung dokumentiert — Bearbeitet (offline, UE ungetestet)
+- **1126** 30 echte umap-Karten erzeugen — Offen
+- **1127** 30 Karten im Editor öffnen — Offen
+- **1128** PlayerStart je Karte prüfen — Offen
+- **1129** Kollisionen prüfen — Offen
+- **1130** NavMesh je Karte erzeugen — Offen
+- **1131** Portale auf allen Karten prüfen — Offen
+- **1132** Rückreise in UE testen — Offen
+- **1133** Savegame beim Levelwechsel testen — Offen
+- **1134** Gegner-Blueprints zuweisen — Offen
+- **1135** 90 Spawner im Editor setzen — Offen
+- **1136** 90 Encounter-Zonen testen — Offen
+- **1137** Encounter-Trigger mit Questdaten verbinden — Offen
+- **1138** NPC-Blueprints erstellen — Offen
+- **1139** NPCs auf 30 Karten platzieren — Offen
+- **1140** Dialoge mit NPCs verknüpfen — Offen
+- **1141** Hauptquests spielbar machen — Offen
+- **1142** Nebenquests integrieren — Offen
+- **1143** Loot und Truhen platzieren — Offen
+- **1144** Handels-NPCs platzieren — Offen
+- **1145** Weltzustand beim Levelwechsel prüfen — Offen
+- **1146** Audio und Musik integrieren — Offen
+- **1147** Biom-Assets einsetzen — Offen
+- **1148** Landschaftsgeometrie fertigstellen — Offen
+- **1149** Performance profilieren — Offen
+- **1150** Windows-Build kompilieren — Offen

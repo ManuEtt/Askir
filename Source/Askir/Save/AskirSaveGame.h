@@ -29,7 +29,13 @@ class ASKIR_API UAskirSaveGame:public USaveGame
     GENERATED_BODY()
 public:
     /** Save format version; increment when persistent structures change. */
-    UPROPERTY(SaveGame) int32 SaveFormatVersion = 1;
+    UPROPERTY(SaveGame) int32 SaveFormatVersion = 2;
+    /** V40: equipment snapshot; v1 saves retain defaults for compatibility. */
+    UPROPERTY(SaveGame) FName SavedWeaponID = NAME_None;
+    UPROPERTY(SaveGame) FName SavedArmorID = NAME_None;
+    UPROPERTY(SaveGame) float SavedWeaponRating = 0.f;
+    UPROPERTY(SaveGame) float SavedArmorRating = 0.f;
+    UPROPERTY(SaveGame) float SavedGearDurability = 100.f;
     /** Level at the time of capture; helps diagnose cross-map restores. */
     UPROPERTY(SaveGame) FName SavedMapName = NAME_None;
     // V15 persistent village/social snapshot. Runtime Save/Load mapping is still required.

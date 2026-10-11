@@ -14,6 +14,7 @@
 #include "Progression/AskirProgressionComponent.h"
 #include "Characters/AskirCharacter.h"
 #include "Save/AskirSaveGame.h"
+#include "Equipment/AskirEquipmentComponent.h"
 #include "Combat/AskirCombatComponent.h"
 #include "Inventory/AskirInventoryComponent.h"
 #include "Inventory/AskirItemData.h"
@@ -40,6 +41,16 @@ bool AAskirGameMode::SaveGame(const FString& SlotName)
     UAskirSaveGame* Save = Cast<UAskirSaveGame>(UGameplayStatics::CreateSaveGameObject(UAskirSaveGame::StaticClass()));
     if (!Save) return false;
     Save->SavedMapName = FName(*UGameplayStatics::GetCurrentLevelName(this, true));
+    if (const UAskirEquipmentComponent* Gear = Player->FindComponentByClass<UAskirEquipmentComponent>())
+    {
+        // Save only inventory-backed equipment IDs (also sanitizes stale loadouts).
+        const_cast<UAskirEquipmentComponent*>(Gear)->ReconcileWithInventory();
+        Save->SavedWeaponID = Gear->EquippedWeaponID;
+        Save->SavedArmorID = Gear->EquippedArmorID;
+        Save->SavedWeaponRating = Gear->WeaponRating;
+        Save->SavedArmorRating = Gear->ArmorRating;
+        Save->SavedGearDurability = Gear->Durability;
+    }
 
     if (Player->ProgressionComponent) Save->SavedProgression = Player->ProgressionComponent->CaptureProgress();
     Save->DemoStage=DemoStage;
@@ -120,7 +131,7 @@ bool AAskirGameMode::LoadGame(const FString& SlotName, bool bRestorePosition)
     UAskirSaveGame* Save = Cast<UAskirSaveGame>(UGameplayStatics::LoadGameFromSlot(SlotName, 0));
     AAskirCharacter* Player = Cast<AAskirCharacter>(UGameplayStatics::GetPlayerPawn(this, 0));
     if (!Save || !Player) return false;
-    if (Save->SaveFormatVersion < 1 || Save->SaveFormatVersion > 1)
+    if (Save->SaveFormatVersion < 1 || Save->SaveFormatVersion > 2)
     {
         UE_LOG(LogTemp, Warning, TEXT("Askir unsupported save version: %d"), Save->SaveFormatVersion);
         return false;
@@ -140,6 +151,11 @@ bool AAskirGameMode::LoadGame(const FString& SlotName, bool bRestorePosition)
         RestoredInventory.Add(Entry);
     }
 
+    // Reject malformed equipment data before changing any live game state.
+    if (!FMath::IsFinite(Save->SavedWeaponRating) || !FMath::IsFinite(Save->SavedArmorRating)
+        || !FMath::IsFinite(Save->SavedGearDurability)
+        || Save->SavedWeaponRating < 0.f || Save->SavedArmorRating < 0.f
+        || Save->SavedGearDurability < 0.f || Save->SavedGearDurability > 100.f) return false;
     DemoStage=FMath::Clamp(Save->DemoStage,0,4);
     DemoSupplies=FMath::Max(0,Save->DemoSupplies);
     bDemoFinished=Save->bDemoFinished;
@@ -163,6 +179,11 @@ bool AAskirGameMode::LoadGame(const FString& SlotName, bool bRestorePosition)
         Player->QuestComponent->ObjectivesByQuest = Save->SavedObjectivesByQuest;
         Player->QuestComponent->LegacyActiveQuestID = Save->SavedLegacyActiveQuestID;
         Player->QuestComponent->ClaimedRewards = Save->SavedClaimedRewards;
+    }
+    if (UAskirEquipmentComponent* Gear = Player->FindComponentByClass<UAskirEquipmentComponent>())
+    {
+        Gear->RestoreEquipment(Save->SavedWeaponID,Save->SavedArmorID,Save->SavedWeaponRating,Save->SavedArmorRating,Save->SavedGearDurability);
+        Gear->ReconcileWithInventory();
     }
     if (Player->TradeComponent) Player->TradeComponent->Gold=FMath::Max(0,Save->SavedPlayerGold);
     if (Player->DornfeldMission) Player->DornfeldMission->RestoreMission(Save->SavedDornfeldMission);

@@ -1,0 +1,1656 @@
+{
+  "schema_version": 1,
+  "description": "90 encounter configurations; not spawned in Unreal. Archetypes are design IDs, not implemented Blueprint classes.",
+  "profiles": [
+    {
+      "map_name": "L01_Dornfeld",
+      "biome": "village",
+      "chapter": 1,
+      "encounters": [
+        {
+          "encounter_id": "L01_ENCOUNTER_1",
+          "position_cm": [
+            -600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "bandit_scout",
+          "tier": "standard",
+          "enemy_count": 1,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L01_ENCOUNTER_2",
+          "position_cm": [
+            0,
+            1000,
+            0
+          ],
+          "enemy_archetype": "shadow_wisp",
+          "tier": "standard",
+          "enemy_count": 1,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L01_ENCOUNTER_3",
+          "position_cm": [
+            600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "bandit_scout",
+          "tier": "elite",
+          "enemy_count": 1,
+          "activation_radius_cm": 900,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        }
+      ]
+    },
+    {
+      "map_name": "L02_Dornfelder_Umland",
+      "biome": "wilderness",
+      "chapter": 1,
+      "encounters": [
+        {
+          "encounter_id": "L02_ENCOUNTER_1",
+          "position_cm": [
+            -600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "wolf",
+          "tier": "standard",
+          "enemy_count": 1,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L02_ENCOUNTER_2",
+          "position_cm": [
+            0,
+            1000,
+            0
+          ],
+          "enemy_archetype": "bandit_scout",
+          "tier": "standard",
+          "enemy_count": 1,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L02_ENCOUNTER_3",
+          "position_cm": [
+            600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "wolf",
+          "tier": "elite",
+          "enemy_count": 1,
+          "activation_radius_cm": 900,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        }
+      ]
+    },
+    {
+      "map_name": "L03_Grauwald",
+      "biome": "forest",
+      "chapter": 1,
+      "encounters": [
+        {
+          "encounter_id": "L03_ENCOUNTER_1",
+          "position_cm": [
+            -600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "forest_wolf",
+          "tier": "standard",
+          "enemy_count": 1,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L03_ENCOUNTER_2",
+          "position_cm": [
+            0,
+            1000,
+            0
+          ],
+          "enemy_archetype": "shadow_wisp",
+          "tier": "standard",
+          "enemy_count": 1,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L03_ENCOUNTER_3",
+          "position_cm": [
+            600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "forest_wolf",
+          "tier": "elite",
+          "enemy_count": 1,
+          "activation_radius_cm": 900,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        }
+      ]
+    },
+    {
+      "map_name": "L04_Alte_Brunnenkrypta",
+      "biome": "dungeon",
+      "chapter": 1,
+      "encounters": [
+        {
+          "encounter_id": "L04_ENCOUNTER_1",
+          "position_cm": [
+            -600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "crypt_guardian",
+          "tier": "standard",
+          "enemy_count": 1,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L04_ENCOUNTER_2",
+          "position_cm": [
+            0,
+            1000,
+            0
+          ],
+          "enemy_archetype": "skeleton",
+          "tier": "standard",
+          "enemy_count": 1,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L04_ENCOUNTER_3",
+          "position_cm": [
+            600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "crypt_guardian",
+          "tier": "elite",
+          "enemy_count": 1,
+          "activation_radius_cm": 900,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        }
+      ]
+    },
+    {
+      "map_name": "L05_Verlassene_Silbermine",
+      "biome": "dungeon",
+      "chapter": 1,
+      "encounters": [
+        {
+          "encounter_id": "L05_ENCOUNTER_1",
+          "position_cm": [
+            -600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "crypt_guardian",
+          "tier": "standard",
+          "enemy_count": 1,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L05_ENCOUNTER_2",
+          "position_cm": [
+            0,
+            1000,
+            0
+          ],
+          "enemy_archetype": "skeleton",
+          "tier": "standard",
+          "enemy_count": 1,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L05_ENCOUNTER_3",
+          "position_cm": [
+            600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "crypt_guardian",
+          "tier": "elite",
+          "enemy_count": 1,
+          "activation_radius_cm": 900,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        }
+      ]
+    },
+    {
+      "map_name": "L06_Falkenwacht",
+      "biome": "city",
+      "chapter": 1,
+      "encounters": [
+        {
+          "encounter_id": "L06_ENCOUNTER_1",
+          "position_cm": [
+            -600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "bandit_scout",
+          "tier": "standard",
+          "enemy_count": 1,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L06_ENCOUNTER_2",
+          "position_cm": [
+            0,
+            1000,
+            0
+          ],
+          "enemy_archetype": "shadow_wisp",
+          "tier": "standard",
+          "enemy_count": 1,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L06_ENCOUNTER_3",
+          "position_cm": [
+            600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "bandit_scout",
+          "tier": "elite",
+          "enemy_count": 1,
+          "activation_radius_cm": 900,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        }
+      ]
+    },
+    {
+      "map_name": "L07_Nordpass",
+      "biome": "mountain",
+      "chapter": 2,
+      "encounters": [
+        {
+          "encounter_id": "L07_ENCOUNTER_1",
+          "position_cm": [
+            -600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "rock_golem",
+          "tier": "standard",
+          "enemy_count": 2,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L07_ENCOUNTER_2",
+          "position_cm": [
+            0,
+            1000,
+            0
+          ],
+          "enemy_archetype": "mountain_wolf",
+          "tier": "standard",
+          "enemy_count": 2,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L07_ENCOUNTER_3",
+          "position_cm": [
+            600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "rock_golem",
+          "tier": "elite",
+          "enemy_count": 1,
+          "activation_radius_cm": 900,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        }
+      ]
+    },
+    {
+      "map_name": "L08_Ruinen_von_Eldrath",
+      "biome": "ruins",
+      "chapter": 2,
+      "encounters": [
+        {
+          "encounter_id": "L08_ENCOUNTER_1",
+          "position_cm": [
+            -600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "ancient_guardian",
+          "tier": "standard",
+          "enemy_count": 2,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L08_ENCOUNTER_2",
+          "position_cm": [
+            0,
+            1000,
+            0
+          ],
+          "enemy_archetype": "skeleton",
+          "tier": "standard",
+          "enemy_count": 2,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L08_ENCOUNTER_3",
+          "position_cm": [
+            600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "ancient_guardian",
+          "tier": "elite",
+          "enemy_count": 1,
+          "activation_radius_cm": 900,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        }
+      ]
+    },
+    {
+      "map_name": "L09_Nebelmoor",
+      "biome": "swamp",
+      "chapter": 2,
+      "encounters": [
+        {
+          "encounter_id": "L09_ENCOUNTER_1",
+          "position_cm": [
+            -600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "bog_wraith",
+          "tier": "standard",
+          "enemy_count": 2,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L09_ENCOUNTER_2",
+          "position_cm": [
+            0,
+            1000,
+            0
+          ],
+          "enemy_archetype": "marsh_crawler",
+          "tier": "standard",
+          "enemy_count": 2,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L09_ENCOUNTER_3",
+          "position_cm": [
+            600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "bog_wraith",
+          "tier": "elite",
+          "enemy_count": 1,
+          "activation_radius_cm": 900,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        }
+      ]
+    },
+    {
+      "map_name": "L10_Krypta_der_Sieben",
+      "biome": "dungeon",
+      "chapter": 2,
+      "encounters": [
+        {
+          "encounter_id": "L10_ENCOUNTER_1",
+          "position_cm": [
+            -600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "crypt_guardian",
+          "tier": "standard",
+          "enemy_count": 2,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L10_ENCOUNTER_2",
+          "position_cm": [
+            0,
+            1000,
+            0
+          ],
+          "enemy_archetype": "skeleton",
+          "tier": "standard",
+          "enemy_count": 2,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L10_ENCOUNTER_3",
+          "position_cm": [
+            600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "crypt_guardian",
+          "tier": "elite",
+          "enemy_count": 1,
+          "activation_radius_cm": 900,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        }
+      ]
+    },
+    {
+      "map_name": "L11_Verlorenes_Kloster",
+      "biome": "ruins",
+      "chapter": 2,
+      "encounters": [
+        {
+          "encounter_id": "L11_ENCOUNTER_1",
+          "position_cm": [
+            -600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "ancient_guardian",
+          "tier": "standard",
+          "enemy_count": 2,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L11_ENCOUNTER_2",
+          "position_cm": [
+            0,
+            1000,
+            0
+          ],
+          "enemy_archetype": "skeleton",
+          "tier": "standard",
+          "enemy_count": 2,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L11_ENCOUNTER_3",
+          "position_cm": [
+            600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "ancient_guardian",
+          "tier": "elite",
+          "enemy_count": 1,
+          "activation_radius_cm": 900,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        }
+      ]
+    },
+    {
+      "map_name": "L12_Kuestenhafen_Ardem",
+      "biome": "city",
+      "chapter": 2,
+      "encounters": [
+        {
+          "encounter_id": "L12_ENCOUNTER_1",
+          "position_cm": [
+            -600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "bandit_scout",
+          "tier": "standard",
+          "enemy_count": 2,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L12_ENCOUNTER_2",
+          "position_cm": [
+            0,
+            1000,
+            0
+          ],
+          "enemy_archetype": "shadow_wisp",
+          "tier": "standard",
+          "enemy_count": 2,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L12_ENCOUNTER_3",
+          "position_cm": [
+            600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "bandit_scout",
+          "tier": "elite",
+          "enemy_count": 1,
+          "activation_radius_cm": 900,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        }
+      ]
+    },
+    {
+      "map_name": "L13_Hafen_von_Thalor",
+      "biome": "city",
+      "chapter": 3,
+      "encounters": [
+        {
+          "encounter_id": "L13_ENCOUNTER_1",
+          "position_cm": [
+            -600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "bandit_scout",
+          "tier": "standard",
+          "enemy_count": 2,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L13_ENCOUNTER_2",
+          "position_cm": [
+            0,
+            1000,
+            0
+          ],
+          "enemy_archetype": "shadow_wisp",
+          "tier": "standard",
+          "enemy_count": 2,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L13_ENCOUNTER_3",
+          "position_cm": [
+            600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "bandit_scout",
+          "tier": "elite",
+          "enemy_count": 1,
+          "activation_radius_cm": 900,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        }
+      ]
+    },
+    {
+      "map_name": "L14_Sonnenebene",
+      "biome": "wilderness",
+      "chapter": 3,
+      "encounters": [
+        {
+          "encounter_id": "L14_ENCOUNTER_1",
+          "position_cm": [
+            -600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "wolf",
+          "tier": "standard",
+          "enemy_count": 2,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L14_ENCOUNTER_2",
+          "position_cm": [
+            0,
+            1000,
+            0
+          ],
+          "enemy_archetype": "bandit_scout",
+          "tier": "standard",
+          "enemy_count": 2,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L14_ENCOUNTER_3",
+          "position_cm": [
+            600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "wolf",
+          "tier": "elite",
+          "enemy_count": 1,
+          "activation_radius_cm": 900,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        }
+      ]
+    },
+    {
+      "map_name": "L15_Kristallhoehlen",
+      "biome": "dungeon",
+      "chapter": 3,
+      "encounters": [
+        {
+          "encounter_id": "L15_ENCOUNTER_1",
+          "position_cm": [
+            -600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "crypt_guardian",
+          "tier": "standard",
+          "enemy_count": 2,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L15_ENCOUNTER_2",
+          "position_cm": [
+            0,
+            1000,
+            0
+          ],
+          "enemy_archetype": "skeleton",
+          "tier": "standard",
+          "enemy_count": 2,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L15_ENCOUNTER_3",
+          "position_cm": [
+            600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "crypt_guardian",
+          "tier": "elite",
+          "enemy_count": 1,
+          "activation_radius_cm": 900,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        }
+      ]
+    },
+    {
+      "map_name": "L16_Vergessene_Bibliothek",
+      "biome": "ruins",
+      "chapter": 3,
+      "encounters": [
+        {
+          "encounter_id": "L16_ENCOUNTER_1",
+          "position_cm": [
+            -600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "ancient_guardian",
+          "tier": "standard",
+          "enemy_count": 2,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L16_ENCOUNTER_2",
+          "position_cm": [
+            0,
+            1000,
+            0
+          ],
+          "enemy_archetype": "skeleton",
+          "tier": "standard",
+          "enemy_count": 2,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L16_ENCOUNTER_3",
+          "position_cm": [
+            600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "ancient_guardian",
+          "tier": "elite",
+          "enemy_count": 1,
+          "activation_radius_cm": 900,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        }
+      ]
+    },
+    {
+      "map_name": "L17_Wuestenruinen_SarKel",
+      "biome": "ruins",
+      "chapter": 3,
+      "encounters": [
+        {
+          "encounter_id": "L17_ENCOUNTER_1",
+          "position_cm": [
+            -600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "ancient_guardian",
+          "tier": "standard",
+          "enemy_count": 2,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L17_ENCOUNTER_2",
+          "position_cm": [
+            0,
+            1000,
+            0
+          ],
+          "enemy_archetype": "skeleton",
+          "tier": "standard",
+          "enemy_count": 2,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L17_ENCOUNTER_3",
+          "position_cm": [
+            600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "ancient_guardian",
+          "tier": "elite",
+          "enemy_count": 1,
+          "activation_radius_cm": 900,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        }
+      ]
+    },
+    {
+      "map_name": "L18_Tempel_des_Zweiten_Siegels",
+      "biome": "dungeon",
+      "chapter": 3,
+      "encounters": [
+        {
+          "encounter_id": "L18_ENCOUNTER_1",
+          "position_cm": [
+            -600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "crypt_guardian",
+          "tier": "standard",
+          "enemy_count": 2,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L18_ENCOUNTER_2",
+          "position_cm": [
+            0,
+            1000,
+            0
+          ],
+          "enemy_archetype": "skeleton",
+          "tier": "standard",
+          "enemy_count": 2,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L18_ENCOUNTER_3",
+          "position_cm": [
+            600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "crypt_guardian",
+          "tier": "elite",
+          "enemy_count": 1,
+          "activation_radius_cm": 900,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        }
+      ]
+    },
+    {
+      "map_name": "L19_Grenzfestung_Velis",
+      "biome": "fortress",
+      "chapter": 4,
+      "encounters": [
+        {
+          "encounter_id": "L19_ENCOUNTER_1",
+          "position_cm": [
+            -600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "legion_soldier",
+          "tier": "standard",
+          "enemy_count": 3,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L19_ENCOUNTER_2",
+          "position_cm": [
+            0,
+            1000,
+            0
+          ],
+          "enemy_archetype": "shadow_knight",
+          "tier": "standard",
+          "enemy_count": 3,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L19_ENCOUNTER_3",
+          "position_cm": [
+            600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "legion_soldier",
+          "tier": "elite",
+          "enemy_count": 1,
+          "activation_radius_cm": 900,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        }
+      ]
+    },
+    {
+      "map_name": "L20_Verbrannte_Lande",
+      "biome": "wilderness",
+      "chapter": 4,
+      "encounters": [
+        {
+          "encounter_id": "L20_ENCOUNTER_1",
+          "position_cm": [
+            -600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "wolf",
+          "tier": "standard",
+          "enemy_count": 3,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L20_ENCOUNTER_2",
+          "position_cm": [
+            0,
+            1000,
+            0
+          ],
+          "enemy_archetype": "bandit_scout",
+          "tier": "standard",
+          "enemy_count": 3,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L20_ENCOUNTER_3",
+          "position_cm": [
+            600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "wolf",
+          "tier": "elite",
+          "enemy_count": 1,
+          "activation_radius_cm": 900,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        }
+      ]
+    },
+    {
+      "map_name": "L21_Schwarzwald_Velis",
+      "biome": "forest",
+      "chapter": 4,
+      "encounters": [
+        {
+          "encounter_id": "L21_ENCOUNTER_1",
+          "position_cm": [
+            -600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "forest_wolf",
+          "tier": "standard",
+          "enemy_count": 3,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L21_ENCOUNTER_2",
+          "position_cm": [
+            0,
+            1000,
+            0
+          ],
+          "enemy_archetype": "shadow_wisp",
+          "tier": "standard",
+          "enemy_count": 3,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L21_ENCOUNTER_3",
+          "position_cm": [
+            600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "forest_wolf",
+          "tier": "elite",
+          "enemy_count": 1,
+          "activation_radius_cm": 900,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        }
+      ]
+    },
+    {
+      "map_name": "L22_Unterirdische_Zwergenstadt",
+      "biome": "city",
+      "chapter": 4,
+      "encounters": [
+        {
+          "encounter_id": "L22_ENCOUNTER_1",
+          "position_cm": [
+            -600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "bandit_scout",
+          "tier": "standard",
+          "enemy_count": 3,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L22_ENCOUNTER_2",
+          "position_cm": [
+            0,
+            1000,
+            0
+          ],
+          "enemy_archetype": "shadow_wisp",
+          "tier": "standard",
+          "enemy_count": 3,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L22_ENCOUNTER_3",
+          "position_cm": [
+            600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "bandit_scout",
+          "tier": "elite",
+          "enemy_count": 1,
+          "activation_radius_cm": 900,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        }
+      ]
+    },
+    {
+      "map_name": "L23_Blutsteinminen",
+      "biome": "dungeon",
+      "chapter": 4,
+      "encounters": [
+        {
+          "encounter_id": "L23_ENCOUNTER_1",
+          "position_cm": [
+            -600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "crypt_guardian",
+          "tier": "standard",
+          "enemy_count": 3,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L23_ENCOUNTER_2",
+          "position_cm": [
+            0,
+            1000,
+            0
+          ],
+          "enemy_archetype": "skeleton",
+          "tier": "standard",
+          "enemy_count": 3,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L23_ENCOUNTER_3",
+          "position_cm": [
+            600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "crypt_guardian",
+          "tier": "elite",
+          "enemy_count": 1,
+          "activation_radius_cm": 900,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        }
+      ]
+    },
+    {
+      "map_name": "L24_Festung_der_Schattenlegion",
+      "biome": "fortress",
+      "chapter": 4,
+      "encounters": [
+        {
+          "encounter_id": "L24_ENCOUNTER_1",
+          "position_cm": [
+            -600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "legion_soldier",
+          "tier": "standard",
+          "enemy_count": 3,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L24_ENCOUNTER_2",
+          "position_cm": [
+            0,
+            1000,
+            0
+          ],
+          "enemy_archetype": "shadow_knight",
+          "tier": "standard",
+          "enemy_count": 3,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L24_ENCOUNTER_3",
+          "position_cm": [
+            600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "legion_soldier",
+          "tier": "elite",
+          "enemy_count": 1,
+          "activation_radius_cm": 900,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        }
+      ]
+    },
+    {
+      "map_name": "L25_Aschenfeste",
+      "biome": "city",
+      "chapter": 5,
+      "encounters": [
+        {
+          "encounter_id": "L25_ENCOUNTER_1",
+          "position_cm": [
+            -600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "bandit_scout",
+          "tier": "standard",
+          "enemy_count": 3,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L25_ENCOUNTER_2",
+          "position_cm": [
+            0,
+            1000,
+            0
+          ],
+          "enemy_archetype": "shadow_wisp",
+          "tier": "standard",
+          "enemy_count": 3,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L25_ENCOUNTER_3",
+          "position_cm": [
+            600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "bandit_scout",
+          "tier": "elite",
+          "enemy_count": 1,
+          "activation_radius_cm": 900,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        }
+      ]
+    },
+    {
+      "map_name": "L26_Tal_der_gefallenen_Koenige",
+      "biome": "ruins",
+      "chapter": 5,
+      "encounters": [
+        {
+          "encounter_id": "L26_ENCOUNTER_1",
+          "position_cm": [
+            -600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "ancient_guardian",
+          "tier": "standard",
+          "enemy_count": 3,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L26_ENCOUNTER_2",
+          "position_cm": [
+            0,
+            1000,
+            0
+          ],
+          "enemy_archetype": "skeleton",
+          "tier": "standard",
+          "enemy_count": 3,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L26_ENCOUNTER_3",
+          "position_cm": [
+            600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "ancient_guardian",
+          "tier": "elite",
+          "enemy_count": 1,
+          "activation_radius_cm": 900,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        }
+      ]
+    },
+    {
+      "map_name": "L27_Tempel_des_Vierten_Siegels",
+      "biome": "dungeon",
+      "chapter": 5,
+      "encounters": [
+        {
+          "encounter_id": "L27_ENCOUNTER_1",
+          "position_cm": [
+            -600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "crypt_guardian",
+          "tier": "standard",
+          "enemy_count": 3,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L27_ENCOUNTER_2",
+          "position_cm": [
+            0,
+            1000,
+            0
+          ],
+          "enemy_archetype": "skeleton",
+          "tier": "standard",
+          "enemy_count": 3,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L27_ENCOUNTER_3",
+          "position_cm": [
+            600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "crypt_guardian",
+          "tier": "elite",
+          "enemy_count": 1,
+          "activation_radius_cm": 900,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        }
+      ]
+    },
+    {
+      "map_name": "L28_Verlorene_Koenigsstadt",
+      "biome": "ruins",
+      "chapter": 5,
+      "encounters": [
+        {
+          "encounter_id": "L28_ENCOUNTER_1",
+          "position_cm": [
+            -600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "ancient_guardian",
+          "tier": "standard",
+          "enemy_count": 3,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L28_ENCOUNTER_2",
+          "position_cm": [
+            0,
+            1000,
+            0
+          ],
+          "enemy_archetype": "skeleton",
+          "tier": "standard",
+          "enemy_count": 3,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L28_ENCOUNTER_3",
+          "position_cm": [
+            600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "ancient_guardian",
+          "tier": "elite",
+          "enemy_count": 1,
+          "activation_radius_cm": 900,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        }
+      ]
+    },
+    {
+      "map_name": "L29_Heiligtum_der_Krone",
+      "biome": "dungeon",
+      "chapter": 5,
+      "encounters": [
+        {
+          "encounter_id": "L29_ENCOUNTER_1",
+          "position_cm": [
+            -600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "crypt_guardian",
+          "tier": "standard",
+          "enemy_count": 3,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L29_ENCOUNTER_2",
+          "position_cm": [
+            0,
+            1000,
+            0
+          ],
+          "enemy_archetype": "skeleton",
+          "tier": "standard",
+          "enemy_count": 3,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L29_ENCOUNTER_3",
+          "position_cm": [
+            600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "crypt_guardian",
+          "tier": "elite",
+          "enemy_count": 1,
+          "activation_radius_cm": 900,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        }
+      ]
+    },
+    {
+      "map_name": "L30_Thronsaal_von_Askir",
+      "biome": "boss",
+      "chapter": 5,
+      "encounters": [
+        {
+          "encounter_id": "L30_ENCOUNTER_1",
+          "position_cm": [
+            -600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "shadow_knight",
+          "tier": "standard",
+          "enemy_count": 3,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L30_ENCOUNTER_2",
+          "position_cm": [
+            0,
+            1000,
+            0
+          ],
+          "enemy_archetype": "crown_guardian",
+          "tier": "standard",
+          "enemy_count": 3,
+          "activation_radius_cm": 650,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        },
+        {
+          "encounter_id": "L30_ENCOUNTER_3",
+          "position_cm": [
+            600,
+            1000,
+            0
+          ],
+          "enemy_archetype": "shadow_knight",
+          "tier": "elite",
+          "enemy_count": 1,
+          "activation_radius_cm": 900,
+          "reset_policy": "on_map_reload",
+          "quest_gate": null,
+          "blueprint_class_path": null,
+          "implementation_status": "data_only"
+        }
+      ]
+    }
+  ]
+}

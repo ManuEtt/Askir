@@ -6,7 +6,7 @@ import unreal
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 MANIFEST = os.path.join(ROOT, 'Production', 'Levels', 'world_manifest_v36.json')
-OUTPUT_ROOT = '/Game/Askir/WorldBlockoutsV36'
+OUTPUT_ROOT = '/Game/Askir/WorldV42'  # V45 canonical map root; legacy name retained
 DRY_RUN = True  # Set False only after review and backup.
 OVERWRITE_EXISTING = False
 CREATE_FUNCTIONAL_PORTALS = True  # Requires compiled AskirWorldPortal class

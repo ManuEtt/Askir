@@ -31,7 +31,7 @@ bool AAskirWorldPortal::Travel(AActor* Traveler)
  if(CurrentMap==DestinationMap)return false;
  // A packaged build must contain the destination world. Never overwrite the
  // travel snapshot when the destination package is absent.
- const FString DestinationPackage = FString::Printf(TEXT("/Game/Maps/%s"), *DestinationMap.ToString());
+ const FString DestinationPackage = FString::Printf(TEXT("/Game/Askir/WorldV42/%s"), *DestinationMap.ToString());
  if (!FPackageName::DoesPackageExist(DestinationPackage))
  {
   UE_LOG(LogTemp, Warning, TEXT("Askir travel refused: destination map missing: %s"), *DestinationPackage);
@@ -50,6 +50,6 @@ bool AAskirWorldPortal::Travel(AActor* Traveler)
  }
  State->bRestoreTravelSnapshot=true;
  State->QueueArrival(DestinationMap,CurrentMap);
- UGameplayStatics::OpenLevel(this,DestinationMap);
+ UGameplayStatics::OpenLevel(this,FName(*DestinationPackage));
  return true;
 }

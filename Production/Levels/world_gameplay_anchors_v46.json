@@ -1,0 +1,3606 @@
+{
+  "schema_version": 1,
+  "description": "Offline authored anchors, not spawned actors or completed quests",
+  "anchors": [
+    {
+      "map_name": "L01_Dornfeld",
+      "site_id": "L01_SITE_01",
+      "label": "Dorfplatz",
+      "position_cm": [
+        -950,
+        -650,
+        0
+      ],
+      "mission_id": "M01-01",
+      "kind": "quest_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L01_Dornfeld",
+      "site_id": "L01_SITE_02",
+      "label": "Brunnen",
+      "position_cm": [
+        -450,
+        450,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L01_Dornfeld",
+      "site_id": "L01_SITE_03",
+      "label": "Marktstände",
+      "position_cm": [
+        0,
+        -100,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L01_Dornfeld",
+      "site_id": "L01_SITE_04",
+      "label": "Scheunen",
+      "position_cm": [
+        500,
+        600,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L01_Dornfeld",
+      "site_id": "L01_SITE_05",
+      "label": "Feldwege",
+      "position_cm": [
+        950,
+        -400,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L01_Dornfeld",
+      "site_id": "L01_ENCOUNTER_1",
+      "label": "standard",
+      "position_cm": [
+        -600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L01_Dornfeld",
+      "site_id": "L01_ENCOUNTER_2",
+      "label": "standard",
+      "position_cm": [
+        0,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L01_Dornfeld",
+      "site_id": "L01_ENCOUNTER_3",
+      "label": "elite",
+      "position_cm": [
+        600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L02_Dornfelder_Umland",
+      "site_id": "L02_SITE_01",
+      "label": "Wegkreuzung",
+      "position_cm": [
+        -950,
+        -650,
+        0
+      ],
+      "mission_id": "M01-02",
+      "kind": "quest_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L02_Dornfelder_Umland",
+      "site_id": "L02_SITE_02",
+      "label": "Jägerlager",
+      "position_cm": [
+        -450,
+        450,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L02_Dornfelder_Umland",
+      "site_id": "L02_SITE_03",
+      "label": "Wachtposten",
+      "position_cm": [
+        0,
+        -100,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L02_Dornfelder_Umland",
+      "site_id": "L02_SITE_04",
+      "label": "Steinbrücke",
+      "position_cm": [
+        500,
+        600,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L02_Dornfelder_Umland",
+      "site_id": "L02_SITE_05",
+      "label": "Verlassener Karren",
+      "position_cm": [
+        950,
+        -400,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L02_Dornfelder_Umland",
+      "site_id": "L02_ENCOUNTER_1",
+      "label": "standard",
+      "position_cm": [
+        -600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L02_Dornfelder_Umland",
+      "site_id": "L02_ENCOUNTER_2",
+      "label": "standard",
+      "position_cm": [
+        0,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L02_Dornfelder_Umland",
+      "site_id": "L02_ENCOUNTER_3",
+      "label": "elite",
+      "position_cm": [
+        600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L03_Grauwald",
+      "site_id": "L03_SITE_01",
+      "label": "Waldlichtung",
+      "position_cm": [
+        -950,
+        -650,
+        0
+      ],
+      "mission_id": "M01-03",
+      "kind": "quest_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L03_Grauwald",
+      "site_id": "L03_SITE_02",
+      "label": "Alte Eiche",
+      "position_cm": [
+        -450,
+        450,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L03_Grauwald",
+      "site_id": "L03_SITE_03",
+      "label": "Jägerhütte",
+      "position_cm": [
+        0,
+        -100,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L03_Grauwald",
+      "site_id": "L03_SITE_04",
+      "label": "Steinkreis",
+      "position_cm": [
+        500,
+        600,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L03_Grauwald",
+      "site_id": "L03_SITE_05",
+      "label": "Dunkler Pfad",
+      "position_cm": [
+        950,
+        -400,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L03_Grauwald",
+      "site_id": "L03_ENCOUNTER_1",
+      "label": "standard",
+      "position_cm": [
+        -600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L03_Grauwald",
+      "site_id": "L03_ENCOUNTER_2",
+      "label": "standard",
+      "position_cm": [
+        0,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L03_Grauwald",
+      "site_id": "L03_ENCOUNTER_3",
+      "label": "elite",
+      "position_cm": [
+        600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L04_Alte_Brunnenkrypta",
+      "site_id": "L04_SITE_01",
+      "label": "Eingangshalle",
+      "position_cm": [
+        -950,
+        -650,
+        0
+      ],
+      "mission_id": "M01-04",
+      "kind": "quest_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L04_Alte_Brunnenkrypta",
+      "site_id": "L04_SITE_02",
+      "label": "Wachraum",
+      "position_cm": [
+        -450,
+        450,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L04_Alte_Brunnenkrypta",
+      "site_id": "L04_SITE_03",
+      "label": "Ritualkammer",
+      "position_cm": [
+        0,
+        -100,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L04_Alte_Brunnenkrypta",
+      "site_id": "L04_SITE_04",
+      "label": "Schatzkammer",
+      "position_cm": [
+        500,
+        600,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L04_Alte_Brunnenkrypta",
+      "site_id": "L04_SITE_05",
+      "label": "Endkammer",
+      "position_cm": [
+        950,
+        -400,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L04_Alte_Brunnenkrypta",
+      "site_id": "L04_ENCOUNTER_1",
+      "label": "standard",
+      "position_cm": [
+        -600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L04_Alte_Brunnenkrypta",
+      "site_id": "L04_ENCOUNTER_2",
+      "label": "standard",
+      "position_cm": [
+        0,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L04_Alte_Brunnenkrypta",
+      "site_id": "L04_ENCOUNTER_3",
+      "label": "elite",
+      "position_cm": [
+        600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L05_Verlassene_Silbermine",
+      "site_id": "L05_SITE_01",
+      "label": "Eingangshalle",
+      "position_cm": [
+        -950,
+        -650,
+        0
+      ],
+      "mission_id": "M01-03",
+      "kind": "quest_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L05_Verlassene_Silbermine",
+      "site_id": "L05_SITE_02",
+      "label": "Wachraum",
+      "position_cm": [
+        -450,
+        450,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L05_Verlassene_Silbermine",
+      "site_id": "L05_SITE_03",
+      "label": "Ritualkammer",
+      "position_cm": [
+        0,
+        -100,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L05_Verlassene_Silbermine",
+      "site_id": "L05_SITE_04",
+      "label": "Schatzkammer",
+      "position_cm": [
+        500,
+        600,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L05_Verlassene_Silbermine",
+      "site_id": "L05_SITE_05",
+      "label": "Endkammer",
+      "position_cm": [
+        950,
+        -400,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L05_Verlassene_Silbermine",
+      "site_id": "L05_ENCOUNTER_1",
+      "label": "standard",
+      "position_cm": [
+        -600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L05_Verlassene_Silbermine",
+      "site_id": "L05_ENCOUNTER_2",
+      "label": "standard",
+      "position_cm": [
+        0,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L05_Verlassene_Silbermine",
+      "site_id": "L05_ENCOUNTER_3",
+      "label": "elite",
+      "position_cm": [
+        600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L06_Falkenwacht",
+      "site_id": "L06_SITE_01",
+      "label": "Stadttor",
+      "position_cm": [
+        -950,
+        -650,
+        0
+      ],
+      "mission_id": "M01-04",
+      "kind": "quest_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L06_Falkenwacht",
+      "site_id": "L06_SITE_02",
+      "label": "Marktplatz",
+      "position_cm": [
+        -450,
+        450,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L06_Falkenwacht",
+      "site_id": "L06_SITE_03",
+      "label": "Handwerkerviertel",
+      "position_cm": [
+        0,
+        -100,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L06_Falkenwacht",
+      "site_id": "L06_SITE_04",
+      "label": "Garnison",
+      "position_cm": [
+        500,
+        600,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L06_Falkenwacht",
+      "site_id": "L06_SITE_05",
+      "label": "Rathaus",
+      "position_cm": [
+        950,
+        -400,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L06_Falkenwacht",
+      "site_id": "L06_ENCOUNTER_1",
+      "label": "standard",
+      "position_cm": [
+        -600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L06_Falkenwacht",
+      "site_id": "L06_ENCOUNTER_2",
+      "label": "standard",
+      "position_cm": [
+        0,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L06_Falkenwacht",
+      "site_id": "L06_ENCOUNTER_3",
+      "label": "elite",
+      "position_cm": [
+        600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L07_Nordpass",
+      "site_id": "L07_SITE_01",
+      "label": "Passstraße",
+      "position_cm": [
+        -950,
+        -650,
+        0
+      ],
+      "mission_id": "M02-01",
+      "kind": "quest_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L07_Nordpass",
+      "site_id": "L07_SITE_02",
+      "label": "Felsvorsprung",
+      "position_cm": [
+        -450,
+        450,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L07_Nordpass",
+      "site_id": "L07_SITE_03",
+      "label": "Wachturm",
+      "position_cm": [
+        0,
+        -100,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L07_Nordpass",
+      "site_id": "L07_SITE_04",
+      "label": "Lawinenfeld",
+      "position_cm": [
+        500,
+        600,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L07_Nordpass",
+      "site_id": "L07_SITE_05",
+      "label": "Höhleneingang",
+      "position_cm": [
+        950,
+        -400,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L07_Nordpass",
+      "site_id": "L07_ENCOUNTER_1",
+      "label": "standard",
+      "position_cm": [
+        -600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L07_Nordpass",
+      "site_id": "L07_ENCOUNTER_2",
+      "label": "standard",
+      "position_cm": [
+        0,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L07_Nordpass",
+      "site_id": "L07_ENCOUNTER_3",
+      "label": "elite",
+      "position_cm": [
+        600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L08_Ruinen_von_Eldrath",
+      "site_id": "L08_SITE_01",
+      "label": "Eingangstor",
+      "position_cm": [
+        -950,
+        -650,
+        0
+      ],
+      "mission_id": "M02-01",
+      "kind": "quest_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L08_Ruinen_von_Eldrath",
+      "site_id": "L08_SITE_02",
+      "label": "Zerfallener Hof",
+      "position_cm": [
+        -450,
+        450,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L08_Ruinen_von_Eldrath",
+      "site_id": "L08_SITE_03",
+      "label": "Archiv",
+      "position_cm": [
+        0,
+        -100,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L08_Ruinen_von_Eldrath",
+      "site_id": "L08_SITE_04",
+      "label": "Altar",
+      "position_cm": [
+        500,
+        600,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L08_Ruinen_von_Eldrath",
+      "site_id": "L08_SITE_05",
+      "label": "Versunkener Saal",
+      "position_cm": [
+        950,
+        -400,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L08_Ruinen_von_Eldrath",
+      "site_id": "L08_ENCOUNTER_1",
+      "label": "standard",
+      "position_cm": [
+        -600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L08_Ruinen_von_Eldrath",
+      "site_id": "L08_ENCOUNTER_2",
+      "label": "standard",
+      "position_cm": [
+        0,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L08_Ruinen_von_Eldrath",
+      "site_id": "L08_ENCOUNTER_3",
+      "label": "elite",
+      "position_cm": [
+        600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L09_Nebelmoor",
+      "site_id": "L09_SITE_01",
+      "label": "Holzsteg",
+      "position_cm": [
+        -950,
+        -650,
+        0
+      ],
+      "mission_id": "M02-02",
+      "kind": "quest_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L09_Nebelmoor",
+      "site_id": "L09_SITE_02",
+      "label": "Nebelinsel",
+      "position_cm": [
+        -450,
+        450,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L09_Nebelmoor",
+      "site_id": "L09_SITE_03",
+      "label": "Sumpfhütte",
+      "position_cm": [
+        0,
+        -100,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L09_Nebelmoor",
+      "site_id": "L09_SITE_04",
+      "label": "Toter Baum",
+      "position_cm": [
+        500,
+        600,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L09_Nebelmoor",
+      "site_id": "L09_SITE_05",
+      "label": "Versunkener Schrein",
+      "position_cm": [
+        950,
+        -400,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L09_Nebelmoor",
+      "site_id": "L09_ENCOUNTER_1",
+      "label": "standard",
+      "position_cm": [
+        -600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L09_Nebelmoor",
+      "site_id": "L09_ENCOUNTER_2",
+      "label": "standard",
+      "position_cm": [
+        0,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L09_Nebelmoor",
+      "site_id": "L09_ENCOUNTER_3",
+      "label": "elite",
+      "position_cm": [
+        600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L10_Krypta_der_Sieben",
+      "site_id": "L10_SITE_01",
+      "label": "Eingangshalle",
+      "position_cm": [
+        -950,
+        -650,
+        0
+      ],
+      "mission_id": "M02-03",
+      "kind": "quest_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L10_Krypta_der_Sieben",
+      "site_id": "L10_SITE_02",
+      "label": "Wachraum",
+      "position_cm": [
+        -450,
+        450,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L10_Krypta_der_Sieben",
+      "site_id": "L10_SITE_03",
+      "label": "Ritualkammer",
+      "position_cm": [
+        0,
+        -100,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L10_Krypta_der_Sieben",
+      "site_id": "L10_SITE_04",
+      "label": "Schatzkammer",
+      "position_cm": [
+        500,
+        600,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L10_Krypta_der_Sieben",
+      "site_id": "L10_SITE_05",
+      "label": "Endkammer",
+      "position_cm": [
+        950,
+        -400,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L10_Krypta_der_Sieben",
+      "site_id": "L10_ENCOUNTER_1",
+      "label": "standard",
+      "position_cm": [
+        -600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L10_Krypta_der_Sieben",
+      "site_id": "L10_ENCOUNTER_2",
+      "label": "standard",
+      "position_cm": [
+        0,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L10_Krypta_der_Sieben",
+      "site_id": "L10_ENCOUNTER_3",
+      "label": "elite",
+      "position_cm": [
+        600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L11_Verlorenes_Kloster",
+      "site_id": "L11_SITE_01",
+      "label": "Eingangstor",
+      "position_cm": [
+        -950,
+        -650,
+        0
+      ],
+      "mission_id": "M02-04",
+      "kind": "quest_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L11_Verlorenes_Kloster",
+      "site_id": "L11_SITE_02",
+      "label": "Zerfallener Hof",
+      "position_cm": [
+        -450,
+        450,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L11_Verlorenes_Kloster",
+      "site_id": "L11_SITE_03",
+      "label": "Archiv",
+      "position_cm": [
+        0,
+        -100,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L11_Verlorenes_Kloster",
+      "site_id": "L11_SITE_04",
+      "label": "Altar",
+      "position_cm": [
+        500,
+        600,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L11_Verlorenes_Kloster",
+      "site_id": "L11_SITE_05",
+      "label": "Versunkener Saal",
+      "position_cm": [
+        950,
+        -400,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L11_Verlorenes_Kloster",
+      "site_id": "L11_ENCOUNTER_1",
+      "label": "standard",
+      "position_cm": [
+        -600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L11_Verlorenes_Kloster",
+      "site_id": "L11_ENCOUNTER_2",
+      "label": "standard",
+      "position_cm": [
+        0,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L11_Verlorenes_Kloster",
+      "site_id": "L11_ENCOUNTER_3",
+      "label": "elite",
+      "position_cm": [
+        600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L12_Kuestenhafen_Ardem",
+      "site_id": "L12_SITE_01",
+      "label": "Stadttor",
+      "position_cm": [
+        -950,
+        -650,
+        0
+      ],
+      "mission_id": "M02-04",
+      "kind": "quest_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L12_Kuestenhafen_Ardem",
+      "site_id": "L12_SITE_02",
+      "label": "Marktplatz",
+      "position_cm": [
+        -450,
+        450,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L12_Kuestenhafen_Ardem",
+      "site_id": "L12_SITE_03",
+      "label": "Handwerkerviertel",
+      "position_cm": [
+        0,
+        -100,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L12_Kuestenhafen_Ardem",
+      "site_id": "L12_SITE_04",
+      "label": "Garnison",
+      "position_cm": [
+        500,
+        600,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L12_Kuestenhafen_Ardem",
+      "site_id": "L12_SITE_05",
+      "label": "Rathaus",
+      "position_cm": [
+        950,
+        -400,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L12_Kuestenhafen_Ardem",
+      "site_id": "L12_ENCOUNTER_1",
+      "label": "standard",
+      "position_cm": [
+        -600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L12_Kuestenhafen_Ardem",
+      "site_id": "L12_ENCOUNTER_2",
+      "label": "standard",
+      "position_cm": [
+        0,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L12_Kuestenhafen_Ardem",
+      "site_id": "L12_ENCOUNTER_3",
+      "label": "elite",
+      "position_cm": [
+        600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L13_Hafen_von_Thalor",
+      "site_id": "L13_SITE_01",
+      "label": "Stadttor",
+      "position_cm": [
+        -950,
+        -650,
+        0
+      ],
+      "mission_id": "M03-01",
+      "kind": "quest_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L13_Hafen_von_Thalor",
+      "site_id": "L13_SITE_02",
+      "label": "Marktplatz",
+      "position_cm": [
+        -450,
+        450,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L13_Hafen_von_Thalor",
+      "site_id": "L13_SITE_03",
+      "label": "Handwerkerviertel",
+      "position_cm": [
+        0,
+        -100,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L13_Hafen_von_Thalor",
+      "site_id": "L13_SITE_04",
+      "label": "Garnison",
+      "position_cm": [
+        500,
+        600,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L13_Hafen_von_Thalor",
+      "site_id": "L13_SITE_05",
+      "label": "Rathaus",
+      "position_cm": [
+        950,
+        -400,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L13_Hafen_von_Thalor",
+      "site_id": "L13_ENCOUNTER_1",
+      "label": "standard",
+      "position_cm": [
+        -600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L13_Hafen_von_Thalor",
+      "site_id": "L13_ENCOUNTER_2",
+      "label": "standard",
+      "position_cm": [
+        0,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L13_Hafen_von_Thalor",
+      "site_id": "L13_ENCOUNTER_3",
+      "label": "elite",
+      "position_cm": [
+        600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L14_Sonnenebene",
+      "site_id": "L14_SITE_01",
+      "label": "Wegkreuzung",
+      "position_cm": [
+        -950,
+        -650,
+        0
+      ],
+      "mission_id": "M03-01",
+      "kind": "quest_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L14_Sonnenebene",
+      "site_id": "L14_SITE_02",
+      "label": "Jägerlager",
+      "position_cm": [
+        -450,
+        450,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L14_Sonnenebene",
+      "site_id": "L14_SITE_03",
+      "label": "Wachtposten",
+      "position_cm": [
+        0,
+        -100,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L14_Sonnenebene",
+      "site_id": "L14_SITE_04",
+      "label": "Steinbrücke",
+      "position_cm": [
+        500,
+        600,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L14_Sonnenebene",
+      "site_id": "L14_SITE_05",
+      "label": "Verlassener Karren",
+      "position_cm": [
+        950,
+        -400,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L14_Sonnenebene",
+      "site_id": "L14_ENCOUNTER_1",
+      "label": "standard",
+      "position_cm": [
+        -600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L14_Sonnenebene",
+      "site_id": "L14_ENCOUNTER_2",
+      "label": "standard",
+      "position_cm": [
+        0,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L14_Sonnenebene",
+      "site_id": "L14_ENCOUNTER_3",
+      "label": "elite",
+      "position_cm": [
+        600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L15_Kristallhoehlen",
+      "site_id": "L15_SITE_01",
+      "label": "Eingangshalle",
+      "position_cm": [
+        -950,
+        -650,
+        0
+      ],
+      "mission_id": "M03-02",
+      "kind": "quest_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L15_Kristallhoehlen",
+      "site_id": "L15_SITE_02",
+      "label": "Wachraum",
+      "position_cm": [
+        -450,
+        450,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L15_Kristallhoehlen",
+      "site_id": "L15_SITE_03",
+      "label": "Ritualkammer",
+      "position_cm": [
+        0,
+        -100,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L15_Kristallhoehlen",
+      "site_id": "L15_SITE_04",
+      "label": "Schatzkammer",
+      "position_cm": [
+        500,
+        600,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L15_Kristallhoehlen",
+      "site_id": "L15_SITE_05",
+      "label": "Endkammer",
+      "position_cm": [
+        950,
+        -400,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L15_Kristallhoehlen",
+      "site_id": "L15_ENCOUNTER_1",
+      "label": "standard",
+      "position_cm": [
+        -600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L15_Kristallhoehlen",
+      "site_id": "L15_ENCOUNTER_2",
+      "label": "standard",
+      "position_cm": [
+        0,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L15_Kristallhoehlen",
+      "site_id": "L15_ENCOUNTER_3",
+      "label": "elite",
+      "position_cm": [
+        600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L16_Vergessene_Bibliothek",
+      "site_id": "L16_SITE_01",
+      "label": "Eingangstor",
+      "position_cm": [
+        -950,
+        -650,
+        0
+      ],
+      "mission_id": "M03-02",
+      "kind": "quest_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L16_Vergessene_Bibliothek",
+      "site_id": "L16_SITE_02",
+      "label": "Zerfallener Hof",
+      "position_cm": [
+        -450,
+        450,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L16_Vergessene_Bibliothek",
+      "site_id": "L16_SITE_03",
+      "label": "Archiv",
+      "position_cm": [
+        0,
+        -100,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L16_Vergessene_Bibliothek",
+      "site_id": "L16_SITE_04",
+      "label": "Altar",
+      "position_cm": [
+        500,
+        600,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L16_Vergessene_Bibliothek",
+      "site_id": "L16_SITE_05",
+      "label": "Versunkener Saal",
+      "position_cm": [
+        950,
+        -400,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L16_Vergessene_Bibliothek",
+      "site_id": "L16_ENCOUNTER_1",
+      "label": "standard",
+      "position_cm": [
+        -600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L16_Vergessene_Bibliothek",
+      "site_id": "L16_ENCOUNTER_2",
+      "label": "standard",
+      "position_cm": [
+        0,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L16_Vergessene_Bibliothek",
+      "site_id": "L16_ENCOUNTER_3",
+      "label": "elite",
+      "position_cm": [
+        600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L17_Wuestenruinen_SarKel",
+      "site_id": "L17_SITE_01",
+      "label": "Eingangstor",
+      "position_cm": [
+        -950,
+        -650,
+        0
+      ],
+      "mission_id": "M03-03",
+      "kind": "quest_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L17_Wuestenruinen_SarKel",
+      "site_id": "L17_SITE_02",
+      "label": "Zerfallener Hof",
+      "position_cm": [
+        -450,
+        450,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L17_Wuestenruinen_SarKel",
+      "site_id": "L17_SITE_03",
+      "label": "Archiv",
+      "position_cm": [
+        0,
+        -100,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L17_Wuestenruinen_SarKel",
+      "site_id": "L17_SITE_04",
+      "label": "Altar",
+      "position_cm": [
+        500,
+        600,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L17_Wuestenruinen_SarKel",
+      "site_id": "L17_SITE_05",
+      "label": "Versunkener Saal",
+      "position_cm": [
+        950,
+        -400,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L17_Wuestenruinen_SarKel",
+      "site_id": "L17_ENCOUNTER_1",
+      "label": "standard",
+      "position_cm": [
+        -600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L17_Wuestenruinen_SarKel",
+      "site_id": "L17_ENCOUNTER_2",
+      "label": "standard",
+      "position_cm": [
+        0,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L17_Wuestenruinen_SarKel",
+      "site_id": "L17_ENCOUNTER_3",
+      "label": "elite",
+      "position_cm": [
+        600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L18_Tempel_des_Zweiten_Siegels",
+      "site_id": "L18_SITE_01",
+      "label": "Eingangshalle",
+      "position_cm": [
+        -950,
+        -650,
+        0
+      ],
+      "mission_id": "M03-04",
+      "kind": "quest_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L18_Tempel_des_Zweiten_Siegels",
+      "site_id": "L18_SITE_02",
+      "label": "Wachraum",
+      "position_cm": [
+        -450,
+        450,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L18_Tempel_des_Zweiten_Siegels",
+      "site_id": "L18_SITE_03",
+      "label": "Ritualkammer",
+      "position_cm": [
+        0,
+        -100,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L18_Tempel_des_Zweiten_Siegels",
+      "site_id": "L18_SITE_04",
+      "label": "Schatzkammer",
+      "position_cm": [
+        500,
+        600,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L18_Tempel_des_Zweiten_Siegels",
+      "site_id": "L18_SITE_05",
+      "label": "Endkammer",
+      "position_cm": [
+        950,
+        -400,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L18_Tempel_des_Zweiten_Siegels",
+      "site_id": "L18_ENCOUNTER_1",
+      "label": "standard",
+      "position_cm": [
+        -600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L18_Tempel_des_Zweiten_Siegels",
+      "site_id": "L18_ENCOUNTER_2",
+      "label": "standard",
+      "position_cm": [
+        0,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L18_Tempel_des_Zweiten_Siegels",
+      "site_id": "L18_ENCOUNTER_3",
+      "label": "elite",
+      "position_cm": [
+        600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L19_Grenzfestung_Velis",
+      "site_id": "L19_SITE_01",
+      "label": "Außentor",
+      "position_cm": [
+        -950,
+        -650,
+        0
+      ],
+      "mission_id": "M04-01",
+      "kind": "quest_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L19_Grenzfestung_Velis",
+      "site_id": "L19_SITE_02",
+      "label": "Kasernenhof",
+      "position_cm": [
+        -450,
+        450,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L19_Grenzfestung_Velis",
+      "site_id": "L19_SITE_03",
+      "label": "Waffenkammer",
+      "position_cm": [
+        0,
+        -100,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L19_Grenzfestung_Velis",
+      "site_id": "L19_SITE_04",
+      "label": "Wehrgang",
+      "position_cm": [
+        500,
+        600,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L19_Grenzfestung_Velis",
+      "site_id": "L19_SITE_05",
+      "label": "Kommandosaal",
+      "position_cm": [
+        950,
+        -400,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L19_Grenzfestung_Velis",
+      "site_id": "L19_ENCOUNTER_1",
+      "label": "standard",
+      "position_cm": [
+        -600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L19_Grenzfestung_Velis",
+      "site_id": "L19_ENCOUNTER_2",
+      "label": "standard",
+      "position_cm": [
+        0,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L19_Grenzfestung_Velis",
+      "site_id": "L19_ENCOUNTER_3",
+      "label": "elite",
+      "position_cm": [
+        600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L20_Verbrannte_Lande",
+      "site_id": "L20_SITE_01",
+      "label": "Wegkreuzung",
+      "position_cm": [
+        -950,
+        -650,
+        0
+      ],
+      "mission_id": "M04-01",
+      "kind": "quest_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L20_Verbrannte_Lande",
+      "site_id": "L20_SITE_02",
+      "label": "Jägerlager",
+      "position_cm": [
+        -450,
+        450,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L20_Verbrannte_Lande",
+      "site_id": "L20_SITE_03",
+      "label": "Wachtposten",
+      "position_cm": [
+        0,
+        -100,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L20_Verbrannte_Lande",
+      "site_id": "L20_SITE_04",
+      "label": "Steinbrücke",
+      "position_cm": [
+        500,
+        600,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L20_Verbrannte_Lande",
+      "site_id": "L20_SITE_05",
+      "label": "Verlassener Karren",
+      "position_cm": [
+        950,
+        -400,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L20_Verbrannte_Lande",
+      "site_id": "L20_ENCOUNTER_1",
+      "label": "standard",
+      "position_cm": [
+        -600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L20_Verbrannte_Lande",
+      "site_id": "L20_ENCOUNTER_2",
+      "label": "standard",
+      "position_cm": [
+        0,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L20_Verbrannte_Lande",
+      "site_id": "L20_ENCOUNTER_3",
+      "label": "elite",
+      "position_cm": [
+        600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L21_Schwarzwald_Velis",
+      "site_id": "L21_SITE_01",
+      "label": "Waldlichtung",
+      "position_cm": [
+        -950,
+        -650,
+        0
+      ],
+      "mission_id": "M04-02",
+      "kind": "quest_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L21_Schwarzwald_Velis",
+      "site_id": "L21_SITE_02",
+      "label": "Alte Eiche",
+      "position_cm": [
+        -450,
+        450,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L21_Schwarzwald_Velis",
+      "site_id": "L21_SITE_03",
+      "label": "Jägerhütte",
+      "position_cm": [
+        0,
+        -100,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L21_Schwarzwald_Velis",
+      "site_id": "L21_SITE_04",
+      "label": "Steinkreis",
+      "position_cm": [
+        500,
+        600,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L21_Schwarzwald_Velis",
+      "site_id": "L21_SITE_05",
+      "label": "Dunkler Pfad",
+      "position_cm": [
+        950,
+        -400,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L21_Schwarzwald_Velis",
+      "site_id": "L21_ENCOUNTER_1",
+      "label": "standard",
+      "position_cm": [
+        -600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L21_Schwarzwald_Velis",
+      "site_id": "L21_ENCOUNTER_2",
+      "label": "standard",
+      "position_cm": [
+        0,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L21_Schwarzwald_Velis",
+      "site_id": "L21_ENCOUNTER_3",
+      "label": "elite",
+      "position_cm": [
+        600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L22_Unterirdische_Zwergenstadt",
+      "site_id": "L22_SITE_01",
+      "label": "Stadttor",
+      "position_cm": [
+        -950,
+        -650,
+        0
+      ],
+      "mission_id": "M04-02",
+      "kind": "quest_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L22_Unterirdische_Zwergenstadt",
+      "site_id": "L22_SITE_02",
+      "label": "Marktplatz",
+      "position_cm": [
+        -450,
+        450,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L22_Unterirdische_Zwergenstadt",
+      "site_id": "L22_SITE_03",
+      "label": "Handwerkerviertel",
+      "position_cm": [
+        0,
+        -100,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L22_Unterirdische_Zwergenstadt",
+      "site_id": "L22_SITE_04",
+      "label": "Garnison",
+      "position_cm": [
+        500,
+        600,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L22_Unterirdische_Zwergenstadt",
+      "site_id": "L22_SITE_05",
+      "label": "Rathaus",
+      "position_cm": [
+        950,
+        -400,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L22_Unterirdische_Zwergenstadt",
+      "site_id": "L22_ENCOUNTER_1",
+      "label": "standard",
+      "position_cm": [
+        -600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L22_Unterirdische_Zwergenstadt",
+      "site_id": "L22_ENCOUNTER_2",
+      "label": "standard",
+      "position_cm": [
+        0,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L22_Unterirdische_Zwergenstadt",
+      "site_id": "L22_ENCOUNTER_3",
+      "label": "elite",
+      "position_cm": [
+        600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L23_Blutsteinminen",
+      "site_id": "L23_SITE_01",
+      "label": "Eingangshalle",
+      "position_cm": [
+        -950,
+        -650,
+        0
+      ],
+      "mission_id": "M04-03",
+      "kind": "quest_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L23_Blutsteinminen",
+      "site_id": "L23_SITE_02",
+      "label": "Wachraum",
+      "position_cm": [
+        -450,
+        450,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L23_Blutsteinminen",
+      "site_id": "L23_SITE_03",
+      "label": "Ritualkammer",
+      "position_cm": [
+        0,
+        -100,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L23_Blutsteinminen",
+      "site_id": "L23_SITE_04",
+      "label": "Schatzkammer",
+      "position_cm": [
+        500,
+        600,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L23_Blutsteinminen",
+      "site_id": "L23_SITE_05",
+      "label": "Endkammer",
+      "position_cm": [
+        950,
+        -400,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L23_Blutsteinminen",
+      "site_id": "L23_ENCOUNTER_1",
+      "label": "standard",
+      "position_cm": [
+        -600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L23_Blutsteinminen",
+      "site_id": "L23_ENCOUNTER_2",
+      "label": "standard",
+      "position_cm": [
+        0,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L23_Blutsteinminen",
+      "site_id": "L23_ENCOUNTER_3",
+      "label": "elite",
+      "position_cm": [
+        600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L24_Festung_der_Schattenlegion",
+      "site_id": "L24_SITE_01",
+      "label": "Außentor",
+      "position_cm": [
+        -950,
+        -650,
+        0
+      ],
+      "mission_id": "M04-04",
+      "kind": "quest_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L24_Festung_der_Schattenlegion",
+      "site_id": "L24_SITE_02",
+      "label": "Kasernenhof",
+      "position_cm": [
+        -450,
+        450,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L24_Festung_der_Schattenlegion",
+      "site_id": "L24_SITE_03",
+      "label": "Waffenkammer",
+      "position_cm": [
+        0,
+        -100,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L24_Festung_der_Schattenlegion",
+      "site_id": "L24_SITE_04",
+      "label": "Wehrgang",
+      "position_cm": [
+        500,
+        600,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L24_Festung_der_Schattenlegion",
+      "site_id": "L24_SITE_05",
+      "label": "Kommandosaal",
+      "position_cm": [
+        950,
+        -400,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L24_Festung_der_Schattenlegion",
+      "site_id": "L24_ENCOUNTER_1",
+      "label": "standard",
+      "position_cm": [
+        -600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L24_Festung_der_Schattenlegion",
+      "site_id": "L24_ENCOUNTER_2",
+      "label": "standard",
+      "position_cm": [
+        0,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L24_Festung_der_Schattenlegion",
+      "site_id": "L24_ENCOUNTER_3",
+      "label": "elite",
+      "position_cm": [
+        600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L25_Aschenfeste",
+      "site_id": "L25_SITE_01",
+      "label": "Stadttor",
+      "position_cm": [
+        -950,
+        -650,
+        0
+      ],
+      "mission_id": "M05-01",
+      "kind": "quest_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L25_Aschenfeste",
+      "site_id": "L25_SITE_02",
+      "label": "Marktplatz",
+      "position_cm": [
+        -450,
+        450,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L25_Aschenfeste",
+      "site_id": "L25_SITE_03",
+      "label": "Handwerkerviertel",
+      "position_cm": [
+        0,
+        -100,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L25_Aschenfeste",
+      "site_id": "L25_SITE_04",
+      "label": "Garnison",
+      "position_cm": [
+        500,
+        600,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L25_Aschenfeste",
+      "site_id": "L25_SITE_05",
+      "label": "Rathaus",
+      "position_cm": [
+        950,
+        -400,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L25_Aschenfeste",
+      "site_id": "L25_ENCOUNTER_1",
+      "label": "standard",
+      "position_cm": [
+        -600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L25_Aschenfeste",
+      "site_id": "L25_ENCOUNTER_2",
+      "label": "standard",
+      "position_cm": [
+        0,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L25_Aschenfeste",
+      "site_id": "L25_ENCOUNTER_3",
+      "label": "elite",
+      "position_cm": [
+        600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L26_Tal_der_gefallenen_Koenige",
+      "site_id": "L26_SITE_01",
+      "label": "Eingangstor",
+      "position_cm": [
+        -950,
+        -650,
+        0
+      ],
+      "mission_id": "M05-01",
+      "kind": "quest_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L26_Tal_der_gefallenen_Koenige",
+      "site_id": "L26_SITE_02",
+      "label": "Zerfallener Hof",
+      "position_cm": [
+        -450,
+        450,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L26_Tal_der_gefallenen_Koenige",
+      "site_id": "L26_SITE_03",
+      "label": "Archiv",
+      "position_cm": [
+        0,
+        -100,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L26_Tal_der_gefallenen_Koenige",
+      "site_id": "L26_SITE_04",
+      "label": "Altar",
+      "position_cm": [
+        500,
+        600,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L26_Tal_der_gefallenen_Koenige",
+      "site_id": "L26_SITE_05",
+      "label": "Versunkener Saal",
+      "position_cm": [
+        950,
+        -400,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L26_Tal_der_gefallenen_Koenige",
+      "site_id": "L26_ENCOUNTER_1",
+      "label": "standard",
+      "position_cm": [
+        -600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L26_Tal_der_gefallenen_Koenige",
+      "site_id": "L26_ENCOUNTER_2",
+      "label": "standard",
+      "position_cm": [
+        0,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L26_Tal_der_gefallenen_Koenige",
+      "site_id": "L26_ENCOUNTER_3",
+      "label": "elite",
+      "position_cm": [
+        600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L27_Tempel_des_Vierten_Siegels",
+      "site_id": "L27_SITE_01",
+      "label": "Eingangshalle",
+      "position_cm": [
+        -950,
+        -650,
+        0
+      ],
+      "mission_id": "M05-02",
+      "kind": "quest_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L27_Tempel_des_Vierten_Siegels",
+      "site_id": "L27_SITE_02",
+      "label": "Wachraum",
+      "position_cm": [
+        -450,
+        450,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L27_Tempel_des_Vierten_Siegels",
+      "site_id": "L27_SITE_03",
+      "label": "Ritualkammer",
+      "position_cm": [
+        0,
+        -100,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L27_Tempel_des_Vierten_Siegels",
+      "site_id": "L27_SITE_04",
+      "label": "Schatzkammer",
+      "position_cm": [
+        500,
+        600,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L27_Tempel_des_Vierten_Siegels",
+      "site_id": "L27_SITE_05",
+      "label": "Endkammer",
+      "position_cm": [
+        950,
+        -400,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L27_Tempel_des_Vierten_Siegels",
+      "site_id": "L27_ENCOUNTER_1",
+      "label": "standard",
+      "position_cm": [
+        -600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L27_Tempel_des_Vierten_Siegels",
+      "site_id": "L27_ENCOUNTER_2",
+      "label": "standard",
+      "position_cm": [
+        0,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L27_Tempel_des_Vierten_Siegels",
+      "site_id": "L27_ENCOUNTER_3",
+      "label": "elite",
+      "position_cm": [
+        600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L28_Verlorene_Koenigsstadt",
+      "site_id": "L28_SITE_01",
+      "label": "Eingangstor",
+      "position_cm": [
+        -950,
+        -650,
+        0
+      ],
+      "mission_id": "M05-03",
+      "kind": "quest_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L28_Verlorene_Koenigsstadt",
+      "site_id": "L28_SITE_02",
+      "label": "Zerfallener Hof",
+      "position_cm": [
+        -450,
+        450,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L28_Verlorene_Koenigsstadt",
+      "site_id": "L28_SITE_03",
+      "label": "Archiv",
+      "position_cm": [
+        0,
+        -100,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L28_Verlorene_Koenigsstadt",
+      "site_id": "L28_SITE_04",
+      "label": "Altar",
+      "position_cm": [
+        500,
+        600,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L28_Verlorene_Koenigsstadt",
+      "site_id": "L28_SITE_05",
+      "label": "Versunkener Saal",
+      "position_cm": [
+        950,
+        -400,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L28_Verlorene_Koenigsstadt",
+      "site_id": "L28_ENCOUNTER_1",
+      "label": "standard",
+      "position_cm": [
+        -600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L28_Verlorene_Koenigsstadt",
+      "site_id": "L28_ENCOUNTER_2",
+      "label": "standard",
+      "position_cm": [
+        0,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L28_Verlorene_Koenigsstadt",
+      "site_id": "L28_ENCOUNTER_3",
+      "label": "elite",
+      "position_cm": [
+        600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L29_Heiligtum_der_Krone",
+      "site_id": "L29_SITE_01",
+      "label": "Eingangshalle",
+      "position_cm": [
+        -950,
+        -650,
+        0
+      ],
+      "mission_id": "M05-04",
+      "kind": "quest_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L29_Heiligtum_der_Krone",
+      "site_id": "L29_SITE_02",
+      "label": "Wachraum",
+      "position_cm": [
+        -450,
+        450,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L29_Heiligtum_der_Krone",
+      "site_id": "L29_SITE_03",
+      "label": "Ritualkammer",
+      "position_cm": [
+        0,
+        -100,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L29_Heiligtum_der_Krone",
+      "site_id": "L29_SITE_04",
+      "label": "Schatzkammer",
+      "position_cm": [
+        500,
+        600,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L29_Heiligtum_der_Krone",
+      "site_id": "L29_SITE_05",
+      "label": "Endkammer",
+      "position_cm": [
+        950,
+        -400,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L29_Heiligtum_der_Krone",
+      "site_id": "L29_ENCOUNTER_1",
+      "label": "standard",
+      "position_cm": [
+        -600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L29_Heiligtum_der_Krone",
+      "site_id": "L29_ENCOUNTER_2",
+      "label": "standard",
+      "position_cm": [
+        0,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L29_Heiligtum_der_Krone",
+      "site_id": "L29_ENCOUNTER_3",
+      "label": "elite",
+      "position_cm": [
+        600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L30_Thronsaal_von_Askir",
+      "site_id": "L30_SITE_01",
+      "label": "Vorhalle",
+      "position_cm": [
+        -950,
+        -650,
+        0
+      ],
+      "mission_id": "M05-04",
+      "kind": "quest_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L30_Thronsaal_von_Askir",
+      "site_id": "L30_SITE_02",
+      "label": "Schattengang",
+      "position_cm": [
+        -450,
+        450,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L30_Thronsaal_von_Askir",
+      "site_id": "L30_SITE_03",
+      "label": "Siegelkreis",
+      "position_cm": [
+        0,
+        -100,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L30_Thronsaal_von_Askir",
+      "site_id": "L30_SITE_04",
+      "label": "Thronstufen",
+      "position_cm": [
+        500,
+        600,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L30_Thronsaal_von_Askir",
+      "site_id": "L30_SITE_05",
+      "label": "Thronplattform",
+      "position_cm": [
+        950,
+        -400,
+        0
+      ],
+      "mission_id": null,
+      "kind": "poi_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L30_Thronsaal_von_Askir",
+      "site_id": "L30_ENCOUNTER_1",
+      "label": "standard",
+      "position_cm": [
+        -600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L30_Thronsaal_von_Askir",
+      "site_id": "L30_ENCOUNTER_2",
+      "label": "standard",
+      "position_cm": [
+        0,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    },
+    {
+      "map_name": "L30_Thronsaal_von_Askir",
+      "site_id": "L30_ENCOUNTER_3",
+      "label": "elite",
+      "position_cm": [
+        600,
+        1000,
+        0
+      ],
+      "mission_id": null,
+      "kind": "encounter_anchor",
+      "quest_objective_id": null,
+      "npc_class_path": null,
+      "editor_status": "marker_only"
+    }
+  ]
+}

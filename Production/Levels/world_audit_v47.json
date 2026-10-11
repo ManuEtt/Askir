@@ -1,0 +1,9 @@
+{
+  "ok": true,
+  "maps": 30,
+  "sites": 150,
+  "encounters": 90,
+  "anchors": 240,
+  "reachable": 30,
+  "issues": []
+}

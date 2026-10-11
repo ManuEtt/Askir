@@ -1,3 +1,4 @@
+; LEGACY – DO NOT USE: use WorldMapsToCook_V45.ini.txt instead
 [/Script/UnrealEd.ProjectPackagingSettings]
 +MapsToCook=(FilePath="/Game/Askir/WorldBlockoutsV36/L01_Dornfeld")
 +MapsToCook=(FilePath="/Game/Askir/WorldBlockoutsV36/L02_Dornfelder_Umland")

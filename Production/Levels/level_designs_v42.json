@@ -1,0 +1,3455 @@
+{
+  "schema_version": 2,
+  "level_count": 30,
+  "description": "30 individualisierte Level-Designs mit 150 POIs und 90 Encounter-Markern. Keine fertigen umap-Dateien.",
+  "levels": [
+    {
+      "id": "L01",
+      "map_name": "L01_Dornfeld",
+      "name": "Dornfeld",
+      "continent": "Ardem",
+      "chapter": 1,
+      "biome": "village",
+      "seed": 3600,
+      "story_role": "Einführung und NPC-Hub",
+      "story_mission": "M01-01",
+      "exits": [
+        "L02_Dornfelder_Umland"
+      ],
+      "dimensions_cm": [
+        4200,
+        4200
+      ],
+      "sites": [
+        {
+          "id": "L01_SITE_01",
+          "name": "Dorfplatz",
+          "role": "Hauptquest-Schlüsselstelle",
+          "position": [
+            -950,
+            -650,
+            0
+          ],
+          "mission": "M01-01",
+          "interaction": "Quest-Trigger (Editor-Integration erforderlich)"
+        },
+        {
+          "id": "L01_SITE_02",
+          "name": "Brunnen",
+          "role": "Erkundungsfund",
+          "position": [
+            -450,
+            450,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L01_SITE_03",
+          "name": "Marktstände",
+          "role": "Kampfbegegnung",
+          "position": [
+            0,
+            -100,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L01_SITE_04",
+          "name": "Scheunen",
+          "role": "Loot/Truhe",
+          "position": [
+            500,
+            600,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L01_SITE_05",
+          "name": "Feldwege",
+          "role": "Weltgeschichte",
+          "position": [
+            950,
+            -400,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        }
+      ],
+      "encounters": [
+        {
+          "id": "L01_ENCOUNTER_1",
+          "kind": "standard",
+          "position": [
+            -600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L01_ENCOUNTER_2",
+          "kind": "standard",
+          "position": [
+            0,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L01_ENCOUNTER_3",
+          "kind": "elite",
+          "position": [
+            600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        }
+      ],
+      "art_direction": "Dornfeld: village mit eigener Silhouette, Wegführung und fünf benannten Schauplätzen",
+      "completion": "authored_layout_data; unreal_editor_generation_required"
+    },
+    {
+      "id": "L02",
+      "map_name": "L02_Dornfelder_Umland",
+      "name": "Dornfelder Umland",
+      "continent": "Ardem",
+      "chapter": 1,
+      "biome": "wilderness",
+      "seed": 3601,
+      "story_role": "Erkundung und Ressourcen",
+      "story_mission": "M01-02",
+      "exits": [
+        "L01_Dornfeld",
+        "L03_Grauwald"
+      ],
+      "dimensions_cm": [
+        4200,
+        4200
+      ],
+      "sites": [
+        {
+          "id": "L02_SITE_01",
+          "name": "Wegkreuzung",
+          "role": "Hauptquest-Schlüsselstelle",
+          "position": [
+            -950,
+            -650,
+            0
+          ],
+          "mission": "M01-02",
+          "interaction": "Quest-Trigger (Editor-Integration erforderlich)"
+        },
+        {
+          "id": "L02_SITE_02",
+          "name": "Jägerlager",
+          "role": "Erkundungsfund",
+          "position": [
+            -450,
+            450,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L02_SITE_03",
+          "name": "Wachtposten",
+          "role": "Kampfbegegnung",
+          "position": [
+            0,
+            -100,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L02_SITE_04",
+          "name": "Steinbrücke",
+          "role": "Loot/Truhe",
+          "position": [
+            500,
+            600,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L02_SITE_05",
+          "name": "Verlassener Karren",
+          "role": "Weltgeschichte",
+          "position": [
+            950,
+            -400,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        }
+      ],
+      "encounters": [
+        {
+          "id": "L02_ENCOUNTER_1",
+          "kind": "standard",
+          "position": [
+            -600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L02_ENCOUNTER_2",
+          "kind": "standard",
+          "position": [
+            0,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L02_ENCOUNTER_3",
+          "kind": "elite",
+          "position": [
+            600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        }
+      ],
+      "art_direction": "Dornfelder Umland: wilderness mit eigener Silhouette, Wegführung und fünf benannten Schauplätzen",
+      "completion": "authored_layout_data; unreal_editor_generation_required"
+    },
+    {
+      "id": "L03",
+      "map_name": "L03_Grauwald",
+      "name": "Grauwald",
+      "continent": "Ardem",
+      "chapter": 1,
+      "biome": "forest",
+      "seed": 3602,
+      "story_role": "Konflikt und Gegner",
+      "story_mission": "M01-03",
+      "exits": [
+        "L02_Dornfelder_Umland",
+        "L04_Alte_Brunnenkrypta"
+      ],
+      "dimensions_cm": [
+        4200,
+        4200
+      ],
+      "sites": [
+        {
+          "id": "L03_SITE_01",
+          "name": "Waldlichtung",
+          "role": "Hauptquest-Schlüsselstelle",
+          "position": [
+            -950,
+            -650,
+            0
+          ],
+          "mission": "M01-03",
+          "interaction": "Quest-Trigger (Editor-Integration erforderlich)"
+        },
+        {
+          "id": "L03_SITE_02",
+          "name": "Alte Eiche",
+          "role": "Erkundungsfund",
+          "position": [
+            -450,
+            450,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L03_SITE_03",
+          "name": "Jägerhütte",
+          "role": "Kampfbegegnung",
+          "position": [
+            0,
+            -100,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L03_SITE_04",
+          "name": "Steinkreis",
+          "role": "Loot/Truhe",
+          "position": [
+            500,
+            600,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L03_SITE_05",
+          "name": "Dunkler Pfad",
+          "role": "Weltgeschichte",
+          "position": [
+            950,
+            -400,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        }
+      ],
+      "encounters": [
+        {
+          "id": "L03_ENCOUNTER_1",
+          "kind": "standard",
+          "position": [
+            -600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L03_ENCOUNTER_2",
+          "kind": "standard",
+          "position": [
+            0,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L03_ENCOUNTER_3",
+          "kind": "elite",
+          "position": [
+            600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        }
+      ],
+      "art_direction": "Grauwald: forest mit eigener Silhouette, Wegführung und fünf benannten Schauplätzen",
+      "completion": "authored_layout_data; unreal_editor_generation_required"
+    },
+    {
+      "id": "L04",
+      "map_name": "L04_Alte_Brunnenkrypta",
+      "name": "Alte Brunnenkrypta",
+      "continent": "Ardem",
+      "chapter": 1,
+      "biome": "dungeon",
+      "seed": 3603,
+      "story_role": "Storydungeon und Enthüllung",
+      "story_mission": "M01-04",
+      "exits": [
+        "L03_Grauwald",
+        "L05_Verlassene_Silbermine"
+      ],
+      "dimensions_cm": [
+        4200,
+        4200
+      ],
+      "sites": [
+        {
+          "id": "L04_SITE_01",
+          "name": "Eingangshalle",
+          "role": "Hauptquest-Schlüsselstelle",
+          "position": [
+            -950,
+            -650,
+            0
+          ],
+          "mission": "M01-04",
+          "interaction": "Quest-Trigger (Editor-Integration erforderlich)"
+        },
+        {
+          "id": "L04_SITE_02",
+          "name": "Wachraum",
+          "role": "Erkundungsfund",
+          "position": [
+            -450,
+            450,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L04_SITE_03",
+          "name": "Ritualkammer",
+          "role": "Kampfbegegnung",
+          "position": [
+            0,
+            -100,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L04_SITE_04",
+          "name": "Schatzkammer",
+          "role": "Loot/Truhe",
+          "position": [
+            500,
+            600,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L04_SITE_05",
+          "name": "Endkammer",
+          "role": "Weltgeschichte",
+          "position": [
+            950,
+            -400,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        }
+      ],
+      "encounters": [
+        {
+          "id": "L04_ENCOUNTER_1",
+          "kind": "standard",
+          "position": [
+            -600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L04_ENCOUNTER_2",
+          "kind": "standard",
+          "position": [
+            0,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L04_ENCOUNTER_3",
+          "kind": "elite",
+          "position": [
+            600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        }
+      ],
+      "art_direction": "Alte Brunnenkrypta: dungeon mit eigener Silhouette, Wegführung und fünf benannten Schauplätzen",
+      "completion": "authored_layout_data; unreal_editor_generation_required"
+    },
+    {
+      "id": "L05",
+      "map_name": "L05_Verlassene_Silbermine",
+      "name": "Verlassene Silbermine",
+      "continent": "Ardem",
+      "chapter": 1,
+      "biome": "dungeon",
+      "seed": 3604,
+      "story_role": "Nebenquests und Geheimnisse",
+      "story_mission": "M01-03",
+      "exits": [
+        "L04_Alte_Brunnenkrypta",
+        "L06_Falkenwacht"
+      ],
+      "dimensions_cm": [
+        4200,
+        4200
+      ],
+      "sites": [
+        {
+          "id": "L05_SITE_01",
+          "name": "Eingangshalle",
+          "role": "Hauptquest-Schlüsselstelle",
+          "position": [
+            -950,
+            -650,
+            0
+          ],
+          "mission": "M01-03",
+          "interaction": "Quest-Trigger (Editor-Integration erforderlich)"
+        },
+        {
+          "id": "L05_SITE_02",
+          "name": "Wachraum",
+          "role": "Erkundungsfund",
+          "position": [
+            -450,
+            450,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L05_SITE_03",
+          "name": "Ritualkammer",
+          "role": "Kampfbegegnung",
+          "position": [
+            0,
+            -100,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L05_SITE_04",
+          "name": "Schatzkammer",
+          "role": "Loot/Truhe",
+          "position": [
+            500,
+            600,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L05_SITE_05",
+          "name": "Endkammer",
+          "role": "Weltgeschichte",
+          "position": [
+            950,
+            -400,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        }
+      ],
+      "encounters": [
+        {
+          "id": "L05_ENCOUNTER_1",
+          "kind": "standard",
+          "position": [
+            -600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L05_ENCOUNTER_2",
+          "kind": "standard",
+          "position": [
+            0,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L05_ENCOUNTER_3",
+          "kind": "elite",
+          "position": [
+            600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        }
+      ],
+      "art_direction": "Verlassene Silbermine: dungeon mit eigener Silhouette, Wegführung und fünf benannten Schauplätzen",
+      "completion": "authored_layout_data; unreal_editor_generation_required"
+    },
+    {
+      "id": "L06",
+      "map_name": "L06_Falkenwacht",
+      "name": "Falkenwacht",
+      "continent": "Ardem",
+      "chapter": 1,
+      "biome": "city",
+      "seed": 3605,
+      "story_role": "Kapitelhöhepunkt und Übergang",
+      "story_mission": "M01-04",
+      "exits": [
+        "L05_Verlassene_Silbermine",
+        "L07_Nordpass"
+      ],
+      "dimensions_cm": [
+        4200,
+        4200
+      ],
+      "sites": [
+        {
+          "id": "L06_SITE_01",
+          "name": "Stadttor",
+          "role": "Hauptquest-Schlüsselstelle",
+          "position": [
+            -950,
+            -650,
+            0
+          ],
+          "mission": "M01-04",
+          "interaction": "Quest-Trigger (Editor-Integration erforderlich)"
+        },
+        {
+          "id": "L06_SITE_02",
+          "name": "Marktplatz",
+          "role": "Erkundungsfund",
+          "position": [
+            -450,
+            450,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L06_SITE_03",
+          "name": "Handwerkerviertel",
+          "role": "Kampfbegegnung",
+          "position": [
+            0,
+            -100,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L06_SITE_04",
+          "name": "Garnison",
+          "role": "Loot/Truhe",
+          "position": [
+            500,
+            600,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L06_SITE_05",
+          "name": "Rathaus",
+          "role": "Weltgeschichte",
+          "position": [
+            950,
+            -400,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        }
+      ],
+      "encounters": [
+        {
+          "id": "L06_ENCOUNTER_1",
+          "kind": "standard",
+          "position": [
+            -600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L06_ENCOUNTER_2",
+          "kind": "standard",
+          "position": [
+            0,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L06_ENCOUNTER_3",
+          "kind": "elite",
+          "position": [
+            600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        }
+      ],
+      "art_direction": "Falkenwacht: city mit eigener Silhouette, Wegführung und fünf benannten Schauplätzen",
+      "completion": "authored_layout_data; unreal_editor_generation_required"
+    },
+    {
+      "id": "L07",
+      "map_name": "L07_Nordpass",
+      "name": "Nordpass",
+      "continent": "Ardem",
+      "chapter": 2,
+      "biome": "mountain",
+      "seed": 3606,
+      "story_role": "Einführung und NPC-Hub",
+      "story_mission": "M02-01",
+      "exits": [
+        "L06_Falkenwacht",
+        "L08_Ruinen_von_Eldrath"
+      ],
+      "dimensions_cm": [
+        4200,
+        4200
+      ],
+      "sites": [
+        {
+          "id": "L07_SITE_01",
+          "name": "Passstraße",
+          "role": "Hauptquest-Schlüsselstelle",
+          "position": [
+            -950,
+            -650,
+            0
+          ],
+          "mission": "M02-01",
+          "interaction": "Quest-Trigger (Editor-Integration erforderlich)"
+        },
+        {
+          "id": "L07_SITE_02",
+          "name": "Felsvorsprung",
+          "role": "Erkundungsfund",
+          "position": [
+            -450,
+            450,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L07_SITE_03",
+          "name": "Wachturm",
+          "role": "Kampfbegegnung",
+          "position": [
+            0,
+            -100,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L07_SITE_04",
+          "name": "Lawinenfeld",
+          "role": "Loot/Truhe",
+          "position": [
+            500,
+            600,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L07_SITE_05",
+          "name": "Höhleneingang",
+          "role": "Weltgeschichte",
+          "position": [
+            950,
+            -400,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        }
+      ],
+      "encounters": [
+        {
+          "id": "L07_ENCOUNTER_1",
+          "kind": "standard",
+          "position": [
+            -600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L07_ENCOUNTER_2",
+          "kind": "standard",
+          "position": [
+            0,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L07_ENCOUNTER_3",
+          "kind": "elite",
+          "position": [
+            600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        }
+      ],
+      "art_direction": "Nordpass: mountain mit eigener Silhouette, Wegführung und fünf benannten Schauplätzen",
+      "completion": "authored_layout_data; unreal_editor_generation_required"
+    },
+    {
+      "id": "L08",
+      "map_name": "L08_Ruinen_von_Eldrath",
+      "name": "Ruinen von Eldrath",
+      "continent": "Ardem",
+      "chapter": 2,
+      "biome": "ruins",
+      "seed": 3607,
+      "story_role": "Erkundung und Ressourcen",
+      "story_mission": "M02-01",
+      "exits": [
+        "L07_Nordpass",
+        "L09_Nebelmoor"
+      ],
+      "dimensions_cm": [
+        4200,
+        4200
+      ],
+      "sites": [
+        {
+          "id": "L08_SITE_01",
+          "name": "Eingangstor",
+          "role": "Hauptquest-Schlüsselstelle",
+          "position": [
+            -950,
+            -650,
+            0
+          ],
+          "mission": "M02-01",
+          "interaction": "Quest-Trigger (Editor-Integration erforderlich)"
+        },
+        {
+          "id": "L08_SITE_02",
+          "name": "Zerfallener Hof",
+          "role": "Erkundungsfund",
+          "position": [
+            -450,
+            450,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L08_SITE_03",
+          "name": "Archiv",
+          "role": "Kampfbegegnung",
+          "position": [
+            0,
+            -100,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L08_SITE_04",
+          "name": "Altar",
+          "role": "Loot/Truhe",
+          "position": [
+            500,
+            600,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L08_SITE_05",
+          "name": "Versunkener Saal",
+          "role": "Weltgeschichte",
+          "position": [
+            950,
+            -400,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        }
+      ],
+      "encounters": [
+        {
+          "id": "L08_ENCOUNTER_1",
+          "kind": "standard",
+          "position": [
+            -600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L08_ENCOUNTER_2",
+          "kind": "standard",
+          "position": [
+            0,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L08_ENCOUNTER_3",
+          "kind": "elite",
+          "position": [
+            600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        }
+      ],
+      "art_direction": "Ruinen von Eldrath: ruins mit eigener Silhouette, Wegführung und fünf benannten Schauplätzen",
+      "completion": "authored_layout_data; unreal_editor_generation_required"
+    },
+    {
+      "id": "L09",
+      "map_name": "L09_Nebelmoor",
+      "name": "Nebelmoor",
+      "continent": "Ardem",
+      "chapter": 2,
+      "biome": "swamp",
+      "seed": 3608,
+      "story_role": "Konflikt und Gegner",
+      "story_mission": "M02-02",
+      "exits": [
+        "L08_Ruinen_von_Eldrath",
+        "L10_Krypta_der_Sieben"
+      ],
+      "dimensions_cm": [
+        4200,
+        4200
+      ],
+      "sites": [
+        {
+          "id": "L09_SITE_01",
+          "name": "Holzsteg",
+          "role": "Hauptquest-Schlüsselstelle",
+          "position": [
+            -950,
+            -650,
+            0
+          ],
+          "mission": "M02-02",
+          "interaction": "Quest-Trigger (Editor-Integration erforderlich)"
+        },
+        {
+          "id": "L09_SITE_02",
+          "name": "Nebelinsel",
+          "role": "Erkundungsfund",
+          "position": [
+            -450,
+            450,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L09_SITE_03",
+          "name": "Sumpfhütte",
+          "role": "Kampfbegegnung",
+          "position": [
+            0,
+            -100,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L09_SITE_04",
+          "name": "Toter Baum",
+          "role": "Loot/Truhe",
+          "position": [
+            500,
+            600,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L09_SITE_05",
+          "name": "Versunkener Schrein",
+          "role": "Weltgeschichte",
+          "position": [
+            950,
+            -400,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        }
+      ],
+      "encounters": [
+        {
+          "id": "L09_ENCOUNTER_1",
+          "kind": "standard",
+          "position": [
+            -600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L09_ENCOUNTER_2",
+          "kind": "standard",
+          "position": [
+            0,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L09_ENCOUNTER_3",
+          "kind": "elite",
+          "position": [
+            600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        }
+      ],
+      "art_direction": "Nebelmoor: swamp mit eigener Silhouette, Wegführung und fünf benannten Schauplätzen",
+      "completion": "authored_layout_data; unreal_editor_generation_required"
+    },
+    {
+      "id": "L10",
+      "map_name": "L10_Krypta_der_Sieben",
+      "name": "Krypta der Sieben",
+      "continent": "Ardem",
+      "chapter": 2,
+      "biome": "dungeon",
+      "seed": 3609,
+      "story_role": "Storydungeon und Enthüllung",
+      "story_mission": "M02-03",
+      "exits": [
+        "L09_Nebelmoor",
+        "L11_Verlorenes_Kloster"
+      ],
+      "dimensions_cm": [
+        4200,
+        4200
+      ],
+      "sites": [
+        {
+          "id": "L10_SITE_01",
+          "name": "Eingangshalle",
+          "role": "Hauptquest-Schlüsselstelle",
+          "position": [
+            -950,
+            -650,
+            0
+          ],
+          "mission": "M02-03",
+          "interaction": "Quest-Trigger (Editor-Integration erforderlich)"
+        },
+        {
+          "id": "L10_SITE_02",
+          "name": "Wachraum",
+          "role": "Erkundungsfund",
+          "position": [
+            -450,
+            450,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L10_SITE_03",
+          "name": "Ritualkammer",
+          "role": "Kampfbegegnung",
+          "position": [
+            0,
+            -100,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L10_SITE_04",
+          "name": "Schatzkammer",
+          "role": "Loot/Truhe",
+          "position": [
+            500,
+            600,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L10_SITE_05",
+          "name": "Endkammer",
+          "role": "Weltgeschichte",
+          "position": [
+            950,
+            -400,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        }
+      ],
+      "encounters": [
+        {
+          "id": "L10_ENCOUNTER_1",
+          "kind": "standard",
+          "position": [
+            -600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L10_ENCOUNTER_2",
+          "kind": "standard",
+          "position": [
+            0,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L10_ENCOUNTER_3",
+          "kind": "elite",
+          "position": [
+            600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        }
+      ],
+      "art_direction": "Krypta der Sieben: dungeon mit eigener Silhouette, Wegführung und fünf benannten Schauplätzen",
+      "completion": "authored_layout_data; unreal_editor_generation_required"
+    },
+    {
+      "id": "L11",
+      "map_name": "L11_Verlorenes_Kloster",
+      "name": "Verlorenes Kloster",
+      "continent": "Ardem",
+      "chapter": 2,
+      "biome": "ruins",
+      "seed": 3610,
+      "story_role": "Nebenquests und Geheimnisse",
+      "story_mission": "M02-04",
+      "exits": [
+        "L10_Krypta_der_Sieben",
+        "L12_Kuestenhafen_Ardem"
+      ],
+      "dimensions_cm": [
+        4200,
+        4200
+      ],
+      "sites": [
+        {
+          "id": "L11_SITE_01",
+          "name": "Eingangstor",
+          "role": "Hauptquest-Schlüsselstelle",
+          "position": [
+            -950,
+            -650,
+            0
+          ],
+          "mission": "M02-04",
+          "interaction": "Quest-Trigger (Editor-Integration erforderlich)"
+        },
+        {
+          "id": "L11_SITE_02",
+          "name": "Zerfallener Hof",
+          "role": "Erkundungsfund",
+          "position": [
+            -450,
+            450,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L11_SITE_03",
+          "name": "Archiv",
+          "role": "Kampfbegegnung",
+          "position": [
+            0,
+            -100,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L11_SITE_04",
+          "name": "Altar",
+          "role": "Loot/Truhe",
+          "position": [
+            500,
+            600,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L11_SITE_05",
+          "name": "Versunkener Saal",
+          "role": "Weltgeschichte",
+          "position": [
+            950,
+            -400,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        }
+      ],
+      "encounters": [
+        {
+          "id": "L11_ENCOUNTER_1",
+          "kind": "standard",
+          "position": [
+            -600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L11_ENCOUNTER_2",
+          "kind": "standard",
+          "position": [
+            0,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L11_ENCOUNTER_3",
+          "kind": "elite",
+          "position": [
+            600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        }
+      ],
+      "art_direction": "Verlorenes Kloster: ruins mit eigener Silhouette, Wegführung und fünf benannten Schauplätzen",
+      "completion": "authored_layout_data; unreal_editor_generation_required"
+    },
+    {
+      "id": "L12",
+      "map_name": "L12_Kuestenhafen_Ardem",
+      "name": "Kuestenhafen Ardem",
+      "continent": "Ardem",
+      "chapter": 2,
+      "biome": "city",
+      "seed": 3611,
+      "story_role": "Kapitelhöhepunkt und Übergang",
+      "story_mission": "M02-04",
+      "exits": [
+        "L11_Verlorenes_Kloster",
+        "L13_Hafen_von_Thalor"
+      ],
+      "dimensions_cm": [
+        4200,
+        4200
+      ],
+      "sites": [
+        {
+          "id": "L12_SITE_01",
+          "name": "Stadttor",
+          "role": "Hauptquest-Schlüsselstelle",
+          "position": [
+            -950,
+            -650,
+            0
+          ],
+          "mission": "M02-04",
+          "interaction": "Quest-Trigger (Editor-Integration erforderlich)"
+        },
+        {
+          "id": "L12_SITE_02",
+          "name": "Marktplatz",
+          "role": "Erkundungsfund",
+          "position": [
+            -450,
+            450,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L12_SITE_03",
+          "name": "Handwerkerviertel",
+          "role": "Kampfbegegnung",
+          "position": [
+            0,
+            -100,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L12_SITE_04",
+          "name": "Garnison",
+          "role": "Loot/Truhe",
+          "position": [
+            500,
+            600,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L12_SITE_05",
+          "name": "Rathaus",
+          "role": "Weltgeschichte",
+          "position": [
+            950,
+            -400,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        }
+      ],
+      "encounters": [
+        {
+          "id": "L12_ENCOUNTER_1",
+          "kind": "standard",
+          "position": [
+            -600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L12_ENCOUNTER_2",
+          "kind": "standard",
+          "position": [
+            0,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L12_ENCOUNTER_3",
+          "kind": "elite",
+          "position": [
+            600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        }
+      ],
+      "art_direction": "Kuestenhafen Ardem: city mit eigener Silhouette, Wegführung und fünf benannten Schauplätzen",
+      "completion": "authored_layout_data; unreal_editor_generation_required"
+    },
+    {
+      "id": "L13",
+      "map_name": "L13_Hafen_von_Thalor",
+      "name": "Hafen von Thalor",
+      "continent": "Thalor",
+      "chapter": 3,
+      "biome": "city",
+      "seed": 3612,
+      "story_role": "Einführung und NPC-Hub",
+      "story_mission": "M03-01",
+      "exits": [
+        "L12_Kuestenhafen_Ardem",
+        "L14_Sonnenebene"
+      ],
+      "dimensions_cm": [
+        4200,
+        4200
+      ],
+      "sites": [
+        {
+          "id": "L13_SITE_01",
+          "name": "Stadttor",
+          "role": "Hauptquest-Schlüsselstelle",
+          "position": [
+            -950,
+            -650,
+            0
+          ],
+          "mission": "M03-01",
+          "interaction": "Quest-Trigger (Editor-Integration erforderlich)"
+        },
+        {
+          "id": "L13_SITE_02",
+          "name": "Marktplatz",
+          "role": "Erkundungsfund",
+          "position": [
+            -450,
+            450,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L13_SITE_03",
+          "name": "Handwerkerviertel",
+          "role": "Kampfbegegnung",
+          "position": [
+            0,
+            -100,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L13_SITE_04",
+          "name": "Garnison",
+          "role": "Loot/Truhe",
+          "position": [
+            500,
+            600,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L13_SITE_05",
+          "name": "Rathaus",
+          "role": "Weltgeschichte",
+          "position": [
+            950,
+            -400,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        }
+      ],
+      "encounters": [
+        {
+          "id": "L13_ENCOUNTER_1",
+          "kind": "standard",
+          "position": [
+            -600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L13_ENCOUNTER_2",
+          "kind": "standard",
+          "position": [
+            0,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L13_ENCOUNTER_3",
+          "kind": "elite",
+          "position": [
+            600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        }
+      ],
+      "art_direction": "Hafen von Thalor: city mit eigener Silhouette, Wegführung und fünf benannten Schauplätzen",
+      "completion": "authored_layout_data; unreal_editor_generation_required"
+    },
+    {
+      "id": "L14",
+      "map_name": "L14_Sonnenebene",
+      "name": "Sonnenebene",
+      "continent": "Thalor",
+      "chapter": 3,
+      "biome": "wilderness",
+      "seed": 3613,
+      "story_role": "Erkundung und Ressourcen",
+      "story_mission": "M03-01",
+      "exits": [
+        "L13_Hafen_von_Thalor",
+        "L15_Kristallhoehlen"
+      ],
+      "dimensions_cm": [
+        4200,
+        4200
+      ],
+      "sites": [
+        {
+          "id": "L14_SITE_01",
+          "name": "Wegkreuzung",
+          "role": "Hauptquest-Schlüsselstelle",
+          "position": [
+            -950,
+            -650,
+            0
+          ],
+          "mission": "M03-01",
+          "interaction": "Quest-Trigger (Editor-Integration erforderlich)"
+        },
+        {
+          "id": "L14_SITE_02",
+          "name": "Jägerlager",
+          "role": "Erkundungsfund",
+          "position": [
+            -450,
+            450,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L14_SITE_03",
+          "name": "Wachtposten",
+          "role": "Kampfbegegnung",
+          "position": [
+            0,
+            -100,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L14_SITE_04",
+          "name": "Steinbrücke",
+          "role": "Loot/Truhe",
+          "position": [
+            500,
+            600,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L14_SITE_05",
+          "name": "Verlassener Karren",
+          "role": "Weltgeschichte",
+          "position": [
+            950,
+            -400,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        }
+      ],
+      "encounters": [
+        {
+          "id": "L14_ENCOUNTER_1",
+          "kind": "standard",
+          "position": [
+            -600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L14_ENCOUNTER_2",
+          "kind": "standard",
+          "position": [
+            0,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L14_ENCOUNTER_3",
+          "kind": "elite",
+          "position": [
+            600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        }
+      ],
+      "art_direction": "Sonnenebene: wilderness mit eigener Silhouette, Wegführung und fünf benannten Schauplätzen",
+      "completion": "authored_layout_data; unreal_editor_generation_required"
+    },
+    {
+      "id": "L15",
+      "map_name": "L15_Kristallhoehlen",
+      "name": "Kristallhoehlen",
+      "continent": "Thalor",
+      "chapter": 3,
+      "biome": "dungeon",
+      "seed": 3614,
+      "story_role": "Konflikt und Gegner",
+      "story_mission": "M03-02",
+      "exits": [
+        "L14_Sonnenebene",
+        "L16_Vergessene_Bibliothek"
+      ],
+      "dimensions_cm": [
+        4200,
+        4200
+      ],
+      "sites": [
+        {
+          "id": "L15_SITE_01",
+          "name": "Eingangshalle",
+          "role": "Hauptquest-Schlüsselstelle",
+          "position": [
+            -950,
+            -650,
+            0
+          ],
+          "mission": "M03-02",
+          "interaction": "Quest-Trigger (Editor-Integration erforderlich)"
+        },
+        {
+          "id": "L15_SITE_02",
+          "name": "Wachraum",
+          "role": "Erkundungsfund",
+          "position": [
+            -450,
+            450,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L15_SITE_03",
+          "name": "Ritualkammer",
+          "role": "Kampfbegegnung",
+          "position": [
+            0,
+            -100,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L15_SITE_04",
+          "name": "Schatzkammer",
+          "role": "Loot/Truhe",
+          "position": [
+            500,
+            600,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L15_SITE_05",
+          "name": "Endkammer",
+          "role": "Weltgeschichte",
+          "position": [
+            950,
+            -400,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        }
+      ],
+      "encounters": [
+        {
+          "id": "L15_ENCOUNTER_1",
+          "kind": "standard",
+          "position": [
+            -600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L15_ENCOUNTER_2",
+          "kind": "standard",
+          "position": [
+            0,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L15_ENCOUNTER_3",
+          "kind": "elite",
+          "position": [
+            600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        }
+      ],
+      "art_direction": "Kristallhoehlen: dungeon mit eigener Silhouette, Wegführung und fünf benannten Schauplätzen",
+      "completion": "authored_layout_data; unreal_editor_generation_required"
+    },
+    {
+      "id": "L16",
+      "map_name": "L16_Vergessene_Bibliothek",
+      "name": "Vergessene Bibliothek",
+      "continent": "Thalor",
+      "chapter": 3,
+      "biome": "ruins",
+      "seed": 3615,
+      "story_role": "Storydungeon und Enthüllung",
+      "story_mission": "M03-02",
+      "exits": [
+        "L15_Kristallhoehlen",
+        "L17_Wuestenruinen_SarKel"
+      ],
+      "dimensions_cm": [
+        4200,
+        4200
+      ],
+      "sites": [
+        {
+          "id": "L16_SITE_01",
+          "name": "Eingangstor",
+          "role": "Hauptquest-Schlüsselstelle",
+          "position": [
+            -950,
+            -650,
+            0
+          ],
+          "mission": "M03-02",
+          "interaction": "Quest-Trigger (Editor-Integration erforderlich)"
+        },
+        {
+          "id": "L16_SITE_02",
+          "name": "Zerfallener Hof",
+          "role": "Erkundungsfund",
+          "position": [
+            -450,
+            450,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L16_SITE_03",
+          "name": "Archiv",
+          "role": "Kampfbegegnung",
+          "position": [
+            0,
+            -100,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L16_SITE_04",
+          "name": "Altar",
+          "role": "Loot/Truhe",
+          "position": [
+            500,
+            600,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L16_SITE_05",
+          "name": "Versunkener Saal",
+          "role": "Weltgeschichte",
+          "position": [
+            950,
+            -400,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        }
+      ],
+      "encounters": [
+        {
+          "id": "L16_ENCOUNTER_1",
+          "kind": "standard",
+          "position": [
+            -600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L16_ENCOUNTER_2",
+          "kind": "standard",
+          "position": [
+            0,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L16_ENCOUNTER_3",
+          "kind": "elite",
+          "position": [
+            600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        }
+      ],
+      "art_direction": "Vergessene Bibliothek: ruins mit eigener Silhouette, Wegführung und fünf benannten Schauplätzen",
+      "completion": "authored_layout_data; unreal_editor_generation_required"
+    },
+    {
+      "id": "L17",
+      "map_name": "L17_Wuestenruinen_SarKel",
+      "name": "Wuestenruinen SarKel",
+      "continent": "Thalor",
+      "chapter": 3,
+      "biome": "ruins",
+      "seed": 3616,
+      "story_role": "Nebenquests und Geheimnisse",
+      "story_mission": "M03-03",
+      "exits": [
+        "L16_Vergessene_Bibliothek",
+        "L18_Tempel_des_Zweiten_Siegels"
+      ],
+      "dimensions_cm": [
+        4200,
+        4200
+      ],
+      "sites": [
+        {
+          "id": "L17_SITE_01",
+          "name": "Eingangstor",
+          "role": "Hauptquest-Schlüsselstelle",
+          "position": [
+            -950,
+            -650,
+            0
+          ],
+          "mission": "M03-03",
+          "interaction": "Quest-Trigger (Editor-Integration erforderlich)"
+        },
+        {
+          "id": "L17_SITE_02",
+          "name": "Zerfallener Hof",
+          "role": "Erkundungsfund",
+          "position": [
+            -450,
+            450,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L17_SITE_03",
+          "name": "Archiv",
+          "role": "Kampfbegegnung",
+          "position": [
+            0,
+            -100,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L17_SITE_04",
+          "name": "Altar",
+          "role": "Loot/Truhe",
+          "position": [
+            500,
+            600,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L17_SITE_05",
+          "name": "Versunkener Saal",
+          "role": "Weltgeschichte",
+          "position": [
+            950,
+            -400,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        }
+      ],
+      "encounters": [
+        {
+          "id": "L17_ENCOUNTER_1",
+          "kind": "standard",
+          "position": [
+            -600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L17_ENCOUNTER_2",
+          "kind": "standard",
+          "position": [
+            0,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L17_ENCOUNTER_3",
+          "kind": "elite",
+          "position": [
+            600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        }
+      ],
+      "art_direction": "Wuestenruinen SarKel: ruins mit eigener Silhouette, Wegführung und fünf benannten Schauplätzen",
+      "completion": "authored_layout_data; unreal_editor_generation_required"
+    },
+    {
+      "id": "L18",
+      "map_name": "L18_Tempel_des_Zweiten_Siegels",
+      "name": "Tempel des Zweiten Siegels",
+      "continent": "Thalor",
+      "chapter": 3,
+      "biome": "dungeon",
+      "seed": 3617,
+      "story_role": "Kapitelhöhepunkt und Übergang",
+      "story_mission": "M03-04",
+      "exits": [
+        "L17_Wuestenruinen_SarKel",
+        "L19_Grenzfestung_Velis"
+      ],
+      "dimensions_cm": [
+        4200,
+        4200
+      ],
+      "sites": [
+        {
+          "id": "L18_SITE_01",
+          "name": "Eingangshalle",
+          "role": "Hauptquest-Schlüsselstelle",
+          "position": [
+            -950,
+            -650,
+            0
+          ],
+          "mission": "M03-04",
+          "interaction": "Quest-Trigger (Editor-Integration erforderlich)"
+        },
+        {
+          "id": "L18_SITE_02",
+          "name": "Wachraum",
+          "role": "Erkundungsfund",
+          "position": [
+            -450,
+            450,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L18_SITE_03",
+          "name": "Ritualkammer",
+          "role": "Kampfbegegnung",
+          "position": [
+            0,
+            -100,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L18_SITE_04",
+          "name": "Schatzkammer",
+          "role": "Loot/Truhe",
+          "position": [
+            500,
+            600,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L18_SITE_05",
+          "name": "Endkammer",
+          "role": "Weltgeschichte",
+          "position": [
+            950,
+            -400,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        }
+      ],
+      "encounters": [
+        {
+          "id": "L18_ENCOUNTER_1",
+          "kind": "standard",
+          "position": [
+            -600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L18_ENCOUNTER_2",
+          "kind": "standard",
+          "position": [
+            0,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L18_ENCOUNTER_3",
+          "kind": "elite",
+          "position": [
+            600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        }
+      ],
+      "art_direction": "Tempel des Zweiten Siegels: dungeon mit eigener Silhouette, Wegführung und fünf benannten Schauplätzen",
+      "completion": "authored_layout_data; unreal_editor_generation_required"
+    },
+    {
+      "id": "L19",
+      "map_name": "L19_Grenzfestung_Velis",
+      "name": "Grenzfestung Velis",
+      "continent": "Velis",
+      "chapter": 4,
+      "biome": "fortress",
+      "seed": 3618,
+      "story_role": "Einführung und NPC-Hub",
+      "story_mission": "M04-01",
+      "exits": [
+        "L18_Tempel_des_Zweiten_Siegels",
+        "L20_Verbrannte_Lande"
+      ],
+      "dimensions_cm": [
+        4200,
+        4200
+      ],
+      "sites": [
+        {
+          "id": "L19_SITE_01",
+          "name": "Außentor",
+          "role": "Hauptquest-Schlüsselstelle",
+          "position": [
+            -950,
+            -650,
+            0
+          ],
+          "mission": "M04-01",
+          "interaction": "Quest-Trigger (Editor-Integration erforderlich)"
+        },
+        {
+          "id": "L19_SITE_02",
+          "name": "Kasernenhof",
+          "role": "Erkundungsfund",
+          "position": [
+            -450,
+            450,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L19_SITE_03",
+          "name": "Waffenkammer",
+          "role": "Kampfbegegnung",
+          "position": [
+            0,
+            -100,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L19_SITE_04",
+          "name": "Wehrgang",
+          "role": "Loot/Truhe",
+          "position": [
+            500,
+            600,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L19_SITE_05",
+          "name": "Kommandosaal",
+          "role": "Weltgeschichte",
+          "position": [
+            950,
+            -400,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        }
+      ],
+      "encounters": [
+        {
+          "id": "L19_ENCOUNTER_1",
+          "kind": "standard",
+          "position": [
+            -600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L19_ENCOUNTER_2",
+          "kind": "standard",
+          "position": [
+            0,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L19_ENCOUNTER_3",
+          "kind": "elite",
+          "position": [
+            600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        }
+      ],
+      "art_direction": "Grenzfestung Velis: fortress mit eigener Silhouette, Wegführung und fünf benannten Schauplätzen",
+      "completion": "authored_layout_data; unreal_editor_generation_required"
+    },
+    {
+      "id": "L20",
+      "map_name": "L20_Verbrannte_Lande",
+      "name": "Verbrannte Lande",
+      "continent": "Velis",
+      "chapter": 4,
+      "biome": "wilderness",
+      "seed": 3619,
+      "story_role": "Erkundung und Ressourcen",
+      "story_mission": "M04-01",
+      "exits": [
+        "L19_Grenzfestung_Velis",
+        "L21_Schwarzwald_Velis"
+      ],
+      "dimensions_cm": [
+        4200,
+        4200
+      ],
+      "sites": [
+        {
+          "id": "L20_SITE_01",
+          "name": "Wegkreuzung",
+          "role": "Hauptquest-Schlüsselstelle",
+          "position": [
+            -950,
+            -650,
+            0
+          ],
+          "mission": "M04-01",
+          "interaction": "Quest-Trigger (Editor-Integration erforderlich)"
+        },
+        {
+          "id": "L20_SITE_02",
+          "name": "Jägerlager",
+          "role": "Erkundungsfund",
+          "position": [
+            -450,
+            450,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L20_SITE_03",
+          "name": "Wachtposten",
+          "role": "Kampfbegegnung",
+          "position": [
+            0,
+            -100,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L20_SITE_04",
+          "name": "Steinbrücke",
+          "role": "Loot/Truhe",
+          "position": [
+            500,
+            600,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L20_SITE_05",
+          "name": "Verlassener Karren",
+          "role": "Weltgeschichte",
+          "position": [
+            950,
+            -400,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        }
+      ],
+      "encounters": [
+        {
+          "id": "L20_ENCOUNTER_1",
+          "kind": "standard",
+          "position": [
+            -600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L20_ENCOUNTER_2",
+          "kind": "standard",
+          "position": [
+            0,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L20_ENCOUNTER_3",
+          "kind": "elite",
+          "position": [
+            600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        }
+      ],
+      "art_direction": "Verbrannte Lande: wilderness mit eigener Silhouette, Wegführung und fünf benannten Schauplätzen",
+      "completion": "authored_layout_data; unreal_editor_generation_required"
+    },
+    {
+      "id": "L21",
+      "map_name": "L21_Schwarzwald_Velis",
+      "name": "Schwarzwald Velis",
+      "continent": "Velis",
+      "chapter": 4,
+      "biome": "forest",
+      "seed": 3620,
+      "story_role": "Konflikt und Gegner",
+      "story_mission": "M04-02",
+      "exits": [
+        "L20_Verbrannte_Lande",
+        "L22_Unterirdische_Zwergenstadt"
+      ],
+      "dimensions_cm": [
+        4200,
+        4200
+      ],
+      "sites": [
+        {
+          "id": "L21_SITE_01",
+          "name": "Waldlichtung",
+          "role": "Hauptquest-Schlüsselstelle",
+          "position": [
+            -950,
+            -650,
+            0
+          ],
+          "mission": "M04-02",
+          "interaction": "Quest-Trigger (Editor-Integration erforderlich)"
+        },
+        {
+          "id": "L21_SITE_02",
+          "name": "Alte Eiche",
+          "role": "Erkundungsfund",
+          "position": [
+            -450,
+            450,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L21_SITE_03",
+          "name": "Jägerhütte",
+          "role": "Kampfbegegnung",
+          "position": [
+            0,
+            -100,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L21_SITE_04",
+          "name": "Steinkreis",
+          "role": "Loot/Truhe",
+          "position": [
+            500,
+            600,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L21_SITE_05",
+          "name": "Dunkler Pfad",
+          "role": "Weltgeschichte",
+          "position": [
+            950,
+            -400,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        }
+      ],
+      "encounters": [
+        {
+          "id": "L21_ENCOUNTER_1",
+          "kind": "standard",
+          "position": [
+            -600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L21_ENCOUNTER_2",
+          "kind": "standard",
+          "position": [
+            0,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L21_ENCOUNTER_3",
+          "kind": "elite",
+          "position": [
+            600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        }
+      ],
+      "art_direction": "Schwarzwald Velis: forest mit eigener Silhouette, Wegführung und fünf benannten Schauplätzen",
+      "completion": "authored_layout_data; unreal_editor_generation_required"
+    },
+    {
+      "id": "L22",
+      "map_name": "L22_Unterirdische_Zwergenstadt",
+      "name": "Unterirdische Zwergenstadt",
+      "continent": "Velis",
+      "chapter": 4,
+      "biome": "city",
+      "seed": 3621,
+      "story_role": "Storydungeon und Enthüllung",
+      "story_mission": "M04-02",
+      "exits": [
+        "L21_Schwarzwald_Velis",
+        "L23_Blutsteinminen"
+      ],
+      "dimensions_cm": [
+        4200,
+        4200
+      ],
+      "sites": [
+        {
+          "id": "L22_SITE_01",
+          "name": "Stadttor",
+          "role": "Hauptquest-Schlüsselstelle",
+          "position": [
+            -950,
+            -650,
+            0
+          ],
+          "mission": "M04-02",
+          "interaction": "Quest-Trigger (Editor-Integration erforderlich)"
+        },
+        {
+          "id": "L22_SITE_02",
+          "name": "Marktplatz",
+          "role": "Erkundungsfund",
+          "position": [
+            -450,
+            450,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L22_SITE_03",
+          "name": "Handwerkerviertel",
+          "role": "Kampfbegegnung",
+          "position": [
+            0,
+            -100,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L22_SITE_04",
+          "name": "Garnison",
+          "role": "Loot/Truhe",
+          "position": [
+            500,
+            600,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L22_SITE_05",
+          "name": "Rathaus",
+          "role": "Weltgeschichte",
+          "position": [
+            950,
+            -400,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        }
+      ],
+      "encounters": [
+        {
+          "id": "L22_ENCOUNTER_1",
+          "kind": "standard",
+          "position": [
+            -600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L22_ENCOUNTER_2",
+          "kind": "standard",
+          "position": [
+            0,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L22_ENCOUNTER_3",
+          "kind": "elite",
+          "position": [
+            600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        }
+      ],
+      "art_direction": "Unterirdische Zwergenstadt: city mit eigener Silhouette, Wegführung und fünf benannten Schauplätzen",
+      "completion": "authored_layout_data; unreal_editor_generation_required"
+    },
+    {
+      "id": "L23",
+      "map_name": "L23_Blutsteinminen",
+      "name": "Blutsteinminen",
+      "continent": "Velis",
+      "chapter": 4,
+      "biome": "dungeon",
+      "seed": 3622,
+      "story_role": "Nebenquests und Geheimnisse",
+      "story_mission": "M04-03",
+      "exits": [
+        "L22_Unterirdische_Zwergenstadt",
+        "L24_Festung_der_Schattenlegion"
+      ],
+      "dimensions_cm": [
+        4200,
+        4200
+      ],
+      "sites": [
+        {
+          "id": "L23_SITE_01",
+          "name": "Eingangshalle",
+          "role": "Hauptquest-Schlüsselstelle",
+          "position": [
+            -950,
+            -650,
+            0
+          ],
+          "mission": "M04-03",
+          "interaction": "Quest-Trigger (Editor-Integration erforderlich)"
+        },
+        {
+          "id": "L23_SITE_02",
+          "name": "Wachraum",
+          "role": "Erkundungsfund",
+          "position": [
+            -450,
+            450,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L23_SITE_03",
+          "name": "Ritualkammer",
+          "role": "Kampfbegegnung",
+          "position": [
+            0,
+            -100,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L23_SITE_04",
+          "name": "Schatzkammer",
+          "role": "Loot/Truhe",
+          "position": [
+            500,
+            600,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L23_SITE_05",
+          "name": "Endkammer",
+          "role": "Weltgeschichte",
+          "position": [
+            950,
+            -400,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        }
+      ],
+      "encounters": [
+        {
+          "id": "L23_ENCOUNTER_1",
+          "kind": "standard",
+          "position": [
+            -600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L23_ENCOUNTER_2",
+          "kind": "standard",
+          "position": [
+            0,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L23_ENCOUNTER_3",
+          "kind": "elite",
+          "position": [
+            600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        }
+      ],
+      "art_direction": "Blutsteinminen: dungeon mit eigener Silhouette, Wegführung und fünf benannten Schauplätzen",
+      "completion": "authored_layout_data; unreal_editor_generation_required"
+    },
+    {
+      "id": "L24",
+      "map_name": "L24_Festung_der_Schattenlegion",
+      "name": "Festung der Schattenlegion",
+      "continent": "Velis",
+      "chapter": 4,
+      "biome": "fortress",
+      "seed": 3623,
+      "story_role": "Kapitelhöhepunkt und Übergang",
+      "story_mission": "M04-04",
+      "exits": [
+        "L23_Blutsteinminen",
+        "L25_Aschenfeste"
+      ],
+      "dimensions_cm": [
+        4200,
+        4200
+      ],
+      "sites": [
+        {
+          "id": "L24_SITE_01",
+          "name": "Außentor",
+          "role": "Hauptquest-Schlüsselstelle",
+          "position": [
+            -950,
+            -650,
+            0
+          ],
+          "mission": "M04-04",
+          "interaction": "Quest-Trigger (Editor-Integration erforderlich)"
+        },
+        {
+          "id": "L24_SITE_02",
+          "name": "Kasernenhof",
+          "role": "Erkundungsfund",
+          "position": [
+            -450,
+            450,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L24_SITE_03",
+          "name": "Waffenkammer",
+          "role": "Kampfbegegnung",
+          "position": [
+            0,
+            -100,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L24_SITE_04",
+          "name": "Wehrgang",
+          "role": "Loot/Truhe",
+          "position": [
+            500,
+            600,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L24_SITE_05",
+          "name": "Kommandosaal",
+          "role": "Weltgeschichte",
+          "position": [
+            950,
+            -400,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        }
+      ],
+      "encounters": [
+        {
+          "id": "L24_ENCOUNTER_1",
+          "kind": "standard",
+          "position": [
+            -600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L24_ENCOUNTER_2",
+          "kind": "standard",
+          "position": [
+            0,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L24_ENCOUNTER_3",
+          "kind": "elite",
+          "position": [
+            600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        }
+      ],
+      "art_direction": "Festung der Schattenlegion: fortress mit eigener Silhouette, Wegführung und fünf benannten Schauplätzen",
+      "completion": "authored_layout_data; unreal_editor_generation_required"
+    },
+    {
+      "id": "L25",
+      "map_name": "L25_Aschenfeste",
+      "name": "Aschenfeste",
+      "continent": "Velis",
+      "chapter": 5,
+      "biome": "city",
+      "seed": 3624,
+      "story_role": "Einführung und NPC-Hub",
+      "story_mission": "M05-01",
+      "exits": [
+        "L24_Festung_der_Schattenlegion",
+        "L26_Tal_der_gefallenen_Koenige"
+      ],
+      "dimensions_cm": [
+        4200,
+        4200
+      ],
+      "sites": [
+        {
+          "id": "L25_SITE_01",
+          "name": "Stadttor",
+          "role": "Hauptquest-Schlüsselstelle",
+          "position": [
+            -950,
+            -650,
+            0
+          ],
+          "mission": "M05-01",
+          "interaction": "Quest-Trigger (Editor-Integration erforderlich)"
+        },
+        {
+          "id": "L25_SITE_02",
+          "name": "Marktplatz",
+          "role": "Erkundungsfund",
+          "position": [
+            -450,
+            450,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L25_SITE_03",
+          "name": "Handwerkerviertel",
+          "role": "Kampfbegegnung",
+          "position": [
+            0,
+            -100,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L25_SITE_04",
+          "name": "Garnison",
+          "role": "Loot/Truhe",
+          "position": [
+            500,
+            600,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L25_SITE_05",
+          "name": "Rathaus",
+          "role": "Weltgeschichte",
+          "position": [
+            950,
+            -400,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        }
+      ],
+      "encounters": [
+        {
+          "id": "L25_ENCOUNTER_1",
+          "kind": "standard",
+          "position": [
+            -600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L25_ENCOUNTER_2",
+          "kind": "standard",
+          "position": [
+            0,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L25_ENCOUNTER_3",
+          "kind": "elite",
+          "position": [
+            600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        }
+      ],
+      "art_direction": "Aschenfeste: city mit eigener Silhouette, Wegführung und fünf benannten Schauplätzen",
+      "completion": "authored_layout_data; unreal_editor_generation_required"
+    },
+    {
+      "id": "L26",
+      "map_name": "L26_Tal_der_gefallenen_Koenige",
+      "name": "Tal der gefallenen Koenige",
+      "continent": "Velis",
+      "chapter": 5,
+      "biome": "ruins",
+      "seed": 3625,
+      "story_role": "Erkundung und Ressourcen",
+      "story_mission": "M05-01",
+      "exits": [
+        "L25_Aschenfeste",
+        "L27_Tempel_des_Vierten_Siegels"
+      ],
+      "dimensions_cm": [
+        4200,
+        4200
+      ],
+      "sites": [
+        {
+          "id": "L26_SITE_01",
+          "name": "Eingangstor",
+          "role": "Hauptquest-Schlüsselstelle",
+          "position": [
+            -950,
+            -650,
+            0
+          ],
+          "mission": "M05-01",
+          "interaction": "Quest-Trigger (Editor-Integration erforderlich)"
+        },
+        {
+          "id": "L26_SITE_02",
+          "name": "Zerfallener Hof",
+          "role": "Erkundungsfund",
+          "position": [
+            -450,
+            450,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L26_SITE_03",
+          "name": "Archiv",
+          "role": "Kampfbegegnung",
+          "position": [
+            0,
+            -100,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L26_SITE_04",
+          "name": "Altar",
+          "role": "Loot/Truhe",
+          "position": [
+            500,
+            600,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L26_SITE_05",
+          "name": "Versunkener Saal",
+          "role": "Weltgeschichte",
+          "position": [
+            950,
+            -400,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        }
+      ],
+      "encounters": [
+        {
+          "id": "L26_ENCOUNTER_1",
+          "kind": "standard",
+          "position": [
+            -600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L26_ENCOUNTER_2",
+          "kind": "standard",
+          "position": [
+            0,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L26_ENCOUNTER_3",
+          "kind": "elite",
+          "position": [
+            600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        }
+      ],
+      "art_direction": "Tal der gefallenen Koenige: ruins mit eigener Silhouette, Wegführung und fünf benannten Schauplätzen",
+      "completion": "authored_layout_data; unreal_editor_generation_required"
+    },
+    {
+      "id": "L27",
+      "map_name": "L27_Tempel_des_Vierten_Siegels",
+      "name": "Tempel des Vierten Siegels",
+      "continent": "Velis",
+      "chapter": 5,
+      "biome": "dungeon",
+      "seed": 3626,
+      "story_role": "Konflikt und Gegner",
+      "story_mission": "M05-02",
+      "exits": [
+        "L26_Tal_der_gefallenen_Koenige",
+        "L28_Verlorene_Koenigsstadt"
+      ],
+      "dimensions_cm": [
+        4200,
+        4200
+      ],
+      "sites": [
+        {
+          "id": "L27_SITE_01",
+          "name": "Eingangshalle",
+          "role": "Hauptquest-Schlüsselstelle",
+          "position": [
+            -950,
+            -650,
+            0
+          ],
+          "mission": "M05-02",
+          "interaction": "Quest-Trigger (Editor-Integration erforderlich)"
+        },
+        {
+          "id": "L27_SITE_02",
+          "name": "Wachraum",
+          "role": "Erkundungsfund",
+          "position": [
+            -450,
+            450,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L27_SITE_03",
+          "name": "Ritualkammer",
+          "role": "Kampfbegegnung",
+          "position": [
+            0,
+            -100,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L27_SITE_04",
+          "name": "Schatzkammer",
+          "role": "Loot/Truhe",
+          "position": [
+            500,
+            600,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L27_SITE_05",
+          "name": "Endkammer",
+          "role": "Weltgeschichte",
+          "position": [
+            950,
+            -400,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        }
+      ],
+      "encounters": [
+        {
+          "id": "L27_ENCOUNTER_1",
+          "kind": "standard",
+          "position": [
+            -600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L27_ENCOUNTER_2",
+          "kind": "standard",
+          "position": [
+            0,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L27_ENCOUNTER_3",
+          "kind": "elite",
+          "position": [
+            600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        }
+      ],
+      "art_direction": "Tempel des Vierten Siegels: dungeon mit eigener Silhouette, Wegführung und fünf benannten Schauplätzen",
+      "completion": "authored_layout_data; unreal_editor_generation_required"
+    },
+    {
+      "id": "L28",
+      "map_name": "L28_Verlorene_Koenigsstadt",
+      "name": "Verlorene Koenigsstadt",
+      "continent": "Velis",
+      "chapter": 5,
+      "biome": "ruins",
+      "seed": 3627,
+      "story_role": "Storydungeon und Enthüllung",
+      "story_mission": "M05-03",
+      "exits": [
+        "L27_Tempel_des_Vierten_Siegels",
+        "L29_Heiligtum_der_Krone"
+      ],
+      "dimensions_cm": [
+        4200,
+        4200
+      ],
+      "sites": [
+        {
+          "id": "L28_SITE_01",
+          "name": "Eingangstor",
+          "role": "Hauptquest-Schlüsselstelle",
+          "position": [
+            -950,
+            -650,
+            0
+          ],
+          "mission": "M05-03",
+          "interaction": "Quest-Trigger (Editor-Integration erforderlich)"
+        },
+        {
+          "id": "L28_SITE_02",
+          "name": "Zerfallener Hof",
+          "role": "Erkundungsfund",
+          "position": [
+            -450,
+            450,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L28_SITE_03",
+          "name": "Archiv",
+          "role": "Kampfbegegnung",
+          "position": [
+            0,
+            -100,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L28_SITE_04",
+          "name": "Altar",
+          "role": "Loot/Truhe",
+          "position": [
+            500,
+            600,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L28_SITE_05",
+          "name": "Versunkener Saal",
+          "role": "Weltgeschichte",
+          "position": [
+            950,
+            -400,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        }
+      ],
+      "encounters": [
+        {
+          "id": "L28_ENCOUNTER_1",
+          "kind": "standard",
+          "position": [
+            -600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L28_ENCOUNTER_2",
+          "kind": "standard",
+          "position": [
+            0,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L28_ENCOUNTER_3",
+          "kind": "elite",
+          "position": [
+            600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        }
+      ],
+      "art_direction": "Verlorene Koenigsstadt: ruins mit eigener Silhouette, Wegführung und fünf benannten Schauplätzen",
+      "completion": "authored_layout_data; unreal_editor_generation_required"
+    },
+    {
+      "id": "L29",
+      "map_name": "L29_Heiligtum_der_Krone",
+      "name": "Heiligtum der Krone",
+      "continent": "Velis",
+      "chapter": 5,
+      "biome": "dungeon",
+      "seed": 3628,
+      "story_role": "Nebenquests und Geheimnisse",
+      "story_mission": "M05-04",
+      "exits": [
+        "L28_Verlorene_Koenigsstadt",
+        "L30_Thronsaal_von_Askir"
+      ],
+      "dimensions_cm": [
+        4200,
+        4200
+      ],
+      "sites": [
+        {
+          "id": "L29_SITE_01",
+          "name": "Eingangshalle",
+          "role": "Hauptquest-Schlüsselstelle",
+          "position": [
+            -950,
+            -650,
+            0
+          ],
+          "mission": "M05-04",
+          "interaction": "Quest-Trigger (Editor-Integration erforderlich)"
+        },
+        {
+          "id": "L29_SITE_02",
+          "name": "Wachraum",
+          "role": "Erkundungsfund",
+          "position": [
+            -450,
+            450,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L29_SITE_03",
+          "name": "Ritualkammer",
+          "role": "Kampfbegegnung",
+          "position": [
+            0,
+            -100,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L29_SITE_04",
+          "name": "Schatzkammer",
+          "role": "Loot/Truhe",
+          "position": [
+            500,
+            600,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L29_SITE_05",
+          "name": "Endkammer",
+          "role": "Weltgeschichte",
+          "position": [
+            950,
+            -400,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        }
+      ],
+      "encounters": [
+        {
+          "id": "L29_ENCOUNTER_1",
+          "kind": "standard",
+          "position": [
+            -600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L29_ENCOUNTER_2",
+          "kind": "standard",
+          "position": [
+            0,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L29_ENCOUNTER_3",
+          "kind": "elite",
+          "position": [
+            600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        }
+      ],
+      "art_direction": "Heiligtum der Krone: dungeon mit eigener Silhouette, Wegführung und fünf benannten Schauplätzen",
+      "completion": "authored_layout_data; unreal_editor_generation_required"
+    },
+    {
+      "id": "L30",
+      "map_name": "L30_Thronsaal_von_Askir",
+      "name": "Thronsaal von Askir",
+      "continent": "Velis",
+      "chapter": 5,
+      "biome": "boss",
+      "seed": 3629,
+      "story_role": "Kapitelhöhepunkt und Übergang",
+      "story_mission": "M05-04",
+      "exits": [
+        "L29_Heiligtum_der_Krone"
+      ],
+      "dimensions_cm": [
+        4200,
+        4200
+      ],
+      "sites": [
+        {
+          "id": "L30_SITE_01",
+          "name": "Vorhalle",
+          "role": "Hauptquest-Schlüsselstelle",
+          "position": [
+            -950,
+            -650,
+            0
+          ],
+          "mission": "M05-04",
+          "interaction": "Quest-Trigger (Editor-Integration erforderlich)"
+        },
+        {
+          "id": "L30_SITE_02",
+          "name": "Schattengang",
+          "role": "Erkundungsfund",
+          "position": [
+            -450,
+            450,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L30_SITE_03",
+          "name": "Siegelkreis",
+          "role": "Kampfbegegnung",
+          "position": [
+            0,
+            -100,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L30_SITE_04",
+          "name": "Thronstufen",
+          "role": "Loot/Truhe",
+          "position": [
+            500,
+            600,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        },
+        {
+          "id": "L30_SITE_05",
+          "name": "Thronplattform",
+          "role": "Weltgeschichte",
+          "position": [
+            950,
+            -400,
+            0
+          ],
+          "mission": null,
+          "interaction": "Leveldesign-Anker"
+        }
+      ],
+      "encounters": [
+        {
+          "id": "L30_ENCOUNTER_1",
+          "kind": "standard",
+          "position": [
+            -600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L30_ENCOUNTER_2",
+          "kind": "standard",
+          "position": [
+            0,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        },
+        {
+          "id": "L30_ENCOUNTER_3",
+          "kind": "elite",
+          "position": [
+            600,
+            1000,
+            0
+          ],
+          "status": "spawn-marker"
+        }
+      ],
+      "art_direction": "Thronsaal von Askir: boss mit eigener Silhouette, Wegführung und fünf benannten Schauplätzen",
+      "completion": "authored_layout_data; unreal_editor_generation_required"
+    }
+  ]
+}
