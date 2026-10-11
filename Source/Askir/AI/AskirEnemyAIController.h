@@ -41,6 +41,9 @@ public:
     UFUNCTION(BlueprintCallable, Category="Askir|AI") void SetPatrolPoints(const TArray<FVector>& WorldPoints);
     UFUNCTION(BlueprintCallable, Category="Askir|AI") void ForceInvestigate(FVector WorldLocation);
     UFUNCTION(BlueprintPure, Category="Askir|AI") FString GetStateLabel() const;
+protected:
+    /** Return true only if an attack started or was successfully queued. */
+    virtual bool TryStartAttack(AAskirCharacter* Enemy, AAskirCharacter* Victim);
 private:
     UPROPERTY(Transient) TObjectPtr<AAskirCharacter> ControlledEnemy;
     UPROPERTY(Transient) TObjectPtr<AAskirCharacter> Target;

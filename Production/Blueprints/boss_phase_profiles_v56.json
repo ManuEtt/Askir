@@ -1,0 +1,31 @@
+{
+  "version": 56,
+  "boss_pawn": "/Game/Askir/Blueprints/Enemies/BP_AskirBoss",
+  "boss_controller": "/Game/Askir/Blueprints/AI/BP_AI_AskirBoss",
+  "native_class": "/Script/Askir.AskirBossAIController",
+  "phases": [
+    {
+      "phase": 1,
+      "health_at_or_below": 1.0,
+      "attack_speed_multiplier": 1.0,
+      "attack_range_multiplier": 1.0
+    },
+    {
+      "phase": 2,
+      "health_at_or_below": 0.66,
+      "attack_speed_multiplier": 1.25,
+      "attack_range_multiplier": 1.1
+    },
+    {
+      "phase": 3,
+      "health_at_or_below": 0.33,
+      "attack_speed_multiplier": 1.6,
+      "attack_range_multiplier": 1.25
+    }
+  ],
+  "montages": {
+    "phase_2": null,
+    "phase_3": null
+  },
+  "notes": "Phase events require authored animation/VFX assets; no assets generated."
+}

@@ -1,0 +1,50 @@
+{
+  "schema_version": 57,
+  "profiles": [
+    {
+      "boss_id": "AshenWarden",
+      "phase_two_fraction": 0.7,
+      "phase_three_fraction": 0.35,
+      "telegraph_windup_seconds": 0.45,
+      "phase_event": "OnPhaseTransition",
+      "attack_event": "OnBossAttackTelegraph",
+      "implementation": "data_and_cpp_hooks_only"
+    },
+    {
+      "boss_id": "CryptKeeper",
+      "phase_two_fraction": 0.65,
+      "phase_three_fraction": 0.3,
+      "telegraph_windup_seconds": 0.55,
+      "phase_event": "OnPhaseTransition",
+      "attack_event": "OnBossAttackTelegraph",
+      "implementation": "data_and_cpp_hooks_only"
+    },
+    {
+      "boss_id": "ForestAncient",
+      "phase_two_fraction": 0.6,
+      "phase_three_fraction": 0.25,
+      "telegraph_windup_seconds": 0.7,
+      "phase_event": "OnPhaseTransition",
+      "attack_event": "OnBossAttackTelegraph",
+      "implementation": "data_and_cpp_hooks_only"
+    },
+    {
+      "boss_id": "BloodstoneChampion",
+      "phase_two_fraction": 0.68,
+      "phase_three_fraction": 0.32,
+      "telegraph_windup_seconds": 0.4,
+      "phase_event": "OnPhaseTransition",
+      "attack_event": "OnBossAttackTelegraph",
+      "implementation": "data_and_cpp_hooks_only"
+    },
+    {
+      "boss_id": "CrownUsurper",
+      "phase_two_fraction": 0.66,
+      "phase_three_fraction": 0.33,
+      "telegraph_windup_seconds": 0.35,
+      "phase_event": "OnPhaseTransition",
+      "attack_event": "OnBossAttackTelegraph",
+      "implementation": "data_and_cpp_hooks_only"
+    }
+  ]
+}

@@ -32,6 +32,7 @@ void AAskirEnemyAIController::SetPatrolPoints(const TArray<FVector>& WorldPoints
 {
     PatrolPoints = WorldPoints;
     PatrolIndex = 0;
+    if (State == EAskirEnemyState::Patrol) StopMovement();
 }
 void AAskirEnemyAIController::ForceInvestigate(FVector WorldLocation)
 {
@@ -106,8 +107,12 @@ void AAskirEnemyAIController::Think()
         LastSeenTime = Now;
         LastKnownTargetLocation = Player->GetActorLocation();
     }
-    if (Target && (Target->IsDead() || !bHostileToPlayer)) Target = nullptr;
-    const bool bFreshMemory = Target && Now - LastSeenTime <= MemorySeconds;
+    if (Target && (Target->IsDead() || !bHostileToPlayer))
+    {
+        Target = nullptr;
+        ClearFocus(EAIFocusPriority::Gameplay);
+    }
+    const bool bFreshMemory = Target && Now - LastSeenTime <= FMath::Max(0.f, MemorySeconds);
     if (bFreshMemory)
     {
         const bool bVisible = CanSeeTarget(Target);
@@ -118,12 +123,12 @@ void AAskirEnemyAIController::Think()
             SetFocus(Target);
             if (Now - LastAttackTime >= AttackInterval && !ControlledEnemy->HasPendingAttack())
             {
-                LastAttackTime = Now;
-                ControlledEnemy->Attack();
+                if (TryStartAttack(ControlledEnemy, Target)) LastAttackTime = Now;
             }
             return;
         }
         SetState(bVisible ? EAskirEnemyState::Chase : EAskirEnemyState::Investigate);
+        if (bVisible) LastKnownTargetLocation = Target->GetActorLocation();
         MoveToPoint(LastKnownTargetLocation, 80.f);
         return;
     }
@@ -152,4 +157,11 @@ FString AAskirEnemyAIController::GetStateLabel() const
 {
     const UEnum* Enum = StaticEnum<EAskirEnemyState>();
     return Enum ? Enum->GetNameStringByValue(static_cast<int64>(State)) : TEXT("Unknown");
+}
+
+bool AAskirEnemyAIController::TryStartAttack(AAskirCharacter* Enemy, AAskirCharacter* Victim)
+{
+    if (!IsValid(Enemy) || !IsValid(Victim) || Enemy->IsDead() || Victim->IsDead()) return false;
+    Enemy->Attack();
+    return true;
 }
