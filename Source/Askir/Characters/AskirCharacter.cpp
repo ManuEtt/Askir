@@ -112,12 +112,12 @@ void AAskirCharacter::PerformAttack(float DamageMultiplier,float Cost,float Cool
     PendingDamageMultiplier=DamageMultiplier;
     bPendingHeavyAttack=bHeavyAttack;
     GetWorldTimerManager().ClearTimer(PendingImpactTimer);
-    if(!bUseAnimationNotifyForImpact)
-    {
-        const float Delay=bHeavyAttack?HeavyImpactDelay:LightImpactDelay;
-        GetWorldTimerManager().SetTimer(PendingImpactTimer,this,&AAskirCharacter::ResolvePendingAttackImpact,
-            FMath::Max(0.01f,Delay),false);
-    }
+    // A missing AnimNotify must never leave bPendingAttack permanently true.
+    // The watchdog is deliberately longer than the normal timed hit window.
+    const float Delay=bUseAnimationNotifyForImpact
+        ? FMath::Max(2.0f, (bHeavyAttack?HeavyImpactDelay:LightImpactDelay)*3.0f)
+        : FMath::Max(0.01f,bHeavyAttack?HeavyImpactDelay:LightImpactDelay);
+    GetWorldTimerManager().SetTimer(PendingImpactTimer,this,&AAskirCharacter::ResolvePendingAttackImpact,Delay,false);
 }
 void AAskirCharacter::ResolvePendingAttackImpact()
 {
