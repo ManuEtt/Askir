@@ -1,6 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "AI/AskirEnemyAIController.h"
+#include "Combat/AskirDamageTypes.h"
 #include "AskirBossAIController.generated.h"
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FAskirBossPhaseTransition, int32, PreviousPhase, int32, NewPhase);
@@ -30,12 +31,21 @@ public:
     UFUNCTION(BlueprintCallable, Category="Askir|Boss|Telegraph") void TriggerAttackTelegraph();
     /** Abort an uncommitted windup (e.g. on encounter reset). */
     UFUNCTION(BlueprintCallable, Category="Askir|Boss|Telegraph") void CancelTelegraphedAttack();
+    /** Damage during windup can stagger the boss; positive damage only. */
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Askir|Boss|Stagger", meta=(ClampMin="0.0")) float StaggerDamageThreshold = 20.f;
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Askir|Boss|Stagger", meta=(ClampMin="0.0")) float StaggerDurationSeconds = 1.25f;
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Askir|Boss|Stagger") bool bAllowWindupInterrupt = true;
+    UFUNCTION(BlueprintImplementableEvent, Category="Askir|Boss|Stagger") void OnBossAttackInterrupted(int32 Phase, float StaggerSeconds);
+    UFUNCTION(BlueprintPure, Category="Askir|Boss|Stagger") bool IsBossStaggered() const;
+    UFUNCTION(BlueprintCallable, Category="Askir|Boss|Stagger") void InterruptBossAttack();
     UFUNCTION(BlueprintImplementableEvent, Category="Askir|Boss") void OnBossPhaseChanged(int32 OldPhase, int32 NewPhase);
     UFUNCTION(BlueprintPure, Category="Askir|Boss") int32 GetBossPhase() const { return CurrentPhase; }
 protected:
     virtual bool TryStartAttack(AAskirCharacter* Enemy, AAskirCharacter* Victim) override;
 private:
     UFUNCTION() void ResolveTelegraphedAttack();
+    UFUNCTION() void HandleBossDamage(const FAskirDamageInfo& DamageInfo);
+    float StaggerUntilTime = -1.f;
     FTimerHandle TelegraphTimer;
     TWeakObjectPtr<AAskirCharacter> TelegraphTarget;
     bool bTelegraphPending = false;

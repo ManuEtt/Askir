@@ -1,0 +1,205 @@
+{
+  "schema_version": 59,
+  "scenarios": [
+    {
+      "boss_id": "AshenWarden",
+      "condition": "profile_id"
+    },
+    {
+      "boss_id": "AshenWarden",
+      "condition": "phase_threshold_order"
+    },
+    {
+      "boss_id": "AshenWarden",
+      "condition": "windup_positive"
+    },
+    {
+      "boss_id": "AshenWarden",
+      "condition": "stagger_threshold_positive"
+    },
+    {
+      "boss_id": "AshenWarden",
+      "condition": "stagger_duration_positive"
+    },
+    {
+      "boss_id": "AshenWarden",
+      "condition": "interrupt_enabled"
+    },
+    {
+      "boss_id": "AshenWarden",
+      "condition": "interrupt_event"
+    },
+    {
+      "boss_id": "AshenWarden",
+      "condition": "interrupt_below_threshold"
+    },
+    {
+      "boss_id": "AshenWarden",
+      "condition": "interrupt_at_threshold"
+    },
+    {
+      "boss_id": "AshenWarden",
+      "condition": "stagger_expiry"
+    },
+    {
+      "boss_id": "CryptKeeper",
+      "condition": "profile_id"
+    },
+    {
+      "boss_id": "CryptKeeper",
+      "condition": "phase_threshold_order"
+    },
+    {
+      "boss_id": "CryptKeeper",
+      "condition": "windup_positive"
+    },
+    {
+      "boss_id": "CryptKeeper",
+      "condition": "stagger_threshold_positive"
+    },
+    {
+      "boss_id": "CryptKeeper",
+      "condition": "stagger_duration_positive"
+    },
+    {
+      "boss_id": "CryptKeeper",
+      "condition": "interrupt_enabled"
+    },
+    {
+      "boss_id": "CryptKeeper",
+      "condition": "interrupt_event"
+    },
+    {
+      "boss_id": "CryptKeeper",
+      "condition": "interrupt_below_threshold"
+    },
+    {
+      "boss_id": "CryptKeeper",
+      "condition": "interrupt_at_threshold"
+    },
+    {
+      "boss_id": "CryptKeeper",
+      "condition": "stagger_expiry"
+    },
+    {
+      "boss_id": "ForestAncient",
+      "condition": "profile_id"
+    },
+    {
+      "boss_id": "ForestAncient",
+      "condition": "phase_threshold_order"
+    },
+    {
+      "boss_id": "ForestAncient",
+      "condition": "windup_positive"
+    },
+    {
+      "boss_id": "ForestAncient",
+      "condition": "stagger_threshold_positive"
+    },
+    {
+      "boss_id": "ForestAncient",
+      "condition": "stagger_duration_positive"
+    },
+    {
+      "boss_id": "ForestAncient",
+      "condition": "interrupt_enabled"
+    },
+    {
+      "boss_id": "ForestAncient",
+      "condition": "interrupt_event"
+    },
+    {
+      "boss_id": "ForestAncient",
+      "condition": "interrupt_below_threshold"
+    },
+    {
+      "boss_id": "ForestAncient",
+      "condition": "interrupt_at_threshold"
+    },
+    {
+      "boss_id": "ForestAncient",
+      "condition": "stagger_expiry"
+    },
+    {
+      "boss_id": "BloodstoneChampion",
+      "condition": "profile_id"
+    },
+    {
+      "boss_id": "BloodstoneChampion",
+      "condition": "phase_threshold_order"
+    },
+    {
+      "boss_id": "BloodstoneChampion",
+      "condition": "windup_positive"
+    },
+    {
+      "boss_id": "BloodstoneChampion",
+      "condition": "stagger_threshold_positive"
+    },
+    {
+      "boss_id": "BloodstoneChampion",
+      "condition": "stagger_duration_positive"
+    },
+    {
+      "boss_id": "BloodstoneChampion",
+      "condition": "interrupt_enabled"
+    },
+    {
+      "boss_id": "BloodstoneChampion",
+      "condition": "interrupt_event"
+    },
+    {
+      "boss_id": "BloodstoneChampion",
+      "condition": "interrupt_below_threshold"
+    },
+    {
+      "boss_id": "BloodstoneChampion",
+      "condition": "interrupt_at_threshold"
+    },
+    {
+      "boss_id": "BloodstoneChampion",
+      "condition": "stagger_expiry"
+    },
+    {
+      "boss_id": "CrownUsurper",
+      "condition": "profile_id"
+    },
+    {
+      "boss_id": "CrownUsurper",
+      "condition": "phase_threshold_order"
+    },
+    {
+      "boss_id": "CrownUsurper",
+      "condition": "windup_positive"
+    },
+    {
+      "boss_id": "CrownUsurper",
+      "condition": "stagger_threshold_positive"
+    },
+    {
+      "boss_id": "CrownUsurper",
+      "condition": "stagger_duration_positive"
+    },
+    {
+      "boss_id": "CrownUsurper",
+      "condition": "interrupt_enabled"
+    },
+    {
+      "boss_id": "CrownUsurper",
+      "condition": "interrupt_event"
+    },
+    {
+      "boss_id": "CrownUsurper",
+      "condition": "interrupt_below_threshold"
+    },
+    {
+      "boss_id": "CrownUsurper",
+      "condition": "interrupt_at_threshold"
+    },
+    {
+      "boss_id": "CrownUsurper",
+      "condition": "stagger_expiry"
+    }
+  ]
+}

@@ -9,6 +9,9 @@ void AAskirBossAIController::OnPossess(APawn* InPawn)
     Super::OnPossess(InPawn);
     CancelTelegraphedAttack();
     BossPawn = Cast<AAskirCharacter>(InPawn);
+    StaggerUntilTime = -1.f;
+    if (IsValid(BossPawn.Get()) && IsValid(BossPawn->CombatComponent))
+        BossPawn->CombatComponent->OnDamageTaken.AddDynamic(this, &AAskirBossAIController::HandleBossDamage);
     CurrentPhase = 1;
     LastTelegraphTime = -1000.f;
     InitialAttackInterval = AttackInterval;
@@ -57,13 +60,16 @@ void AAskirBossAIController::TriggerAttackTelegraph()
 void AAskirBossAIController::OnUnPossess()
 {
     CancelTelegraphedAttack();
+    if (IsValid(BossPawn.Get()) && IsValid(BossPawn->CombatComponent))
+        BossPawn->CombatComponent->OnDamageTaken.RemoveDynamic(this, &AAskirBossAIController::HandleBossDamage);
     BossPawn.Reset();
+    StaggerUntilTime = -1.f;
     Super::OnUnPossess();
 }
 
 bool AAskirBossAIController::TryStartAttack(AAskirCharacter* Enemy, AAskirCharacter* Victim)
 {
-    if (bTelegraphPending || !IsValid(Enemy) || !IsValid(Victim) || Enemy->IsDead() || Victim->IsDead() || !GetWorld()) return false;
+    if (bTelegraphPending || IsBossStaggered() || !IsValid(Enemy) || !IsValid(Victim) || Enemy->IsDead() || Victim->IsDead() || !GetWorld()) return false;
     const float Windup = FMath::Clamp(TelegraphWindupSeconds, 0.f, 5.f);
     if (Windup <= KINDA_SMALL_NUMBER) return Super::TryStartAttack(Enemy, Victim);
     TelegraphTarget = Victim;
@@ -76,6 +82,7 @@ bool AAskirBossAIController::TryStartAttack(AAskirCharacter* Enemy, AAskirCharac
 void AAskirBossAIController::ResolveTelegraphedAttack()
 {
     if (!bTelegraphPending) return;
+    if (IsBossStaggered()) { CancelTelegraphedAttack(); return; }
     bTelegraphPending = false;
     AAskirCharacter* Enemy = BossPawn.Get();
     AAskirCharacter* Victim = TelegraphTarget.Get();
@@ -96,4 +103,25 @@ void AAskirBossAIController::CancelTelegraphedAttack()
     if (GetWorld()) GetWorldTimerManager().ClearTimer(TelegraphTimer);
     bTelegraphPending = false;
     TelegraphTarget.Reset();
+}
+
+bool AAskirBossAIController::IsBossStaggered() const
+{
+    return GetWorld() && GetWorld()->GetTimeSeconds() < StaggerUntilTime;
+}
+
+void AAskirBossAIController::HandleBossDamage(const FAskirDamageInfo& DamageInfo)
+{
+    if (!bAllowWindupInterrupt || !bTelegraphPending || !IsValid(BossPawn.Get()) || BossPawn->IsDead()) return;
+    if (DamageInfo.Damage <= 0.f || DamageInfo.Damage < FMath::Max(0.f, StaggerDamageThreshold)) return;
+    InterruptBossAttack();
+}
+
+void AAskirBossAIController::InterruptBossAttack()
+{
+    if (!bTelegraphPending || !GetWorld()) return;
+    CancelTelegraphedAttack();
+    const float Duration = FMath::Max(0.f, StaggerDurationSeconds);
+    StaggerUntilTime = GetWorld()->GetTimeSeconds() + Duration;
+    OnBossAttackInterrupted(CurrentPhase, Duration);
 }

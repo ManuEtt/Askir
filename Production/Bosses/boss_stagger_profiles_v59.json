@@ -1,0 +1,61 @@
+{
+  "schema_version": 59,
+  "profiles": [
+    {
+      "boss_id": "AshenWarden",
+      "phase_two_fraction": 0.7,
+      "phase_three_fraction": 0.35,
+      "telegraph_windup_seconds": 0.45,
+      "stagger_damage_threshold": 18,
+      "stagger_duration_seconds": 1.1,
+      "allow_windup_interrupt": true,
+      "interrupt_event": "OnBossAttackInterrupted",
+      "implementation": "cpp_hooks_and_data_not_applied_in_editor"
+    },
+    {
+      "boss_id": "CryptKeeper",
+      "phase_two_fraction": 0.65,
+      "phase_three_fraction": 0.3,
+      "telegraph_windup_seconds": 0.55,
+      "stagger_damage_threshold": 24,
+      "stagger_duration_seconds": 1.25,
+      "allow_windup_interrupt": true,
+      "interrupt_event": "OnBossAttackInterrupted",
+      "implementation": "cpp_hooks_and_data_not_applied_in_editor"
+    },
+    {
+      "boss_id": "ForestAncient",
+      "phase_two_fraction": 0.6,
+      "phase_three_fraction": 0.25,
+      "telegraph_windup_seconds": 0.7,
+      "stagger_damage_threshold": 30,
+      "stagger_duration_seconds": 0.9,
+      "allow_windup_interrupt": true,
+      "interrupt_event": "OnBossAttackInterrupted",
+      "implementation": "cpp_hooks_and_data_not_applied_in_editor"
+    },
+    {
+      "boss_id": "BloodstoneChampion",
+      "phase_two_fraction": 0.68,
+      "phase_three_fraction": 0.32,
+      "telegraph_windup_seconds": 0.4,
+      "stagger_damage_threshold": 22,
+      "stagger_duration_seconds": 1.4,
+      "allow_windup_interrupt": true,
+      "interrupt_event": "OnBossAttackInterrupted",
+      "implementation": "cpp_hooks_and_data_not_applied_in_editor"
+    },
+    {
+      "boss_id": "CrownUsurper",
+      "phase_two_fraction": 0.66,
+      "phase_three_fraction": 0.33,
+      "telegraph_windup_seconds": 0.35,
+      "stagger_damage_threshold": 35,
+      "stagger_duration_seconds": 0.75,
+      "allow_windup_interrupt": true,
+      "interrupt_event": "OnBossAttackInterrupted",
+      "implementation": "cpp_hooks_and_data_not_applied_in_editor"
+    }
+  ],
+  "notes": "Runtime C++ uses default values until these profiles are assigned in Unreal Editor."
+}
