@@ -17,6 +17,8 @@ class UAskirExplorationComponent;
 class UAskirCraftingComponent;
 class UAskirNeedsComponent;
 class UAskirAnimationStateComponent;
+class UAskirMagicComponent;
+class UAskirAnimationPlaybackComponent;
 class UInputAction;
 class UInputMappingContext;
 class UStaticMeshComponent;
@@ -33,6 +35,11 @@ public:
     virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
     /** Restore collision, movement and transient combat state after the saved health is applied. */
     UFUNCTION(BlueprintCallable, Category="Askir|Save") void RestoreAfterLoad();
+    UFUNCTION(BlueprintPure, Category="Askir|Input") bool CanUseGameplayInput() const;
+    UFUNCTION(BlueprintPure, Category="Askir|Combat") bool IsBlocking() const {return bBlocking;}
+    UFUNCTION(BlueprintCallable, Category="Askir|Input") void CancelGameplayActions();
+    UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Askir|Magic") TObjectPtr<UAskirMagicComponent> MagicComponent;
+    UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Askir|Animation") TObjectPtr<UAskirAnimationPlaybackComponent> AnimationPlayback;
     UFUNCTION(BlueprintCallable, Category="Askir|Combat|Timing") void ResolvePendingAttackImpact();
     UFUNCTION(BlueprintPure, Category="Askir|Combat|Timing") bool HasPendingAttack() const {return bPendingAttack;}
     UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Askir|Visual") TObjectPtr<UStaticMeshComponent> ProxyVisual;
@@ -167,6 +174,9 @@ private:
     void InputPause();
     void InputInventory();
     void InputJournal();
+    void InputMagicMenu();
+    void InputCast();
+    void InputCycleSpell(const FInputActionValue& Value);
     UPROPERTY(Transient) TObjectPtr<UInputMappingContext> RuntimeInputMapping;
     UPROPERTY(Transient) TArray<TObjectPtr<UInputAction>> RuntimeInputActions;
     bool bSprinting=false;

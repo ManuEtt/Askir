@@ -18,6 +18,7 @@ public:
     /** Capture/restore are shared by disk saves and in-memory OpenLevel handoff. */
     UAskirSaveGame* CaptureSnapshot();
     bool RestoreSnapshot(UAskirSaveGame* Snapshot, bool bRestorePosition=true);
+    bool IsPersistenceBusy() const {return bPersistenceOperation;}
     UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="Askir|Demo") bool bEnableLegacyDemo=false;
     UFUNCTION(BlueprintCallable) void DemoInteract();
     UFUNCTION(BlueprintCallable) void DemoQuickSave();

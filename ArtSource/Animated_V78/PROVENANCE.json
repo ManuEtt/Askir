@@ -1,0 +1,347 @@
+{
+  "license": "CC0-1.0",
+  "creation_tool": "Blender 4.3.2",
+  "geometry_animation_generator": "Tools/build_animated_characters_v78.py",
+  "preview_generator": "Tools/render_character_preview_v78.py",
+  "license_notice": "LICENSE_CC0.txt",
+  "assets": [
+    {
+      "file": "Askir_Guard.blend",
+      "bytes": 2674736,
+      "sha256": "1d7311bc06a4d2b0c611184d58d2a4e9e713858c0795a1168a80dd4f14163886",
+      "license": "CC0-1.0",
+      "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
+    },
+    {
+      "file": "Askir_Guard.fbx",
+      "bytes": 84252,
+      "sha256": "dbb59848e1de3d05e955a54a2518c24921dfeaf5e0241f15b9af04bcc9f19a90",
+      "license": "CC0-1.0",
+      "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
+    },
+    {
+      "file": "Askir_Guard.glb",
+      "bytes": 651932,
+      "sha256": "4c7c7ace6b4707f28e24f6ffedb06f789f89616da5cd22631742da24db7e5ddd",
+      "license": "CC0-1.0",
+      "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
+    },
+    {
+      "file": "Askir_Guard_Block.fbx",
+      "bytes": 248700,
+      "sha256": "9fe9f89d193231c54238c59ce10ea486e68a876ab7228c1dfe985d31624072f0",
+      "license": "CC0-1.0",
+      "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
+    },
+    {
+      "file": "Askir_Guard_Cast.fbx",
+      "bytes": 222476,
+      "sha256": "b3717fbfd18557a1d801b762cccb7127858c77474632d1f7f474aa2a6727011d",
+      "license": "CC0-1.0",
+      "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
+    },
+    {
+      "file": "Askir_Guard_Death.fbx",
+      "bytes": 238524,
+      "sha256": "c5047a939f26dab0a4dfab82b4d67241b32094a4d0878331cd0dbd7fa5d2e629",
+      "license": "CC0-1.0",
+      "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
+    },
+    {
+      "file": "Askir_Guard_Dodge.fbx",
+      "bytes": 220572,
+      "sha256": "236d4d819b4d5d01730866955e99755eeccbae0ac1774c9a7bcac83c42a8ff27",
+      "license": "CC0-1.0",
+      "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
+    },
+    {
+      "file": "Askir_Guard_HeavyAttack.fbx",
+      "bytes": 230428,
+      "sha256": "ab8ed5ff94ba995575f3e7833c0714308ab3fce46e8bfddc36cdd10d654e3819",
+      "license": "CC0-1.0",
+      "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
+    },
+    {
+      "file": "Askir_Guard_Hit.fbx",
+      "bytes": 210140,
+      "sha256": "159202e7219ccdc830696392e2fa4b18fbc167ec48b46eba2f134305c61c71ef",
+      "license": "CC0-1.0",
+      "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
+    },
+    {
+      "file": "Askir_Guard_Idle.fbx",
+      "bytes": 246588,
+      "sha256": "e566121fd1d7f43c527c786ef650e1492ed9d7d0cfc3e97040df54d78400495d",
+      "license": "CC0-1.0",
+      "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
+    },
+    {
+      "file": "Askir_Guard_Jump.fbx",
+      "bytes": 231180,
+      "sha256": "a7410c9aaa9f035d2c851354c239ea4cf102741c3c7f4a386fca8faa1802906d",
+      "license": "CC0-1.0",
+      "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
+    },
+    {
+      "file": "Askir_Guard_LightAttack.fbx",
+      "bytes": 220572,
+      "sha256": "d50f042fad98263e2700a903aee810a3c4ca8e66289e360b3aeed8947df72061",
+      "license": "CC0-1.0",
+      "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
+    },
+    {
+      "file": "Askir_Guard_Run.fbx",
+      "bytes": 217148,
+      "sha256": "f1464c30d443e5d9cbbae191dd136f4a28fc4f14d188fde95527352789ca0ccc",
+      "license": "CC0-1.0",
+      "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
+    },
+    {
+      "file": "Askir_Guard_Sprint.fbx",
+      "bytes": 210140,
+      "sha256": "4bb4d09a9c78c60d85e34424663a43e30f35dc6e34347704a583f5abb92c63cd",
+      "license": "CC0-1.0",
+      "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
+    },
+    {
+      "file": "Askir_Guard_Walk.fbx",
+      "bytes": 231180,
+      "sha256": "31e5d331ef5ae530c9c42fb99c18639eccb1bfb4f39621e0fefe10ce1fe15828",
+      "license": "CC0-1.0",
+      "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
+    },
+    {
+      "file": "Askir_Hero.blend",
+      "bytes": 2657524,
+      "sha256": "5415d475022147d68ec7899754dca60926e203c99432e33bc322b428f1a05512",
+      "license": "CC0-1.0",
+      "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
+    },
+    {
+      "file": "Askir_Hero.fbx",
+      "bytes": 83132,
+      "sha256": "64821780f54c91923b52681afc37357384889f5c0379b974def46cdd1ed44763",
+      "license": "CC0-1.0",
+      "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
+    },
+    {
+      "file": "Askir_Hero.glb",
+      "bytes": 642948,
+      "sha256": "505ec827d7ed2dd8e1e5c34da2c8a9b0202b6c03f6460efb7af444ed6043cf83",
+      "license": "CC0-1.0",
+      "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
+    },
+    {
+      "file": "Askir_Hero_Block.fbx",
+      "bytes": 247564,
+      "sha256": "4eaa4f4d14c0e931f68027ff792b66e437dcadd7b4dacf724b4825e9fbf95f0a",
+      "license": "CC0-1.0",
+      "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
+    },
+    {
+      "file": "Askir_Hero_Cast.fbx",
+      "bytes": 221356,
+      "sha256": "15329b987b7fea5a061826e27404025c71d659aa3cec7ee4f10d45f34d42ad48",
+      "license": "CC0-1.0",
+      "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
+    },
+    {
+      "file": "Askir_Hero_Death.fbx",
+      "bytes": 237404,
+      "sha256": "167ecb9cf71bca91717334f19aaeeaae3ea74d11263b2275fb8a26613baaec62",
+      "license": "CC0-1.0",
+      "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
+    },
+    {
+      "file": "Askir_Hero_Dodge.fbx",
+      "bytes": 219436,
+      "sha256": "278f42be274069b5a777417c7b8d6df2a1839269b0941fa473abb0543722b9ee",
+      "license": "CC0-1.0",
+      "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
+    },
+    {
+      "file": "Askir_Hero_HeavyAttack.fbx",
+      "bytes": 229308,
+      "sha256": "6e1561b2d3fa266390e60e3386a6e9526b8ae236b3e79407b1f61a70b68c99be",
+      "license": "CC0-1.0",
+      "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
+    },
+    {
+      "file": "Askir_Hero_Hit.fbx",
+      "bytes": 209004,
+      "sha256": "cf3cb93d36a5d23cf76d02df48e2011c86e036f9571330ab3ba1ba42e0c1ddce",
+      "license": "CC0-1.0",
+      "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
+    },
+    {
+      "file": "Askir_Hero_Idle.fbx",
+      "bytes": 245452,
+      "sha256": "4187fa7540cd488ba458a0a97b0e0dd1dbd9f8553cd64b8a515415d636afcbae",
+      "license": "CC0-1.0",
+      "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
+    },
+    {
+      "file": "Askir_Hero_Jump.fbx",
+      "bytes": 230044,
+      "sha256": "b7e750129b482c9cc205e56b11899176f9e55834cf8c893a6a8650544bcf1f52",
+      "license": "CC0-1.0",
+      "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
+    },
+    {
+      "file": "Askir_Hero_LightAttack.fbx",
+      "bytes": 219436,
+      "sha256": "55e40bdc699f3bcbd2c7d7a8386159c79cc8e4ab2f256348980292bbd6c2e88f",
+      "license": "CC0-1.0",
+      "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
+    },
+    {
+      "file": "Askir_Hero_Run.fbx",
+      "bytes": 216028,
+      "sha256": "fbb78656f8c1751c3a3bf84ec651d02358265ed78653af3bebd98178ffe66309",
+      "license": "CC0-1.0",
+      "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
+    },
+    {
+      "file": "Askir_Hero_Sprint.fbx",
+      "bytes": 209004,
+      "sha256": "9eb318731731c3c39ca68dd920d4eb00375c07e273727af1827786ef0536dbbf",
+      "license": "CC0-1.0",
+      "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
+    },
+    {
+      "file": "Askir_Hero_Walk.fbx",
+      "bytes": 230044,
+      "sha256": "4886197d92390d9c3f142ecbc2acd5253c44db7ba59a40b53cd92c8c46d8bd18",
+      "license": "CC0-1.0",
+      "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
+    },
+    {
+      "file": "Askir_Raider.blend",
+      "bytes": 2675600,
+      "sha256": "6cf59759fed14e5095c1df87d63a79c98552aada07fe7aa18973a687eb09f51c",
+      "license": "CC0-1.0",
+      "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
+    },
+    {
+      "file": "Askir_Raider.fbx",
+      "bytes": 82220,
+      "sha256": "79b62ebb7c4e8c1a0470920d39c267611d69b579c1f32c56c0d63655d2df5b63",
+      "license": "CC0-1.0",
+      "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
+    },
+    {
+      "file": "Askir_Raider.glb",
+      "bytes": 638404,
+      "sha256": "b714302e634b6372bbf40a5289d8e938643bf3226f1a0807362a8555e0165b56",
+      "license": "CC0-1.0",
+      "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
+    },
+    {
+      "file": "Askir_Raider_Block.fbx",
+      "bytes": 246668,
+      "sha256": "38f5aee88c5762022450f348c52566048e6a119f16c72c808e9fc930d803863e",
+      "license": "CC0-1.0",
+      "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
+    },
+    {
+      "file": "Askir_Raider_Cast.fbx",
+      "bytes": 220444,
+      "sha256": "30ec5e06f1781fa328e1afeb8247093e53a29a0916045bbc38959997805c40cb",
+      "license": "CC0-1.0",
+      "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
+    },
+    {
+      "file": "Askir_Raider_Death.fbx",
+      "bytes": 236492,
+      "sha256": "dcc69963b16868b22e85a79104752b80cb9276d3b6b4a4404c05dc92e8efda21",
+      "license": "CC0-1.0",
+      "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
+    },
+    {
+      "file": "Askir_Raider_Dodge.fbx",
+      "bytes": 218540,
+      "sha256": "e45cbd1d0ac2b36e221faef80ec53be9341d9dc2d281f1e71e218fbca66497f3",
+      "license": "CC0-1.0",
+      "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
+    },
+    {
+      "file": "Askir_Raider_HeavyAttack.fbx",
+      "bytes": 228396,
+      "sha256": "b525c5cd28b5208331ee7f4d721d5e45f466f6588303fb6c4a1c31232e29bf30",
+      "license": "CC0-1.0",
+      "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
+    },
+    {
+      "file": "Askir_Raider_Hit.fbx",
+      "bytes": 208108,
+      "sha256": "f1b7327af700b1ba928e3f0ddd6d53501bc4cea06561b57468f3433018928ba0",
+      "license": "CC0-1.0",
+      "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
+    },
+    {
+      "file": "Askir_Raider_Idle.fbx",
+      "bytes": 244556,
+      "sha256": "af5a62fdb7c14f581f6f285ebf90c8e20e7366c863cc2ecac10788a1fe0a527d",
+      "license": "CC0-1.0",
+      "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
+    },
+    {
+      "file": "Askir_Raider_Jump.fbx",
+      "bytes": 229132,
+      "sha256": "45f438ff0d3cbceb110a1bbe5cbcba7514e9b288f855e1b73cc4aecb9186e6df",
+      "license": "CC0-1.0",
+      "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
+    },
+    {
+      "file": "Askir_Raider_LightAttack.fbx",
+      "bytes": 218540,
+      "sha256": "56350d293fe7b88fdb1ab4cfc75fb6e15c14e77a1b5770a48318c076707e3819",
+      "license": "CC0-1.0",
+      "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
+    },
+    {
+      "file": "Askir_Raider_Run.fbx",
+      "bytes": 215116,
+      "sha256": "641f6273008172bfe825a7ff2adac35e5ce5b5e161ae37feaadb9af8197169ce",
+      "license": "CC0-1.0",
+      "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
+    },
+    {
+      "file": "Askir_Raider_Sprint.fbx",
+      "bytes": 208108,
+      "sha256": "9bb2b058e6edfb9236404bcb3551beb106700684707d1254f5ceef3298180b30",
+      "license": "CC0-1.0",
+      "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
+    },
+    {
+      "file": "Askir_Raider_Walk.fbx",
+      "bytes": 229132,
+      "sha256": "b6e4ba3e0de0b3a94947915612faddb99be21c3ee50199503c80068bfce715a1",
+      "license": "CC0-1.0",
+      "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
+    },
+    {
+      "file": "Previews/Guard_Block_Blender.png",
+      "bytes": 482886,
+      "sha256": "9c969889f9231a839a0768515f7cd993248f09e3e6362620c1b3156935359e83",
+      "license": "CC0-1.0",
+      "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
+    },
+    {
+      "file": "Previews/Hero_Idle_Blender.png",
+      "bytes": 472751,
+      "sha256": "27fe1439249d9755e9ab6eea9fb563c7cf5e9ce24603fe288763225eacab55da",
+      "license": "CC0-1.0",
+      "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
+    },
+    {
+      "file": "Previews/Raider_LightAttack_Blender.png",
+      "bytes": 466866,
+      "sha256": "de8dd58f1619322cfff803fd2b691972ea5f3808cd413396515b9ca1c9eeca81",
+      "license": "CC0-1.0",
+      "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
+    }
+  ],
+  "unreal_import": "Nicht ausgef\u00fchrt",
+  "runtime_animation": "Nicht ausgef\u00fchrt"
+}

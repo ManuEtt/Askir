@@ -1,4 +1,6 @@
 #include "UI/AskirHUDWidget.h"
+#include "Magic/AskirMagicComponent.h"
+#include "Magic/AskirSpellCatalog.h"
 #include "Blueprint/WidgetTree.h"
 #include "Components/Border.h"
 #include "Components/CanvasPanel.h"
@@ -39,6 +41,12 @@ void UAskirInventoryButton::ActivateItem()
         PC->RefreshInventoryPanel();
     }
 }
+void UAskirSpellButton::SelectSpell()
+{
+    auto* Pawn=Player.Get();
+    if(Pawn&&!Pawn->IsDead()&&Pawn->MagicComponent&&Pawn->MagicComponent->SelectSpell(SpellID))
+        if(auto* PC=Cast<AAskirPlayerController>(Pawn->GetController())){PC->CloseAnyMenu();PC->ShowNotification(Pawn->MagicComponent->GetSelectedSpellName());}
+}
 UTextBlock* UAskirHUDWidget::AddText(UVerticalBox* Box,const FString& Text,int32 Size)
 {
     UTextBlock* Result=WidgetTree->ConstructWidget<UTextBlock>();
@@ -60,19 +68,21 @@ TSharedRef<SWidget> UAskirHUDWidget::RebuildWidget()
     UCanvasPanel* Canvas=WidgetTree->ConstructWidget<UCanvasPanel>();WidgetTree->RootWidget=Canvas;
     UBorder* StatusBackground=WidgetTree->ConstructWidget<UBorder>();
     StatusBackground->SetBrushColor(FLinearColor(.02f,.025f,.035f,.86f));StatusBackground->SetPadding(FMargin(16.f));
-    auto* Slot=Canvas->AddChildToCanvas(StatusBackground);Slot->SetPosition(FVector2D(24,24));Slot->SetSize(FVector2D(440,235));
+    auto* Slot=Canvas->AddChildToCanvas(StatusBackground);Slot->SetPosition(FVector2D(24,24));Slot->SetSize(FVector2D(500,300));
     UVerticalBox* StatusBox=WidgetTree->ConstructWidget<UVerticalBox>();StatusBackground->SetContent(StatusBox);
     AddText(StatusBox,TEXT("ASKIR · Dornfeld"),24);
     Stats=AddText(StatusBox,TEXT(""),16);
     Health=WidgetTree->ConstructWidget<UProgressBar>();Health->SetFillColorAndOpacity(FLinearColor(.7f,.12f,.1f));StatusBox->AddChildToVerticalBox(Health);
     Stamina=WidgetTree->ConstructWidget<UProgressBar>();Stamina->SetFillColorAndOpacity(FLinearColor(.18f,.65f,.3f));StatusBox->AddChildToVerticalBox(Stamina);
+    Mana=WidgetTree->ConstructWidget<UProgressBar>();Mana->SetFillColorAndOpacity(FLinearColor(.1f,.4f,.9f));StatusBox->AddChildToVerticalBox(Mana);
+    SelectedSpell=AddText(StatusBox,TEXT(""),16);
     Objective=AddText(StatusBox,TEXT(""),18);
     Prompt=WidgetTree->ConstructWidget<UTextBlock>();Prompt->SetFont(FCoreStyle::GetDefaultFontStyle("Regular",20));
     auto* PromptSlot=Canvas->AddChildToCanvas(Prompt);PromptSlot->SetAnchors(FAnchors(.5f,.75f));PromptSlot->SetAlignment(FVector2D(.5f,0));PromptSlot->SetAutoSize(true);
     Notification=WidgetTree->ConstructWidget<UTextBlock>();Notification->SetFont(FCoreStyle::GetDefaultFontStyle("Regular",18));
     auto* NoticeSlot=Canvas->AddChildToCanvas(Notification);NoticeSlot->SetAnchors(FAnchors(.5f,.86f));NoticeSlot->SetAlignment(FVector2D(.5f,0));NoticeSlot->SetAutoSize(true);
     UTextBlock* Hints=WidgetTree->ConstructWidget<UTextBlock>();Hints->SetFont(FCoreStyle::GetDefaultFontStyle("Regular",14));
-    Hints->SetText(NSLOCTEXT("AskirUI","Controls","WASD · Maus · E Interaktion · Q Block · Alt Ausweichen · F5/F9 Speichern/Laden · Tab Inventar · J Journal · Esc Pause"));
+    Hints->SetText(NSLOCTEXT("AskirUI","ControlsV78","E Interaktion · Q Block · Alt Ausweichen · F Zauber · Mausrad Auswahl · K Magie · Tab Inventar · J Journal · F5/F9 · Esc Pause"));
     auto* HintSlot=Canvas->AddChildToCanvas(Hints);HintSlot->SetAnchors(FAnchors(.5f,.96f));HintSlot->SetAlignment(FVector2D(.5f,0));HintSlot->SetAutoSize(true);
     Menu=WidgetTree->ConstructWidget<UBorder>();Menu->SetBrushColor(FLinearColor(.025f,.03f,.04f,.98f));Menu->SetPadding(FMargin(24));
     auto* MenuSlot=Canvas->AddChildToCanvas(Menu);MenuSlot->SetAnchors(FAnchors(.5f,.5f));MenuSlot->SetAlignment(FVector2D(.5f,.5f));MenuSlot->SetSize(FVector2D(620,520));
@@ -95,7 +105,12 @@ void UAskirHUDWidget::RefreshHUD()
     if(Pawn->CombatComponent)Health->SetPercent(Pawn->CombatComponent->GetHealthPercent());
     Stamina->SetPercent(Pawn->GetStaminaPercent());
     const auto* XP=Pawn->ProgressionComponent.Get();
-    Stats->SetText(FText::FromString(FString::Printf(TEXT("LP %.0f · Ausdauer %.0f · Gold %d · Stufe %d · XP %d/%d"),Pawn->CombatComponent?Pawn->CombatComponent->GetHealth():0,Pawn->Stamina,Pawn->TradeComponent?Pawn->TradeComponent->Gold:0,XP?XP->Progress.Level:1,XP?XP->Progress.Experience:0,XP?XP->ExperienceToNextLevel():0)));
+    Stats->SetText(FText::FromString(FString::Printf(TEXT("LP %.0f · Ausdauer %.0f · Gold %d · Stufe %d · XP %d/%d"),Pawn->CombatComponent?Pawn->CombatComponent->GetHealth():0,Pawn->Stamina,Pawn->TradeComponent?Pawn->TradeComponent->Gold:0,XP?XP->Progress.Level:1,XP?XP->Progress.Experience:0,XP?XP->Progress.Experience+XP->ExperienceToNextLevel():0)));
+    if(Pawn->MagicComponent)
+    {
+        Mana->SetPercent(Pawn->MagicComponent->GetManaPercent());
+        SelectedSpell->SetText(FText::FromString(FString::Printf(TEXT("Mana %.0f · %s · Bereit in %.1fs · Schild %.0f"),Pawn->MagicComponent->GetMana(),*Pawn->MagicComponent->GetSelectedSpellName().ToString(),Pawn->MagicComponent->GetSelectedCooldownRemaining(),Pawn->MagicComponent->GetShield())));
+    }
     Objective->SetText(Pawn->IsDead()?NSLOCTEXT("AskirUI","Dead","Du bist gefallen. Lade mit F9 einen Spielstand."):Pawn->DornfeldMission?Pawn->DornfeldMission->GetObjectiveText():FText::GetEmpty());
     Prompt->SetText(FText::GetEmpty());
     if(Panel!=EAskirUIPanel::None||Pawn->IsDead())return;
@@ -142,6 +157,17 @@ void UAskirHUDWidget::BuildPanel()
         for(const auto& Goal:Pawn->QuestComponent->GetObjectivesForQuest(FName(TEXT("DORNFELD_BRUNNEN"))))
             AddText(MenuBody,FString::Printf(TEXT("%s  %d/%d"),*Goal.Description.ToString(),Goal.CurrentCount,Goal.RequiredCount));
         if(Pawn->DornfeldMission)AddText(MenuBody,Pawn->DornfeldMission->GetObjectiveText().ToString());
+    }
+    else if(Panel==EAskirUIPanel::Magic&&Pawn&&Pawn->MagicComponent)
+    {
+        AddText(MenuBody,TEXT("Magie"),28);AddText(MenuBody,TEXT("Wähle einen Zauber. Mit F wirken; Mausrad wechselt die Auswahl."),16);
+        for(const auto& Spell:AskirMagicRules::Catalog)
+        {
+            auto* Button=WidgetTree->ConstructWidget<UAskirSpellButton>();Button->Player=Pawn;Button->SpellID=FName(UTF8_TO_TCHAR(Spell.ID));
+            auto* Label=WidgetTree->ConstructWidget<UTextBlock>();Label->SetFont(FCoreStyle::GetDefaultFontStyle("Regular",18));
+            Label->SetText(FText::FromString(FString::Printf(TEXT("%s · %.0f Mana · %.1fs"),UTF8_TO_TCHAR(Spell.Name),Spell.ManaCost,Spell.Cooldown)));
+            Button->AddChild(Label);Button->OnClicked.AddDynamic(Button,&UAskirSpellButton::SelectSpell);MenuBody->AddChildToVerticalBox(Button);
+        }
     }
     AddButton(MenuBody,NSLOCTEXT("AskirUI","Close","Zurück"))->OnClicked.AddDynamic(this,&UAskirHUDWidget::ClosePanel);
 }

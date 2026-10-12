@@ -1,5 +1,6 @@
 #include "Combat/AskirCombatComponent.h"
 #include "Combat/AskirGuardComponent.h"
+#include "Magic/AskirMagicComponent.h"
 #include "Engine/World.h"
 #include "GameFramework/Controller.h"
 #include "GameFramework/Pawn.h"
@@ -12,6 +13,7 @@ float UAskirCombatComponent::ApplyDamage(const FAskirDamageInfo& Info)
     if(Info.DamageType!=EAskirDamageType::TrueDamage)D*=1.f-FMath::Clamp(Magic?MagicResistance:PhysicalResistance,0.f,.95f);
     if(GetOwner())
     {
+        if(UAskirMagicComponent* Shield=GetOwner()->FindComponentByClass<UAskirMagicComponent>())D=Shield->AbsorbIncomingDamage(D,Info.DamageType==EAskirDamageType::TrueDamage);
         if(UAskirGuardComponent* Guard=GetOwner()->FindComponentByClass<UAskirGuardComponent>())
             D=Guard->AbsorbIncomingDamage(D);
     }

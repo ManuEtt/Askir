@@ -1,5 +1,7 @@
 #include "Game/AskirGameMode.h"
 #include "Game/AskirPlayerController.h"
+#include "Magic/AskirMagicComponent.h"
+#include "Magic/AskirSpellProjectile.h"
 #include "Characters/AskirCharacter.h"
 #include "Characters/AskirNPC.h"
 #include "Demo/AskirDemoInteractable.h"
@@ -109,6 +111,7 @@ UAskirSaveGame* AAskirGameMode::CaptureSnapshot()
  }
  if(Player->TradeComponent)Save->SavedPlayerGold=Player->TradeComponent->Gold;
  if(Player->DornfeldMission)Save->SavedDornfeldMission=Player->DornfeldMission->CaptureMission();
+ if(Player->MagicComponent)Save->SavedMagic=Player->MagicComponent->CaptureSnapshot();
  FAskirPlayerSystemsSave& S=Save->SavedSystems;
  if(Player->SurvivalComponent){S.Warmth=Player->SurvivalComponent->Warmth;S.Wetness=Player->SurvivalComponent->Wetness;S.Exposure=Player->SurvivalComponent->Exposure;}
  if(Player->StealthComponent){S.Noise=Player->StealthComponent->Noise;S.Visibility=Player->StealthComponent->Visibility;S.Suspicion=Player->StealthComponent->Suspicion;}
@@ -201,6 +204,9 @@ bool AAskirGameMode::RestoreSnapshot(UAskirSaveGame* Save,bool bRestorePosition)
  AAskirCharacter* Player=Cast<AAskirCharacter>(UGameplayStatics::GetPlayerPawn(this,0));
  FString Reason;
  if(!Player || !Save->ValidateSnapshot(Reason))return false;
+ FAskirMagicSnapshot RestoredMagic=Save->SaveFormatVersion>=4?Save->SavedMagic:FAskirMagicSnapshot();
+ if(Save->SaveFormatVersion<4&&Player->MagicComponent)RestoredMagic.Mana=Player->MagicComponent->MaxMana;
+ if(Player->MagicComponent&&!Player->MagicComponent->CanRestoreSnapshot(RestoredMagic))return false;
  // All fallible validation and resource resolution precede live-state mutation.
  TArray<FAskirInventoryEntry> RestoredInventory;
  TMap<UAskirItemData*,int64> Totals;
@@ -237,6 +243,9 @@ bool AAskirGameMode::RestoreSnapshot(UAskirSaveGame* Save,bool bRestorePosition)
  FVector RestoreLocation=Save->PlayerLocation;
  if(bRestorePosition && !GetWorld()->FindTeleportSpot(Player,RestoreLocation,Save->PlayerRotation))return false;
  TGuardValue<bool> OperationGuard(bPersistenceOperation,true);
+ // In-flight projectiles belong to the outgoing timeline, never a loaded save.
+ for(TActorIterator<AAskirSpellProjectile> It(GetWorld());It;++It)It->Destroy();
+ if(Player->MagicComponent)Player->MagicComponent->RestoreSnapshot(RestoredMagic);
  if(Player->InventoryComponent)Player->InventoryComponent->Items=MoveTemp(RestoredInventory);
  if(Player->QuestComponent)
  {

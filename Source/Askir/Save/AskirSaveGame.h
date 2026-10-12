@@ -7,6 +7,7 @@
 #include "Mission/AskirDornfeldMissionComponent.h"
 #include "Simulation/AskirNeedsComponent.h"
 #include "Social/AskirRelationshipComponent.h"
+#include "Magic/AskirMagicComponent.h"
 #include "AskirSaveGame.generated.h"
 // Stable asset references survive across sessions without serializing transient UObject pointers.
 USTRUCT(BlueprintType)
@@ -70,7 +71,7 @@ class ASKIR_API UAskirSaveGame:public USaveGame
     GENERATED_BODY()
 public:
     /** Save format version; increment when persistent structures change. */
-    static constexpr int32 CurrentFormatVersion = 3;
+    static constexpr int32 CurrentFormatVersion = 4;
     UPROPERTY(SaveGame) int32 SaveFormatVersion = CurrentFormatVersion;
     /** Two alternating slot banks preserve the last valid generation on write failure. */
     UPROPERTY(SaveGame) int64 SaveGeneration = 0;
@@ -115,6 +116,7 @@ public:
     UPROPERTY(SaveGame)TSet<FName> SavedCompletedEncounters;
     UPROPERTY(SaveGame)int32 SavedPlayerGold=0;
     UPROPERTY(SaveGame) FAskirDornfeldMissionSave SavedDornfeldMission;
+    UPROPERTY(SaveGame) FAskirMagicSnapshot SavedMagic;
     /** Map package -> persistent IDs for looted actors. */
     UPROPERTY(SaveGame)TMap<FName,FAskirLootState> SavedLootByMap;
 };

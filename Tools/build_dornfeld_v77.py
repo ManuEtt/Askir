@@ -111,7 +111,7 @@ def configure_startup_maps(project_root, validation):
     if validation.get("map_reload") is not True or any(validation.get(key) != "Bestanden" for key in required):
         raise RuntimeError("Default map config requires successful saved-map reload and validation")
     project_root = Path(project_root)
-    map_file = project_root / "Content/Askir/Maps/Dornfeld_V77.umap"
+    map_file = project_root / ("Content/" + MAP_PATH[len("/Game/"):] + ".umap")
     if not map_file.is_file() or map_file.stat().st_size < 1024:
         raise RuntimeError("Default map config requires an existing real .umap file")
     config = project_root / "Config/DefaultEngine.ini"
@@ -371,7 +371,7 @@ def generate(unreal, project_root: Path):
         raise RuntimeError("Navigation build did not create navigation data")
     if not unreal.EditorLevelLibrary.save_current_level():
         raise RuntimeError("Could not save real .umap package")
-    map_file = project_root / "Content/Askir/Maps/Dornfeld_V77.umap"
+    map_file = project_root / ("Content/" + MAP_PATH[len("/Game/"):] + ".umap")
     if not map_file.is_file() or map_file.stat().st_size < 1024:
         raise RuntimeError("Editor reported save success but .umap missing or implausibly small")
     if not unreal.EditorLevelLibrary.load_level(MAP_PATH):

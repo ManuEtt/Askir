@@ -1,0 +1,209 @@
+{
+  "version": "V78",
+  "blender": "4.3.2",
+  "status": "Bestanden",
+  "license": "CC0-1.0",
+  "characters": {
+    "Hero": {
+      "source_vertices": 1156,
+      "source_polygons": 964,
+      "bones": 18,
+      "clips": 12,
+      "deformation_tests": {
+        "Idle": {
+          "maximum_sampled_vertex_displacement_m": 0.01869,
+          "status": "Bestanden"
+        },
+        "Walk": {
+          "maximum_sampled_vertex_displacement_m": 0.378155,
+          "status": "Bestanden"
+        },
+        "Run": {
+          "maximum_sampled_vertex_displacement_m": 0.644684,
+          "status": "Bestanden"
+        },
+        "Sprint": {
+          "maximum_sampled_vertex_displacement_m": 0.837819,
+          "status": "Bestanden"
+        },
+        "Jump": {
+          "maximum_sampled_vertex_displacement_m": 0.534482,
+          "status": "Bestanden"
+        },
+        "Dodge": {
+          "maximum_sampled_vertex_displacement_m": 0.663594,
+          "status": "Bestanden"
+        },
+        "LightAttack": {
+          "maximum_sampled_vertex_displacement_m": 1.041684,
+          "status": "Bestanden"
+        },
+        "HeavyAttack": {
+          "maximum_sampled_vertex_displacement_m": 1.037634,
+          "status": "Bestanden"
+        },
+        "Hit": {
+          "maximum_sampled_vertex_displacement_m": 0.350604,
+          "status": "Bestanden"
+        },
+        "Death": {
+          "maximum_sampled_vertex_displacement_m": 2.371104,
+          "status": "Bestanden"
+        },
+        "Block": {
+          "maximum_sampled_vertex_displacement_m": 0.02202,
+          "status": "Bestanden"
+        },
+        "Cast": {
+          "maximum_sampled_vertex_displacement_m": 0.86318,
+          "status": "Bestanden"
+        }
+      },
+      "glb_roundtrip": {
+        "status": "Bestanden",
+        "bones": 18,
+        "actions": 12,
+        "meshes": 1,
+        "coverage": "Blender4.3 GLB import, actual bones/actions/ArmatureModifiers"
+      },
+      "height_m": 1.8,
+      "source_forward": "+X",
+      "source_up": "+Z"
+    },
+    "Guard": {
+      "source_vertices": 1212,
+      "source_polygons": 1016,
+      "bones": 18,
+      "clips": 12,
+      "deformation_tests": {
+        "Idle": {
+          "maximum_sampled_vertex_displacement_m": 0.01869,
+          "status": "Bestanden"
+        },
+        "Walk": {
+          "maximum_sampled_vertex_displacement_m": 0.378155,
+          "status": "Bestanden"
+        },
+        "Run": {
+          "maximum_sampled_vertex_displacement_m": 0.644684,
+          "status": "Bestanden"
+        },
+        "Sprint": {
+          "maximum_sampled_vertex_displacement_m": 0.837819,
+          "status": "Bestanden"
+        },
+        "Jump": {
+          "maximum_sampled_vertex_displacement_m": 0.569032,
+          "status": "Bestanden"
+        },
+        "Dodge": {
+          "maximum_sampled_vertex_displacement_m": 0.671226,
+          "status": "Bestanden"
+        },
+        "LightAttack": {
+          "maximum_sampled_vertex_displacement_m": 1.041684,
+          "status": "Bestanden"
+        },
+        "HeavyAttack": {
+          "maximum_sampled_vertex_displacement_m": 1.037634,
+          "status": "Bestanden"
+        },
+        "Hit": {
+          "maximum_sampled_vertex_displacement_m": 0.350338,
+          "status": "Bestanden"
+        },
+        "Death": {
+          "maximum_sampled_vertex_displacement_m": 2.371049,
+          "status": "Bestanden"
+        },
+        "Block": {
+          "maximum_sampled_vertex_displacement_m": 0.02429,
+          "status": "Bestanden"
+        },
+        "Cast": {
+          "maximum_sampled_vertex_displacement_m": 0.86318,
+          "status": "Bestanden"
+        }
+      },
+      "glb_roundtrip": {
+        "status": "Bestanden",
+        "bones": 18,
+        "actions": 12,
+        "meshes": 1,
+        "coverage": "Blender4.3 GLB import, actual bones/actions/ArmatureModifiers"
+      },
+      "height_m": 1.8,
+      "source_forward": "+X",
+      "source_up": "+Z"
+    },
+    "Raider": {
+      "source_vertices": 1128,
+      "source_polygons": 944,
+      "bones": 18,
+      "clips": 12,
+      "deformation_tests": {
+        "Idle": {
+          "maximum_sampled_vertex_displacement_m": 0.01869,
+          "status": "Bestanden"
+        },
+        "Walk": {
+          "maximum_sampled_vertex_displacement_m": 0.378155,
+          "status": "Bestanden"
+        },
+        "Run": {
+          "maximum_sampled_vertex_displacement_m": 0.644684,
+          "status": "Bestanden"
+        },
+        "Sprint": {
+          "maximum_sampled_vertex_displacement_m": 0.837819,
+          "status": "Bestanden"
+        },
+        "Jump": {
+          "maximum_sampled_vertex_displacement_m": 0.534482,
+          "status": "Bestanden"
+        },
+        "Dodge": {
+          "maximum_sampled_vertex_displacement_m": 0.663594,
+          "status": "Bestanden"
+        },
+        "LightAttack": {
+          "maximum_sampled_vertex_displacement_m": 1.041684,
+          "status": "Bestanden"
+        },
+        "HeavyAttack": {
+          "maximum_sampled_vertex_displacement_m": 1.037634,
+          "status": "Bestanden"
+        },
+        "Hit": {
+          "maximum_sampled_vertex_displacement_m": 0.34863,
+          "status": "Bestanden"
+        },
+        "Death": {
+          "maximum_sampled_vertex_displacement_m": 2.371049,
+          "status": "Bestanden"
+        },
+        "Block": {
+          "maximum_sampled_vertex_displacement_m": 0.02202,
+          "status": "Bestanden"
+        },
+        "Cast": {
+          "maximum_sampled_vertex_displacement_m": 0.86318,
+          "status": "Bestanden"
+        }
+      },
+      "glb_roundtrip": {
+        "status": "Bestanden",
+        "bones": 18,
+        "actions": 12,
+        "meshes": 1,
+        "coverage": "Blender4.3 GLB import, actual bones/actions/ArmatureModifiers"
+      },
+      "height_m": 1.8,
+      "source_forward": "+X",
+      "source_up": "+Z"
+    }
+  },
+  "unreal_import": "Nicht ausgef\u00fchrt",
+  "runtime_animation": "Nicht ausgef\u00fchrt",
+  "coverage": "original source generation and Blender skin/action/GLB roundtrip checks only"
+}

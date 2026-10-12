@@ -18,7 +18,7 @@ class V40EquipmentTests(unittest.TestCase):
         for field in ('SavedWeaponID', 'SavedArmorID', 'SavedWeaponRating',
                       'SavedArmorRating', 'SavedGearDurability'):
             self.assertIn(field, save)
-        self.assertIn('staticconstexprint32CurrentFormatVersion=3;', save)
+        self.assertIn('staticconstexprint32CurrentFormatVersion=4;', save)
         self.assertIn('SaveFormatVersion=CurrentFormatVersion;', save)
 
     def test_roundtrip_wiring(self):

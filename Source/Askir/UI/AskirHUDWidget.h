@@ -12,7 +12,17 @@ class UAskirItemData;
 class AAskirCharacter;
 
 UENUM()
-enum class EAskirUIPanel : uint8 { None, Pause, Inventory, Journal, Dialogue };
+enum class EAskirUIPanel : uint8 { None, Pause, Inventory, Journal, Dialogue, Magic };
+
+UCLASS()
+class ASKIR_API UAskirSpellButton : public UButton
+{
+    GENERATED_BODY()
+public:
+    FName SpellID;
+    TWeakObjectPtr<AAskirCharacter> Player;
+    UFUNCTION() void SelectSpell();
+};
 
 /** Item buttons operate on the live inventory; they keep no copied quantities. */
 UCLASS()
@@ -37,6 +47,7 @@ public:
     bool ShowElderDialogue(AAskirDornfeldEventActor* Elder);
     void Notify(FText Text);
     void RefreshInventoryPanel();
+    void CloseMenu(){ClosePanel();}
 protected:
     virtual TSharedRef<SWidget> RebuildWidget() override;
 private:
@@ -55,6 +66,8 @@ private:
     UPROPERTY(Transient) TObjectPtr<UTextBlock> Notification;
     UPROPERTY(Transient) TObjectPtr<UProgressBar> Health;
     UPROPERTY(Transient) TObjectPtr<UProgressBar> Stamina;
+    UPROPERTY(Transient) TObjectPtr<UProgressBar> Mana;
+    UPROPERTY(Transient) TObjectPtr<UTextBlock> SelectedSpell;
     UPROPERTY(Transient) TObjectPtr<UBorder> Menu;
     UPROPERTY(Transient) TObjectPtr<UVerticalBox> MenuBody;
     TWeakObjectPtr<AAskirDornfeldEventActor> CurrentElder;

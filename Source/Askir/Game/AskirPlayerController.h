@@ -14,6 +14,8 @@ public:
     UFUNCTION(BlueprintCallable, Category="Askir|UI") void TogglePauseMenu();
     UFUNCTION(BlueprintCallable, Category="Askir|UI") void ToggleInventory();
     UFUNCTION(BlueprintCallable, Category="Askir|UI") void ToggleJournal();
+    UFUNCTION(BlueprintCallable, Category="Askir|UI") void ToggleMagic();
+    void CloseAnyMenu();
     UFUNCTION(BlueprintCallable, Category="Askir|UI") void ShowNotification(FText Text);
     bool OpenElderDialogue(AAskirDornfeldEventActor* Elder);
     void SetMenuInput(bool bOpen, bool bPause);

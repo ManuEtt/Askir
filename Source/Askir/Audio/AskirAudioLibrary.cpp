@@ -10,10 +10,11 @@ USoundBase* ResolveCue(FName Cue)
 {
     static TMap<FName,TWeakObjectPtr<USoundBase>> Cache;
     if(const auto* Cached=Cache.Find(Cue))if(Cached->IsValid())return Cached->Get();
-    const FName Allowed[]={TEXT("Shard"),TEXT("Chest"),TEXT("QuestAccepted"),TEXT("QuestCompleted"),TEXT("MeleeSwing"),TEXT("MeleeHit"),TEXT("DungeonAmbient")};
+    const FName Allowed[]={TEXT("Shard"),TEXT("Chest"),TEXT("QuestAccepted"),TEXT("QuestCompleted"),TEXT("MeleeSwing"),TEXT("MeleeHit"),TEXT("DungeonAmbient"),TEXT("SpellCast"),TEXT("SpellImpact")};
     bool bAllowed=false;for(const FName Name:Allowed)if(Cue==Name){bAllowed=true;break;}
     if(!bAllowed)return nullptr;
-    const FString Package=TEXT("/Game/Askir/V77/Audio/S_")+Cue.ToString();
+    const bool bMagic=Cue==TEXT("SpellCast")||Cue==TEXT("SpellImpact");
+    const FString Package=(bMagic?TEXT("/Game/Askir/V78/Audio/S_"):TEXT("/Game/Askir/V77/Audio/S_"))+Cue.ToString();
     // Source-only and automation worlds deliberately have no imported packages.
     if(!FPackageName::DoesPackageExist(Package))return nullptr;
     USoundBase* Sound=LoadObject<USoundBase>(nullptr,*(Package+TEXT(".S_")+Cue.ToString()));

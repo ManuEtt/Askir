@@ -1,0 +1,18 @@
+SPDX-License-Identifier: CC0-1.0
+
+ASKIR RPG V78 original procedural character assets
+
+The original geometry, skin weights, materials and animation clips in this directory
+were generated for this project from its own Blender construction script. No third-party
+character models, textures or motion capture were used.
+
+To the extent copyright or related rights apply, these generated character assets and
+their rendered previews are dedicated to the public domain under Creative Commons
+CC0 1.0 Universal. They may be copied, modified, distributed and used commercially
+without asking permission. The dedication concerns these original asset sources;
+it does not change the license of Blender, Unreal Engine or the rest of this project.
+
+Canonical legal terms:
+https://creativecommons.org/publicdomain/zero/1.0/legalcode
+
+Assets carry no warranty. Trademark, patent or privacy rights are not granted by CC0.

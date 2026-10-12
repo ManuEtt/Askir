@@ -1,4 +1,6 @@
 #include "Mission/AskirDornfeldMissionComponent.h"
+#include "Magic/AskirMagicComponent.h"
+#include "Animation/AskirAnimationPlaybackComponent.h"
 #include "Audio/AskirAudioLibrary.h"
 #include "Animation/AskirAnimationStateComponent.h"
 #include "Simulation/AskirNeedsComponent.h"
@@ -43,6 +45,8 @@
 AAskirCharacter::AAskirCharacter()
 {
     ProgressionComponent=CreateDefaultSubobject<UAskirProgressionComponent>(TEXT("Progression"));
+    MagicComponent=CreateDefaultSubobject<UAskirMagicComponent>(TEXT("Magic"));
+    AnimationPlayback=CreateDefaultSubobject<UAskirAnimationPlaybackComponent>(TEXT("AnimationPlayback"));
     SurvivalComponent=CreateDefaultSubobject<UAskirSurvivalComponent>(TEXT("Survival"));
     EquipmentComponent=CreateDefaultSubobject<UAskirEquipmentComponent>(TEXT("Equipment"));
     StealthComponent=CreateDefaultSubobject<UAskirStealthComponent>(TEXT("Stealth"));
@@ -97,7 +101,7 @@ void AAskirCharacter::SetupPlayerInputComponent(UInputComponent*P)
     UEnhancedInputComponent* Input=Cast<UEnhancedInputComponent>(P);
     if(!Input){UE_LOG(LogTemp,Error,TEXT("Askir requires EnhancedInputComponent; check DefaultInput.ini"));return;}
     InitializeEnhancedInput();
-    if(RuntimeInputActions.Num()!=16)return;
+    if(RuntimeInputActions.Num()!=19)return;
     Input->BindAction(RuntimeInputActions[0],ETriggerEvent::Triggered,this,&AAskirCharacter::InputMoveForward);
     Input->BindAction(RuntimeInputActions[1],ETriggerEvent::Triggered,this,&AAskirCharacter::InputMoveRight);
     Input->BindAction(RuntimeInputActions[2],ETriggerEvent::Triggered,this,&AAskirCharacter::InputTurn);
@@ -119,18 +123,21 @@ void AAskirCharacter::SetupPlayerInputComponent(UInputComponent*P)
     Input->BindAction(RuntimeInputActions[13],ETriggerEvent::Started,this,&AAskirCharacter::InputPause);
     Input->BindAction(RuntimeInputActions[14],ETriggerEvent::Started,this,&AAskirCharacter::InputInventory);
     Input->BindAction(RuntimeInputActions[15],ETriggerEvent::Started,this,&AAskirCharacter::InputJournal);
+    Input->BindAction(RuntimeInputActions[16],ETriggerEvent::Started,this,&AAskirCharacter::InputCast);
+    Input->BindAction(RuntimeInputActions[17],ETriggerEvent::Triggered,this,&AAskirCharacter::InputCycleSpell);
+    Input->BindAction(RuntimeInputActions[18],ETriggerEvent::Started,this,&AAskirCharacter::InputMagicMenu);
 }
 void AAskirCharacter::InitializeEnhancedInput()
 {
     if(!RuntimeInputMapping)
     {
         RuntimeInputMapping=NewObject<UInputMappingContext>(this);
-        const FKey Keys[]={EKeys::W,EKeys::D,EKeys::MouseX,EKeys::MouseY,EKeys::SpaceBar,EKeys::LeftShift,EKeys::LeftMouseButton,EKeys::RightMouseButton,EKeys::LeftAlt,EKeys::Q,EKeys::E,EKeys::F5,EKeys::F9,EKeys::Escape,EKeys::Tab,EKeys::J};
-        for(int32 Index=0;Index<16;++Index)
+        const FKey Keys[]={EKeys::W,EKeys::D,EKeys::MouseX,EKeys::MouseY,EKeys::SpaceBar,EKeys::LeftShift,EKeys::LeftMouseButton,EKeys::RightMouseButton,EKeys::LeftAlt,EKeys::Q,EKeys::E,EKeys::F5,EKeys::F9,EKeys::Escape,EKeys::Tab,EKeys::J,EKeys::F,EKeys::MouseWheelAxis,EKeys::K};
+        for(int32 Index=0;Index<19;++Index)
         {
             UInputAction* Action=NewObject<UInputAction>(this);
-            Action->ValueType=Index<4?EInputActionValueType::Axis1D:EInputActionValueType::Boolean;
-            Action->bTriggerWhenPaused=Index>=11;
+            Action->ValueType=(Index<4||Index==17)?EInputActionValueType::Axis1D:EInputActionValueType::Boolean;
+            Action->bTriggerWhenPaused=Index>=11&&Index<=15;
             RuntimeInputActions.Add(Action);
             FEnhancedActionKeyMapping& Mapping=RuntimeInputMapping->MapKey(Action,Keys[Index]);
             if(Index==3)Mapping.Modifiers.Add(NewObject<UInputModifierNegate>(RuntimeInputMapping));
@@ -154,16 +161,33 @@ void AAskirCharacter::InputMoveForward(const FInputActionValue& V){MoveForward(V
 void AAskirCharacter::InputMoveRight(const FInputActionValue& V){MoveRight(V.Get<float>());}
 void AAskirCharacter::InputTurn(const FInputActionValue& V){Turn(V.Get<float>());}
 void AAskirCharacter::InputLookUp(const FInputActionValue& V){LookUp(V.Get<float>());}
-void AAskirCharacter::InputJump(){if(!IsDead())Jump();}
+void AAskirCharacter::InputJump(){if(CanUseGameplayInput())Jump();}
 void AAskirCharacter::InputStopJump(){StopJumping();}
 void AAskirCharacter::InputPause(){if(auto* PC=Cast<AAskirPlayerController>(Controller))PC->TogglePauseMenu();}
 void AAskirCharacter::InputInventory(){if(auto* PC=Cast<AAskirPlayerController>(Controller))PC->ToggleInventory();}
 void AAskirCharacter::InputJournal(){if(auto* PC=Cast<AAskirPlayerController>(Controller))PC->ToggleJournal();}
+void AAskirCharacter::InputMagicMenu(){if(auto* PC=Cast<AAskirPlayerController>(Controller))PC->ToggleMagic();}
+void AAskirCharacter::InputCast()
+{
+    if(!CanUseGameplayInput()||!MagicComponent)return;
+    if(!MagicComponent->CastSelected())if(auto* PC=Cast<AAskirPlayerController>(Controller))PC->ShowNotification(MagicComponent->GetLastFailureText());
+}
+void AAskirCharacter::InputCycleSpell(const FInputActionValue& Value)
+{
+    if(CanUseGameplayInput()&&MagicComponent){const float Direction=Value.Get<float>();if(FMath::Abs(Direction)>.01f)MagicComponent->CycleSpell(Direction>0?1:-1);}
+}
+bool AAskirCharacter::CanUseGameplayInput() const
+{
+    if(IsDead()||!CombatComponent||!CombatComponent->IsDamageEnabled()||!GetWorld()||UGameplayStatics::IsGamePaused(this))return false;
+    if(const auto* GM=Cast<AAskirGameMode>(UGameplayStatics::GetGameMode(this)))if(GM->IsPersistenceBusy())return false;
+    const auto* PC=Cast<AAskirPlayerController>(Controller);return !PC||!PC->IsMenuOpen();
+}
+void AAskirCharacter::CancelGameplayActions(){AbortPendingAttack();StopBlock();StopSprint();StopJumping();if(MagicComponent)MagicComponent->CancelCasting();}
 void AAskirCharacter::MoveForward(float V){if(V&&!IsDead()&&Controller)AddMovementInput(FRotationMatrix(FRotator(0,Controller->GetControlRotation().Yaw,0)).GetUnitAxis(EAxis::X),V);}
 void AAskirCharacter::MoveRight(float V){if(V&&!IsDead()&&Controller)AddMovementInput(FRotationMatrix(FRotator(0,Controller->GetControlRotation().Yaw,0)).GetUnitAxis(EAxis::Y),V);}
 void AAskirCharacter::Turn(float V){AddControllerYawInput(V);}
 void AAskirCharacter::LookUp(float V){AddControllerPitchInput(V);}
-void AAskirCharacter::StartSprint(){if(!IsDead()&&Stamina>0.f&&!bBlocking){bSprinting=true;GetCharacterMovement()->MaxWalkSpeed=SprintSpeed;}}
+void AAskirCharacter::StartSprint(){if(CanUseGameplayInput()&&Stamina>0.f&&!bBlocking){bSprinting=true;GetCharacterMovement()->MaxWalkSpeed=SprintSpeed;}}
 void AAskirCharacter::StopSprint(){bSprinting=false;GetCharacterMovement()->MaxWalkSpeed=WalkSpeed;}
 bool AAskirCharacter::SpendStamina(float Cost)
 {
@@ -189,6 +213,7 @@ void AAskirCharacter::HeavyAttack(){PerformAttack(HeavyDamageMultiplier,HeavyAtt
 void AAskirCharacter::PerformAttack(float DamageMultiplier,float Cost,float Cooldown,bool bHeavyAttack)
 {
     if(!CombatComponent||CombatComponent->IsDead()||bBlocking||bPendingAttack||!GetWorld())return;
+    if(!CanUseGameplayInput()||(MagicComponent&&MagicComponent->IsCasting()))return;
     if(const auto* PC=Cast<AAskirPlayerController>(Controller))if(PC->IsMenuOpen())return;
     const float Now=GetWorld()->GetTimeSeconds();
     if(Now<NextAttackAllowedTime||!SpendStamina(Cost))return;
@@ -266,11 +291,12 @@ void AAskirCharacter::CancelPendingAttack()
 }
 void AAskirCharacter::Dodge()
 {
-    if(IsDead()||bBlocking||!GetWorld())return;
+    if(!CanUseGameplayInput()||bBlocking||!GetWorld())return;
     const float Now=GetWorld()->GetTimeSeconds();
     if(Now-LastDodgeTime<FMath::Max(0.f,DodgeCooldown)||!SpendStamina(DodgeCost))return;
     LastDodgeTime=Now;
     CancelPendingAttack();
+    if(MagicComponent)MagicComponent->CancelCasting();
     if(CombatComponent)CombatComponent->GrantDodgeInvulnerability(DodgeInvulnerabilitySeconds);
     if(AnimationState)AnimationState->BeginDodge();
     OnDodgeStarted();
@@ -278,7 +304,7 @@ void AAskirCharacter::Dodge()
     if(Direction.IsNearlyZero())Direction=GetActorForwardVector().GetSafeNormal2D();
     LaunchCharacter(Direction*DodgeStrength,false,false);
 }
-void AAskirCharacter::StartBlock(){if(!IsDead()&&!bBlocking){CancelPendingAttack();StopSprint();bBlocking=true;if(AnimationState)AnimationState->SetBlocking(true);OnBlockStateChanged(true);}}
+void AAskirCharacter::StartBlock(){if(CanUseGameplayInput()&&!bBlocking){CancelPendingAttack();StopSprint();if(MagicComponent)MagicComponent->CancelCasting();bBlocking=true;if(AnimationState)AnimationState->SetBlocking(true);OnBlockStateChanged(true);}}
 void AAskirCharacter::StopBlock(){if(bBlocking){bBlocking=false;if(AnimationState)AnimationState->SetBlocking(false);OnBlockStateChanged(false);}}
 void AAskirCharacter::Heal(float A){if(CombatComponent)CombatComponent->Heal(A);}
 void AAskirCharacter::ReceiveAskirDamage(const FAskirDamageInfo&I)
@@ -297,19 +323,20 @@ void AAskirCharacter::ReceiveAskirDamage(const FAskirDamageInfo&I)
         Applied.Damage*=100.f/(100.f+Armor);
         EquipmentComponent->DamageGear(Applied.Damage*.05f);
     }
-    if(AnimationState&&Applied.Damage>0.f && !CombatComponent->IsDodgeInvulnerable())AnimationState->RegisterHit();
-    CombatComponent->ApplyDamage(Applied);
+    const float DamageReceived=CombatComponent->ApplyDamage(Applied);
+    if(AnimationState&&DamageReceived>0.f)AnimationState->RegisterHit();
 }
 bool AAskirCharacter::IsDead()const{return CombatComponent&&CombatComponent->IsDead();}
 void AAskirCharacter::HandleDeath(){CancelPendingAttack();StopSprint();if(AnimationState)AnimationState->RegisterDeath();StopBlock();GetCharacterMovement()->DisableMovement();GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);}
 void AAskirCharacter::RestoreAfterLoad()
 {
-    AbortPendingAttack();StopBlock();StopSprint();StopJumping();
+    CancelGameplayActions();
     LastAttackTime=LastDodgeTime=LastStaminaUseTime=NextAttackAllowedTime=-1000.f;
     GetCharacterMovement()->StopMovementImmediately();
     GetCharacterMovement()->SetMovementMode(IsDead()?MOVE_None:MOVE_Walking);
     GetCapsuleComponent()->SetCollisionEnabled(IsDead()?ECollisionEnabled::NoCollision:ECollisionEnabled::QueryAndPhysics);
     if(AnimationState)AnimationState->ResetAfterLoad(IsDead());
+    if(AnimationPlayback)AnimationPlayback->RestorePlaybackAfterLoad();
 }
 void AAskirCharacter::DemoInteractInput()
 {

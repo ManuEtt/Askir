@@ -1,0 +1,214 @@
+{
+  "status": "Bestanden",
+  "characters": {
+    "Hero": {
+      "status": "Bestanden",
+      "file": "/workspace/Askir/ArtSource/Animated_V78/Askir_Hero.glb",
+      "skin_joints": 18,
+      "exported_primitive_vertices": 3952,
+      "animations": {
+        "Block": {
+          "duration_seconds": 2.0,
+          "maximum_sampled_vertex_displacement_m": 0.02202,
+          "status": "Bestanden"
+        },
+        "Cast": {
+          "duration_seconds": 1.2,
+          "maximum_sampled_vertex_displacement_m": 0.86318,
+          "status": "Bestanden"
+        },
+        "Death": {
+          "duration_seconds": 1.5,
+          "maximum_sampled_vertex_displacement_m": 2.371103,
+          "status": "Bestanden"
+        },
+        "Dodge": {
+          "duration_seconds": 0.8,
+          "maximum_sampled_vertex_displacement_m": 0.663594,
+          "status": "Bestanden"
+        },
+        "HeavyAttack": {
+          "duration_seconds": 1.3,
+          "maximum_sampled_vertex_displacement_m": 1.027029,
+          "status": "Bestanden"
+        },
+        "Hit": {
+          "duration_seconds": 0.6,
+          "maximum_sampled_vertex_displacement_m": 0.350604,
+          "status": "Bestanden"
+        },
+        "Idle": {
+          "duration_seconds": 2.0,
+          "maximum_sampled_vertex_displacement_m": 0.01869,
+          "status": "Bestanden"
+        },
+        "Jump": {
+          "duration_seconds": 1.0,
+          "maximum_sampled_vertex_displacement_m": 0.534482,
+          "status": "Bestanden"
+        },
+        "LightAttack": {
+          "duration_seconds": 0.8,
+          "maximum_sampled_vertex_displacement_m": 1.041683,
+          "status": "Bestanden"
+        },
+        "Run": {
+          "duration_seconds": 0.733333,
+          "maximum_sampled_vertex_displacement_m": 0.644684,
+          "status": "Bestanden"
+        },
+        "Sprint": {
+          "duration_seconds": 0.6,
+          "maximum_sampled_vertex_displacement_m": 0.837819,
+          "status": "Bestanden"
+        },
+        "Walk": {
+          "duration_seconds": 1.0,
+          "maximum_sampled_vertex_displacement_m": 0.378155,
+          "status": "Bestanden"
+        }
+      },
+      "coverage": "independent GLB binary accessors and CPU linear-blend skin evaluation"
+    },
+    "Guard": {
+      "status": "Bestanden",
+      "file": "/workspace/Askir/ArtSource/Animated_V78/Askir_Guard.glb",
+      "skin_joints": 18,
+      "exported_primitive_vertices": 4144,
+      "animations": {
+        "Block": {
+          "duration_seconds": 2.0,
+          "maximum_sampled_vertex_displacement_m": 0.02429,
+          "status": "Bestanden"
+        },
+        "Cast": {
+          "duration_seconds": 1.2,
+          "maximum_sampled_vertex_displacement_m": 0.86318,
+          "status": "Bestanden"
+        },
+        "Death": {
+          "duration_seconds": 1.5,
+          "maximum_sampled_vertex_displacement_m": 2.371049,
+          "status": "Bestanden"
+        },
+        "Dodge": {
+          "duration_seconds": 0.8,
+          "maximum_sampled_vertex_displacement_m": 0.671226,
+          "status": "Bestanden"
+        },
+        "HeavyAttack": {
+          "duration_seconds": 1.3,
+          "maximum_sampled_vertex_displacement_m": 1.027029,
+          "status": "Bestanden"
+        },
+        "Hit": {
+          "duration_seconds": 0.6,
+          "maximum_sampled_vertex_displacement_m": 0.350338,
+          "status": "Bestanden"
+        },
+        "Idle": {
+          "duration_seconds": 2.0,
+          "maximum_sampled_vertex_displacement_m": 0.01869,
+          "status": "Bestanden"
+        },
+        "Jump": {
+          "duration_seconds": 1.0,
+          "maximum_sampled_vertex_displacement_m": 0.569032,
+          "status": "Bestanden"
+        },
+        "LightAttack": {
+          "duration_seconds": 0.8,
+          "maximum_sampled_vertex_displacement_m": 1.041683,
+          "status": "Bestanden"
+        },
+        "Run": {
+          "duration_seconds": 0.733333,
+          "maximum_sampled_vertex_displacement_m": 0.644684,
+          "status": "Bestanden"
+        },
+        "Sprint": {
+          "duration_seconds": 0.6,
+          "maximum_sampled_vertex_displacement_m": 0.837819,
+          "status": "Bestanden"
+        },
+        "Walk": {
+          "duration_seconds": 1.0,
+          "maximum_sampled_vertex_displacement_m": 0.378155,
+          "status": "Bestanden"
+        }
+      },
+      "coverage": "independent GLB binary accessors and CPU linear-blend skin evaluation"
+    },
+    "Raider": {
+      "status": "Bestanden",
+      "file": "/workspace/Askir/ArtSource/Animated_V78/Askir_Raider.glb",
+      "skin_joints": 18,
+      "exported_primitive_vertices": 3856,
+      "animations": {
+        "Block": {
+          "duration_seconds": 2.0,
+          "maximum_sampled_vertex_displacement_m": 0.02202,
+          "status": "Bestanden"
+        },
+        "Cast": {
+          "duration_seconds": 1.2,
+          "maximum_sampled_vertex_displacement_m": 0.86318,
+          "status": "Bestanden"
+        },
+        "Death": {
+          "duration_seconds": 1.5,
+          "maximum_sampled_vertex_displacement_m": 2.371049,
+          "status": "Bestanden"
+        },
+        "Dodge": {
+          "duration_seconds": 0.8,
+          "maximum_sampled_vertex_displacement_m": 0.663594,
+          "status": "Bestanden"
+        },
+        "HeavyAttack": {
+          "duration_seconds": 1.3,
+          "maximum_sampled_vertex_displacement_m": 1.027029,
+          "status": "Bestanden"
+        },
+        "Hit": {
+          "duration_seconds": 0.6,
+          "maximum_sampled_vertex_displacement_m": 0.34863,
+          "status": "Bestanden"
+        },
+        "Idle": {
+          "duration_seconds": 2.0,
+          "maximum_sampled_vertex_displacement_m": 0.01869,
+          "status": "Bestanden"
+        },
+        "Jump": {
+          "duration_seconds": 1.0,
+          "maximum_sampled_vertex_displacement_m": 0.534482,
+          "status": "Bestanden"
+        },
+        "LightAttack": {
+          "duration_seconds": 0.8,
+          "maximum_sampled_vertex_displacement_m": 1.041683,
+          "status": "Bestanden"
+        },
+        "Run": {
+          "duration_seconds": 0.733333,
+          "maximum_sampled_vertex_displacement_m": 0.644684,
+          "status": "Bestanden"
+        },
+        "Sprint": {
+          "duration_seconds": 0.6,
+          "maximum_sampled_vertex_displacement_m": 0.837819,
+          "status": "Bestanden"
+        },
+        "Walk": {
+          "duration_seconds": 1.0,
+          "maximum_sampled_vertex_displacement_m": 0.378155,
+          "status": "Bestanden"
+        }
+      },
+      "coverage": "independent GLB binary accessors and CPU linear-blend skin evaluation"
+    }
+  },
+  "unreal_import": "Nicht ausgef\u00fchrt",
+  "runtime_animation": "Nicht ausgef\u00fchrt"
+}

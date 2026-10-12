@@ -1,5 +1,6 @@
 #include "Game/AskirPlayerController.h"
 #include "UI/AskirHUDWidget.h"
+#include "Characters/AskirCharacter.h"
 
 void AAskirPlayerController::BeginPlay()
 {
@@ -12,12 +13,15 @@ void AAskirPlayerController::BeginPlay()
 void AAskirPlayerController::TogglePauseMenu(){if(RuntimeHUD)RuntimeHUD->TogglePanel(EAskirUIPanel::Pause);}
 void AAskirPlayerController::ToggleInventory(){if(RuntimeHUD)RuntimeHUD->TogglePanel(EAskirUIPanel::Inventory);}
 void AAskirPlayerController::ToggleJournal(){if(RuntimeHUD)RuntimeHUD->TogglePanel(EAskirUIPanel::Journal);}
+void AAskirPlayerController::ToggleMagic(){if(RuntimeHUD)RuntimeHUD->TogglePanel(EAskirUIPanel::Magic);}
+void AAskirPlayerController::CloseAnyMenu(){if(RuntimeHUD)RuntimeHUD->CloseMenu();}
 void AAskirPlayerController::ShowNotification(FText Text){if(RuntimeHUD)RuntimeHUD->Notify(Text);}
 void AAskirPlayerController::RefreshInventoryPanel(){if(RuntimeHUD)RuntimeHUD->RefreshInventoryPanel();}
 bool AAskirPlayerController::OpenElderDialogue(AAskirDornfeldEventActor* Elder){return RuntimeHUD&&RuntimeHUD->ShowElderDialogue(Elder);}
 void AAskirPlayerController::SetMenuInput(bool bOpen,bool bPause)
 {
     bMenuOpen=bOpen;
+    if(bOpen)if(auto* Player=Cast<AAskirCharacter>(GetPawn()))Player->CancelGameplayActions();
     SetPause(bOpen&&bPause);
     ResetIgnoreMoveInput();ResetIgnoreLookInput();
     SetIgnoreMoveInput(bOpen);SetIgnoreLookInput(bOpen);

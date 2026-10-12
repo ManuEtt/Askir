@@ -35,8 +35,16 @@ void AAskirGameMode::LogRuntimeReadiness()
 {
  auto* Player=Cast<AAskirCharacter>(UGameplayStatics::GetPlayerPawn(this,0));
  if(Player&&Player->IsPlayerControlled())
-  UE_LOG(LogTemp,Display,TEXT("ASKIR_V77_RUNTIME_READY map=%s player=%s"),*UGameplayStatics::GetCurrentLevelName(this,true),*Player->GetName());
- else UE_LOG(LogTemp,Error,TEXT("ASKIR_V77_RUNTIME_BLOCKED: player or native controller not initialized"));
+ {
+  const FString Map=UGameplayStatics::GetCurrentLevelName(this,true);
+  const TCHAR* Marker=Map==TEXT("Dornfeld_V78")?TEXT("ASKIR_V78_RUNTIME_READY"):TEXT("ASKIR_V77_RUNTIME_READY");
+  UE_LOG(LogTemp,Display,TEXT("%s map=%s player=%s"),Marker,*Map,*Player->GetName());
+ }
+ else
+ {
+  UE_LOG(LogTemp,Error,TEXT("ASKIR_V77_RUNTIME_BLOCKED: player or native controller not initialized"));
+  UE_LOG(LogTemp,Error,TEXT("ASKIR_V78_RUNTIME_BLOCKED: player or native controller not initialized"));
+ }
 }
 
 void AAskirGameMode::RestorePendingArrival()

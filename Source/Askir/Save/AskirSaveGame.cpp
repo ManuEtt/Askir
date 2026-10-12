@@ -14,6 +14,7 @@ bool UAskirSaveGame::ValidateSnapshot(FString& OutReason) const
  const auto Fail=[&OutReason](const TCHAR* Reason){OutReason=Reason;return false;};
  if(SaveFormatVersion<1 || SaveFormatVersion>CurrentFormatVersion || SaveGeneration<0)
   return Fail(TEXT("Unsupported version or generation"));
+ if(SaveFormatVersion>=4 && !UAskirMagicComponent::ValidateSnapshotData(SavedMagic,10000.f))return Fail(TEXT("Invalid magic snapshot"));
  if(PlayerLocation.ContainsNaN() || PlayerRotation.ContainsNaN() || PlayerLocation.GetAbsMax()>1.e9)
   return Fail(TEXT("Invalid player transform"));
  if(!FMath::IsFinite(PlayerHealth) || PlayerHealth<0.f || !FMath::IsFinite(PlayerStamina) || PlayerStamina<0.f)

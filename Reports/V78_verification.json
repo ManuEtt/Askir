@@ -1,0 +1,224 @@
+{
+  "version": "V78",
+  "checked_at": "2026-10-12T15:58:26.966925+00:00",
+  "checks": {
+    "source_structure": {
+      "status": "Bestanden",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "Tools/validate_release.py"
+      ],
+      "exit_code": 0,
+      "output": "PASS: offline Askir package, reflection structure and raw-asset checks (Unreal not compiled)\n"
+    },
+    "python_regressions": {
+      "status": "Bestanden",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "Tests",
+        "-q"
+      ],
+      "exit_code": 0,
+      "output": "----------------------------------------------------------------------\nRan 474 tests in 0.685s\n\nOK\n",
+      "test_count": 474
+    },
+    "spell_catalog": {
+      "status": "Bestanden",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "Tools/generate_spell_catalog_v78.py",
+        "--check"
+      ],
+      "exit_code": 0,
+      "output": "PASS: 24 runtime spells match canonical source data\n"
+    },
+    "audio_v77": {
+      "status": "Bestanden",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "Tools/generate_audio_v77.py",
+        "--validate-only"
+      ],
+      "exit_code": 0,
+      "output": "{\n  \"assets\": 7,\n  \"validation\": \"PASSED\",\n  \"total_seconds\": 14.4,\n  \"output\": \"/workspace/Askir/ArtSource/Audio_V77\",\n  \"unreal_import\": \"NOT_EXECUTED\"\n}\n"
+    },
+    "magic_audio": {
+      "status": "Bestanden",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "Tools/generate_magic_audio_v78.py",
+        "--validate-only"
+      ],
+      "exit_code": 0,
+      "output": "{\"assets\": 2, \"status\": \"Bestanden\", \"unreal_import\": \"Nicht ausgef\\u00fchrt\"}\n"
+    },
+    "fbx_source_inputs": {
+      "status": "Bestanden",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "Tools/import_animated_assets_v78.py",
+        "--preflight"
+      ],
+      "exit_code": 0,
+      "output": "ASKIR V78 animated import: Bestanden /workspace/Askir/Reports/V78_ANIMATION_SOURCE_PREFLIGHT.json\n"
+    },
+    "actual_skin_and_animation_buffers": {
+      "status": "Bestanden",
+      "command": [
+        "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python",
+        "Tools/validate_animated_sources_v78.py"
+      ],
+      "exit_code": 0,
+      "output": "ASKIR V78 GLB source verification: Bestanden /workspace/Askir/Reports/V78_CHARACTER_SOURCE_BINARY.json\n"
+    },
+    "mission_rules": {
+      "status": "Bestanden",
+      "compile": {
+        "status": "Bestanden",
+        "command": [
+          "/usr/bin/g++",
+          "-std=c++17",
+          "-Wall",
+          "-Wextra",
+          "-Werror",
+          "-pedantic",
+          "-fsanitize=undefined",
+          "-fno-sanitize-recover=all",
+          "-I.",
+          "-ISource/Askir",
+          "Tests/cpp/test_dornfeld_rules_v77.cpp",
+          "-o",
+          "/tmp/askir-v78-2rmzyt80/mission_rules"
+        ],
+        "exit_code": 0,
+        "output": ""
+      },
+      "execution": {
+        "status": "Bestanden",
+        "command": [
+          "/tmp/askir-v78-2rmzyt80/mission_rules"
+        ],
+        "exit_code": 0,
+        "output": "Dornfeld production rules: 73 checks, 0 failures. Unreal runtime: NOT_EXECUTED.\n"
+      }
+    },
+    "checked_arithmetic": {
+      "status": "Bestanden",
+      "compile": {
+        "status": "Bestanden",
+        "command": [
+          "/usr/bin/g++",
+          "-std=c++17",
+          "-Wall",
+          "-Wextra",
+          "-Werror",
+          "-pedantic",
+          "-fsanitize=undefined",
+          "-fno-sanitize-recover=all",
+          "-I.",
+          "-ISource/Askir",
+          "Tests/cpp/test_checked_math_v77.cpp",
+          "-o",
+          "/tmp/askir-v78-4jgbjner/checked_arithmetic"
+        ],
+        "exit_code": 0,
+        "output": ""
+      },
+      "execution": {
+        "status": "Bestanden",
+        "command": [
+          "/tmp/askir-v78-4jgbjner/checked_arithmetic"
+        ],
+        "exit_code": 0,
+        "output": "PASS: 511 assertions against gameplay checked arithmetic\n"
+      }
+    },
+    "magic_rules": {
+      "status": "Bestanden",
+      "compile": {
+        "status": "Bestanden",
+        "command": [
+          "/usr/bin/g++",
+          "-std=c++17",
+          "-Wall",
+          "-Wextra",
+          "-Werror",
+          "-pedantic",
+          "-fsanitize=undefined",
+          "-fno-sanitize-recover=all",
+          "-I.",
+          "-ISource/Askir",
+          "Tests/cpp/test_magic_rules_v78.cpp",
+          "-o",
+          "/tmp/askir-v78-_8io0cx5/magic_rules"
+        ],
+        "exit_code": 0,
+        "output": ""
+      },
+      "execution": {
+        "status": "Bestanden",
+        "command": [
+          "/tmp/askir-v78-_8io0cx5/magic_rules"
+        ],
+        "exit_code": 0,
+        "output": "PASS: 451 magic production-rule assertions; 24 canonical spells. Unreal runtime NOT_EXECUTED.\n"
+      }
+    }
+  },
+  "engine_preflight": {
+    "status": "Blockiert",
+    "checked_at": "2026-10-12T15:58:26.966458+00:00",
+    "host_platform": "Linux",
+    "engine_root": null,
+    "engine_version": null,
+    "issues": [
+      "Unreal Engine 5.6 nicht gefunden; --engine-root oder UE56_ROOT setzen",
+      "Win64 UBT/Cook/EXE-Prüfung benötigt einen Windows-Host; aktuell Linux"
+    ],
+    "note": "Compiler und SDK werden zusätzlich durch UnrealBuildTool geprüft"
+  },
+  "scope": "Portable production rules and actual source assets; Unreal compilation and gameplay not verified",
+  "unreal_tests": {
+    "status": "Blockiert",
+    "registered_tests": [
+      "Askir.Animation.ActionsOverrideLocomotionAndDeathIsTerminal",
+      "Askir.Animation.LocomotionSelectsWalkRunSprintAndAirborneClips",
+      "Askir.Animation.MissingImportedMeshPreservesExistingVisual",
+      "Askir.Combat.DodgeAndInactiveEncounterRejectDamage",
+      "Askir.Combat.EnemyControllerReuseAndInactiveEncounter",
+      "Askir.Combat.EnvironmentAndExpiredHitsDoNotCreditPlayer",
+      "Askir.Combat.NPCDeathRewardsOnceAndPlayerOnlyQuestCredit",
+      "Askir.Combat.NPCEncounterRestorePreservesReceiptAndRevives",
+      "Askir.Combat.ProjectileInstigatorSurvivesSourceDestruction",
+      "Askir.Combat.RestoreDoesNotReplayDeath",
+      "Askir.Crafting.AtomicRecipe",
+      "Askir.Economy.AtomicInventoryTrade",
+      "Askir.Inventory.AtomicExchange",
+      "Askir.Magic.CivilianDormantAndDeadTargetProtection",
+      "Askir.Magic.ShieldManaCooldownAndActualDamage",
+      "Askir.Magic.SnapshotValidationAndSerialization",
+      "Askir.Mission.Dornfeld.NativeLootCombatEvents",
+      "Askir.Mission.Dornfeld.ProgressionAndDedup",
+      "Askir.Mission.Dornfeld.RestoreEvidence",
+      "Askir.Mission.Dornfeld.SpawnedPlayerCombatLootSaveAndMara",
+      "Askir.Persistence.ClockRestoreDoesNotReplayEvents",
+      "Askir.Persistence.PayloadValidation",
+      "Askir.Persistence.SaveBanksRecoverPreviousGeneration",
+      "Askir.Persistence.SystemSnapshotRoundTrip",
+      "Askir.Save.CharacterRevivesMovementCollisionAndActions"
+    ]
+  },
+  "windows_build": {
+    "status": "Blockiert"
+  },
+  "real_maps": 0,
+  "real_unreal_assets": 0,
+  "performance": {
+    "status": "Blockiert",
+    "fps": null
+  }
+}

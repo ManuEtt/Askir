@@ -14,11 +14,14 @@
 #include "Kismet/GameplayStatics.h"
 #include "Components/CapsuleComponent.h"
 #include "Animation/AskirAnimationStateComponent.h"
+#include "Animation/AskirAnimationPlaybackComponent.h"
+#include "Magic/AskirMagicComponent.h"
 #include "Combat/AskirGuardComponent.h"
 
 AAskirNPC::AAskirNPC()
 {
     PrimaryActorTick.bCanEverTick = true;
+    if(AnimationPlayback)AnimationPlayback->ConfigureCharacterVisual(TEXT("Guard"));
     CreateDefaultSubobject<UAskirDailyRoutineComponent>(TEXT("DailyRoutine"));
     CreateDefaultSubobject<UAskirNPCInteractionComponent>(TEXT("Interaction"));
     CreateDefaultSubobject<UAskirDialogueComponent>(TEXT("Dialogue"));
@@ -76,6 +79,7 @@ void AAskirNPC::SetEncounterActive(bool bActive)
     SetActorEnableCollision(bEncounterActive);
     if(!bEncounterActive)
     {
+        if(MagicComponent)MagicComponent->CancelCasting();
         CancelPendingAttack();
         AbortPendingAttack();
         StopBlock();
@@ -101,7 +105,9 @@ void AAskirNPC::RestoreEncounterState(bool bDefeated)
     NextAttackTime=GetWorld()?GetWorld()->GetTimeSeconds()+FMath::Max(0.f,AttackRecovery):0.f;
     AIState=EAskirNPCState::Idle;
     if(CombatComponent)CombatComponent->RestoreHealth(bDefeated?0.f:CombatComponent->GetMaxHealth());
+    if(MagicComponent){FAskirMagicSnapshot Snapshot;Snapshot.Mana=MagicComponent->MaxMana;MagicComponent->RestoreSnapshot(Snapshot);}
     if(AnimationState)AnimationState->ResetAfterLoad(bDefeated);
+    if(AnimationPlayback)AnimationPlayback->RestorePlaybackAfterLoad();
     if(!bDefeated)GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
     SetEncounterActive(!bDefeated);
 }
@@ -178,6 +184,7 @@ void AAskirNPC::UpdateAI()
                 AttackResolveTime = Now + FMath::Max(0.f, AttackWindup * WindupMultiplier);
                 NextAttackTime = AttackResolveTime + FMath::Max(0.1f, AttackInterval * IntervalMultiplier) + AttackRecovery;
                 OnAttackTelegraphed(); // Animation / sound can warn the player.
+                if(AnimationState){if(CombatStyle==EAskirEnemyStyle::Bruiser)AnimationState->BeginHeavyAttack();else AnimationState->BeginLightAttack();}
             }
         }
         return;

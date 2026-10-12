@@ -4,7 +4,7 @@
 #include "AskirAnimationStateComponent.generated.h"
 
 UENUM(BlueprintType)
-enum class EAskirActionPose : uint8 { None, LightAttack, HeavyAttack, Dodge, Block, HitReact, Death };
+enum class EAskirActionPose : uint8 { None, LightAttack, HeavyAttack, Dodge, Block, HitReact, Death, Cast };
 
 UCLASS(ClassGroup=(Askir),BlueprintType,meta=(BlueprintSpawnableComponent))
 class ASKIR_API UAskirAnimationStateComponent : public UActorComponent
@@ -28,6 +28,7 @@ public:
     UFUNCTION(BlueprintCallable,Category="Askir|Animation") void RefreshMovement();
     UFUNCTION(BlueprintCallable,Category="Askir|Animation") void BeginLightAttack();
     UFUNCTION(BlueprintCallable,Category="Askir|Animation") void BeginHeavyAttack();
+    UFUNCTION(BlueprintCallable,Category="Askir|Animation") void BeginCast();
     UFUNCTION(BlueprintCallable,Category="Askir|Animation") void BeginDodge();
     UFUNCTION(BlueprintCallable,Category="Askir|Animation") void SetBlocking(bool bEnabled);
     UFUNCTION(BlueprintCallable,Category="Askir|Animation") void RegisterHit();

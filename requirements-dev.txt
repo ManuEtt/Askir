@@ -1,0 +1,2 @@
+# Source-asset CPU skinning validation and offline regression tests.
+numpy>=1.26,<3
