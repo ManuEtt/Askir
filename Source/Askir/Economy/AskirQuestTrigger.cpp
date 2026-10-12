@@ -13,5 +13,11 @@ void AAskirQuestTrigger::OnEnter(UPrimitiveComponent* Overlapped,AActor* OtherAc
  if(!IsValid(OtherActor)||QuestID.IsNone()||ObjectiveID.IsNone()||Amount<=0)return;
  if(bOneShotPerActor&&TriggeredActors.Contains(OtherActor))return;
  UAskirQuestComponent* Quests=OtherActor->FindComponentByClass<UAskirQuestComponent>();
- if(Quests&&Quests->AdvanceQuestObjective(QuestID,ObjectiveID,Amount)&&bOneShotPerActor)TriggeredActors.Add(OtherActor);
+ if(!Quests)return;
+ if(!PersistentTriggerID.IsNone()&&Quests->HasConsumedQuestTrigger(PersistentTriggerID))return;
+ if(Quests->AdvanceQuestObjective(QuestID,ObjectiveID,Amount))
+ {
+  if(!PersistentTriggerID.IsNone())Quests->ConsumedQuestTriggers.Add(PersistentTriggerID);
+  if(bOneShotPerActor)TriggeredActors.Add(OtherActor);
+ }
 }

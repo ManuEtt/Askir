@@ -60,6 +60,7 @@ public:
     UPROPERTY(SaveGame)TMap<FName,FAskirQuestObjectiveList> SavedObjectivesByQuest;
     UPROPERTY(SaveGame)FName SavedLegacyActiveQuestID=NAME_None;
     UPROPERTY(SaveGame)TSet<FName> SavedClaimedRewards;
+    UPROPERTY(SaveGame)TSet<FName> SavedConsumedQuestTriggers;
     /** V66: persistent encounter completion ledger; absent in older saves. */
     UPROPERTY(SaveGame)TSet<FName> SavedCompletedEncounters;
     UPROPERTY(SaveGame)int32 SavedPlayerGold=0;

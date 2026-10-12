@@ -25,6 +25,9 @@ public:
  UFUNCTION(BlueprintCallable,Category="Askir|Quest") bool TurnInQuestWithRewards(UAskirQuestData* Quest);
  UFUNCTION(BlueprintPure,Category="Askir|Quest") bool HasClaimedReward(FName QuestID)const;
  UPROPERTY(EditAnywhere,BlueprintReadWrite,SaveGame,Category="Askir|Quest") TSet<FName> ClaimedRewards;
+ /** Persistent unique quest pickups; prevents overlap farming across save/load. */
+ UPROPERTY(EditAnywhere,BlueprintReadWrite,SaveGame,Category="Askir|Quest") TSet<FName> ConsumedQuestTriggers;
+ UFUNCTION(BlueprintPure,Category="Askir|Quest") bool HasConsumedQuestTrigger(FName TriggerID) const { return !TriggerID.IsNone() && ConsumedQuestTriggers.Contains(TriggerID); }
  /** Persistent one-shot encounter completion IDs; independent of quest rewards. */
  UPROPERTY(EditAnywhere,BlueprintReadWrite,SaveGame,Category="Askir|Encounter") TSet<FName> CompletedEncounters;
  UFUNCTION(BlueprintPure,Category="Askir|Encounter") bool HasCompletedEncounter(FName EncounterID) const { return !EncounterID.IsNone() && CompletedEncounters.Contains(EncounterID); }

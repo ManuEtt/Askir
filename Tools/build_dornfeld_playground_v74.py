@@ -61,12 +61,16 @@ def build():
             actor.set_editor_property('npc_name', unreal.Text('Mara' if label == 'Mara' else 'Schattenwaechter'))
             actor.set_editor_property('b_hostile', label.startswith('Guardian'))
             if label.startswith('Guardian'):
-                actor.set_editor_property('defeat_objective_id', 'DefeatShadowGuardians')
+                actor.set_editor_property('defeat_objective_id', 'DEFEAT_GUARDIANS')
         elif class_name == 'AskirQuestTrigger':
-            actor.set_editor_property('objective_id', label)
+            actor.set_editor_property('quest_id', 'DORNFELD_BRUNNEN')
+            actor.set_editor_property('objective_id', 'COLLECT_SHARDS')
             actor.set_editor_property('amount', 1)
+            actor.set_editor_property('persistent_trigger_id', 'Dornfeld_' + label)
         elif class_name == 'AskirLootChest':
             actor.set_editor_property('persistent_loot_id', 'DornfeldCellarChest')
+            actor.set_editor_property('quest_id', 'DORNFELD_BRUNNEN')
+            actor.set_editor_property('objective_id', 'OPEN_CHEST')
         created.append(label)
     if not unreal.EditorLevelLibrary.save_current_level():
         raise RuntimeError('Editor could not save the level')
