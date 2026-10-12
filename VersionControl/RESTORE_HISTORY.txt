@@ -1,3 +1,0 @@
-Local Git history for the V76 baseline and V77 development commits.
-Restore with: git clone AskirV77.bundle Askir-restored
-No GitHub upload was confirmed. This bundle contains sources, not an Unreal Engine or a Windows build.
