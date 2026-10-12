@@ -1,221 +1,316 @@
-#include "Mission/AskirDornfeldMissionComponent.h"
-#include "Demo/AskirDemoInteractable.h"
-#include "Characters/AskirNPC.h"
-#include "Engine/Engine.h"
-#include "Engine/StaticMeshActor.h"
-#include "Loot/AskirLootPickup.h"
-#include "Loot/AskirLootChest.h"
-#include "Components/StaticMeshComponent.h"
-#include "GameFramework/PlayerStart.h"
-#include "GameFramework/PlayerController.h"
-#include "EngineUtils.h"
-#include "UObject/ConstructorHelpers.h"
 #include "Game/AskirGameMode.h"
-#include "Progression/AskirProgressionComponent.h"
+#include "Game/AskirPlayerController.h"
 #include "Characters/AskirCharacter.h"
+#include "Characters/AskirNPC.h"
+#include "Demo/AskirDemoInteractable.h"
 #include "Save/AskirSaveGame.h"
+#include "Save/AskirSaveSlotStore.h"
 #include "Equipment/AskirEquipmentComponent.h"
 #include "Combat/AskirCombatComponent.h"
+#include "Combat/AskirGuardComponent.h"
 #include "Inventory/AskirInventoryComponent.h"
 #include "Inventory/AskirItemData.h"
 #include "Quest/AskirQuestComponent.h"
 #include "Trade/AskirTradeComponent.h"
 #include "Simulation/AskirSimulationSubsystem.h"
-#include "Kismet/GameplayStatics.h"
+#include "Simulation/AskirNeedsComponent.h"
 #include "World/AskirVillageDirector.h"
+#include "World/AskirWorldClockComponent.h"
 #include "Social/AskirReputationComponent.h"
+#include "Social/AskirFactionComponent.h"
+#include "Social/AskirRelationshipComponent.h"
 #include "NPC/AskirDialogueComponent.h"
+#include "Mission/AskirDornfeldMissionComponent.h"
+#include "Mission/AskirDornfeldMissionRelay.h"
+#include "Loot/AskirLootPickup.h"
+#include "Loot/AskirLootChest.h"
+#include "Survival/AskirSurvivalComponent.h"
+#include "Stealth/AskirStealthComponent.h"
+#include "Morale/AskirMoraleComponent.h"
+#include "Travel/AskirTravelComponent.h"
+#include "Travel/AskirWorldTravelSubsystem.h"
+#include "Camp/AskirCampComponent.h"
+#include "Companion/AskirCompanionComponent.h"
+#include "Exploration/AskirExplorationComponent.h"
+#include "Crafting/AskirCraftingComponent.h"
+#include "Kismet/GameplayStatics.h"
+#include "Engine/GameInstance.h"
+#include "Engine/World.h"
+#include "EngineUtils.h"
+#include "Misc/PackageName.h"
+#include "UObject/Package.h"
+#include "UObject/StrongObjectPtr.h"
+#include "GameFramework/PlayerController.h"
+
+namespace
+{
+ UAskirWorldTravelSubsystem* TravelState(const AAskirGameMode* Mode)
+ {
+  UGameInstance* Instance=Mode?Mode->GetGameInstance():nullptr;
+  return Instance?Instance->GetSubsystem<UAskirWorldTravelSubsystem>():nullptr;
+ }
+ FString ResolveSavedPackage(const UAskirSaveGame* Save)
+ {
+  if(!Save->SavedMapPackageName.IsEmpty())return Save->SavedMapPackageName;
+  return Save->SavedMapName.IsNone()?FString():FString::Printf(TEXT("/Game/Askir/WorldV42/%s"),*Save->SavedMapName.ToString());
+ }
+}
 
 AAskirGameMode::AAskirGameMode()
 {
-    DefaultPawnClass = AAskirCharacter::StaticClass();
-    PrimaryActorTick.bCanEverTick=true;
+ DefaultPawnClass=AAskirCharacter::StaticClass();
+ PlayerControllerClass=AAskirPlayerController::StaticClass();
+ PrimaryActorTick.bCanEverTick=true;
+}
+
+UAskirSaveGame* AAskirGameMode::CaptureSnapshot()
+{
+ AAskirCharacter* Player=Cast<AAskirCharacter>(UGameplayStatics::GetPlayerPawn(this,0));
+ if(!Player || !GetWorld())return nullptr;
+ UAskirSaveGame* Save=Cast<UAskirSaveGame>(UGameplayStatics::CreateSaveGameObject(UAskirSaveGame::StaticClass()));
+ if(!Save)return nullptr;
+ Save->SavedMapName=FName(*UGameplayStatics::GetCurrentLevelName(this,true));
+ Save->SavedMapPackageName=GetWorld()->GetPackage()->GetName();
+ const FString PIEPrefix=GetWorld()->StreamingLevelsPrefix;
+ if(!PIEPrefix.IsEmpty())Save->SavedMapPackageName.ReplaceInline(*PIEPrefix,TEXT(""));
+ Save->PlayerLocation=Player->GetActorLocation();
+ Save->PlayerRotation=Player->GetActorRotation();
+ Save->PlayerStamina=Player->Stamina;
+ if(Player->CombatComponent)Save->PlayerHealth=Player->CombatComponent->GetHealth();
+ if(Player->ProgressionComponent)Save->SavedProgression=Player->ProgressionComponent->CaptureProgress();
+ if(Player->EquipmentComponent)
+ {
+  const auto* Gear=Player->EquipmentComponent.Get();
+  Save->SavedWeaponID=Gear->EquippedWeaponID;Save->SavedArmorID=Gear->EquippedArmorID;
+  Save->SavedWeaponRating=Gear->WeaponRating;Save->SavedArmorRating=Gear->ArmorRating;Save->SavedGearDurability=Gear->Durability;
+ }
+ TMap<UAskirItemData*,int64> InventoryTotals;
+ if(Player->InventoryComponent && Player->InventoryComponent->Items.Num()>FMath::Clamp(Player->InventoryComponent->MaxInventorySlots,1,4096))return nullptr;
+ if(Player->InventoryComponent)
+  for(const FAskirInventoryEntry& Entry:Player->InventoryComponent->Items)
+  {
+   if(!IsValid(Entry.Item.Get()) || Entry.Quantity<=0 || Entry.Item->MaxStackSize<1 || Entry.Quantity>Entry.Item->MaxStackSize)return nullptr;
+   int64& Total=InventoryTotals.FindOrAdd(Entry.Item.Get());Total+=Entry.Quantity;
+   if(Total>MAX_int32)return nullptr;
+   FAskirSavedInventoryEntry SavedEntry;SavedEntry.ItemAsset=FSoftObjectPath(Entry.Item.Get());SavedEntry.Quantity=Entry.Quantity;
+   // Runtime-only items cannot be reconstructed in a packaged save.
+   if(!SavedEntry.ItemAsset.ToString().StartsWith(TEXT("/Game/")))return nullptr;
+   Save->SavedInventory.Add(SavedEntry);
+  }
+ if(Player->QuestComponent)
+ {
+  Save->SavedQuestStates=Player->QuestComponent->QuestStates;
+  Save->SavedActiveObjectives=Player->QuestComponent->ActiveObjectives;
+  Save->SavedObjectivesByQuest=Player->QuestComponent->ObjectivesByQuest;
+  Save->SavedLegacyActiveQuestID=Player->QuestComponent->LegacyActiveQuestID;
+  Save->SavedClaimedRewards=Player->QuestComponent->ClaimedRewards;
+  Save->SavedConsumedQuestTriggers=Player->QuestComponent->ConsumedQuestTriggers;
+  Save->SavedCompletedEncounters=Player->QuestComponent->CompletedEncounters;
+ }
+ if(Player->TradeComponent)Save->SavedPlayerGold=Player->TradeComponent->Gold;
+ if(Player->DornfeldMission)Save->SavedDornfeldMission=Player->DornfeldMission->CaptureMission();
+ FAskirPlayerSystemsSave& S=Save->SavedSystems;
+ if(Player->SurvivalComponent){S.Warmth=Player->SurvivalComponent->Warmth;S.Wetness=Player->SurvivalComponent->Wetness;S.Exposure=Player->SurvivalComponent->Exposure;}
+ if(Player->StealthComponent){S.Noise=Player->StealthComponent->Noise;S.Visibility=Player->StealthComponent->Visibility;S.Suspicion=Player->StealthComponent->Suspicion;}
+ if(Player->MoraleComponent){S.Morale=Player->MoraleComponent->Morale;S.Fear=Player->MoraleComponent->Fear;S.Courage=Player->MoraleComponent->Courage;}
+ if(Player->TravelComponent){S.TravelDistance=Player->TravelComponent->TravelDistance;S.TravelFatigue=Player->TravelComponent->TravelFatigue;S.Supplies=Player->TravelComponent->Supplies;}
+ if(Player->CampComponent){S.Fuel=Player->CampComponent->Fuel;S.Food=Player->CampComponent->Food;S.Shelter=Player->CampComponent->Shelter;}
+ if(Player->CompanionComponent){S.Loyalty=Player->CompanionComponent->Loyalty;S.Bond=Player->CompanionComponent->Bond;S.CompanionStress=Player->CompanionComponent->Stress;}
+ if(Player->ExplorationComponent){S.DiscoveredSites=Player->ExplorationComponent->DiscoveredSites;S.LoreKnowledge=Player->ExplorationComponent->LoreKnowledge;S.SurveyProgress=Player->ExplorationComponent->SurveyProgress;}
+ if(Player->CraftingComponent){S.Materials=Player->CraftingComponent->Materials;S.CraftedItems=Player->CraftingComponent->CraftedItems;S.CraftSkill=Player->CraftingComponent->CraftSkill;S.UnlockedRecipes=Player->CraftingComponent->UnlockedRecipes;}
+ if(Player->TradeComponent){S.MerchantFavor=Player->TradeComponent->MerchantFavor;S.TradeVolume=Player->TradeComponent->TradeVolume;}
+ if(Player->NeedsComponent)S.Needs=Player->NeedsComponent->Needs;
+ if(Player->GuardComponent)S.GuardStamina=Player->GuardComponent->Stamina;
+ if(auto* Faction=Player->FindComponentByClass<UAskirFactionComponent>()){S.Faction=Faction->Faction;S.FactionStandings=Faction->Standings;}
+ if(auto* Relationship=Player->FindComponentByClass<UAskirRelationshipComponent>())S.Relationships=Relationship->Relationships;
+ if(auto* Rep=Player->FindComponentByClass<UAskirReputationComponent>())
+  for(const auto& Standing:Rep->Standings)Save->SavedFactionReputation.Add(Standing.Faction,Standing.Reputation);
+ if(auto* Dialogue=Player->FindComponentByClass<UAskirDialogueComponent>())Save->SavedDialogueFlags=Dialogue->GetFlags();
+ if(auto* Sim=GetWorld()->GetSubsystem<UAskirSimulationSubsystem>())Save->WorldState=Sim->GetWorldState();
+ for(TActorIterator<AAskirVillageDirector> It(GetWorld());It;++It)
+ {
+  if(!It->Clock)continue;
+  Save->SavedWorldDay=It->Clock->CurrentDay;Save->SavedWorldHour=It->Clock->CurrentHour;
+  for(const auto& Event:It->Clock->TimedEvents)
+  {
+   if(Event.EventID.IsNone())continue;
+   Save->SavedWorldEventLastDays.Add(Event.EventID,Event.LastTriggeredDay);
+   if(!Event.bRepeatDaily && Event.LastTriggeredDay>=0)Save->CompletedOneShotWorldEvents.AddUnique(Event.EventID);
+  }
+  break;
+ }
+ Save->DemoStage=DemoStage;Save->DemoSupplies=DemoSupplies;Save->bDemoFinished=bDemoFinished;Save->bDemoEnemyDefeated=DemoEnemy && DemoEnemy->IsDead();
+ if(const auto* State=TravelState(this))Save->SavedLootByMap=State->LootByMap;
+ FAskirLootState& LootState=Save->SavedLootByMap.FindOrAdd(Save->SavedMapName);
+ // Replace this map's state, allowing an older load to rewind the active timeline.
+ LootState=FAskirLootState();
+ TSet<FName> SeenIDs;
+ for(TActorIterator<AAskirLootPickup> It(GetWorld());It;++It)
+ {
+  if(It->PersistentLootID.IsNone())continue;
+  if(SeenIDs.Contains(It->PersistentLootID)){UE_LOG(LogTemp,Error,TEXT("Duplicate persistent loot ID: %s"),*It->PersistentLootID.ToString());return nullptr;}
+  SeenIDs.Add(It->PersistentLootID);
+  if(It->IsCollected())LootState.CollectedPickups.Add(It->PersistentLootID);
+ }
+ for(TActorIterator<AAskirLootChest> It(GetWorld());It;++It)
+ {
+  if(It->PersistentLootID.IsNone())continue;
+  if(SeenIDs.Contains(It->PersistentLootID)){UE_LOG(LogTemp,Error,TEXT("Duplicate persistent loot ID: %s"),*It->PersistentLootID.ToString());return nullptr;}
+  SeenIDs.Add(It->PersistentLootID);
+  if(It->IsOpened())LootState.OpenedChests.Add(It->PersistentLootID);
+ }
+ FString Reason;
+ if(!Save->ValidateSnapshot(Reason)){UE_LOG(LogTemp,Warning,TEXT("Askir capture invalid: %s"),*Reason);return nullptr;}
+ return Save;
 }
 
 bool AAskirGameMode::SaveGame(const FString& SlotName)
 {
-    if (SlotName.IsEmpty() || !GetWorld()) return false;
-    AAskirCharacter* Player = Cast<AAskirCharacter>(UGameplayStatics::GetPlayerPawn(this, 0));
-    if (!Player) return false;
-
-    UAskirSaveGame* Save = Cast<UAskirSaveGame>(UGameplayStatics::CreateSaveGameObject(UAskirSaveGame::StaticClass()));
-    if (!Save) return false;
-    Save->SavedMapName = FName(*UGameplayStatics::GetCurrentLevelName(this, true));
-    if (const UAskirEquipmentComponent* Gear = Player->FindComponentByClass<UAskirEquipmentComponent>())
-    {
-        // Save only inventory-backed equipment IDs (also sanitizes stale loadouts).
-        const_cast<UAskirEquipmentComponent*>(Gear)->ReconcileWithInventory();
-        Save->SavedWeaponID = Gear->EquippedWeaponID;
-        Save->SavedArmorID = Gear->EquippedArmorID;
-        Save->SavedWeaponRating = Gear->WeaponRating;
-        Save->SavedArmorRating = Gear->ArmorRating;
-        Save->SavedGearDurability = Gear->Durability;
-    }
-
-    if (Player->ProgressionComponent) Save->SavedProgression = Player->ProgressionComponent->CaptureProgress();
-    Save->DemoStage=DemoStage;
-    Save->DemoSupplies=DemoSupplies;
-    Save->bDemoFinished=bDemoFinished;
-    Save->bDemoEnemyDefeated=DemoEnemy && DemoEnemy->IsDead();
-    Save->PlayerLocation = Player->GetActorLocation();
-    Save->PlayerRotation = Player->GetActorRotation();
-    Save->PlayerStamina = Player->Stamina;
-    if (Player->CombatComponent) Save->PlayerHealth = Player->CombatComponent->GetHealth();
-    if (UAskirSimulationSubsystem* Sim = GetWorld()->GetSubsystem<UAskirSimulationSubsystem>())
-        Save->WorldState = Sim->GetWorldState();
-
-    if (Player->InventoryComponent)
-    {
-        for (const FAskirInventoryEntry& Entry : Player->InventoryComponent->Items)
-        {
-            if (!Entry.Item || Entry.Quantity <= 0) continue;
-            FAskirSavedInventoryEntry SavedEntry;
-            SavedEntry.ItemAsset = FSoftObjectPath(Entry.Item.Get());
-            SavedEntry.Quantity = Entry.Quantity;
-            Save->SavedInventory.Add(SavedEntry);
-        }
-    }
-    if (Player->QuestComponent)
-    {
-        Save->SavedQuestStates = Player->QuestComponent->QuestStates;
-        Save->SavedActiveObjectives = Player->QuestComponent->ActiveObjectives;
-        Save->SavedObjectivesByQuest = Player->QuestComponent->ObjectivesByQuest;
-        Save->SavedLegacyActiveQuestID = Player->QuestComponent->LegacyActiveQuestID;
-        Save->SavedClaimedRewards = Player->QuestComponent->ClaimedRewards;
-        Save->SavedConsumedQuestTriggers = Player->QuestComponent->ConsumedQuestTriggers;
-        Save->SavedCompletedEncounters = Player->QuestComponent->CompletedEncounters;
-    }
-    if (Player->TradeComponent) Save->SavedPlayerGold=Player->TradeComponent->Gold;
-    if (Player->DornfeldMission) Save->SavedDornfeldMission=Player->DornfeldMission->CaptureMission();
-    if (auto* Rep=Player->FindComponentByClass<UAskirReputationComponent>())
-        for (const auto& Standing:Rep->Standings)Save->SavedFactionReputation.Add(Standing.Faction,Standing.Reputation);
-    if (auto* Dialogue=Player->FindComponentByClass<UAskirDialogueComponent>())
-        Save->SavedDialogueFlags=Dialogue->GetFlags();
-    for (TActorIterator<AAskirVillageDirector> It(GetWorld());It;++It)
-    {
-        Save->SavedWorldDay=It->Clock->CurrentDay;
-        Save->SavedWorldHour=It->Clock->CurrentHour;
-        for(const auto& Event:It->Clock->TimedEvents)
-            if(!Event.bRepeatDaily && Event.LastTriggeredDay>=0)
-                Save->CompletedOneShotWorldEvents.AddUnique(Event.EventID);
-        break;
-    }
-    // Carry previously recorded map loot forward instead of replacing the whole map ledger.
-    if (UGameplayStatics::DoesSaveGameExist(SlotName, 0))
-    {
-        if (const UAskirSaveGame* Previous = Cast<UAskirSaveGame>(UGameplayStatics::LoadGameFromSlot(SlotName, 0)))
-            Save->SavedLootByMap = Previous->SavedLootByMap;
-    }
-    // Stable IDs are assigned per placed actor in the level editor. Missing IDs are ignored.
-    const FName MapKey(*UGameplayStatics::GetCurrentLevelName(this,true));
-    FAskirLootState& LootState=Save->SavedLootByMap.FindOrAdd(MapKey);
-    TSet<FName> SeenIDs;
-    for(TActorIterator<AAskirLootPickup> It(GetWorld());It;++It)
-    {
-        if(It->PersistentLootID.IsNone())continue;
-        if(SeenIDs.Contains(It->PersistentLootID)) {UE_LOG(LogTemp,Warning,TEXT("Duplicate persistent loot ID: %s"),*It->PersistentLootID.ToString());continue;}
-        SeenIDs.Add(It->PersistentLootID);
-        if(It->IsCollected())LootState.CollectedPickups.Add(It->PersistentLootID);
-    }
-    for(TActorIterator<AAskirLootChest> It(GetWorld());It;++It)
-    {
-        if(It->PersistentLootID.IsNone())continue;
-        if(SeenIDs.Contains(It->PersistentLootID)) {UE_LOG(LogTemp,Warning,TEXT("Duplicate persistent loot ID: %s"),*It->PersistentLootID.ToString());continue;}
-        SeenIDs.Add(It->PersistentLootID);
-        if(It->IsOpened())LootState.OpenedChests.Add(It->PersistentLootID);
-    }
-    return UGameplayStatics::SaveGameToSlot(Save, SlotName, 0);
+ if(bPersistenceOperation || !UAskirSaveGame::IsSafeSlotName(SlotName))return false;
+ TGuardValue<bool> OperationGuard(bPersistenceOperation,true);
+ UAskirSaveGame* Save=CaptureSnapshot();
+ if(!Save || !AskirSaveSlots::WriteNext(SlotName,Save))return false;
+ if(auto* State=TravelState(this))State->LootByMap=Save->SavedLootByMap;
+ return true;
 }
 
-bool AAskirGameMode::LoadGame(const FString& SlotName, bool bRestorePosition)
+bool AAskirGameMode::LoadGame(const FString& SlotName,bool bRestorePosition)
 {
-    if (SlotName.IsEmpty() || !GetWorld() || !UGameplayStatics::DoesSaveGameExist(SlotName, 0)) return false;
-    UAskirSaveGame* Save = Cast<UAskirSaveGame>(UGameplayStatics::LoadGameFromSlot(SlotName, 0));
-    AAskirCharacter* Player = Cast<AAskirCharacter>(UGameplayStatics::GetPlayerPawn(this, 0));
-    if (!Save || !Player) return false;
-    if (Save->SaveFormatVersion < 1 || Save->SaveFormatVersion > 2)
-    {
-        UE_LOG(LogTemp, Warning, TEXT("Askir unsupported save version: %d"), Save->SaveFormatVersion);
-        return false;
-    }
+ if(bPersistenceOperation || !GetWorld() || !UAskirSaveGame::IsSafeSlotName(SlotName))return false;
+ UAskirSaveGame* Save=AskirSaveSlots::ReadLatest(SlotName);
+ if(!Save)return false;
+ TStrongObjectPtr<UAskirSaveGame> SnapshotLifetime(Save);
+ const FName CurrentMap(*UGameplayStatics::GetCurrentLevelName(this,true));
+ if(bRestorePosition && !Save->SavedMapName.IsNone() && Save->SavedMapName!=CurrentMap)
+ {
+  const FString Package=ResolveSavedPackage(Save);
+  auto* State=TravelState(this);
+  if(!State || !FPackageName::IsValidLongPackageName(Package) || !FPackageName::DoesPackageExist(Package))return false;
+  for(const auto& Entry:Save->SavedInventory)if(!Cast<UAskirItemData>(Entry.ItemAsset.TryLoad()))return false;
+  State->QueueSnapshot(Save->SavedMapName,NAME_None,Save,true);
+  UGameplayStatics::OpenLevel(this,FName(*Package));
+  return true; // Request accepted; arrival restore is asynchronous.
+ }
+ return RestoreSnapshot(Save,bRestorePosition);
+}
 
-    // Resolve item assets before modifying the current game state. Missing assets
-    // abort loading instead of silently discarding the player's inventory.
-    TArray<FAskirInventoryEntry> RestoredInventory;
-    for (const FAskirSavedInventoryEntry& SavedEntry : Save->SavedInventory)
-    {
-        if (SavedEntry.Quantity <= 0 || SavedEntry.ItemAsset.IsNull()) return false;
-        UAskirItemData* Item = Cast<UAskirItemData>(SavedEntry.ItemAsset.TryLoad());
-        if (!Item) return false;
-        FAskirInventoryEntry Entry;
-        Entry.Item = Item;
-        Entry.Quantity = SavedEntry.Quantity;
-        RestoredInventory.Add(Entry);
-    }
-
-    // Reject malformed equipment data before changing any live game state.
-    if (!FMath::IsFinite(Save->SavedWeaponRating) || !FMath::IsFinite(Save->SavedArmorRating)
-        || !FMath::IsFinite(Save->SavedGearDurability)
-        || Save->SavedWeaponRating < 0.f || Save->SavedArmorRating < 0.f
-        || Save->SavedGearDurability < 0.f || Save->SavedGearDurability > 100.f) return false;
-    DemoStage=FMath::Clamp(Save->DemoStage,0,4);
-    DemoSupplies=FMath::Max(0,Save->DemoSupplies);
-    bDemoFinished=Save->bDemoFinished;
-    if (DemoEnemy && Save->bDemoEnemyDefeated && !DemoEnemy->IsDead() && DemoEnemy->CombatComponent)
-        DemoEnemy->CombatComponent->Kill();
-    for(AAskirDemoInteractable* Obj:DemoObjects)
-        if(Obj) Obj->SetUsed((Obj->Kind==EAskirDemoObject::Supplies && DemoSupplies>0));
-    if (Player->ProgressionComponent) Player->ProgressionComponent->RestoreProgress(Save->SavedProgression);
-    if (bRestorePosition) Player->SetActorLocationAndRotation(Save->PlayerLocation, Save->PlayerRotation);
-    Player->Stamina = FMath::Clamp(Save->PlayerStamina, 0.f, Player->MaxStamina);
-    if (Player->CombatComponent) Player->CombatComponent->RestoreHealth(Save->PlayerHealth);
-    if (Player->InventoryComponent)
-    {
-        Player->InventoryComponent->Items = MoveTemp(RestoredInventory);
-        Player->InventoryComponent->OnInventoryChanged.Broadcast();
-    }
-    if (Player->QuestComponent)
-    {
-        Player->QuestComponent->QuestStates = Save->SavedQuestStates;
-        Player->QuestComponent->ActiveObjectives = Save->SavedActiveObjectives;
-        Player->QuestComponent->ObjectivesByQuest = Save->SavedObjectivesByQuest;
-        Player->QuestComponent->LegacyActiveQuestID = Save->SavedLegacyActiveQuestID;
-        Player->QuestComponent->ClaimedRewards = Save->SavedClaimedRewards;
-        Player->QuestComponent->ConsumedQuestTriggers = Save->SavedConsumedQuestTriggers;
-        Player->QuestComponent->CompletedEncounters = Save->SavedCompletedEncounters;
-    }
-    if (UAskirEquipmentComponent* Gear = Player->FindComponentByClass<UAskirEquipmentComponent>())
-    {
-        Gear->RestoreEquipment(Save->SavedWeaponID,Save->SavedArmorID,Save->SavedWeaponRating,Save->SavedArmorRating,Save->SavedGearDurability);
-        Gear->ReconcileWithInventory();
-    }
-    if (Player->TradeComponent) Player->TradeComponent->Gold=FMath::Max(0,Save->SavedPlayerGold);
-    if (Player->DornfeldMission) Player->DornfeldMission->RestoreMission(Save->SavedDornfeldMission);
-    if (UAskirSimulationSubsystem* Sim = GetWorld()->GetSubsystem<UAskirSimulationSubsystem>())
-        Sim->RestoreWorldState(Save->WorldState);
-    if (auto* Rep=Player->FindComponentByClass<UAskirReputationComponent>())
-    {
-        Rep->Standings.Reset();
-        for(const auto& Pair:Save->SavedFactionReputation)Rep->SetReputation(Pair.Key,Pair.Value);
-    }
-    if (auto* Dialogue=Player->FindComponentByClass<UAskirDialogueComponent>())
-        Dialogue->RestoreFlags(Save->SavedDialogueFlags);
-    for (TActorIterator<AAskirVillageDirector> It(GetWorld());It;++It)
-    {
-        It->Clock->SetClock(Save->SavedWorldDay,Save->SavedWorldHour);
-        for(auto& Event:It->Clock->TimedEvents)
-            if(!Event.bRepeatDaily && Save->CompletedOneShotWorldEvents.Contains(Event.EventID))
-                Event.LastTriggeredDay=FMath::Max(1,Save->SavedWorldDay);
-        It->RefreshResidents();
-        break;
-    }
-    const FName MapKey(*UGameplayStatics::GetCurrentLevelName(this,true));
-    if(const FAskirLootState* LootState=Save->SavedLootByMap.Find(MapKey))
-    {
-        for(TActorIterator<AAskirLootPickup> It(GetWorld());It;++It)
-            if(!It->PersistentLootID.IsNone())It->RestoreLootState(LootState->CollectedPickups.Contains(It->PersistentLootID));
-        for(TActorIterator<AAskirLootChest> It(GetWorld());It;++It)
-            if(!It->PersistentLootID.IsNone())It->RestoreLootState(LootState->OpenedChests.Contains(It->PersistentLootID));
-    }
-    return true;
+bool AAskirGameMode::RestoreSnapshot(UAskirSaveGame* Save,bool bRestorePosition)
+{
+ if(bPersistenceOperation || !Save || !GetWorld())return false;
+ TStrongObjectPtr<UAskirSaveGame> SnapshotLifetime(Save);
+ AAskirCharacter* Player=Cast<AAskirCharacter>(UGameplayStatics::GetPlayerPawn(this,0));
+ FString Reason;
+ if(!Player || !Save->ValidateSnapshot(Reason))return false;
+ // All fallible validation and resource resolution precede live-state mutation.
+ TArray<FAskirInventoryEntry> RestoredInventory;
+ TMap<UAskirItemData*,int64> Totals;
+ const int32 SlotLimit=Player->InventoryComponent?FMath::Clamp(Player->InventoryComponent->MaxInventorySlots,1,4096):4096;
+ for(const auto& SavedEntry:Save->SavedInventory)
+ {
+  UAskirItemData* Item=Cast<UAskirItemData>(SavedEntry.ItemAsset.TryLoad());
+  if(!Item || Item->MaxStackSize<1)return false;
+  if(Save->SaveFormatVersion>=3 && SavedEntry.Quantity>Item->MaxStackSize)return false;
+  int64& Total=Totals.FindOrAdd(Item);Total+=SavedEntry.Quantity;
+  if(Total>MAX_int32)return false;
+  const int64 NeededSlots=(static_cast<int64>(SavedEntry.Quantity)+Item->MaxStackSize-1)/Item->MaxStackSize;
+  if(NeededSlots>SlotLimit-RestoredInventory.Num())return false;
+  int32 Remaining=SavedEntry.Quantity;
+  while(Remaining>0)
+  {
+   FAskirInventoryEntry Entry;Entry.Item=Item;Entry.Quantity=FMath::Min(Remaining,Item->MaxStackSize);
+   RestoredInventory.Add(Entry);Remaining-=Entry.Quantity;
+  }
+ }
+ TSet<FName> SeenIDs;
+ for(TActorIterator<AAskirLootPickup> It(GetWorld());It;++It)
+ {
+  if(It->PersistentLootID.IsNone())continue;
+  if(SeenIDs.Contains(It->PersistentLootID))return false;
+  SeenIDs.Add(It->PersistentLootID);
+ }
+ for(TActorIterator<AAskirLootChest> It(GetWorld());It;++It)
+ {
+  if(It->PersistentLootID.IsNone())continue;
+  if(SeenIDs.Contains(It->PersistentLootID))return false;
+  SeenIDs.Add(It->PersistentLootID);
+ }
+ FVector RestoreLocation=Save->PlayerLocation;
+ if(bRestorePosition && !GetWorld()->FindTeleportSpot(Player,RestoreLocation,Save->PlayerRotation))return false;
+ TGuardValue<bool> OperationGuard(bPersistenceOperation,true);
+ if(Player->InventoryComponent)Player->InventoryComponent->Items=MoveTemp(RestoredInventory);
+ if(Player->QuestComponent)
+ {
+  Player->QuestComponent->QuestStates=Save->SavedQuestStates;
+  Player->QuestComponent->ActiveObjectives=Save->SavedActiveObjectives;
+  Player->QuestComponent->ObjectivesByQuest=Save->SavedObjectivesByQuest;
+  Player->QuestComponent->LegacyActiveQuestID=Save->SavedLegacyActiveQuestID;
+  Player->QuestComponent->ClaimedRewards=Save->SavedClaimedRewards;
+  Player->QuestComponent->ConsumedQuestTriggers=Save->SavedConsumedQuestTriggers;
+  Player->QuestComponent->CompletedEncounters=Save->SavedCompletedEncounters;
+ }
+ if(Player->TradeComponent)Player->TradeComponent->Gold=Save->SavedPlayerGold;
+ if(Player->ProgressionComponent)Player->ProgressionComponent->Progress=Save->SavedProgression;
+ if(Player->EquipmentComponent)
+ {
+  Player->EquipmentComponent->RestoreEquipment(Save->SavedWeaponID,Save->SavedArmorID,Save->SavedWeaponRating,Save->SavedArmorRating,Save->SavedGearDurability);
+  Player->EquipmentComponent->ReconcileWithInventory();
+ }
+ // Older formats did not capture these: restore explicit defaults, never a mixture
+ // with resources from the currently running timeline.
+ const FAskirPlayerSystemsSave S=Save->SaveFormatVersion>=3?Save->SavedSystems:FAskirPlayerSystemsSave();
+ if(Player->SurvivalComponent){Player->SurvivalComponent->Warmth=S.Warmth;Player->SurvivalComponent->Wetness=S.Wetness;Player->SurvivalComponent->Exposure=S.Exposure;}
+ if(Player->StealthComponent){Player->StealthComponent->Noise=S.Noise;Player->StealthComponent->Visibility=S.Visibility;Player->StealthComponent->Suspicion=S.Suspicion;}
+ if(Player->MoraleComponent){Player->MoraleComponent->Morale=S.Morale;Player->MoraleComponent->Fear=S.Fear;Player->MoraleComponent->Courage=S.Courage;}
+ if(Player->TravelComponent){Player->TravelComponent->TravelDistance=S.TravelDistance;Player->TravelComponent->TravelFatigue=S.TravelFatigue;Player->TravelComponent->Supplies=S.Supplies;}
+ if(Player->CampComponent){Player->CampComponent->Fuel=S.Fuel;Player->CampComponent->Food=S.Food;Player->CampComponent->Shelter=S.Shelter;}
+ if(Player->CompanionComponent){Player->CompanionComponent->Loyalty=S.Loyalty;Player->CompanionComponent->Bond=S.Bond;Player->CompanionComponent->Stress=S.CompanionStress;}
+ if(Player->ExplorationComponent){Player->ExplorationComponent->DiscoveredSites=S.DiscoveredSites;Player->ExplorationComponent->LoreKnowledge=S.LoreKnowledge;Player->ExplorationComponent->SurveyProgress=S.SurveyProgress;}
+ if(Player->CraftingComponent){Player->CraftingComponent->Materials=S.Materials;Player->CraftingComponent->CraftedItems=S.CraftedItems;Player->CraftingComponent->CraftSkill=S.CraftSkill;Player->CraftingComponent->UnlockedRecipes=S.UnlockedRecipes;}
+ if(Player->TradeComponent){Player->TradeComponent->MerchantFavor=S.MerchantFavor;Player->TradeComponent->TradeVolume=S.TradeVolume;}
+ if(Player->NeedsComponent)Player->NeedsComponent->Needs=S.Needs;
+ if(Player->GuardComponent){Player->GuardComponent->StopGuard();Player->GuardComponent->Stamina=FMath::Clamp(S.GuardStamina,0.f,Player->GuardComponent->MaxStamina);}
+ if(auto* Faction=Player->FindComponentByClass<UAskirFactionComponent>()){Faction->Faction=S.Faction;Faction->Standings=S.FactionStandings;}
+ if(auto* Relationship=Player->FindComponentByClass<UAskirRelationshipComponent>())Relationship->Relationships=S.Relationships;
+ if(auto* Rep=Player->FindComponentByClass<UAskirReputationComponent>())
+ {
+  Rep->Standings.Reset();
+  for(const auto& Pair:Save->SavedFactionReputation){FAskirFactionStanding Standing;Standing.Faction=Pair.Key;Standing.Reputation=Pair.Value;Rep->Standings.Add(Standing);}
+ }
+ if(auto* Dialogue=Player->FindComponentByClass<UAskirDialogueComponent>()){Dialogue->EndDialogue();Dialogue->RestoreFlags(Save->SavedDialogueFlags);}
+ DemoStage=FMath::Clamp(Save->DemoStage,0,4);DemoSupplies=FMath::Max(0,Save->DemoSupplies);bDemoFinished=Save->bDemoFinished;
+ if(DemoEnemy && DemoEnemy->CombatComponent)DemoEnemy->CombatComponent->RestoreHealth(Save->bDemoEnemyDefeated?0.f:DemoEnemy->CombatComponent->GetMaxHealth());
+ for(AAskirDemoInteractable* Obj:DemoObjects)if(Obj)Obj->SetUsed(Obj->Kind==EAskirDemoObject::Supplies && DemoSupplies>0);
+ if(auto* State=TravelState(this))State->LootByMap=Save->SavedLootByMap;
+ const FName CurrentMap(*UGameplayStatics::GetCurrentLevelName(this,true));
+ const FAskirLootState* Loot=Save->SavedLootByMap.Find(CurrentMap);
+ for(TActorIterator<AAskirLootPickup> It(GetWorld());It;++It)
+  if(!It->PersistentLootID.IsNone())It->RestoreLootState(Loot && Loot->CollectedPickups.Contains(It->PersistentLootID));
+ for(TActorIterator<AAskirLootChest> It(GetWorld());It;++It)
+  if(!It->PersistentLootID.IsNone())It->RestoreLootState(Loot && Loot->OpenedChests.Contains(It->PersistentLootID));
+ if(Player->QuestComponent)Player->QuestComponent->NormalizeRestoredState(false);
+ if(Player->DornfeldMission)Player->DornfeldMission->RestoreMission(Save->SavedDornfeldMission,false);
+ for(TActorIterator<AAskirDornfeldMissionRelay> It(GetWorld());It;++It)It->RefreshMissionState();
+ if(Player->CombatComponent)Player->CombatComponent->RestoreHealth(Save->PlayerHealth);
+ Player->Stamina=FMath::Clamp(Save->PlayerStamina,0.f,Player->MaxStamina);
+ Player->RestoreAfterLoad();
+ if(bRestorePosition)
+ {
+  Player->SetActorLocationAndRotation(RestoreLocation,Save->PlayerRotation,false,nullptr,ETeleportType::TeleportPhysics);
+  if(auto* Controller=Cast<APlayerController>(Player->GetController()))Controller->SetControlRotation(Save->PlayerRotation);
+ }
+ // Notify only after inventory, resources and reward ledgers have been installed.
+ if(Player->ProgressionComponent)Player->ProgressionComponent->OnProgressionChanged.Broadcast();
+ if(auto* Sim=GetWorld()->GetSubsystem<UAskirSimulationSubsystem>())Sim->RestoreWorldState(Save->WorldState);
+ for(TActorIterator<AAskirVillageDirector> It(GetWorld());It;++It)
+ {
+  if(!It->Clock)continue;
+  TMap<FName,int32> EventDays=Save->SavedWorldEventLastDays;
+  if(Save->SaveFormatVersion<3)for(FName ID:Save->CompletedOneShotWorldEvents)EventDays.Add(ID,Save->SavedWorldDay);
+  It->Clock->RestoreClock(Save->SavedWorldDay,Save->SavedWorldHour,EventDays);
+  It->RefreshResidents();break;
+ }
+ if(Player->DornfeldMission)Player->DornfeldMission->NotifyMissionRestored();
+ if(Player->QuestComponent)Player->QuestComponent->OnQuestProgressChanged.Broadcast(NAME_None,NAME_None);
+ if(Player->InventoryComponent)Player->InventoryComponent->OnInventoryChanged.Broadcast();
+ return true;
 }

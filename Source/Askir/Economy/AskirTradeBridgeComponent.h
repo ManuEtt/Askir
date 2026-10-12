@@ -19,8 +19,8 @@ class ASKIR_API UAskirTradeBridgeComponent:public UActorComponent
 public:
  UAskirTradeBridgeComponent();
  UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="Askir|Trade") TArray<FAskirTradeCatalogEntry> Catalog;
- UFUNCTION(BlueprintCallable,Category="Askir|Trade") bool BuyItem(UAskirMerchantComponent* Merchant,UAskirInventoryComponent* PlayerInventory,FName ItemID,int32 Quantity,int32& PlayerGold,float PriceMultiplier=1.f);
- UFUNCTION(BlueprintCallable,Category="Askir|Trade") bool SellItem(UAskirMerchantComponent* Merchant,UAskirInventoryComponent* PlayerInventory,FName ItemID,int32 Quantity,int32& PlayerGold,float PriceMultiplier=1.f);
+ UFUNCTION(BlueprintCallable,Category="Askir|Trade") bool BuyItem(UAskirMerchantComponent* Merchant,UAskirInventoryComponent* PlayerInventory,FName ItemID,int32 Quantity,UPARAM(ref) int32& PlayerGold,float PriceMultiplier=1.f);
+ UFUNCTION(BlueprintCallable,Category="Askir|Trade") bool SellItem(UAskirMerchantComponent* Merchant,UAskirInventoryComponent* PlayerInventory,FName ItemID,int32 Quantity,UPARAM(ref) int32& PlayerGold,float PriceMultiplier=1.f);
 private:
  UAskirItemData* FindItem(FName ItemID) const;
 };

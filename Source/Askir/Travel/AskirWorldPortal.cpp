@@ -24,32 +24,37 @@ void AAskirWorldPortal::OnOverlap(UPrimitiveComponent*,AActor* Other,UPrimitiveC
 }
 bool AAskirWorldPortal::Travel(AActor* Traveler)
 {
- if(!bEnabled || bTransitioning || DestinationMap.IsNone() || !Traveler || !GetWorld())return false;
+ if(!bEnabled || DestinationMap.IsNone() || !Traveler || !GetWorld())return false;
  APawn* Pawn=Cast<APawn>(Traveler);
  if(!Pawn || !Cast<APlayerController>(Pawn->GetController()))return false;
  const FName CurrentMap(*UGameplayStatics::GetCurrentLevelName(this,true));
  if(CurrentMap==DestinationMap)return false;
  // A packaged build must contain the destination world. Never overwrite the
  // travel snapshot when the destination package is absent.
- const FString DestinationPackage = FString::Printf(TEXT("/Game/Askir/WorldV42/%s"), *DestinationMap.ToString());
- if (!FPackageName::DoesPackageExist(DestinationPackage))
+ const FString DestinationPackage = DestinationPackagePath.IsEmpty()?FString::Printf(TEXT("/Game/Askir/WorldV42/%s"), *DestinationMap.ToString()):DestinationPackagePath;
+ if (!FPackageName::IsValidLongPackageName(DestinationPackage) || FName(*FPackageName::GetShortName(DestinationPackage))!=DestinationMap || !FPackageName::DoesPackageExist(DestinationPackage))
  {
   UE_LOG(LogTemp, Warning, TEXT("Askir travel refused: destination map missing: %s"), *DestinationPackage);
   return false;
  }
  UGameInstance* Instance=GetGameInstance();
  UAskirWorldTravelSubsystem* State=Instance?Instance->GetSubsystem<UAskirWorldTravelSubsystem>():nullptr;
- if(!State)return false;
+ if(State && bTransitioning && State->PendingDestination.IsNone())bTransitioning=false;
+ if(bTransitioning)return false;
+ if(!State || !State->PendingDestination.IsNone() || GetWorld()->GetTimeSeconds()<State->ArrivalGraceUntilSeconds)return false;
  bTransitioning=true;
  // Refuse travel if player state could not be safely persisted.
  AAskirGameMode* Mode=Cast<AAskirGameMode>(UGameplayStatics::GetGameMode(this));
- if(!Mode || !Mode->SaveGame(TEXT("AskirTravelSnapshot")))
+ UAskirSaveGame* Snapshot=Mode?Mode->CaptureSnapshot():nullptr;
+ if(!Snapshot)
  {
   bTransitioning=false;
   return false;
  }
- State->bRestoreTravelSnapshot=true;
- State->QueueArrival(DestinationMap,CurrentMap);
+ // GameInstance retains a validated snapshot through OpenLevel. Travel never
+ // overwrites the player's manual save slots or depends on writable disk.
+ State->QueueSnapshot(DestinationMap,CurrentMap,Snapshot,false);
+ State->PendingArrivalPortalID=DestinationPortalID;
  UGameplayStatics::OpenLevel(this,FName(*DestinationPackage));
  return true;
 }

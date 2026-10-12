@@ -11,6 +11,7 @@
 #include "Simulation/AskirNeedsComponent.h"
 #include "Progression/AskirProgressionComponent.h"
 #include "Characters/AskirCharacter.h"
+#include "Core/AskirCheckedMath.h"
 bool AAskirCharacter::EatFromCamp(float Amount)
 {
     if(CampComponent&&SurvivalComponent&&CampComponent->Food>=Amount&&Amount>0){CampComponent->EatRations(Amount);SurvivalComponent->AddWarmth(Amount*.2f);return true;}return false;
@@ -138,12 +139,15 @@ bool AAskirCharacter::SurveyWhileTraveling(float Distance)
 
 bool AAskirCharacter::SellCraftedItem(int32 Price)
 {
-    if(Price<=0||CraftingComponent->CraftedItems<=0)return false;--CraftingComponent->CraftedItems;TradeComponent->EarnGold(Price);TradeComponent->RecordTrade(Price);return true;
+    if(Price<=0||CraftingComponent->CraftedItems<=0||!AskirCheckedMath::CanCredit(TradeComponent->Gold,Price))return false;--CraftingComponent->CraftedItems;TradeComponent->EarnGold(Price);TradeComponent->RecordTrade(Price);return true;
 }
 
 bool AAskirCharacter::BuyMaterials(int32 Count)
 {
-    if(Count<=0||TradeComponent->Gold<Count*2)return false;TradeComponent->SpendGold(Count*2);CraftingComponent->GatherMaterials(Count);return true;
+    int32 Price=0;
+    if(!AskirCheckedMath::TryPositiveProduct(Count,2,Price)||!AskirCheckedMath::CanCredit(CraftingComponent->Materials,Count)||TradeComponent->Gold<Price)return false;
+    TradeComponent->SpendGold(Price);
+    CraftingComponent->GatherMaterials(Count);return true;
 }
 
 bool AAskirCharacter::BuyCampFuel(int32 Count)
@@ -238,7 +242,12 @@ bool AAskirCharacter::ShareLoreWithCompanion(int32 Lore)
 
 bool AAskirCharacter::CraftAndEarnExperience(int32 Cost)
 {
-    if(Cost<=0||CraftingComponent->Materials<Cost)return false;CraftingComponent->CraftItem(Cost);if(ProgressionComponent)ProgressionComponent->AwardExperience(Cost*3);return true;
+    int32 Experience=0;
+    if(!AskirCheckedMath::TryPositiveProduct(Cost,3,Experience)||CraftingComponent->Materials<Cost||!AskirCheckedMath::CanCredit(CraftingComponent->CraftedItems,1))return false;
+    const int32 Before=CraftingComponent->CraftedItems;
+    CraftingComponent->CraftItem(Cost);
+    if(CraftingComponent->CraftedItems!=Before+1)return false;
+    if(ProgressionComponent)ProgressionComponent->AwardExperience(Experience);return true;
 }
 
 bool AAskirCharacter::SalvageForCamp(int32 Amount)

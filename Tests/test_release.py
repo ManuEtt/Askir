@@ -1,17 +1,33 @@
 from pathlib import Path
 import unittest
+import re
 ROOT=Path(__file__).resolve().parents[1]
+# Source-contract checks only: these do not execute Unreal gameplay.
+def compact(text):
+    return re.sub(r'\s+', '', text)
+def code(path):
+    return compact((ROOT/'Source/Askir'/path).read_text(encoding='utf8'))
+
 SOURCE='\n'.join(p.read_text(encoding='utf8') for p in (ROOT/'Source/Askir').rglob('*.cpp'))
 GLBS=sorted((ROOT/'ArtSource/Enhanced3D_V19').glob('SM_*.glb'))
 OBJS=sorted((ROOT/'ArtSource/Enhanced3D_V19').glob('SM_*.obj'))
 class AskirReleaseChecks(unittest.TestCase):
     pass
     def test_01(self):
-        self.assertIn('MerchantGold)+Total>MAX_int32', SOURCE)
+        merchant = code('Economy/AskirMerchantComponent.cpp')
+        arithmetic = code('Core/AskirCheckedMath.h')
+        self.assertIn('!AskirCheckedMath::CanCredit(MerchantGold,Total)', merchant)
+        self.assertIn('std::int64_t(Balance)+Amount<=std::numeric_limits<std::int32_t>::max()', arithmetic)
+        self.assertIn('Balance>=0&&Amount>=0', arithmetic)
     def test_02(self):
-        self.assertIn('PlayerGold)+Total>MAX_int32', SOURCE)
+        self.assertIn('!AskirCheckedMath::CanCredit(PlayerGold,Total)', code('Economy/AskirMerchantComponent.cpp'))
+        self.assertIn('!AskirCheckedMath::CanCredit(PlayerGold,Total)', code('Economy/AskirTradeBridgeComponent.cpp'))
     def test_03(self):
-        self.assertIn('int64(I.Stock)+int64(UnitsPerItem)', SOURCE)
+        merchant = code('Economy/AskirMerchantComponent.cpp')
+        restock = merchant.split('UAskirMerchantComponent::Restock(', 1)[1]
+        self.assertIn('int64(FMath::Max(0,Item.Stock))+UnitsPerItem', restock)
+        self.assertIn('FMath::Min(int64(FMath::Max(0,Item.MaxStock))', restock)
+        self.assertIn('bTransactionInProgress||UnitsPerItem<=0', restock)
     def test_04(self):
         self.assertIn('IsFinite(Multiplier)', SOURCE)
     def test_05(self):
@@ -19,13 +35,20 @@ class AskirReleaseChecks(unittest.TestCase):
     def test_06(self):
         self.assertIn('IsFinite(PriceMultiplier)', SOURCE)
     def test_07(self):
-        self.assertIn('BuyTotal>PlayerGold', SOURCE)
+        buy = code('Economy/AskirMerchantComponent.cpp').split('UAskirMerchantComponent::BuyFromMerchant(', 1)[1].split('UAskirMerchantComponent::SellToMerchant(', 1)[0]
+        self.assertIn('Total>PlayerGold', buy)
+        self.assertLess(buy.index('Total>PlayerGold'), buy.index('PlayerGold-=Total'))
+        self.assertIn('TryPositiveProduct(', buy)
     def test_08(self):
         self.assertIn('IsValid(I)', SOURCE)
     def test_09(self):
         self.assertIn('IsValid(I)', SOURCE)
     def test_10(self):
-        self.assertIn('FMath::Min(C,int64(MAX_int32))', SOURCE)
+        inventory = code('Inventory/AskirInventoryComponent.cpp')
+        count = inventory.split('UAskirInventoryComponent::GetItemCount(', 1)[1].split('UAskirInventoryComponent::UseItem(', 1)[0]
+        self.assertIn('int64Count=0', count)
+        self.assertIn('FMath::Max(0,Entry.Quantity)', count)
+        self.assertIn('FMath::Min(Count,int64(MAX_int32))', count)
     def test_11(self):
         self.assertIn('FindNode(Choice.NextNode)', SOURCE)
     def test_12(self):
@@ -41,7 +64,12 @@ class AskirReleaseChecks(unittest.TestCase):
     def test_17(self):
         self.assertIn('double(MAX_int32)', SOURCE)
     def test_18(self):
-        self.assertIn('BuyTotal>PlayerGold', SOURCE)
+        buy = code('Economy/AskirTradeBridgeComponent.cpp').split('UAskirTradeBridgeComponent::BuyItem(', 1)[1].split('UAskirTradeBridgeComponent::SellItem(', 1)[0]
+        self.assertIn('Total>PlayerGold', buy)
+        self.assertLess(buy.index('Total>PlayerGold'), buy.index('PlayerInventory->Items=MoveTemp(Prepared)'))
+        self.assertLess(buy.index('PrepareExchange('), buy.index('PlayerGold-=Total'))
+        self.assertIn('TGuardValue<bool>MerchantGuard', buy)
+        self.assertIn('TGuardValue<bool>InventoryGuard', buy)
     def test_19(self):
         self.assertIn('Quantity<=0', SOURCE)
     def test_20(self):

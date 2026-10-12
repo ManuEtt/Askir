@@ -1,6 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
+#include "Mission/AskirDornfeldMissionComponent.h"
 #include "AskirDornfeldMissionRelay.generated.h"
 class AAskirLootPickup;
 class AAskirLootChest;
@@ -23,14 +24,18 @@ public:
  UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="Askir|Mission|Reliability",meta=(ClampMin="0.1")) float BindRetryInterval=0.5f;
  UFUNCTION(BlueprintCallable,Category="Askir|Mission") bool BindMissionEvents();
  UFUNCTION(BlueprintPure,Category="Askir|Mission") bool IsBound() const {return bBound;}
+ /** Reconcile placed loot/guardians after restoring a mission snapshot. */
+ UFUNCTION(BlueprintCallable,Category="Askir|Mission|Save") void RefreshMissionState();
 protected:
  virtual void BeginPlay() override;
  virtual void EndPlay(const EEndPlayReason::Type Reason) override;
  UFUNCTION() void OnShardCollected(AActor* Collector);
  UFUNCTION() void OnChestOpened(AActor* Opener);
  UFUNCTION() void OnGuardianDied();
+ UFUNCTION() void OnMissionStageChanged(EAskirDornfeldStage Stage);
 private:
  UPROPERTY(Transient) TObjectPtr<UAskirCombatComponent> GuardianCombat;
+ UPROPERTY(Transient) TObjectPtr<UAskirDornfeldMissionComponent> BoundMission;
  FTimerHandle BindRetryTimer;
  void RetryBindMissionEvents();
  bool bBound=false;

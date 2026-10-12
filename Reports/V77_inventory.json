@@ -1,0 +1,5044 @@
+{
+  "schema_version": 1,
+  "audited_version": "V76 Original ZIP",
+  "audit_date_utc": "2026-10-12",
+  "scope": "Unveränderte ZIP-Ausgangsbasis. V77-Quelländerungen werden von separaten Änderungs-/Testberichten bewertet.",
+  "archive_sha256": "a69aa509a0ee424b0aad5ee21f1001b55f66f4c06e5effd53d32f48436554117",
+  "original_file_count": 483,
+  "original_uncompressed_bytes": 2704104,
+  "file_extensions": {
+    "": 2,
+    ".cpp": 65,
+    ".cs": 3,
+    ".csv": 4,
+    ".glb": 26,
+    ".h": 67,
+    ".ini": 3,
+    ".json": 44,
+    ".md": 149,
+    ".obj": 26,
+    ".py": 83,
+    ".txt": 9,
+    ".uproject": 1,
+    ".yml": 1
+  },
+  "categories": {
+    "1": "Vollständig implementiert und erfolgreich getestet (nur ausdrücklich bezeichnete Prüfart)",
+    "2": "Implementiert, aber ungetestet (Unreal-Laufzeit)",
+    "3": "Teilweise implementiert",
+    "4": "Nur als Daten oder Konzept vorhanden",
+    "5": "Fehlerhaft",
+    "6": "Vollständig fehlend"
+  },
+  "artifact_counts": {
+    "umap": 0,
+    "uasset": 0,
+    "blueprints_binary": 0,
+    "textures": 0,
+    "audio_files": 0,
+    "fbx": 0,
+    "obj": 26,
+    "glb": 26,
+    "cpp": 65,
+    "headers": 67,
+    "build_rules": 3,
+    "python": 83,
+    "json": 44,
+    "csv": 4,
+    "main_story_chapters_data": 5,
+    "side_quest_records": 24,
+    "spell_records": 24,
+    "enemy_records": 16,
+    "recipe_records": 20,
+    "item_records": 60,
+    "level_manifest_entries": 30,
+    "planned_asset_entries": 436
+  },
+  "verified_offline_checks": [
+    {
+      "name": "V76 Python unittest discover",
+      "status": "Bestanden",
+      "tests": 431,
+      "command": "python3 -m unittest discover -s Tests -p 'test_*.py' -v",
+      "scope": "Daten, Python-Modelle und Quelltextverträge; keine Unreal-Kompilierung oder Spielbarkeit"
+    },
+    {
+      "name": "Python-Syntax aller Dateien",
+      "status": "Bestanden",
+      "files": 83
+    },
+    {
+      "name": "JSON-Parsing aller Dateien",
+      "status": "Bestanden",
+      "files": 44
+    },
+    {
+      "name": "GLB-Headerprüfung",
+      "status": "Bestanden",
+      "files": 26
+    }
+  ],
+  "unreal_compile_status": "Blockiert",
+  "unreal_runtime_status": "Blockiert",
+  "windows_build_status": "Blockiert",
+  "environment": {
+    "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+    "path_tools": {
+      "UnrealEditor": null,
+      "UnrealEditor-Cmd": null,
+      "UnrealBuildTool": null,
+      "RunUAT.sh": null,
+      "cl": null,
+      "g++": "/usr/bin/g++",
+      "blender": "/usr/bin/blender",
+      "git": "/usr/local/bin/git"
+    }
+  },
+  "levels": [
+    {
+      "id": "L01",
+      "map_name": "L01_Dornfeld",
+      "display_name": "Dornfeld",
+      "continent": "Ardem",
+      "chapter": 1,
+      "intended_package": "/Game/Askir/WorldV42/L01_Dornfeld",
+      "category": 4,
+      "umap_exists": false,
+      "declared_status": "editor_generation_pending",
+      "tests": {
+        "datei_existenz": "Fehlgeschlagen",
+        "map_laden": "Blockiert",
+        "assets_aufloesen": "Blockiert",
+        "spieler_betreten": "Blockiert",
+        "kollisionen": "Blockiert",
+        "npc_ki": "Blockiert",
+        "gegner": "Blockiert",
+        "quests": "Blockiert",
+        "uebergaenge": "Blockiert",
+        "save_load": "Blockiert",
+        "performance": "Nicht ausgeführt"
+      },
+      "blocker": "Keine .umap in V76; Unreal Engine 5.6 nicht verfügbar."
+    },
+    {
+      "id": "L02",
+      "map_name": "L02_Dornfelder_Umland",
+      "display_name": "Dornfelder Umland",
+      "continent": "Ardem",
+      "chapter": 1,
+      "intended_package": "/Game/Askir/WorldV42/L02_Dornfelder_Umland",
+      "category": 4,
+      "umap_exists": false,
+      "declared_status": "editor_generation_pending",
+      "tests": {
+        "datei_existenz": "Fehlgeschlagen",
+        "map_laden": "Blockiert",
+        "assets_aufloesen": "Blockiert",
+        "spieler_betreten": "Blockiert",
+        "kollisionen": "Blockiert",
+        "npc_ki": "Blockiert",
+        "gegner": "Blockiert",
+        "quests": "Blockiert",
+        "uebergaenge": "Blockiert",
+        "save_load": "Blockiert",
+        "performance": "Nicht ausgeführt"
+      },
+      "blocker": "Keine .umap in V76; Unreal Engine 5.6 nicht verfügbar."
+    },
+    {
+      "id": "L03",
+      "map_name": "L03_Grauwald",
+      "display_name": "Grauwald",
+      "continent": "Ardem",
+      "chapter": 1,
+      "intended_package": "/Game/Askir/WorldV42/L03_Grauwald",
+      "category": 4,
+      "umap_exists": false,
+      "declared_status": "editor_generation_pending",
+      "tests": {
+        "datei_existenz": "Fehlgeschlagen",
+        "map_laden": "Blockiert",
+        "assets_aufloesen": "Blockiert",
+        "spieler_betreten": "Blockiert",
+        "kollisionen": "Blockiert",
+        "npc_ki": "Blockiert",
+        "gegner": "Blockiert",
+        "quests": "Blockiert",
+        "uebergaenge": "Blockiert",
+        "save_load": "Blockiert",
+        "performance": "Nicht ausgeführt"
+      },
+      "blocker": "Keine .umap in V76; Unreal Engine 5.6 nicht verfügbar."
+    },
+    {
+      "id": "L04",
+      "map_name": "L04_Alte_Brunnenkrypta",
+      "display_name": "Alte Brunnenkrypta",
+      "continent": "Ardem",
+      "chapter": 1,
+      "intended_package": "/Game/Askir/WorldV42/L04_Alte_Brunnenkrypta",
+      "category": 4,
+      "umap_exists": false,
+      "declared_status": "editor_generation_pending",
+      "tests": {
+        "datei_existenz": "Fehlgeschlagen",
+        "map_laden": "Blockiert",
+        "assets_aufloesen": "Blockiert",
+        "spieler_betreten": "Blockiert",
+        "kollisionen": "Blockiert",
+        "npc_ki": "Blockiert",
+        "gegner": "Blockiert",
+        "quests": "Blockiert",
+        "uebergaenge": "Blockiert",
+        "save_load": "Blockiert",
+        "performance": "Nicht ausgeführt"
+      },
+      "blocker": "Keine .umap in V76; Unreal Engine 5.6 nicht verfügbar."
+    },
+    {
+      "id": "L05",
+      "map_name": "L05_Verlassene_Silbermine",
+      "display_name": "Verlassene Silbermine",
+      "continent": "Ardem",
+      "chapter": 1,
+      "intended_package": "/Game/Askir/WorldV42/L05_Verlassene_Silbermine",
+      "category": 4,
+      "umap_exists": false,
+      "declared_status": "editor_generation_pending",
+      "tests": {
+        "datei_existenz": "Fehlgeschlagen",
+        "map_laden": "Blockiert",
+        "assets_aufloesen": "Blockiert",
+        "spieler_betreten": "Blockiert",
+        "kollisionen": "Blockiert",
+        "npc_ki": "Blockiert",
+        "gegner": "Blockiert",
+        "quests": "Blockiert",
+        "uebergaenge": "Blockiert",
+        "save_load": "Blockiert",
+        "performance": "Nicht ausgeführt"
+      },
+      "blocker": "Keine .umap in V76; Unreal Engine 5.6 nicht verfügbar."
+    },
+    {
+      "id": "L06",
+      "map_name": "L06_Falkenwacht",
+      "display_name": "Falkenwacht",
+      "continent": "Ardem",
+      "chapter": 1,
+      "intended_package": "/Game/Askir/WorldV42/L06_Falkenwacht",
+      "category": 4,
+      "umap_exists": false,
+      "declared_status": "editor_generation_pending",
+      "tests": {
+        "datei_existenz": "Fehlgeschlagen",
+        "map_laden": "Blockiert",
+        "assets_aufloesen": "Blockiert",
+        "spieler_betreten": "Blockiert",
+        "kollisionen": "Blockiert",
+        "npc_ki": "Blockiert",
+        "gegner": "Blockiert",
+        "quests": "Blockiert",
+        "uebergaenge": "Blockiert",
+        "save_load": "Blockiert",
+        "performance": "Nicht ausgeführt"
+      },
+      "blocker": "Keine .umap in V76; Unreal Engine 5.6 nicht verfügbar."
+    },
+    {
+      "id": "L07",
+      "map_name": "L07_Nordpass",
+      "display_name": "Nordpass",
+      "continent": "Ardem",
+      "chapter": 2,
+      "intended_package": "/Game/Askir/WorldV42/L07_Nordpass",
+      "category": 4,
+      "umap_exists": false,
+      "declared_status": "editor_generation_pending",
+      "tests": {
+        "datei_existenz": "Fehlgeschlagen",
+        "map_laden": "Blockiert",
+        "assets_aufloesen": "Blockiert",
+        "spieler_betreten": "Blockiert",
+        "kollisionen": "Blockiert",
+        "npc_ki": "Blockiert",
+        "gegner": "Blockiert",
+        "quests": "Blockiert",
+        "uebergaenge": "Blockiert",
+        "save_load": "Blockiert",
+        "performance": "Nicht ausgeführt"
+      },
+      "blocker": "Keine .umap in V76; Unreal Engine 5.6 nicht verfügbar."
+    },
+    {
+      "id": "L08",
+      "map_name": "L08_Ruinen_von_Eldrath",
+      "display_name": "Ruinen von Eldrath",
+      "continent": "Ardem",
+      "chapter": 2,
+      "intended_package": "/Game/Askir/WorldV42/L08_Ruinen_von_Eldrath",
+      "category": 4,
+      "umap_exists": false,
+      "declared_status": "editor_generation_pending",
+      "tests": {
+        "datei_existenz": "Fehlgeschlagen",
+        "map_laden": "Blockiert",
+        "assets_aufloesen": "Blockiert",
+        "spieler_betreten": "Blockiert",
+        "kollisionen": "Blockiert",
+        "npc_ki": "Blockiert",
+        "gegner": "Blockiert",
+        "quests": "Blockiert",
+        "uebergaenge": "Blockiert",
+        "save_load": "Blockiert",
+        "performance": "Nicht ausgeführt"
+      },
+      "blocker": "Keine .umap in V76; Unreal Engine 5.6 nicht verfügbar."
+    },
+    {
+      "id": "L09",
+      "map_name": "L09_Nebelmoor",
+      "display_name": "Nebelmoor",
+      "continent": "Ardem",
+      "chapter": 2,
+      "intended_package": "/Game/Askir/WorldV42/L09_Nebelmoor",
+      "category": 4,
+      "umap_exists": false,
+      "declared_status": "editor_generation_pending",
+      "tests": {
+        "datei_existenz": "Fehlgeschlagen",
+        "map_laden": "Blockiert",
+        "assets_aufloesen": "Blockiert",
+        "spieler_betreten": "Blockiert",
+        "kollisionen": "Blockiert",
+        "npc_ki": "Blockiert",
+        "gegner": "Blockiert",
+        "quests": "Blockiert",
+        "uebergaenge": "Blockiert",
+        "save_load": "Blockiert",
+        "performance": "Nicht ausgeführt"
+      },
+      "blocker": "Keine .umap in V76; Unreal Engine 5.6 nicht verfügbar."
+    },
+    {
+      "id": "L10",
+      "map_name": "L10_Krypta_der_Sieben",
+      "display_name": "Krypta der Sieben",
+      "continent": "Ardem",
+      "chapter": 2,
+      "intended_package": "/Game/Askir/WorldV42/L10_Krypta_der_Sieben",
+      "category": 4,
+      "umap_exists": false,
+      "declared_status": "editor_generation_pending",
+      "tests": {
+        "datei_existenz": "Fehlgeschlagen",
+        "map_laden": "Blockiert",
+        "assets_aufloesen": "Blockiert",
+        "spieler_betreten": "Blockiert",
+        "kollisionen": "Blockiert",
+        "npc_ki": "Blockiert",
+        "gegner": "Blockiert",
+        "quests": "Blockiert",
+        "uebergaenge": "Blockiert",
+        "save_load": "Blockiert",
+        "performance": "Nicht ausgeführt"
+      },
+      "blocker": "Keine .umap in V76; Unreal Engine 5.6 nicht verfügbar."
+    },
+    {
+      "id": "L11",
+      "map_name": "L11_Verlorenes_Kloster",
+      "display_name": "Verlorenes Kloster",
+      "continent": "Ardem",
+      "chapter": 2,
+      "intended_package": "/Game/Askir/WorldV42/L11_Verlorenes_Kloster",
+      "category": 4,
+      "umap_exists": false,
+      "declared_status": "editor_generation_pending",
+      "tests": {
+        "datei_existenz": "Fehlgeschlagen",
+        "map_laden": "Blockiert",
+        "assets_aufloesen": "Blockiert",
+        "spieler_betreten": "Blockiert",
+        "kollisionen": "Blockiert",
+        "npc_ki": "Blockiert",
+        "gegner": "Blockiert",
+        "quests": "Blockiert",
+        "uebergaenge": "Blockiert",
+        "save_load": "Blockiert",
+        "performance": "Nicht ausgeführt"
+      },
+      "blocker": "Keine .umap in V76; Unreal Engine 5.6 nicht verfügbar."
+    },
+    {
+      "id": "L12",
+      "map_name": "L12_Kuestenhafen_Ardem",
+      "display_name": "Kuestenhafen Ardem",
+      "continent": "Ardem",
+      "chapter": 2,
+      "intended_package": "/Game/Askir/WorldV42/L12_Kuestenhafen_Ardem",
+      "category": 4,
+      "umap_exists": false,
+      "declared_status": "editor_generation_pending",
+      "tests": {
+        "datei_existenz": "Fehlgeschlagen",
+        "map_laden": "Blockiert",
+        "assets_aufloesen": "Blockiert",
+        "spieler_betreten": "Blockiert",
+        "kollisionen": "Blockiert",
+        "npc_ki": "Blockiert",
+        "gegner": "Blockiert",
+        "quests": "Blockiert",
+        "uebergaenge": "Blockiert",
+        "save_load": "Blockiert",
+        "performance": "Nicht ausgeführt"
+      },
+      "blocker": "Keine .umap in V76; Unreal Engine 5.6 nicht verfügbar."
+    },
+    {
+      "id": "L13",
+      "map_name": "L13_Hafen_von_Thalor",
+      "display_name": "Hafen von Thalor",
+      "continent": "Thalor",
+      "chapter": 3,
+      "intended_package": "/Game/Askir/WorldV42/L13_Hafen_von_Thalor",
+      "category": 4,
+      "umap_exists": false,
+      "declared_status": "editor_generation_pending",
+      "tests": {
+        "datei_existenz": "Fehlgeschlagen",
+        "map_laden": "Blockiert",
+        "assets_aufloesen": "Blockiert",
+        "spieler_betreten": "Blockiert",
+        "kollisionen": "Blockiert",
+        "npc_ki": "Blockiert",
+        "gegner": "Blockiert",
+        "quests": "Blockiert",
+        "uebergaenge": "Blockiert",
+        "save_load": "Blockiert",
+        "performance": "Nicht ausgeführt"
+      },
+      "blocker": "Keine .umap in V76; Unreal Engine 5.6 nicht verfügbar."
+    },
+    {
+      "id": "L14",
+      "map_name": "L14_Sonnenebene",
+      "display_name": "Sonnenebene",
+      "continent": "Thalor",
+      "chapter": 3,
+      "intended_package": "/Game/Askir/WorldV42/L14_Sonnenebene",
+      "category": 4,
+      "umap_exists": false,
+      "declared_status": "editor_generation_pending",
+      "tests": {
+        "datei_existenz": "Fehlgeschlagen",
+        "map_laden": "Blockiert",
+        "assets_aufloesen": "Blockiert",
+        "spieler_betreten": "Blockiert",
+        "kollisionen": "Blockiert",
+        "npc_ki": "Blockiert",
+        "gegner": "Blockiert",
+        "quests": "Blockiert",
+        "uebergaenge": "Blockiert",
+        "save_load": "Blockiert",
+        "performance": "Nicht ausgeführt"
+      },
+      "blocker": "Keine .umap in V76; Unreal Engine 5.6 nicht verfügbar."
+    },
+    {
+      "id": "L15",
+      "map_name": "L15_Kristallhoehlen",
+      "display_name": "Kristallhoehlen",
+      "continent": "Thalor",
+      "chapter": 3,
+      "intended_package": "/Game/Askir/WorldV42/L15_Kristallhoehlen",
+      "category": 4,
+      "umap_exists": false,
+      "declared_status": "editor_generation_pending",
+      "tests": {
+        "datei_existenz": "Fehlgeschlagen",
+        "map_laden": "Blockiert",
+        "assets_aufloesen": "Blockiert",
+        "spieler_betreten": "Blockiert",
+        "kollisionen": "Blockiert",
+        "npc_ki": "Blockiert",
+        "gegner": "Blockiert",
+        "quests": "Blockiert",
+        "uebergaenge": "Blockiert",
+        "save_load": "Blockiert",
+        "performance": "Nicht ausgeführt"
+      },
+      "blocker": "Keine .umap in V76; Unreal Engine 5.6 nicht verfügbar."
+    },
+    {
+      "id": "L16",
+      "map_name": "L16_Vergessene_Bibliothek",
+      "display_name": "Vergessene Bibliothek",
+      "continent": "Thalor",
+      "chapter": 3,
+      "intended_package": "/Game/Askir/WorldV42/L16_Vergessene_Bibliothek",
+      "category": 4,
+      "umap_exists": false,
+      "declared_status": "editor_generation_pending",
+      "tests": {
+        "datei_existenz": "Fehlgeschlagen",
+        "map_laden": "Blockiert",
+        "assets_aufloesen": "Blockiert",
+        "spieler_betreten": "Blockiert",
+        "kollisionen": "Blockiert",
+        "npc_ki": "Blockiert",
+        "gegner": "Blockiert",
+        "quests": "Blockiert",
+        "uebergaenge": "Blockiert",
+        "save_load": "Blockiert",
+        "performance": "Nicht ausgeführt"
+      },
+      "blocker": "Keine .umap in V76; Unreal Engine 5.6 nicht verfügbar."
+    },
+    {
+      "id": "L17",
+      "map_name": "L17_Wuestenruinen_SarKel",
+      "display_name": "Wuestenruinen SarKel",
+      "continent": "Thalor",
+      "chapter": 3,
+      "intended_package": "/Game/Askir/WorldV42/L17_Wuestenruinen_SarKel",
+      "category": 4,
+      "umap_exists": false,
+      "declared_status": "editor_generation_pending",
+      "tests": {
+        "datei_existenz": "Fehlgeschlagen",
+        "map_laden": "Blockiert",
+        "assets_aufloesen": "Blockiert",
+        "spieler_betreten": "Blockiert",
+        "kollisionen": "Blockiert",
+        "npc_ki": "Blockiert",
+        "gegner": "Blockiert",
+        "quests": "Blockiert",
+        "uebergaenge": "Blockiert",
+        "save_load": "Blockiert",
+        "performance": "Nicht ausgeführt"
+      },
+      "blocker": "Keine .umap in V76; Unreal Engine 5.6 nicht verfügbar."
+    },
+    {
+      "id": "L18",
+      "map_name": "L18_Tempel_des_Zweiten_Siegels",
+      "display_name": "Tempel des Zweiten Siegels",
+      "continent": "Thalor",
+      "chapter": 3,
+      "intended_package": "/Game/Askir/WorldV42/L18_Tempel_des_Zweiten_Siegels",
+      "category": 4,
+      "umap_exists": false,
+      "declared_status": "editor_generation_pending",
+      "tests": {
+        "datei_existenz": "Fehlgeschlagen",
+        "map_laden": "Blockiert",
+        "assets_aufloesen": "Blockiert",
+        "spieler_betreten": "Blockiert",
+        "kollisionen": "Blockiert",
+        "npc_ki": "Blockiert",
+        "gegner": "Blockiert",
+        "quests": "Blockiert",
+        "uebergaenge": "Blockiert",
+        "save_load": "Blockiert",
+        "performance": "Nicht ausgeführt"
+      },
+      "blocker": "Keine .umap in V76; Unreal Engine 5.6 nicht verfügbar."
+    },
+    {
+      "id": "L19",
+      "map_name": "L19_Grenzfestung_Velis",
+      "display_name": "Grenzfestung Velis",
+      "continent": "Velis",
+      "chapter": 4,
+      "intended_package": "/Game/Askir/WorldV42/L19_Grenzfestung_Velis",
+      "category": 4,
+      "umap_exists": false,
+      "declared_status": "editor_generation_pending",
+      "tests": {
+        "datei_existenz": "Fehlgeschlagen",
+        "map_laden": "Blockiert",
+        "assets_aufloesen": "Blockiert",
+        "spieler_betreten": "Blockiert",
+        "kollisionen": "Blockiert",
+        "npc_ki": "Blockiert",
+        "gegner": "Blockiert",
+        "quests": "Blockiert",
+        "uebergaenge": "Blockiert",
+        "save_load": "Blockiert",
+        "performance": "Nicht ausgeführt"
+      },
+      "blocker": "Keine .umap in V76; Unreal Engine 5.6 nicht verfügbar."
+    },
+    {
+      "id": "L20",
+      "map_name": "L20_Verbrannte_Lande",
+      "display_name": "Verbrannte Lande",
+      "continent": "Velis",
+      "chapter": 4,
+      "intended_package": "/Game/Askir/WorldV42/L20_Verbrannte_Lande",
+      "category": 4,
+      "umap_exists": false,
+      "declared_status": "editor_generation_pending",
+      "tests": {
+        "datei_existenz": "Fehlgeschlagen",
+        "map_laden": "Blockiert",
+        "assets_aufloesen": "Blockiert",
+        "spieler_betreten": "Blockiert",
+        "kollisionen": "Blockiert",
+        "npc_ki": "Blockiert",
+        "gegner": "Blockiert",
+        "quests": "Blockiert",
+        "uebergaenge": "Blockiert",
+        "save_load": "Blockiert",
+        "performance": "Nicht ausgeführt"
+      },
+      "blocker": "Keine .umap in V76; Unreal Engine 5.6 nicht verfügbar."
+    },
+    {
+      "id": "L21",
+      "map_name": "L21_Schwarzwald_Velis",
+      "display_name": "Schwarzwald Velis",
+      "continent": "Velis",
+      "chapter": 4,
+      "intended_package": "/Game/Askir/WorldV42/L21_Schwarzwald_Velis",
+      "category": 4,
+      "umap_exists": false,
+      "declared_status": "editor_generation_pending",
+      "tests": {
+        "datei_existenz": "Fehlgeschlagen",
+        "map_laden": "Blockiert",
+        "assets_aufloesen": "Blockiert",
+        "spieler_betreten": "Blockiert",
+        "kollisionen": "Blockiert",
+        "npc_ki": "Blockiert",
+        "gegner": "Blockiert",
+        "quests": "Blockiert",
+        "uebergaenge": "Blockiert",
+        "save_load": "Blockiert",
+        "performance": "Nicht ausgeführt"
+      },
+      "blocker": "Keine .umap in V76; Unreal Engine 5.6 nicht verfügbar."
+    },
+    {
+      "id": "L22",
+      "map_name": "L22_Unterirdische_Zwergenstadt",
+      "display_name": "Unterirdische Zwergenstadt",
+      "continent": "Velis",
+      "chapter": 4,
+      "intended_package": "/Game/Askir/WorldV42/L22_Unterirdische_Zwergenstadt",
+      "category": 4,
+      "umap_exists": false,
+      "declared_status": "editor_generation_pending",
+      "tests": {
+        "datei_existenz": "Fehlgeschlagen",
+        "map_laden": "Blockiert",
+        "assets_aufloesen": "Blockiert",
+        "spieler_betreten": "Blockiert",
+        "kollisionen": "Blockiert",
+        "npc_ki": "Blockiert",
+        "gegner": "Blockiert",
+        "quests": "Blockiert",
+        "uebergaenge": "Blockiert",
+        "save_load": "Blockiert",
+        "performance": "Nicht ausgeführt"
+      },
+      "blocker": "Keine .umap in V76; Unreal Engine 5.6 nicht verfügbar."
+    },
+    {
+      "id": "L23",
+      "map_name": "L23_Blutsteinminen",
+      "display_name": "Blutsteinminen",
+      "continent": "Velis",
+      "chapter": 4,
+      "intended_package": "/Game/Askir/WorldV42/L23_Blutsteinminen",
+      "category": 4,
+      "umap_exists": false,
+      "declared_status": "editor_generation_pending",
+      "tests": {
+        "datei_existenz": "Fehlgeschlagen",
+        "map_laden": "Blockiert",
+        "assets_aufloesen": "Blockiert",
+        "spieler_betreten": "Blockiert",
+        "kollisionen": "Blockiert",
+        "npc_ki": "Blockiert",
+        "gegner": "Blockiert",
+        "quests": "Blockiert",
+        "uebergaenge": "Blockiert",
+        "save_load": "Blockiert",
+        "performance": "Nicht ausgeführt"
+      },
+      "blocker": "Keine .umap in V76; Unreal Engine 5.6 nicht verfügbar."
+    },
+    {
+      "id": "L24",
+      "map_name": "L24_Festung_der_Schattenlegion",
+      "display_name": "Festung der Schattenlegion",
+      "continent": "Velis",
+      "chapter": 4,
+      "intended_package": "/Game/Askir/WorldV42/L24_Festung_der_Schattenlegion",
+      "category": 4,
+      "umap_exists": false,
+      "declared_status": "editor_generation_pending",
+      "tests": {
+        "datei_existenz": "Fehlgeschlagen",
+        "map_laden": "Blockiert",
+        "assets_aufloesen": "Blockiert",
+        "spieler_betreten": "Blockiert",
+        "kollisionen": "Blockiert",
+        "npc_ki": "Blockiert",
+        "gegner": "Blockiert",
+        "quests": "Blockiert",
+        "uebergaenge": "Blockiert",
+        "save_load": "Blockiert",
+        "performance": "Nicht ausgeführt"
+      },
+      "blocker": "Keine .umap in V76; Unreal Engine 5.6 nicht verfügbar."
+    },
+    {
+      "id": "L25",
+      "map_name": "L25_Aschenfeste",
+      "display_name": "Aschenfeste",
+      "continent": "Velis",
+      "chapter": 5,
+      "intended_package": "/Game/Askir/WorldV42/L25_Aschenfeste",
+      "category": 4,
+      "umap_exists": false,
+      "declared_status": "editor_generation_pending",
+      "tests": {
+        "datei_existenz": "Fehlgeschlagen",
+        "map_laden": "Blockiert",
+        "assets_aufloesen": "Blockiert",
+        "spieler_betreten": "Blockiert",
+        "kollisionen": "Blockiert",
+        "npc_ki": "Blockiert",
+        "gegner": "Blockiert",
+        "quests": "Blockiert",
+        "uebergaenge": "Blockiert",
+        "save_load": "Blockiert",
+        "performance": "Nicht ausgeführt"
+      },
+      "blocker": "Keine .umap in V76; Unreal Engine 5.6 nicht verfügbar."
+    },
+    {
+      "id": "L26",
+      "map_name": "L26_Tal_der_gefallenen_Koenige",
+      "display_name": "Tal der gefallenen Koenige",
+      "continent": "Velis",
+      "chapter": 5,
+      "intended_package": "/Game/Askir/WorldV42/L26_Tal_der_gefallenen_Koenige",
+      "category": 4,
+      "umap_exists": false,
+      "declared_status": "editor_generation_pending",
+      "tests": {
+        "datei_existenz": "Fehlgeschlagen",
+        "map_laden": "Blockiert",
+        "assets_aufloesen": "Blockiert",
+        "spieler_betreten": "Blockiert",
+        "kollisionen": "Blockiert",
+        "npc_ki": "Blockiert",
+        "gegner": "Blockiert",
+        "quests": "Blockiert",
+        "uebergaenge": "Blockiert",
+        "save_load": "Blockiert",
+        "performance": "Nicht ausgeführt"
+      },
+      "blocker": "Keine .umap in V76; Unreal Engine 5.6 nicht verfügbar."
+    },
+    {
+      "id": "L27",
+      "map_name": "L27_Tempel_des_Vierten_Siegels",
+      "display_name": "Tempel des Vierten Siegels",
+      "continent": "Velis",
+      "chapter": 5,
+      "intended_package": "/Game/Askir/WorldV42/L27_Tempel_des_Vierten_Siegels",
+      "category": 4,
+      "umap_exists": false,
+      "declared_status": "editor_generation_pending",
+      "tests": {
+        "datei_existenz": "Fehlgeschlagen",
+        "map_laden": "Blockiert",
+        "assets_aufloesen": "Blockiert",
+        "spieler_betreten": "Blockiert",
+        "kollisionen": "Blockiert",
+        "npc_ki": "Blockiert",
+        "gegner": "Blockiert",
+        "quests": "Blockiert",
+        "uebergaenge": "Blockiert",
+        "save_load": "Blockiert",
+        "performance": "Nicht ausgeführt"
+      },
+      "blocker": "Keine .umap in V76; Unreal Engine 5.6 nicht verfügbar."
+    },
+    {
+      "id": "L28",
+      "map_name": "L28_Verlorene_Koenigsstadt",
+      "display_name": "Verlorene Koenigsstadt",
+      "continent": "Velis",
+      "chapter": 5,
+      "intended_package": "/Game/Askir/WorldV42/L28_Verlorene_Koenigsstadt",
+      "category": 4,
+      "umap_exists": false,
+      "declared_status": "editor_generation_pending",
+      "tests": {
+        "datei_existenz": "Fehlgeschlagen",
+        "map_laden": "Blockiert",
+        "assets_aufloesen": "Blockiert",
+        "spieler_betreten": "Blockiert",
+        "kollisionen": "Blockiert",
+        "npc_ki": "Blockiert",
+        "gegner": "Blockiert",
+        "quests": "Blockiert",
+        "uebergaenge": "Blockiert",
+        "save_load": "Blockiert",
+        "performance": "Nicht ausgeführt"
+      },
+      "blocker": "Keine .umap in V76; Unreal Engine 5.6 nicht verfügbar."
+    },
+    {
+      "id": "L29",
+      "map_name": "L29_Heiligtum_der_Krone",
+      "display_name": "Heiligtum der Krone",
+      "continent": "Velis",
+      "chapter": 5,
+      "intended_package": "/Game/Askir/WorldV42/L29_Heiligtum_der_Krone",
+      "category": 4,
+      "umap_exists": false,
+      "declared_status": "editor_generation_pending",
+      "tests": {
+        "datei_existenz": "Fehlgeschlagen",
+        "map_laden": "Blockiert",
+        "assets_aufloesen": "Blockiert",
+        "spieler_betreten": "Blockiert",
+        "kollisionen": "Blockiert",
+        "npc_ki": "Blockiert",
+        "gegner": "Blockiert",
+        "quests": "Blockiert",
+        "uebergaenge": "Blockiert",
+        "save_load": "Blockiert",
+        "performance": "Nicht ausgeführt"
+      },
+      "blocker": "Keine .umap in V76; Unreal Engine 5.6 nicht verfügbar."
+    },
+    {
+      "id": "L30",
+      "map_name": "L30_Thronsaal_von_Askir",
+      "display_name": "Thronsaal von Askir",
+      "continent": "Velis",
+      "chapter": 5,
+      "intended_package": "/Game/Askir/WorldV42/L30_Thronsaal_von_Askir",
+      "category": 4,
+      "umap_exists": false,
+      "declared_status": "editor_generation_pending",
+      "tests": {
+        "datei_existenz": "Fehlgeschlagen",
+        "map_laden": "Blockiert",
+        "assets_aufloesen": "Blockiert",
+        "spieler_betreten": "Blockiert",
+        "kollisionen": "Blockiert",
+        "npc_ki": "Blockiert",
+        "gegner": "Blockiert",
+        "quests": "Blockiert",
+        "uebergaenge": "Blockiert",
+        "save_load": "Blockiert",
+        "performance": "Nicht ausgeführt"
+      },
+      "blocker": "Keine .umap in V76; Unreal Engine 5.6 nicht verfügbar."
+    }
+  ],
+  "glb_structural_audit": [
+    {
+      "path": "ArtSource/Enhanced3D_V19/SM_Barrel.glb",
+      "valid_glb_header": true,
+      "meshes": 19,
+      "materials": 0,
+      "skins": 0,
+      "animations": 0,
+      "textures": 0,
+      "engine_import_status": "Nicht ausgeführt"
+    },
+    {
+      "path": "ArtSource/Enhanced3D_V19/SM_Campfire.glb",
+      "valid_glb_header": true,
+      "meshes": 20,
+      "materials": 0,
+      "skins": 0,
+      "animations": 0,
+      "textures": 0,
+      "engine_import_status": "Nicht ausgeführt"
+    },
+    {
+      "path": "ArtSource/Enhanced3D_V19/SM_CharacterGuard_Preview.glb",
+      "valid_glb_header": true,
+      "meshes": 25,
+      "materials": 0,
+      "skins": 0,
+      "animations": 0,
+      "textures": 0,
+      "engine_import_status": "Nicht ausgeführt"
+    },
+    {
+      "path": "ArtSource/Enhanced3D_V19/SM_CharacterHero_Preview.glb",
+      "valid_glb_header": true,
+      "meshes": 24,
+      "materials": 0,
+      "skins": 0,
+      "animations": 0,
+      "textures": 0,
+      "engine_import_status": "Nicht ausgeführt"
+    },
+    {
+      "path": "ArtSource/Enhanced3D_V19/SM_CharacterMerchant_Preview.glb",
+      "valid_glb_header": true,
+      "meshes": 25,
+      "materials": 0,
+      "skins": 0,
+      "animations": 0,
+      "textures": 0,
+      "engine_import_status": "Nicht ausgeführt"
+    },
+    {
+      "path": "ArtSource/Enhanced3D_V19/SM_CharacterRaider_Preview.glb",
+      "valid_glb_header": true,
+      "meshes": 25,
+      "materials": 0,
+      "skins": 0,
+      "animations": 0,
+      "textures": 0,
+      "engine_import_status": "Nicht ausgeführt"
+    },
+    {
+      "path": "ArtSource/Enhanced3D_V19/SM_IronSword.glb",
+      "valid_glb_header": true,
+      "meshes": 8,
+      "materials": 0,
+      "skins": 0,
+      "animations": 0,
+      "textures": 0,
+      "engine_import_status": "Nicht ausgeführt"
+    },
+    {
+      "path": "ArtSource/Enhanced3D_V19/SM_PineTree.glb",
+      "valid_glb_header": true,
+      "meshes": 19,
+      "materials": 0,
+      "skins": 0,
+      "animations": 0,
+      "textures": 0,
+      "engine_import_status": "Nicht ausgeführt"
+    },
+    {
+      "path": "ArtSource/Enhanced3D_V19/SM_RoundShield.glb",
+      "valid_glb_header": true,
+      "meshes": 18,
+      "materials": 0,
+      "skins": 0,
+      "animations": 0,
+      "textures": 0,
+      "engine_import_status": "Nicht ausgeführt"
+    },
+    {
+      "path": "ArtSource/Enhanced3D_V19/SM_StoneWall.glb",
+      "valid_glb_header": true,
+      "meshes": 26,
+      "materials": 0,
+      "skins": 0,
+      "animations": 0,
+      "textures": 0,
+      "engine_import_status": "Nicht ausgeführt"
+    },
+    {
+      "path": "ArtSource/Enhanced3D_V19/SM_StoneWell.glb",
+      "valid_glb_header": true,
+      "meshes": 19,
+      "materials": 0,
+      "skins": 0,
+      "animations": 0,
+      "textures": 0,
+      "engine_import_status": "Nicht ausgeführt"
+    },
+    {
+      "path": "ArtSource/Enhanced3D_V19/SM_TimberHut.glb",
+      "valid_glb_header": true,
+      "meshes": 24,
+      "materials": 0,
+      "skins": 0,
+      "animations": 0,
+      "textures": 0,
+      "engine_import_status": "Nicht ausgeführt"
+    },
+    {
+      "path": "ArtSource/Enhanced3D_V19/SM_WoodenCrate.glb",
+      "valid_glb_header": true,
+      "meshes": 19,
+      "materials": 0,
+      "skins": 0,
+      "animations": 0,
+      "textures": 0,
+      "engine_import_status": "Nicht ausgeführt"
+    },
+    {
+      "path": "ArtSource/Realistic3D_V1/SM_Barrel.glb",
+      "valid_glb_header": true,
+      "meshes": 3,
+      "materials": 0,
+      "skins": 0,
+      "animations": 0,
+      "textures": 0,
+      "engine_import_status": "Nicht ausgeführt"
+    },
+    {
+      "path": "ArtSource/Realistic3D_V1/SM_Campfire.glb",
+      "valid_glb_header": true,
+      "meshes": 6,
+      "materials": 0,
+      "skins": 0,
+      "animations": 0,
+      "textures": 0,
+      "engine_import_status": "Nicht ausgeführt"
+    },
+    {
+      "path": "ArtSource/Realistic3D_V1/SM_CharacterGuard_Preview.glb",
+      "valid_glb_header": true,
+      "meshes": 18,
+      "materials": 0,
+      "skins": 0,
+      "animations": 0,
+      "textures": 0,
+      "engine_import_status": "Nicht ausgeführt"
+    },
+    {
+      "path": "ArtSource/Realistic3D_V1/SM_CharacterHero_Preview.glb",
+      "valid_glb_header": true,
+      "meshes": 18,
+      "materials": 0,
+      "skins": 0,
+      "animations": 0,
+      "textures": 0,
+      "engine_import_status": "Nicht ausgeführt"
+    },
+    {
+      "path": "ArtSource/Realistic3D_V1/SM_CharacterMerchant_Preview.glb",
+      "valid_glb_header": true,
+      "meshes": 18,
+      "materials": 0,
+      "skins": 0,
+      "animations": 0,
+      "textures": 0,
+      "engine_import_status": "Nicht ausgeführt"
+    },
+    {
+      "path": "ArtSource/Realistic3D_V1/SM_CharacterRaider_Preview.glb",
+      "valid_glb_header": true,
+      "meshes": 18,
+      "materials": 0,
+      "skins": 0,
+      "animations": 0,
+      "textures": 0,
+      "engine_import_status": "Nicht ausgeführt"
+    },
+    {
+      "path": "ArtSource/Realistic3D_V1/SM_IronSword.glb",
+      "valid_glb_header": true,
+      "meshes": 4,
+      "materials": 0,
+      "skins": 0,
+      "animations": 0,
+      "textures": 0,
+      "engine_import_status": "Nicht ausgeführt"
+    },
+    {
+      "path": "ArtSource/Realistic3D_V1/SM_PineTree.glb",
+      "valid_glb_header": true,
+      "meshes": 4,
+      "materials": 0,
+      "skins": 0,
+      "animations": 0,
+      "textures": 0,
+      "engine_import_status": "Nicht ausgeführt"
+    },
+    {
+      "path": "ArtSource/Realistic3D_V1/SM_RoundShield.glb",
+      "valid_glb_header": true,
+      "meshes": 2,
+      "materials": 0,
+      "skins": 0,
+      "animations": 0,
+      "textures": 0,
+      "engine_import_status": "Nicht ausgeführt"
+    },
+    {
+      "path": "ArtSource/Realistic3D_V1/SM_StoneWall.glb",
+      "valid_glb_header": true,
+      "meshes": 10,
+      "materials": 0,
+      "skins": 0,
+      "animations": 0,
+      "textures": 0,
+      "engine_import_status": "Nicht ausgeführt"
+    },
+    {
+      "path": "ArtSource/Realistic3D_V1/SM_StoneWell.glb",
+      "valid_glb_header": true,
+      "meshes": 5,
+      "materials": 0,
+      "skins": 0,
+      "animations": 0,
+      "textures": 0,
+      "engine_import_status": "Nicht ausgeführt"
+    },
+    {
+      "path": "ArtSource/Realistic3D_V1/SM_TimberHut.glb",
+      "valid_glb_header": true,
+      "meshes": 5,
+      "materials": 0,
+      "skins": 0,
+      "animations": 0,
+      "textures": 0,
+      "engine_import_status": "Nicht ausgeführt"
+    },
+    {
+      "path": "ArtSource/Realistic3D_V1/SM_WoodenCrate.glb",
+      "valid_glb_header": true,
+      "meshes": 9,
+      "materials": 0,
+      "skins": 0,
+      "animations": 0,
+      "textures": 0,
+      "engine_import_status": "Nicht ausgeführt"
+    }
+  ],
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 192,
+      "sha256": "ba901681feac51179e646eb051b13aa50df45b7f9ae5ebe3d9e7cdf5d46f8609",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": ".github/workflows/static-checks.yml",
+      "bytes": 328,
+      "sha256": "9aeb94fa96c7964cff53550f0ca155242fc08b291e217f8d852900e09246e3dd",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": ".gitignore",
+      "bytes": 317,
+      "sha256": "91cd1ef0bf44bc78977ea238955ffa9eda0a35214aa1f83e8867de2c0558e863",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "3D_ASSET_INTEGRATION.md",
+      "bytes": 1975,
+      "sha256": "948000750b82edfc1c1ab102ac1512b0e22908d30247be29e94cdd6e536d4ccb",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "ANIMATION_10_SCHRITTE_V3.md",
+      "bytes": 1632,
+      "sha256": "e1f85424017f0ab9df7f599439d00544d10bab916a000bd581af953e5ef29b5d",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "ANIMATION_BLUEPRINT_10_SCHRITTE_V5.md",
+      "bytes": 2442,
+      "sha256": "00cd5417da0439b052b057158e222197ca9201513402a7baf856ac74995422c9",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "ArtSource/Enhanced3D_V19/SM_Barrel.glb",
+      "bytes": 20956,
+      "sha256": "165e796d89b44099de4a2f052c4db6bdd7434b59b9411248bb8eec19ba5e9782",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Enhanced3D_V19/SM_Barrel.obj",
+      "bytes": 49311,
+      "sha256": "d624a7ca7d9823512bc3f4a77c0633e1a782af9b15313d379719c44ad617f363",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Enhanced3D_V19/SM_Campfire.glb",
+      "bytes": 16332,
+      "sha256": "f64711850a0731cb7199808a4fa7d896521482ca3bdc255999d28fe75da45391",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Enhanced3D_V19/SM_Campfire.obj",
+      "bytes": 22840,
+      "sha256": "6a356cd039c2a6fd2f195170b1b4c55e2853873a82da4487f88b6126553cb0f9",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Enhanced3D_V19/SM_CharacterGuard_Preview.glb",
+      "bytes": 33264,
+      "sha256": "f066829a03cf11d840314960d48ed5829dafd6d78cbaf5b63b8711ea9a1c3329",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Enhanced3D_V19/SM_CharacterGuard_Preview.obj",
+      "bytes": 76235,
+      "sha256": "f14451aee481c4a8781ba341a0324d0bb42c2c5244c27988bb245fa2a95dd8cd",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Enhanced3D_V19/SM_CharacterHero_Preview.glb",
+      "bytes": 31824,
+      "sha256": "3eab2733f7f3120bae96bc87e2ec8ace922f0b91f765e2ec40d49e4cb6bd810e",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Enhanced3D_V19/SM_CharacterHero_Preview.obj",
+      "bytes": 74157,
+      "sha256": "9246111bd7433e4e9dfd5eb9a58740963276824db53150e852b05014b027bdde",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Enhanced3D_V19/SM_CharacterMerchant_Preview.glb",
+      "bytes": 32716,
+      "sha256": "7598e4ca161646b3d92c66495769ef47ec23bc1e42eca90e0eed749fac51ddc5",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Enhanced3D_V19/SM_CharacterMerchant_Preview.obj",
+      "bytes": 74877,
+      "sha256": "646f175a102515849bcc5d16ccf416073c05b09fac8ab7474db62d5c8c8cbcf3",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Enhanced3D_V19/SM_CharacterRaider_Preview.glb",
+      "bytes": 35532,
+      "sha256": "b3b9d09e619405d78fb8f727e731c21125908d0866f025943d04378b4ea4987a",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Enhanced3D_V19/SM_CharacterRaider_Preview.obj",
+      "bytes": 91128,
+      "sha256": "17bb6fda548c33801f3645521b9fce4f7b65a5a39cec9b1cd00dc66d6e85f199",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Enhanced3D_V19/SM_IronSword.glb",
+      "bytes": 8728,
+      "sha256": "fde74f1d37e3539e0af45f6522834539750d61746588833352b733f98e29a4bf",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Enhanced3D_V19/SM_IronSword.obj",
+      "bytes": 13970,
+      "sha256": "2d875108f8c243cc5993a544d3fa1b13565e1164bf443bc871f42d6233472f50",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Enhanced3D_V19/SM_PineTree.glb",
+      "bytes": 15648,
+      "sha256": "6a6781e109e984b8848dec39ac3f123c01b75484504b9f307f9323eeba431862",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Enhanced3D_V19/SM_PineTree.obj",
+      "bytes": 24959,
+      "sha256": "6fd6c066771ec163bacc5ef1ab8c73d0490dd8cd577689d6bf7a99446ca8330d",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Enhanced3D_V19/SM_RoundShield.glb",
+      "bytes": 19260,
+      "sha256": "43f9258b883caecc8c51bd33d25dd03ab6f569e55e0ae19669f50e738f077490",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Enhanced3D_V19/SM_RoundShield.obj",
+      "bytes": 46111,
+      "sha256": "6ca6b12a538e4d37499111b90def77c5d0bd498c9da2909f935e8bcf7904bc5a",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Enhanced3D_V19/SM_StoneWall.glb",
+      "bytes": 17188,
+      "sha256": "0769dc3d54a692e567dd644b1ba8a84be91cc92264e5647ddd32f3b0042136a5",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Enhanced3D_V19/SM_StoneWall.obj",
+      "bytes": 18343,
+      "sha256": "a5b056dfd20dc4035a6f1cabb67e452032395d4ec10a86d4b7f2f08487c437f1",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Enhanced3D_V19/SM_StoneWell.glb",
+      "bytes": 16520,
+      "sha256": "24e7213eaddc1aedba07fab071fa03af02b188000866ede345be4fcb5c53595b",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Enhanced3D_V19/SM_StoneWell.obj",
+      "bytes": 20899,
+      "sha256": "e47ed6ef001d7df8f91873f84fddb93ac711c1e0e8aaea93151cbd6d24fd2bce",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Enhanced3D_V19/SM_TimberHut.glb",
+      "bytes": 19668,
+      "sha256": "517be1d9c795800e884168ee32f033eeea658b3053ec96265b0247adca99e779",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Enhanced3D_V19/SM_TimberHut.obj",
+      "bytes": 38514,
+      "sha256": "d9361b87b8cae63f9d10507240ebfba5e801b8aad0fc6c862b3fcca8cdd8f29e",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Enhanced3D_V19/SM_WoodenCrate.glb",
+      "bytes": 14296,
+      "sha256": "9188312c104498a0d982c961337936f17b4b53d952d1bddc2a055cf084af4022",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Enhanced3D_V19/SM_WoodenCrate.obj",
+      "bytes": 15957,
+      "sha256": "4f06a123e482c0e50eeaeddd8d99ffdaf9f0943a7cd2bac6c92282df239f77ab",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Enhanced3D_V19/asset_manifest.json",
+      "bytes": 1345,
+      "sha256": "2d969527df12f2866f5d3904aad2d19588cc2fa472255492e70baa2acb53a9ba",
+      "kind": "data",
+      "category": 4,
+      "verification": "JSON-Syntax beziehungsweise CSV-Zeilen inventarisiert"
+    },
+    {
+      "path": "ArtSource/Realistic3D_V1/SM_Barrel.glb",
+      "bytes": 5004,
+      "sha256": "5dff4dfe39b8b13623e4efd87e657704f6d806cd3cfa76da3c5cafa8e4136589",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Realistic3D_V1/SM_Barrel.obj",
+      "bytes": 8388,
+      "sha256": "c0b8fce348cb93e175c3cc20b44d462fa81b9e8c7e282e738b31d5017695bcb6",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Realistic3D_V1/SM_Campfire.glb",
+      "bytes": 5356,
+      "sha256": "f841b559ead46fb204959583381477b12e9bb2d2260c8d99ec87a57258e2b004",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Realistic3D_V1/SM_Campfire.obj",
+      "bytes": 5924,
+      "sha256": "96d8806f6689ebd4481e7d855926117c03130abda27160518bb39fbc6ab51cf7",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Realistic3D_V1/SM_CharacterGuard_Preview.glb",
+      "bytes": 25748,
+      "sha256": "ca1fc49bfc625655f5f05575a3c4b9ccfb4500191f20d0dc2046448e80b8df9d",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Realistic3D_V1/SM_CharacterGuard_Preview.obj",
+      "bytes": 69800,
+      "sha256": "86b5701050f1a8a6510778bf975b0cbd5f8d95756c6d4bf2c2c45bee390bbfb3",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Realistic3D_V1/SM_CharacterHero_Preview.glb",
+      "bytes": 25444,
+      "sha256": "a5ee9ebd59f27cb9392abf7bcc1790474893c4c89c42f9bcdc6a2ff598f16a71",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Realistic3D_V1/SM_CharacterHero_Preview.obj",
+      "bytes": 69800,
+      "sha256": "d43960ad8fb9cad692930ef1ad2750240b1b0208d61cc63bcb833804f22d9415",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Realistic3D_V1/SM_CharacterMerchant_Preview.glb",
+      "bytes": 25728,
+      "sha256": "39a1c3a6fa4a12463084794da398d848d1d2d4c7825b85a6fc042a729057bbb9",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Realistic3D_V1/SM_CharacterMerchant_Preview.obj",
+      "bytes": 69800,
+      "sha256": "73183d9d2dce4c1488f7028adcb1ec4366478ac54456e1f8c527cf338b13a476",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Realistic3D_V1/SM_CharacterRaider_Preview.glb",
+      "bytes": 27948,
+      "sha256": "26b0856dd925ab765b0e9056135fe6ada461f558466dfb380bf938c489f41e67",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Realistic3D_V1/SM_CharacterRaider_Preview.obj",
+      "bytes": 84722,
+      "sha256": "4c0cfca80ade59e1c9e2a03b68bd5eb9dca9f4ad79f67165af8d7c1f9e15bb6e",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Realistic3D_V1/SM_IronSword.glb",
+      "bytes": 4728,
+      "sha256": "e944bdf503e9a31d2bbba8218b2c5d8dee5d369961f388fb55aebd35e798d8de",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Realistic3D_V1/SM_IronSword.obj",
+      "bytes": 6040,
+      "sha256": "e422fe81f4dfbe72d4d3df79af8dd0f2768efdae1756bee9bdb91310e0fd68fa",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Realistic3D_V1/SM_PineTree.glb",
+      "bytes": 4408,
+      "sha256": "ac7fe658f57fb7f7b3cde84e5824dd7587a1e783e3408df9bdf5754b372bf970",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Realistic3D_V1/SM_PineTree.obj",
+      "bytes": 5617,
+      "sha256": "c5e2c7e829f784ffa2ba04285573f64a75dcdfc48a790d643ee13329bc54a78a",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Realistic3D_V1/SM_RoundShield.glb",
+      "bytes": 4788,
+      "sha256": "e2845519c2c0b8c7bd27af22ef78879859cdb1420571bfcc92c44fa7bc7b1a69",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Realistic3D_V1/SM_RoundShield.obj",
+      "bytes": 6782,
+      "sha256": "e2d1454193298610723d8e8d0bab7c74dce1dce3409215370c3162080805882c",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Realistic3D_V1/SM_StoneWall.glb",
+      "bytes": 6360,
+      "sha256": "128996aad60079bbda32dacf92a75571449a1e1276a605192659f8346cdf4c81",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Realistic3D_V1/SM_StoneWall.obj",
+      "bytes": 6837,
+      "sha256": "a29cf6c550c03a03422efccc5f2f31667f01888a9b823916d324ae706bb5bc8c",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Realistic3D_V1/SM_StoneWell.glb",
+      "bytes": 5888,
+      "sha256": "07cced06ab32651ff5e49fae357c29f5671a0179c5269fffc61e9e1ba530e5c9",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Realistic3D_V1/SM_StoneWell.obj",
+      "bytes": 8114,
+      "sha256": "e07bb0103f65847e250b582566e2642f1fefbec968cf76b1d02c2f027530a375",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Realistic3D_V1/SM_TimberHut.glb",
+      "bytes": 3716,
+      "sha256": "f7f22fcf6e9c7eb434fb8ef19603ca044fa643030e7150dcb1d61c18379c4814",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Realistic3D_V1/SM_TimberHut.obj",
+      "bytes": 3421,
+      "sha256": "6bf09c088cae0fd4bf7ec3b74947f438a4d3c786bab3956e02c0c2e3c1edd910",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Realistic3D_V1/SM_WoodenCrate.glb",
+      "bytes": 5840,
+      "sha256": "49c6c2fa5e97f2b96fcffb783dc8818be6f80dfd4573ce4bfb6608f6874f8a83",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Realistic3D_V1/SM_WoodenCrate.obj",
+      "bytes": 6153,
+      "sha256": "2003288d36f64f910a4300715be6f26c0379102fe4c2b1ad9bf9d6e2a9cced84",
+      "kind": "raw_geometry",
+      "category": 2,
+      "verification": "Datei vorhanden; GLB-Header geprüft; kein Unreal-Import"
+    },
+    {
+      "path": "ArtSource/Realistic3D_V1/character_manifest.json",
+      "bytes": 560,
+      "sha256": "e14f75072ebb89796c0bfe0b1206dbd1394697749636c6201e7b3aff3a8a4b0d",
+      "kind": "data",
+      "category": 4,
+      "verification": "JSON-Syntax beziehungsweise CSV-Zeilen inventarisiert"
+    },
+    {
+      "path": "ArtSource/Realistic3D_V1/manifest.json",
+      "bytes": 1429,
+      "sha256": "6707eb6a0fc21f54668bf0677cdee899e87eb1ab3994739746a8916921ce4f08",
+      "kind": "data",
+      "category": 4,
+      "verification": "JSON-Syntax beziehungsweise CSV-Zeilen inventarisiert"
+    },
+    {
+      "path": "AskirRPG.uproject",
+      "bytes": 205,
+      "sha256": "ca94d238d12fe8791803fd56808a449f5ab3d359305ac3856a10414839b71f64",
+      "kind": "configuration",
+      "category": 2,
+      "verification": "Text/JSON geprüft; kein Unreal-Start"
+    },
+    {
+      "path": "CHARAKTERMODELL_ENTWICKLUNG_V2.md",
+      "bytes": 1442,
+      "sha256": "c8b39616784f826a7e70d91ab962405511e2fdc5923bd16186fac1883e08e486",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "Config/DefaultEngine.ini",
+      "bytes": 264,
+      "sha256": "438cd6170174628e4a964e98f722936b3d7a944ea91a18ca6eb20e4376700884",
+      "kind": "configuration",
+      "category": 5,
+      "verification": "Quellbefund der V76-Ausgangsbasis; siehe V77_TECHNICAL_AUDIT.md. Unreal-Ausführung blockiert.",
+      "audit_findings": [
+        "B06"
+      ]
+    },
+    {
+      "path": "Config/DefaultEngine_CppFallback_V51.ini.txt",
+      "bytes": 92,
+      "sha256": "f804a892940fada2c78035faf1f7abc8f68baa51618048541c401e04251c67da",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "Config/DefaultGame.ini",
+      "bytes": 157,
+      "sha256": "ed673b3bd3b1538dd53e4d97f5cc38fe368d5102360a802af4fcdf5f3a81e977",
+      "kind": "configuration",
+      "category": 2,
+      "verification": "Text/JSON geprüft; kein Unreal-Start"
+    },
+    {
+      "path": "Config/DefaultInput.ini",
+      "bytes": 816,
+      "sha256": "b2063fcce377a46b48273f78c0d281259ce105780c519e209f7393b0230536c5",
+      "kind": "configuration",
+      "category": 2,
+      "verification": "Text/JSON geprüft; kein Unreal-Start"
+    },
+    {
+      "path": "Config/WorldMapsToCook_V37.ini.txt",
+      "bytes": 2429,
+      "sha256": "8d129d25fc7972eb539e306f7c2e321aadc96e4eaca040d26c3314a4f9a7c5e4",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "Config/WorldMapsToCook_V43.ini.txt",
+      "bytes": 2094,
+      "sha256": "0dc69651c065478a96796c4ecd2371ce008d8e9bb19b780be8d7f9614b34380a",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "Config/WorldMapsToCook_V45.ini.txt",
+      "bytes": 2094,
+      "sha256": "0dc69651c065478a96796c4ecd2371ce008d8e9bb19b780be8d7f9614b34380a",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "ENTWICKLUNGSNOTIZEN_2026-10-11.md",
+      "bytes": 814,
+      "sha256": "5ef78e53fcf4bb264627ea99f260c5db338a05d47942a3fb12f796446a0fc4c1",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "ENTWICKLUNG_50_INTEGRATIONSSCHRITTE_2026-10-11.md",
+      "bytes": 9346,
+      "sha256": "9b0df493d6735bf9c3f00bc9269873a8e14c08aa41069990f8fe3978c4518220",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "ENTWICKLUNG_50_SCHRITTE_2026-10-11.md",
+      "bytes": 4689,
+      "sha256": "51003c4d1c649c30fdc512ef22b93448104a2964aa024ad184443fae0ac3c944",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "GITHUB_AUDIT_V60_FIXES.md",
+      "bytes": 2545,
+      "sha256": "c14e441cc7c13f7962a196311c70747b23552f8ddee5c765888f1f113b7ef235",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "GITHUB_IMPORT.md",
+      "bytes": 1347,
+      "sha256": "571869bef626ce0aa8bfe2b3b62cb30ab750ac2c7931696703f05d2856211b85",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "GITHUB_RECHECK_V60.md",
+      "bytes": 802,
+      "sha256": "1508ba2b7f59d3861892b855f8b3037aa67f79aece04719e1a807afbff218549",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "KAMPF_ANIMATIONS_SYNC_10_SCHRITTE_V6.md",
+      "bytes": 1456,
+      "sha256": "6a37228d86c39541e421ec71aa3f4878fec21e9c351a7522ce7eef475ec45d51",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "KI_10_SCHRITTE_V7.md",
+      "bytes": 1717,
+      "sha256": "3738b6becbad36a13b38bc2f01588d12e9c0eb003ef47cd84ce45483306d8401",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "LEVELDESIGN_30_REGIONEN_V42.md",
+      "bytes": 13558,
+      "sha256": "5e6fada30a3ae543264d1d025236b4f904b67c0e4faa33346a62e23f282c0cc6",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "LICENSE_NOTICE.md",
+      "bytes": 352,
+      "sha256": "0f669d578d9166c49305dac57812fe759269cc649e926fc3d2c54114ad1aef95",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "Production/AUDIT_V27.json",
+      "bytes": 1285,
+      "sha256": "b3d916bc2bf46951c239d1dda7d730be752fd4f39c04839de3e4b0eb6c6bce2d",
+      "kind": "data",
+      "category": 4,
+      "verification": "JSON-Syntax beziehungsweise CSV-Zeilen inventarisiert"
+    },
+    {
+      "path": "Production/Assets/asset_manifest.json",
+      "bytes": 112201,
+      "sha256": "b87ab5753b877bf6d11774491b31f77d3a5b388ac3262142216462436db111a6",
+      "kind": "data",
+      "category": 4,
+      "verification": "JSON-Syntax beziehungsweise CSV-Zeilen inventarisiert"
+    },
+    {
+      "path": "Production/BLUEPRINT_BUILD_GUIDE.md",
+      "bytes": 1400,
+      "sha256": "6305644bf5245da47349491e9b59bd9e5e16e5a0dc0ca973df1f7a16d8e386d8",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "Production/Blueprints/ai_profiles_v53.json",
+      "bytes": 3111,
+      "sha256": "a9ce2a382e3c299d07be03870721c2b558d1a7c332f6d9315eae18b48268ea95",
+      "kind": "data",
+      "category": 4,
+      "verification": "JSON-Syntax beziehungsweise CSV-Zeilen inventarisiert"
+    },
+    {
+      "path": "Production/Blueprints/blueprint_integration_v52.json",
+      "bytes": 6180,
+      "sha256": "44398a868c3713fef0ebb9b19c93b612f2c415a1e7cde59e173c9791450ac844",
+      "kind": "data",
+      "category": 4,
+      "verification": "JSON-Syntax beziehungsweise CSV-Zeilen inventarisiert"
+    },
+    {
+      "path": "Production/Blueprints/blueprint_manifest_v50.json",
+      "bytes": 5665,
+      "sha256": "95e254a34175ee0f48ea936e2f9982a4e679851cf02dbcd3de415b773216ca4e",
+      "kind": "data",
+      "category": 4,
+      "verification": "JSON-Syntax beziehungsweise CSV-Zeilen inventarisiert"
+    },
+    {
+      "path": "Production/Blueprints/boss_phase_profiles_v56.json",
+      "bytes": 799,
+      "sha256": "8c1a5d6d635b1d8cbe3e7678ee808801178bd0b881454625a404301a1e2ec1a7",
+      "kind": "data",
+      "category": 4,
+      "verification": "JSON-Syntax beziehungsweise CSV-Zeilen inventarisiert"
+    },
+    {
+      "path": "Production/Blueprints/combat_animation_profiles_v55.json",
+      "bytes": 5147,
+      "sha256": "466246cc4b45e72131c308121d499c2822d6ae67c1c0f76f42da0cd3167ccc9d",
+      "kind": "data",
+      "category": 4,
+      "verification": "JSON-Syntax beziehungsweise CSV-Zeilen inventarisiert"
+    },
+    {
+      "path": "Production/Bosses/boss_animation_profiles_v60.json",
+      "bytes": 1773,
+      "sha256": "e967b9a1ff36116b7e53dc218cc2655a51cd406a571864143cba0e40f04e8ff9",
+      "kind": "data",
+      "category": 4,
+      "verification": "JSON-Syntax beziehungsweise CSV-Zeilen inventarisiert"
+    },
+    {
+      "path": "Production/Bosses/boss_combat_verification_v61.json",
+      "bytes": 7123,
+      "sha256": "808e2c68f93121da6581cb9765f390df06c95a2401c1adeb075e60abb43e7096",
+      "kind": "data",
+      "category": 4,
+      "verification": "JSON-Syntax beziehungsweise CSV-Zeilen inventarisiert"
+    },
+    {
+      "path": "Production/Bosses/boss_encounter_profiles_v57.json",
+      "bytes": 1522,
+      "sha256": "1db227ba29a4c62f594decbc7db530139fafc1f6e1dffd22c318b29ecf2ec9f7",
+      "kind": "data",
+      "category": 4,
+      "verification": "JSON-Syntax beziehungsweise CSV-Zeilen inventarisiert"
+    },
+    {
+      "path": "Production/Bosses/boss_loot_verification_v69.json",
+      "bytes": 7280,
+      "sha256": "2de46c528b4c545d9845cf718ab881bfa35be573545846eba713260b01e04850",
+      "kind": "data",
+      "category": 4,
+      "verification": "JSON-Syntax beziehungsweise CSV-Zeilen inventarisiert"
+    },
+    {
+      "path": "Production/Bosses/boss_loot_verification_v70.json",
+      "bytes": 6840,
+      "sha256": "bb28b94dfeec08f3f95c8ae70272450ba8902f6cbc14c1c14d340cdfd2b04eec",
+      "kind": "data",
+      "category": 4,
+      "verification": "JSON-Syntax beziehungsweise CSV-Zeilen inventarisiert"
+    },
+    {
+      "path": "Production/Bosses/boss_persistence_matrix_v67.json",
+      "bytes": 7510,
+      "sha256": "9b097b24af22c0b87a0124d03419e2c0767a2336bcfc4594754ae6d1cdb9b29f",
+      "kind": "data",
+      "category": 4,
+      "verification": "JSON-Syntax beziehungsweise CSV-Zeilen inventarisiert"
+    },
+    {
+      "path": "Production/Bosses/boss_regression_matrix_v62.json",
+      "bytes": 7559,
+      "sha256": "cfc396f0ab6536b45245788a87b0d0f56d0658b7eef5b4f56dbf65559a6dfaba",
+      "kind": "data",
+      "category": 4,
+      "verification": "JSON-Syntax beziehungsweise CSV-Zeilen inventarisiert"
+    },
+    {
+      "path": "Production/Bosses/boss_regression_matrix_v63.json",
+      "bytes": 8185,
+      "sha256": "ca3367ef686b5c201eaf961ff2177d58397e8417735a23c9101556ff59356b63",
+      "kind": "data",
+      "category": 4,
+      "verification": "JSON-Syntax beziehungsweise CSV-Zeilen inventarisiert"
+    },
+    {
+      "path": "Production/Bosses/boss_regression_matrix_v64.json",
+      "bytes": 7354,
+      "sha256": "673f06ae3c7f4754c843b2de33a5e3293e23891cbae95de5069e8bb24af688f6",
+      "kind": "data",
+      "category": 4,
+      "verification": "JSON-Syntax beziehungsweise CSV-Zeilen inventarisiert"
+    },
+    {
+      "path": "Production/Bosses/boss_reward_scenarios_v68.json",
+      "bytes": 7489,
+      "sha256": "e0dd1eb3470a86742c1e2d93c73734e45e9b8c7d7e3db637b61d0cc51c93cbea",
+      "kind": "data",
+      "category": 4,
+      "verification": "JSON-Syntax beziehungsweise CSV-Zeilen inventarisiert"
+    },
+    {
+      "path": "Production/Bosses/boss_stagger_profiles_v59.json",
+      "bytes": 2097,
+      "sha256": "4369f95135768d46bf85153a83b97adc66fd594c76fbd3896bd31f50dfaa21aa",
+      "kind": "data",
+      "category": 4,
+      "verification": "JSON-Syntax beziehungsweise CSV-Zeilen inventarisiert"
+    },
+    {
+      "path": "Production/Bosses/encounter_persistence_scenarios_v66.json",
+      "bytes": 7284,
+      "sha256": "3e067e23147d525302deb0baa1a3c7470b0fc700f673061da8491ac1a5355ebb",
+      "kind": "data",
+      "category": 4,
+      "verification": "JSON-Syntax beziehungsweise CSV-Zeilen inventarisiert"
+    },
+    {
+      "path": "Production/Bosses/stagger_test_matrix_v59.json",
+      "bytes": 4448,
+      "sha256": "e0500e7663388d71438d66884549f0de60bc93bde9e41491d121683608a68170",
+      "kind": "data",
+      "category": 4,
+      "verification": "JSON-Syntax beziehungsweise CSV-Zeilen inventarisiert"
+    },
+    {
+      "path": "Production/Crafting/recipes.json",
+      "bytes": 6649,
+      "sha256": "14b624e28b890982b146a195d05f21cd961ff07102f3b8e3d3a8bfccfc9afcaf",
+      "kind": "data",
+      "category": 4,
+      "verification": "JSON-Syntax beziehungsweise CSV-Zeilen inventarisiert"
+    },
+    {
+      "path": "Production/DataTables/DT_DornfeldLoot_V29.csv",
+      "bytes": 250,
+      "sha256": "77c672b8f934405e9bc595f8558b3fc9eefb701d42d90ccf24680d2190e9d303",
+      "kind": "data",
+      "category": 4,
+      "verification": "JSON-Syntax beziehungsweise CSV-Zeilen inventarisiert"
+    },
+    {
+      "path": "Production/DataTables/DT_items.csv",
+      "bytes": 7312,
+      "sha256": "4976315398dd5edf3e2494760c5cb06cb1fd07b0446e82199be435eabd209b81",
+      "kind": "data",
+      "category": 4,
+      "verification": "JSON-Syntax beziehungsweise CSV-Zeilen inventarisiert"
+    },
+    {
+      "path": "Production/DataTables/DT_quests.csv",
+      "bytes": 3270,
+      "sha256": "0326aca101dc8dfad82058843014f77c0a58ba6c43f75415e8d9526c083a4511",
+      "kind": "data",
+      "category": 4,
+      "verification": "JSON-Syntax beziehungsweise CSV-Zeilen inventarisiert"
+    },
+    {
+      "path": "Production/DataTables/DT_spells.csv",
+      "bytes": 654,
+      "sha256": "074d709519d3b766d632682ab38e5e2410fa32bad8840a67d2cc3cf8ef9c07a7",
+      "kind": "data",
+      "category": 4,
+      "verification": "JSON-Syntax beziehungsweise CSV-Zeilen inventarisiert"
+    },
+    {
+      "path": "Production/Dialogue/branching_dialogues.json",
+      "bytes": 21935,
+      "sha256": "83a7d7d0e86af389698788f825d28414d195b7ebc09fd86b0352e4a44e53492d",
+      "kind": "data",
+      "category": 4,
+      "verification": "JSON-Syntax beziehungsweise CSV-Zeilen inventarisiert"
+    },
+    {
+      "path": "Production/Encounters/encounter_regression_v65.json",
+      "bytes": 7520,
+      "sha256": "de3719ddb67e93e6a1dc423dc3afca51002788aaf7abadf6e32115f32c2b6834",
+      "kind": "data",
+      "category": 4,
+      "verification": "JSON-Syntax beziehungsweise CSV-Zeilen inventarisiert"
+    },
+    {
+      "path": "Production/Enemies/enemies.json",
+      "bytes": 4090,
+      "sha256": "08c938a93a24591d5734afb7234653d928b949f04f65d7226c5d3a0b147dc632",
+      "kind": "data",
+      "category": 4,
+      "verification": "JSON-Syntax beziehungsweise CSV-Zeilen inventarisiert"
+    },
+    {
+      "path": "Production/Items/items.json",
+      "bytes": 17600,
+      "sha256": "a48e8b2efff560dda850d3ce385519554d08c9b13a257a7a4f2d0dd604913762",
+      "kind": "data",
+      "category": 4,
+      "verification": "JSON-Syntax beziehungsweise CSV-Zeilen inventarisiert"
+    },
+    {
+      "path": "Production/Levels/campaign_graph_audit_v72.json",
+      "bytes": 230,
+      "sha256": "2c831aa837c3adea06a2a8166305517a082dfd1b9845dd28be6462cf50402d7d",
+      "kind": "data",
+      "category": 4,
+      "verification": "JSON-Syntax beziehungsweise CSV-Zeilen inventarisiert"
+    },
+    {
+      "path": "Production/Levels/encounter_blueprint_bindings_v54.json",
+      "bytes": 37092,
+      "sha256": "ee78fd4e7a8e0d39f43f2c387abab47e2fbd5af1d949544e6fc41ebde76621b3",
+      "kind": "data",
+      "category": 4,
+      "verification": "JSON-Syntax beziehungsweise CSV-Zeilen inventarisiert"
+    },
+    {
+      "path": "Production/Levels/encounter_profiles_v48.json",
+      "bytes": 45080,
+      "sha256": "b4f27f9180cea54b0653e92985e3ec850ca60f00cd7e1ed94a1a923c5019e126",
+      "kind": "data",
+      "category": 4,
+      "verification": "JSON-Syntax beziehungsweise CSV-Zeilen inventarisiert"
+    },
+    {
+      "path": "Production/Levels/level_designs_v42.json",
+      "bytes": 82530,
+      "sha256": "306ce374e78e47f3bc709e86ba260df5aa152afeb7d5308e1f82c4d8c7ecd93a",
+      "kind": "data",
+      "category": 4,
+      "verification": "JSON-Syntax beziehungsweise CSV-Zeilen inventarisiert"
+    },
+    {
+      "path": "Production/Levels/level_layouts.json",
+      "bytes": 14541,
+      "sha256": "7ad0e84e8a9ac1a19b3fd391e11b33c4c3b454276873b24054fc81ec81054299",
+      "kind": "data",
+      "category": 4,
+      "verification": "JSON-Syntax beziehungsweise CSV-Zeilen inventarisiert"
+    },
+    {
+      "path": "Production/Levels/world_audit_v47.json",
+      "bytes": 120,
+      "sha256": "3d25743910779f2e487d4b24d61c79b553ce1cb5d2937734b7d1750d923f77e4",
+      "kind": "data",
+      "category": 4,
+      "verification": "JSON-Syntax beziehungsweise CSV-Zeilen inventarisiert"
+    },
+    {
+      "path": "Production/Levels/world_gameplay_anchors_v46.json",
+      "bytes": 82890,
+      "sha256": "2dee1e33d9f99a0a352ebdf92e2dc1be319ab1a144920dfed150b5913d354332",
+      "kind": "data",
+      "category": 4,
+      "verification": "JSON-Syntax beziehungsweise CSV-Zeilen inventarisiert"
+    },
+    {
+      "path": "Production/Levels/world_manifest_v36.json",
+      "bytes": 30349,
+      "sha256": "9e1b465ec3b92b8eef6fdb831b952f116b1fe017d9446613ea50f4c1bb35f384",
+      "kind": "data",
+      "category": 4,
+      "verification": "JSON-Syntax beziehungsweise CSV-Zeilen inventarisiert"
+    },
+    {
+      "path": "Production/Loot/drop_tables.json",
+      "bytes": 6130,
+      "sha256": "9e3ee42699c93b8a1ecf375468ded1fedeb610a682eaa4232bc3b6d6c5678bb4",
+      "kind": "data",
+      "category": 4,
+      "verification": "JSON-Syntax beziehungsweise CSV-Zeilen inventarisiert"
+    },
+    {
+      "path": "Production/Lore/world.json",
+      "bytes": 1144,
+      "sha256": "a8765a0db3bc16093dbb5304c0ed4058031dc471a6d89ca79dc9f5400a482fb3",
+      "kind": "data",
+      "category": 4,
+      "verification": "JSON-Syntax beziehungsweise CSV-Zeilen inventarisiert"
+    },
+    {
+      "path": "Production/Magic/spells.json",
+      "bytes": 5522,
+      "sha256": "1c3b3b37468416dee06afb7b8f5375219cffe78b3428b353f330eed7b42174c9",
+      "kind": "data",
+      "category": 4,
+      "verification": "JSON-Syntax beziehungsweise CSV-Zeilen inventarisiert"
+    },
+    {
+      "path": "Production/PIPELINES.md",
+      "bytes": 1832,
+      "sha256": "13c0fcc7987251cc258d979d2d4bf8cfe2f8f2982e41bc1598e4e8dd5bf6c69a",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "Production/QA_TEST_PLAN.md",
+      "bytes": 1302,
+      "sha256": "ac076073e8ef82e91e3d9869d040eada14c096eec79099a5f7779ae9f7c82c7f",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "Production/Quests/dornfeld_first_playable_mission.json",
+      "bytes": 996,
+      "sha256": "10f6f4fdbcd7e10e156d6297bfb26ceca414a6dbed3b864f653e02efd6aafae8",
+      "kind": "data",
+      "category": 4,
+      "verification": "JSON-Syntax beziehungsweise CSV-Zeilen inventarisiert"
+    },
+    {
+      "path": "Production/Quests/sidequests.json",
+      "bytes": 25839,
+      "sha256": "ea6adccc708bff16a7545cf1267b5dd2ee2671438ea8cc8cb6d4017e134a06b2",
+      "kind": "data",
+      "category": 4,
+      "verification": "JSON-Syntax beziehungsweise CSV-Zeilen inventarisiert"
+    },
+    {
+      "path": "Production/README_V28.md",
+      "bytes": 1241,
+      "sha256": "f743a1ccb870d565184a56322fd1ae96c384a7c5984c4cc48c72e76bd2353822",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "Production/Story/main_story.json",
+      "bytes": 1886,
+      "sha256": "50849d79c1bb2135cbfdae04400c885d30da437da443bc364b8689f80b91cd0e",
+      "kind": "data",
+      "category": 4,
+      "verification": "JSON-Syntax beziehungsweise CSV-Zeilen inventarisiert"
+    },
+    {
+      "path": "README.md",
+      "bytes": 6423,
+      "sha256": "84aab5ca5ebd6162684653ba41b6d3f2b5357e6915815f44b2a8b2d85d3198c1",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "README_V24.md",
+      "bytes": 428,
+      "sha256": "4966a00ec41dcd1365522ba1531dd53583801d65ce3520e1c6148dc0877e555a",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "README_V25.md",
+      "bytes": 232,
+      "sha256": "358ecfdf90b86961a4e786b429773ca61e9b97f02ce315bc2531b5c823eb3fac",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "README_V26.md",
+      "bytes": 301,
+      "sha256": "15b55953abfe178c2e757efdb018591bbd9c68c183d57580236ab1acf0453581",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "README_V27.md",
+      "bytes": 203,
+      "sha256": "ec73bb25a56ea3680f78b27fd811669440073e60e069d271478cd13c846d4b8f",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "README_V29.md",
+      "bytes": 788,
+      "sha256": "93d020f5b053f8c4d4f504d61cd032471ee14327c8f4ef111a4cf20fc7066972",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "README_V30.md",
+      "bytes": 469,
+      "sha256": "b4de5fe7f702e5e50081d58dcd9fec8a71c135678223be6bfd13811eb2850190",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "README_V31.md",
+      "bytes": 190,
+      "sha256": "e97c3dd665a9abea14870734d5d5d6f66861afadb0bb72b088dcdcf90f57cea5",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "README_V32.md",
+      "bytes": 190,
+      "sha256": "c15cf7b09bdc325932f003464e971a68c93622c5fb86c6c4af4ad3a31b778b65",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "README_V33.md",
+      "bytes": 552,
+      "sha256": "f116e44582a9e9bb0b2f54ae37b890b9a8e82c8b3736a6e5f8bd55e4f20f0c5d",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "README_V34.md",
+      "bytes": 312,
+      "sha256": "c49cc7925e596337e3c6fd9cc19937d7989a5570d9d0a3d70d5b80f1b2bae109",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "README_V35.md",
+      "bytes": 1091,
+      "sha256": "4fff74a426a9c6c607deba9bcb2540582b530d76e942bcaf129f77d55dd97b74",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "README_V36.md",
+      "bytes": 750,
+      "sha256": "c83949a09cdf735b4511b238488db109b0131a6a50d37bf91b0cfc53660ec62c",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "README_V37.md",
+      "bytes": 922,
+      "sha256": "a1fb65567081277a09a21f069ec6cdc57564f6e24b854b546760d577a1f73d40",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "README_V38.md",
+      "bytes": 617,
+      "sha256": "4b403a78b173215c3852d57b410c80467d91c7b0c557be2e144c12146688bbec",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "README_V39.md",
+      "bytes": 844,
+      "sha256": "79bb6652563c6b101caf6667a000efe42e0171a82cd0835e7375b92e1659ca16",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "README_V40.md",
+      "bytes": 333,
+      "sha256": "eb8db267f3c8c90ebd1dfbe92a4a7839e50198ba4f02df92dbed14b94f90b620",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "README_V41.md",
+      "bytes": 618,
+      "sha256": "abe0c88d0d3e20f1e337a118c09a1478a624a8fb769b366055a41a9ccbc50809",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "README_V42.md",
+      "bytes": 1023,
+      "sha256": "646a3f3db9b98ac7b2af13bd7e5da213c8cf8cea25b856b66af441856256fa4c",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "README_V43.md",
+      "bytes": 1303,
+      "sha256": "7601dc1214e883c2d798230cbabf900e7edf637a8149b9b55d54260598c3bf9d",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "README_V44.md",
+      "bytes": 1284,
+      "sha256": "fdecf54f4a78b899e3ad4b35d183e2fd6acb0eefa7fb291e1bc3fb0a56702e03",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "README_V45.md",
+      "bytes": 1557,
+      "sha256": "e8956530298ba435bff4bc9721f74e1ff34efe585bd5756016b2984bb5e7105e",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "README_V46.md",
+      "bytes": 1219,
+      "sha256": "9779afd13abd8e9f4935dcb21dfdf5447693d756978d67482c43bcc34a1a379a",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "README_V47.md",
+      "bytes": 1529,
+      "sha256": "d0604de7bdcda7e4ccf08ea0aa942e6bfb3681da52255c2273052bce5605e2ae",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "README_V48.md",
+      "bytes": 1189,
+      "sha256": "2832dc23e05ff30ad21053e4129c42a5488afc5bb9f25eb8e4cc2638a6a4c9b8",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "README_V49.md",
+      "bytes": 5939,
+      "sha256": "82333f8089563b707e99ff87b4f39293fba07d957daea77102a9cd39482b831c",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "README_V50_BLUEPRINTS.md",
+      "bytes": 1759,
+      "sha256": "8edc6eb2903ae3ad56dd4edadfdeb8181196abbcd2074c5fef2c6c623ab74d6f",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "README_V51.md",
+      "bytes": 1443,
+      "sha256": "d95628c5803417e16fb348074def2fe1808512f78ebf2088d737fe0b455f96e9",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "README_V52.md",
+      "bytes": 678,
+      "sha256": "25917813b44d3f9900477688d7e2ac3878ca58bac6553b807e56486df53a8139",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "README_V53.md",
+      "bytes": 1029,
+      "sha256": "b7a77b8486d4cc0bccfbdc14403e2d52bb9a9979b629ff931b092323d166172b",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "README_V54.md",
+      "bytes": 1030,
+      "sha256": "46d6eb9cc3949a59d2dca70373ba1d7747ef6b0c9f310ab868c542684195eff1",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "README_V55.md",
+      "bytes": 1293,
+      "sha256": "e4a0f2678746a3b2f870116f067beb22820e6042bb4e9990c54e26fb3e307bff",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "README_V56.md",
+      "bytes": 1109,
+      "sha256": "2959f03a91514583c82fc49f48be91294240a50f7cbb1e36b7fc06fb1102a323",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "README_V57.md",
+      "bytes": 930,
+      "sha256": "895f0edd1dd87efcb2d35a69fe904a6f66fd5ecad8b54131ad7885aa1c970c6b",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "README_V58.md",
+      "bytes": 789,
+      "sha256": "00ad95b36f72331a23c02b0bd81d1002d24088e9d4e87632e493eac028e351f5",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "README_V59.md",
+      "bytes": 912,
+      "sha256": "9b7feb92571f247b4f8b0fb951d9af3f38c6ab5ddb710833f6834305468a12ca",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "README_V60.md",
+      "bytes": 1174,
+      "sha256": "8609060f0363cd5779bac5e84959c9de534a798b0a365cc8737566b50707a577",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "README_V61.md",
+      "bytes": 1020,
+      "sha256": "d58bad5bf6be00d3d0ac33d09920c3b5c036bbfaa424fa6d55e0f52fea021f72",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "README_V62.md",
+      "bytes": 904,
+      "sha256": "f21bfd97b597b08cacbbd4a72a0369a580d022a672d3592b3c6b1c1e327df2d8",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "README_V63.md",
+      "bytes": 1045,
+      "sha256": "43544008abeedb013e48bebc9275e5e941d2605173b917a31d4eb8e3a7086e5c",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "README_V64.md",
+      "bytes": 850,
+      "sha256": "dccf1416a7be02c67f5a8ce2c600da24f72d9b20d43081ae46389ff4f347cdae",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "README_V65.md",
+      "bytes": 579,
+      "sha256": "f71ca2eca77fc4e240035cdf070843e8e6e5ec9ca0c762b0718b2608d1ccb696",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "README_V66.md",
+      "bytes": 957,
+      "sha256": "85e5539e7be1d1880940b1144bbcfc931baf0a9abbfaed4f5302ada9e50b4ea8",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "README_V67.md",
+      "bytes": 1111,
+      "sha256": "6bb6c7242ff68fa8a0e8da50346241ae239d504437150b05bab205204b38ff57",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "README_V68.md",
+      "bytes": 896,
+      "sha256": "fa41edfbc9fd13914aa1b3d9971f6c1aa26364fba3013b9f39e1ce391dea5afc",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "README_V69.md",
+      "bytes": 1018,
+      "sha256": "f1ecdb8b3a27f5c778ffeab0b5e5bdc8115be33f171fd79fcfc69ab0e811df24",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "README_V70.md",
+      "bytes": 1206,
+      "sha256": "120167872be6116519d53afcfd7707c676473e43d973e0b8df050d18b72c8d43",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V20_50_SCHRITTE.md",
+      "bytes": 2848,
+      "sha256": "b854d4b5489df5f93adcfab93a4581b93f83e44b98d02cc4947fa0a36a8525a6",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V21_50_SCHRITTE.md",
+      "bytes": 3559,
+      "sha256": "fd64e6be896946278791cf3d2e15655e6538458d81d36e83c30b8fa5adc48bd6",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V22_50_SCHRITTE.md",
+      "bytes": 2716,
+      "sha256": "170a2a89335cf9990310c4fcb189291501d05f48b98a280e70dad6aa3de35876",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V23_50_SCHRITTE.md",
+      "bytes": 3120,
+      "sha256": "2b4109ec53a38eff790a2d1e7ba9fb41b2542b6b78323f426d3d959caf36d807",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V24_50_SCHRITTE.md",
+      "bytes": 1918,
+      "sha256": "9145e2180cbf36fd23894d419285778ff58e3ade189cb9d95f38bf08efb29efa",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V25_50_SCHRITTE.md",
+      "bytes": 1896,
+      "sha256": "2a3329cd6d75ad8045d6c966dc44b8dfa073d84bf4e613e7e96596832160eb5f",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V26_50_SCHRITTE.md",
+      "bytes": 2002,
+      "sha256": "00845a5491e49f10ea1229884fbb01b9b9cbc4839b92619bfabdd84c1f328da5",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V27_50_SCHRITTE.md",
+      "bytes": 2147,
+      "sha256": "3ebf41626dfc3ef5b53de836593299b141b08efa5e065a1cacfab4127976daa6",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V29_50_SCHRITTE.md",
+      "bytes": 1410,
+      "sha256": "5cb91cdb5445ea174cbf01d39e7606f6dfb566cc62866f00bbcc415f03428e6c",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V30_50_SCHRITTE.md",
+      "bytes": 2155,
+      "sha256": "76101d21598fcee80875d7e5b41a87af5e02cbfeb67bce20ddaefcdbb7132850",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V31_50_SCHRITTE.md",
+      "bytes": 2159,
+      "sha256": "dcd604463824f76673b0a913679da1b22d9c248d33e707450665186407542301",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V32_50_SCHRITTE.md",
+      "bytes": 2417,
+      "sha256": "69697de61a5d8ff69d0ffd10bd8cad0a2e224882ba003c31445b4d4db20440cc",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V33_50_SCHRITTE.md",
+      "bytes": 2557,
+      "sha256": "754f8f0ec53443617e158e08dadedc6c92954ac02722b1fc59283377e4c8c76b",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V34_50_SCHRITTE.md",
+      "bytes": 3738,
+      "sha256": "a81701f66499cec876543126a9437bc18a2b648506d2320147651e47b84f652b",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V35.md",
+      "bytes": 489,
+      "sha256": "96fef1c13705ddaca32837faeb1850cc78f641b472bbf216c2a43cba768330fc",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V36_50_SCHRITTE.md",
+      "bytes": 4323,
+      "sha256": "a3ce9427076569aedc1aedfce35304a2a068eccc9840dd8531be4bcfb998e445",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V37_50_SCHRITTE.md",
+      "bytes": 2093,
+      "sha256": "321516743f3deeda5d8839b65dfa1ffa70b8e2b5f19be33faae839dfb5f0f6a8",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V38_50_SCHRITTE.md",
+      "bytes": 3855,
+      "sha256": "cb9f9b623ef401cd6ea34f27d1de41fa6e42ac967494ba69ce2f9ad43c835dc6",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V39_50_SCHRITTE.md",
+      "bytes": 3262,
+      "sha256": "264e5eb14e2fc7297a83c5ae158e16e54fb39b63c87c0e49d043885e09497a65",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V40_50_SCHRITTE.md",
+      "bytes": 3313,
+      "sha256": "a97c9516d33b5df79af0e39c201c608997404231c42f695fbdadbc6559a6dca3",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V41_50_SCHRITTE.md",
+      "bytes": 4832,
+      "sha256": "c25ead4744d02f5f9f194d77501b0022bbccb3cf3fc92be08fcd65d9d297c864",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V43.md",
+      "bytes": 110,
+      "sha256": "f3ec70891c957dcf3a3b4a9b8769509b3796225b6224b08060bef4121ab0e399",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V44_50_SCHRITTE.md",
+      "bytes": 7829,
+      "sha256": "e83bb1bb2880d83fa1052609b04ad0bfec184895294ee03f8e9b1497a7067349",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V45_50_SCHRITTE.md",
+      "bytes": 3529,
+      "sha256": "d6dc056df9a3adee41b82af45e35148b6cd9786a25431178090e54998b81e9e0",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V46_50_SCHRITTE.md",
+      "bytes": 3701,
+      "sha256": "0ab88f3c6aff4af2fe140c75d6e7cbe5e879531c1b234c4d63f7199fd25b4b0c",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V47_50_SCHRITTE.md",
+      "bytes": 3458,
+      "sha256": "ae940026f618aab73c06badfa12a4686dc7ff356c0fc7ed7e13b9c05141b1914",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V48_50_SCHRITTE.md",
+      "bytes": 8141,
+      "sha256": "5b0320a464ddfdd984adb64da3aea177811ca75b19693eac058ec94716fd665e",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V49_50_SCHRITTE.md",
+      "bytes": 5939,
+      "sha256": "82333f8089563b707e99ff87b4f39293fba07d957daea77102a9cd39482b831c",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V51.md",
+      "bytes": 165,
+      "sha256": "88a4e7f8582110f54509382dd7b790593157d7749a2e08266158cae22b61e534",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V52_50_SCHRITTE.md",
+      "bytes": 4212,
+      "sha256": "baaec362daa3fb1cfcea6323c61b5899323ae258c56431b167cdf357a4661d78",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V53_50_SCHRITTE.md",
+      "bytes": 7020,
+      "sha256": "23ee3b6c8897a9303688c63923156c31f90f210cef1600b0e6bca364724fac67",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V54_50_SCHRITTE.md",
+      "bytes": 2768,
+      "sha256": "8e1f64dffe5ebe6909e836eaeb4de3aee939c2a0773471997befa672863484b9",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V55_50_SCHRITTE.md",
+      "bytes": 3937,
+      "sha256": "9b56c5866ee08e179954a3f1c5ef3e522c610565f9510701c081481a9c97511f",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V56_50_SCHRITTE.md",
+      "bytes": 4381,
+      "sha256": "e890ea2c2061d90dc29df413fc6767ca61a8db927cfd863d59affd67ff747806",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V57_50_SCHRITTE.md",
+      "bytes": 3368,
+      "sha256": "a3444818151fc044085045bfdd3552dd57fbcd62e4d8fc1ac9a2e099a6a19c37",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V58_50_SCHRITTE.md",
+      "bytes": 1853,
+      "sha256": "0c0107c256edc5860d7ee98a50435956c58687ecb5617ba46b194bb7690ecc42",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V59_50_SCHRITTE.md",
+      "bytes": 3600,
+      "sha256": "3ac3d54f6f5354b4b39fb67460606210ba1bcdf2bf454a8ca2f53b3027dd8140",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V60_50_SCHRITTE.md",
+      "bytes": 1768,
+      "sha256": "31df891168a746b66722230f9ea77dcb0b77ab7b8c7b9873b2e1cc51fb0e8e3d",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V61_50_SCHRITTE.md",
+      "bytes": 3106,
+      "sha256": "b947ac725873f91cb52829456ed0e90aba9cbd5ead263b800bfd83a1f93d871b",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V62_50_SCHRITTE.md",
+      "bytes": 5544,
+      "sha256": "f3266722730547f27eba440dd9f1576d040467d3e7916c52e3d5f9eb839e5345",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V63_50_SCHRITTE.md",
+      "bytes": 5185,
+      "sha256": "89ba9da9da96f38b02eeb4e3920c586b08c76763daa7cdabaa1fe195b9af5e3d",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V64_50_SCHRITTE.md",
+      "bytes": 2784,
+      "sha256": "d1e38664515e52d0227816d1d0622fec10a94f27224e58f07dad451b6faaad3f",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V65_50_SCHRITTE.md",
+      "bytes": 3010,
+      "sha256": "0ac497110cf66d5b7500ea64254d5373d7d109b12b643a60ef9d11199cec480c",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V66_50_SCHRITTE.md",
+      "bytes": 3284,
+      "sha256": "2990b7cbff38d54205772b17a5b2fb9a503fde53aa97fc36bfaf39c4b2aa6057",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V67_50_SCHRITTE.md",
+      "bytes": 3496,
+      "sha256": "fb69996e61eb0cfa57042cc481bee7740c2d7ba20605752ed0aae0e690154b4a",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V68_50_SCHRITTE.md",
+      "bytes": 3321,
+      "sha256": "48b157c62eec2c8d650eec8f0edd25572b2a38595b694edef0720c2ff3b603ac",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V69_50_SCHRITTE.md",
+      "bytes": 4096,
+      "sha256": "dc6d1584b85c68a615b942d6f1612eff227b95dd6d5192ca3a669e7cb47da9a2",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V70_50_SCHRITTE.md",
+      "bytes": 3000,
+      "sha256": "f75412c59fc8db881678390d8ddc48ef77fdf5c472708a3be057f57902b78912",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V72.md",
+      "bytes": 1232,
+      "sha256": "d9235abba3939e6aacc2d89f55a120c2c6d11bb46cd32ec05be9c9f0f6fb6f27",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V73.md",
+      "bytes": 801,
+      "sha256": "4e9c2d8d13dc373688e601539c10abdf3648e0fb420a92d81b03b9b230393cfa",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V74.md",
+      "bytes": 1216,
+      "sha256": "63363bce3e20b2dfb89538604f83670ebcf8a5513444acf5b8e0175ad2296126",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V75.md",
+      "bytes": 1147,
+      "sha256": "e513b6a86947e21ea98c0a843e8150015b1699a3ed48281cfc21d2c3d22de32b",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RELEASE_V76.md",
+      "bytes": 804,
+      "sha256": "daddc730293d50a4cb686c96d781c6030f2d90351484c3af929a225b8dbdc693",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "RIGGING_10_SCHRITTE_V4.md",
+      "bytes": 2035,
+      "sha256": "a4b57594870b1f585e40892f78849ad9b315b03f91ca770c0aba374faa4954eb",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "Reports/TECHNICAL_AUDIT_V71.md",
+      "bytes": 2058,
+      "sha256": "19fae1979b838ddc883bddcad7cdd75a5d25156432e1041e8f0ca8903dc07146",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "Reports/TEST_RESULTS_V71.txt",
+      "bytes": 291,
+      "sha256": "f18850c45c3c751d511a83c77bdf2fda7ef3fae5ece7378e744704e878b2bbcb",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "Reports/V73_DORNFELD_PREFLIGHT.json",
+      "bytes": 176,
+      "sha256": "52b5ef893e1ef9f654a0753bc40478ef4d3a16bcde8e0d622525a94ea340586e",
+      "kind": "data",
+      "category": 4,
+      "verification": "JSON-Syntax beziehungsweise CSV-Zeilen inventarisiert"
+    },
+    {
+      "path": "Source/Askir/AI/AskirBossAIController.cpp",
+      "bytes": 8756,
+      "sha256": "e1e53cff918111afdea35852abfa24b3f93d7487ee746f88017a6ef091f53fc9",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/AI/AskirBossAIController.h",
+      "bytes": 5338,
+      "sha256": "85d9633ecaa547d0069cd6faeca462ae4aabc8e730db7b0989d0d312620c2ac5",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/AI/AskirCivilianAIController.cpp",
+      "bytes": 1930,
+      "sha256": "eb586b7deaa5f3656c06f2483e8b5dee1d832bb4d1a5e9b1e8343f5970397550",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/AI/AskirCivilianAIController.h",
+      "bytes": 1168,
+      "sha256": "6621c77251a2bfca81c5b4633c6d516c74021e6b813e024ab34f8aec47377b16",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/AI/AskirEnemyAIController.cpp",
+      "bytes": 7052,
+      "sha256": "6103c6e79dad66050e07b95be2fa2ee2a566cec8327a8f7dac469df5687e5659",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/AI/AskirEnemyAIController.h",
+      "bytes": 3354,
+      "sha256": "c37241d08cda4854e8db00e6cb87e236292271ac8d99ad34aa768c0bcbf05c5c",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/AI/AskirPerceptionComponent.cpp",
+      "bytes": 801,
+      "sha256": "25e487cf281961a5cd9053c39dcc88ac95dea76ca208bc27c8141f7ecf6e9cd9",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/AI/AskirPerceptionComponent.h",
+      "bytes": 994,
+      "sha256": "a602ebb14a653eabfb8a49b0f80bb77be2ee6f381e3ab4ee8d572c0e87b47296",
+      "kind": "source",
+      "category": 5,
+      "verification": "Quellbefund der V76-Ausgangsbasis; siehe V77_TECHNICAL_AUDIT.md. Unreal-Ausführung blockiert.",
+      "audit_findings": [
+        "B05"
+      ]
+    },
+    {
+      "path": "Source/Askir/Animation/AskirAnimInstance.cpp",
+      "bytes": 1994,
+      "sha256": "819580e6ad2cde6b4dbd1fb5c804bd27bb7a6cb1d95c6d0612dd8cf158264c36",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Animation/AskirAnimInstance.h",
+      "bytes": 2177,
+      "sha256": "3b8d638ca5eefff1063eb7c8a2079bef3865066114d2e75ef5cca88417aeda3e",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Animation/AskirAnimationStateComponent.cpp",
+      "bytes": 2450,
+      "sha256": "2d0fe58e15d88d473510ce30eeb26c58aad8a5947c6273b49908bbfd05c55a99",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Animation/AskirAnimationStateComponent.h",
+      "bytes": 2486,
+      "sha256": "5cb4840684d8818c94116f16406f6d3bd16f9eff582c7881523e44a7eedfebc4",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Animation/AskirAttackImpactNotify.cpp",
+      "bytes": 497,
+      "sha256": "1bde023508c13bc7514143c8fc66086d72d2f88b77fdb8e34e232776198dabe2",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Animation/AskirAttackImpactNotify.h",
+      "bytes": 432,
+      "sha256": "0df81f8d1463261452ba944a9bd6a74573a9d873052fc61733dcadeb3d209525",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Askir.Build.cs",
+      "bytes": 415,
+      "sha256": "9ec735bf5728375cdf63ea011aa3cbd0addce45c521238a825215fafd214a85f",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Askir.Target.cs",
+      "bytes": 322,
+      "sha256": "c321bd83c4ed31ad981a1936097dd1bc0a2ac25f5cce1125d86f255239fd47f1",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Askir.cpp",
+      "bytes": 124,
+      "sha256": "08131668a89926a0809a3b85d18be2fbd778892745b7a885662f9de685adb0d5",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Askir.h",
+      "bytes": 37,
+      "sha256": "7713311f75ae21222ee990df1aee663e260b32cd778ed8de0fb204b3c0193583",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/AskirEditor.Target.cs",
+      "bytes": 336,
+      "sha256": "fbc11dfc6d54be3ed31babffd8ce1c0cf8d23dccf0972c3baa8943adede9e3a3",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Camp/AskirCampComponent.cpp",
+      "bytes": 569,
+      "sha256": "950ae162deda48ef7069b709c6b2767a9a941721960608fadb436af6af18b80f",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Camp/AskirCampComponent.h",
+      "bytes": 977,
+      "sha256": "0b9276cd4e5ddc6c2a9b8ecca79a888cd91345c449a397d47ba2ac3cbe9bec93",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Characters/AskirCharacter.cpp",
+      "bytes": 13351,
+      "sha256": "00f4b2ca843ac30b66174076f229c5fd75c2286d72850e86abd06cb37c686510",
+      "kind": "source",
+      "category": 5,
+      "verification": "Quellbefund der V76-Ausgangsbasis; siehe V77_TECHNICAL_AUDIT.md. Unreal-Ausführung blockiert.",
+      "audit_findings": [
+        "B08",
+        "B12",
+        "B14"
+      ]
+    },
+    {
+      "path": "Source/Askir/Characters/AskirCharacter.h",
+      "bytes": 13544,
+      "sha256": "0c45b91b452c0f138de589c942fbb163e43fdad58c9325e59b636e7418037ebc",
+      "kind": "source",
+      "category": 5,
+      "verification": "Quellbefund der V76-Ausgangsbasis; siehe V77_TECHNICAL_AUDIT.md. Unreal-Ausführung blockiert.",
+      "audit_findings": [
+        "B03",
+        "B04"
+      ]
+    },
+    {
+      "path": "Source/Askir/Characters/AskirCharacterIntegration.cpp",
+      "bytes": 9838,
+      "sha256": "43622eac81766f7c7badcca8e3af88be980e0bdfc110216358b27e06443d438a",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Characters/AskirNPC.cpp",
+      "bytes": 10188,
+      "sha256": "232aac3eb67a5dd2adc609d962401a0f5ee92273673cbf91d42751a5282f0958",
+      "kind": "source",
+      "category": 5,
+      "verification": "Quellbefund der V76-Ausgangsbasis; siehe V77_TECHNICAL_AUDIT.md. Unreal-Ausführung blockiert.",
+      "audit_findings": [
+        "B10",
+        "B15"
+      ]
+    },
+    {
+      "path": "Source/Askir/Characters/AskirNPC.h",
+      "bytes": 5580,
+      "sha256": "c0f05646428b13fa6b9e3c4b9f10b6e257902f353a4a276fd03e82a538a78915",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Characters/AskirNPCAdvanced.cpp",
+      "bytes": 619,
+      "sha256": "7672215c9f69ad47b14a21f34ccae34b5ea52d830d26de6f39cf37ff7da762cf",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Characters/AskirNPCAdvanced.h",
+      "bytes": 959,
+      "sha256": "55bb888ce57694b5eeb19f43f7976b014cedf7cf5e9038905ad546df15486590",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Combat/AskirCombatComponent.cpp",
+      "bytes": 2802,
+      "sha256": "00bbc6a28ee0abd1c85cf712efc757bcf2b1c466e4aa2478caf99e41102cd2e3",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Combat/AskirCombatComponent.h",
+      "bytes": 2444,
+      "sha256": "2a064495eff7facfc174ddfd36f66e22947fa318bb871a86c51ad80c5207925e",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Combat/AskirDamageTypes.h",
+      "bytes": 834,
+      "sha256": "7cc22a4198bf18946ea8bcf41015c6d09d59d1ecc63f998c4fa587b58017b63d",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Combat/AskirGuardComponent.cpp",
+      "bytes": 1578,
+      "sha256": "81114f33e71f2bd8844737351a2b0452563095cb66d53388db9c5f60d02fba9a",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Combat/AskirGuardComponent.h",
+      "bytes": 1850,
+      "sha256": "19c989ec66e1c0bbcfadead136e01100d38bb69bba852fe1aa01fe68b0c436fd",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Companion/AskirCompanionComponent.cpp",
+      "bytes": 603,
+      "sha256": "bea4023596f3e4761e0e77bec8cd0cfb8a432c1d7edcfeb898661a78d73ba1cf",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Companion/AskirCompanionComponent.h",
+      "bytes": 1032,
+      "sha256": "4ac93840ba7dafabd39929e2983d62991073099788030313d4660596a853da26",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Core/AskirEntity.cpp",
+      "bytes": 142,
+      "sha256": "d958038e979109b477d5d293316eedb6900cb18208221d2f9304e8ffb127b82d",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Core/AskirEntity.h",
+      "bytes": 395,
+      "sha256": "dd6d59bccc42a6bf85d82811548ca4172ff0b351ccdbfe5d50498dee12eaa733",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Core/AskirTypes.h",
+      "bytes": 954,
+      "sha256": "5ee91203cc32e3355c6961f6687ef2fec41ee5963decb2e890ad192697063065",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Crafting/AskirCraftingComponent.cpp",
+      "bytes": 556,
+      "sha256": "f99c416b59104140eb1c05873d9abf54c5a5c10c5e23dd842fb00970536dddfb",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Crafting/AskirCraftingComponent.h",
+      "bytes": 1029,
+      "sha256": "ac34a86a89b1f31efd7f7b2dd16b5da29d00d4b218824df62051d21247a1784e",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Demo/AskirDemoInteractable.cpp",
+      "bytes": 818,
+      "sha256": "b73a7aad4510682416a31204f6951a782f70e81ed4f828851d9be4425cae53b1",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Demo/AskirDemoInteractable.h",
+      "bytes": 691,
+      "sha256": "299dc4569767aa2ba6f39a9220983d01ab33a5dcdd47650a251dac42cea5c3e2",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Dialogue/AskirDialogueData.h",
+      "bytes": 800,
+      "sha256": "90e6d7902d1a4acaf68872b3cb32b8960237fa412d225e113ffe7d5970d5dad5",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Economy/AskirEconomyComponent.cpp",
+      "bytes": 675,
+      "sha256": "7ad1ddfcf2508cd49787dd8be0fa767b0f975e0ca2edc459dc94f20d400c6a8d",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Economy/AskirEconomyComponent.h",
+      "bytes": 912,
+      "sha256": "0806b9f49f6d4b5f0c1fe545c9d7a9ec0b74aec9faf15414bc1b8811bcff633f",
+      "kind": "source",
+      "category": 5,
+      "verification": "Quellbefund der V76-Ausgangsbasis; siehe V77_TECHNICAL_AUDIT.md. Unreal-Ausführung blockiert.",
+      "audit_findings": [
+        "B05"
+      ]
+    },
+    {
+      "path": "Source/Askir/Economy/AskirMerchantActor.cpp",
+      "bytes": 794,
+      "sha256": "52d8f94a65ba292e587c4abcd37b1dbdd3bd09584e6616fd1e807f025abaab2a",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Economy/AskirMerchantActor.h",
+      "bytes": 906,
+      "sha256": "6f2342e90d775b3c70f4a92899a6b6cda8fb6ae05c1f4ead26a051e70b50dcc5",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Economy/AskirMerchantComponent.cpp",
+      "bytes": 2032,
+      "sha256": "012f9db17d90d6545aa8e44c024fbb0b06a0aa919eca20c106e2157578207d8d",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Economy/AskirMerchantComponent.h",
+      "bytes": 1778,
+      "sha256": "3a625707bb7f21581a67a9c03dde8154284c0e9b2a2e4a2eb36b99394bf67cc8",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Economy/AskirQuestTrigger.cpp",
+      "bytes": 1213,
+      "sha256": "bcb2d1b917fe20b8fe2b4728893b6e72395387e9564d288395d1d3298ddd889c",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Economy/AskirQuestTrigger.h",
+      "bytes": 1067,
+      "sha256": "2c6ef8da4738b54040757f8131d723b6b549e71dac572aaba1ed672c5df609d0",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Economy/AskirTradeBridgeComponent.cpp",
+      "bytes": 2584,
+      "sha256": "cf5b6c32454210b39ba96d18ecac26d3703c87d1f075a8eb35be5666baf4e240",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Economy/AskirTradeBridgeComponent.h",
+      "bytes": 1228,
+      "sha256": "3dd35db96b92cb46d7daac6917c8416982b54cabd78894310569ef495832015a",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Equipment/AskirEquipmentComponent.cpp",
+      "bytes": 2927,
+      "sha256": "1b9b52ecce9095774760815d5fee38d89ed166e1ebda28a7b8e9bf1a843b2f67",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Equipment/AskirEquipmentComponent.h",
+      "bytes": 2096,
+      "sha256": "5725765faca5b74c24f6dc209d945a209a3ebb1332c213df40ba66aaa3fe2c95",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Exploration/AskirExplorationComponent.cpp",
+      "bytes": 464,
+      "sha256": "c56f9ff9f672822a1c5595d4483b608855d0339756a27deb6aadca5a86a2494e",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Exploration/AskirExplorationComponent.h",
+      "bytes": 1032,
+      "sha256": "d038bc9455fd66d5d1fd9f637df9a856cfddf98c1787d7c39943fe37ff1937df",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Game/AskirGameMode.cpp",
+      "bytes": 11627,
+      "sha256": "3a91543fb292426107b5f2f4fb0e57ca47b9294fabc11af7545b737909e5defe",
+      "kind": "source",
+      "category": 5,
+      "verification": "Quellbefund der V76-Ausgangsbasis; siehe V77_TECHNICAL_AUDIT.md. Unreal-Ausführung blockiert.",
+      "audit_findings": [
+        "B11",
+        "B12"
+      ]
+    },
+    {
+      "path": "Source/Askir/Game/AskirGameMode.h",
+      "bytes": 1301,
+      "sha256": "40f7de2e455a1f4ff46dc60b6ff9124f4d648e898d057b77c05ff09150607709",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Game/AskirGameModeDemo.cpp",
+      "bytes": 7610,
+      "sha256": "d49538d0499195b60401c0c03c1dd470e48908388d15a9ce385ec0c2596d54f5",
+      "kind": "source",
+      "category": 5,
+      "verification": "Quellbefund der V76-Ausgangsbasis; siehe V77_TECHNICAL_AUDIT.md. Unreal-Ausführung blockiert.",
+      "audit_findings": [
+        "B07"
+      ]
+    },
+    {
+      "path": "Source/Askir/Interaction/AskirInteractable.cpp",
+      "bytes": 42,
+      "sha256": "1adcaa61f6efd82b9294560b820ff7e6bf23458469398a4ac9d59f5e5aa598d2",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Interaction/AskirInteractable.h",
+      "bytes": 449,
+      "sha256": "c366d1370122644183c76fe7562c56c841da15c899e4f35739f82924e7a54249",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Interaction/AskirInteractionComponent.cpp",
+      "bytes": 794,
+      "sha256": "0880d88dbf62d3b52cd7d08c92f782d43e1bf55dcbbd5920c470462770af5e84",
+      "kind": "source",
+      "category": 5,
+      "verification": "Quellbefund der V76-Ausgangsbasis; siehe V77_TECHNICAL_AUDIT.md. Unreal-Ausführung blockiert.",
+      "audit_findings": [
+        "B01"
+      ]
+    },
+    {
+      "path": "Source/Askir/Interaction/AskirInteractionComponent.h",
+      "bytes": 454,
+      "sha256": "a0c7f371a431b1f94fa81baaed58acdfe93db4ba9fc6ab0b90291ecfc2dacae1",
+      "kind": "source",
+      "category": 5,
+      "verification": "Quellbefund der V76-Ausgangsbasis; siehe V77_TECHNICAL_AUDIT.md. Unreal-Ausführung blockiert.",
+      "audit_findings": [
+        "B01"
+      ]
+    },
+    {
+      "path": "Source/Askir/Inventory/AskirInventoryComponent.cpp",
+      "bytes": 1745,
+      "sha256": "6a56625ca6012689021a3af16fb0245b2eed35c8e2c193b3a344e8840f75e246",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Inventory/AskirInventoryComponent.h",
+      "bytes": 1263,
+      "sha256": "dbc3d9489b7db2c952158ae3edc8fb04fb6e712f794b735d39b24f3267cecabd",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Inventory/AskirItemData.h",
+      "bytes": 1090,
+      "sha256": "affb52345e8db320b06651a36a9cf88f2b1cc1305f3da6cd8a46710a42cbb2d5",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Loot/AskirLootChest.cpp",
+      "bytes": 1851,
+      "sha256": "d3b0d4f0941a5282e65aa469317509abdf265b29153b0d1e6e5f890e518cfd1d",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Loot/AskirLootChest.h",
+      "bytes": 1873,
+      "sha256": "c66b5a21aaa95ff74a97f3b6684e1f60aad3f6ca9ee51a1458fdefd65bff21b5",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Loot/AskirLootPickup.cpp",
+      "bytes": 2056,
+      "sha256": "b043512d3521652e9765659878df10c517112e7b82f657a08445c5812df257fc",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Loot/AskirLootPickup.h",
+      "bytes": 1980,
+      "sha256": "17e1ef4166801afe149f47cea434a80bfe41467bea1e09d596229581f7147922",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Mission/AskirDornfeldEventActor.cpp",
+      "bytes": 1734,
+      "sha256": "bdb3e81c8994daf3a624eabac2d402427e68904fc05b7e6820d6f519c9028ec5",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Mission/AskirDornfeldEventActor.h",
+      "bytes": 1123,
+      "sha256": "56ab48b66b898a4c18f3822849f41c5d0dc2934a420dd9aeb95787afd2043ed3",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Mission/AskirDornfeldMissionComponent.cpp",
+      "bytes": 3922,
+      "sha256": "f5216aa64e3bfff3ad09157ce2599cac8df56ec0937b9301cbc5e03c89f5f3c8",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Mission/AskirDornfeldMissionComponent.h",
+      "bytes": 2913,
+      "sha256": "2bb66e1f0b327e672526a45e72b104d88f2bcf1057379558a09e7d28cbbb1aba",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Mission/AskirDornfeldMissionRelay.cpp",
+      "bytes": 3550,
+      "sha256": "6c140e62e54367116bf1e7ca31d5b307aafe7c5b62aff9f54075639c4a2e777a",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Mission/AskirDornfeldMissionRelay.h",
+      "bytes": 1934,
+      "sha256": "23e0be751699e51d30e935ab0c17f2151272597e420b5ac5f9d27eb045414167",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Morale/AskirMoraleComponent.cpp",
+      "bytes": 563,
+      "sha256": "48c5b542a5db07a1f5d0abe5bf679ffca672c470365ec51f20a218d0d6c214b5",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Morale/AskirMoraleComponent.h",
+      "bytes": 1006,
+      "sha256": "0284a04a2003a5ce3588107b824addad1ddcf1b9a0afc718aee69d002403ef71",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/NPC/AskirDailyRoutineComponent.cpp",
+      "bytes": 1660,
+      "sha256": "5a0eb4713ab683db8e4792885dc510e1e622246854fbf52eb3fd51187d6df808",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/NPC/AskirDailyRoutineComponent.h",
+      "bytes": 1601,
+      "sha256": "afef38abbe44685a60f06dc135174c95fec7a1725458aebd0ca6b6d29c098655",
+      "kind": "source",
+      "category": 5,
+      "verification": "Quellbefund der V76-Ausgangsbasis; siehe V77_TECHNICAL_AUDIT.md. Unreal-Ausführung blockiert.",
+      "audit_findings": [
+        "B02"
+      ]
+    },
+    {
+      "path": "Source/Askir/NPC/AskirDialogueComponent.cpp",
+      "bytes": 1791,
+      "sha256": "381762bf1a86eb63ed369a3c01e24d00804972d7b53cfced5b69c7b4ceb231d0",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/NPC/AskirDialogueComponent.h",
+      "bytes": 2459,
+      "sha256": "fbc84dc456fe7481f97c8a85f32a6f67e94556b8f3f0304e6dbe947ba60a3f9e",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/NPC/AskirInteractionComponent.cpp",
+      "bytes": 683,
+      "sha256": "1cbf7d985896ed327f91f737f4a2d0ae8810657dcf5469155a3e3470b279ed46",
+      "kind": "source",
+      "category": 5,
+      "verification": "Quellbefund der V76-Ausgangsbasis; siehe V77_TECHNICAL_AUDIT.md. Unreal-Ausführung blockiert.",
+      "audit_findings": [
+        "B01"
+      ]
+    },
+    {
+      "path": "Source/Askir/NPC/AskirInteractionComponent.h",
+      "bytes": 774,
+      "sha256": "44932c475dd519e86259655a9e0a4dd23306cfc12bb2b98b4ca9fea4548d9836",
+      "kind": "source",
+      "category": 5,
+      "verification": "Quellbefund der V76-Ausgangsbasis; siehe V77_TECHNICAL_AUDIT.md. Unreal-Ausführung blockiert.",
+      "audit_findings": [
+        "B01"
+      ]
+    },
+    {
+      "path": "Source/Askir/Production/AskirProductionLibrary.cpp",
+      "bytes": 1272,
+      "sha256": "c53c8051408f3710b6bc585278b2d7e7aabdcd4ce18e2b65835215b97141a55c",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Production/AskirProductionLibrary.h",
+      "bytes": 884,
+      "sha256": "24c0f506e2f082d604e2d624000aa765de5cd4fee19b55aaec47c88ca8492398",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Production/AskirProductionRows.h",
+      "bytes": 1502,
+      "sha256": "b07ae842527b4001b0bca8097091bf302030e7e2eafaf6032bcbf480e283c7c4",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Progression/AskirProgressionComponent.cpp",
+      "bytes": 4427,
+      "sha256": "7eedf60406253c45806f1000a806fc0c6928b52c33b8eb765cc97a1c6c3592e4",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Progression/AskirProgressionComponent.h",
+      "bytes": 3052,
+      "sha256": "928f307b573c30e551384f9acb8672e562a0ba4170ce4fe9c5d2094074dd1072",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Quest/AskirQuestComponent.cpp",
+      "bytes": 5329,
+      "sha256": "6aa57237adc63b5dba6307ee345bd470a84b0b3c8bed9cca152f317397c7bfb1",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Quest/AskirQuestComponent.h",
+      "bytes": 3459,
+      "sha256": "07495456339e6c2b586f593f17c09953b986e093617d122944c50f2f565ba7c1",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Quest/AskirQuestData.h",
+      "bytes": 1272,
+      "sha256": "857bb62304bdd505821b640e8532ea07868407c678f040c2bfbe504cd1600380",
+      "kind": "source",
+      "category": 5,
+      "verification": "Quellbefund der V76-Ausgangsbasis; siehe V77_TECHNICAL_AUDIT.md. Unreal-Ausführung blockiert.",
+      "audit_findings": [
+        "B05"
+      ]
+    },
+    {
+      "path": "Source/Askir/Quest/AskirQuestGiver.cpp",
+      "bytes": 1052,
+      "sha256": "8009d97a336075b7cd3dcc19bec5fb4b47aa9487f6abf8dfc80c9700e6e5a5c0",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Quest/AskirQuestGiver.h",
+      "bytes": 781,
+      "sha256": "c404d245d3e9793f79ee41225c49aac7ac0a5f2f15fc61da929d01cbba8c86e0",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Save/AskirSaveGame.cpp",
+      "bytes": 31,
+      "sha256": "5944d18468f65d4218e8d6a1aab3196074b6f24cf1aecefa82cd0c9ca53e9101",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Save/AskirSaveGame.h",
+      "bytes": 3254,
+      "sha256": "ff067882bd6ef613ff0ca76178801c3182cc6d35b61085708cfdf4e965c2563c",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Simulation/AskirNeedsComponent.cpp",
+      "bytes": 977,
+      "sha256": "3424c67ec65217035464dfe9bfdf9de5eaa44c4de83a8ca322ce2acff8d2a939",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Simulation/AskirNeedsComponent.h",
+      "bytes": 916,
+      "sha256": "d5ffbd31c97163db4044895cf2b0333bc5b0c39161566b857b6093ad2ded2315",
+      "kind": "source",
+      "category": 5,
+      "verification": "Quellbefund der V76-Ausgangsbasis; siehe V77_TECHNICAL_AUDIT.md. Unreal-Ausführung blockiert.",
+      "audit_findings": [
+        "B05"
+      ]
+    },
+    {
+      "path": "Source/Askir/Simulation/AskirScheduleComponent.cpp",
+      "bytes": 740,
+      "sha256": "d739611110ea0e9891e5a224cc5b7515a8095f54b397cc1690bfe9dfa9dcf81a",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Simulation/AskirScheduleComponent.h",
+      "bytes": 983,
+      "sha256": "673b41470d48359dfe68de7a924e125d70a862772d068647ae8cfa85ee4171a8",
+      "kind": "source",
+      "category": 5,
+      "verification": "Quellbefund der V76-Ausgangsbasis; siehe V77_TECHNICAL_AUDIT.md. Unreal-Ausführung blockiert.",
+      "audit_findings": [
+        "B02",
+        "B05"
+      ]
+    },
+    {
+      "path": "Source/Askir/Simulation/AskirSimulationSubsystem.cpp",
+      "bytes": 402,
+      "sha256": "8558538cd43ec09a8722ad44ec544db3cb4caa0b8620d5515c4f7941599315c2",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Simulation/AskirSimulationSubsystem.h",
+      "bytes": 1095,
+      "sha256": "3f2c961d2119f5a0e67e029c5cef880c4db7306096ca88486a2489077a0829a6",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Social/AskirFactionComponent.cpp",
+      "bytes": 434,
+      "sha256": "3f3109996b7c47fb6581b39743282c84cf04b9dbd5d17e7b106c1b26d3a9bf88",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Social/AskirFactionComponent.h",
+      "bytes": 640,
+      "sha256": "8367f2938f2c69f0714a6e077a18b7883c25a6cfa3fac4d03071c3b1a4394840",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Social/AskirRelationshipComponent.cpp",
+      "bytes": 817,
+      "sha256": "2861b2595b7726d66b04798c26e1f922d81fe39ef4163d9eb77ce96363ba0b68",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Social/AskirRelationshipComponent.h",
+      "bytes": 827,
+      "sha256": "0cde529bc99786ffe17a69f2ae1100bdabe32652f9dbbff1219e950d794fe5cd",
+      "kind": "source",
+      "category": 5,
+      "verification": "Quellbefund der V76-Ausgangsbasis; siehe V77_TECHNICAL_AUDIT.md. Unreal-Ausführung blockiert.",
+      "audit_findings": [
+        "B05"
+      ]
+    },
+    {
+      "path": "Source/Askir/Social/AskirReputationComponent.cpp",
+      "bytes": 1292,
+      "sha256": "df7b41cb974c6a7ea62dde6a8d94c3690a32ed2850fc0a481e84a007741200e0",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Social/AskirReputationComponent.h",
+      "bytes": 1607,
+      "sha256": "13b44e9551e4191e30005057a540664ae8df92283aa1fe5fc8704e505ae58575",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Stealth/AskirStealthComponent.cpp",
+      "bytes": 542,
+      "sha256": "ffef73a7c6a4b75d67c247df2d36e72c0eeff0e2193be8fadd0a77614307158d",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Stealth/AskirStealthComponent.h",
+      "bytes": 990,
+      "sha256": "de1dc5af1186174975a8a1a7a8110627236eab0f5b313927075e716bba69db63",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Survival/AskirSurvivalComponent.cpp",
+      "bytes": 669,
+      "sha256": "696bd91a73e3edcb46aa726e5bd9b480d320621649423aebca1b1e2d0aa8f6f3",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Survival/AskirSurvivalComponent.h",
+      "bytes": 1020,
+      "sha256": "0b962827efe80afcbea81de044b422930e7760c882cd49ba39f292ed24c10184",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Tests/AskirCombatRestoreTests.cpp",
+      "bytes": 958,
+      "sha256": "f5596b9777dbf246b76a812d1555bcf30a091233600a0864f03634d36cfec705",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Tests/AskirDornfeldMissionTests.cpp",
+      "bytes": 2127,
+      "sha256": "c2ce545dc8bd57b88766b29ad8e096c20021bb40a04469318b9facbe7fc235ec",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Trade/AskirTradeComponent.cpp",
+      "bytes": 585,
+      "sha256": "bc4b3a0895638cf4ccabe363bce05a51577d942e78c2501aa16f2b88138ac1ae",
+      "kind": "source",
+      "category": 5,
+      "verification": "Quellbefund der V76-Ausgangsbasis; siehe V77_TECHNICAL_AUDIT.md. Unreal-Ausführung blockiert.",
+      "audit_findings": [
+        "B13"
+      ]
+    },
+    {
+      "path": "Source/Askir/Trade/AskirTradeComponent.h",
+      "bytes": 990,
+      "sha256": "4e76c23c3e09d769b474395ce087a348724b470f997135fab5b635ba99c0c4f8",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Travel/AskirTravelComponent.cpp",
+      "bytes": 728,
+      "sha256": "9c851e1576749558db5390b8ed95cf55433da67310e505ca3ce8fb2efb97a87f",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Travel/AskirTravelComponent.h",
+      "bytes": 1015,
+      "sha256": "5c71b70ffe7c6befcf9ea51e34856d3e0a09316387220059d087406a2c7c75ce",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Travel/AskirWorldPortal.cpp",
+      "bytes": 2296,
+      "sha256": "d19292aeeefbe51fa5db3441ea28fdd739f437a3bba2349b78913227c76a58c1",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Travel/AskirWorldPortal.h",
+      "bytes": 917,
+      "sha256": "852da375a9801eedddf3967b2c353972b472aa2ecebd750f0a1f77720f32b26d",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Travel/AskirWorldTravelSubsystem.cpp",
+      "bytes": 619,
+      "sha256": "dbc38cdcd0fb5c1fd4bc3628ae7263156407d739eb9eff6b3115fb4b40ecc1b4",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/Travel/AskirWorldTravelSubsystem.h",
+      "bytes": 906,
+      "sha256": "99f65fd4d4082ab038e959a9eecbdd37389eb434a82ec9f7bda983145bb55f31",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/World/AskirEncounterSpawner.cpp",
+      "bytes": 8244,
+      "sha256": "58d0600b977bbc551b5c3e411ee2adf64855c6d87018c796e9d07c922c4052fc",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/World/AskirEncounterSpawner.h",
+      "bytes": 3736,
+      "sha256": "bfd2bcc91e44db24bb6176661e150d4d80d4ddd2df2cbb0807a78853f80131d0",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/World/AskirEncounterZone.cpp",
+      "bytes": 1959,
+      "sha256": "ad6d21ef8a4abd889281f340997cfb5c7bc1a9c234ee9d0edbbe3e046655ff14",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/World/AskirEncounterZone.h",
+      "bytes": 1961,
+      "sha256": "dce2233ea35affbd2804f65ccd92ef335334e979c376be07e604fe56c9c00554",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/World/AskirPickupActor.cpp",
+      "bytes": 1201,
+      "sha256": "804ba7f269da9b82c1a61936900c48cf15d1b90507c7f64d5d5b294e4b420dab",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/World/AskirPickupActor.h",
+      "bytes": 686,
+      "sha256": "317c8e0aeed6d5ec03493369abba646350da6f5e40595bf6c8c2e437f24337c8",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/World/AskirVillageDirector.cpp",
+      "bytes": 840,
+      "sha256": "29ee145d7d280d2b6b9dbc9784f3f70116fda2d855d34e7506c914223c89482c",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/World/AskirVillageDirector.h",
+      "bytes": 746,
+      "sha256": "81483a629d714cd0f160c66a7abdfec880081d372086b71f1d4ddbc8c290d4af",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/World/AskirWorldClockComponent.cpp",
+      "bytes": 1605,
+      "sha256": "c71db40c54f7b3372fc7b7fc8631a813870af593bedfc92641475e72b8e1af4a",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/World/AskirWorldClockComponent.h",
+      "bytes": 1917,
+      "sha256": "ba93799ef29d8775d674dee17ca5fb12a996da46d4b73c5de8525c6353a1bf21",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/World/AskirWorldEventSubsystem.cpp",
+      "bytes": 503,
+      "sha256": "f2c18901ff28a695efd4ad58a514c3622e7977204885b5b03ad00ba863a68932",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "Source/Askir/World/AskirWorldEventSubsystem.h",
+      "bytes": 952,
+      "sha256": "73871805fcd6b628473250a7e3b81c8659884253361b609830fc79031dff925f",
+      "kind": "source",
+      "category": 2,
+      "verification": "C++/UHT nicht kompiliert"
+    },
+    {
+      "path": "TESTSZENE_ANLEITUNG.md",
+      "bytes": 2217,
+      "sha256": "f3b2b8f2c1d4f9f41a382b5310d1c77f2be41b184078a90b4c860df067e17c6a",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "TEST_RESULTS_V62.txt",
+      "bytes": 472,
+      "sha256": "81b03e84db6f6e7a7c0c52bbd7393d958b353d0d56a9d32b00394f1781070b76",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "TEST_RESULTS_V63.txt",
+      "bytes": 475,
+      "sha256": "b0605874d00f6123d58e2f1b3f1ed3e4b96cce6d5fcc8799bb11a8d57800e8e8",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "TEST_RESULTS_V64.txt",
+      "bytes": 480,
+      "sha256": "4f55c9b507c848e3a8bbba573393364c02ef1743d3c0bdd914fef1677bedf87b",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "Tests/V22_STATIC_REVIEW.md",
+      "bytes": 343,
+      "sha256": "56397efc42f09870fd0aa59d9d8f24fb6ecfd7dba6e58f3fbe9ccbdf61e39dfb",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "Tests/V27_static_checks.json",
+      "bytes": 215,
+      "sha256": "50dca0d52a1b83527ff1b676703df5998650c48f0143c444b96cf6b39f39af98",
+      "kind": "data",
+      "category": 4,
+      "verification": "JSON-Syntax beziehungsweise CSV-Zeilen inventarisiert"
+    },
+    {
+      "path": "Tests/V43_offline_checks.txt",
+      "bytes": 92,
+      "sha256": "a1454907e7b56391ff7a17cdd03e65b9b19efffd113427fb1bbbf433019f8f64",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "Tests/test_ai_v53.py",
+      "bytes": 5080,
+      "sha256": "4ff03179d183bc3518fa5575672aa0471fa064dc10093b662186ce526d5b0f82",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tests/test_boss_animation_v60.py",
+      "bytes": 1551,
+      "sha256": "562418418bc3428e6f8b59538776d98f442dd71ff4a7762e3f09e4c9d476efb7",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tests/test_boss_combat_v61.py",
+      "bytes": 1382,
+      "sha256": "7efb5fa047f9442cd9a1b0d1ad049991bad340f6e480adfc067b440e694376bf",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tests/test_boss_contract_v63.py",
+      "bytes": 1380,
+      "sha256": "187f52717c74f7bb448ebe75372e04f408fe582d40721ab835ee7605333f9faa",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tests/test_boss_events_v57.py",
+      "bytes": 1383,
+      "sha256": "f654fe64097317a58f04a895d8aec22a9a503a5723b777ee5bc02c8821590d81",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tests/test_boss_lifecycle_v64.py",
+      "bytes": 1415,
+      "sha256": "e5891c60e58e9a1e1d496331c465ad8a74e4a9c51ea9d5e280c70b3f66c85b71",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tests/test_boss_loot_v69.py",
+      "bytes": 1101,
+      "sha256": "78e1a063b496b078796b9ab44d340fdb210bffcf36c1c53a5582811d2bc169e2",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tests/test_boss_loot_v70.py",
+      "bytes": 1193,
+      "sha256": "4fe2239d0face377bde6aa2cedd22db8233aaf0fcf3c1e79033965ab3fc23bdf",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tests/test_boss_persistence_v67.py",
+      "bytes": 1033,
+      "sha256": "84989238f8dccf86dbb0c76d22d5523398108150343f92890fa4aefdcc1d6116",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tests/test_boss_phases_v56.py",
+      "bytes": 1362,
+      "sha256": "a2f007d31f8ca6d83d9b9c5629901e29a6bc424d1b063350e252e42cf7b0d514",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tests/test_boss_regression_v62.py",
+      "bytes": 1231,
+      "sha256": "c2482bfa2e5bfb8964a140993d334d65870619b8c4c89809b826f91341f64d78",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tests/test_boss_rewards_v68.py",
+      "bytes": 936,
+      "sha256": "6016a9aa3e3b4a89f5961a6a4bb4108e1ef5e76f7a25f795ea6a852b31ff9893",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tests/test_boss_stagger_v59.py",
+      "bytes": 2146,
+      "sha256": "afd153244ea524ddab857eefa2d8ed04340bee3d5b15a7a5453405d19dc89d3c",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tests/test_boss_windup_v58.py",
+      "bytes": 1108,
+      "sha256": "74bd03d26baa6a2d95ae3b6637cbd7e1db41e80cfcddf042f1a14405291b9cd6",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tests/test_campaign_graph_v72.py",
+      "bytes": 1100,
+      "sha256": "a496a35445bdf92f1a46d6433fe589225c0bde09cc93ab45f9c814e6f58f5e25",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tests/test_combat_pipeline_v55.py",
+      "bytes": 2127,
+      "sha256": "05f1142a022b37d24ecc5dcbe53d99960424c698f4824c335c48aaec18e0ddbe",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tests/test_dornfeld_contract_v73.py",
+      "bytes": 1062,
+      "sha256": "8237beae4b7f39396354216b12bfe12e26da51000a023482ffbf649f26325f75",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tests/test_dornfeld_contract_v75.py",
+      "bytes": 750,
+      "sha256": "0b8b636b08c203198474240646555c3795d64ee84860fb6c265023f8f5b39bde",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tests/test_dornfeld_editor_v74.py",
+      "bytes": 1027,
+      "sha256": "103313a5b44ff3d689aca98fb04b342466cc96ed6e64e7918adf9977508fae3b",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tests/test_dornfeld_persistence_v76.py",
+      "bytes": 1636,
+      "sha256": "eae913f4dbf58e1e996b71d60aeb337aaf91a37c239395aa44be97a7570c9314",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tests/test_encounter_bindings_v54.py",
+      "bytes": 2244,
+      "sha256": "dbc7841ee1fa9876e616aec1d6b21b4547f7adb9ca94e513e4f5abc9185f7ab0",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tests/test_encounter_integration_v49.py",
+      "bytes": 2225,
+      "sha256": "afed2ccf865cfa15bd2e3867e24974c61b6036683d743c975702e8f7e650e133",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tests/test_encounter_lifecycle_v65.py",
+      "bytes": 1143,
+      "sha256": "5e8d69c84bc479a6e49a000f69031af0aa6b98b12feddecec6b74337d8b5a3c3",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tests/test_encounter_persistence_v66.py",
+      "bytes": 1313,
+      "sha256": "393c6bee94586f12cd04164ddfaf41d2f829d5fa63d91345e191493b0f0e5bb8",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tests/test_encounters_v48.py",
+      "bytes": 3059,
+      "sha256": "123822ad869b566eb20c76150757b84002ca2d826127d82f2b8d217c80bacbf4",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tests/test_github_audit_v60.py",
+      "bytes": 1787,
+      "sha256": "bf98a36514a6dd83dbe454b2210a7020726a3c5fd5481bf89847229f6f6228e1",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tests/test_release.py",
+      "bytes": 5352,
+      "sha256": "caf31acb4f76e37f5718b7c09f42478491c1a3387c17489d4e781c53dee6bbd1",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tests/test_v40_equipment_snapshot.py",
+      "bytes": 1043,
+      "sha256": "bf6dc1abb55e985175e2addc497878452597135c677b0a09e7a8343e2491173b",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tests/test_world_manifest_v36.py",
+      "bytes": 1450,
+      "sha256": "66c4fe6aa614d8e6ec93c4eac0cb89ef35f59d0b70cab1c8624ed6a340bb2a7c",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tests/test_world_v39.py",
+      "bytes": 1002,
+      "sha256": "7c53c97c8cecbd2427a4f63fef2ccef4c9d274496e6ddbea694fc1ce63331327",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tests/test_world_v45.py",
+      "bytes": 1918,
+      "sha256": "c1cf95716df8becf9d1cf32a0300e247b8e7d21db10ca91251d46c24d169b877",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tests/test_world_v46.py",
+      "bytes": 1356,
+      "sha256": "377fd0727b779936435b675900f454e960ea7051361da585844839aff46eaf4f",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tests/test_world_v47.py",
+      "bytes": 1547,
+      "sha256": "65f32f04f5691b748144cd3c079bb9f8141337017b30d37658eff8321e8aaf55",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tools/audit_build_readiness_v64.py",
+      "bytes": 1225,
+      "sha256": "fc863ecf5386370aeadc75823f37d53d9840ae470680bef481a6c0118d841e7e",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tools/audit_dornfeld_editor_contract_v75.py",
+      "bytes": 1878,
+      "sha256": "667c2384ee94b392055860f1971ee56dc9e6a5c2bdf47f18eb4b067ed7adaf08",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tools/audit_world_v47.py",
+      "bytes": 3352,
+      "sha256": "9658187f1999b37158d322b6a156e948c2820d096edec4aedbe89f0c4c92e763",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tools/bind_encounter_blueprints_v54.py",
+      "bytes": 3155,
+      "sha256": "607ccd14e4570cd72f5a0bbadf794a117ed02d2d4cc212b67bf99cc2de7cad47",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tools/boss_phase_model_v56.py",
+      "bytes": 757,
+      "sha256": "f363bc276af133e8657f46352e3af0a89b60387e2a874fa342946a5cb288a3c0",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tools/build_detailed_models_v19.py",
+      "bytes": 5903,
+      "sha256": "7c33c705b594174685a61a947b04666f514c2d69162b8fed5233cc8d1bf50294",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tools/build_dornfeld_playground_v74.py",
+      "bytes": 4213,
+      "sha256": "be97c3d957cfdd214a597889b245105599d5406b4de2e81f1bfd51d260d3028f",
+      "kind": "automation_source",
+      "category": 5,
+      "verification": "Quellbefund der V76-Ausgangsbasis; siehe V77_TECHNICAL_AUDIT.md. Unreal-Ausführung blockiert.",
+      "audit_findings": [
+        "B16"
+      ]
+    },
+    {
+      "path": "Tools/build_rigged_characters.py",
+      "bytes": 6246,
+      "sha256": "30d5aa7761490b719efc5f96b07ca083bc245ff55d6760e6d2dcf003b0c89ce5",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tools/configure_combat_profiles_v55.py",
+      "bytes": 2426,
+      "sha256": "21d8bf801a5788159de69e06c96ae7301531f6abdd13ecee1ced7bab79cfe745",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tools/configure_enemy_blueprints_v52.py",
+      "bytes": 2316,
+      "sha256": "ac007b116662a6db9067125ceacc0c666183ab90b462b0ea6f22ec2e78187de1",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tools/configure_individual_ai_v53.py",
+      "bytes": 3616,
+      "sha256": "713bc9258711e767281efcf944eff90dbd29ee7e5bb034dc3e62a71bcd75c8b4",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tools/dornfeld_mission_preflight_v73.py",
+      "bytes": 2029,
+      "sha256": "10305115e066f5057057abd62bde3a1428fc26e12754381cf6a70a22878e25dd",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tools/encounter_runtime_v48.py",
+      "bytes": 1500,
+      "sha256": "185a1a8e6184ef9b66ce97ef9730055179aa0c40fb98a70801e7dd0c02435e65",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tools/export_enhanced_fbx_blender.py",
+      "bytes": 1121,
+      "sha256": "cc09b36c0c1381fbd96baf35f8acd1dee3b441160d2f8740280ea74cf105db8c",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tools/generate_30_individual_levels_v42.py",
+      "bytes": 2817,
+      "sha256": "81c7b178fb371d512f84f9d503493e20dfaad21ade6aee9f2a1445d61404834a",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tools/generate_30_world_blockouts_v36.py",
+      "bytes": 3856,
+      "sha256": "ec7ddc6590db153f624739c82ad71a462513043c6fde7f20bd3fa5cd61540f9b",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tools/generate_blueprints_v50.py",
+      "bytes": 1937,
+      "sha256": "671d4591bef34f09a8c53ebf6b2ceba8e7244537c55b56b06be8726d7f3e2c2a",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tools/import_enhanced_fbx_unreal.py",
+      "bytes": 816,
+      "sha256": "c679571f4d2ee13e1f79df4f971fde91e3e192352eed1fede54ad9c1b7692118",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tools/import_realistic_assets.py",
+      "bytes": 1143,
+      "sha256": "2fab3c997f809bf372b4984350d1428fe3388319e326143db6146d15ad236f3d",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tools/inspect_unreal_world_v47.py",
+      "bytes": 1994,
+      "sha256": "b76caf3c241809b1aca5d92e0d94919a45c6d99beba6ee4356701dcf2a8a51a0",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tools/integrate_30_level_gameplay_v44.py",
+      "bytes": 4088,
+      "sha256": "4444e72f13e689a50bde0564dba2a22c606a179471224ce66a6249ad2591bf14",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tools/integrate_blueprints_v51.py",
+      "bytes": 2914,
+      "sha256": "f8424bfa8b7f9af70c75ab0b464d79db899fc4d4c6d0cb597aceca59eea53fd1",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tools/integrate_encounter_actors_v49.py",
+      "bytes": 4430,
+      "sha256": "e5f2e70ddfdccd29f18291a204fea44075b1808e0a3259160be5144fd73413e1",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tools/place_character_previews.py",
+      "bytes": 758,
+      "sha256": "7bf95ac2655b0ba5df827e70cf5dd537675d4376dda17fcbf296a9cb48321ea3",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tools/place_enhanced_village_unreal.py",
+      "bytes": 945,
+      "sha256": "2897d405b6a48f9e9eacdb587071336eb07a044f43378f4300bf9c3394b2462e",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tools/place_gameplay_anchors_v46.py",
+      "bytes": 1608,
+      "sha256": "a030fdef333fdf04b6a1acca448f6f534cdd05efe3c64f6aaca38534ca624e5b",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tools/place_realistic_assets.py",
+      "bytes": 954,
+      "sha256": "a086bc48aa490fc761c9e3037e492022c41b3ba8c48031992ddf064c58aeeb14",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tools/preflight_world_v45.py",
+      "bytes": 2088,
+      "sha256": "268de467a49ccedf4be17c0c1e145522554b545833d048dd22fb3ee3d16a45e3",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tools/setup_boss_ai_v56.py",
+      "bytes": 2408,
+      "sha256": "cb878f58ebeff057df61b7d80d411c4f3850f59081030fbe4daf8c143711d327",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tools/setup_world_portals_v43.py",
+      "bytes": 1567,
+      "sha256": "7e9c574c71ca0761f378f3622765c842d1e63afc96e2d5603eca77c5b33894ec",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tools/validate_blueprint_integration_v51.py",
+      "bytes": 1146,
+      "sha256": "ae669389f527fafdd8dda9dfab451309b489f869c37870ab2deb9b58c4c99844",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tools/validate_blueprint_v52.py",
+      "bytes": 937,
+      "sha256": "8e2755a886265e88cacefbfcf2f93b740ae7c6c73b49c154f6ce96ebbbfcb6a0",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tools/validate_blueprints_v50.py",
+      "bytes": 697,
+      "sha256": "e6f88e6e0bfb0262d13294d47148e852285c2e26d391fe9828766626fd878df5",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tools/validate_boss_animation_v60.py",
+      "bytes": 745,
+      "sha256": "b08e5154fbaa146afbe5975b3343dc7001103e2c5ab6e680e15fcd35955265d8",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tools/validate_boss_contract_v63.py",
+      "bytes": 1194,
+      "sha256": "5791f2a29047271c911474ec8b90ee31ef895066aea1dea7ae4b37d7f1dc9a3f",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tools/validate_campaign_graph_v72.py",
+      "bytes": 2837,
+      "sha256": "8c94b81227b3ceb7211a7ca255140c017d68f1bb19f30e050a23f33da34398f5",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tools/validate_combat_pipeline_v55.py",
+      "bytes": 1310,
+      "sha256": "a80bcf9f44dbec5529632141be3e58c2c60532173531c6a520007e88b841e253",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tools/validate_encounter_bindings_v54.py",
+      "bytes": 1261,
+      "sha256": "20c039bf31a420193d1b2957032df989bd00846549d48c43b499e321e5ee9638",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tools/validate_encounter_integration_v49.py",
+      "bytes": 1180,
+      "sha256": "f0eca3a6f8547a4dd26427255b2f874db141a363a71c0a6ab6edaeebd94d8866",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tools/validate_encounters_v48.py",
+      "bytes": 2032,
+      "sha256": "7d886a79e6bbaaffcf49d7c13506417e517276bc34ba40e9dba7d8eb1f3a2871",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tools/validate_gameplay_v44.py",
+      "bytes": 970,
+      "sha256": "6ee6155c11b32652df3c2b3d13da32250374ab80da0faa67b15384b73218edff",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tools/validate_release.py",
+      "bytes": 2066,
+      "sha256": "4304b826077793fcec1339149fa221f3afb5e97b9adbaba2a585f36b7b4bcdfb",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tools/validate_v17_project.py",
+      "bytes": 1025,
+      "sha256": "243525686c2c451452e6ccf97b6a422bcc7d2835357b6b7e1eb17fed63cdbccf",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tools/validate_v21.py",
+      "bytes": 936,
+      "sha256": "1d0d2ef2dbec364090ce768965ee1937bf99b970b44525403e1741ffaab8b561",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tools/validate_v25.py",
+      "bytes": 1054,
+      "sha256": "9fe8a03c7ba90307ca6ee02dce3f6ded6da6460b3943d4aafbcad0914800951c",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tools/validate_v28.py",
+      "bytes": 819,
+      "sha256": "a86b2fc725e3e5d5e1c53663e481efff8621d0511e1e2dddd1c9feff241c609d",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tools/validate_world_gameplay_v46.py",
+      "bytes": 1955,
+      "sha256": "b8214066cf9162d9a0db06784c0c8f10be901f262afd60e50b0326f96c0a2704",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tools/validate_world_v37.py",
+      "bytes": 1004,
+      "sha256": "2e809fbb12724c25696b4899f69f0a6d80c3b8838439f0db45d5ecf06288a51c",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tools/validate_world_v39.py",
+      "bytes": 1596,
+      "sha256": "49e6574be800e0856916fdcd5277a686755987dab0e47139e9f4503f353342e9",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "Tools/world_pipeline_v45.py",
+      "bytes": 681,
+      "sha256": "df217580c6aecb25e2057061c89df821b55c9ee133c317a3181be1d72019d032",
+      "kind": "automation_source",
+      "category": 2,
+      "verification": "Python-Syntax geprüft; UE/Blender-Ausführung gesondert"
+    },
+    {
+      "path": "V10_FRAKTIONEN.md",
+      "bytes": 513,
+      "sha256": "9563b52ba6caa74b414528b56989f9202996353468d66a13f22df47d9d591c7d",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "V11_HANDEL.md",
+      "bytes": 681,
+      "sha256": "cc9704cd93a3d3954695382a00994a41c433cee56a414b34da90328a4d7a4075",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "V12_WELTZEIT_EVENTS.md",
+      "bytes": 665,
+      "sha256": "084442fc0c03fb0b387934c6e94cf2d0cd365865ff1feb8b17a0d73ab6a7599c",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "V13_DORF_INTEGRATION.md",
+      "bytes": 405,
+      "sha256": "15b235eed93b6482446673a508d468ca8522d97c8b5d6d5767a02b7cf9f2e0aa",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "V14_INTERAKTION.md",
+      "bytes": 503,
+      "sha256": "2940d61e3caff1cc41e37ef7fe13bd6013d53115e70ecbd44ce06d126ce70f02",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "V15_SAVE_DATEN.md",
+      "bytes": 480,
+      "sha256": "c39f2fecf7c2d4cabab211a2271ecdc8b347e43b116f890f51b9db0533bb6bd2",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "V16_SAVE_LOAD_INTEGRATION.md",
+      "bytes": 529,
+      "sha256": "a0497791835827e7bf692bcca0895c8d21f46a2a86ed4e4f66fc11b43abca110",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "V17_TESTPLAN.md",
+      "bytes": 1956,
+      "sha256": "0a1e1c01fc4a57d28f03083e713bdaab104d82d35c8737967ffa9e4d38bfe900",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "V18_HANDEL_INVENTAR_INTEGRATION.md",
+      "bytes": 1669,
+      "sha256": "cece2018c5749a11cafbc2948a6738e52eea8529cc16e4a1cf979fce316dd887",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "V19_3D_MODELLE_INTEGRATION.md",
+      "bytes": 1915,
+      "sha256": "754e08e6c5ddc9710650d0a72d0bdcb881e90df26e2b514159eaacdfb76685ea",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "V22_UNREAL_TESTPLAN.md",
+      "bytes": 904,
+      "sha256": "9e76415a408cedcc24a3297bf13d718e487ee604d3635390bf5699b414859f37",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "V23_UNREAL_TESTPLAN.md",
+      "bytes": 1089,
+      "sha256": "2287a48881eb41ddbb890b5094f27fa715314d4e5b205de18cd7ec8a55dd8c09",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "V24_UNREAL_TESTPLAN.md",
+      "bytes": 1127,
+      "sha256": "d252b5e9be97cea4a0327a43118cfd963587b251132650565e0d24d186e605bd",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "V25_UNREAL_TESTPLAN.md",
+      "bytes": 967,
+      "sha256": "5d369b6dc9ad31d728e478ce26c072efd7053d6e7d156f0804a050e925430248",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "V26_UNREAL_TESTPLAN.md",
+      "bytes": 775,
+      "sha256": "c9379b1feb5b25d8257af3fb9303890d0bffbcd971244d89535af2d447b6117a",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "V27_UNREAL_TESTPLAN.md",
+      "bytes": 1132,
+      "sha256": "94185c28c5f95fe508adbcc21c3f54a807f5c09966a92caed879a49b8895cd29",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "V29_UNREAL_TESTPLAN.md",
+      "bytes": 1314,
+      "sha256": "3d6d83e4a6c9ef3ebd2fdfcd32365fc2c35a9c50bd1cc10cf096e37f1ea7141f",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "V30_UNREAL_TESTPLAN.md",
+      "bytes": 1023,
+      "sha256": "93759a9c78046267d79ef4f3fee3a25441b8e31d66bdd3f31383171665ee08dc",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "V31_DORNFELD_EDITOR_SETUP.md",
+      "bytes": 2176,
+      "sha256": "1457d7cdb7896bd675b1e02e6b176b14506078ced0538e917e2f89d7d78f784e",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "V32_DORNFELD_EDITOR_SETUP.md",
+      "bytes": 1451,
+      "sha256": "fe4a445f4ad741149181da9311ea1764fbca7f25ef235d272b51995b23ec9a5e",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "V33_UNREAL_TESTPLAN.md",
+      "bytes": 1002,
+      "sha256": "4ecc9b7c463d2f8e95d589c2dfa7e5c65d5be1db315f8448e913d334c7b74d4a",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "V35_UNREAL_TESTPLAN.md",
+      "bytes": 766,
+      "sha256": "cb13a3e3709e172136feb01f2b53c3edcf900535b3804f28304d2e7085698311",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "V36_EDITOR_WORKFLOW.md",
+      "bytes": 1313,
+      "sha256": "0e29893d52b606c7ff5a08ea4e95482ef497d5292b40e69e535ffe8eb64fe01e",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "V37_UNREAL_TESTPLAN.md",
+      "bytes": 1169,
+      "sha256": "c3469329881cf65c1ff8341393155ed688b38b49564c1a2b4e1734b6c93e2184",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "V38_UNREAL_TESTPLAN.md",
+      "bytes": 688,
+      "sha256": "50487e7ca2b073dce6495418acc5f5b47964b148136f3415ce082e48fc15f2e3",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "V8_NPC_TAGESABLAUF.md",
+      "bytes": 555,
+      "sha256": "be7eeb9209dfe006b30dd0711c97d5372c844c90e3ab29cd01fd1d02f0f0d1c7",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    },
+    {
+      "path": "V9_DIALOGSYSTEM.md",
+      "bytes": 473,
+      "sha256": "a48995e4790395aae6b7fa4c94a5f048de1772d07467b4a5bc1ec90f593e67bd",
+      "kind": "documentation_or_metadata",
+      "category": 4,
+      "verification": "Dokumentation; keine Laufzeit-Abnahme"
+    }
+  ],
+  "audit_documents": [
+    "Docs/V77_TECHNICAL_AUDIT.md",
+    "Docs/V77_DEVELOPMENT_PRIORITIES.md"
+  ]
+}

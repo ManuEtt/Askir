@@ -2,6 +2,7 @@
 #include "Engine/World.h"
 #include "AI/AskirBossAIController.h"
 #include "Characters/AskirCharacter.h"
+#include "Characters/AskirNPC.h"
 #include "Combat/AskirCombatComponent.h"
 #include "Animation/AnimInstance.h"
 #include "Animation/AnimMontage.h"
@@ -101,6 +102,11 @@ bool AAskirBossAIController::TryStartAttack(AAskirCharacter* Enemy, AAskirCharac
     GetWorldTimerManager().SetTimer(TelegraphTimer, this, &AAskirBossAIController::ResolveTelegraphedAttack, Windup, false);
     return true;
 }
+void AAskirBossAIController::AbortCombat()
+{
+    CancelTelegraphedAttack();
+    Super::AbortCombat();
+}
 
 void AAskirBossAIController::ResolveTelegraphedAttack()
 {
@@ -110,7 +116,12 @@ void AAskirBossAIController::ResolveTelegraphedAttack()
     AAskirCharacter* Enemy = BossPawn.Get();
     AAskirCharacter* Victim = TelegraphTarget.Get();
     TelegraphTarget.Reset();
-    if (!GetWorld() || !IsValid(Enemy) || !IsValid(Victim) || Enemy->IsDead() || Victim->IsDead() || GetPawn() != Enemy) return;
+    if (!GetWorld() || !IsValid(Enemy) || !IsValid(Victim) || Enemy->IsDead() || Victim->IsDead() || GetPawn() != Enemy
+        || State!=EAskirEnemyState::Attack || !bHostileToPlayer) return;
+    if(const AAskirNPC* NPC=Cast<AAskirNPC>(Enemy))
+        if(!NPC->IsEncounterActive() || NPC->IsStaggered())return;
+    if(FVector::DistSquared(Enemy->GetActorLocation(),HomeLocation)>FMath::Square(FMath::Max(0.f,MaxChaseFromHome))
+        || FVector::DistSquared(Victim->GetActorLocation(),HomeLocation)>FMath::Square(FMath::Max(0.f,MaxChaseFromHome)))return;
     // Recheck range and visibility at the end of the windup: no phantom hits after dodging.
     if (FVector::DistSquared(Enemy->GetActorLocation(), Victim->GetActorLocation()) > FMath::Square(FMath::Max(1.f, AttackDistance))) return;
     FHitResult Hit;

@@ -13,7 +13,7 @@ public:
  UPROPERTY(EditAnywhere,BlueprintReadWrite) FName QuestID=NAME_None;
  UPROPERTY(EditAnywhere,BlueprintReadWrite) FName ObjectiveID=NAME_None;
  UPROPERTY(EditAnywhere,BlueprintReadWrite) int32 Amount=1;
- /** Assign a unique stable ID to each physical pickup to prevent repeat collection after loading. */
+ /** Required for one-shot triggers: a globally unique stable ID survives saving/loading. */
  UPROPERTY(EditAnywhere,BlueprintReadWrite) FName PersistentTriggerID=NAME_None;
  UPROPERTY(EditAnywhere,BlueprintReadWrite) bool bOneShotPerActor=true;
  UPROPERTY(Transient) TSet<TWeakObjectPtr<AActor>> TriggeredActors;

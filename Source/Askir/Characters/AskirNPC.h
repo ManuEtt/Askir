@@ -32,6 +32,11 @@ public:
     virtual void BeginPlay() override;
     virtual void Tick(float DeltaSeconds) override;
 
+    UFUNCTION(BlueprintCallable, Category="Askir|NPC|Encounter") void SetEncounterActive(bool bActive);
+    UFUNCTION(BlueprintPure, Category="Askir|NPC|Encounter") bool IsEncounterActive() const { return bEncounterActive; }
+    /** Restore a saved encounter without replaying death, rewards or quest delegates. */
+    UFUNCTION(BlueprintCallable, Category="Askir|NPC|Encounter") void RestoreEncounterState(bool bDefeated);
+
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Askir|NPC") FText NPCName;
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Askir|Quest") FName DefeatObjectiveID;
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Askir|Rewards", meta=(ClampMin="0")) int32 KillExperience=20;
@@ -87,6 +92,6 @@ private:
     float SearchEndTime = 0.f;
     float StaggerEndTime = -1.f;
     float NextStaggerAllowedTime = 0.f;
-    TWeakObjectPtr<AActor> LastDamageCauser;
     bool bRewardsGranted=false;
+    bool bEncounterActive=true;
 };

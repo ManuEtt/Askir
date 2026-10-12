@@ -24,6 +24,10 @@ public:
  UPROPERTY(BlueprintAssignable,Category="Askir|Quest") FAskirQuestCompleted OnQuestCompleted;
  UFUNCTION(BlueprintCallable,Category="Askir|Quest") bool TurnInQuestWithRewards(UAskirQuestData* Quest);
  UFUNCTION(BlueprintPure,Category="Askir|Quest") bool HasClaimedReward(FName QuestID)const;
+ /** Restore a validated authoritative quest snapshot, without granting rewards. */
+ bool RestoreQuestProgress(FName QuestID,const TArray<FAskirQuestObjective>& Objectives,EAskirQuestState State,bool bRewardClaimed,bool bNotify=true);
+ /** Call after restoring the persisted public fields. Repairs legacy mirrors and invalid entries. */
+ UFUNCTION(BlueprintCallable,Category="Askir|Quest|Save") void NormalizeRestoredState(bool bNotify=true);
  UPROPERTY(EditAnywhere,BlueprintReadWrite,SaveGame,Category="Askir|Quest") TSet<FName> ClaimedRewards;
  /** Persistent unique quest pickups; prevents overlap farming across save/load. */
  UPROPERTY(EditAnywhere,BlueprintReadWrite,SaveGame,Category="Askir|Quest") TSet<FName> ConsumedQuestTriggers;
@@ -36,4 +40,7 @@ public:
  UPROPERTY(EditAnywhere,BlueprintReadWrite,SaveGame,Category="Askir|Quest") TArray<FAskirQuestObjective> ActiveObjectives;
  UPROPERTY(EditAnywhere,BlueprintReadWrite,SaveGame,Category="Askir|Quest") TMap<FName,FAskirQuestObjectiveList> ObjectivesByQuest;
  UPROPERTY(EditAnywhere,BlueprintReadWrite,SaveGame,Category="Askir|Quest") FName LegacyActiveQuestID=NAME_None;
+private:
+ void RefreshLegacyObjectives();
+ bool bRewardTransaction=false;
 };

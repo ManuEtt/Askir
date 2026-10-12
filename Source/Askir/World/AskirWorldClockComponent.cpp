@@ -29,6 +29,19 @@ void UAskirWorldClockComponent::SetClock(int32 Day,int32 Hour)
  OnHourChanged.Broadcast(CurrentDay,CurrentHour);
  CheckEvents();
 }
+void UAskirWorldClockComponent::RestoreClock(int32 Day,int32 Hour,const TMap<FName,int32>& LastTriggeredDays)
+{
+ CurrentDay=FMath::Max(1,Day);
+ CurrentHour=FMath::Clamp(Hour,0,23);
+ AccumulatedSeconds=0.f;
+ for(auto& Event:TimedEvents)
+ {
+  const int32* LastDay=LastTriggeredDays.Find(Event.EventID);
+  Event.LastTriggeredDay=LastDay?*LastDay:-1;
+ }
+ // UI/lighting may refresh; CheckEvents intentionally only runs when time advances.
+ OnHourChanged.Broadcast(CurrentDay,CurrentHour);
+}
 void UAskirWorldClockComponent::CheckEvents()
 {
  for(auto& E:TimedEvents)

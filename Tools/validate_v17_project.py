@@ -5,7 +5,7 @@ import sys
 root=Path(__file__).resolve().parents[1]
 required={
 "V13":["Source/Askir/World/AskirVillageDirector.h","Source/Askir/World/AskirVillageDirector.cpp"],
-"V14":["Source/Askir/NPC/AskirInteractionComponent.h","Source/Askir/NPC/AskirInteractionComponent.cpp"],
+"V14":["Source/Askir/NPC/AskirNPCInteractionComponent.h","Source/Askir/NPC/AskirNPCInteractionComponent.cpp"],
 "V15":["Source/Askir/Save/AskirSaveGame.h"],
 "V16":["Source/Askir/Game/AskirGameMode.cpp"],
 "V17":["V17_TESTPLAN.md"]

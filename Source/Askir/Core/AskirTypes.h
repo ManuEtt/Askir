@@ -13,6 +13,12 @@ struct FAskirEntityID
     bool operator==(const FAskirEntityID& O)const{return Value==O.Value;}
 };
 
+// Map serialization requires reflected struct identity to agree with its C++ hash.
+template<> struct TStructOpsTypeTraits<FAskirEntityID> : TStructOpsTypeTraitsBase2<FAskirEntityID>
+{
+    enum { WithIdenticalViaEquality=true, WithGetTypeHash=true };
+};
+
 USTRUCT(BlueprintType)
 struct FAskirWorldTime
 {
@@ -23,8 +29,15 @@ struct FAskirWorldTime
     UPROPERTY(EditAnywhere,BlueprintReadWrite) int32 Minute=0;
     void AdvanceMinutes(int32 M)
     {
-        Minute+=M; Hour+=Minute/60; Minute%=60;
-        Day+=Hour/24; Hour%=24;
-        Year+=(Day-1)/365; Day=((Day-1)%365)+1;
+        if(M<=0)return;
+        constexpr int64 MinutesPerYear=365LL*24*60;
+        const int64 Current=(int64(FMath::Max(1,Year))-1)*MinutesPerYear+
+            (int64(FMath::Clamp(Day,1,365))-1)*1440+
+            int64(FMath::Clamp(Hour,0,23))*60+FMath::Clamp(Minute,0,59);
+        const int64 Total=FMath::Min(Current+int64(M),int64(MAX_int32)*MinutesPerYear-1);
+        Year=int32(Total/MinutesPerYear)+1;
+        Day=int32((Total%MinutesPerYear)/1440)+1;
+        Hour=int32((Total%1440)/60);
+        Minute=int32(Total%60);
     }
 };

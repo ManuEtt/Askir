@@ -51,6 +51,7 @@ public:
     UFUNCTION(BlueprintPure, Category="Askir|Boss") int32 GetBossPhase() const { return CurrentPhase; }
 protected:
     virtual bool TryStartAttack(AAskirCharacter* Enemy, AAskirCharacter* Victim) override;
+    virtual void AbortCombat() override;
 private:
     UFUNCTION() void ResolveTelegraphedAttack();
     UFUNCTION() void HandleBossDamage(const FAskirDamageInfo& DamageInfo);

@@ -8,5 +8,9 @@ public class Askir : ModuleRules
             "Core","CoreUObject","Engine","InputCore","EnhancedInput",
             "AIModule","NavigationSystem","GameplayTasks","UMG","Slate","SlateCore"
         });
+        if (Target.bBuildEditor)
+        {
+            PrivateDependencyModuleNames.Add("UnrealEd");
+        }
     }
 }

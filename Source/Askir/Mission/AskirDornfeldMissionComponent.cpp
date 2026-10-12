@@ -1,51 +1,130 @@
 #include "Mission/AskirDornfeldMissionComponent.h"
+#include "Mission/AskirDornfeldRules.h"
 #include "Trade/AskirTradeComponent.h"
 #include "Progression/AskirProgressionComponent.h"
+#include "Quest/AskirQuestComponent.h"
+#include "GameFramework/Actor.h"
+
+namespace
+{
+using RulesStage = AskirDornfeldRules::Stage;
+static_assert(static_cast<uint8>(EAskirDornfeldStage::Completed) == static_cast<uint8>(RulesStage::Completed), "Mission stage mapping changed");
+RulesStage ToRules(EAskirDornfeldStage Stage) { return static_cast<RulesStage>(Stage); }
+void NormalizeIDs(TArray<FName>& IDs, int32 Maximum)
+{
+ TArray<FName> Unique;
+ for (FName ID : IDs)
+ {
+  if (!ID.IsNone()) Unique.AddUnique(ID);
+  if (Unique.Num() == Maximum) break;
+ }
+ IDs = MoveTemp(Unique);
+}
+}
 
 UAskirDornfeldMissionComponent::UAskirDornfeldMissionComponent(){PrimaryComponentTick.bCanEverTick=false;}
-void UAskirDornfeldMissionComponent::BroadcastObjective(){OnObjectiveChanged.Broadcast(GetObjectiveText(),State.Stage);}
+void UAskirDornfeldMissionComponent::SyncQuestJournal(bool bNotify)
+{
+ if (!GetOwner()) return;
+ UAskirQuestComponent* Journal = GetOwner()->FindComponentByClass<UAskirQuestComponent>();
+ if (!Journal) return;
+ const FName QuestID(TEXT("DORNFELD_BRUNNEN"));
+ if (State.Stage == EAskirDornfeldStage::NotStarted)
+ {
+  Journal->RestoreQuestProgress(QuestID, {}, EAskirQuestState::Inactive, false,bNotify);
+  return;
+ }
+ TArray<FAskirQuestObjective> Objectives;
+ const auto AddObjective = [&Objectives](const TCHAR* ID, FText Text, int32 Required, int32 Current)
+ {
+  FAskirQuestObjective Objective;
+  Objective.ObjectiveID = FName(ID); Objective.Description = Text;
+  Objective.RequiredCount = Required; Objective.CurrentCount = Current;
+  Objectives.Add(Objective);
+ };
+ AddObjective(TEXT("TALK_ELDER"), NSLOCTEXT("AskirDornfeld", "Accept", "Sprich mit Mara."), 1, 1);
+ AddObjective(TEXT("COLLECT_SHARDS"), NSLOCTEXT("AskirDornfeld", "Collect", "Sammle drei unterschiedliche Brunnenscherben."), 3, State.ShardIDs.Num());
+ AddObjective(TEXT("DEFEAT_GUARDIANS"), NSLOCTEXT("AskirDornfeld", "Defeat", "Besiege die beiden Schattenwächter."), 2, State.GuardianIDs.Num());
+ AddObjective(TEXT("OPEN_CHEST"), NSLOCTEXT("AskirDornfeld", "Open", "Öffne die Kellertruhe."), 1, State.ChestID.IsNone() ? 0 : 1);
+ AddObjective(TEXT("RETURN_TO_ELDER"), NSLOCTEXT("AskirDornfeld", "TurnIn", "Kehre zu Mara zurück."), 1, State.bRewardClaimed ? 1 : 0);
+ Journal->RestoreQuestProgress(QuestID, Objectives, State.bRewardClaimed ? EAskirQuestState::Completed : EAskirQuestState::Active, State.bRewardClaimed,bNotify);
+}
+void UAskirDornfeldMissionComponent::BroadcastObjective()
+{
+ SyncQuestJournal();
+ OnObjectiveChanged.Broadcast(GetObjectiveText(),State.Stage);
+}
 void UAskirDornfeldMissionComponent::SetStage(EAskirDornfeldStage Next)
 {
  if(State.Stage==Next)return;
  State.Stage=Next;
+ SyncQuestJournal();
  OnStageChanged.Broadcast(Next);
- BroadcastObjective();
+ OnObjectiveChanged.Broadcast(GetObjectiveText(),State.Stage);
 }
 bool UAskirDornfeldMissionComponent::TalkToElder()
 {
+ if(bClaimingReward)return false;
  if(State.Stage==EAskirDornfeldStage::NotStarted){SetStage(EAskirDornfeldStage::CollectShards);return true;}
- if(State.Stage!=EAskirDornfeldStage::ReturnToElder||State.bRewardClaimed)return false;
  AActor* Owner=GetOwner();if(!IsValid(Owner))return false;
  UAskirTradeComponent* Wallet=Owner->FindComponentByClass<UAskirTradeComponent>();
  UAskirProgressionComponent* XP=Owner->FindComponentByClass<UAskirProgressionComponent>();
- if(!Wallet||!XP||Wallet->Gold>MAX_int32-90)return false;
- // Mark completion before awarding; duplicate interactions cannot grant a second reward.
+ if(!AskirDornfeldRules::CanClaimReward(ToRules(State.Stage),State.bRewardClaimed,IsValid(Wallet),IsValid(XP),Wallet?Wallet->Gold:0))return false;
+ TGuardValue<bool> ClaimGuard(bClaimingReward,true);
+ // Commit the receipt before any XP/quest/UI delegate can re-enter the turn-in.
  State.bRewardClaimed=true;
- SetStage(EAskirDornfeldStage::Completed);
- Wallet->EarnGold(90);
- XP->AwardExperience(180);
+ State.Stage=EAskirDornfeldStage::Completed;
+ // The SaveGame snapshot must already contain both reward receipts if an XP
+ // listener saves immediately. Publish journal/UI delegates after payout.
+ SyncQuestJournal(false);
+ Wallet->EarnGold(AskirDornfeldRules::GoldReward);
+ XP->AwardExperience(AskirDornfeldRules::ExperienceReward);
+ SyncQuestJournal();
+ if(UAskirQuestComponent* Journal=Owner->FindComponentByClass<UAskirQuestComponent>())
+  Journal->OnQuestCompleted.Broadcast(TEXT("DORNFELD_BRUNNEN"));
+ OnStageChanged.Broadcast(State.Stage);
+ OnObjectiveChanged.Broadcast(GetObjectiveText(),State.Stage);
  return true;
 }
-bool UAskirDornfeldMissionComponent::CollectShard(FName ID)
+bool UAskirDornfeldMissionComponent::CanCollectShard(FName ID) const
 {
- if(State.Stage!=EAskirDornfeldStage::CollectShards||ID.IsNone()||State.ShardIDs.Contains(ID))return false;
+ return AskirDornfeldRules::CanCollectShard(ToRules(State.Stage),!ID.IsNone(),State.ShardIDs.Contains(ID),State.ShardIDs.Num());
+}
+bool UAskirDornfeldMissionComponent::CanDefeatGuardian(FName ID) const
+{
+ return AskirDornfeldRules::CanDefeatGuardian(ToRules(State.Stage),!ID.IsNone(),State.GuardianIDs.Contains(ID),State.GuardianIDs.Num());
+}
+bool UAskirDornfeldMissionComponent::CanOpenMissionChest(FName ID) const
+{
+ return AskirDornfeldRules::CanOpenChest(ToRules(State.Stage),!ID.IsNone());
+}
+bool UAskirDornfeldMissionComponent::CollectShard(FName ID,bool bNotify)
+{
+ if(!CanCollectShard(ID))return false;
  State.ShardIDs.Add(ID);
- if(State.ShardIDs.Num()>=3)SetStage(EAskirDornfeldStage::DefeatGuardians);
+ if(!bNotify)
+ {
+  if(State.ShardIDs.Num()==AskirDornfeldRules::RequiredShards)State.Stage=EAskirDornfeldStage::DefeatGuardians;
+  SyncQuestJournal(false);
+  return true;
+ }
+ if(State.ShardIDs.Num()==AskirDornfeldRules::RequiredShards)SetStage(EAskirDornfeldStage::DefeatGuardians);
  else BroadcastObjective();
  return true;
 }
 bool UAskirDornfeldMissionComponent::DefeatGuardian(FName ID)
 {
- if(State.Stage!=EAskirDornfeldStage::DefeatGuardians||ID.IsNone()||State.GuardianIDs.Contains(ID))return false;
+ if(!CanDefeatGuardian(ID))return false;
  State.GuardianIDs.Add(ID);
- if(State.GuardianIDs.Num()>=2)SetStage(EAskirDornfeldStage::OpenChest);
+ if(State.GuardianIDs.Num()==AskirDornfeldRules::RequiredGuardians)SetStage(EAskirDornfeldStage::OpenChest);
  else BroadcastObjective();
  return true;
 }
-bool UAskirDornfeldMissionComponent::OpenMissionChest(FName ID)
+bool UAskirDornfeldMissionComponent::OpenMissionChest(FName ID,bool bNotify)
 {
- if(State.Stage!=EAskirDornfeldStage::OpenChest||ID.IsNone())return false;
+ if(!CanOpenMissionChest(ID))return false;
  State.ChestID=ID;
+ if(!bNotify){State.Stage=EAskirDornfeldStage::ReturnToElder;SyncQuestJournal(false);return true;}
  SetStage(EAskirDornfeldStage::ReturnToElder);
  return true;
 }
@@ -61,19 +140,29 @@ FText UAskirDornfeldMissionComponent::GetObjectiveText()const
  default:return NSLOCTEXT("AskirDornfeld","Done","Dornfeld ist vorerst sicher.");
  }
 }
-void UAskirDornfeldMissionComponent::RestoreMission(const FAskirDornfeldMissionSave& Saved)
+void UAskirDornfeldMissionComponent::RestoreMission(const FAskirDornfeldMissionSave& Saved,bool bNotify)
 {
- // Saved data is untrusted: normalize IDs and stage so invalid saves cannot multiply rewards.
+ if(bClaimingReward)return;
  State=Saved;
- State.ShardIDs.Remove(NAME_None);
- State.GuardianIDs.Remove(NAME_None);
- TSet<FName> UniqueShards;for(FName ID:State.ShardIDs)UniqueShards.Add(ID);
- TSet<FName> UniqueGuardians;for(FName ID:State.GuardianIDs)UniqueGuardians.Add(ID);
- State.ShardIDs=UniqueShards.Array();State.GuardianIDs=UniqueGuardians.Array();
- if(State.ShardIDs.Num()>3)State.ShardIDs.SetNum(3);
- if(State.GuardianIDs.Num()>2)State.GuardianIDs.SetNum(2);
- if(State.bRewardClaimed)State.Stage=EAskirDornfeldStage::Completed;
- else if(State.Stage==EAskirDornfeldStage::Completed)State.Stage=EAskirDornfeldStage::ReturnToElder;
+ NormalizeIDs(State.ShardIDs,AskirDornfeldRules::RequiredShards);
+ NormalizeIDs(State.GuardianIDs,AskirDornfeldRules::RequiredGuardians);
+ State.Stage=static_cast<EAskirDornfeldStage>(AskirDornfeldRules::NormalizeStage(static_cast<uint8>(Saved.Stage),State.ShardIDs.Num(),State.GuardianIDs.Num(),!State.ChestID.IsNone(),State.bRewardClaimed));
+ if(!State.bRewardClaimed)
+ {
+  if(State.Stage==EAskirDornfeldStage::NotStarted)State.ShardIDs.Reset();
+  if(State.ShardIDs.Num()<AskirDornfeldRules::RequiredShards)State.GuardianIDs.Reset();
+  if(State.GuardianIDs.Num()<AskirDornfeldRules::RequiredGuardians)State.ChestID=NAME_None;
+ }
+ SyncQuestJournal(bNotify);
+ if(bNotify)
+ {
+  OnStageChanged.Broadcast(State.Stage);
+  OnObjectiveChanged.Broadcast(GetObjectiveText(),State.Stage);
+ }
+}
+void UAskirDornfeldMissionComponent::NotifyMissionRestored()
+{
+ SyncQuestJournal();
  OnStageChanged.Broadcast(State.Stage);
- BroadcastObjective();
+ OnObjectiveChanged.Broadcast(GetObjectiveText(),State.Stage);
 }

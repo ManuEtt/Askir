@@ -1,0 +1,40 @@
+{
+  "version": "V77",
+  "started_at": "2026-10-12T09:34:25.137054+00:00",
+  "project": "/workspace/Askir/AskirRPG.uproject",
+  "map": "/Game/Askir/Maps/Dornfeld_V77",
+  "overall_status": "Blockiert",
+  "phases": {
+    "environment": {
+      "status": "Blockiert",
+      "checked_at": "2026-10-12T09:34:25.137132+00:00",
+      "host_platform": "Linux",
+      "engine_root": null,
+      "engine_version": null,
+      "issues": [
+        "Unreal Engine 5.6 nicht gefunden; --engine-root oder UE56_ROOT setzen",
+        "Win64 UBT/Cook/EXE-Prüfung benötigt einen Windows-Host; aktuell Linux"
+      ],
+      "note": "Compiler und SDK werden zusätzlich durch UnrealBuildTool geprüft"
+    },
+    "backup": {
+      "status": "Nicht ausgeführt"
+    },
+    "editor_build": {
+      "status": "Nicht ausgeführt"
+    },
+    "map_generation": {
+      "status": "Nicht ausgeführt"
+    },
+    "automation": {
+      "status": "Nicht ausgeführt"
+    },
+    "windows_package": {
+      "status": "Nicht ausgeführt"
+    },
+    "packaged_startup": {
+      "status": "Nicht ausgeführt"
+    }
+  },
+  "game_acceptance": "Nicht ausgeführt"
+}

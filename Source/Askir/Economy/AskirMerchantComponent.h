@@ -24,7 +24,10 @@ public:
  UPROPERTY(BlueprintAssignable,Category="Askir|Merchant") FAskirShopTrade OnTradeCompleted;
  UFUNCTION(BlueprintPure,Category="Askir|Merchant") int32 GetUnitBuyPrice(FName ItemID,float ReputationMultiplier=1.f) const;
  UFUNCTION(BlueprintPure,Category="Askir|Merchant") int32 GetUnitSellPrice(FName ItemID,float ReputationMultiplier=1.f) const;
- UFUNCTION(BlueprintCallable,Category="Askir|Merchant") bool BuyFromMerchant(FName ItemID,int32 Quantity,int32& PlayerGold,float ReputationMultiplier=1.f);
- UFUNCTION(BlueprintCallable,Category="Askir|Merchant") bool SellToMerchant(FName ItemID,int32 Quantity,int32& PlayerGold,float ReputationMultiplier=1.f);
+ UFUNCTION(BlueprintCallable,Category="Askir|Merchant") bool BuyFromMerchant(FName ItemID,int32 Quantity,UPARAM(ref) int32& PlayerGold,float ReputationMultiplier=1.f);
+ UFUNCTION(BlueprintCallable,Category="Askir|Merchant") bool SellToMerchant(FName ItemID,int32 Quantity,UPARAM(ref) int32& PlayerGold,float ReputationMultiplier=1.f);
  UFUNCTION(BlueprintCallable,Category="Askir|Merchant") void Restock(int32 UnitsPerItem=1);
+private:
+ friend class UAskirTradeBridgeComponent;
+ bool bTransactionInProgress=false;
 };

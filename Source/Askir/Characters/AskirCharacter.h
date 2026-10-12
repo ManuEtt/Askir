@@ -17,6 +17,10 @@ class UAskirExplorationComponent;
 class UAskirCraftingComponent;
 class UAskirNeedsComponent;
 class UAskirAnimationStateComponent;
+class UInputAction;
+class UInputMappingContext;
+class UStaticMeshComponent;
+struct FInputActionValue;
 UCLASS()
 class ASKIR_API AAskirCharacter:public ACharacter
 {
@@ -26,6 +30,12 @@ public:
     virtual void BeginPlay()override;
     virtual void Tick(float DeltaSeconds)override;
     virtual void SetupPlayerInputComponent(UInputComponent*)override;
+    virtual void EndPlay(const EEndPlayReason::Type EndPlayReason) override;
+    /** Restore collision, movement and transient combat state after the saved health is applied. */
+    UFUNCTION(BlueprintCallable, Category="Askir|Save") void RestoreAfterLoad();
+    UFUNCTION(BlueprintCallable, Category="Askir|Combat|Timing") void ResolvePendingAttackImpact();
+    UFUNCTION(BlueprintPure, Category="Askir|Combat|Timing") bool HasPendingAttack() const {return bPendingAttack;}
+    UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Askir|Visual") TObjectPtr<UStaticMeshComponent> ProxyVisual;
     UPROPERTY(VisibleAnywhere) TObjectPtr<USpringArmComponent> CameraBoom;
     UPROPERTY(VisibleAnywhere) TObjectPtr<UCameraComponent> Camera;
     UPROPERTY(VisibleAnywhere) TObjectPtr<UAskirCombatComponent> CombatComponent;
@@ -143,12 +153,24 @@ protected:
     bool SpendStamina(float Cost);
 private:
     // V6: a single damage window per committed attack, opened by an AnimNotify or timer fallback.
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Askir|Combat|Timing") float LightImpactDelay=0.22f;
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Askir|Combat|Timing") float HeavyImpactDelay=0.48f;
-    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Askir|Combat|Timing") bool bUseAnimationNotifyForImpact=false;
-    UFUNCTION(BlueprintCallable, Category="Askir|Combat|Timing") void ResolvePendingAttackImpact();
-    UFUNCTION(BlueprintPure, Category="Askir|Combat|Timing") bool HasPendingAttack() const {return bPendingAttack;}
-    UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly, Category="Askir|Combat|Timing") bool bPendingAttack=false;
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Askir|Combat|Timing", meta=(AllowPrivateAccess="true")) float LightImpactDelay=0.22f;
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Askir|Combat|Timing", meta=(AllowPrivateAccess="true")) float HeavyImpactDelay=0.48f;
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Askir|Combat|Timing", meta=(AllowPrivateAccess="true")) bool bUseAnimationNotifyForImpact=false;
+    UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly, Category="Askir|Combat|Timing", meta=(AllowPrivateAccess="true")) bool bPendingAttack=false;
+    void InitializeEnhancedInput();
+    void InputMoveForward(const FInputActionValue& Value);
+    void InputMoveRight(const FInputActionValue& Value);
+    void InputTurn(const FInputActionValue& Value);
+    void InputLookUp(const FInputActionValue& Value);
+    void InputJump();
+    void InputStopJump();
+    void InputPause();
+    void InputInventory();
+    void InputJournal();
+    UPROPERTY(Transient) TObjectPtr<UInputMappingContext> RuntimeInputMapping;
+    UPROPERTY(Transient) TArray<TObjectPtr<UInputAction>> RuntimeInputActions;
+    bool bSprinting=false;
+    float NextAttackAllowedTime=-1000.f;
     float PendingDamageMultiplier=1.f;
     bool bPendingHeavyAttack=false;
     FTimerHandle PendingImpactTimer;

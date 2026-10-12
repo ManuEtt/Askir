@@ -2,41 +2,59 @@
 #include "Economy/AskirMerchantComponent.h"
 #include "Inventory/AskirInventoryComponent.h"
 #include "Inventory/AskirItemData.h"
+#include "Core/AskirCheckedMath.h"
+
 UAskirTradeBridgeComponent::UAskirTradeBridgeComponent(){PrimaryComponentTick.bCanEverTick=false;}
 UAskirItemData* UAskirTradeBridgeComponent::FindItem(FName ItemID) const
 {
- for(const auto& Entry:Catalog)if(Entry.ItemID==ItemID)return Entry.Item;
- return nullptr;
+    if(ItemID.IsNone())return nullptr;
+    UAskirItemData* Item=nullptr;
+    for(const auto& Entry:Catalog)if(Entry.ItemID==ItemID)
+    {
+        // Ambiguous IDs must never select one item while pricing another.
+        if(Item||!IsValid(Entry.Item)||Entry.Item->ItemID!=ItemID)return nullptr;
+        Item=Entry.Item;
+    }
+    return Item;
 }
 bool UAskirTradeBridgeComponent::BuyItem(UAskirMerchantComponent* Merchant,UAskirInventoryComponent* PlayerInventory,FName ItemID,int32 Quantity,int32& PlayerGold,float PriceMultiplier)
 {
- if(!IsValid(Merchant)||!IsValid(PlayerInventory)||Quantity<=0||PlayerGold<0||!FMath::IsFinite(PriceMultiplier))return false;
- UAskirItemData* Item=FindItem(ItemID);
- if(!IsValid(Item))return false;
- const int32 BuyUnit=Merchant->GetUnitBuyPrice(ItemID,PriceMultiplier);
- const int64 BuyTotal=int64(BuyUnit)*Quantity;
- if(BuyUnit<=0||BuyTotal>MAX_int32||int64(Merchant->MerchantGold)+BuyTotal>MAX_int32||BuyTotal>PlayerGold)return false;
- // Commit the merchant trade only after validating the catalog and inventory target.
- if(!Merchant->BuyFromMerchant(ItemID,Quantity,PlayerGold,PriceMultiplier))return false;
- if(PlayerInventory->AddItem(Item,Quantity))return true;
- // Compensating rollback; avoid relying on the merchant sell-back price.
- const int32 Unit=Merchant->GetUnitBuyPrice(ItemID,PriceMultiplier);
- const int64 Refund=int64(Unit)*Quantity;
- for(auto& Entry:Merchant->Inventory)if(Entry.ItemID==ItemID){Entry.Stock+=Quantity;break;}
- Merchant->MerchantGold-=int32(Refund);PlayerGold+=int32(Refund);
- return false;
+    if(!IsValid(Merchant)||!IsValid(PlayerInventory)||Merchant->bTransactionInProgress||Quantity<=0||PlayerGold<0||Merchant->MerchantGold<0||!FMath::IsFinite(PriceMultiplier))return false;
+    UAskirItemData* Item=FindItem(ItemID);
+    if(!IsValid(Item))return false;
+    FAskirShopItem* Stock=nullptr;
+    for(auto& Entry:Merchant->Inventory)if(Entry.ItemID==ItemID){if(Stock)return false;Stock=&Entry;}
+    int32 Total=0;
+    if(!Stock||Stock->Stock<Quantity||!AskirCheckedMath::TryPositiveProduct(Merchant->GetUnitBuyPrice(ItemID,PriceMultiplier),Quantity,Total)||Total>PlayerGold||!AskirCheckedMath::CanCredit(Merchant->MerchantGold,Total))return false;
+    FAskirInventoryEntry Added;Added.Item=Item;Added.Quantity=Quantity;
+    TArray<FAskirInventoryEntry> Prepared;
+    if(!PlayerInventory->PrepareExchange({}, {Added},Prepared))return false;
+    // No delegate runs until all three ledgers have committed; callbacks cannot reenter.
+    TGuardValue<bool> MerchantGuard(Merchant->bTransactionInProgress,true);
+    TGuardValue<bool> InventoryGuard(PlayerInventory->bTransactionInProgress,true);
+    PlayerInventory->Items=MoveTemp(Prepared);
+    Stock->Stock-=Quantity;PlayerGold-=Total;Merchant->MerchantGold+=Total;
+    PlayerInventory->OnInventoryChanged.Broadcast();
+    Merchant->OnTradeCompleted.Broadcast(ItemID,Quantity,Total);
+    return true;
 }
 bool UAskirTradeBridgeComponent::SellItem(UAskirMerchantComponent* Merchant,UAskirInventoryComponent* PlayerInventory,FName ItemID,int32 Quantity,int32& PlayerGold,float PriceMultiplier)
 {
- if(!IsValid(Merchant)||!IsValid(PlayerInventory)||Quantity<=0||PlayerGold<0||!FMath::IsFinite(PriceMultiplier))return false;
- UAskirItemData* Item=FindItem(ItemID);
- if(!IsValid(Item)||!PlayerInventory->HasItem(Item,Quantity))return false;
- const int32 Unit=Merchant->GetUnitSellPrice(ItemID,PriceMultiplier);
- const int64 Total=int64(Unit)*Quantity;
- if(Unit<=0||Total>Merchant->MerchantGold||Total>MAX_int32||int64(PlayerGold)+Total>MAX_int32)return false;
- if(!PlayerInventory->RemoveItem(Item,Quantity))return false;
- if(Merchant->SellToMerchant(ItemID,Quantity,PlayerGold,PriceMultiplier))return true;
- // Merchant rejected transaction: restore the player's item stack.
- PlayerInventory->AddItem(Item,Quantity);
- return false;
+    if(!IsValid(Merchant)||!IsValid(PlayerInventory)||Merchant->bTransactionInProgress||Quantity<=0||PlayerGold<0||Merchant->MerchantGold<0||!FMath::IsFinite(PriceMultiplier))return false;
+    UAskirItemData* Item=FindItem(ItemID);
+    if(!IsValid(Item))return false;
+    FAskirShopItem* Stock=nullptr;
+    for(auto& Entry:Merchant->Inventory)if(Entry.ItemID==ItemID){if(Stock)return false;Stock=&Entry;}
+    int32 Total=0;
+    if(!Stock||!AskirCheckedMath::TryPositiveProduct(Merchant->GetUnitSellPrice(ItemID,PriceMultiplier),Quantity,Total)||Total>Merchant->MerchantGold||!AskirCheckedMath::CanCredit(PlayerGold,Total)||!AskirCheckedMath::CanCredit(Stock->Stock,Quantity))return false;
+    FAskirInventoryEntry Removed;Removed.Item=Item;Removed.Quantity=Quantity;
+    TArray<FAskirInventoryEntry> Prepared;
+    if(!PlayerInventory->PrepareExchange({Removed}, {},Prepared))return false;
+    TGuardValue<bool> MerchantGuard(Merchant->bTransactionInProgress,true);
+    TGuardValue<bool> InventoryGuard(PlayerInventory->bTransactionInProgress,true);
+    PlayerInventory->Items=MoveTemp(Prepared);
+    Stock->Stock+=Quantity;PlayerGold+=Total;Merchant->MerchantGold-=Total;
+    PlayerInventory->OnInventoryChanged.Broadcast();
+    Merchant->OnTradeCompleted.Broadcast(ItemID,-Quantity,Total);
+    return true;
 }

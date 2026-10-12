@@ -1,0 +1,38 @@
+{
+  "scope": "V77 economy and reflection source changes",
+  "native_checked_math": {
+    "status": "Bestanden",
+    "assertions": 511,
+    "source": "Tests/cpp/test_checked_math_v77.cpp",
+    "production_header": "Source/Askir/Core/AskirCheckedMath.h",
+    "compiler_options": [
+      "-std=c++17",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "-fsanitize=undefined"
+    ]
+  },
+  "v17_structure_validator": {
+    "status": "Bestanden",
+    "source": "Tools/validate_v17_project.py",
+    "scope": "source structure only"
+  },
+  "unreal_automation_tests": {
+    "status": "Blockiert",
+    "reason": "Unreal Engine 5.6 not installed",
+    "names": [
+      "Askir.Inventory.AtomicExchange",
+      "Askir.Economy.AtomicInventoryTrade",
+      "Askir.Crafting.AtomicRecipe"
+    ]
+  },
+  "uht_and_unreal_cpp_build": {
+    "status": "Blockiert",
+    "reason": "UE5.6 UHT/UBT unavailable"
+  },
+  "windows_build": {
+    "status": "Blockiert",
+    "reason": "UE5.6 and Windows SDK/build environment unavailable"
+  }
+}

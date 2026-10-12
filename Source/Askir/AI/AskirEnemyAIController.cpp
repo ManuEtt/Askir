@@ -1,5 +1,6 @@
 #include "AI/AskirEnemyAIController.h"
 #include "Characters/AskirCharacter.h"
+#include "Characters/AskirNPC.h"
 #include "Combat/AskirCombatComponent.h"
 #include "NavigationSystem.h"
 #include "GameFramework/CharacterMovementComponent.h"
@@ -15,14 +16,39 @@ void AAskirEnemyAIController::OnPossess(APawn* InPawn)
     Super::OnPossess(InPawn);
     ControlledEnemy = Cast<AAskirCharacter>(InPawn);
     if (ControlledEnemy) HomeLocation = ControlledEnemy->GetActorLocation();
+    Target=nullptr;
+    LastSeenTime=-10000.f;
+    LastAttackTime=-10000.f;
+    PatrolIndex=0;
+    ClearFocus(EAIFocusPriority::Gameplay);
     State = EAskirEnemyState::Patrol;
     DecisionElapsed = DecisionInterval;
+}
+void AAskirEnemyAIController::OnUnPossess()
+{
+    if(IsValid(ControlledEnemy))ControlledEnemy->AbortPendingAttack();
+    Target=nullptr;
+    ControlledEnemy=nullptr;
+    StopMovement();
+    ClearFocus(EAIFocusPriority::Gameplay);
+    Super::OnUnPossess();
 }
 void AAskirEnemyAIController::SetState(EAskirEnemyState NewState)
 {
     if (State == NewState) return;
+    const bool bLeavingAttack=State==EAskirEnemyState::Attack && NewState!=EAskirEnemyState::Attack;
     State = NewState;
     if (State == EAskirEnemyState::Dead || State == EAskirEnemyState::Attack) StopMovement();
+    if(State==EAskirEnemyState::Dead||State==EAskirEnemyState::ReturnHome||State==EAskirEnemyState::Retreat)
+    {
+        AbortCombat();
+        ClearFocus(EAIFocusPriority::Gameplay);
+    }
+    else if(bLeavingAttack)AbortCombat();
+}
+void AAskirEnemyAIController::AbortCombat()
+{
+    if(IsValid(ControlledEnemy))ControlledEnemy->AbortPendingAttack();
 }
 void AAskirEnemyAIController::MoveToPoint(const FVector& Destination, float AcceptanceRadius)
 {
@@ -36,7 +62,7 @@ void AAskirEnemyAIController::SetPatrolPoints(const TArray<FVector>& WorldPoints
 }
 void AAskirEnemyAIController::ForceInvestigate(FVector WorldLocation)
 {
-    if (!ControlledEnemy || ControlledEnemy->IsDead()) return;
+    if (!ControlledEnemy || ControlledEnemy->IsDead() || !GetWorld()) return;
     LastKnownTargetLocation = WorldLocation;
     LastSeenTime = GetWorld()->GetTimeSeconds();
     SetState(EAskirEnemyState::Investigate);
@@ -53,7 +79,7 @@ void AAskirEnemyAIController::HearNoise(AActor* InstigatorActor, FVector NoiseLo
 }
 bool AAskirEnemyAIController::CanSeeTarget(const AAskirCharacter* Candidate) const
 {
-    if (!ControlledEnemy || !Candidate || Candidate->IsDead()) return false;
+    if (!ControlledEnemy || !Candidate || Candidate->IsDead() || !GetWorld()) return false;
     const FVector Origin = ControlledEnemy->GetActorLocation() + FVector(0,0,60);
     const FVector End = Candidate->GetActorLocation() + FVector(0,0,60);
     const FVector Delta = End - Origin;
@@ -80,6 +106,17 @@ void AAskirEnemyAIController::Think()
 {
     if (!ControlledEnemy || !GetWorld()) return;
     if (ControlledEnemy->IsDead()) { Target = nullptr; SetState(EAskirEnemyState::Dead); return; }
+    if(const AAskirNPC* NPC=Cast<AAskirNPC>(ControlledEnemy))
+    {
+        if(!NPC->IsEncounterActive() || NPC->IsStaggered())
+        {
+            Target=nullptr;
+            AbortCombat();
+            StopMovement();
+            ClearFocus(EAIFocusPriority::Gameplay);
+            return;
+        }
+    }
     const float Now = GetWorld()->GetTimeSeconds();
     const FVector MyPos = ControlledEnemy->GetActorLocation();
     if (FVector::DistSquared(MyPos, HomeLocation) > FMath::Square(MaxChaseFromHome))
@@ -93,7 +130,14 @@ void AAskirEnemyAIController::Think()
         else MoveToPoint(HomeLocation);
         return;
     }
-    if (ControlledEnemy->CombatComponent && ControlledEnemy->CombatComponent->GetHealthPercent() <= RetreatHealthFraction && IsValid(Target.Get()))
+    if(IsValid(Target.Get()) && FVector::DistSquared(Target->GetActorLocation(),HomeLocation)>FMath::Square(FMath::Max(0.f,MaxChaseFromHome)))
+    {
+        Target=nullptr;
+        SetState(EAskirEnemyState::ReturnHome);
+        MoveToPoint(HomeLocation);
+        return;
+    }
+    if (ControlledEnemy->CombatComponent && ControlledEnemy->CombatComponent->GetHealthPercent() <= RetreatHealthFraction && IsValid(Target.Get()) && !Target->IsDead() && bHostileToPlayer)
     {
         SetState(EAskirEnemyState::Retreat);
         const FVector Away = (MyPos - Target->GetActorLocation()).GetSafeNormal();
@@ -101,7 +145,8 @@ void AAskirEnemyAIController::Think()
         return;
     }
     AAskirCharacter* Player = Cast<AAskirCharacter>(UGameplayStatics::GetPlayerCharacter(this, 0));
-    if (bHostileToPlayer && Player && Player != ControlledEnemy && CanSeeTarget(Player))
+    if (bHostileToPlayer && Player && Player != ControlledEnemy && CanSeeTarget(Player)
+        && FVector::DistSquared(Player->GetActorLocation(),HomeLocation)<=FMath::Square(FMath::Max(0.f,MaxChaseFromHome)))
     {
         Target = Player;
         LastSeenTime = Now;

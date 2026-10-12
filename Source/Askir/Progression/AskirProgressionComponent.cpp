@@ -2,7 +2,7 @@
 UAskirProgressionComponent::UAskirProgressionComponent(){PrimaryComponentTick.bCanEverTick=false;}
 int32 UAskirProgressionComponent::LevelThreshold(int32 Level)
 {
- const int64 L=FMath::Max(1,Level);
+ const int64 L=FMath::Clamp(Level,1,100);
  return static_cast<int32>(FMath::Min<int64>(INT32_MAX,100LL*L*L));
 }
 int32 UAskirProgressionComponent::ExperienceToNextLevel() const
@@ -12,7 +12,7 @@ void UAskirProgressionComponent::AwardExperience(int32 Amount)
  if(Amount<=0)return;
  Progress.Experience=static_cast<int32>(FMath::Min<int64>(INT32_MAX,static_cast<int64>(Progress.Experience)+Amount));
  while(Progress.Level<100 && Progress.Experience>=LevelThreshold(Progress.Level))
- {Progress.Experience-=LevelThreshold(Progress.Level);++Progress.Level;++Progress.UnspentPoints;}
+ {Progress.Experience-=LevelThreshold(Progress.Level);++Progress.Level;if(Progress.UnspentPoints<MAX_int32)++Progress.UnspentPoints;}
  OnProgressionChanged.Broadcast();
 }
 bool UAskirProgressionComponent::SpendAttributePoint(EAskirAttribute Attribute)

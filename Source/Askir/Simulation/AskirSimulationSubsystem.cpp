@@ -3,7 +3,7 @@ void UAskirSimulationSubsystem::AdvanceSimulation(int32 Minutes)
 {
     if(Minutes<=0)return;
     State.Time.AdvanceMinutes(Minutes);
-    ++State.SimulationTick;
+    if(State.SimulationTick<MAX_int64)++State.SimulationTick;
     OnSimulationAdvanced.Broadcast();
 }
 void UAskirSimulationSubsystem::RestoreWorldState(const FAskirWorldState& SavedState)

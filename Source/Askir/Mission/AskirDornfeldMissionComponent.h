@@ -28,9 +28,12 @@ public:
  UPROPERTY(BlueprintAssignable,Category="Askir|Dornfeld") FAskirDornfeldObjectiveChanged OnObjectiveChanged;
  UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Askir|Dornfeld") FAskirDornfeldMissionSave State;
  UFUNCTION(BlueprintCallable,Category="Askir|Dornfeld") bool TalkToElder();
- UFUNCTION(BlueprintCallable,Category="Askir|Dornfeld") bool CollectShard(FName UniqueShardID);
+ UFUNCTION(BlueprintCallable,Category="Askir|Dornfeld") bool CollectShard(FName UniqueShardID,bool bNotify=true);
  UFUNCTION(BlueprintCallable,Category="Askir|Dornfeld") bool DefeatGuardian(FName UniqueGuardianID);
- UFUNCTION(BlueprintCallable,Category="Askir|Dornfeld") bool OpenMissionChest(FName UniqueChestID);
+ UFUNCTION(BlueprintCallable,Category="Askir|Dornfeld") bool OpenMissionChest(FName UniqueChestID,bool bNotify=true);
+ UFUNCTION(BlueprintPure,Category="Askir|Dornfeld") bool CanCollectShard(FName UniqueShardID) const;
+ UFUNCTION(BlueprintPure,Category="Askir|Dornfeld") bool CanDefeatGuardian(FName UniqueGuardianID) const;
+ UFUNCTION(BlueprintPure,Category="Askir|Dornfeld") bool CanOpenMissionChest(FName UniqueChestID) const;
  UFUNCTION(BlueprintPure,Category="Askir|Dornfeld") FText GetObjectiveText() const;
  /** Call after a late-created HUD subscribes to OnObjectiveChanged. */
  UFUNCTION(BlueprintCallable,Category="Askir|Dornfeld") void RefreshObjective() { BroadcastObjective(); }
@@ -38,8 +41,12 @@ public:
  UFUNCTION(BlueprintPure,Category="Askir|Dornfeld") int32 GetShardCount() const {return State.ShardIDs.Num();}
  UFUNCTION(BlueprintPure,Category="Askir|Dornfeld") int32 GetGuardianCount() const {return State.GuardianIDs.Num();}
  UFUNCTION(BlueprintPure,Category="Askir|Dornfeld") FAskirDornfeldMissionSave CaptureMission() const {return State;}
- UFUNCTION(BlueprintCallable,Category="Askir|Dornfeld") void RestoreMission(const FAskirDornfeldMissionSave& Saved);
+ UFUNCTION(BlueprintCallable,Category="Askir|Dornfeld") void RestoreMission(const FAskirDornfeldMissionSave& Saved,bool bNotify=true);
+ /** Notify listeners once the entire save snapshot has been installed. */
+ UFUNCTION(BlueprintCallable,Category="Askir|Dornfeld") void NotifyMissionRestored();
 private:
  void SetStage(EAskirDornfeldStage Next);
  void BroadcastObjective();
+ void SyncQuestJournal(bool bNotify=true);
+ bool bClaimingReward=false;
 };

@@ -29,6 +29,8 @@ public:
  UPROPERTY(BlueprintAssignable,Category="Askir|World") FAskirWorldEvent OnWorldEvent;
  UFUNCTION(BlueprintCallable,Category="Askir|World") void AdvanceHours(int32 Hours);
  UFUNCTION(BlueprintCallable,Category="Askir|World") void SetClock(int32 Day,int32 Hour);
+ /** Restore without replaying scheduled gameplay events. */
+ void RestoreClock(int32 Day,int32 Hour,const TMap<FName,int32>& LastTriggeredDays);
  UFUNCTION(BlueprintPure,Category="Askir|World") float GetDaylightFactor() const;
 private:
  float AccumulatedSeconds=0.f;

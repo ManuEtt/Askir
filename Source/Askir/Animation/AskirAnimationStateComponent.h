@@ -32,6 +32,7 @@ public:
     UFUNCTION(BlueprintCallable,Category="Askir|Animation") void SetBlocking(bool bEnabled);
     UFUNCTION(BlueprintCallable,Category="Askir|Animation") void RegisterHit();
     UFUNCTION(BlueprintCallable,Category="Askir|Animation") void RegisterDeath();
+    UFUNCTION(BlueprintCallable,Category="Askir|Animation") void ResetAfterLoad(bool bDead);
     UFUNCTION(BlueprintCallable,Category="Askir|Animation") void FinishAction();
     UFUNCTION(BlueprintPure,Category="Askir|Animation") bool IsCombatAction() const;
 private:

@@ -23,6 +23,8 @@ public:
  UPROPERTY(EditAnywhere, BlueprintReadOnly, Category="Askir|Loot") float MaximumDistance=225.f;
  /** Unique, persistent ID within a map. Leave None for non-persistent spawned loot. */
  UPROPERTY(EditInstanceOnly, BlueprintReadOnly, Category="Askir|Save") FName PersistentLootID=NAME_None;
+ /** Stage-gated Dornfeld shard. Unique mission ID; requires the actual item transfer. */
+ UPROPERTY(EditInstanceOnly, BlueprintReadWrite, Category="Askir|Dornfeld") FName DornfeldShardID=NAME_None;
  UFUNCTION(BlueprintCallable, Category="Askir|Save") void RestoreLootState(bool bConsumed);
  UPROPERTY(BlueprintAssignable, Category="Askir|Loot") FAskirLootCollected OnCollected;
  UFUNCTION(BlueprintPure, Category="Askir|Loot") bool IsCollected() const {return bCollected;}
@@ -30,4 +32,5 @@ public:
  virtual FText GetInteractionText_Implementation() const override;
 protected:
  UPROPERTY(VisibleInstanceOnly, BlueprintReadOnly, Category="Askir|Loot") bool bCollected=false;
+ bool bInteractionInProgress=false;
 };

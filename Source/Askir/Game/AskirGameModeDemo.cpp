@@ -6,12 +6,16 @@
 #include "Progression/AskirProgressionComponent.h"
 #include "Camp/AskirCampComponent.h"
 #include "Engine/StaticMeshActor.h"
+#include "Engine/StaticMesh.h"
+#include "Game/AskirPlayerController.h"
 #include "Components/StaticMeshComponent.h"
+#include "Components/BoxComponent.h"
+#include "Components/CapsuleComponent.h"
 #include "GameFramework/PlayerStart.h"
+#include "GameFramework/PlayerController.h"
 #include "Engine/Engine.h"
 #include "Engine/World.h"
 #include "Kismet/GameplayStatics.h"
-#include "UObject/ConstructorHelpers.h"
 #include "EngineUtils.h"
 #include "Travel/AskirWorldTravelSubsystem.h"
 #include "Travel/AskirWorldPortal.h"
@@ -21,47 +25,91 @@
 void AAskirGameMode::BeginPlay()
 {
  Super::BeginPlay();
- const FString Map=UGameplayStatics::GetCurrentLevelName(this,true);
- if(!Map.StartsWith(TEXT("L")))BuildDemoScene();
- if(UGameInstance* Instance=GetGameInstance())
+ if(bEnableLegacyDemo)BuildDemoScene();
+ // Wait for spawned pawns and actor BeginPlay hooks, rather than consuming the
+ // pending request before a player exists in the destination world.
+ GetWorldTimerManager().SetTimerForNextTick(this,&AAskirGameMode::RestorePendingArrival);
+ GetWorldTimerManager().SetTimerForNextTick(this,&AAskirGameMode::LogRuntimeReadiness);
+}
+void AAskirGameMode::LogRuntimeReadiness()
+{
+ auto* Player=Cast<AAskirCharacter>(UGameplayStatics::GetPlayerPawn(this,0));
+ if(Player&&Player->IsPlayerControlled())
+  UE_LOG(LogTemp,Display,TEXT("ASKIR_V77_RUNTIME_READY map=%s player=%s"),*UGameplayStatics::GetCurrentLevelName(this,true),*Player->GetName());
+ else UE_LOG(LogTemp,Error,TEXT("ASKIR_V77_RUNTIME_BLOCKED: player or native controller not initialized"));
+}
+
+void AAskirGameMode::RestorePendingArrival()
+{
+ UGameInstance* Instance=GetGameInstance();
+ auto* State=Instance?Instance->GetSubsystem<UAskirWorldTravelSubsystem>():nullptr;
+ const FName Map(*UGameplayStatics::GetCurrentLevelName(this,true));
+ if(!State || State->PendingDestination!=Map || !State->PendingSnapshot)return;
+ auto* Player=Cast<AAskirCharacter>(UGameplayStatics::GetPlayerPawn(this,0));
+ if(!Player)
  {
-  if(UAskirWorldTravelSubsystem* State=Instance->GetSubsystem<UAskirWorldTravelSubsystem>())
+  if(++ArrivalRestoreAttempts<120)GetWorldTimerManager().SetTimerForNextTick(this,&AAskirGameMode::RestorePendingArrival);
+  else UE_LOG(LogTemp,Error,TEXT("Askir arrival blocked: player never spawned in %s"),*Map.ToString());
+  return;
+ }
+ FVector Arrival=Player->GetActorLocation();
+ FRotator Rotation=Player->GetActorRotation();
+ const bool bRestorePosition=State->bPendingRestorePosition;
+ if(!bRestorePosition)
+ {
+  const float Radius=Player->GetCapsuleComponent()->GetScaledCapsuleRadius();
+  const float Height=Player->GetCapsuleComponent()->GetScaledCapsuleHalfHeight();
+  const auto IsOutsidePortals=[&](const FVector& Candidate)
   {
-   FName FromMap;
-   if(State->ConsumeArrival(FName(*Map),FromMap))
+   for(TActorIterator<AAskirWorldPortal> It(GetWorld());It;++It)
+    if(It->Trigger && It->Trigger->Bounds.GetBox().ExpandBy(FVector(Radius,Radius,Height)).IsInsideOrOn(Candidate))return false;
+   return true;
+  };
+  bool bFound=false;
+  for(TActorIterator<AAskirWorldPortal> It(GetWorld());It;++It)
+  {
+   const bool bMatches=State->PendingArrivalPortalID.IsNone()?It->DestinationMap==State->PendingArrivalFrom:It->PortalID==State->PendingArrivalPortalID;
+   if(!bMatches || It->ArrivalOffset.ContainsNaN())continue;
+   FVector Candidate=It->GetActorLocation()+It->GetActorRotation().RotateVector(It->ArrivalOffset);
+   const FRotator CandidateRotation=It->GetActorRotation();
+   if(GetWorld()->FindTeleportSpot(Player,Candidate,CandidateRotation) && IsOutsidePortals(Candidate))
+   {Arrival=Candidate;Rotation=CandidateRotation;bFound=true;break;}
+  }
+  // A map without a reciprocal portal can arrive at its authored PlayerStart.
+  if(!bFound)
+   for(TActorIterator<APlayerStart> It(GetWorld());It;++It)
    {
-    // Restore inventory, quest, progression and world state before setting portal arrival.
-    // Position is deliberately excluded: source-map coordinates are invalid here.
-    if(State->bRestoreTravelSnapshot)
-    {
-     if(!LoadGame(TEXT("AskirTravelSnapshot"), false))
-     {
-      UE_LOG(LogTemp, Error, TEXT("Askir travel snapshot restore failed in %s"), *Map);
-     }
-     State->bRestoreTravelSnapshot=false;
-    }
-    // Spawn the player next to the reciprocal portal, never inside its overlap trigger.
-    for(TActorIterator<AAskirWorldPortal> It(GetWorld());It;++It)
-    {
-     if(It->DestinationMap==FromMap)
-     {
-      if(APawn* Pawn=UGameplayStatics::GetPlayerPawn(this,0))
-       Pawn->SetActorLocation(It->GetActorLocation()+FVector(0.f,420.f,40.f),false);
-      break;
-     }
-    }
+    FVector Candidate=It->GetActorLocation();
+    if(GetWorld()->FindTeleportSpot(Player,Candidate,It->GetActorRotation()) && IsOutsidePortals(Candidate))
+    {Arrival=Candidate;Rotation=It->GetActorRotation();bFound=true;break;}
    }
+  if(!bFound)
+  {
+   UE_LOG(LogTemp,Error,TEXT("Askir arrival blocked: no collision-free portal or PlayerStart in %s"),*Map.ToString());
+   return;
   }
  }
+ if(!RestoreSnapshot(State->PendingSnapshot,bRestorePosition))
+ {
+  UE_LOG(LogTemp,Error,TEXT("Askir arrival snapshot restore failed in %s; pending snapshot retained"),*Map.ToString());
+  return;
+ }
+ if(!bRestorePosition)
+ {
+  Player->SetActorLocationAndRotation(Arrival,Rotation,false,nullptr,ETeleportType::TeleportPhysics);
+  if(auto* Controller=Cast<APlayerController>(Player->GetController()))Controller->SetControlRotation(Rotation);
+ }
+ State->ClearPendingTravel();
+ State->ArrivalGraceUntilSeconds=GetWorld()->GetTimeSeconds()+2.0;
 }
 void AAskirGameMode::MakeBlock(FVector Position,FVector Size)
 {
  if(!GetWorld())return;
  AStaticMeshActor* Block=GetWorld()->SpawnActor<AStaticMeshActor>(Position,FRotator::ZeroRotator);
  if(!Block)return;
- static ConstructorHelpers::FObjectFinder<UStaticMesh> Cube(TEXT("/Engine/BasicShapes/Cube.Cube"));
+ UStaticMesh* Cube=LoadObject<UStaticMesh>(nullptr,TEXT("/Engine/BasicShapes/Cube.Cube"));
  UStaticMeshComponent* Mesh=Block->GetStaticMeshComponent();
- if(Cube.Succeeded())Mesh->SetStaticMesh(Cube.Object);
+ if(Cube)Mesh->SetStaticMesh(Cube);
  Mesh->SetMobility(EComponentMobility::Movable);
  Mesh->SetWorldScale3D(Size/100.f);
  Mesh->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
@@ -100,8 +148,8 @@ void AAskirGameMode::BuildDemoScene()
    if(Shape)
    {
      Shape->SetupAttachment(DemoEnemy->GetRootComponent());
-     static ConstructorHelpers::FObjectFinder<UStaticMesh> Cube(TEXT("/Engine/BasicShapes/Cube.Cube"));
-     if(Cube.Succeeded())Shape->SetStaticMesh(Cube.Object);
+     UStaticMesh* Cube=LoadObject<UStaticMesh>(nullptr,TEXT("/Engine/BasicShapes/Cube.Cube"));
+     if(Cube)Shape->SetStaticMesh(Cube);
      Shape->SetRelativeScale3D(FVector(.65f,.65f,1.5f));
      Shape->SetCollisionEnabled(ECollisionEnabled::NoCollision);
      Shape->RegisterComponent();
@@ -169,17 +217,19 @@ void AAskirGameMode::DemoInteract()
   if(DemoStage==3){P->Heal(40.f);P->Stamina=P->MaxStamina;DemoStage=4;}
   break;
  case EAskirDemoObject::Exit:
-  if(DemoStage==4){bDemoFinished=true;if(P->ProgressionComponent)P->ProgressionComponent->AwardExperience(100);}
+  if(DemoStage==4 && !bDemoFinished){bDemoFinished=true;Nearest->SetUsed(true);if(P->ProgressionComponent)P->ProgressionComponent->AwardExperience(100);}
   break;
  }
 }
 void AAskirGameMode::DemoQuickSave()
 {
- const bool bOk=SaveGame(TEXT("AskirDemoQuick"));
+ const bool bOk=SaveGame(TEXT("AskirQuick"));
+ if(auto* PC=Cast<AAskirPlayerController>(UGameplayStatics::GetPlayerController(this,0)))PC->ShowNotification(FText::FromString(bOk?TEXT("Spiel gespeichert."):TEXT("Speichern fehlgeschlagen.")));
  if(GEngine)GEngine->AddOnScreenDebugMessage(5004,3.f,bOk?FColor::Green:FColor::Red,bOk?TEXT("Spiel gespeichert"):TEXT("Speichern fehlgeschlagen"));
 }
 void AAskirGameMode::DemoQuickLoad()
 {
- const bool bOk=LoadGame(TEXT("AskirDemoQuick"));
+ const bool bOk=LoadGame(TEXT("AskirQuick"));
+ if(auto* PC=Cast<AAskirPlayerController>(UGameplayStatics::GetPlayerController(this,0)))PC->ShowNotification(FText::FromString(bOk?TEXT("Spiel geladen."):TEXT("Laden fehlgeschlagen.")));
  if(GEngine)GEngine->AddOnScreenDebugMessage(5004,3.f,bOk?FColor::Green:FColor::Red,bOk?TEXT("Spiel geladen"):TEXT("Laden fehlgeschlagen"));
 }

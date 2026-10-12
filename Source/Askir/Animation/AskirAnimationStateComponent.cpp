@@ -28,5 +28,14 @@ void UAskirAnimationStateComponent::BeginDodge(){TriggerAction(EAskirActionPose:
 void UAskirAnimationStateComponent::SetBlocking(bool Enabled){if(bIsDead)return;bIsBlocking=Enabled;if(Enabled)TriggerAction(EAskirActionPose::Block);else if(Action==EAskirActionPose::Block)FinishAction();}
 void UAskirAnimationStateComponent::RegisterHit(){TriggerAction(EAskirActionPose::HitReact);}
 void UAskirAnimationStateComponent::RegisterDeath(){bIsDead=true;bIsBlocking=false;Action=EAskirActionPose::Death;ActionElapsed=0.f;++ActionSequence;}
-void UAskirAnimationStateComponent::FinishAction(){if(!bIsDead&&!bIsBlocking){Action=EAskirActionPose::None;ActionElapsed=0.f;}}
+void UAskirAnimationStateComponent::ResetAfterLoad(bool bDead)
+{
+    bIsDead=bDead;
+    bIsBlocking=false;
+    Action=bDead?EAskirActionPose::Death:EAskirActionPose::None;
+    ActionElapsed=0.f;
+    ++ActionSequence;
+    RefreshMovement();
+}
+void UAskirAnimationStateComponent::FinishAction(){if(!bIsDead){Action=bIsBlocking?EAskirActionPose::Block:EAskirActionPose::None;ActionElapsed=0.f;}}
 bool UAskirAnimationStateComponent::IsCombatAction()const{return Action==EAskirActionPose::LightAttack||Action==EAskirActionPose::HeavyAttack||Action==EAskirActionPose::Dodge||Action==EAskirActionPose::HitReact;}

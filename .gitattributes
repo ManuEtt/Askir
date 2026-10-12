@@ -9,5 +9,10 @@
 *.fbx binary
 *.uasset binary
 *.umap binary
+*.wav binary
+# Large authored Unreal packages use Git LFS when created by the editor pipeline.
+*.uasset filter=lfs diff=lfs merge=lfs -text
+*.umap filter=lfs diff=lfs merge=lfs -text
+*.fbx filter=lfs diff=lfs merge=lfs -text
 *.png binary
 *.jpg binary

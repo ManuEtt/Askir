@@ -1,2 +1,24 @@
 #include "Economy/AskirEconomyComponent.h"
-UAskirEconomyComponent::UAskirEconomyComponent(){PrimaryComponentTick.bCanEverTick=false;} void UAskirEconomyComponent::SimulateMarketDay(){for(auto&E:Market){float S=E.Stock<=0?2.f:FMath::Clamp(1.f+(10-E.Stock)*.025f,.5f,2.f);E.CurrentPrice=FMath::Max(.01f,E.BasePrice*S);}} float UAskirEconomyComponent::GetPrice(FName ID)const{for(const auto&E:Market)if(E.ItemID==ID)return E.CurrentPrice;return 0;} bool UAskirEconomyComponent::Buy(FName ID,int32 Q,float&Cost){Cost=GetPrice(ID)*FMath::Max(0,Q);for(auto&E:Market)if(E.ItemID==ID&&Q>0&&E.Stock>=Q&&Gold>=Cost){E.Stock-=Q;Gold-=FMath::FloorToInt(Cost);return true;}return false;}
+#include "Core/AskirCheckedMath.h"
+UAskirEconomyComponent::UAskirEconomyComponent(){PrimaryComponentTick.bCanEverTick=false;}
+void UAskirEconomyComponent::SimulateMarketDay()
+{
+    for(auto& Entry:Market)
+    {
+        const double Scarcity=Entry.Stock<=0?2.0:FMath::Clamp(1.0+(10.0-double(Entry.Stock))*.025,.5,2.0);
+        Entry.CurrentPrice=FMath::IsFinite(Entry.BasePrice)&&Entry.BasePrice>0.f?float(FMath::Clamp(double(Entry.BasePrice)*Scarcity,.01,double(MAX_int32))):0.f;
+    }
+}
+float UAskirEconomyComponent::GetPrice(FName ID) const
+{if(ID.IsNone())return 0.f;for(const auto& Entry:Market)if(Entry.ItemID==ID)return FMath::IsFinite(Entry.CurrentPrice)&&Entry.CurrentPrice>0.f?Entry.CurrentPrice:0.f;return 0.f;}
+bool UAskirEconomyComponent::Buy(FName ID,int32 Quantity,float& Cost)
+{
+    Cost=0.f;
+    int32 ChargedGold=0;
+    if(Gold<0||!AskirCheckedMath::TryCeilGold(GetPrice(ID),Quantity,ChargedGold)||ChargedGold>Gold)return false;
+    FAskirMarketEntry* Stock=nullptr;
+    for(auto& Entry:Market)if(Entry.ItemID==ID){if(Stock)return false;Stock=&Entry;}
+    if(!Stock||Stock->Stock<Quantity)return false;
+    Stock->Stock-=Quantity;Gold-=ChargedGold;Cost=float(ChargedGold);
+    return true;
+}

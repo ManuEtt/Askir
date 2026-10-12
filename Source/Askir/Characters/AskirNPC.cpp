@@ -2,21 +2,25 @@
 #include "Progression/AskirProgressionComponent.h"
 #include "Characters/AskirNPC.h"
 #include "NPC/AskirDailyRoutineComponent.h"
-#include "NPC/AskirInteractionComponent.h"
+#include "NPC/AskirNPCInteractionComponent.h"
 #include "NPC/AskirDialogueComponent.h"
 #include "AI/AskirCivilianAIController.h"
+#include "AI/AskirEnemyAIController.h"
 #include "AIController.h"
 #include "Combat/AskirCombatComponent.h"
 #include "Quest/AskirQuestComponent.h"
 #include "Engine/World.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Kismet/GameplayStatics.h"
+#include "Components/CapsuleComponent.h"
+#include "Animation/AskirAnimationStateComponent.h"
+#include "Combat/AskirGuardComponent.h"
 
 AAskirNPC::AAskirNPC()
 {
     PrimaryActorTick.bCanEverTick = true;
     CreateDefaultSubobject<UAskirDailyRoutineComponent>(TEXT("DailyRoutine"));
-    CreateDefaultSubobject<UAskirInteractionComponent>(TEXT("Interaction"));
+    CreateDefaultSubobject<UAskirNPCInteractionComponent>(TEXT("Interaction"));
     CreateDefaultSubobject<UAskirDialogueComponent>(TEXT("Dialogue"));
 
     AutoPossessAI = EAutoPossessAI::PlacedInWorldOrSpawned;
@@ -48,7 +52,9 @@ void AAskirNPC::ConfigureCombatStyle()
 void AAskirNPC::Tick(float DeltaSeconds)
 {
     Super::Tick(DeltaSeconds);
-    if (!bHostile || IsDead() || !GetWorld()) return;
+    if (!bHostile || !bEncounterActive || IsDead() || !GetWorld()) return;
+    // A dedicated controller owns decisions and attack timing; do not run two AIs.
+    if(Cast<AAskirEnemyAIController>(GetController()))return;
     if (IsStaggered()) return;
 
     const float Now = GetWorld()->GetTimeSeconds();
@@ -60,6 +66,44 @@ void AAskirNPC::Tick(float DeltaSeconds)
     if (Now < NextDecisionTime) return;
     NextDecisionTime = Now + FMath::Max(0.05f, DecisionInterval);
     UpdateAI();
+}
+
+void AAskirNPC::SetEncounterActive(bool bActive)
+{
+    bEncounterActive=bActive && !IsDead();
+    if(CombatComponent)CombatComponent->SetDamageEnabled(bEncounterActive);
+    SetActorHiddenInGame(!bEncounterActive);
+    SetActorEnableCollision(bEncounterActive);
+    if(!bEncounterActive)
+    {
+        CancelPendingAttack();
+        AbortPendingAttack();
+        StopBlock();
+        if(AAIController* AI=Cast<AAIController>(GetController()))AI->StopMovement();
+        GetCharacterMovement()->DisableMovement();
+    }
+    else if(GetCharacterMovement()->MovementMode==MOVE_None)
+        GetCharacterMovement()->SetMovementMode(MOVE_Walking);
+}
+
+void AAskirNPC::RestoreEncounterState(bool bDefeated)
+{
+    CancelPendingAttack();
+    AbortPendingAttack();
+    StopBlock();
+    if(GuardComponent)GuardComponent->RestoreStamina();
+    SetLifeSpan(0.f);
+    bRewardsGranted=bDefeated;
+    StaggerEndTime=-1.f;
+    NextStaggerAllowedTime=0.f;
+    SearchEndTime=0.f;
+    NextDecisionTime=0.f;
+    NextAttackTime=GetWorld()?GetWorld()->GetTimeSeconds()+FMath::Max(0.f,AttackRecovery):0.f;
+    AIState=EAskirNPCState::Idle;
+    if(CombatComponent)CombatComponent->RestoreHealth(bDefeated?0.f:CombatComponent->GetMaxHealth());
+    if(AnimationState)AnimationState->ResetAfterLoad(bDefeated);
+    if(!bDefeated)GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::QueryAndPhysics);
+    SetEncounterActive(!bDefeated);
 }
 
 bool AAskirNPC::CanSeeTarget(const AActor* Target) const
@@ -99,7 +143,16 @@ void AAskirNPC::UpdateAI()
     const bool bVisible = bInSightRange && CanSeeTarget(Target);
     const bool bWithinLeash = DistanceFromHome <= MaxChaseDistance;
 
-    if (bVisible && bWithinLeash)
+    // Returning enemies finish their reset before reacquiring the same distant player.
+    if(AIState==EAskirNPCState::Returning)
+    {
+        if(DistanceFromHome>90.f)AI->MoveToLocation(HomeLocation,60.f);
+        else { AI->StopMovement(); SetAIState(EAskirNPCState::Idle); }
+        return;
+    }
+    const bool bTargetWithinLeash=Target && FVector::DistSquared(Target->GetActorLocation(),HomeLocation)<=FMath::Square(FMath::Max(0.f,MaxChaseDistance));
+
+    if (bVisible && bWithinLeash && bTargetWithinLeash)
     {
         LastKnownTargetLocation = Target->GetActorLocation();
         SetAIState(EAskirNPCState::Pursuing);
@@ -130,13 +183,13 @@ void AAskirNPC::UpdateAI()
         return;
     }
 
-    if (AIState == EAskirNPCState::Pursuing && bWithinLeash)
+    if (AIState == EAskirNPCState::Pursuing && bWithinLeash && bTargetWithinLeash)
     {
         SearchEndTime = Now + SearchDuration;
         SetAIState(EAskirNPCState::Searching);
     }
 
-    if (AIState == EAskirNPCState::Searching && Now < SearchEndTime && bWithinLeash)
+    if (AIState == EAskirNPCState::Searching && Now < SearchEndTime && bWithinLeash && bTargetWithinLeash)
     {
         AI->MoveToLocation(LastKnownTargetLocation, 75.f);
         return;
@@ -167,14 +220,16 @@ void AAskirNPC::ResolvePendingAttack(float Now)
     // Resolution is not an interruption: clear without firing the interrupt event.
     PendingAttackTarget.Reset();
     AttackResolveTime = -1.f;
-    if (!Target || IsDead() || IsStaggered() || !GetWorld()) return;
+    if (!Target || !bEncounterActive || IsDead() || IsStaggered() || !GetWorld()) return;
     if (const AAskirCharacter* Character = Cast<AAskirCharacter>(Target))
     {
         if (Character->IsDead()) return;
     }
     // Revalidate at impact: dodging out of range or moving behind cover avoids damage.
     const float Distance = FVector::Dist(GetActorLocation(), Target->GetActorLocation());
-    if (Distance > AttackDistance || !CanSeeTarget(Target))
+    if (Distance > AttackDistance || !CanSeeTarget(Target)
+        || FVector::DistSquared(GetActorLocation(),HomeLocation)>FMath::Square(FMath::Max(0.f,MaxChaseDistance))
+        || FVector::DistSquared(Target->GetActorLocation(),HomeLocation)>FMath::Square(FMath::Max(0.f,MaxChaseDistance)))
     {
         OnAttackAvoided();
         return;
@@ -192,9 +247,11 @@ void AAskirNPC::ResolvePendingAttack(float Now)
         Damage.DamageCauser = this;
         Damage.HitLocation = Target->GetActorLocation();
         Damage.HitDirection = Direction;
+        const float HealthBefore=TargetCombat->GetHealth();
         if (AAskirCharacter* Player = Cast<AAskirCharacter>(Target)) Player->ReceiveAskirDamage(Damage);
         else TargetCombat->ApplyDamage(Damage);
-        OnAttackLanded();
+        if(TargetCombat->GetHealth()<HealthBefore)OnAttackLanded();
+        else OnAttackAvoided();
     }
 }
 
@@ -205,11 +262,11 @@ bool AAskirNPC::IsStaggered() const
 
 void AAskirNPC::HandleNPCDamage(const FAskirDamageInfo& DamageInfo)
 {
-    if(DamageInfo.DamageCauser && DamageInfo.Damage > 0.f) LastDamageCauser = DamageInfo.DamageCauser;
     if (!bHostile || !GetWorld() || IsDead() || DamageInfo.Damage < StaggerDamageThreshold) return;
     const float Now = GetWorld()->GetTimeSeconds();
     if (Now < NextStaggerAllowedTime || StaggerDuration <= 0.f) return;
     CancelPendingAttack(); // A strong hit interrupts the telegraphed attack.
+    AbortPendingAttack(); // Also cancel the pawn timer used by a dedicated AI controller.
     StaggerEndTime = Now + StaggerDuration;
     NextStaggerAllowedTime = StaggerEndTime + StaggerImmunityDuration;
     NextAttackTime = FMath::Max(NextAttackTime, StaggerEndTime);
@@ -219,29 +276,30 @@ void AAskirNPC::HandleNPCDamage(const FAskirDamageInfo& DamageInfo)
 
 void AAskirNPC::HandleNPCDeath()
 {
-    if (!DefeatObjectiveID.IsNone() && LastDamageCauser.IsValid())
+    // Latch before external delegates: quest/reward callbacks can re-enter gameplay.
+    if(!IsDead() || bRewardsGranted)return;
+    bRewardsGranted=true;
+    AActor* Recipient=CombatComponent?CombatComponent->GetLastDamageCauser():nullptr;
+    const APawn* RecipientPawn=Cast<APawn>(Recipient);
+    if (!DefeatObjectiveID.IsNone() && RecipientPawn && RecipientPawn->IsPlayerControlled())
     {
-        if (UAskirQuestComponent* Quests = LastDamageCauser->FindComponentByClass<UAskirQuestComponent>())
+        if (UAskirQuestComponent* Quests = Recipient->FindComponentByClass<UAskirQuestComponent>())
         {
             Quests->AdvanceObjective(DefeatObjectiveID, 1);
         }
     }
     // Grant rewards exactly once to the actor responsible for the killing blow.
-    if (!bRewardsGranted)
+    if (Recipient)
     {
-        bRewardsGranted=true;
-        if (AActor* Recipient=LastDamageCauser.Get())
-        {
-            const int32 XP=FMath::Max(0,KillExperience);
-            if (XP>0)
-                if (UAskirProgressionComponent* Progression=Recipient->FindComponentByClass<UAskirProgressionComponent>())
-                    Progression->AwardExperience(XP);
-            bool bItemGranted=false;
-            if (GuaranteedDrop && GuaranteedDropQuantity>0 && FMath::FRand() < FMath::Clamp(DropChance,0.f,1.f))
-                if (UAskirInventoryComponent* Inventory=Recipient->FindComponentByClass<UAskirInventoryComponent>())
-                    bItemGranted=Inventory->AddItem(GuaranteedDrop,GuaranteedDropQuantity);
-            OnEnemyRewardsGranted(Recipient,XP,bItemGranted);
-        }
+        const int32 XP=FMath::Max(0,KillExperience);
+        if (XP>0)
+            if (UAskirProgressionComponent* Progression=Recipient->FindComponentByClass<UAskirProgressionComponent>())
+                Progression->AwardExperience(XP);
+        bool bItemGranted=false;
+        if (GuaranteedDrop && GuaranteedDropQuantity>0 && FMath::FRand() < FMath::Clamp(DropChance,0.f,1.f))
+            if (UAskirInventoryComponent* Inventory=Recipient->FindComponentByClass<UAskirInventoryComponent>())
+                bItemGranted=Inventory->AddItem(GuaranteedDrop,GuaranteedDropQuantity);
+        OnEnemyRewardsGranted(Recipient,XP,bItemGranted);
     }
     CancelPendingAttack();
     if (AAIController* AI = Cast<AAIController>(GetController())) AI->StopMovement();

@@ -18,13 +18,17 @@ public:
     UFUNCTION(BlueprintCallable) void Kill();
     UFUNCTION(BlueprintCallable) void ResetHealth();
     UFUNCTION(BlueprintCallable) void RestoreHealth(float SavedHealth);
+    /** Encounter gating: inactive enemies cannot be damaged by nearby area attacks. */
+    UFUNCTION(BlueprintCallable, Category="Askir|Combat") void SetDamageEnabled(bool bEnabled);
+    UFUNCTION(BlueprintPure, Category="Askir|Combat") bool IsDamageEnabled() const { return bDamageEnabled; }
     UFUNCTION(BlueprintPure) float GetHealth()const{return Health;}
     UFUNCTION(BlueprintPure) float GetMaxHealth()const{return MaxHealth;}
     UFUNCTION(BlueprintPure) float GetHealthPercent()const;
     UFUNCTION(BlueprintPure) bool IsDead()const{return bDead;}
-    /** The actor responsible for the most recent positive health damage. */
-    /** Returns a recent valid causer only; old hits cannot credit environmental deaths. */
+    /** Responsible actor resolved at the positive hit, including projectile instigators.
+     * Returns a recent valid causer only; old hits cannot credit environmental deaths. */
     UFUNCTION(BlueprintPure,Category="Askir|Combat") AActor* GetLastDamageCauser() const;
+    UFUNCTION(BlueprintPure,Category="Askir|Combat|Attribution") bool IsKillAttributedTo(AActor* Recipient) const;
     /** Time window in seconds for attributing a kill to a recent hit. */
     UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="Askir|Combat|Attribution",meta=(ClampMin="0.0",ClampMax="60.0")) float KillCreditWindowSeconds=8.f;
     /** Explicitly clears attribution, e.g. on scripted environmental death. */
@@ -40,5 +44,7 @@ private:
     TWeakObjectPtr<AActor> LastDamageCauser;
     double LastDamageTimeSeconds=-1.0;
     bool bDead=false;
+    bool bDamageEnabled=true;
     float DodgeInvulnerableUntil=-1.f;
+    static AActor* ResolveDamageRecipient(AActor* DamageSource);
 };

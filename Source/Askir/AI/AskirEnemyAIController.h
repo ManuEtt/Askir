@@ -19,6 +19,7 @@ class ASKIR_API AAskirEnemyAIController : public AAIController
 public:
     AAskirEnemyAIController();
     virtual void OnPossess(APawn* InPawn) override;
+    virtual void OnUnPossess() override;
     virtual void Tick(float DeltaSeconds) override;
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Askir|AI|Senses") float SightRange = 1800.f;
@@ -44,6 +45,7 @@ public:
 protected:
     /** Return true only if an attack started or was successfully queued. */
     virtual bool TryStartAttack(AAskirCharacter* Enemy, AAskirCharacter* Victim);
+    virtual void AbortCombat();
 private:
     UPROPERTY(Transient) TObjectPtr<AAskirCharacter> ControlledEnemy;
     UPROPERTY(Transient) TObjectPtr<AAskirCharacter> Target;

@@ -1,13 +1,13 @@
-import unittest,json
+import unittest,json,re
 from pathlib import Path
 ROOT=Path(__file__).resolve().parent.parent
 class EncounterPersistenceV66(unittest.TestCase):
  def test_savegame_field(self):
   self.assertIn('SavedCompletedEncounters',(ROOT/'Source/Askir/Save/AskirSaveGame.h').read_text())
  def test_save_restore(self):
-  code=(ROOT/'Source/Askir/Game/AskirGameMode.cpp').read_text()
-  self.assertIn('Save->SavedCompletedEncounters = Player->QuestComponent->CompletedEncounters;',code)
-  self.assertIn('Player->QuestComponent->CompletedEncounters = Save->SavedCompletedEncounters;',code)
+  code=re.sub(r'\s+', '', (ROOT/'Source/Askir/Game/AskirGameMode.cpp').read_text())
+  self.assertIn('Save->SavedCompletedEncounters=Player->QuestComponent->CompletedEncounters;',code)
+  self.assertIn('Player->QuestComponent->CompletedEncounters=Save->SavedCompletedEncounters;',code)
  def test_idempotent_quest_progress(self):
   code=(ROOT/'Source/Askir/World/AskirEncounterSpawner.cpp').read_text()
   self.assertIn('Quests->MarkEncounterCompleted(ID)',code)
