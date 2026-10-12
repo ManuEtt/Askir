@@ -18,6 +18,8 @@ public:
  UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="Askir|Encounter") FName ObjectiveID=NAME_None;
  UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="Askir|Encounter",meta=(ClampMin="1")) int32 ObjectiveAmount=1;
  UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="Askir|Encounter") bool bOncePerPlayer=true;
+ /** Set false for combat encounters: objectives should advance only on victory. */
+ UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="Askir|Encounter") bool bAwardObjectiveOnEntry=true;
  UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="Askir|Encounter") bool bRequireActiveQuest=false;
  UPROPERTY(BlueprintAssignable,Category="Askir|Encounter") FAskirEncounterTriggered OnEncounterTriggered;
  UFUNCTION(BlueprintCallable,Category="Askir|Encounter") bool ActivateForPlayer(AActor* Player);

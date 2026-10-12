@@ -11,7 +11,7 @@ class EncounterPersistenceV66(unittest.TestCase):
  def test_idempotent_quest_progress(self):
   code=(ROOT/'Source/Askir/World/AskirEncounterSpawner.cpp').read_text()
   self.assertIn('Quests->MarkEncounterCompleted(ID)',code)
-  self.assertIn('if(bNewCompletion && !CompletionQuestID.IsNone()',code)
+  self.assertIn('if(bNewCompletion && !bZoneAwardsOnEntry && !Quest.IsNone()',code)
  def test_restart_guard(self):
   self.assertIn('Quests->HasCompletedEncounter(Zone->EncounterID)',(ROOT/'Source/Askir/World/AskirEncounterSpawner.cpp').read_text())
  def test_50_scenarios(self):

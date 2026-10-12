@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "scope": "manifest_graph_only",
+  "level_count": 30,
+  "reachable_count": 30,
+  "errors": [],
+  "warnings": [],
+  "unreal_levels_verified": false,
+  "playability_verified": false,
+  "status": "passed"
+}

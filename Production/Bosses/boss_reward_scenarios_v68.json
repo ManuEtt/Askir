@@ -1,0 +1,305 @@
+{
+  "version": "V68",
+  "scenarios": [
+    {
+      "topic": 2151,
+      "boss": "AshenWarden",
+      "scenario": "first_win_reward",
+      "verification": "unreal_pie_pending"
+    },
+    {
+      "topic": 2152,
+      "boss": "AshenWarden",
+      "scenario": "reenter_no_reward",
+      "verification": "unreal_pie_pending"
+    },
+    {
+      "topic": 2153,
+      "boss": "AshenWarden",
+      "scenario": "reload_no_reward",
+      "verification": "unreal_pie_pending"
+    },
+    {
+      "topic": 2154,
+      "boss": "AshenWarden",
+      "scenario": "no_inventory_retry",
+      "verification": "unreal_pie_pending"
+    },
+    {
+      "topic": 2155,
+      "boss": "AshenWarden",
+      "scenario": "no_reward_configured",
+      "verification": "unreal_pie_pending"
+    },
+    {
+      "topic": 2156,
+      "boss": "AshenWarden",
+      "scenario": "reward_stack_overflow",
+      "verification": "unreal_pie_pending"
+    },
+    {
+      "topic": 2157,
+      "boss": "AshenWarden",
+      "scenario": "repeatable_without_id",
+      "verification": "unreal_pie_pending"
+    },
+    {
+      "topic": 2158,
+      "boss": "AshenWarden",
+      "scenario": "quest_completion_once",
+      "verification": "unreal_pie_pending"
+    },
+    {
+      "topic": 2159,
+      "boss": "AshenWarden",
+      "scenario": "wave_spawn_failure",
+      "verification": "unreal_pie_pending"
+    },
+    {
+      "topic": 2160,
+      "boss": "AshenWarden",
+      "scenario": "dead_player_at_finish",
+      "verification": "unreal_pie_pending"
+    },
+    {
+      "topic": 2161,
+      "boss": "CryptKeeper",
+      "scenario": "first_win_reward",
+      "verification": "unreal_pie_pending"
+    },
+    {
+      "topic": 2162,
+      "boss": "CryptKeeper",
+      "scenario": "reenter_no_reward",
+      "verification": "unreal_pie_pending"
+    },
+    {
+      "topic": 2163,
+      "boss": "CryptKeeper",
+      "scenario": "reload_no_reward",
+      "verification": "unreal_pie_pending"
+    },
+    {
+      "topic": 2164,
+      "boss": "CryptKeeper",
+      "scenario": "no_inventory_retry",
+      "verification": "unreal_pie_pending"
+    },
+    {
+      "topic": 2165,
+      "boss": "CryptKeeper",
+      "scenario": "no_reward_configured",
+      "verification": "unreal_pie_pending"
+    },
+    {
+      "topic": 2166,
+      "boss": "CryptKeeper",
+      "scenario": "reward_stack_overflow",
+      "verification": "unreal_pie_pending"
+    },
+    {
+      "topic": 2167,
+      "boss": "CryptKeeper",
+      "scenario": "repeatable_without_id",
+      "verification": "unreal_pie_pending"
+    },
+    {
+      "topic": 2168,
+      "boss": "CryptKeeper",
+      "scenario": "quest_completion_once",
+      "verification": "unreal_pie_pending"
+    },
+    {
+      "topic": 2169,
+      "boss": "CryptKeeper",
+      "scenario": "wave_spawn_failure",
+      "verification": "unreal_pie_pending"
+    },
+    {
+      "topic": 2170,
+      "boss": "CryptKeeper",
+      "scenario": "dead_player_at_finish",
+      "verification": "unreal_pie_pending"
+    },
+    {
+      "topic": 2171,
+      "boss": "ForestAncient",
+      "scenario": "first_win_reward",
+      "verification": "unreal_pie_pending"
+    },
+    {
+      "topic": 2172,
+      "boss": "ForestAncient",
+      "scenario": "reenter_no_reward",
+      "verification": "unreal_pie_pending"
+    },
+    {
+      "topic": 2173,
+      "boss": "ForestAncient",
+      "scenario": "reload_no_reward",
+      "verification": "unreal_pie_pending"
+    },
+    {
+      "topic": 2174,
+      "boss": "ForestAncient",
+      "scenario": "no_inventory_retry",
+      "verification": "unreal_pie_pending"
+    },
+    {
+      "topic": 2175,
+      "boss": "ForestAncient",
+      "scenario": "no_reward_configured",
+      "verification": "unreal_pie_pending"
+    },
+    {
+      "topic": 2176,
+      "boss": "ForestAncient",
+      "scenario": "reward_stack_overflow",
+      "verification": "unreal_pie_pending"
+    },
+    {
+      "topic": 2177,
+      "boss": "ForestAncient",
+      "scenario": "repeatable_without_id",
+      "verification": "unreal_pie_pending"
+    },
+    {
+      "topic": 2178,
+      "boss": "ForestAncient",
+      "scenario": "quest_completion_once",
+      "verification": "unreal_pie_pending"
+    },
+    {
+      "topic": 2179,
+      "boss": "ForestAncient",
+      "scenario": "wave_spawn_failure",
+      "verification": "unreal_pie_pending"
+    },
+    {
+      "topic": 2180,
+      "boss": "ForestAncient",
+      "scenario": "dead_player_at_finish",
+      "verification": "unreal_pie_pending"
+    },
+    {
+      "topic": 2181,
+      "boss": "BloodstoneChampion",
+      "scenario": "first_win_reward",
+      "verification": "unreal_pie_pending"
+    },
+    {
+      "topic": 2182,
+      "boss": "BloodstoneChampion",
+      "scenario": "reenter_no_reward",
+      "verification": "unreal_pie_pending"
+    },
+    {
+      "topic": 2183,
+      "boss": "BloodstoneChampion",
+      "scenario": "reload_no_reward",
+      "verification": "unreal_pie_pending"
+    },
+    {
+      "topic": 2184,
+      "boss": "BloodstoneChampion",
+      "scenario": "no_inventory_retry",
+      "verification": "unreal_pie_pending"
+    },
+    {
+      "topic": 2185,
+      "boss": "BloodstoneChampion",
+      "scenario": "no_reward_configured",
+      "verification": "unreal_pie_pending"
+    },
+    {
+      "topic": 2186,
+      "boss": "BloodstoneChampion",
+      "scenario": "reward_stack_overflow",
+      "verification": "unreal_pie_pending"
+    },
+    {
+      "topic": 2187,
+      "boss": "BloodstoneChampion",
+      "scenario": "repeatable_without_id",
+      "verification": "unreal_pie_pending"
+    },
+    {
+      "topic": 2188,
+      "boss": "BloodstoneChampion",
+      "scenario": "quest_completion_once",
+      "verification": "unreal_pie_pending"
+    },
+    {
+      "topic": 2189,
+      "boss": "BloodstoneChampion",
+      "scenario": "wave_spawn_failure",
+      "verification": "unreal_pie_pending"
+    },
+    {
+      "topic": 2190,
+      "boss": "BloodstoneChampion",
+      "scenario": "dead_player_at_finish",
+      "verification": "unreal_pie_pending"
+    },
+    {
+      "topic": 2191,
+      "boss": "CrownUsurper",
+      "scenario": "first_win_reward",
+      "verification": "unreal_pie_pending"
+    },
+    {
+      "topic": 2192,
+      "boss": "CrownUsurper",
+      "scenario": "reenter_no_reward",
+      "verification": "unreal_pie_pending"
+    },
+    {
+      "topic": 2193,
+      "boss": "CrownUsurper",
+      "scenario": "reload_no_reward",
+      "verification": "unreal_pie_pending"
+    },
+    {
+      "topic": 2194,
+      "boss": "CrownUsurper",
+      "scenario": "no_inventory_retry",
+      "verification": "unreal_pie_pending"
+    },
+    {
+      "topic": 2195,
+      "boss": "CrownUsurper",
+      "scenario": "no_reward_configured",
+      "verification": "unreal_pie_pending"
+    },
+    {
+      "topic": 2196,
+      "boss": "CrownUsurper",
+      "scenario": "reward_stack_overflow",
+      "verification": "unreal_pie_pending"
+    },
+    {
+      "topic": 2197,
+      "boss": "CrownUsurper",
+      "scenario": "repeatable_without_id",
+      "verification": "unreal_pie_pending"
+    },
+    {
+      "topic": 2198,
+      "boss": "CrownUsurper",
+      "scenario": "quest_completion_once",
+      "verification": "unreal_pie_pending"
+    },
+    {
+      "topic": 2199,
+      "boss": "CrownUsurper",
+      "scenario": "wave_spawn_failure",
+      "verification": "unreal_pie_pending"
+    },
+    {
+      "topic": 2200,
+      "boss": "CrownUsurper",
+      "scenario": "dead_player_at_finish",
+      "verification": "unreal_pie_pending"
+    }
+  ]
+}

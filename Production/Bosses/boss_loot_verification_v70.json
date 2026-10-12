@@ -1,0 +1,305 @@
+{
+  "version": "V70",
+  "cases": [
+    {
+      "topic": 2251,
+      "boss": "AshenWarden",
+      "scenario": "persistent_seed",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2252,
+      "boss": "AshenWarden",
+      "scenario": "retry_same_drop",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2253,
+      "boss": "AshenWarden",
+      "scenario": "reload_same_drop",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2254,
+      "boss": "AshenWarden",
+      "scenario": "repeatable_random",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2255,
+      "boss": "AshenWarden",
+      "scenario": "invalid_loot",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2256,
+      "boss": "AshenWarden",
+      "scenario": "disabled_entry",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2257,
+      "boss": "AshenWarden",
+      "scenario": "weight_bound",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2258,
+      "boss": "AshenWarden",
+      "scenario": "missing_ledger",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2259,
+      "boss": "AshenWarden",
+      "scenario": "inventory_failure",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2260,
+      "boss": "AshenWarden",
+      "scenario": "completion_cleanup",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2261,
+      "boss": "FrostRevenant",
+      "scenario": "persistent_seed",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2262,
+      "boss": "FrostRevenant",
+      "scenario": "retry_same_drop",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2263,
+      "boss": "FrostRevenant",
+      "scenario": "reload_same_drop",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2264,
+      "boss": "FrostRevenant",
+      "scenario": "repeatable_random",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2265,
+      "boss": "FrostRevenant",
+      "scenario": "invalid_loot",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2266,
+      "boss": "FrostRevenant",
+      "scenario": "disabled_entry",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2267,
+      "boss": "FrostRevenant",
+      "scenario": "weight_bound",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2268,
+      "boss": "FrostRevenant",
+      "scenario": "missing_ledger",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2269,
+      "boss": "FrostRevenant",
+      "scenario": "inventory_failure",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2270,
+      "boss": "FrostRevenant",
+      "scenario": "completion_cleanup",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2271,
+      "boss": "IronColossus",
+      "scenario": "persistent_seed",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2272,
+      "boss": "IronColossus",
+      "scenario": "retry_same_drop",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2273,
+      "boss": "IronColossus",
+      "scenario": "reload_same_drop",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2274,
+      "boss": "IronColossus",
+      "scenario": "repeatable_random",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2275,
+      "boss": "IronColossus",
+      "scenario": "invalid_loot",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2276,
+      "boss": "IronColossus",
+      "scenario": "disabled_entry",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2277,
+      "boss": "IronColossus",
+      "scenario": "weight_bound",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2278,
+      "boss": "IronColossus",
+      "scenario": "missing_ledger",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2279,
+      "boss": "IronColossus",
+      "scenario": "inventory_failure",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2280,
+      "boss": "IronColossus",
+      "scenario": "completion_cleanup",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2281,
+      "boss": "VoidSeer",
+      "scenario": "persistent_seed",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2282,
+      "boss": "VoidSeer",
+      "scenario": "retry_same_drop",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2283,
+      "boss": "VoidSeer",
+      "scenario": "reload_same_drop",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2284,
+      "boss": "VoidSeer",
+      "scenario": "repeatable_random",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2285,
+      "boss": "VoidSeer",
+      "scenario": "invalid_loot",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2286,
+      "boss": "VoidSeer",
+      "scenario": "disabled_entry",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2287,
+      "boss": "VoidSeer",
+      "scenario": "weight_bound",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2288,
+      "boss": "VoidSeer",
+      "scenario": "missing_ledger",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2289,
+      "boss": "VoidSeer",
+      "scenario": "inventory_failure",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2290,
+      "boss": "VoidSeer",
+      "scenario": "completion_cleanup",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2291,
+      "boss": "StormTyrant",
+      "scenario": "persistent_seed",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2292,
+      "boss": "StormTyrant",
+      "scenario": "retry_same_drop",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2293,
+      "boss": "StormTyrant",
+      "scenario": "reload_same_drop",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2294,
+      "boss": "StormTyrant",
+      "scenario": "repeatable_random",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2295,
+      "boss": "StormTyrant",
+      "scenario": "invalid_loot",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2296,
+      "boss": "StormTyrant",
+      "scenario": "disabled_entry",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2297,
+      "boss": "StormTyrant",
+      "scenario": "weight_bound",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2298,
+      "boss": "StormTyrant",
+      "scenario": "missing_ledger",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2299,
+      "boss": "StormTyrant",
+      "scenario": "inventory_failure",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2300,
+      "boss": "StormTyrant",
+      "scenario": "completion_cleanup",
+      "execution": "UE_PIE_pending"
+    }
+  ]
+}

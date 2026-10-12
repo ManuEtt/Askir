@@ -1,0 +1,305 @@
+{
+  "version": "V69",
+  "cases": [
+    {
+      "topic": 2201,
+      "boss": "AshenWarden",
+      "scenario": "single_weighted_drop",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2202,
+      "boss": "AshenWarden",
+      "scenario": "disabled_weight_skipped",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2203,
+      "boss": "AshenWarden",
+      "scenario": "null_item_skipped",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2204,
+      "boss": "AshenWarden",
+      "scenario": "large_weight_sum",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2205,
+      "boss": "AshenWarden",
+      "scenario": "stack_quantity_clamp",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2206,
+      "boss": "AshenWarden",
+      "scenario": "legacy_reward_fallback",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2207,
+      "boss": "AshenWarden",
+      "scenario": "missing_inventory_retry",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2208,
+      "boss": "AshenWarden",
+      "scenario": "duplicate_completion_block",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2209,
+      "boss": "AshenWarden",
+      "scenario": "save_reload_no_duplicate",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2210,
+      "boss": "AshenWarden",
+      "scenario": "reward_insert_failure_retry",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2211,
+      "boss": "CryptKeeper",
+      "scenario": "single_weighted_drop",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2212,
+      "boss": "CryptKeeper",
+      "scenario": "disabled_weight_skipped",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2213,
+      "boss": "CryptKeeper",
+      "scenario": "null_item_skipped",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2214,
+      "boss": "CryptKeeper",
+      "scenario": "large_weight_sum",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2215,
+      "boss": "CryptKeeper",
+      "scenario": "stack_quantity_clamp",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2216,
+      "boss": "CryptKeeper",
+      "scenario": "legacy_reward_fallback",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2217,
+      "boss": "CryptKeeper",
+      "scenario": "missing_inventory_retry",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2218,
+      "boss": "CryptKeeper",
+      "scenario": "duplicate_completion_block",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2219,
+      "boss": "CryptKeeper",
+      "scenario": "save_reload_no_duplicate",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2220,
+      "boss": "CryptKeeper",
+      "scenario": "reward_insert_failure_retry",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2221,
+      "boss": "ForestAncient",
+      "scenario": "single_weighted_drop",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2222,
+      "boss": "ForestAncient",
+      "scenario": "disabled_weight_skipped",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2223,
+      "boss": "ForestAncient",
+      "scenario": "null_item_skipped",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2224,
+      "boss": "ForestAncient",
+      "scenario": "large_weight_sum",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2225,
+      "boss": "ForestAncient",
+      "scenario": "stack_quantity_clamp",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2226,
+      "boss": "ForestAncient",
+      "scenario": "legacy_reward_fallback",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2227,
+      "boss": "ForestAncient",
+      "scenario": "missing_inventory_retry",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2228,
+      "boss": "ForestAncient",
+      "scenario": "duplicate_completion_block",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2229,
+      "boss": "ForestAncient",
+      "scenario": "save_reload_no_duplicate",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2230,
+      "boss": "ForestAncient",
+      "scenario": "reward_insert_failure_retry",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2231,
+      "boss": "BloodstoneChampion",
+      "scenario": "single_weighted_drop",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2232,
+      "boss": "BloodstoneChampion",
+      "scenario": "disabled_weight_skipped",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2233,
+      "boss": "BloodstoneChampion",
+      "scenario": "null_item_skipped",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2234,
+      "boss": "BloodstoneChampion",
+      "scenario": "large_weight_sum",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2235,
+      "boss": "BloodstoneChampion",
+      "scenario": "stack_quantity_clamp",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2236,
+      "boss": "BloodstoneChampion",
+      "scenario": "legacy_reward_fallback",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2237,
+      "boss": "BloodstoneChampion",
+      "scenario": "missing_inventory_retry",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2238,
+      "boss": "BloodstoneChampion",
+      "scenario": "duplicate_completion_block",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2239,
+      "boss": "BloodstoneChampion",
+      "scenario": "save_reload_no_duplicate",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2240,
+      "boss": "BloodstoneChampion",
+      "scenario": "reward_insert_failure_retry",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2241,
+      "boss": "CrownUsurper",
+      "scenario": "single_weighted_drop",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2242,
+      "boss": "CrownUsurper",
+      "scenario": "disabled_weight_skipped",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2243,
+      "boss": "CrownUsurper",
+      "scenario": "null_item_skipped",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2244,
+      "boss": "CrownUsurper",
+      "scenario": "large_weight_sum",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2245,
+      "boss": "CrownUsurper",
+      "scenario": "stack_quantity_clamp",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2246,
+      "boss": "CrownUsurper",
+      "scenario": "legacy_reward_fallback",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2247,
+      "boss": "CrownUsurper",
+      "scenario": "missing_inventory_retry",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2248,
+      "boss": "CrownUsurper",
+      "scenario": "duplicate_completion_block",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2249,
+      "boss": "CrownUsurper",
+      "scenario": "save_reload_no_duplicate",
+      "execution": "UE_PIE_pending"
+    },
+    {
+      "topic": 2250,
+      "boss": "CrownUsurper",
+      "scenario": "reward_insert_failure_retry",
+      "execution": "UE_PIE_pending"
+    }
+  ]
+}

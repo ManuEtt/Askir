@@ -24,12 +24,15 @@ bool AAskirEncounterZone::ActivateForPlayer(AActor* Player)
  APawn* Pawn=Cast<APawn>(Player);
  if(!IsValid(Pawn)||!Pawn->IsPlayerControlled()||EncounterID.IsNone())return false;
  if(bOncePerPlayer&&ActivatedPlayers.Contains(Player))return false;
+ // Persistent one-shot encounters stay inactive after loading a completed save.
+ if(const UAskirQuestComponent* SavedQuests=Pawn->FindComponentByClass<UAskirQuestComponent>())
+  if(SavedQuests->HasCompletedEncounter(EncounterID))return false;
  UAskirQuestComponent* Quests=Pawn->FindComponentByClass<UAskirQuestComponent>();
  if(bRequireActiveQuest)
  {
   if(!Quests||QuestID.IsNone()||Quests->GetStateByID(QuestID)!=EAskirQuestState::Active)return false;
  }
- if(!QuestID.IsNone()&&!ObjectiveID.IsNone()&&Quests&&ObjectiveAmount>0)
+ if(bAwardObjectiveOnEntry&&!QuestID.IsNone()&&!ObjectiveID.IsNone()&&Quests&&ObjectiveAmount>0)
  {
   Quests->AdvanceQuestObjective(QuestID,ObjectiveID,ObjectiveAmount);
  }

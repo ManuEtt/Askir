@@ -1,0 +1,305 @@
+{
+  "version": "V67",
+  "cases": [
+    {
+      "topic": 2101,
+      "boss": "AshenWarden",
+      "scenario": "save_before_entry",
+      "verification": "Unreal PIE pending"
+    },
+    {
+      "topic": 2102,
+      "boss": "AshenWarden",
+      "scenario": "load_completed_encounter",
+      "verification": "Unreal PIE pending"
+    },
+    {
+      "topic": 2103,
+      "boss": "AshenWarden",
+      "scenario": "reenter_after_load",
+      "verification": "Unreal PIE pending"
+    },
+    {
+      "topic": 2104,
+      "boss": "AshenWarden",
+      "scenario": "wrong_encounter_id",
+      "verification": "Unreal PIE pending"
+    },
+    {
+      "topic": 2105,
+      "boss": "AshenWarden",
+      "scenario": "objective_on_victory",
+      "verification": "Unreal PIE pending"
+    },
+    {
+      "topic": 2106,
+      "boss": "AshenWarden",
+      "scenario": "no_double_objective",
+      "verification": "Unreal PIE pending"
+    },
+    {
+      "topic": 2107,
+      "boss": "AshenWarden",
+      "scenario": "zone_entry_legacy",
+      "verification": "Unreal PIE pending"
+    },
+    {
+      "topic": 2108,
+      "boss": "AshenWarden",
+      "scenario": "wave_failure_retry",
+      "verification": "Unreal PIE pending"
+    },
+    {
+      "topic": 2109,
+      "boss": "AshenWarden",
+      "scenario": "boss_death_completion",
+      "verification": "Unreal PIE pending"
+    },
+    {
+      "topic": 2110,
+      "boss": "AshenWarden",
+      "scenario": "reset_after_completion",
+      "verification": "Unreal PIE pending"
+    },
+    {
+      "topic": 2111,
+      "boss": "CryptKeeper",
+      "scenario": "save_before_entry",
+      "verification": "Unreal PIE pending"
+    },
+    {
+      "topic": 2112,
+      "boss": "CryptKeeper",
+      "scenario": "load_completed_encounter",
+      "verification": "Unreal PIE pending"
+    },
+    {
+      "topic": 2113,
+      "boss": "CryptKeeper",
+      "scenario": "reenter_after_load",
+      "verification": "Unreal PIE pending"
+    },
+    {
+      "topic": 2114,
+      "boss": "CryptKeeper",
+      "scenario": "wrong_encounter_id",
+      "verification": "Unreal PIE pending"
+    },
+    {
+      "topic": 2115,
+      "boss": "CryptKeeper",
+      "scenario": "objective_on_victory",
+      "verification": "Unreal PIE pending"
+    },
+    {
+      "topic": 2116,
+      "boss": "CryptKeeper",
+      "scenario": "no_double_objective",
+      "verification": "Unreal PIE pending"
+    },
+    {
+      "topic": 2117,
+      "boss": "CryptKeeper",
+      "scenario": "zone_entry_legacy",
+      "verification": "Unreal PIE pending"
+    },
+    {
+      "topic": 2118,
+      "boss": "CryptKeeper",
+      "scenario": "wave_failure_retry",
+      "verification": "Unreal PIE pending"
+    },
+    {
+      "topic": 2119,
+      "boss": "CryptKeeper",
+      "scenario": "boss_death_completion",
+      "verification": "Unreal PIE pending"
+    },
+    {
+      "topic": 2120,
+      "boss": "CryptKeeper",
+      "scenario": "reset_after_completion",
+      "verification": "Unreal PIE pending"
+    },
+    {
+      "topic": 2121,
+      "boss": "ForestAncient",
+      "scenario": "save_before_entry",
+      "verification": "Unreal PIE pending"
+    },
+    {
+      "topic": 2122,
+      "boss": "ForestAncient",
+      "scenario": "load_completed_encounter",
+      "verification": "Unreal PIE pending"
+    },
+    {
+      "topic": 2123,
+      "boss": "ForestAncient",
+      "scenario": "reenter_after_load",
+      "verification": "Unreal PIE pending"
+    },
+    {
+      "topic": 2124,
+      "boss": "ForestAncient",
+      "scenario": "wrong_encounter_id",
+      "verification": "Unreal PIE pending"
+    },
+    {
+      "topic": 2125,
+      "boss": "ForestAncient",
+      "scenario": "objective_on_victory",
+      "verification": "Unreal PIE pending"
+    },
+    {
+      "topic": 2126,
+      "boss": "ForestAncient",
+      "scenario": "no_double_objective",
+      "verification": "Unreal PIE pending"
+    },
+    {
+      "topic": 2127,
+      "boss": "ForestAncient",
+      "scenario": "zone_entry_legacy",
+      "verification": "Unreal PIE pending"
+    },
+    {
+      "topic": 2128,
+      "boss": "ForestAncient",
+      "scenario": "wave_failure_retry",
+      "verification": "Unreal PIE pending"
+    },
+    {
+      "topic": 2129,
+      "boss": "ForestAncient",
+      "scenario": "boss_death_completion",
+      "verification": "Unreal PIE pending"
+    },
+    {
+      "topic": 2130,
+      "boss": "ForestAncient",
+      "scenario": "reset_after_completion",
+      "verification": "Unreal PIE pending"
+    },
+    {
+      "topic": 2131,
+      "boss": "BloodstoneChampion",
+      "scenario": "save_before_entry",
+      "verification": "Unreal PIE pending"
+    },
+    {
+      "topic": 2132,
+      "boss": "BloodstoneChampion",
+      "scenario": "load_completed_encounter",
+      "verification": "Unreal PIE pending"
+    },
+    {
+      "topic": 2133,
+      "boss": "BloodstoneChampion",
+      "scenario": "reenter_after_load",
+      "verification": "Unreal PIE pending"
+    },
+    {
+      "topic": 2134,
+      "boss": "BloodstoneChampion",
+      "scenario": "wrong_encounter_id",
+      "verification": "Unreal PIE pending"
+    },
+    {
+      "topic": 2135,
+      "boss": "BloodstoneChampion",
+      "scenario": "objective_on_victory",
+      "verification": "Unreal PIE pending"
+    },
+    {
+      "topic": 2136,
+      "boss": "BloodstoneChampion",
+      "scenario": "no_double_objective",
+      "verification": "Unreal PIE pending"
+    },
+    {
+      "topic": 2137,
+      "boss": "BloodstoneChampion",
+      "scenario": "zone_entry_legacy",
+      "verification": "Unreal PIE pending"
+    },
+    {
+      "topic": 2138,
+      "boss": "BloodstoneChampion",
+      "scenario": "wave_failure_retry",
+      "verification": "Unreal PIE pending"
+    },
+    {
+      "topic": 2139,
+      "boss": "BloodstoneChampion",
+      "scenario": "boss_death_completion",
+      "verification": "Unreal PIE pending"
+    },
+    {
+      "topic": 2140,
+      "boss": "BloodstoneChampion",
+      "scenario": "reset_after_completion",
+      "verification": "Unreal PIE pending"
+    },
+    {
+      "topic": 2141,
+      "boss": "CrownUsurper",
+      "scenario": "save_before_entry",
+      "verification": "Unreal PIE pending"
+    },
+    {
+      "topic": 2142,
+      "boss": "CrownUsurper",
+      "scenario": "load_completed_encounter",
+      "verification": "Unreal PIE pending"
+    },
+    {
+      "topic": 2143,
+      "boss": "CrownUsurper",
+      "scenario": "reenter_after_load",
+      "verification": "Unreal PIE pending"
+    },
+    {
+      "topic": 2144,
+      "boss": "CrownUsurper",
+      "scenario": "wrong_encounter_id",
+      "verification": "Unreal PIE pending"
+    },
+    {
+      "topic": 2145,
+      "boss": "CrownUsurper",
+      "scenario": "objective_on_victory",
+      "verification": "Unreal PIE pending"
+    },
+    {
+      "topic": 2146,
+      "boss": "CrownUsurper",
+      "scenario": "no_double_objective",
+      "verification": "Unreal PIE pending"
+    },
+    {
+      "topic": 2147,
+      "boss": "CrownUsurper",
+      "scenario": "zone_entry_legacy",
+      "verification": "Unreal PIE pending"
+    },
+    {
+      "topic": 2148,
+      "boss": "CrownUsurper",
+      "scenario": "wave_failure_retry",
+      "verification": "Unreal PIE pending"
+    },
+    {
+      "topic": 2149,
+      "boss": "CrownUsurper",
+      "scenario": "boss_death_completion",
+      "verification": "Unreal PIE pending"
+    },
+    {
+      "topic": 2150,
+      "boss": "CrownUsurper",
+      "scenario": "reset_after_completion",
+      "verification": "Unreal PIE pending"
+    }
+  ]
+}

@@ -2,10 +2,13 @@
 #include "World/AskirEncounterZone.h"
 #include "Combat/AskirCombatComponent.h"
 #include "Quest/AskirQuestComponent.h"
+#include "Inventory/AskirInventoryComponent.h"
+#include "Inventory/AskirItemData.h"
 #include "GameFramework/Pawn.h"
 #include "Engine/World.h"
 #include "Components/SceneComponent.h"
 #include "Math/UnrealMathUtility.h"
+#include "Misc/Crc.h"
 AAskirEncounterSpawner::AAskirEncounterSpawner()
 {
  PrimaryActorTick.bCanEverTick=false;
@@ -30,10 +33,16 @@ bool AAskirEncounterSpawner::StartForPlayer(AActor* Player,FName EncounterID)
 {
  const APawn* Pawn=Cast<APawn>(Player);
  if(bRunning||bFinished||!IsValid(Pawn)||!Pawn->IsPlayerControlled()||!EnemyClass||!GetWorld())return false;
+ // Reject external requests for a different zone; never credit the wrong encounter.
+ if(IsValid(Zone) && !Zone->EncounterID.IsNone() && EncounterID!=Zone->EncounterID)return false;
  // A completed persistent encounter cannot be restarted by revisiting the zone.
  if(IsValid(Zone) && !Zone->EncounterID.IsNone())
   if(const UAskirQuestComponent* Quests=Player->FindComponentByClass<UAskirQuestComponent>())
    if(Quests->HasCompletedEncounter(Zone->EncounterID))return false;
+ // Persistent encounters require a quest ledger before spawning; otherwise
+ // their rewards could be granted without any durable completion marker.
+ if(IsValid(Zone) && !Zone->EncounterID.IsNone() &&
+    !IsValid(Player->FindComponentByClass<UAskirQuestComponent>()))return false;
  ActivePlayer=Player;
  WavesStarted=0;
  bRunning=true;
@@ -106,14 +115,66 @@ void AAskirEncounterSpawner::FinishEncounter()
  {
   if(UAskirQuestComponent* Quests=ActivePlayer->FindComponentByClass<UAskirQuestComponent>())
   {
-   // Register completion first; the same encounter may never award twice.
+   // If a reward is configured, ensure a recipient inventory exists before
+   // recording permanent completion; otherwise a reward could be lost forever.
+   UAskirInventoryComponent* Inventory=ActivePlayer->FindComponentByClass<UAskirInventoryComponent>();
+   // Select at most one valid weighted entry; empty/disabled tables use the legacy reward.
+   UAskirItemData* SelectedReward=CompletionRewardItem;
+   int32 SelectedQuantity=FMath::Clamp(CompletionRewardQuantity,1,999);
+   int64 TotalWeight=0;
+   for(const FAskirEncounterLootEntry& Entry:CompletionLootTable)
+    if(IsValid(Entry.Item) && Entry.Weight>0) TotalWeight+=FMath::Clamp(Entry.Weight,0,100000);
+   if(TotalWeight>0)
+   {
+    // Stable encounter IDs give the same drop on retries and after reload.
+    // Repeatable encounters (no ID) still draw a fresh reward on each victory.
+    const FName RewardEncounterID=IsValid(Zone)?Zone->EncounterID:NAME_None;
+    const uint32 Seed=RewardEncounterID.IsNone()
+     ? static_cast<uint32>(FMath::Rand())
+     : FCrc::StrCrc32(*RewardEncounterID.ToString());
+    FRandomStream RewardRandom(static_cast<int32>(Seed));
+    const int64 Draw=FMath::Min(TotalWeight-1,
+     static_cast<int64>(RewardRandom.FRand()*static_cast<double>(TotalWeight)));
+    int64 Cursor=0;
+    for(const FAskirEncounterLootEntry& Entry:CompletionLootTable)
+    {
+     if(!IsValid(Entry.Item) || Entry.Weight<=0)continue;
+     Cursor+=FMath::Clamp(Entry.Weight,0,100000);
+     if(Draw<Cursor){SelectedReward=Entry.Item;SelectedQuantity=FMath::Clamp(Entry.Quantity,1,999);break;}
+    }
+   }
+   const bool bHasReward=IsValid(SelectedReward);
+   if(bHasReward && !IsValid(Inventory))
+   {
+    // Keep the encounter retryable if the player cannot receive the reward.
+    bFinished=false;
+    ActivePlayer=nullptr;
+    return;
+   }
    const FName ID=IsValid(Zone)?Zone->EncounterID:NAME_None;
+   if(!ID.IsNone() && Quests->HasCompletedEncounter(ID))
+   {
+    ActivePlayer=nullptr;
+    return;
+   }
+   // Never mark a reward as complete if inventory insertion failed.
+   // Crash-atomic persistence still requires a future save transaction journal.
+   if(bHasReward && !Inventory->AddItem(SelectedReward,SelectedQuantity))
+   {
+    bFinished=false;ActivePlayer=nullptr;
+    return;
+   }
    const bool bNewCompletion=ID.IsNone() || Quests->MarkEncounterCompleted(ID);
-   if(bNewCompletion && !CompletionQuestID.IsNone() && !CompletionObjectiveID.IsNone())
-    Quests->AdvanceQuestObjective(CompletionQuestID,CompletionObjectiveID,1);
+   // Combat zones must not also grant the objective on entry.
+   const bool bZoneAwardsOnEntry=IsValid(Zone) && Zone->bAwardObjectiveOnEntry;
+   const FName Quest=CompletionQuestID.IsNone() && IsValid(Zone)?Zone->QuestID:CompletionQuestID;
+   const FName Objective=CompletionObjectiveID.IsNone() && IsValid(Zone)?Zone->ObjectiveID:CompletionObjectiveID;
+   if(bNewCompletion && !bZoneAwardsOnEntry && !Quest.IsNone() && !Objective.IsNone())
+    Quests->AdvanceQuestObjective(Quest,Objective,IsValid(Zone)?FMath::Max(1,Zone->ObjectiveAmount):1);
   }
  }
  OnEncounterFinished.Broadcast(ActivePlayer.Get(),IsValid(Zone)?Zone->EncounterID:NAME_None);
+ ActivePlayer=nullptr;
 }
 void AAskirEncounterSpawner::ResetSpawner()
 {
