@@ -8,6 +8,7 @@ class UTextBlock;
 class UProgressBar;
 class UBorder;
 class UVerticalBox;
+class UCanvasPanelSlot;
 class AAskirDornfeldEventActor;
 class UAskirItemData;
 class AAskirCharacter;
@@ -94,6 +95,8 @@ protected:
     virtual FReply NativeOnKeyDown(const FGeometry& Geometry,const FKeyEvent& Event) override;
 private:
     void RefreshHUD();
+    void RefreshTargetHUD(const FGeometry& Geometry);
+    void HideTargetHUD();
     void BuildPanel();
     void UpdateFrontend();
     void ShowTitle();
@@ -120,6 +123,13 @@ private:
     UPROPERTY(Transient) TObjectPtr<UProgressBar> Stamina;
     UPROPERTY(Transient) TObjectPtr<UProgressBar> Mana;
     UPROPERTY(Transient) TObjectPtr<UTextBlock> SelectedSpell;
+    UPROPERTY(Transient) TObjectPtr<UBorder> TargetPanel;
+    UPROPERTY(Transient) TObjectPtr<UCanvasPanelSlot> TargetPanelSlot;
+    UPROPERTY(Transient) TObjectPtr<UTextBlock> TargetName;
+    UPROPERTY(Transient) TObjectPtr<UTextBlock> TargetVitals;
+    UPROPERTY(Transient) TObjectPtr<UProgressBar> TargetHealth;
+    UPROPERTY(Transient) TObjectPtr<UTextBlock> TargetMarker;
+    UPROPERTY(Transient) TObjectPtr<UCanvasPanelSlot> TargetMarkerSlot;
     UPROPERTY(Transient) TObjectPtr<UBorder> Menu;
     UPROPERTY(Transient) TObjectPtr<UVerticalBox> MenuBody;
     TWeakObjectPtr<AAskirDornfeldEventActor> CurrentElder;

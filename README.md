@@ -1,30 +1,30 @@
-# ASKIR RPG · V81 Entwicklungsstand
+# ASKIR RPG · V82 Entwicklungsstand
 
 Unreal Engine 5.6, C++ und Third Person, Zielplattform Windows 64 Bit.
 
 **Quellprojekt mit Original-Assetquellen. Unreal Engine 5.6 und ein Windows-Buildhost fehlen in dieser Umgebung. Native Kompilierung, Engine-Import und Spielbarkeit sind nicht nachgewiesen. Das Archiv enthält derzeit keine `.umap`, `.uasset` oder Spiel-EXE.**
 
-V81 ergänzt ein natives UMG-Hauptmenü: neues Spiel, laufende Sitzung fortsetzen, geprüften Spielstand laden, Einstellungen und Beenden. Ein Neustart aus einer Sitzung verlangt eine Bestätigung und hält den bisherigen Snapshot bis zur bestätigten neuen Welt vor. Gespeicherte Partien werden dabei erhalten.
+V82 ergänzt die native Zielerfassung: mittlere Maustaste erfasst einen sichtbaren aktiven Gegner oder löst die Auswahl; `R` wechselt zum nächsten Gegner. Kamera und Figur richten sich zum Ziel, während der Spieler seitlich laufen kann. Eine UMG-Anzeige zeigt Name, Lebenspunkte und Körpermarkierung. Nahkampf und Zauber verwenden bei freier Sicht dieselbe Zielrichtung. Deckung verhindert neue Zielrichtungen sofort; Tod, Menüs, Laden, Reisen und ungültige Ziele lösen die Auswahl.
 
-Die Einstellungen umfassen Auflösung und Fenstermodus, Grafikqualität, V-Sync, FPS-Limit, Gesamtlautstärke, Kameraempfindlichkeit und vertikale Invertierung. Unbestätigte Anzeigeänderungen werden nach 15 Echtzeitsekunden zurückgenommen. Konfigurationsänderungen werden erst bei ausdrücklicher Übernahme gespeichert und anschließend von der Datei zurückgelesen. Die native Bedienung und Darstellung bleiben in Unreal zu prüfen.
+Normale Angriffe und offensive Magie verwenden gemeinsame Kampfregeln zum Schutz ziviler, inaktiver und toter Figuren. Blocken schützt vor Angriffen aus einem Frontkegel. Native und ältere Guard-Ausdauer werden nicht für denselben Treffer kombiniert. Projektiltreffer berücksichtigen die tatsächliche Flugrichtung; eine Prüfung des Startwegs verhindert das Erscheinen hinter naher Deckung.
 
-V80-Inhalte bleiben erhalten: Dornfelds Brunnenmission mit Mara, Torbens Nebenquest „Die verlorene Lieferung“, Hin-/Rückreise ins Umland, Händler und Werkbank. Ebenso erhalten bleiben die 24 kanonischen Zauber, Inventar/Ausrüstung und Saveformat 5 mit zwei Speicherbänken. Die Originalquellen umfassen geriggte Figuren mit Animationen, neun WAV-Dateien sowie Handwagen und Warenkiste. Die Weltpipeline verwendet weiter die bestehenden V80-Kartenpfade; V81 erzeugt keine zusätzlich gezählten Kartenkopien.
+V77–V81 bleiben erhalten: Mara-Brunnenmission, Torbens „Die verlorene Lieferung“, Dorf-/Umland-Reise, Händler/Crafting, 24 Zauber, Inventar/Ausrüstung, versionierte Zwei-Bank-Spielstände sowie Hauptmenü und persistente Einstellungen. Originale geriggte Figuren mit Animationen, neun WAV-Dateien sowie Handwagen-/Warenkistenquellen sind enthalten. Die V80-Kartenpfade bleiben bestehen; V82 zählt keine neuen Kartenkopien.
 
 Offline prüfen:
 
 ```bash
 python -m pip install -r requirements-dev.txt
-python Tools/verify_v81.py
+python Tools/verify_v82.py
 ```
 
-Der Prüfer führt Python-Regressionen, portable C++-Produktionsregeln mit g++/UBSan sowie binäre Assetprüfungen aus. `Reports/V81_verification.json` enthält die Befehle, tatsächlichen Ausgaben und geprüften Quelldateihashes. Offline-Erfolg wird von blockierten Unreal-/Windows-Tests getrennt. Die ZIP-Pipeline verlangt unveränderte geprüfte Quellen und prüft alle Archiveinträge.
+Der Prüfer führt Python-Regressionen, direkt verwendete portable C++-Produktionsregeln mit g++/UBSan sowie binäre Assetprüfungen aus. `Reports/V82_verification.json` enthält die Befehle, tatsächlichen Ergebnisse und geprüften Quelldateihashes. Die ZIP-Erstellung verlangt unveränderte geprüfte Quellen und prüft alle Archiveinträge.
 
 Windows mit UE 5.6, Visual-Studio-C++-Buildwerkzeugen/Windows SDK und Python 3.10+:
 
 ```powershell
-.\Scripts\Build-AskirV81.ps1 -EngineRoot "C:\Program Files\Epic Games\UE_5.6" -OutputDirectory "C:\AskirBuilds\V81"
+.\Scripts\Build-AskirV82.ps1 -EngineRoot "C:\Program Files\Epic Games\UE_5.6" -OutputDirectory "C:\AskirBuilds\V82"
 ```
 
-Der Ausgabeordner muss neu sein und außerhalb des Projekts liegen. Die Pipeline sichert vor Änderungen, kompiliert den Editor, importiert Assets, erzeugt und validiert beide V80-Karten, führt native Automation aus, erstellt das Win64-Paket und prüft dessen Start. Der Starttest verlangt die wiederhergestellte Spielerwelt vor dem Titelmenü-Marker. Er ersetzt keine Sicht-, Eingabe- oder Durchspielprüfung.
+Der Ausgabeordner muss neu sein und außerhalb des Projekts liegen. Die Pipeline sichert vor Änderungen, kompiliert, importiert Assets, erzeugt und validiert beide V80-Karten, führt native Automation aus, erstellt das Win64-Paket und prüft seine Starts. Die Welt-, Titel- und Zielkomponenten-Marker belegen nur den jeweiligen Startzustand. Kamera, Bedienung, Kampf und vollständiges Durchspielen benötigen zusätzliche Engine-Abnahme.
 
-Details: [Frontend](Docs/V81_FRONTEND.md), [Einstellungen](Docs/V81_SETTINGS.md), [Änderungen](Docs/V81_CHANGES.md), [Prüfstatus und Engine-Abnahme](Docs/V81_VERIFICATION.md), [V80-Weltpipeline](Docs/V80_WORLD_PIPELINE.md), [Assetquellen](Docs/V80_DELIVERY_PROP_ASSETS.md). Die vollständige Kampagne, 30 abgenommene Levels und ein getesteter Windows-Build bleiben offen.
+Details: [Änderungen](Docs/V82_CHANGES.md), [Zielerfassung](Docs/V82_TARGETING.md), [Kampfregeln](Docs/V82_COMBAT_POLICY.md), [HUD](Docs/V82_TARGET_HUD.md), [Pipeline](Docs/V82_PIPELINE.md), [Prüfstatus](Docs/V82_VERIFICATION.md). Die vollständige Kampagne, 30 abgenommene Levels und ein getesteter Windows-Build bleiben offen.

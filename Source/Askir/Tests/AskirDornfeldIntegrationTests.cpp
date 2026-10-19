@@ -79,6 +79,7 @@ bool FAskirDornfeldPlayerIntegrationTest::RunTest(const FString& Parameters)
     for(int32 Index=0;Index<2;++Index)
     {
         Guardians[Index]=Fixture.Spawn<AAskirNPC>(FVector(Index==0?120.f:-120.f,0.f,96.f));
+        Guardians[Index]->bHostile=true;
         Guardians[Index]->DefeatObjectiveID=TEXT("Kill_ShadowGuardian");
         Relays[Index]=Fixture.Spawn<AAskirDornfeldMissionRelay>();
         Relays[Index]->MissionPlayer=Player;Relays[Index]->GuardianActor=Guardians[Index];

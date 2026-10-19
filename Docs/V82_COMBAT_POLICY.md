@@ -1,0 +1,11 @@
+# V82: Gemeinsame Ziel- und Blockregeln
+
+`AskirCombatTargetPolicy::CanDamage` ist die gemeinsame Grenze für normale Spielerangriffe, offensive Magie und Zielerfassung. Spieler dürfen aktive feindliche NPCs angreifen; aktive feindliche NPCs dürfen Spieler angreifen. Zivilisten, andere Spieler, tote oder deaktivierte Akteure, inaktive Begegnungen und Akteure während eines Weltwechsels werden ausgeschlossen. Quelle und Ziel müssen gültige, unterschiedliche Akteure derselben laufenden Welt mit aktiver Kampfkomponente sein. Ein vom Spieler übernommener NPC folgt der Spielerrolle.
+
+Die Prüfung verändert keine Fraktionen, Belohnungen oder Questzustände. Direkter Aufruf von `UAskirCombatComponent::ApplyDamage` bleibt für Umweltschaden, Skripte und Testaufbauten möglich. Diese untere Ebene erhält keinen allgemeinen Gegnerfilter.
+
+`IsFrontalBlock` prüft einen horizontalen Kegel vor dem Verteidiger, standardmäßig mit 65 Grad halbem Öffnungswinkel. Die ausdrücklich angegebene `HitDirection` zeigt vom Angreifer zum Verteidiger und wird für diese Prüfung umgekehrt. Nur bei fehlender horizontaler Richtung wird eine gültige Position des Schadensverursachers verwendet. Ein Projektil direkt am Trefferpunkt kann über Instigator oder Besitzer aufgelöst werden; Besitzerzyklen und lange Ketten werden begrenzt. Der Höhenunterschied allein macht einen Angriff weder frontal noch rückwärtig.
+
+Wahrer Schaden, unbekannte Richtung ohne zuverlässigen Verursacher, nicht endliche Vektoren und Winkel außerhalb von 0 bis 90 Grad erlauben keinen Block. Ein gültiger Treffervektor hat Vorrang vor der späteren Position eines Projektils oder Angreifers. Die API prüft die Richtung; ob der Verteidiger tatsächlich blockt und wie viel Ausdauer verbraucht wird, entscheiden die bestehenden Kampfkomponenten.
+
+Die produktive Engine-Anbindung verwendet dieselben portablen Regeln wie der UBSan-Test. Der portable Test prüft sämtliche Rollen-/Zustandskombinationen sowie gedrehte Frontkegel, Winkelgrenzen, Projektilersatzrichtungen und ungültige Zahlen. Native Automation-Tests prüfen zusätzlich Akteure, Begegnungszustände, verschiedene Welten, Umweltschaden und Projektilbesitzer. Ohne Unreal Engine 5.6 sind diese nativen Tests nicht ausgeführt; eine bestandene portable Prüfung bestätigt keine Engine-Kompilierung oder Spielbarkeit.

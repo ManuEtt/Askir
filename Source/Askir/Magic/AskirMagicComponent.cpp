@@ -4,6 +4,8 @@
 #include "Characters/AskirCharacter.h"
 #include "Characters/AskirNPC.h"
 #include "Combat/AskirCombatComponent.h"
+#include "Combat/AskirCombatTargetPolicy.h"
+#include "Combat/AskirTargetLockComponent.h"
 #include "Animation/AskirAnimationStateComponent.h"
 #include "Audio/AskirAudioLibrary.h"
 #include "Game/AskirPlayerController.h"
@@ -43,25 +45,15 @@ void UAskirMagicComponent::CycleSpell(int32 Direction)
 }
 bool UAskirMagicComponent::IsValidTarget(AActor* Caster,AActor* Target)
 {
-    if(!IsValid(Caster)||!IsValid(Target)||Caster==Target)return false;
-    const auto* Victim=Target->FindComponentByClass<UAskirCombatComponent>();
-    if(!Victim||Victim->IsDead()||!Victim->IsDamageEnabled())return false;
-    if(const auto* Player=Cast<APawn>(Caster))
-    {
-        if(Player->IsPlayerControlled())
-        {
-            const auto* Enemy=Cast<AAskirNPC>(Target);return Enemy&&Enemy->bHostile&&Enemy->IsEncounterActive();
-        }
-    }
-    const auto* Enemy=Cast<AAskirNPC>(Caster);const auto* Player=Cast<APawn>(Target);
-    return Enemy&&Enemy->bHostile&&Enemy->IsEncounterActive()&&Player&&Player->IsPlayerControlled();
+    return AskirCombatTargetPolicy::CanDamage(Caster,Target);
 }
-float UAskirMagicComponent::ApplySpellHit(AActor* Caster,AActor* Target,Element School,float Power,const FVector& Location)
+float UAskirMagicComponent::ApplySpellHit(AActor* Caster,AActor* Target,Element School,float Power,const FVector& Location,const FVector& TravelDirection)
 {
-    if(!IsValidTarget(Caster,Target)||!FMath::IsFinite(Power)||Power<=0)return 0.f;
+    if(!IsValidTarget(Caster,Target)||!FMath::IsFinite(Power)||Power<=0||TravelDirection.ContainsNaN())return 0.f;
     const EAskirDamageType Types[]={EAskirDamageType::Fire,EAskirDamageType::Frost,EAskirDamageType::Lightning,EAskirDamageType::Physical,EAskirDamageType::Magic,EAskirDamageType::Magic};
     const int32 Index=static_cast<int32>(School);if(Index<0||Index>=6)return 0.f;
-    FAskirDamageInfo Info;Info.Damage=Power;Info.DamageType=Types[Index];Info.DamageCauser=Caster;Info.HitLocation=Location;Info.HitDirection=(Target->GetActorLocation()-Caster->GetActorLocation()).GetSafeNormal();
+    FAskirDamageInfo Info;Info.Damage=Power;Info.DamageType=Types[Index];Info.DamageCauser=Caster;Info.HitLocation=Location;
+    Info.HitDirection=TravelDirection.IsNearlyZero()?(Target->GetActorLocation()-Caster->GetActorLocation()).GetSafeNormal():TravelDirection.GetSafeNormal();
     auto* Combat=Target->FindComponentByClass<UAskirCombatComponent>();
     const float Before=Combat->GetHealth();
     if(auto* Character=Cast<AAskirCharacter>(Target))Character->ReceiveAskirDamage(Info);else Combat->ApplyDamage(Info);
@@ -77,11 +69,23 @@ bool UAskirMagicComponent::CastSelected()
     LastFailure=CheckCast(S,Mana,GetSelectedCooldownRemaining(),Character&&!Character->IsDead(),Character&&Character->CombatComponent->IsDamageEnabled(),Character&&!Character->CanUseGameplayInput(),IsCasting()||(Character&&(Character->HasPendingAttack()||Character->IsBlocking())));
     if(LastFailure!=Failure::None||!Pawn)return false;
     TGuardValue<bool> Guard(bCastTransaction,true);
-    FVector Direction=Pawn->GetController()?Pawn->GetController()->GetControlRotation().Vector():Pawn->GetActorForwardVector();Direction.Normalize();
+    const FVector CastOrigin=Pawn->GetActorLocation()+FVector(0,0,40);
+    FVector Direction=Pawn->GetController()?Pawn->GetController()->GetControlRotation().Vector():Pawn->GetActorForwardVector();
+    FVector LockedDirection;
+    if(Character->TargetLockComponent&&Character->TargetLockComponent->GetAimDirection(CastOrigin,LockedDirection))Direction=LockedDirection;
+    if(Direction.ContainsNaN()||!Direction.Normalize()){LastFailure=Failure::Unavailable;return false;}
     AAskirSpellProjectile* Projectile=nullptr;
     if(S.Kind==Effect::Projectile)
     {
-        const FVector Location=Pawn->GetActorLocation()+FVector(0,0,40)+Direction*70.f;
+        FVector Location=CastOrigin+Direction*70.f;
+        // Check the whole launch segment too: AlwaysSpawn must not place a spell
+        // on the far side of nearby geometry before its first movement sweep.
+        FHitResult LaunchHit;FCollisionQueryParams LaunchQuery(SCENE_QUERY_STAT(AskirSpellLaunch),false,Pawn);
+        if(GetWorld()->SweepSingleByChannel(LaunchHit,CastOrigin,Location,FQuat::Identity,ECC_Visibility,FCollisionShape::MakeSphere(12.f),LaunchQuery))
+        {
+            if(!IsValidTarget(Pawn,LaunchHit.GetActor())){LastFailure=Failure::Unavailable;return false;}
+            Location=CastOrigin;
+        }
         FActorSpawnParameters Params;Params.Owner=Pawn;Params.Instigator=Pawn;Params.SpawnCollisionHandlingOverride=ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
         Projectile=GetWorld()->SpawnActor<AAskirSpellProjectile>(Location,Direction.Rotation(),Params);
         if(!Projectile){LastFailure=Failure::Unavailable;return false;}

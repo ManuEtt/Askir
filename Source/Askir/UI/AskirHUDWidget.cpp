@@ -4,6 +4,7 @@
 #include "Settings/AskirGameUserSettings.h"
 #include "Magic/AskirSpellCatalog.h"
 #include "Blueprint/WidgetTree.h"
+#include "Blueprint/WidgetLayoutLibrary.h"
 #include "Components/Border.h"
 #include "Components/CanvasPanel.h"
 #include "Components/CanvasPanelSlot.h"
@@ -13,7 +14,10 @@
 #include "Components/VerticalBox.h"
 #include "Styling/CoreStyle.h"
 #include "Characters/AskirCharacter.h"
+#include "Characters/AskirNPC.h"
 #include "Combat/AskirCombatComponent.h"
+#include "Combat/AskirTargetLockComponent.h"
+#include "Components/CapsuleComponent.h"
 #include "Equipment/AskirEquipmentComponent.h"
 #include "Inventory/AskirInventoryComponent.h"
 #include "Inventory/AskirItemData.h"
@@ -126,12 +130,30 @@ TSharedRef<SWidget> UAskirHUDWidget::RebuildWidget()
     SelectedSpell=AddText(StatusBox,TEXT(""),16);
     Objective=AddText(StatusBox,TEXT(""),18);
     DeliveryObjective=AddText(StatusBox,TEXT(""),18);
+    TargetPanel=WidgetTree->ConstructWidget<UBorder>();
+    TargetPanel->SetBrushColor(FLinearColor(.035f,.02f,.025f,.88f));TargetPanel->SetPadding(FMargin(12.f,8.f));
+    TargetPanelSlot=Canvas->AddChildToCanvas(TargetPanel);
+    TargetPanelSlot->SetAnchors(FAnchors(.5f,0.f));TargetPanelSlot->SetAlignment(FVector2D(.5f,0.f));
+    TargetPanelSlot->SetPosition(FVector2D(0.f,28.f));TargetPanelSlot->SetSize(FVector2D(280.f,100.f));
+    auto* TargetBox=WidgetTree->ConstructWidget<UVerticalBox>();TargetPanel->SetContent(TargetBox);
+    TargetName=AddText(TargetBox,TEXT(""),20);TargetName->SetJustification(ETextJustify::Center);
+    TargetVitals=AddText(TargetBox,TEXT(""),15);TargetVitals->SetJustification(ETextJustify::Center);
+    TargetHealth=WidgetTree->ConstructWidget<UProgressBar>();
+    TargetHealth->SetFillColorAndOpacity(FLinearColor(.75f,.16f,.14f));TargetBox->AddChildToVerticalBox(TargetHealth);
+    TargetMarker=WidgetTree->ConstructWidget<UTextBlock>();
+    TargetMarker->SetFont(FCoreStyle::GetDefaultFontStyle("Bold",26));
+    TargetMarker->SetText(NSLOCTEXT("AskirUI","LockedTargetMarker","[ + ]"));
+    TargetMarker->SetColorAndOpacity(FSlateColor(FLinearColor(1.f,.78f,.3f)));
+    TargetMarker->SetShadowColorAndOpacity(FLinearColor::Black);TargetMarker->SetShadowOffset(FVector2D(1.f,1.f));
+    TargetMarkerSlot=Canvas->AddChildToCanvas(TargetMarker);
+    TargetMarkerSlot->SetAlignment(FVector2D(.5f,.5f));TargetMarkerSlot->SetAutoSize(true);
+    HideTargetHUD();
     Prompt=WidgetTree->ConstructWidget<UTextBlock>();Prompt->SetFont(FCoreStyle::GetDefaultFontStyle("Regular",20));
     auto* PromptSlot=Canvas->AddChildToCanvas(Prompt);PromptSlot->SetAnchors(FAnchors(.5f,.75f));PromptSlot->SetAlignment(FVector2D(.5f,0));PromptSlot->SetAutoSize(true);
     Notification=WidgetTree->ConstructWidget<UTextBlock>();Notification->SetFont(FCoreStyle::GetDefaultFontStyle("Regular",18));
     auto* NoticeSlot=Canvas->AddChildToCanvas(Notification);NoticeSlot->SetAnchors(FAnchors(.5f,.86f));NoticeSlot->SetAlignment(FVector2D(.5f,0));NoticeSlot->SetAutoSize(true);
     UTextBlock* Hints=WidgetTree->ConstructWidget<UTextBlock>();Hints->SetFont(FCoreStyle::GetDefaultFontStyle("Regular",14));
-    Hints->SetText(NSLOCTEXT("AskirUI","ControlsV78","E Interaktion · Q Block · Alt Ausweichen · F Zauber · Mausrad Auswahl · K Magie · Tab Inventar · J Journal · F5/F9 · Esc Pause"));
+    Hints->SetText(NSLOCTEXT("AskirUI","ControlsV82","E Interaktion · Q Block · Alt Ausweichen · Mittlere Maustaste Ziel · R Zielwechsel · F Zauber · Mausrad Auswahl · K Magie · Tab Inventar · J Journal · F5/F9 · Esc Pause"));
     auto* HintSlot=Canvas->AddChildToCanvas(Hints);HintSlot->SetAnchors(FAnchors(.5f,.96f));HintSlot->SetAlignment(FVector2D(.5f,0));HintSlot->SetAutoSize(true);
     Menu=WidgetTree->ConstructWidget<UBorder>();Menu->SetBrushColor(FLinearColor(.025f,.03f,.04f,.98f));Menu->SetPadding(FMargin(24));
     auto* MenuSlot=Canvas->AddChildToCanvas(Menu);MenuSlot->SetAnchors(FAnchors(.5f,.5f));MenuSlot->SetAlignment(FVector2D(.5f,.5f));MenuSlot->SetSize(FVector2D(620,520));
@@ -174,6 +196,58 @@ void UAskirHUDWidget::NativeTick(const FGeometry& Geometry,float DeltaSeconds)
             ClosePanel();Panel=EAskirUIPanel::TravelRecovery;BuildPanel();Menu->SetVisibility(ESlateVisibility::Visible);
             if(auto* PC=Cast<AAskirPlayerController>(GetOwningPlayer()))PC->SetMenuInput(true,false);
         }
+    RefreshTargetHUD(Geometry);
+}
+void UAskirHUDWidget::HideTargetHUD()
+{
+    if(TargetPanel)TargetPanel->SetVisibility(ESlateVisibility::Collapsed);
+    if(TargetMarker)TargetMarker->SetVisibility(ESlateVisibility::Collapsed);
+}
+void UAskirHUDWidget::RefreshTargetHUD(const FGeometry& Geometry)
+{
+    HideTargetHUD();
+    auto* Player=Cast<AAskirCharacter>(GetOwningPlayerPawn());
+    auto* Controller=Cast<AAskirPlayerController>(GetOwningPlayer());
+    if(!Player||!Controller||!TargetPanel||!TargetName||!TargetVitals||!TargetHealth||
+       !TargetMarker||!TargetMarkerSlot||Panel!=EAskirUIPanel::None||Controller->IsMenuOpen()||
+       Player->IsDead()||Player->IsWorldTravelPending()||!Player->TargetLockComponent)return;
+    auto* Target=Cast<AAskirNPC>(Player->TargetLockComponent->GetLockedTarget());
+    if(!IsValid(Target)||Target->IsActorBeingDestroyed()||Target->IsDead()||!Target->CombatComponent)return;
+    const float CurrentHealth=Target->CombatComponent->GetHealth();
+    const float MaxHealth=Target->CombatComponent->GetMaxHealth();
+    if(!FMath::IsFinite(CurrentHealth)||!FMath::IsFinite(MaxHealth)||CurrentHealth<=0.f||MaxHealth<=0.f)return;
+    const float ClampedHealth=FMath::Clamp(CurrentHealth,0.f,MaxHealth);
+    TargetName->SetText(Target->NPCName.IsEmpty()?NSLOCTEXT("AskirUI","HostileTarget","Feind"):Target->NPCName);
+    TargetVitals->SetText(FText::Format(NSLOCTEXT("AskirUI","TargetHealth","LP {0} / {1}"),
+        FText::AsNumber(static_cast<double>(ClampedHealth)),FText::AsNumber(static_cast<double>(MaxHealth))));
+    TargetHealth->SetPercent(FMath::Clamp(ClampedHealth/MaxHealth,0.f,1.f));
+    const FVector2D ViewportSize=Geometry.GetLocalSize();
+    if(!FMath::IsFinite(ViewportSize.X)||!FMath::IsFinite(ViewportSize.Y)||ViewportSize.X<=0.||ViewportSize.Y<=0.)return;
+    // Keep the target card clear of the existing 500 px player-status card.
+    if(TargetPanelSlot)
+    {
+        const double CenterX=ViewportSize.X>=844.?FMath::Clamp(FMath::Max(ViewportSize.X*.5,680.),164.,ViewportSize.X-164.):ViewportSize.X*.5;
+        const double Top=ViewportSize.X>=844.?28.:FMath::Clamp(420.,28.,FMath::Max(28.,ViewportSize.Y-110.));
+        TargetPanelSlot->SetPosition(FVector2D(CenterX-ViewportSize.X*.5,Top));
+    }
+    TargetPanel->SetVisibility(ESlateVisibility::HitTestInvisible);
+
+    // Projection uses the viewport's DPI scale, matching the canvas's local coordinates.
+    // A failed projection (including a point behind the camera) never reuses the previous marker.
+    const auto* Capsule=Target->GetCapsuleComponent();
+    const float UpperBodyOffset=Capsule?Capsule->GetScaledCapsuleHalfHeight()*.65f:65.f;
+    if(!FMath::IsFinite(UpperBodyOffset))return;
+    const FVector MarkerWorld=Target->GetActorLocation()+FVector(0.f,0.f,UpperBodyOffset);
+    if(MarkerWorld.ContainsNaN())return;
+    FVector2D MarkerPosition;
+    if(!UWidgetLayoutLibrary::ProjectWorldLocationToWidgetPosition(Controller,MarkerWorld,MarkerPosition,false))return;
+    constexpr double MarkerMargin=22.;
+    if(!FMath::IsFinite(MarkerPosition.X)||!FMath::IsFinite(MarkerPosition.Y)||
+       ViewportSize.X<=MarkerMargin*2.||ViewportSize.Y<=MarkerMargin*2.||
+       MarkerPosition.X<MarkerMargin||MarkerPosition.Y<MarkerMargin||
+       MarkerPosition.X>ViewportSize.X-MarkerMargin||MarkerPosition.Y>ViewportSize.Y-MarkerMargin)return;
+    TargetMarkerSlot->SetPosition(MarkerPosition);
+    TargetMarker->SetVisibility(ESlateVisibility::HitTestInvisible);
 }
 void UAskirHUDWidget::RefreshHUD()
 {

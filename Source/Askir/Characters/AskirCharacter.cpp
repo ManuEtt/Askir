@@ -49,6 +49,8 @@
 #include "Components/CapsuleComponent.h"
 #include "Engine/World.h"
 #include "Combat/AskirCombatComponent.h"
+#include "Combat/AskirCombatTargetPolicy.h"
+#include "Combat/AskirTargetLockComponent.h"
 #include "Inventory/AskirInventoryComponent.h"
 #include "Quest/AskirQuestComponent.h"
 AAskirCharacter::AAskirCharacter()
@@ -58,6 +60,7 @@ AAskirCharacter::AAskirCharacter()
     DialogueComponent=CreateDefaultSubobject<UAskirDialogueComponent>(TEXT("Dialogue"));
     ReputationComponent=CreateDefaultSubobject<UAskirReputationComponent>(TEXT("Reputation"));
     MagicComponent=CreateDefaultSubobject<UAskirMagicComponent>(TEXT("Magic"));
+    TargetLockComponent=CreateDefaultSubobject<UAskirTargetLockComponent>(TEXT("TargetLock"));
     AnimationPlayback=CreateDefaultSubobject<UAskirAnimationPlaybackComponent>(TEXT("AnimationPlayback"));
     SurvivalComponent=CreateDefaultSubobject<UAskirSurvivalComponent>(TEXT("Survival"));
     EquipmentComponent=CreateDefaultSubobject<UAskirEquipmentComponent>(TEXT("Equipment"));
@@ -123,7 +126,7 @@ void AAskirCharacter::SetupPlayerInputComponent(UInputComponent*P)
     UEnhancedInputComponent* Input=Cast<UEnhancedInputComponent>(P);
     if(!Input){UE_LOG(LogTemp,Error,TEXT("Askir requires EnhancedInputComponent; check DefaultInput.ini"));return;}
     InitializeEnhancedInput();
-    if(RuntimeInputActions.Num()!=19)return;
+    if(RuntimeInputActions.Num()!=21)return;
     Input->BindAction(RuntimeInputActions[0],ETriggerEvent::Triggered,this,&AAskirCharacter::InputMoveForward);
     Input->BindAction(RuntimeInputActions[1],ETriggerEvent::Triggered,this,&AAskirCharacter::InputMoveRight);
     Input->BindAction(RuntimeInputActions[2],ETriggerEvent::Triggered,this,&AAskirCharacter::InputTurn);
@@ -148,14 +151,16 @@ void AAskirCharacter::SetupPlayerInputComponent(UInputComponent*P)
     Input->BindAction(RuntimeInputActions[16],ETriggerEvent::Started,this,&AAskirCharacter::InputCast);
     Input->BindAction(RuntimeInputActions[17],ETriggerEvent::Triggered,this,&AAskirCharacter::InputCycleSpell);
     Input->BindAction(RuntimeInputActions[18],ETriggerEvent::Started,this,&AAskirCharacter::InputMagicMenu);
+    Input->BindAction(RuntimeInputActions[19],ETriggerEvent::Started,this,&AAskirCharacter::InputTargetLock);
+    Input->BindAction(RuntimeInputActions[20],ETriggerEvent::Started,this,&AAskirCharacter::InputCycleTarget);
 }
 void AAskirCharacter::InitializeEnhancedInput()
 {
     if(!RuntimeInputMapping)
     {
         RuntimeInputMapping=NewObject<UInputMappingContext>(this);
-        const FKey Keys[]={EKeys::W,EKeys::D,EKeys::MouseX,EKeys::MouseY,EKeys::SpaceBar,EKeys::LeftShift,EKeys::LeftMouseButton,EKeys::RightMouseButton,EKeys::LeftAlt,EKeys::Q,EKeys::E,EKeys::F5,EKeys::F9,EKeys::Escape,EKeys::Tab,EKeys::J,EKeys::F,EKeys::MouseWheelAxis,EKeys::K};
-        for(int32 Index=0;Index<19;++Index)
+        const FKey Keys[]={EKeys::W,EKeys::D,EKeys::MouseX,EKeys::MouseY,EKeys::SpaceBar,EKeys::LeftShift,EKeys::LeftMouseButton,EKeys::RightMouseButton,EKeys::LeftAlt,EKeys::Q,EKeys::E,EKeys::F5,EKeys::F9,EKeys::Escape,EKeys::Tab,EKeys::J,EKeys::F,EKeys::MouseWheelAxis,EKeys::K,EKeys::MiddleMouseButton,EKeys::R};
+        for(int32 Index=0;Index<UE_ARRAY_COUNT(Keys);++Index)
         {
             UInputAction* Action=NewObject<UInputAction>(this);
             Action->ValueType=(Index<4||Index==17)?EInputActionValueType::Axis1D:EInputActionValueType::Boolean;
@@ -189,6 +194,17 @@ void AAskirCharacter::InputPause(){if(auto* PC=Cast<AAskirPlayerController>(Cont
 void AAskirCharacter::InputInventory(){if(auto* PC=Cast<AAskirPlayerController>(Controller))PC->ToggleInventory();}
 void AAskirCharacter::InputJournal(){if(auto* PC=Cast<AAskirPlayerController>(Controller))PC->ToggleJournal();}
 void AAskirCharacter::InputMagicMenu(){if(auto* PC=Cast<AAskirPlayerController>(Controller))PC->ToggleMagic();}
+void AAskirCharacter::InputTargetLock()
+{
+    if(!CanUseGameplayInput()||!TargetLockComponent)return;
+    const bool bWasLocked=TargetLockComponent->IsLocked();
+    if(!TargetLockComponent->ToggleLock()&&!bWasLocked)
+        if(auto* PC=Cast<AAskirPlayerController>(Controller))PC->ShowNotification(NSLOCTEXT("AskirCombat","NoLockTarget","Kein sichtbarer Gegner in Reichweite."));
+}
+void AAskirCharacter::InputCycleTarget()
+{
+    if(CanUseGameplayInput()&&TargetLockComponent)TargetLockComponent->CycleTarget(1);
+}
 void AAskirCharacter::InputCast()
 {
     if(!CanUseGameplayInput()||!MagicComponent)return;
@@ -226,19 +242,19 @@ bool AAskirCharacter::CanUseGameplayInput() const
     if(const auto* GM=Cast<AAskirGameMode>(UGameplayStatics::GetGameMode(this)))if(GM->IsPersistenceBusy())return false;
     const auto* PC=Cast<AAskirPlayerController>(Controller);return !PC||!PC->IsMenuOpen();
 }
-void AAskirCharacter::CancelGameplayActions(){AbortPendingAttack();StopBlock();StopSprint();StopJumping();if(MagicComponent)MagicComponent->CancelCasting();}
+void AAskirCharacter::CancelGameplayActions(){AbortPendingAttack();StopBlock();StopSprint();StopJumping();if(MagicComponent)MagicComponent->CancelCasting();if(TargetLockComponent)TargetLockComponent->ClearLock();}
 void AAskirCharacter::MoveForward(float V){if(FMath::IsFinite(V)&&V&&CanUseGameplayInput()&&Controller)AddMovementInput(FRotationMatrix(FRotator(0,Controller->GetControlRotation().Yaw,0)).GetUnitAxis(EAxis::X),V);}
 void AAskirCharacter::MoveRight(float V){if(FMath::IsFinite(V)&&V&&CanUseGameplayInput()&&Controller)AddMovementInput(FRotationMatrix(FRotator(0,Controller->GetControlRotation().Yaw,0)).GetUnitAxis(EAxis::Y),V);}
 void AAskirCharacter::Turn(float V)
 {
-    if(!FMath::IsFinite(V)||!CanUseGameplayInput())return;
+    if(!FMath::IsFinite(V)||!CanUseGameplayInput()||(TargetLockComponent&&TargetLockComponent->IsLocked()))return;
     const auto* Settings=UAskirGameUserSettings::Get();
     const double Axis=AskirSettingsRules::CameraAxis(V,Settings?Settings->GetEffectiveCameraSensitivity():1.,false);
     if(FMath::IsFinite(Axis)&&FMath::Abs(Axis)<=MAX_flt)AddControllerYawInput(static_cast<float>(Axis));
 }
 void AAskirCharacter::LookUp(float V)
 {
-    if(!FMath::IsFinite(V)||!CanUseGameplayInput())return;
+    if(!FMath::IsFinite(V)||!CanUseGameplayInput()||(TargetLockComponent&&TargetLockComponent->IsLocked()))return;
     const auto* Settings=UAskirGameUserSettings::Get();
     const double Axis=AskirSettingsRules::CameraAxis(V,Settings?Settings->GetEffectiveCameraSensitivity():1.,Settings&&Settings->GetEffectiveInvertCameraY());
     if(FMath::IsFinite(Axis)&&FMath::Abs(Axis)<=MAX_flt)AddControllerPitchInput(static_cast<float>(Axis));
@@ -305,14 +321,16 @@ void AAskirCharacter::ResolvePendingAttackImpact()
     if(!bPendingAttack)return; // one damage resolution per attack, even if notify fires twice
     bPendingAttack=false;
     GetWorldTimerManager().ClearTimer(PendingImpactTimer);
-    if(IsDead()||!GetWorld())return;
+    if(!CanUseGameplayInput()||!GetWorld())return;
     const float DamageMultiplier=PendingDamageMultiplier;
     const bool bHeavyAttack=bPendingHeavyAttack;
     // Begin in front of the player, not at the camera behind the character.
     const FRotator ViewRotation=Controller?Controller->GetControlRotation():GetActorRotation();
     FVector Direction=ViewRotation.Vector().GetSafeNormal2D();
-    if(Direction.IsNearlyZero())Direction=GetActorForwardVector().GetSafeNormal2D();
     const FVector Start=GetActorLocation()+FVector(0.f,0.f,GetCapsuleComponent()->GetScaledCapsuleHalfHeight()*0.55f);
+    FVector LockedDirection;
+    if(TargetLockComponent&&TargetLockComponent->GetAimDirection(Start,LockedDirection))Direction=LockedDirection.GetSafeNormal2D();
+    if(Direction.IsNearlyZero())Direction=GetActorForwardVector().GetSafeNormal2D();
     const FVector End=Start+Direction*FMath::Max(0.f,AttackRange);
     FCollisionQueryParams Params(SCENE_QUERY_STAT(AskirMelee),false,this);
     FHitResult Hit;
@@ -326,14 +344,19 @@ void AAskirCharacter::ResolvePendingAttackImpact()
     {
         if(UAskirCombatComponent* TargetCombat=Target->FindComponentByClass<UAskirCombatComponent>())
         {
-            if(TargetCombat->IsDead()) { OnAttackMissed(bHeavyAttack); return; }
+            if(!AskirCombatTargetPolicy::CanDamage(this,Target)) { OnAttackMissed(bHeavyAttack); return; }
             const float WeaponBonus=EquipmentComponent?EquipmentComponent->WeaponRating*FMath::Clamp(EquipmentComponent->Durability/100.f,0.f,1.f):0.f;
             FAskirDamageInfo Info;Info.Damage=FMath::Max(0.f,(BaseAttackDamage+WeaponBonus)*DamageMultiplier);
             Info.DamageCauser=this;Info.HitLocation=Hit.ImpactPoint;Info.HitDirection=Direction;
+            const float Before=TargetCombat->GetHealth();
             if(AAskirCharacter* TargetCharacter=Cast<AAskirCharacter>(Target))TargetCharacter->ReceiveAskirDamage(Info);
             else TargetCombat->ApplyDamage(Info);
-            UAskirAudioLibrary::PlayWorldCue(Target,TEXT("MeleeHit"));
-            OnAttackHit(Target,Hit.ImpactPoint,bHeavyAttack);
+            if(IsValid(TargetCombat)&&TargetCombat->GetHealth()<Before)
+            {
+                UAskirAudioLibrary::PlayWorldCue(Target,TEXT("MeleeHit"));
+                OnAttackHit(Target,Hit.ImpactPoint,bHeavyAttack);
+            }
+            else OnAttackMissed(bHeavyAttack);
         }
         else OnAttackMissed(bHeavyAttack);
     }
@@ -368,7 +391,8 @@ void AAskirCharacter::ReceiveAskirDamage(const FAskirDamageInfo&I)
     if(IsPlayerControlled()&&IsWorldTravelPending())return;
     if(!CombatComponent||CombatComponent->IsDead()||!CombatComponent->IsDamageEnabled()||CombatComponent->IsDodgeInvulnerable()||!FMath::IsFinite(I.Damage)||I.Damage<=0.f)return;
     FAskirDamageInfo Applied=I;
-    if(bBlocking && I.DamageType!=EAskirDamageType::TrueDamage)
+    const bool bNativeBlockWasActive=bBlocking;
+    if(bBlocking && AskirCombatTargetPolicy::IsFrontalBlock(this,I))
     {
         const float Cost=FMath::Max(0.f,I.Damage)*FMath::Max(0.f,BlockStaminaPerDamage);
         if(SpendStamina(Cost))Applied.Damage*=1.f-FMath::Clamp(BlockDamageReduction,0.f,1.f);
@@ -380,11 +404,11 @@ void AAskirCharacter::ReceiveAskirDamage(const FAskirDamageInfo&I)
         Applied.Damage*=100.f/(100.f+Armor);
         EquipmentComponent->DamageGear(Applied.Damage*.05f);
     }
-    const float DamageReceived=CombatComponent->ApplyDamage(Applied);
+    const float DamageReceived=CombatComponent->ApplyDamage(Applied,bNativeBlockWasActive);
     if(AnimationState&&DamageReceived>0.f)AnimationState->RegisterHit();
 }
 bool AAskirCharacter::IsDead()const{return CombatComponent&&CombatComponent->IsDead();}
-void AAskirCharacter::HandleDeath(){CancelPendingAttack();StopSprint();if(AnimationState)AnimationState->RegisterDeath();StopBlock();GetCharacterMovement()->DisableMovement();GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);}
+void AAskirCharacter::HandleDeath(){CancelGameplayActions();if(AnimationState)AnimationState->RegisterDeath();GetCharacterMovement()->DisableMovement();GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);}
 void AAskirCharacter::RestoreAfterLoad()
 {
     CancelGameplayActions();

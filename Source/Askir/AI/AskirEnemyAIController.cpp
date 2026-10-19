@@ -2,6 +2,7 @@
 #include "Characters/AskirCharacter.h"
 #include "Characters/AskirNPC.h"
 #include "Combat/AskirCombatComponent.h"
+#include "Combat/AskirCombatTargetPolicy.h"
 #include "NavigationSystem.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Kismet/GameplayStatics.h"
@@ -112,7 +113,7 @@ void AAskirEnemyAIController::Think()
     if (ControlledEnemy->IsDead()) { Target = nullptr; SetState(EAskirEnemyState::Dead); return; }
     if(const AAskirNPC* NPC=Cast<AAskirNPC>(ControlledEnemy))
     {
-        if(!NPC->IsEncounterActive() || NPC->IsStaggered())
+        if(!NPC->bHostile || !NPC->IsEncounterActive() || NPC->IsStaggered())
         {
             Target=nullptr;
             AbortCombat();
@@ -210,7 +211,7 @@ FString AAskirEnemyAIController::GetStateLabel() const
 
 bool AAskirEnemyAIController::TryStartAttack(AAskirCharacter* Enemy, AAskirCharacter* Victim)
 {
-    if (!IsValid(Enemy) || !IsValid(Victim) || Enemy->IsDead() || Victim->IsDead()) return false;
+    if (!AskirCombatTargetPolicy::CanDamage(Enemy,Victim)) return false;
     Enemy->Attack();
     return Enemy->HasPendingAttack();
 }

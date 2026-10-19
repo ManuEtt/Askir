@@ -11,7 +11,8 @@ class ASKIR_API UAskirCombatComponent:public UActorComponent
     GENERATED_BODY()
 public:
     UAskirCombatComponent();
-    UFUNCTION(BlueprintCallable) float ApplyDamage(const FAskirDamageInfo& Info);
+    /** A native character block attempt consumes the sole guard opportunity for this hit. */
+    UFUNCTION(BlueprintCallable) float ApplyDamage(const FAskirDamageInfo& Info,bool bSkipLegacyGuard=false);
     UFUNCTION(BlueprintCallable) void Heal(float Amount);
     UFUNCTION(BlueprintCallable, Category="Askir|Combat") void GrantDodgeInvulnerability(float Duration);
     UFUNCTION(BlueprintPure, Category="Askir|Combat") bool IsDodgeInvulnerable() const;
