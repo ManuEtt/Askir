@@ -48,10 +48,7 @@
     "ArtSource/Animated_V78/Askir_Raider_Sprint.fbx": "9bb2b058e6edfb9236404bcb3551beb106700684707d1254f5ceef3298180b30",
     "ArtSource/Animated_V78/Askir_Raider_Walk.fbx": "b6e4ba3e0de0b3a94947915612faddb99be21c3ee50199503c80068bfce715a1",
     "ArtSource/Animated_V78/LICENSE_CC0.txt": "1f1a1e45c4e625e0b364f02383f8e6b2f16dbb88fe84f4d400ef4224d45152da",
-    "ArtSource/Animated_V78/PROVENANCE.json": "1d29681cfbede3dc0fadd4eb9edf551bf2e865e1cfdba4f004f2732d8348e020",
-    "ArtSource/Animated_V78/Previews/Guard_Block_Blender.png": "9c969889f9231a839a0768515f7cd993248f09e3e6362620c1b3156935359e83",
-    "ArtSource/Animated_V78/Previews/Hero_Idle_Blender.png": "27fe1439249d9755e9ab6eea9fb563c7cf5e9ce24603fe288763225eacab55da",
-    "ArtSource/Animated_V78/Previews/Raider_LightAttack_Blender.png": "de8dd58f1619322cfff803fd2b691972ea5f3808cd413396515b9ca1c9eeca81",
+    "ArtSource/Animated_V78/PROVENANCE.json": "52f0194de524c62ced673ce85ef49fd29530480e153d8e700b8b9090e3bf1592",
     "ArtSource/Audio_V77/LICENSE.txt": "b9735801707fbd6ad5ca3953fba7b74589ae9fd539eb9d626cb572609774ca15",
     "ArtSource/Audio_V77/S_Chest.wav": "1f8e1851543bbfa6a5d4b1587b31d45b2c931fe1384727d719530c87e6de945f",
     "ArtSource/Audio_V77/S_DungeonAmbient.wav": "2a18f572646fb10f78d7e78fc7046bb834093544433233fe0d61e2809cbcecb2",
@@ -530,7 +527,7 @@
   },
   "version": "V81",
   "world_contract_version": "V80",
-  "checked_at": "2026-10-19T12:22:37.080848+00:00",
+  "checked_at": "2026-10-19T12:25:57.448420+00:00",
   "checks": {
     "world_source_preflight": {
       "status": "Bestanden",
@@ -606,7 +603,7 @@
         "-q"
       ],
       "exit_code": 0,
-      "output": "----------------------------------------------------------------------\nRan 568 tests in 6.493s\n\nOK\n",
+      "output": "----------------------------------------------------------------------\nRan 568 tests in 6.373s\n\nOK\n",
       "test_count": 568
     },
     "spell_catalog": {
@@ -675,7 +672,7 @@
           "-ISource/Askir",
           "Tests/cpp/test_dornfeld_rules_v77.cpp",
           "-o",
-          "/tmp/askir-v81-qmqtn81u/mission_rules"
+          "/tmp/askir-v81-d3dw63sb/mission_rules"
         ],
         "exit_code": 0,
         "output": ""
@@ -683,7 +680,7 @@
       "execution": {
         "status": "Bestanden",
         "command": [
-          "/tmp/askir-v81-qmqtn81u/mission_rules"
+          "/tmp/askir-v81-d3dw63sb/mission_rules"
         ],
         "exit_code": 0,
         "output": "Dornfeld production rules: 73 checks, 0 failures. Unreal runtime: NOT_EXECUTED.\n"
@@ -706,7 +703,7 @@
           "-ISource/Askir",
           "Tests/cpp/test_checked_math_v77.cpp",
           "-o",
-          "/tmp/askir-v81-7osu17zh/checked_arithmetic"
+          "/tmp/askir-v81-z_6m26cw/checked_arithmetic"
         ],
         "exit_code": 0,
         "output": ""
@@ -714,7 +711,7 @@
       "execution": {
         "status": "Bestanden",
         "command": [
-          "/tmp/askir-v81-7osu17zh/checked_arithmetic"
+          "/tmp/askir-v81-z_6m26cw/checked_arithmetic"
         ],
         "exit_code": 0,
         "output": "PASS: 511 assertions against gameplay checked arithmetic\n"
@@ -737,7 +734,7 @@
           "-ISource/Askir",
           "Tests/cpp/test_magic_rules_v78.cpp",
           "-o",
-          "/tmp/askir-v81-zvipf7mv/magic_rules"
+          "/tmp/askir-v81-tqf5qjsy/magic_rules"
         ],
         "exit_code": 0,
         "output": ""
@@ -745,7 +742,7 @@
       "execution": {
         "status": "Bestanden",
         "command": [
-          "/tmp/askir-v81-zvipf7mv/magic_rules"
+          "/tmp/askir-v81-tqf5qjsy/magic_rules"
         ],
         "exit_code": 0,
         "output": "PASS: 451 magic production-rule assertions; 24 canonical spells. Unreal runtime NOT_EXECUTED.\n"
@@ -768,7 +765,7 @@
           "-ISource/Askir",
           "Tests/cpp/test_economy_rules_v79.cpp",
           "-o",
-          "/tmp/askir-v81-kcl15u3n/economy_rules"
+          "/tmp/askir-v81-5yhw25qd/economy_rules"
         ],
         "exit_code": 0,
         "output": ""
@@ -776,7 +773,7 @@
       "execution": {
         "status": "Bestanden",
         "command": [
-          "/tmp/askir-v81-kcl15u3n/economy_rules"
+          "/tmp/askir-v81-5yhw25qd/economy_rules"
         ],
         "exit_code": 0,
         "output": "PASS: 146538 assertions against production merchant, trade and crafting rules\n"
@@ -799,7 +796,7 @@
           "-ISource/Askir",
           "Tests/cpp/test_merchant_state_rules_v79.cpp",
           "-o",
-          "/tmp/askir-v81-gckq70xh/merchant_state_rules"
+          "/tmp/askir-v81-6eszxq96/merchant_state_rules"
         ],
         "exit_code": 0,
         "output": ""
@@ -807,7 +804,7 @@
       "execution": {
         "status": "Bestanden",
         "command": [
-          "/tmp/askir-v81-gckq70xh/merchant_state_rules"
+          "/tmp/askir-v81-6eszxq96/merchant_state_rules"
         ],
         "exit_code": 0,
         "output": "21 merchant-state assertions passed\n"
@@ -830,7 +827,7 @@
           "-ISource/Askir",
           "Tests/cpp/test_delivery_rules_v80.cpp",
           "-o",
-          "/tmp/askir-v81-_7tpvc_6/delivery_rules"
+          "/tmp/askir-v81-8us_j_o7/delivery_rules"
         ],
         "exit_code": 0,
         "output": ""
@@ -838,7 +835,7 @@
       "execution": {
         "status": "Bestanden",
         "command": [
-          "/tmp/askir-v81-_7tpvc_6/delivery_rules"
+          "/tmp/askir-v81-8us_j_o7/delivery_rules"
         ],
         "exit_code": 0,
         "output": "Delivery rules: 1660 checks, 0 failures\n"
@@ -861,7 +858,7 @@
           "-ISource/Askir",
           "Tests/cpp/test_travel_rules_v80.cpp",
           "-o",
-          "/tmp/askir-v81-xx4i1sbe/travel_rules"
+          "/tmp/askir-v81-el_j8mwd/travel_rules"
         ],
         "exit_code": 0,
         "output": ""
@@ -869,7 +866,7 @@
       "execution": {
         "status": "Bestanden",
         "command": [
-          "/tmp/askir-v81-xx4i1sbe/travel_rules"
+          "/tmp/askir-v81-el_j8mwd/travel_rules"
         ],
         "exit_code": 0,
         "output": "2471 travel assertions passed\n"
@@ -892,7 +889,7 @@
           "-ISource/Askir",
           "Tests/cpp/test_quest_reward_rules_v80.cpp",
           "-o",
-          "/tmp/askir-v81-gh1o8j4j/quest_reward_rules"
+          "/tmp/askir-v81-47e7ik0v/quest_reward_rules"
         ],
         "exit_code": 0,
         "output": ""
@@ -900,7 +897,7 @@
       "execution": {
         "status": "Bestanden",
         "command": [
-          "/tmp/askir-v81-gh1o8j4j/quest_reward_rules"
+          "/tmp/askir-v81-47e7ik0v/quest_reward_rules"
         ],
         "exit_code": 0,
         "output": "3521 quest reward assertions passed\n"
@@ -923,7 +920,7 @@
           "-ISource/Askir",
           "Tests/cpp/test_settings_rules_v81.cpp",
           "-o",
-          "/tmp/askir-v81-g1irpoo5/settings_rules"
+          "/tmp/askir-v81-badlgdbd/settings_rules"
         ],
         "exit_code": 0,
         "output": ""
@@ -931,7 +928,7 @@
       "execution": {
         "status": "Bestanden",
         "command": [
-          "/tmp/askir-v81-g1irpoo5/settings_rules"
+          "/tmp/askir-v81-badlgdbd/settings_rules"
         ],
         "exit_code": 0,
         "output": "59759 settings assertions passed\n"
@@ -954,7 +951,7 @@
           "-ISource/Askir",
           "Tests/cpp/test_frontend_rules_v81.cpp",
           "-o",
-          "/tmp/askir-v81-yx0lxloe/frontend_rules"
+          "/tmp/askir-v81-v5zjbssc/frontend_rules"
         ],
         "exit_code": 0,
         "output": ""
@@ -962,7 +959,7 @@
       "execution": {
         "status": "Bestanden",
         "command": [
-          "/tmp/askir-v81-yx0lxloe/frontend_rules"
+          "/tmp/askir-v81-v5zjbssc/frontend_rules"
         ],
         "exit_code": 0,
         "output": "Frontend V81: 1398 assertions passed\n"
@@ -975,7 +972,7 @@
   },
   "engine_preflight": {
     "status": "Blockiert",
-    "checked_at": "2026-10-19T12:22:37.033957+00:00",
+    "checked_at": "2026-10-19T12:25:57.398118+00:00",
     "host_platform": "Linux",
     "engine_root": null,
     "engine_version": null,

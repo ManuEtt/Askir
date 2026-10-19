@@ -34,3 +34,11 @@ werden. Diese Prüfungen ersetzen keinen UHT-/C++-Build und keine UMG-Bedienung.
 Keine neuen Unreal-Karten oder Unreal-Binärassets wurden erzeugt. Die vorhandenen
 Originalmodelle und Audiodateien bleiben erhalten. Das Saveformat bleibt 5;
 Nutzereinstellungen liegen separat in `GameUserSettings.ini`.
+
+## Abgleich mit aktuellem GitHub-main
+
+Während der Entwicklung wurde V80 auf GitHub zusammengeführt. Der anschließende
+mobile Stand `a7dc38b` entfernt drei frühere Blender-Charaktervorschauen. V81
+übernimmt diese Bereinigung; der Herkunftsnachweis führt die entfernten Bilder
+als historische Quellen. Die aktuelle GitHub-Basis wird vor dem V81-Pull-Request
+zusammengeführt und der resultierende Stand erneut offline geprüft.

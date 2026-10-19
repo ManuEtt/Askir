@@ -319,29 +319,34 @@
       "sha256": "b6e4ba3e0de0b3a94947915612faddb99be21c3ee50199503c80068bfce715a1",
       "license": "CC0-1.0",
       "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
-    },
-    {
-      "file": "Previews/Guard_Block_Blender.png",
-      "bytes": 482886,
-      "sha256": "9c969889f9231a839a0768515f7cd993248f09e3e6362620c1b3156935359e83",
-      "license": "CC0-1.0",
-      "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
-    },
-    {
-      "file": "Previews/Hero_Idle_Blender.png",
-      "bytes": 472751,
-      "sha256": "27fe1439249d9755e9ab6eea9fb563c7cf5e9ce24603fe288763225eacab55da",
-      "license": "CC0-1.0",
-      "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
-    },
-    {
-      "file": "Previews/Raider_LightAttack_Blender.png",
-      "bytes": 466866,
-      "sha256": "de8dd58f1619322cfff803fd2b691972ea5f3808cd413396515b9ca1c9eeca81",
-      "license": "CC0-1.0",
-      "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
     }
   ],
-  "unreal_import": "Nicht ausgef\u00fchrt",
-  "runtime_animation": "Nicht ausgef\u00fchrt"
+  "unreal_import": "Nicht ausgeführt",
+  "runtime_animation": "Nicht ausgeführt",
+  "removed_previews": {
+    "reason": "Preserved upstream mobile cleanup from GitHub main a7dc38b89b47024dc3d2fa02c711c8a884729fab; these historical Blender renders are not distributed in V81.",
+    "historical_files": [
+      {
+        "file": "Previews/Guard_Block_Blender.png",
+        "bytes": 482886,
+        "sha256": "9c969889f9231a839a0768515f7cd993248f09e3e6362620c1b3156935359e83",
+        "license": "CC0-1.0",
+        "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
+      },
+      {
+        "file": "Previews/Hero_Idle_Blender.png",
+        "bytes": 472751,
+        "sha256": "27fe1439249d9755e9ab6eea9fb563c7cf5e9ce24603fe288763225eacab55da",
+        "license": "CC0-1.0",
+        "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
+      },
+      {
+        "file": "Previews/Raider_LightAttack_Blender.png",
+        "bytes": 466866,
+        "sha256": "de8dd58f1619322cfff803fd2b691972ea5f3808cd413396515b9ca1c9eeca81",
+        "license": "CC0-1.0",
+        "origin": "Original procedural ASKIR V78 generation; no external model, texture or motion-capture inputs"
+      }
+    ]
+  }
 }
