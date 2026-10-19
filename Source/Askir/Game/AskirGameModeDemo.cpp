@@ -11,6 +11,7 @@
 #include "Components/StaticMeshComponent.h"
 #include "Components/BoxComponent.h"
 #include "Components/CapsuleComponent.h"
+#include "Components/PrimitiveComponent.h"
 #include "GameFramework/PlayerStart.h"
 #include "GameFramework/PlayerController.h"
 #include "Engine/Engine.h"
@@ -19,96 +20,204 @@
 #include "EngineUtils.h"
 #include "Travel/AskirWorldTravelSubsystem.h"
 #include "Travel/AskirWorldPortal.h"
+#include "Travel/AskirTravelRules.h"
+#include "GameFramework/CharacterMovementComponent.h"
+#include "Misc/PackageName.h"
 #include "Engine/GameInstance.h"
 #include "TimerManager.h"
 
+namespace
+{
+AskirTravelRules::Point TravelPoint(const FVector& V){return {V.X,V.Y,V.Z};}
+}
 void AAskirGameMode::BeginPlay()
 {
  Super::BeginPlay();
  if(bEnableLegacyDemo)BuildDemoScene();
- // Wait for spawned pawns and actor BeginPlay hooks, rather than consuming the
- // pending request before a player exists in the destination world.
+ // This callback owns readiness too: startup is not ready before travel restoration.
  GetWorldTimerManager().SetTimerForNextTick(this,&AAskirGameMode::RestorePendingArrival);
- GetWorldTimerManager().SetTimerForNextTick(this,&AAskirGameMode::LogRuntimeReadiness);
 }
 void AAskirGameMode::LogRuntimeReadiness()
 {
+ const auto* Instance=GetGameInstance();
+ const auto* State=Instance?Instance->GetSubsystem<UAskirWorldTravelSubsystem>():nullptr;
+ if(State&&State->HasPendingTravel())return;
  auto* Player=Cast<AAskirCharacter>(UGameplayStatics::GetPlayerPawn(this,0));
  if(Player&&Player->IsPlayerControlled())
  {
   const FString Map=UGameplayStatics::GetCurrentLevelName(this,true);
-  const TCHAR* Marker=Map==TEXT("Dornfeld_V78")?TEXT("ASKIR_V78_RUNTIME_READY"):TEXT("ASKIR_V77_RUNTIME_READY");
+  const TCHAR* Marker=(Map==TEXT("Dornfeld_V80")||Map==TEXT("Dornfelder_Umland_V80"))?TEXT("ASKIR_V80_RUNTIME_READY"):
+    (Map==TEXT("Dornfeld_V79")?TEXT("ASKIR_V79_RUNTIME_READY"):
+    (Map==TEXT("Dornfeld_V78")?TEXT("ASKIR_V78_RUNTIME_READY"):
+    (Map==TEXT("Dornfeld_V77")?TEXT("ASKIR_V77_RUNTIME_READY"):TEXT("ASKIR_RUNTIME_READY"))));
   UE_LOG(LogTemp,Display,TEXT("%s map=%s player=%s"),Marker,*Map,*Player->GetName());
  }
- else
- {
-  UE_LOG(LogTemp,Error,TEXT("ASKIR_V77_RUNTIME_BLOCKED: player or native controller not initialized"));
-  UE_LOG(LogTemp,Error,TEXT("ASKIR_V78_RUNTIME_BLOCKED: player or native controller not initialized"));
- }
+ else UE_LOG(LogTemp,Error,TEXT("ASKIR_V80_RUNTIME_BLOCKED: player or native controller not initialized"));
 }
-
+bool AAskirGameMode::RetryPendingArrival()
+{
+ auto* State=GetGameInstance()?GetGameInstance()->GetSubsystem<UAskirWorldTravelSubsystem>():nullptr;
+ const FName Map(*UGameplayStatics::GetCurrentLevelName(this,true));
+ if(!State||!State->PendingSnapshot||!State->bArrivalFailed||IsPersistenceBusy())return false;
+ if(State->PendingDestination!=Map)
+ {
+  // A failed Browse can leave a replacement world with the source map's name.
+  // Its new actors must receive the captured timeline before gameplay resumes.
+  if(State->PendingSnapshot->SavedMapName!=Map)return false;
+  State->PendingDestination=Map;
+  State->PendingArrivalFrom=NAME_None;
+  State->PendingArrivalPortalID=NAME_None;
+  State->PendingDeparturePortalID=NAME_None;
+  State->bPendingRestorePosition=true;
+ }
+ ArrivalRestoreAttempts=0;
+ State->ResumeArrival();
+ GetWorldTimerManager().SetTimerForNextTick(this,&AAskirGameMode::RestorePendingArrival);
+ return true;
+}
+bool AAskirGameMode::CanReturnToSavedWorld() const
+{
+ const auto* State=GetGameInstance()?GetGameInstance()->GetSubsystem<UAskirWorldTravelSubsystem>():nullptr;
+ if(!State||!State->PendingSnapshot||!State->bArrivalFailed||IsPersistenceBusy())return false;
+ const FName Map(*UGameplayStatics::GetCurrentLevelName(this,true));
+ return State->PendingSnapshot->SavedMapName!=Map;
+}
+bool AAskirGameMode::ReturnToSavedWorld()
+{
+ if(!CanReturnToSavedWorld())return false;
+ auto* State=GetGameInstance()->GetSubsystem<UAskirWorldTravelSubsystem>();
+ FString Package;
+ if(!State->RedirectToSavedWorld(Package))return false;
+ UGameplayStatics::OpenLevel(this,FName(*Package));
+ return true;
+}
 void AAskirGameMode::RestorePendingArrival()
 {
  UGameInstance* Instance=GetGameInstance();
  auto* State=Instance?Instance->GetSubsystem<UAskirWorldTravelSubsystem>():nullptr;
  const FName Map(*UGameplayStatics::GetCurrentLevelName(this,true));
- if(!State || State->PendingDestination!=Map || !State->PendingSnapshot)return;
- auto* Player=Cast<AAskirCharacter>(UGameplayStatics::GetPlayerPawn(this,0));
- if(!Player)
+ if(!State||!State->HasPendingTravel())
  {
-  if(++ArrivalRestoreAttempts<120)GetWorldTimerManager().SetTimerForNextTick(this,&AAskirGameMode::RestorePendingArrival);
-  else UE_LOG(LogTemp,Error,TEXT("Askir arrival blocked: player never spawned in %s"),*Map.ToString());
+  if(!UGameplayStatics::GetPlayerPawn(this,0)&&AskirTravelRules::RetrySpawn(++ArrivalRestoreAttempts))
+   GetWorldTimerManager().SetTimerForNextTick(this,&AAskirGameMode::RestorePendingArrival);
+  else LogRuntimeReadiness();
   return;
  }
- FVector Arrival=Player->GetActorLocation();
- FRotator Rotation=Player->GetActorRotation();
- const bool bRestorePosition=State->bPendingRestorePosition;
- if(!bRestorePosition)
+ if(State->bArrivalFailed)return;
+ if(State->PendingDestination==Map&&!State->PendingSnapshot)
  {
-  const float Radius=Player->GetCapsuleComponent()->GetScaledCapsuleRadius();
-  const float Height=Player->GetCapsuleComponent()->GetScaledCapsuleHalfHeight();
-  const auto IsOutsidePortals=[&](const FVector& Candidate)
-  {
-   for(TActorIterator<AAskirWorldPortal> It(GetWorld());It;++It)
-    if(It->Trigger && It->Trigger->Bounds.GetBox().ExpandBy(FVector(Radius,Radius,Height)).IsInsideOrOn(Candidate))return false;
-   return true;
-  };
-  bool bFound=false;
+  // Legacy arrival flags contain no timeline to restore. Acknowledge them so
+  // old Blueprint requests cannot leave movement permanently locked.
+  FName FromMap;
+  State->ConsumeArrival(Map,FromMap);
+  LogRuntimeReadiness();
+  return;
+ }
+ const auto Fail=[&](const FText& Reason)
+ {
+  State->MarkArrivalFailed(Reason);
+  if(auto* PC=Cast<AAskirPlayerController>(UGameplayStatics::GetPlayerController(this,0)))PC->ShowNotification(Reason);
+ };
+ if(State->PendingDestination!=Map||!State->PendingSnapshot)
+ {
+  Fail(NSLOCTEXT("Askir","ArrivalWrongWorld","Die Reise wurde unterbrochen. Bitte kehre zurück und versuche es erneut."));
+  return;
+ }
+ auto* Player=Cast<AAskirCharacter>(UGameplayStatics::GetPlayerPawn(this,0));
+ if(!Player||!Player->GetController()||!Player->GetCapsuleComponent())
+ {
+  if(AskirTravelRules::RetrySpawn(++ArrivalRestoreAttempts))GetWorldTimerManager().SetTimerForNextTick(this,&AAskirGameMode::RestorePendingArrival);
+  else Fail(NSLOCTEXT("Askir","ArrivalPlayerMissing","Die Ankunft ist noch nicht möglich. Versuche es erneut oder kehre zurück."));
+  return;
+ }
+ Player->SuspendForWorldTravel();
+ const float Radius=Player->GetCapsuleComponent()->GetScaledCapsuleRadius();
+ const float Height=Player->GetCapsuleComponent()->GetScaledCapsuleHalfHeight();
+ const auto IsOutsidePortals=[&](const FVector& Candidate)
+ {
   for(TActorIterator<AAskirWorldPortal> It(GetWorld());It;++It)
   {
-   const bool bMatches=State->PendingArrivalPortalID.IsNone()?It->DestinationMap==State->PendingArrivalFrom:It->PortalID==State->PendingArrivalPortalID;
-   if(!bMatches || It->ArrivalOffset.ContainsNaN())continue;
-   FVector Candidate=It->GetActorLocation()+It->GetActorRotation().RotateVector(It->ArrivalOffset);
-   const FRotator CandidateRotation=It->GetActorRotation();
-   if(GetWorld()->FindTeleportSpot(Player,Candidate,CandidateRotation) && IsOutsidePortals(Candidate))
-   {Arrival=Candidate;Rotation=CandidateRotation;bFound=true;break;}
+   if(!It->Trigger)continue;
+   const FBoxSphereBounds& Bounds=It->Trigger->Bounds;
+   if(!AskirTravelRules::OutsideExpandedTrigger(TravelPoint(Candidate),TravelPoint(Bounds.Origin),TravelPoint(Bounds.BoxExtent),Radius,Height))return false;
   }
-  // A map without a reciprocal portal can arrive at its authored PlayerStart.
-  if(!bFound)
+  return true;
+ };
+ const auto ValidateLanding=[&](FVector& Candidate,const FRotator& Facing)
+ {
+  if(Candidate.ContainsNaN()||Facing.ContainsNaN()||!GetWorld()->FindTeleportSpot(Player,Candidate,Facing)||!IsOutsidePortals(Candidate))return false;
+  FCollisionQueryParams Query(SCENE_QUERY_STAT(AskirTravelGround),false,Player);
+  for(TActorIterator<AAskirWorldPortal> It(GetWorld());It;++It)Query.AddIgnoredActor(*It);
+  FHitResult Ground;
+  if(!GetWorld()->LineTraceSingleByChannel(Ground,Candidate,Candidate-FVector(0,0,Height+80.f),ECC_Visibility,Query))return false;
+  if(!Ground.Component.IsValid()||Ground.Component->GetCollisionResponseToChannel(ECC_Pawn)!=ECR_Block)return false;
+  const float WalkableZ=Player->GetCharacterMovement()?Player->GetCharacterMovement()->GetWalkableFloorZ():.71f;
+  if(!AskirTravelRules::GroundSupports(Candidate.Z-Height,Ground.ImpactPoint.Z,Ground.ImpactNormal.Z,WalkableZ))return false;
+  Candidate.Z=Ground.ImpactPoint.Z+Height+2.f;
+  // Grounding may change collision or trigger intersection; validate the final capsule.
+  if(!GetWorld()->FindTeleportSpot(Player,Candidate,Facing)||!IsOutsidePortals(Candidate))return false;
+  return AskirTravelRules::GroundSupports(Candidate.Z-Height,Ground.ImpactPoint.Z,Ground.ImpactNormal.Z,WalkableZ);
+ };
+ FVector Arrival=State->PendingSnapshot->PlayerLocation;
+ FRotator Rotation=State->PendingSnapshot->PlayerRotation;
+ bool bFound=false;
+ if(State->bPendingRestorePosition)bFound=ValidateLanding(Arrival,Rotation);
+ else
+ {
+  TSet<FName> SeenPortalIDs;
+  AAskirWorldPortal* ArrivalPortal=nullptr;
+  int32 Matches=0;
+  bool bDuplicate=false;
+  for(TActorIterator<AAskirWorldPortal> It(GetWorld());It;++It)
+  {
+   if(!It->PortalID.IsNone())
+   {
+    if(SeenPortalIDs.Contains(It->PortalID))bDuplicate=true;
+    SeenPortalIDs.Add(It->PortalID);
+   }
+   const bool bMatches=State->PendingArrivalPortalID.IsNone()?It->DestinationMap==State->PendingArrivalFrom:It->PortalID==State->PendingArrivalPortalID;
+   if(bMatches){++Matches;ArrivalPortal=*It;}
+  }
+  const bool bExplicit=!State->PendingArrivalPortalID.IsNone();
+  const bool bReciprocal=ArrivalPortal&&ArrivalPortal->DestinationMap==State->PendingArrivalFrom
+   &&(State->PendingDeparturePortalID.IsNone()||ArrivalPortal->DestinationPortalID==State->PendingDeparturePortalID)
+   &&UAskirWorldTravelSubsystem::IsUsableWorldPackage(ArrivalPortal->DestinationPackagePath.IsEmpty()?
+    FString::Printf(TEXT("/Game/Askir/WorldV42/%s"),*ArrivalPortal->DestinationMap.ToString()):ArrivalPortal->DestinationPackagePath,State->PendingArrivalFrom);
+  if(!bDuplicate&&AskirTravelRules::ArrivalPortalMatches(bExplicit,Matches,bReciprocal)&&ArrivalPortal)
+  {
+   Arrival=ArrivalPortal->GetActorLocation()+ArrivalPortal->GetActorRotation().RotateVector(ArrivalPortal->ArrivalOffset);
+   Rotation=ArrivalPortal->GetActorRotation();
+   bFound=ValidateLanding(Arrival,Rotation);
+  }
+  // Only a legacy request without an explicit portal may use a PlayerStart.
+  if(!bFound&&!bExplicit&&!bDuplicate&&Matches==0)
    for(TActorIterator<APlayerStart> It(GetWorld());It;++It)
    {
     FVector Candidate=It->GetActorLocation();
-    if(GetWorld()->FindTeleportSpot(Player,Candidate,It->GetActorRotation()) && IsOutsidePortals(Candidate))
-    {Arrival=Candidate;Rotation=It->GetActorRotation();bFound=true;break;}
+    if(ValidateLanding(Candidate,It->GetActorRotation())){Arrival=Candidate;Rotation=It->GetActorRotation();bFound=true;break;}
    }
-  if(!bFound)
-  {
-   UE_LOG(LogTemp,Error,TEXT("Askir arrival blocked: no collision-free portal or PlayerStart in %s"),*Map.ToString());
-   return;
-  }
  }
- if(!RestoreSnapshot(State->PendingSnapshot,bRestorePosition))
+ if(!bFound)
  {
-  UE_LOG(LogTemp,Error,TEXT("Askir arrival snapshot restore failed in %s; pending snapshot retained"),*Map.ToString());
+  Fail(NSLOCTEXT("Askir","ArrivalNoSafeGround","Der Ankunftsort ist nicht sicher. Versuche es erneut oder kehre zurück."));
   return;
  }
- if(!bRestorePosition)
+ // The same validated landing is used for portals and cross-map save loads.
+ // RestoreSnapshot(false) cannot reposition into a trigger after our validation.
+ if(!RestoreSnapshot(State->PendingSnapshot,false))
  {
-  Player->SetActorLocationAndRotation(Arrival,Rotation,false,nullptr,ETeleportType::TeleportPhysics);
-  if(auto* Controller=Cast<APlayerController>(Player->GetController()))Controller->SetControlRotation(Rotation);
+  Fail(NSLOCTEXT("Askir","ArrivalRestoreFailed","Dein Spielstand konnte noch nicht übernommen werden. Versuche es erneut oder kehre zurück."));
+  return;
  }
+ if(!Player->SetActorLocationAndRotation(Arrival,Rotation,false,nullptr,ETeleportType::TeleportPhysics))
+ {
+  Fail(NSLOCTEXT("Askir","ArrivalPlacementFailed","Die Ankunft ist noch nicht möglich. Versuche es erneut oder kehre zurück."));
+  return;
+ }
+ if(auto* Controller=Cast<APlayerController>(Player->GetController()))Controller->SetControlRotation(Rotation);
  State->ClearPendingTravel();
  State->ArrivalGraceUntilSeconds=GetWorld()->GetTimeSeconds()+2.0;
+ LogRuntimeReadiness();
 }
 void AAskirGameMode::MakeBlock(FVector Position,FVector Size)
 {

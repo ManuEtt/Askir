@@ -105,6 +105,10 @@ void AAskirEnemyAIController::Tick(float DeltaSeconds)
 void AAskirEnemyAIController::Think()
 {
     if (!ControlledEnemy || !GetWorld()) return;
+    if(ControlledEnemy->IsWorldTravelPending())
+    {
+        Target=nullptr;AbortCombat();StopMovement();ClearFocus(EAIFocusPriority::Gameplay);return;
+    }
     if (ControlledEnemy->IsDead()) { Target = nullptr; SetState(EAskirEnemyState::Dead); return; }
     if(const AAskirNPC* NPC=Cast<AAskirNPC>(ControlledEnemy))
     {

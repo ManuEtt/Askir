@@ -1,0 +1,6 @@
+{
+  "status": "Blockiert",
+  "map_package": "/Game/Askir/Maps/Dornfeld_V79",
+  "reason": "Unreal Python runtime unavailable; no .umap or .uasset created",
+  "gameplay_status": "Nicht ausgef\u00fchrt"
+}

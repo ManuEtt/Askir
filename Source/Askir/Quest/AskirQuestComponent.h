@@ -24,6 +24,8 @@ public:
  UPROPERTY(BlueprintAssignable,Category="Askir|Quest") FAskirQuestCompleted OnQuestCompleted;
  UFUNCTION(BlueprintCallable,Category="Askir|Quest") bool TurnInQuestWithRewards(UAskirQuestData* Quest);
  UFUNCTION(BlueprintPure,Category="Askir|Quest") bool HasClaimedReward(FName QuestID)const;
+ /** Includes reward delegates: save/load must never observe or replace an open turn-in. */
+ UFUNCTION(BlueprintPure,Category="Askir|Quest") bool IsTransactionInProgress()const{return bRewardTransaction;}
  /** Restore a validated authoritative quest snapshot, without granting rewards. */
  bool RestoreQuestProgress(FName QuestID,const TArray<FAskirQuestObjective>& Objectives,EAskirQuestState State,bool bRewardClaimed,bool bNotify=true);
  /** Call after restoring the persisted public fields. Repairs legacy mirrors and invalid entries. */

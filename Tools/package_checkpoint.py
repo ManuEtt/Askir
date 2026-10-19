@@ -16,7 +16,12 @@ def build(version,output,verification):
     output=Path(output).resolve()
     if output.is_relative_to(ROOT):raise ValueError('Keep archives outside the project to prevent recursive packages')
     report=json.loads(Path(verification).read_text(encoding='utf-8'))
+    if report.get('version')!=version.split('_',1)[0]:raise ValueError('Verification version must match the checkpoint')
     if any(check.get('status')!='Bestanden' for check in report['checks'].values()):raise ValueError('Offline checks must pass before checkpoint packaging')
+    if int(version.split('_',1)[0][1:]) >= 79:
+        from checkpoint_inputs import capture
+        if not report.get('verified_inputs') or report['verified_inputs'] != capture(ROOT):
+            raise ValueError('Source inputs changed since verification; run the verifier again')
     paths=subprocess.check_output(['git','ls-files','--cached','--others','--exclude-standard','-z'],cwd=ROOT).decode().split('\0')
     paths=sorted({name for name in paths if name and (ROOT/name).is_file()})
     rows=[]

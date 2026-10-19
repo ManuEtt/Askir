@@ -1,0 +1,27 @@
+{
+  "version": "V79",
+  "asset_root": "/Game/Askir/V79/Items",
+  "merchant_id": "DORNFELD_HAENDLER_EDDA",
+  "merchant_name": "Edda – Dorfhändlerin",
+  "merchant_position": [540, -900, 90],
+  "merchant_gold": 500,
+  "sell_back_ratio": 0.5,
+  "station_name": "Dornfelder Werkbank",
+  "station_position": [-520, -350, 45],
+  "items": [
+    {"id": "dornfeld_kraut", "name": "Brunnenkraut", "description": "Heilkraut aus Dornfeld. Zwei Bündel ergeben einen Heiltrank.", "type": "Misc", "stack": 99, "weight": 0.1, "value": 3, "damage": 0, "heal": 0, "attack_range": 150, "attack_cooldown": 0.7, "stock": 32, "max_stock": 99},
+    {"id": "dornfeld_leder", "name": "Gegerbtes Leder", "description": "Geschmeidiges Leder für den Griff eines Dornfelder Jagdschwerts.", "type": "Misc", "stack": 99, "weight": 0.3, "value": 5, "damage": 0, "heal": 0, "attack_range": 150, "attack_cooldown": 0.7, "stock": 20, "max_stock": 99},
+    {"id": "dornfeld_eisenerz", "name": "Dornfelder Eisenerz", "description": "Eisenhaltiges Erz für die Herstellung einfacher Waffen.", "type": "Misc", "stack": 99, "weight": 0.8, "value": 7, "damage": 0, "heal": 0, "attack_range": 150, "attack_cooldown": 0.7, "stock": 30, "max_stock": 99},
+    {"id": "dornfeld_heiltrank", "name": "Dornfelder Heiltrank", "description": "Stellt 30 Lebenspunkte wieder her. Aus zwei Bündeln Brunnenkraut hergestellt.", "type": "Consumable", "stack": 20, "weight": 0.2, "value": 14, "damage": 0, "heal": 30, "attack_range": 150, "attack_cooldown": 0.7, "stock": 6, "max_stock": 20},
+    {"id": "dornfeld_jagdschwert", "name": "Dornfelder Jagdschwert", "description": "Robustes Jagdschwert mit Ledergriff; 24 Waffenstärke.", "type": "Weapon", "stack": 1, "weight": 2.5, "value": 72, "damage": 24, "heal": 0, "attack_range": 160, "attack_cooldown": 0.65, "stock": 2, "max_stock": 8}
+  ],
+  "recipes": [
+    {"id": "dornfeld_heiltrank_rezept", "required_skill": 1, "known_by_default": true, "ingredients": [{"item_id": "dornfeld_kraut", "quantity": 2}], "result": {"item_id": "dornfeld_heiltrank", "quantity": 1}},
+    {"id": "dornfeld_jagdschwert_rezept", "required_skill": 1, "known_by_default": true, "ingredients": [{"item_id": "dornfeld_eisenerz", "quantity": 3}, {"item_id": "dornfeld_leder", "quantity": 2}], "result": {"item_id": "dornfeld_jagdschwert", "quantity": 1}}
+  ],
+  "resource_pickups": [
+    {"id": "Dornfeld_V79_Kraut", "item_id": "dornfeld_kraut", "quantity": 2, "position": [-650, -1300, 40]},
+    {"id": "Dornfeld_V79_Leder", "item_id": "dornfeld_leder", "quantity": 2, "position": [650, -1350, 40]},
+    {"id": "Dornfeld_V79_Eisenerz", "item_id": "dornfeld_eisenerz", "quantity": 3, "position": [-650, -600, 40]}
+  ]
+}

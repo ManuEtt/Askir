@@ -1,4 +1,6 @@
 #include "Save/AskirSaveGame.h"
+#include "Economy/AskirMerchantStateRules.h"
+#include "Mission/AskirDeliveryRules.h"
 
 bool UAskirSaveGame::IsSafeSlotName(const FString& SlotName)
 {
@@ -15,6 +17,16 @@ bool UAskirSaveGame::ValidateSnapshot(FString& OutReason) const
  if(SaveFormatVersion<1 || SaveFormatVersion>CurrentFormatVersion || SaveGeneration<0)
   return Fail(TEXT("Unsupported version or generation"));
  if(SaveFormatVersion>=4 && !UAskirMagicComponent::ValidateSnapshotData(SavedMagic,10000.f))return Fail(TEXT("Invalid magic snapshot"));
+ if(SaveFormatVersion>=5)
+ {
+  if(static_cast<size_t>(SavedMerchantsByMap.Num())>AskirMerchantStateRules::MaxMaps)return Fail(TEXT("Merchant map ledger exceeds supported size"));
+  for(const auto& Map:SavedMerchantsByMap)
+  {
+   if(Map.Key.IsNone() || static_cast<size_t>(Map.Value.Merchants.Num())>AskirMerchantStateRules::MaxMerchantsPerMap)return Fail(TEXT("Invalid merchant map ledger"));
+   for(const auto& Merchant:Map.Value.Merchants)
+    if(Merchant.Key.IsNone() || !UAskirMerchantComponent::ValidateSnapshotData(Merchant.Value))return Fail(TEXT("Invalid merchant snapshot"));
+  }
+ }
  if(PlayerLocation.ContainsNaN() || PlayerRotation.ContainsNaN() || PlayerLocation.GetAbsMax()>1.e9)
   return Fail(TEXT("Invalid player transform"));
  if(!FMath::IsFinite(PlayerHealth) || PlayerHealth<0.f || !FMath::IsFinite(PlayerStamina) || PlayerStamina<0.f)
@@ -61,6 +73,37 @@ bool UAskirSaveGame::ValidateSnapshot(FString& OutReason) const
    for(FName ID:IDs){if(ID.IsNone() || Seen.Contains(ID))return false;Seen.Add(ID);}
    return true;
   };
+  if(!UniqueIDs(SavedDialogueFlags))return Fail(TEXT("Invalid dialogue flag ledger"));
+  if(SavedConsumedQuestTriggers.Contains(NAME_None) || SavedCompletedEncounters.Contains(NAME_None))return Fail(TEXT("Invalid quest event receipt"));
+  // Authoritative saves must not change their quest meaning during restore's
+  // legacy-normalization pass. Pre-v3 snapshots retain their migration path.
+  bool bAnyActiveQuest=false;
+  for(const auto& Pair:SavedQuestStates)
+  {
+   if(Pair.Value!=EAskirQuestState::Active)continue;
+   bAnyActiveQuest=true;
+   const FAskirQuestObjectiveList* List=SavedObjectivesByQuest.Find(Pair.Key);
+   if(!List || List->Objectives.IsEmpty())return Fail(TEXT("Active quest without objectives"));
+  }
+  for(const auto& Pair:SavedObjectivesByQuest)
+  {
+   const EAskirQuestState* State=SavedQuestStates.Find(Pair.Key);
+   if(!State || *State!=EAskirQuestState::Active || Pair.Value.Objectives.IsEmpty())return Fail(TEXT("Objectives without active quest"));
+  }
+  if(SavedLegacyActiveQuestID.IsNone())
+  {
+   if(bAnyActiveQuest || !SavedActiveObjectives.IsEmpty())return Fail(TEXT("Missing legacy active quest mirror"));
+  }
+  else
+  {
+   const FAskirQuestObjectiveList* List=SavedObjectivesByQuest.Find(SavedLegacyActiveQuestID);
+   if(!List || SavedActiveObjectives.Num()!=List->Objectives.Num())return Fail(TEXT("Invalid legacy active quest mirror"));
+   for(int32 Index=0;Index<SavedActiveObjectives.Num();++Index)
+   {
+    const auto& A=SavedActiveObjectives[Index];const auto& B=List->Objectives[Index];
+    if(A.ObjectiveID!=B.ObjectiveID || A.RequiredCount!=B.RequiredCount || A.CurrentCount!=B.CurrentCount)return Fail(TEXT("Conflicting active quest mirror"));
+   }
+  }
   const auto& M=SavedDornfeldMission;
   if(!UniqueIDs(M.ShardIDs) || !UniqueIDs(M.GuardianIDs) || M.ShardIDs.Num()>3 || M.GuardianIDs.Num()>2)return Fail(TEXT("Invalid Dornfeld identity ledger"));
   const int32 Shards=M.ShardIDs.Num(),Guardians=M.GuardianIDs.Num();
@@ -81,6 +124,44 @@ bool UAskirSaveGame::ValidateSnapshot(FString& OutReason) const
   {
    const EAskirQuestState* State=SavedQuestStates.Find(ID);
    if(ID.IsNone() || !State || *State!=EAskirQuestState::Completed)return Fail(TEXT("Claimed quest reward without completed quest"));
+  }
+  const FName DeliveryID(TEXT("SQ_001"));
+  const EAskirQuestState* DeliveryState=SavedQuestStates.Find(DeliveryID);
+  const bool bDeliveryActive=DeliveryState && *DeliveryState==EAskirQuestState::Active;
+  const bool bDeliveryCompleted=DeliveryState && *DeliveryState==EAskirQuestState::Completed;
+  const bool bDeliveryAccepted=SavedConsumedQuestTriggers.Contains(FName(TEXT("SQ_001_ACCEPTED")));
+  const bool bDeliveryCargo=SavedConsumedQuestTriggers.Contains(FName(TEXT("SQ_001_CARGO_RECOVERED")));
+  if(!AskirDeliveryRules::ValidateReceipt(bDeliveryAccepted,
+    SavedDialogueFlags.Contains(FName(TEXT("SQ_001_CHOICE_help"))),SavedDialogueFlags.Contains(FName(TEXT("SQ_001_CHOICE_bargain"))),
+    bDeliveryActive,bDeliveryCompleted,SavedClaimedRewards.Contains(DeliveryID)))return Fail(TEXT("Conflicting delivery choice or reward receipt"));
+  int32 DeliveryKills=0,DeliveryCargoSources=0;
+  for(FName Receipt:SavedConsumedQuestTriggers)
+  {
+   const FString Name=Receipt.ToString();
+   const FString KillPrefix(TEXT("SQ_001_KILL_")),CargoPrefix(TEXT("SQ_001_CARGO_SOURCE_"));
+   if(Name.StartsWith(KillPrefix))
+   {
+    if(Name.Len()==KillPrefix.Len())return Fail(TEXT("Delivery kill receipt without identity"));
+    ++DeliveryKills;
+   }
+   if(Name.StartsWith(CargoPrefix))
+   {
+    if(Name.Len()==CargoPrefix.Len())return Fail(TEXT("Delivery cargo receipt without identity"));
+    ++DeliveryCargoSources;
+   }
+  }
+  if(!AskirDeliveryRules::ValidateEncounterReceipts(bDeliveryAccepted,DeliveryKills,bDeliveryCargo,DeliveryCargoSources,bDeliveryCompleted))
+    return Fail(TEXT("Conflicting delivery encounter receipts"));
+  if(bDeliveryActive)
+  {
+   const auto& Objectives=SavedObjectivesByQuest.FindChecked(DeliveryID).Objectives;
+   if(Objectives.Num()!=3)return Fail(TEXT("Delivery objectives differ from canonical receipts"));
+   const auto* Kills=Objectives.FindByPredicate([](const FAskirQuestObjective& O){return O.ObjectiveID==FName(TEXT("SQ_001_A"));});
+   const auto* Cargo=Objectives.FindByPredicate([](const FAskirQuestObjective& O){return O.ObjectiveID==FName(TEXT("SQ_001_CARGO"));});
+   const auto* Return=Objectives.FindByPredicate([](const FAskirQuestObjective& O){return O.ObjectiveID==FName(TEXT("SQ_001_B"));});
+   if(!Kills || !Cargo || !Return || !AskirDeliveryRules::ValidateActiveObjectiveMirror(
+     Kills->RequiredCount,Kills->CurrentCount,Cargo->RequiredCount,Cargo->CurrentCount,
+     Return->RequiredCount,Return->CurrentCount,DeliveryKills,bDeliveryCargo))return Fail(TEXT("Delivery objective progress contradicts its receipts"));
   }
   for(const auto& Pair:SavedLootByMap)
   {

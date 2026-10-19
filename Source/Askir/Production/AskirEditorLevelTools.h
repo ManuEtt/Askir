@@ -29,4 +29,12 @@ public:
     /** Real physics trace at a spawn point, used after save/reload instead of checking only a mesh name. */
     UFUNCTION(BlueprintPure, Category="Askir|Editor")
     static bool HasWalkableGroundBelow(AActor* SpawnPoint);
+
+    /** Native player's unscaled CDO capsule: X/Y radius, Z half-height. */
+    UFUNCTION(BlueprintPure, Category="Askir|Editor")
+    static FVector GetPlayerCapsuleExtent();
+
+    /** Checks the native player capsule against blocking collision and a walkable floor. */
+    UFUNCTION(BlueprintPure, Category="Askir|Editor", meta=(WorldContext="WorldContextObject"))
+    static bool IsPlayerArrivalClear(UObject* WorldContextObject, FVector Location);
 };

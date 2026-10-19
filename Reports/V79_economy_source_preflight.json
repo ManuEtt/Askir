@@ -1,0 +1,9 @@
+{
+  "status": "Bestanden",
+  "map_package": "/Game/Askir/Maps/Dornfeld_V79",
+  "item_count": 5,
+  "recipe_count": 2,
+  "coverage": "input schema/catalog synchronization only",
+  "editor_status": "Nicht ausgeführt",
+  "gameplay_status": "Nicht ausgeführt"
+}

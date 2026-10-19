@@ -1,0 +1,9 @@
+{
+  "status": "Blockiert",
+  "maps": [
+    "/Game/Askir/Maps/Dornfeld_V80",
+    "/Game/Askir/Maps/Dornfelder_Umland_V80"
+  ],
+  "reason": "Unreal Python unavailable; no .umap/.uasset created",
+  "gameplay_status": "Nicht ausgef\u00fchrt"
+}

@@ -1,12 +1,15 @@
 #include "Combat/AskirCombatComponent.h"
 #include "Combat/AskirGuardComponent.h"
 #include "Magic/AskirMagicComponent.h"
+#include "Characters/AskirCharacter.h"
 #include "Engine/World.h"
 #include "GameFramework/Controller.h"
 #include "GameFramework/Pawn.h"
 UAskirCombatComponent::UAskirCombatComponent(){PrimaryComponentTick.bCanEverTick=false;}
 float UAskirCombatComponent::ApplyDamage(const FAskirDamageInfo& Info)
 {
+    if(const auto* Character=Cast<AAskirCharacter>(GetOwner()))
+        if(Character->IsPlayerControlled()&&Character->IsWorldTravelPending())return 0.f;
     if(bDead || !bDamageEnabled || IsDodgeInvulnerable() || !FMath::IsFinite(Info.Damage))return 0;
     float D=FMath::Max(0.f,Info.Damage);
     const bool Magic=Info.DamageType==EAskirDamageType::Magic||Info.DamageType==EAskirDamageType::Fire||Info.DamageType==EAskirDamageType::Frost||Info.DamageType==EAskirDamageType::Lightning||Info.DamageType==EAskirDamageType::Poison;
