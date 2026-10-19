@@ -45,6 +45,9 @@ void AAskirGameMode::LogRuntimeReadiness()
  auto* Player=Cast<AAskirCharacter>(UGameplayStatics::GetPlayerPawn(this,0));
  if(Player&&Player->IsPlayerControlled())
  {
+  // Frontend polling may pause this world only after arrival restoration and
+  // possession have completed. Blocked/missing-player paths never set this.
+  bRuntimeReadyForFrontend=true;
   const FString Map=UGameplayStatics::GetCurrentLevelName(this,true);
   const TCHAR* Marker=(Map==TEXT("Dornfeld_V80")||Map==TEXT("Dornfelder_Umland_V80"))?TEXT("ASKIR_V80_RUNTIME_READY"):
     (Map==TEXT("Dornfeld_V79")?TEXT("ASKIR_V79_RUNTIME_READY"):

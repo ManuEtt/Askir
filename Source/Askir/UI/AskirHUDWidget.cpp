@@ -1,5 +1,7 @@
 #include "UI/AskirHUDWidget.h"
 #include "Magic/AskirMagicComponent.h"
+#include "Frontend/AskirFrontendSubsystem.h"
+#include "Settings/AskirGameUserSettings.h"
 #include "Magic/AskirSpellCatalog.h"
 #include "Blueprint/WidgetTree.h"
 #include "Components/Border.h"
@@ -36,9 +38,15 @@
 #include "Kismet/GameplayStatics.h"
 #include "Kismet/KismetSystemLibrary.h"
 #include "Engine/World.h"
+#include "InputCoreTypes.h"
 
 namespace
 {
+    UAskirFrontendSubsystem* FrontendState(const UUserWidget* Widget)
+    {
+        auto* Instance=Widget&&Widget->GetWorld()?Widget->GetWorld()->GetGameInstance():nullptr;
+        return Instance?Instance->GetSubsystem<UAskirFrontendSubsystem>():nullptr;
+    }
     UAskirWorldTravelSubsystem* TravelState(const UUserWidget* Widget)
     {
         auto* Instance=Widget&&Widget->GetWorld()?Widget->GetWorld()->GetGameInstance():nullptr;
@@ -93,10 +101,10 @@ void UAskirHUDWidget::AddEconomyButton(FName ID,const FString& Label,bool bSell,
     Text->SetText(FText::FromString(Label));Button->AddChild(Text);Button->SetIsEnabled(bEnabled);
     Button->OnClicked.AddDynamic(Button,&UAskirEconomyButton::Activate);MenuBody->AddChildToVerticalBox(Button);
 }
-void UAskirHUDWidget::AddNarrativeButton(FName ID,const FText& Text)
+void UAskirHUDWidget::AddNarrativeButton(FName ID,const FText& Text,bool bEnabled)
 {
     auto* Button=WidgetTree->ConstructWidget<UAskirNarrativeButton>();
-    Button->HUD=this;Button->ActionID=ID;Button->ContextGeneration=ContextGeneration;
+    Button->HUD=this;Button->ActionID=ID;Button->ContextGeneration=ContextGeneration;Button->SetIsEnabled(bEnabled);
     auto* Label=WidgetTree->ConstructWidget<UTextBlock>();Label->SetFont(FCoreStyle::GetDefaultFontStyle("Regular",18));
     Label->SetAutoWrapText(true);Label->SetText(Text);Button->AddChild(Label);
     Button->OnClicked.AddDynamic(Button,&UAskirNarrativeButton::Activate);MenuBody->AddChildToVerticalBox(Button);
@@ -131,11 +139,28 @@ TSharedRef<SWidget> UAskirHUDWidget::RebuildWidget()
     MenuBody=WidgetTree->ConstructWidget<UVerticalBox>();Scroll->AddChild(MenuBody);Menu->SetVisibility(ESlateVisibility::Collapsed);
     return Super::RebuildWidget();
 }
-void UAskirHUDWidget::NativeConstruct(){Super::NativeConstruct();RefreshHUD();}
+void UAskirHUDWidget::NativeConstruct(){Super::NativeConstruct();SetIsFocusable(true);RefreshHUD();}
+void UAskirHUDWidget::NativeDestruct()
+{
+    ++ContextGeneration;
+    if(Panel==EAskirUIPanel::Settings||Panel==EAskirUIPanel::VideoConfirm)
+        if(auto* Settings=UAskirGameUserSettings::Get())Settings->CancelEdit();
+    Super::NativeDestruct();
+}
 void UAskirHUDWidget::RefreshInventoryPanel(){if(Panel==EAskirUIPanel::Inventory||Panel==EAskirUIPanel::Merchant||Panel==EAskirUIPanel::Crafting)BuildPanel();}
 void UAskirHUDWidget::NativeTick(const FGeometry& Geometry,float DeltaSeconds)
 {
     Super::NativeTick(Geometry,DeltaSeconds);
+    UpdateFrontend();
+    if(auto* Settings=UAskirGameUserSettings::Get())
+    {
+        Settings->TickVideoConfirmation();
+        if(Panel==EAskirUIPanel::VideoConfirm)
+        {
+            if(!Settings->HasVideoConfirmation()){SettingsDraft=Settings->CaptureDraft();Panel=EAskirUIPanel::Settings;BuildPanel();}
+            else if(VideoSeconds!=Settings->GetVideoSecondsRemaining())BuildPanel();
+        }
+    }
     RefreshElapsed+=DeltaSeconds;
     if(RefreshElapsed>=.1f){RefreshElapsed=0;RefreshHUD();}
     if(NotificationSeconds>0){NotificationSeconds-=DeltaSeconds;if(NotificationSeconds<=0&&Notification)Notification->SetText(FText::GetEmpty());}
@@ -177,7 +202,14 @@ void UAskirHUDWidget::RefreshHUD()
 void UAskirHUDWidget::Notify(FText Text){if(Notification)Notification->SetText(Text);NotificationSeconds=4.f;}
 void UAskirHUDWidget::TogglePanel(EAskirUIPanel NewPanel)
 {
+    if(!bFrontendInitialized)return;
     if(const auto* State=TravelState(this))if(State->HasPendingTravel())return;
+    if(IsFrontendPanel())
+    {
+        if(Panel==EAskirUIPanel::Settings||Panel==EAskirUIPanel::VideoConfirm)ExecuteFrontendAction(TEXT("settings_cancel"));
+        else if(Panel==EAskirUIPanel::ConfirmNewGame)ShowTitle();
+        return;
+    }
     if(Panel!=EAskirUIPanel::None){ClosePanel();return;}
     Panel=NewPanel;BuildPanel();Menu->SetVisibility(ESlateVisibility::Visible);
     if(auto* PC=Cast<AAskirPlayerController>(GetOwningPlayer()))PC->SetMenuInput(true,Panel==EAskirUIPanel::Pause);
@@ -186,9 +218,15 @@ void UAskirHUDWidget::BuildPanel()
 {
     ++ContextGeneration;
     MenuBody->ClearChildren();auto* Pawn=Cast<AAskirCharacter>(GetOwningPlayerPawn());
+    if(IsFrontendPanel())
+    {
+        BuildSettingsPanel();return;
+    }
     if(Panel==EAskirUIPanel::Pause)
     {
         AddText(MenuBody,TEXT("Pause"),28);
+        AddNarrativeButton(TEXT("pause_settings"),NSLOCTEXT("AskirUI","Settings","Einstellungen"));
+        AddNarrativeButton(TEXT("pause_title"),NSLOCTEXT("AskirUI","BackToTitle","Zum Hauptmenü"));
         AddNarrativeButton(TEXT("pause_save"),NSLOCTEXT("AskirUI","Save","Speichern"));
         AddNarrativeButton(TEXT("pause_load"),NSLOCTEXT("AskirUI","Load","Laden"));
         AddNarrativeButton(TEXT("quit"),NSLOCTEXT("AskirUI","Quit","Spiel beenden"));
@@ -332,11 +370,14 @@ void UAskirHUDWidget::ExecuteNarrativeAction(FName ActionID,uint64 ExpectedGener
 {
     auto* Pawn=Cast<AAskirCharacter>(GetOwningPlayerPawn());
     if(!IsActionContextCurrent(ExpectedGeneration,Panel,Pawn))return;
+    if(IsFrontendPanel()){ExecuteFrontendAction(ActionID);return;}
     if(ActionID==FName(TEXT("quit"))&&(Panel==EAskirUIPanel::Pause||Panel==EAskirUIPanel::TravelRecovery)){QuitClicked();return;}
     if(ActionID==FName(TEXT("menu_close"))&&Panel!=EAskirUIPanel::TravelRecovery){ClosePanel();return;}
     if(Panel==EAskirUIPanel::Pause)
     {
-        if(ActionID==FName(TEXT("pause_save")))SaveClicked();
+        if(ActionID==FName(TEXT("pause_settings")))OpenSettings();
+        else if(ActionID==FName(TEXT("pause_title")))ShowTitle();
+        else if(ActionID==FName(TEXT("pause_save")))SaveClicked();
         else if(ActionID==FName(TEXT("pause_load")))LoadClicked();
         return;
     }
@@ -436,6 +477,8 @@ bool UAskirHUDWidget::ShowElderDialogue(AAskirDornfeldEventActor* Elder)
 }
 void UAskirHUDWidget::ClosePanel()
 {
+    if(Panel==EAskirUIPanel::Settings||Panel==EAskirUIPanel::VideoConfirm)
+        if(auto* Settings=UAskirGameUserSettings::Get())Settings->CancelEdit();
     ++ContextGeneration;
     Panel=EAskirUIPanel::None;CurrentElder.Reset();CurrentMerchant.Reset();CurrentStation.Reset();CurrentDeliveryGiver.Reset();bDeliveryDetails=false;if(Menu)Menu->SetVisibility(ESlateVisibility::Collapsed);
     if(auto* PC=Cast<AAskirPlayerController>(GetOwningPlayer()))PC->SetMenuInput(false,false);
@@ -449,3 +492,223 @@ void UAskirHUDWidget::ConfirmDialogue()
 void UAskirHUDWidget::SaveClicked(){if(auto* GM=Cast<AAskirGameMode>(UGameplayStatics::GetGameMode(this)))Notify(GM->SaveGame(TEXT("AskirQuick"))?NSLOCTEXT("AskirUI","Saved","Spiel gespeichert."):NSLOCTEXT("AskirUI","SaveFailed","Speichern fehlgeschlagen."));}
 void UAskirHUDWidget::LoadClicked(){if(auto* GM=Cast<AAskirGameMode>(UGameplayStatics::GetGameMode(this))){const bool bOK=GM->LoadGame(TEXT("AskirQuick"));ClosePanel();Notify(bOK?NSLOCTEXT("AskirUI","Loaded","Spiel geladen."):NSLOCTEXT("AskirUI","LoadFailed","Laden fehlgeschlagen oder kein Spielstand vorhanden."));}}
 void UAskirHUDWidget::QuitClicked(){UKismetSystemLibrary::QuitGame(this,GetOwningPlayer(),EQuitPreference::Quit,false);}
+
+bool UAskirHUDWidget::IsFrontendPanel() const
+{
+    return Panel==EAskirUIPanel::Title||Panel==EAskirUIPanel::ConfirmNewGame||Panel==EAskirUIPanel::Settings||Panel==EAskirUIPanel::VideoConfirm||Panel==EAskirUIPanel::FreshStart;
+}
+void UAskirHUDWidget::UpdateFrontend()
+{
+    auto* PC=Cast<AAskirPlayerController>(GetOwningPlayer());
+    auto* Frontend=FrontendState(this);
+    auto* Mode=Cast<AAskirGameMode>(UGameplayStatics::GetGameMode(this));
+    if(!PC||!PC->GetLocalPlayer()||!Frontend||!MenuBody)return;
+    const auto* Travel=TravelState(this);
+    if(Travel&&Travel->HasPendingTravel())
+    {
+        // Restoration and its recovery UI always own an incoming world.
+        bFrontendInitialized=true;Frontend->MarkSessionActive();return;
+    }
+    if(Frontend->IsFreshStartPending())
+    {
+        bFrontendInitialized=true;
+        if(Frontend->CommitFreshStart(Mode)){ClosePanel();return;}
+        if(Panel!=EAskirUIPanel::FreshStart)
+        {
+            ClosePanel();Panel=EAskirUIPanel::FreshStart;BuildPanel();Menu->SetVisibility(ESlateVisibility::Visible);
+            PC->SetMenuInput(true,false);
+        }
+        return;
+    }
+    if(Panel==EAskirUIPanel::FreshStart)
+    {
+        // A failed Browse which kept the live source must reopen a usable menu.
+        ShowTitle();Notify(Frontend->GetLastError());return;
+    }
+    if(!bFrontendInitialized)
+    {
+        if(Frontend->HasActiveSession()){bFrontendInitialized=true;return;}
+        PC->SetMenuInput(true,false);
+        // Never pause the startup timer that validates actors and pending arrival.
+        if(Mode&&Mode->IsRuntimeReadyForFrontend())
+        {
+            bFrontendInitialized=true;ShowTitle();
+            UE_LOG(LogTemp,Display,TEXT("ASKIR_V81_FRONTEND_READY map=%s view=Title"),*UGameplayStatics::GetCurrentLevelName(this,true));
+        }
+    }
+}
+void UAskirHUDWidget::ShowTitle()
+{
+    if(const auto* Travel=TravelState(this))if(Travel->HasPendingTravel())return;
+    ClosePanel();Panel=EAskirUIPanel::Title;
+    if(auto* Frontend=FrontendState(this))bCanContinue=Frontend->CanContinue();
+    BuildPanel();Menu->SetVisibility(ESlateVisibility::Visible);
+    if(auto* PC=Cast<AAskirPlayerController>(GetOwningPlayer()))PC->SetMenuInput(true,true);
+}
+void UAskirHUDWidget::OpenSettings()
+{
+    if(Panel!=EAskirUIPanel::Pause&&Panel!=EAskirUIPanel::Title)return;
+    auto* Settings=UAskirGameUserSettings::Get();
+    if(!Settings||!Settings->BeginEdit())return;
+    SettingsReturnPanel=Panel;SettingsDraft=Settings->CaptureDraft();Panel=EAskirUIPanel::Settings;BuildPanel();
+}
+void UAskirHUDWidget::BuildSettingsPanel()
+{
+    auto* Frontend=FrontendState(this);
+    if(Panel==EAskirUIPanel::Title)
+    {
+        AddText(MenuBody,TEXT("ASKIR"),42);
+        AddText(MenuBody,TEXT("Die zerbrochene Krone"),24);
+        AddText(MenuBody,TEXT("Zwischen den Scherben erwacht ein altes Flüstern."),16);
+        if(Frontend&&Frontend->HasActiveSession())AddNarrativeButton(TEXT("title_resume"),NSLOCTEXT("AskirUI","ResumeSession","Spiel fortsetzen"));
+        const bool bCanStart=Frontend&&Frontend->CanStartNewGame(Cast<AAskirGameMode>(UGameplayStatics::GetGameMode(this)));
+        AddNarrativeButton(TEXT("title_new"),NSLOCTEXT("AskirUI","NewGame","Neues Spiel"),bCanStart);
+        if(!bCanStart)AddText(MenuBody,TEXT("Ein neues Spiel ist derzeit nicht verfügbar."),16);
+        if(bCanContinue)AddNarrativeButton(TEXT("title_continue"),NSLOCTEXT("AskirUI","ContinueSavedGame","Gespeicherten Spielstand laden"));
+        else AddText(MenuBody,TEXT("Kein verfügbarer Spielstand."),16);
+        AddNarrativeButton(TEXT("title_settings"),NSLOCTEXT("AskirUI","Settings","Einstellungen"));
+        AddNarrativeButton(TEXT("quit"),NSLOCTEXT("AskirUI","Quit","Spiel beenden"));
+        return;
+    }
+    if(Panel==EAskirUIPanel::ConfirmNewGame)
+    {
+        AddText(MenuBody,TEXT("Neues Spiel beginnen?"),28);
+        AddText(MenuBody,TEXT("Der ungespeicherte Fortschritt deiner aktuellen Sitzung wird verworfen. Deine gespeicherten Spielstände bleiben erhalten."));
+        AddNarrativeButton(TEXT("new_confirm"),NSLOCTEXT("AskirUI","ConfirmNewGame","Neues Spiel beginnen"));
+        AddNarrativeButton(TEXT("new_cancel"),NSLOCTEXT("AskirUI","Cancel","Abbrechen"));return;
+    }
+    if(Panel==EAskirUIPanel::FreshStart)
+    {
+        AddText(MenuBody,TEXT("Ein neues Kapitel beginnt …"),28);return;
+    }
+    if(Panel==EAskirUIPanel::VideoConfirm)
+    {
+        auto* Settings=UAskirGameUserSettings::Get();VideoSeconds=Settings?Settings->GetVideoSecondsRemaining():0;
+        AddText(MenuBody,TEXT("Anzeige beibehalten?"),28);
+        AddText(MenuBody,FString::Printf(TEXT("Die vorherigen Einstellungen werden in %d Sekunden wiederhergestellt."),VideoSeconds));
+        AddNarrativeButton(TEXT("settings_keep"),NSLOCTEXT("AskirUI","KeepVideo","Beibehalten"));
+        AddNarrativeButton(TEXT("settings_revert"),NSLOCTEXT("AskirUI","RevertVideo","Zurücksetzen"));return;
+    }
+    AddText(MenuBody,TEXT("Einstellungen"),28);
+    AddText(MenuBody,TEXT("Bildschirm"),22);
+    AddNarrativeButton(TEXT("settings_resolution"),FText::FromString(FString::Printf(TEXT("Auflösung: %d × %d  ›"),SettingsDraft.Resolution.X,SettingsDraft.Resolution.Y)));
+    const TCHAR* ModeNames[]={TEXT("Vollbild"),TEXT("Randloses Fenster"),TEXT("Fenster")};
+    AddNarrativeButton(TEXT("settings_window"),FText::FromString(FString::Printf(TEXT("Anzeigemodus: %s  ›"),ModeNames[FMath::Clamp(static_cast<int32>(SettingsDraft.WindowMode),0,2)])));
+    const TCHAR* QualityNames[]={TEXT("Niedrig"),TEXT("Mittel"),TEXT("Hoch"),TEXT("Sehr hoch"),TEXT("Filmisch")};
+    AddNarrativeButton(TEXT("settings_quality"),FText::FromString(FString::Printf(TEXT("Grafikqualität: %s  ›"),SettingsDraft.QualityLevel<0?TEXT("Benutzerdefiniert"):QualityNames[FMath::Clamp(SettingsDraft.QualityLevel,0,4)])));
+    AddNarrativeButton(TEXT("settings_vsync"),FText::FromString(FString::Printf(TEXT("V-Sync: %s"),SettingsDraft.bVSync?TEXT("An"):TEXT("Aus"))));
+    AddNarrativeButton(TEXT("settings_fps"),FText::FromString(SettingsDraft.FrameRateLimit<=0.f?TEXT("Bildrate: Unbegrenzt  ›"):FString::Printf(TEXT("Bildrate: %.0f FPS  ›"),SettingsDraft.FrameRateLimit)));
+    AddText(MenuBody,TEXT("Audio und Kamera"),22);
+    AddText(MenuBody,FString::Printf(TEXT("Gesamtlautstärke: %.0f %%"),SettingsDraft.MasterVolume*100));
+    AddNarrativeButton(TEXT("settings_volume_down"),NSLOCTEXT("AskirUI","VolumeDown","Lautstärke −"));
+    AddNarrativeButton(TEXT("settings_volume_up"),NSLOCTEXT("AskirUI","VolumeUp","Lautstärke +"));
+    AddText(MenuBody,FString::Printf(TEXT("Kameraempfindlichkeit: %.1f"),SettingsDraft.CameraSensitivity));
+    AddNarrativeButton(TEXT("settings_sensitivity_down"),NSLOCTEXT("AskirUI","SensitivityDown","Empfindlichkeit −"));
+    AddNarrativeButton(TEXT("settings_sensitivity_up"),NSLOCTEXT("AskirUI","SensitivityUp","Empfindlichkeit +"));
+    AddNarrativeButton(TEXT("settings_invert"),FText::FromString(FString::Printf(TEXT("Kamera vertikal invertieren: %s"),SettingsDraft.bInvertCameraY?TEXT("Ja"):TEXT("Nein"))));
+    AddNarrativeButton(TEXT("settings_apply"),NSLOCTEXT("AskirUI","ApplySettings","Übernehmen"));
+    AddNarrativeButton(TEXT("settings_cancel"),NSLOCTEXT("AskirUI","DiscardSettings","Abbrechen"));
+}
+void UAskirHUDWidget::ExecuteFrontendAction(FName ActionID)
+{
+    auto* Frontend=FrontendState(this);
+    auto* Mode=Cast<AAskirGameMode>(UGameplayStatics::GetGameMode(this));
+    if(!Frontend||!Mode)return;
+    if(Panel==EAskirUIPanel::Title)
+    {
+        if(ActionID==FName(TEXT("quit"))){QuitClicked();return;}
+        if(ActionID==FName(TEXT("title_resume"))&&Frontend->HasActiveSession()){ClosePanel();return;}
+        if(ActionID==FName(TEXT("title_settings"))){OpenSettings();return;}
+        if(ActionID==FName(TEXT("title_continue")))
+        {
+            if(Frontend->ContinueGame(Mode))ClosePanel();
+            else {Notify(NSLOCTEXT("AskirUI","ContinueFailed","Der Spielstand konnte nicht geladen werden."));bCanContinue=Frontend->CanContinue();BuildPanel();}
+            return;
+        }
+        if(ActionID==FName(TEXT("title_new")))
+        {
+            if(Frontend->HasActiveSession()){Panel=EAskirUIPanel::ConfirmNewGame;BuildPanel();return;}
+            if(Frontend->StartNewGame(Mode,false))
+            {ClosePanel();if(Frontend->IsFreshStartPending()){Panel=EAskirUIPanel::FreshStart;BuildPanel();Menu->SetVisibility(ESlateVisibility::Visible);if(auto* PC=Cast<AAskirPlayerController>(GetOwningPlayer()))PC->SetMenuInput(true,false);}}
+            else Notify(NSLOCTEXT("AskirUI","StartUnavailable","Das Spiel kann noch nicht gestartet werden."));
+        }
+        return;
+    }
+    if(Panel==EAskirUIPanel::ConfirmNewGame)
+    {
+        if(ActionID==FName(TEXT("new_cancel"))){ShowTitle();return;}
+        if(ActionID==FName(TEXT("new_confirm")))
+        {
+            if(Frontend->StartNewGame(Mode,true))
+            {Panel=EAskirUIPanel::FreshStart;BuildPanel();if(auto* PC=Cast<AAskirPlayerController>(GetOwningPlayer()))PC->SetMenuInput(true,false);}
+            else {ShowTitle();Notify(NSLOCTEXT("AskirUI","StartUnavailable","Das Spiel kann noch nicht gestartet werden."));}
+        }
+        return;
+    }
+    if(Panel!=EAskirUIPanel::Settings&&Panel!=EAskirUIPanel::VideoConfirm)return;
+    auto* Settings=UAskirGameUserSettings::Get();if(!Settings||!Settings->IsEditing())return;
+    if(Panel==EAskirUIPanel::VideoConfirm)
+    {
+        if(ActionID==FName(TEXT("settings_keep")))
+        {
+            if(Settings->ConfirmVideo())
+            {Panel=SettingsReturnPanel;BuildPanel();Notify(NSLOCTEXT("AskirUI","SettingsSaved","Einstellungen gespeichert."));}
+            else
+            {
+                if(!Settings->HasVideoConfirmation()){SettingsDraft=Settings->CaptureDraft();Panel=EAskirUIPanel::Settings;}
+                BuildPanel();Notify(NSLOCTEXT("AskirUI","SettingsSaveFailed","Die Einstellungen konnten nicht gespeichert werden."));
+            }
+        }
+        else if(ActionID==FName(TEXT("settings_revert"))||ActionID==FName(TEXT("settings_cancel")))
+        {Settings->RevertVideo();SettingsDraft=Settings->CaptureDraft();Panel=EAskirUIPanel::Settings;BuildPanel();}
+        return;
+    }
+    if(ActionID==FName(TEXT("settings_cancel")))
+    {Settings->CancelEdit();Panel=SettingsReturnPanel;BuildPanel();return;}
+    if(ActionID==FName(TEXT("settings_apply")))
+    {
+        const auto Active=Settings->CaptureDraft();
+        if(Active.Resolution!=SettingsDraft.Resolution||Active.WindowMode!=SettingsDraft.WindowMode)
+        {
+            if(Settings->PreviewVideo(SettingsDraft)){Panel=EAskirUIPanel::VideoConfirm;BuildPanel();}
+            else Notify(NSLOCTEXT("AskirUI","SettingsFailed","Diese Anzeigeeinstellungen sind nicht verfügbar."));
+        }
+        else if(Settings->SaveDraft(SettingsDraft))
+        {Panel=SettingsReturnPanel;BuildPanel();Notify(NSLOCTEXT("AskirUI","SettingsSaved","Einstellungen gespeichert."));}
+        else Notify(NSLOCTEXT("AskirUI","SettingsSaveFailed","Die Einstellungen konnten nicht gespeichert werden."));
+        return;
+    }
+    if(ActionID==FName(TEXT("settings_resolution")))
+    {
+        TArray<FIntPoint> Resolutions;UKismetSystemLibrary::GetSupportedFullscreenResolutions(Resolutions);
+        Resolutions.RemoveAll([](const FIntPoint& P){return P.X<640||P.Y<480||P.X>16384||P.Y>16384;});
+        if(Resolutions.IsEmpty()){Notify(NSLOCTEXT("AskirUI","NoDisplayModes","Keine weiteren Auflösungen verfügbar."));return;}
+        Resolutions.Sort([](const FIntPoint& A,const FIntPoint& B){return A.X==B.X?A.Y<B.Y:A.X<B.X;});
+        const int32 Index=Resolutions.IndexOfByKey(SettingsDraft.Resolution);SettingsDraft.Resolution=Resolutions[(Index+1)%Resolutions.Num()];
+    }
+    else if(ActionID==FName(TEXT("settings_window")))SettingsDraft.WindowMode=static_cast<EAskirWindowMode>((static_cast<int32>(SettingsDraft.WindowMode)+1)%3);
+    else if(ActionID==FName(TEXT("settings_quality")))SettingsDraft.QualityLevel=(SettingsDraft.QualityLevel+1)%5;
+    else if(ActionID==FName(TEXT("settings_vsync")))SettingsDraft.bVSync=!SettingsDraft.bVSync;
+    else if(ActionID==FName(TEXT("settings_invert")))SettingsDraft.bInvertCameraY=!SettingsDraft.bInvertCameraY;
+    else if(ActionID==FName(TEXT("settings_volume_down")))SettingsDraft.MasterVolume=FMath::Clamp(SettingsDraft.MasterVolume-.1f,0.f,1.f);
+    else if(ActionID==FName(TEXT("settings_volume_up")))SettingsDraft.MasterVolume=FMath::Clamp(SettingsDraft.MasterVolume+.1f,0.f,1.f);
+    else if(ActionID==FName(TEXT("settings_sensitivity_down")))SettingsDraft.CameraSensitivity=FMath::Clamp(SettingsDraft.CameraSensitivity-.2f,.2f,3.f);
+    else if(ActionID==FName(TEXT("settings_sensitivity_up")))SettingsDraft.CameraSensitivity=FMath::Clamp(SettingsDraft.CameraSensitivity+.2f,.2f,3.f);
+    else if(ActionID==FName(TEXT("settings_fps")))
+    {
+        const float Limits[]={0.f,30.f,60.f,90.f,120.f,144.f,165.f,240.f};int32 Next=0;
+        for(int32 Index=0;Index<UE_ARRAY_COUNT(Limits);++Index)if(FMath::IsNearlyEqual(Limits[Index],SettingsDraft.FrameRateLimit)){Next=(Index+1)%UE_ARRAY_COUNT(Limits);break;}
+        SettingsDraft.FrameRateLimit=Limits[Next];
+    }
+    else return;
+    Settings->ApplyDraft(SettingsDraft);BuildPanel();
+}
+
+FReply UAskirHUDWidget::NativeOnKeyDown(const FGeometry& Geometry,const FKeyEvent& Event)
+{
+    if(Event.GetKey()==EKeys::Escape&&Panel!=EAskirUIPanel::None)
+    {
+        TogglePanel(EAskirUIPanel::Pause);return FReply::Handled();
+    }
+    return Super::NativeOnKeyDown(Geometry,Event);
+}

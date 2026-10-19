@@ -1,4 +1,7 @@
 #include "Mission/AskirDornfeldMissionComponent.h"
+#include "Frontend/AskirFrontendSubsystem.h"
+#include "Settings/AskirGameUserSettings.h"
+#include "Settings/AskirSettingsRules.h"
 #include "Mission/AskirDeliveryMissionComponent.h"
 #include "Social/AskirReputationComponent.h"
 #include "Travel/AskirWorldTravelSubsystem.h"
@@ -198,7 +201,10 @@ void AAskirCharacter::InputCycleSpell(const FInputActionValue& Value)
 bool AAskirCharacter::IsWorldTravelPending() const
 {
     if(const auto* Instance=GetGameInstance())
+    {
+        if(const auto* Frontend=Instance->GetSubsystem<UAskirFrontendSubsystem>())if(Frontend->IsFreshStartPending())return true;
         if(const auto* Travel=Instance->GetSubsystem<UAskirWorldTravelSubsystem>())return Travel->IsGameplayBlocked();
+    }
     return false;
 }
 void AAskirCharacter::SuspendForWorldTravel()
@@ -223,8 +229,20 @@ bool AAskirCharacter::CanUseGameplayInput() const
 void AAskirCharacter::CancelGameplayActions(){AbortPendingAttack();StopBlock();StopSprint();StopJumping();if(MagicComponent)MagicComponent->CancelCasting();}
 void AAskirCharacter::MoveForward(float V){if(FMath::IsFinite(V)&&V&&CanUseGameplayInput()&&Controller)AddMovementInput(FRotationMatrix(FRotator(0,Controller->GetControlRotation().Yaw,0)).GetUnitAxis(EAxis::X),V);}
 void AAskirCharacter::MoveRight(float V){if(FMath::IsFinite(V)&&V&&CanUseGameplayInput()&&Controller)AddMovementInput(FRotationMatrix(FRotator(0,Controller->GetControlRotation().Yaw,0)).GetUnitAxis(EAxis::Y),V);}
-void AAskirCharacter::Turn(float V){if(FMath::IsFinite(V)&&CanUseGameplayInput())AddControllerYawInput(V);}
-void AAskirCharacter::LookUp(float V){if(FMath::IsFinite(V)&&CanUseGameplayInput())AddControllerPitchInput(V);}
+void AAskirCharacter::Turn(float V)
+{
+    if(!FMath::IsFinite(V)||!CanUseGameplayInput())return;
+    const auto* Settings=UAskirGameUserSettings::Get();
+    const double Axis=AskirSettingsRules::CameraAxis(V,Settings?Settings->GetEffectiveCameraSensitivity():1.,false);
+    if(FMath::IsFinite(Axis)&&FMath::Abs(Axis)<=MAX_flt)AddControllerYawInput(static_cast<float>(Axis));
+}
+void AAskirCharacter::LookUp(float V)
+{
+    if(!FMath::IsFinite(V)||!CanUseGameplayInput())return;
+    const auto* Settings=UAskirGameUserSettings::Get();
+    const double Axis=AskirSettingsRules::CameraAxis(V,Settings?Settings->GetEffectiveCameraSensitivity():1.,Settings&&Settings->GetEffectiveInvertCameraY());
+    if(FMath::IsFinite(Axis)&&FMath::Abs(Axis)<=MAX_flt)AddControllerPitchInput(static_cast<float>(Axis));
+}
 void AAskirCharacter::StartSprint(){if(CanUseGameplayInput()&&Stamina>0.f&&!bBlocking){bSprinting=true;GetCharacterMovement()->MaxWalkSpeed=SprintSpeed;}}
 void AAskirCharacter::StopSprint(){bSprinting=false;GetCharacterMovement()->MaxWalkSpeed=WalkSpeed;}
 bool AAskirCharacter::SpendStamina(float Cost)
@@ -409,5 +427,15 @@ void AAskirCharacter::DemoInteractInput()
  }
  if(AAskirGameMode* GM=Cast<AAskirGameMode>(UGameplayStatics::GetGameMode(this)))GM->DemoInteract();
 }
-void AAskirCharacter::DemoSaveInput(){if(AAskirGameMode* GM=Cast<AAskirGameMode>(UGameplayStatics::GetGameMode(this)))GM->DemoQuickSave();}
-void AAskirCharacter::DemoLoadInput(){if(AAskirGameMode* GM=Cast<AAskirGameMode>(UGameplayStatics::GetGameMode(this)))GM->DemoQuickLoad();}
+void AAskirCharacter::DemoSaveInput()
+{
+    if(IsWorldTravelPending())return;
+    if(const auto* PC=Cast<AAskirPlayerController>(GetController()))if(PC->IsMenuOpen())return;
+    if(auto* GM=Cast<AAskirGameMode>(UGameplayStatics::GetGameMode(this)))GM->DemoQuickSave();
+}
+void AAskirCharacter::DemoLoadInput()
+{
+    if(IsWorldTravelPending())return;
+    if(const auto* PC=Cast<AAskirPlayerController>(GetController()))if(PC->IsMenuOpen())return;
+    if(auto* GM=Cast<AAskirGameMode>(UGameplayStatics::GetGameMode(this)))GM->DemoQuickLoad();
+}

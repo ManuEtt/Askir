@@ -1,14 +1,22 @@
 #include "Game/AskirPlayerController.h"
 #include "UI/AskirHUDWidget.h"
 #include "Characters/AskirCharacter.h"
+#include "Frontend/AskirFrontendSubsystem.h"
+#include "Travel/AskirWorldTravelSubsystem.h"
+#include "Engine/GameInstance.h"
+#include "Settings/AskirGameUserSettings.h"
 
 void AAskirPlayerController::BeginPlay()
 {
     Super::BeginPlay();
     if(!IsLocalController()||!GetLocalPlayer())return;
+    if(auto* Settings=UAskirGameUserSettings::Get())Settings->ApplyNonResolutionSettings();
+    SetInputMode(FInputModeGameOnly());
+    auto* Frontend=GetGameInstance()?GetGameInstance()->GetSubsystem<UAskirFrontendSubsystem>():nullptr;
+    const auto* Travel=GetGameInstance()?GetGameInstance()->GetSubsystem<UAskirWorldTravelSubsystem>():nullptr;
+    if(Frontend&&(!Frontend->HasActiveSession()||Frontend->IsFreshStartPending())&&!(Travel&&Travel->HasPendingTravel()))SetMenuInput(true,false);
     RuntimeHUD=CreateWidget<UAskirHUDWidget>(this,UAskirHUDWidget::StaticClass());
     if(RuntimeHUD)RuntimeHUD->AddToViewport();
-    SetInputMode(FInputModeGameOnly());
 }
 void AAskirPlayerController::TogglePauseMenu(){if(RuntimeHUD)RuntimeHUD->TogglePanel(EAskirUIPanel::Pause);}
 void AAskirPlayerController::ToggleInventory(){if(RuntimeHUD)RuntimeHUD->TogglePanel(EAskirUIPanel::Inventory);}
@@ -34,6 +42,7 @@ void AAskirPlayerController::SetMenuInput(bool bOpen,bool bPause)
         FInputModeGameAndUI Mode;
         Mode.SetLockMouseToViewportBehavior(EMouseLockMode::DoNotLock);
         Mode.SetHideCursorDuringCapture(false);
+        if(RuntimeHUD)Mode.SetWidgetToFocus(RuntimeHUD->TakeWidget());
         SetInputMode(Mode);
     }
     else SetInputMode(FInputModeGameOnly());

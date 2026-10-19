@@ -2,6 +2,7 @@
 #include "CoreMinimal.h"
 #include "Blueprint/UserWidget.h"
 #include "Components/Button.h"
+#include "Settings/AskirGameUserSettings.h"
 #include "AskirHUDWidget.generated.h"
 class UTextBlock;
 class UProgressBar;
@@ -16,7 +17,7 @@ class AAskirDeliveryQuestActor;
 class UAskirHUDWidget;
 
 UENUM()
-enum class EAskirUIPanel : uint8 { None, Pause, Inventory, Journal, Dialogue, Magic, Merchant, Crafting, Delivery, TravelRecovery };
+enum class EAskirUIPanel : uint8 { None, Pause, Inventory, Journal, Dialogue, Magic, Merchant, Crafting, Delivery, TravelRecovery, Title, ConfirmNewGame, Settings, VideoConfirm, FreshStart };
 
 UCLASS()
 class ASKIR_API UAskirNarrativeButton : public UButton
@@ -75,6 +76,7 @@ class ASKIR_API UAskirHUDWidget : public UUserWidget
     GENERATED_BODY()
 public:
     virtual void NativeConstruct() override;
+    virtual void NativeDestruct() override;
     virtual void NativeTick(const FGeometry& Geometry,float DeltaSeconds) override;
     void TogglePanel(EAskirUIPanel NewPanel);
     bool ShowElderDialogue(AAskirDornfeldEventActor* Elder);
@@ -89,9 +91,16 @@ public:
     void CloseMenu(){ClosePanel();}
 protected:
     virtual TSharedRef<SWidget> RebuildWidget() override;
+    virtual FReply NativeOnKeyDown(const FGeometry& Geometry,const FKeyEvent& Event) override;
 private:
     void RefreshHUD();
     void BuildPanel();
+    void UpdateFrontend();
+    void ShowTitle();
+    void OpenSettings();
+    void BuildSettingsPanel();
+    void ExecuteFrontendAction(FName ActionID);
+    bool IsFrontendPanel() const;
     UFUNCTION() void ClosePanel();
     UFUNCTION() void SaveClicked();
     UFUNCTION() void LoadClicked();
@@ -100,7 +109,7 @@ private:
     UTextBlock* AddText(UVerticalBox* Box,const FString& Text,int32 Size=18);
     UButton* AddButton(UVerticalBox* Box,const FText& Text);
     void AddEconomyButton(FName ID,const FString& Label,bool bSell,bool bCraft,bool bEnabled);
-    void AddNarrativeButton(FName ID,const FText& Text);
+    void AddNarrativeButton(FName ID,const FText& Text,bool bEnabled=true);
     UPROPERTY(Transient) TObjectPtr<UTextBlock> RegionTitle;
     UPROPERTY(Transient) TObjectPtr<UTextBlock> Stats;
     UPROPERTY(Transient) TObjectPtr<UTextBlock> Objective;
@@ -119,6 +128,11 @@ private:
     TWeakObjectPtr<AAskirDeliveryQuestActor> CurrentDeliveryGiver;
     bool bDeliveryDetails=false;
     EAskirUIPanel Panel=EAskirUIPanel::None;
+    EAskirUIPanel SettingsReturnPanel=EAskirUIPanel::Title;
+    FAskirSettingsDraft SettingsDraft;
+    bool bFrontendInitialized=false;
+    bool bCanContinue=false;
+    int32 VideoSeconds=-1;
     float RefreshElapsed=0.f;
     float NotificationSeconds=0.f;
     uint64 ContextGeneration=0;
