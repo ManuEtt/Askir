@@ -4,6 +4,9 @@
 #include "AskirPlayerController.generated.h"
 class UAskirHUDWidget;
 class AAskirDornfeldEventActor;
+class AAskirMerchantActor;
+class AAskirCraftingStationActor;
+class AAskirDeliveryQuestActor;
 
 UCLASS()
 class ASKIR_API AAskirPlayerController : public APlayerController
@@ -18,6 +21,9 @@ public:
     void CloseAnyMenu();
     UFUNCTION(BlueprintCallable, Category="Askir|UI") void ShowNotification(FText Text);
     bool OpenElderDialogue(AAskirDornfeldEventActor* Elder);
+    bool OpenMerchant(AAskirMerchantActor* Merchant);
+    bool OpenCraftingStation(AAskirCraftingStationActor* Station);
+    bool OpenDeliveryDialogue(AAskirDeliveryQuestActor* Giver);
     void SetMenuInput(bool bOpen, bool bPause);
     bool IsMenuOpen() const {return bMenuOpen;}
     void RefreshInventoryPanel();

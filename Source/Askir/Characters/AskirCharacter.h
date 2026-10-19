@@ -11,6 +11,7 @@ class UAskirStealthComponent;
 class UAskirMoraleComponent;
 class UAskirTravelComponent;
 class UAskirTradeComponent;
+class UAskirTradeBridgeComponent;
 class UAskirCampComponent;
 class UAskirCompanionComponent;
 class UAskirExplorationComponent;
@@ -19,6 +20,9 @@ class UAskirNeedsComponent;
 class UAskirAnimationStateComponent;
 class UAskirMagicComponent;
 class UAskirAnimationPlaybackComponent;
+class UAskirDeliveryMissionComponent;
+class UAskirDialogueComponent;
+class UAskirReputationComponent;
 class UInputAction;
 class UInputMappingContext;
 class UStaticMeshComponent;
@@ -36,9 +40,15 @@ public:
     /** Restore collision, movement and transient combat state after the saved health is applied. */
     UFUNCTION(BlueprintCallable, Category="Askir|Save") void RestoreAfterLoad();
     UFUNCTION(BlueprintPure, Category="Askir|Input") bool CanUseGameplayInput() const;
+    UFUNCTION(BlueprintPure, Category="Askir|World") bool IsWorldTravelPending() const;
+    /** Freeze physics as well as input while the GameInstance owns a handoff. */
+    void SuspendForWorldTravel();
     UFUNCTION(BlueprintPure, Category="Askir|Combat") bool IsBlocking() const {return bBlocking;}
     UFUNCTION(BlueprintCallable, Category="Askir|Input") void CancelGameplayActions();
     UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Askir|Magic") TObjectPtr<UAskirMagicComponent> MagicComponent;
+    UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Askir|Quest") TObjectPtr<UAskirDeliveryMissionComponent> DeliveryMission;
+    UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Askir|Dialogue") TObjectPtr<UAskirDialogueComponent> DialogueComponent;
+    UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Askir|Faction") TObjectPtr<UAskirReputationComponent> ReputationComponent;
     UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Askir|Animation") TObjectPtr<UAskirAnimationPlaybackComponent> AnimationPlayback;
     UFUNCTION(BlueprintCallable, Category="Askir|Combat|Timing") void ResolvePendingAttackImpact();
     UFUNCTION(BlueprintPure, Category="Askir|Combat|Timing") bool HasPendingAttack() const {return bPendingAttack;}
@@ -56,6 +66,7 @@ public:
     UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Askir|Systems") TObjectPtr<UAskirMoraleComponent> MoraleComponent;
     UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Askir|Systems") TObjectPtr<UAskirTravelComponent> TravelComponent;
     UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Askir|Systems") TObjectPtr<UAskirTradeComponent> TradeComponent;
+    UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Askir|Trade") TObjectPtr<UAskirTradeBridgeComponent> TradeBridgeComponent;
     UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Askir|Systems") TObjectPtr<UAskirCampComponent> CampComponent;
     UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Askir|Systems") TObjectPtr<UAskirCompanionComponent> CompanionComponent;
     UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Askir|Systems") TObjectPtr<UAskirExplorationComponent> ExplorationComponent;
@@ -190,4 +201,7 @@ private:
     float LastDodgeTime=-1000.f;
     float LastStaminaUseTime=-1000.f;
     bool bBlocking=false;
+    bool bTravelMovementSuspended=false;
+    uint8 PreTravelMovementMode=0;
+    uint8 PreTravelCustomMovementMode=0;
 };

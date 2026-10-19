@@ -21,7 +21,8 @@ class AskirReleaseChecks(unittest.TestCase):
         self.assertIn('Balance>=0&&Amount>=0', arithmetic)
     def test_02(self):
         self.assertIn('!AskirCheckedMath::CanCredit(PlayerGold,Total)', code('Economy/AskirMerchantComponent.cpp'))
-        self.assertIn('!AskirCheckedMath::CanCredit(PlayerGold,Total)', code('Economy/AskirTradeBridgeComponent.cpp'))
+        self.assertIn('AskirEconomyRules::PrepareTrade(', code('Economy/AskirTradeBridgeComponent.cpp'))
+        self.assertIn('!AskirCheckedMath::CanCredit(PlayerGold,Total)', code('Economy/AskirEconomyRules.h'))
     def test_03(self):
         merchant = code('Economy/AskirMerchantComponent.cpp')
         restock = merchant.split('UAskirMerchantComponent::Restock(', 1)[1]
@@ -33,7 +34,9 @@ class AskirReleaseChecks(unittest.TestCase):
     def test_05(self):
         self.assertIn('IsFinite(SellBackRatio)', SOURCE)
     def test_06(self):
-        self.assertIn('IsFinite(PriceMultiplier)', SOURCE)
+        self.assertIn('std::isfinite(Multiplier)', code('Economy/AskirEconomyRules.h'))
+        self.assertIn('Multiplier<=0.0', code('Economy/AskirEconomyRules.h'))
+        self.assertIn('AskirEconomyRules::UnitBuyPrice(', code('Economy/AskirMerchantComponent.cpp'))
     def test_07(self):
         buy = code('Economy/AskirMerchantComponent.cpp').split('UAskirMerchantComponent::BuyFromMerchant(', 1)[1].split('UAskirMerchantComponent::SellToMerchant(', 1)[0]
         self.assertIn('Total>PlayerGold', buy)
@@ -65,9 +68,12 @@ class AskirReleaseChecks(unittest.TestCase):
         self.assertIn('double(MAX_int32)', SOURCE)
     def test_18(self):
         buy = code('Economy/AskirTradeBridgeComponent.cpp').split('UAskirTradeBridgeComponent::BuyItem(', 1)[1].split('UAskirTradeBridgeComponent::SellItem(', 1)[0]
-        self.assertIn('Total>PlayerGold', buy)
-        self.assertLess(buy.index('Total>PlayerGold'), buy.index('PlayerInventory->Items=MoveTemp(Prepared)'))
-        self.assertLess(buy.index('PrepareExchange('), buy.index('PlayerGold-=Total'))
+        preparation = code('Economy/AskirTradeBridgeComponent.cpp').split('UAskirTradeBridgeComponent::PrepareTrade(', 1)[1].split('UAskirTradeBridgeComponent::CanBuyItem(', 1)[0]
+        self.assertIn('AskirEconomyRules::PrepareTrade(', preparation)
+        self.assertIn('PlayerInventory->PrepareExchange(', preparation)
+        self.assertLess(buy.index('PrepareTrade('), buy.index('PlayerInventory->Items=MoveTemp(Prepared)'))
+        self.assertLess(buy.index('PlayerGold=Plan.PlayerGold'), buy.index('OnInventoryChanged.Broadcast()'))
+        self.assertIn('TGuardValue<bool>BridgeGuard', buy)
         self.assertIn('TGuardValue<bool>MerchantGuard', buy)
         self.assertIn('TGuardValue<bool>InventoryGuard', buy)
     def test_19(self):

@@ -4,6 +4,7 @@
 #include "Progression/AskirProgressionComponent.h"
 #include "Inventory/AskirInventoryComponent.h"
 #include "Inventory/AskirItemData.h"
+#include "Quest/AskirQuestRewardRules.h"
 UAskirQuestComponent::UAskirQuestComponent(){PrimaryComponentTick.bCanEverTick=false;}
 bool UAskirQuestComponent::StartQuest(UAskirQuestData* Quest)
 {
@@ -46,7 +47,13 @@ bool UAskirQuestComponent::AreQuestObjectivesComplete(FName QuestID)const
  if(GetStateByID(QuestID)!=EAskirQuestState::Active)return false;
  const FAskirQuestObjectiveList* List=ObjectivesByQuest.Find(QuestID);
  if(!List||List->Objectives.IsEmpty())return false;
- for(const auto& Objective:List->Objectives)if(Objective.CurrentCount<Objective.RequiredCount)return false;
+ TSet<FName> Seen;
+ for(const auto& Objective:List->Objectives)
+ {
+  if(Objective.ObjectiveID.IsNone() || Seen.Contains(Objective.ObjectiveID) || Objective.RequiredCount<=0
+   || Objective.CurrentCount!=Objective.RequiredCount)return false;
+  Seen.Add(Objective.ObjectiveID);
+ }
  return true;
 }
 bool UAskirQuestComponent::AreObjectivesComplete()const{return AreQuestObjectivesComplete(LegacyActiveQuestID);}
@@ -77,34 +84,49 @@ bool UAskirQuestComponent::HasClaimedReward(FName QuestID)const
 bool UAskirQuestComponent::TurnInQuestWithRewards(UAskirQuestData* Quest)
 {
  if(bRewardTransaction||!IsValid(Quest)||Quest->QuestID.IsNone()||HasClaimedReward(Quest->QuestID)||!AreQuestObjectivesComplete(Quest->QuestID))return false;
+ const FName QuestID=Quest->QuestID;
+ const int32 GoldReward=Quest->GoldReward,ExperienceReward=Quest->ExperienceReward,RewardCount=Quest->RewardItemQuantity;
+ UAskirItemData* const RewardItem=Quest->RewardItem.Get();
  AActor* Owner=GetOwner();if(!IsValid(Owner))return false;
  UAskirTradeComponent* Wallet=Owner->FindComponentByClass<UAskirTradeComponent>();
  UAskirProgressionComponent* Progression=Owner->FindComponentByClass<UAskirProgressionComponent>();
  UAskirInventoryComponent* Bag=Owner->FindComponentByClass<UAskirInventoryComponent>();
- if(Quest->GoldReward<0||Quest->ExperienceReward<0||Quest->RewardItemQuantity<0)return false;
- if(Quest->GoldReward>0&&(!Wallet||Wallet->Gold<0||int64(Wallet->Gold)+Quest->GoldReward>MAX_int32))return false;
- if(Quest->ExperienceReward>0&&!Progression)return false;
- if(Quest->RewardItemQuantity>0&&(!IsValid(Quest->RewardItem)||!Bag))return false;
+ if(GoldReward<0||ExperienceReward<0||RewardCount<0)return false;
+ if(GoldReward>0&&(!Wallet||Wallet->Gold<0||int64(Wallet->Gold)+GoldReward>MAX_int32))return false;
+ if(ExperienceReward>0&&!Progression)return false;
+ if(RewardCount>0&&(!IsValid(RewardItem)||!Bag))return false;
+ AskirQuestRewardRules::Progress PreparedProgress;
+ if(ExperienceReward>0 && !AskirQuestRewardRules::PrepareExperience(
+  {Progression->Progress.Level,Progression->Progress.Experience,Progression->Progress.UnspentPoints},
+  ExperienceReward,PreparedProgress))return false;
  TArray<FAskirInventoryEntry> PreparedInventory;
- if(Quest->RewardItemQuantity>0)
+ if(RewardCount>0)
  {
-  FAskirInventoryEntry Reward;Reward.Item=Quest->RewardItem;Reward.Quantity=Quest->RewardItemQuantity;
+  FAskirInventoryEntry Reward;Reward.Item=RewardItem;Reward.Quantity=RewardCount;
   if(!Bag->PrepareExchange({}, {Reward}, PreparedInventory))return false;
  }
  // Inventory notifications may re-enter a turn-in. Keep the transaction closed until
  // all rewards and the receipt have been committed, then broadcast quest completion.
  TGuardValue<bool> TransactionGuard(bRewardTransaction,true);
  bool UnusedInventoryGuard=false;
- TGuardValue<bool> InventoryGuard(Quest->RewardItemQuantity>0?Bag->bTransactionInProgress:UnusedInventoryGuard,true);
- if(Quest->RewardItemQuantity>0)Bag->Items=MoveTemp(PreparedInventory);
- QuestStates.Add(Quest->QuestID,EAskirQuestState::Completed);
- ObjectivesByQuest.Remove(Quest->QuestID);
- ClaimedRewards.Add(Quest->QuestID);
+ TGuardValue<bool> InventoryGuard(RewardCount>0?Bag->bTransactionInProgress:UnusedInventoryGuard,true);
+ if(RewardCount>0)Bag->Items=MoveTemp(PreparedInventory);
+ QuestStates.Add(QuestID,EAskirQuestState::Completed);
+ ObjectivesByQuest.Remove(QuestID);
+ ClaimedRewards.Add(QuestID);
  RefreshLegacyObjectives();
- if(Quest->GoldReward>0)Wallet->EarnGold(Quest->GoldReward);
- if(Quest->ExperienceReward>0)Progression->AwardExperience(Quest->ExperienceReward);
- if(Quest->RewardItemQuantity>0)Bag->OnInventoryChanged.Broadcast();
- OnQuestCompleted.Broadcast(Quest->QuestID);
+ if(GoldReward>0)Wallet->Gold+=GoldReward;
+ if(ExperienceReward>0)
+ {
+  Progression->Progress.Level=PreparedProgress.Level;
+  Progression->Progress.Experience=PreparedProgress.Experience;
+  Progression->Progress.UnspentPoints=PreparedProgress.UnspentPoints;
+ }
+ // Commit every reward and the receipt before the first external callback. The
+ // quest transaction guard also blocks snapshots throughout all notifications.
+ if(ExperienceReward>0)Progression->OnProgressionChanged.Broadcast();
+ if(RewardCount>0)Bag->OnInventoryChanged.Broadcast();
+ OnQuestCompleted.Broadcast(QuestID);
  return true;
 }
 

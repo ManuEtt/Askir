@@ -8,6 +8,7 @@
 #include "Simulation/AskirNeedsComponent.h"
 #include "Social/AskirRelationshipComponent.h"
 #include "Magic/AskirMagicComponent.h"
+#include "Economy/AskirMerchantComponent.h"
 #include "AskirSaveGame.generated.h"
 // Stable asset references survive across sessions without serializing transient UObject pointers.
 USTRUCT(BlueprintType)
@@ -24,6 +25,13 @@ struct FAskirLootState
  GENERATED_BODY()
  UPROPERTY(SaveGame) TArray<FName> CollectedPickups;
  UPROPERTY(SaveGame) TArray<FName> OpenedChests;
+};
+
+USTRUCT(BlueprintType)
+struct FAskirMapMerchantState
+{
+ GENERATED_BODY()
+ UPROPERTY(SaveGame) TMap<FName,FAskirMerchantSnapshot> Merchants;
 };
 
 /** Explicit values, never actor/component pointers, for the existing player systems. */
@@ -71,7 +79,7 @@ class ASKIR_API UAskirSaveGame:public USaveGame
     GENERATED_BODY()
 public:
     /** Save format version; increment when persistent structures change. */
-    static constexpr int32 CurrentFormatVersion = 4;
+    static constexpr int32 CurrentFormatVersion = 5;
     UPROPERTY(SaveGame) int32 SaveFormatVersion = CurrentFormatVersion;
     /** Two alternating slot banks preserve the last valid generation on write failure. */
     UPROPERTY(SaveGame) int64 SaveGeneration = 0;
@@ -119,4 +127,6 @@ public:
     UPROPERTY(SaveGame) FAskirMagicSnapshot SavedMagic;
     /** Map package -> persistent IDs for looted actors. */
     UPROPERTY(SaveGame)TMap<FName,FAskirLootState> SavedLootByMap;
+    /** V5: map-local stable merchant IDs retain wallet and stock through travel. */
+    UPROPERTY(SaveGame) TMap<FName,FAskirMapMerchantState> SavedMerchantsByMap;
 };

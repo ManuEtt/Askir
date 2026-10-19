@@ -1,0 +1,50 @@
+# Original ASKIR V80 texture-free materials
+newmtl Askir_Heartwood
+Kd 0.130000 0.065000 0.027000
+Ka 0.02 0.02 0.02
+Ks 0.12 0.12 0.12
+Ns 32
+d 1.0
+illum 2
+Pr 0.80000
+Pm 0.00000
+
+newmtl Askir_OldOak
+Kd 0.250000 0.125000 0.052000
+Ka 0.02 0.02 0.02
+Ks 0.12 0.12 0.12
+Ns 32
+d 1.0
+illum 2
+Pr 0.80000
+Pm 0.00000
+
+newmtl Askir_LeatherGrip
+Kd 0.105000 0.045000 0.023000
+Ka 0.02 0.02 0.02
+Ks 0.12 0.12 0.12
+Ns 32
+d 1.0
+illum 2
+Pr 0.88000
+Pm 0.00000
+
+newmtl Askir_CutOak
+Kd 0.390000 0.235000 0.115000
+Ka 0.02 0.02 0.02
+Ks 0.12 0.12 0.12
+Ns 32
+d 1.0
+illum 2
+Pr 0.80000
+Pm 0.00000
+
+newmtl Askir_WroughtIron
+Kd 0.075000 0.092000 0.092000
+Ka 0.02 0.02 0.02
+Ks 0.12 0.12 0.12
+Ns 32
+d 1.0
+illum 2
+Pr 0.45000
+Pm 0.72000

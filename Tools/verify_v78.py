@@ -41,7 +41,11 @@ def main():
             'real_maps':len(list((ROOT/'Content').rglob('*.umap'))),'real_unreal_assets':len(list((ROOT/'Content').rglob('*.uasset'))),
             'performance':{'status':'Blockiert','fps':None}}
     (ROOT/'Reports/V78_verification.json').write_text(json.dumps(report,indent=2,ensure_ascii=False),encoding='utf-8')
-    for name,row in checks.items():print(name+': '+row['status'])
+    for name,row in checks.items():
+        print(name+': '+row['status'])
+        if row['status']!='Bestanden':
+            details=row.get('execution',row.get('compile',row))
+            if details.get('output'):print(details['output'][-4000:],file=sys.stderr)
     print('Unreal/Win64: '+report['windows_build']['status'])
     return int(any(row['status']!='Bestanden' for row in checks.values()))
 if __name__=='__main__':raise SystemExit(main())

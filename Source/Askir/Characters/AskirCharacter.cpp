@@ -1,4 +1,8 @@
 #include "Mission/AskirDornfeldMissionComponent.h"
+#include "Mission/AskirDeliveryMissionComponent.h"
+#include "Social/AskirReputationComponent.h"
+#include "Travel/AskirWorldTravelSubsystem.h"
+#include "Engine/GameInstance.h"
 #include "Magic/AskirMagicComponent.h"
 #include "Animation/AskirAnimationPlaybackComponent.h"
 #include "Audio/AskirAudioLibrary.h"
@@ -11,6 +15,8 @@
 #include "Companion/AskirCompanionComponent.h"
 #include "Camp/AskirCampComponent.h"
 #include "Trade/AskirTradeComponent.h"
+#include "Economy/AskirTradeBridgeComponent.h"
+#include "Economy/AskirVillageEconomyCatalog.h"
 #include "Travel/AskirTravelComponent.h"
 #include "Morale/AskirMoraleComponent.h"
 #include "Stealth/AskirStealthComponent.h"
@@ -45,6 +51,9 @@
 AAskirCharacter::AAskirCharacter()
 {
     ProgressionComponent=CreateDefaultSubobject<UAskirProgressionComponent>(TEXT("Progression"));
+    DeliveryMission=CreateDefaultSubobject<UAskirDeliveryMissionComponent>(TEXT("DeliveryMission"));
+    DialogueComponent=CreateDefaultSubobject<UAskirDialogueComponent>(TEXT("Dialogue"));
+    ReputationComponent=CreateDefaultSubobject<UAskirReputationComponent>(TEXT("Reputation"));
     MagicComponent=CreateDefaultSubobject<UAskirMagicComponent>(TEXT("Magic"));
     AnimationPlayback=CreateDefaultSubobject<UAskirAnimationPlaybackComponent>(TEXT("AnimationPlayback"));
     SurvivalComponent=CreateDefaultSubobject<UAskirSurvivalComponent>(TEXT("Survival"));
@@ -53,6 +62,7 @@ AAskirCharacter::AAskirCharacter()
     MoraleComponent=CreateDefaultSubobject<UAskirMoraleComponent>(TEXT("Morale"));
     TravelComponent=CreateDefaultSubobject<UAskirTravelComponent>(TEXT("Travel"));
     TradeComponent=CreateDefaultSubobject<UAskirTradeComponent>(TEXT("Trade"));
+    TradeBridgeComponent=CreateDefaultSubobject<UAskirTradeBridgeComponent>(TEXT("TradeBridge"));
     CampComponent=CreateDefaultSubobject<UAskirCampComponent>(TEXT("Camp"));
     CompanionComponent=CreateDefaultSubobject<UAskirCompanionComponent>(TEXT("Companion"));
     ExplorationComponent=CreateDefaultSubobject<UAskirExplorationComponent>(TEXT("Exploration"));
@@ -83,6 +93,9 @@ AAskirCharacter::AAskirCharacter()
 void AAskirCharacter::BeginPlay()
 {
     Super::BeginPlay();
+    AskirVillageEconomyCatalog::ConfigurePlayer(this);
+    if(InventoryComponent&&EquipmentComponent)
+        InventoryComponent->OnInventoryChanged.AddUniqueDynamic(EquipmentComponent,&UAskirEquipmentComponent::ReconcileWithInventory);
     Stamina=FMath::Max(0.f,MaxStamina);
     if(ProxyVisual)ProxyVisual->SetVisibility(!GetMesh()->GetSkeletalMeshAsset());
     if(CombatComponent)CombatComponent->OnDeath.AddDynamic(this,&AAskirCharacter::HandleDeath);
@@ -90,6 +103,12 @@ void AAskirCharacter::BeginPlay()
 void AAskirCharacter::Tick(float DeltaSeconds)
 {
     Super::Tick(DeltaSeconds);
+    if(IsWorldTravelPending()){SuspendForWorldTravel();return;}
+    if(bTravelMovementSuspended)
+    {
+        bTravelMovementSuspended=false;
+        GetCharacterMovement()->SetMovementMode(IsDead()?MOVE_None:static_cast<EMovementMode>(PreTravelMovementMode),PreTravelCustomMovementMode);
+    }
     if(bSprinting && !IsDead() && GetVelocity().SizeSquared2D()>1.f)
         if(!SpendStamina(FMath::Max(0.f,DeltaSeconds)*12.f))StopSprint();
     if(!IsDead() && GetWorld() && GetWorld()->GetTimeSeconds()-LastStaminaUseTime>=StaminaRegenDelay)
@@ -176,17 +195,36 @@ void AAskirCharacter::InputCycleSpell(const FInputActionValue& Value)
 {
     if(CanUseGameplayInput()&&MagicComponent){const float Direction=Value.Get<float>();if(FMath::Abs(Direction)>.01f)MagicComponent->CycleSpell(Direction>0?1:-1);}
 }
+bool AAskirCharacter::IsWorldTravelPending() const
+{
+    if(const auto* Instance=GetGameInstance())
+        if(const auto* Travel=Instance->GetSubsystem<UAskirWorldTravelSubsystem>())return Travel->IsGameplayBlocked();
+    return false;
+}
+void AAskirCharacter::SuspendForWorldTravel()
+{
+    if(!IsWorldTravelPending())return;
+    auto* Movement=GetCharacterMovement();if(!Movement)return;
+    if(!bTravelMovementSuspended)
+    {
+        PreTravelMovementMode=static_cast<uint8>(Movement->MovementMode);
+        PreTravelCustomMovementMode=Movement->CustomMovementMode;
+        bTravelMovementSuspended=true;
+    }
+    CancelGameplayActions();ConsumeMovementInputVector();Movement->StopMovementImmediately();Movement->DisableMovement();
+}
 bool AAskirCharacter::CanUseGameplayInput() const
 {
+    if(IsWorldTravelPending())return false;
     if(IsDead()||!CombatComponent||!CombatComponent->IsDamageEnabled()||!GetWorld()||UGameplayStatics::IsGamePaused(this))return false;
     if(const auto* GM=Cast<AAskirGameMode>(UGameplayStatics::GetGameMode(this)))if(GM->IsPersistenceBusy())return false;
     const auto* PC=Cast<AAskirPlayerController>(Controller);return !PC||!PC->IsMenuOpen();
 }
 void AAskirCharacter::CancelGameplayActions(){AbortPendingAttack();StopBlock();StopSprint();StopJumping();if(MagicComponent)MagicComponent->CancelCasting();}
-void AAskirCharacter::MoveForward(float V){if(V&&!IsDead()&&Controller)AddMovementInput(FRotationMatrix(FRotator(0,Controller->GetControlRotation().Yaw,0)).GetUnitAxis(EAxis::X),V);}
-void AAskirCharacter::MoveRight(float V){if(V&&!IsDead()&&Controller)AddMovementInput(FRotationMatrix(FRotator(0,Controller->GetControlRotation().Yaw,0)).GetUnitAxis(EAxis::Y),V);}
-void AAskirCharacter::Turn(float V){AddControllerYawInput(V);}
-void AAskirCharacter::LookUp(float V){AddControllerPitchInput(V);}
+void AAskirCharacter::MoveForward(float V){if(FMath::IsFinite(V)&&V&&CanUseGameplayInput()&&Controller)AddMovementInput(FRotationMatrix(FRotator(0,Controller->GetControlRotation().Yaw,0)).GetUnitAxis(EAxis::X),V);}
+void AAskirCharacter::MoveRight(float V){if(FMath::IsFinite(V)&&V&&CanUseGameplayInput()&&Controller)AddMovementInput(FRotationMatrix(FRotator(0,Controller->GetControlRotation().Yaw,0)).GetUnitAxis(EAxis::Y),V);}
+void AAskirCharacter::Turn(float V){if(FMath::IsFinite(V)&&CanUseGameplayInput())AddControllerYawInput(V);}
+void AAskirCharacter::LookUp(float V){if(FMath::IsFinite(V)&&CanUseGameplayInput())AddControllerPitchInput(V);}
 void AAskirCharacter::StartSprint(){if(CanUseGameplayInput()&&Stamina>0.f&&!bBlocking){bSprinting=true;GetCharacterMovement()->MaxWalkSpeed=SprintSpeed;}}
 void AAskirCharacter::StopSprint(){bSprinting=false;GetCharacterMovement()->MaxWalkSpeed=WalkSpeed;}
 bool AAskirCharacter::SpendStamina(float Cost)
@@ -309,6 +347,7 @@ void AAskirCharacter::StopBlock(){if(bBlocking){bBlocking=false;if(AnimationStat
 void AAskirCharacter::Heal(float A){if(CombatComponent)CombatComponent->Heal(A);}
 void AAskirCharacter::ReceiveAskirDamage(const FAskirDamageInfo&I)
 {
+    if(IsPlayerControlled()&&IsWorldTravelPending())return;
     if(!CombatComponent||CombatComponent->IsDead()||!CombatComponent->IsDamageEnabled()||CombatComponent->IsDodgeInvulnerable()||!FMath::IsFinite(I.Damage)||I.Damage<=0.f)return;
     FAskirDamageInfo Applied=I;
     if(bBlocking && I.DamageType!=EAskirDamageType::TrueDamage)
@@ -331,6 +370,7 @@ void AAskirCharacter::HandleDeath(){CancelPendingAttack();StopSprint();if(Animat
 void AAskirCharacter::RestoreAfterLoad()
 {
     CancelGameplayActions();
+    bTravelMovementSuspended=false;
     LastAttackTime=LastDodgeTime=LastStaminaUseTime=NextAttackAllowedTime=-1000.f;
     GetCharacterMovement()->StopMovementImmediately();
     GetCharacterMovement()->SetMovementMode(IsDead()?MOVE_None:MOVE_Walking);

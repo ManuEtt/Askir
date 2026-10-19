@@ -1,5 +1,7 @@
 #include "Interaction/AskirInteractionComponent.h"
 #include "Interaction/AskirInteractable.h"
+#include "GameFramework/Actor.h"
+#include "Engine/World.h"
 UAskirInteractionComponent::UAskirInteractionComponent(){PrimaryComponentTick.bCanEverTick=false;}
 bool UAskirInteractionComponent::TryInteract(float Distance)
 {

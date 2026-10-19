@@ -1,0 +1,98 @@
+{
+  "status": "Bestanden",
+  "coverage": "All source SHA256/byte sizes; actual OBJ counts, finite coordinates/bounds; GLB headers. Full triangle equivalence is verified offline.",
+  "props": {
+    "SM_AskirDeliveryCart": {
+      "vertices": 2400,
+      "triangles": 4532,
+      "materials": 5,
+      "bounds_metres_z_up": [
+        [
+          -1.100000023841858,
+          -0.8684999942779541,
+          0.0009999871253967285
+        ],
+        [
+          1.8841867446899414,
+          0.8685000538825989,
+          1.2825000286102295
+        ]
+      ],
+      "dimensions_centimetres": [
+        298.41867685317993,
+        173.7000048160553,
+        128.15000414848328
+      ]
+    },
+    "SM_AskirSupplyCrate": {
+      "vertices": 1744,
+      "triangles": 3232,
+      "materials": 5,
+      "bounds_metres_z_up": [
+        [
+          -0.5034250020980835,
+          -0.42805004119873047,
+          0.007500000298023224
+        ],
+        [
+          0.5034250020980835,
+          0.42805004119873047,
+          0.7680000066757202
+        ]
+      ],
+      "dimensions_centimetres": [
+        100.6850004196167,
+        85.6100082397461,
+        76.0500006377697
+      ]
+    }
+  },
+  "files": {
+    "LICENSE_CC0.txt": {
+      "bytes": 385,
+      "sha256": "56dc4e4fd614dcb33f4db207e4f2debf4219fd28bbf4c655ff0457d4a386735a"
+    },
+    "SM_AskirDeliveryCart.blend": {
+      "bytes": 917860,
+      "sha256": "1d34136cf45e1ffa534915383fa8feba181139143a3117ed37c497e8cabe94f6"
+    },
+    "SM_AskirDeliveryCart.glb": {
+      "bytes": 328504,
+      "sha256": "a77529d534d9775ce4b1b7629630b5928120a5f2df79b79ff974fe460738a140"
+    },
+    "SM_AskirDeliveryCart.mtl": {
+      "bytes": 701,
+      "sha256": "f2e039d91093c6c98cf28991d2a8a1f47889a11131741109bebf061b5820906a"
+    },
+    "SM_AskirDeliveryCart.obj": {
+      "bytes": 427341,
+      "sha256": "ae7d2047000d987d2c34fc6cbb21286fcfd6855fcafb0beffbd8e0041aa1a006"
+    },
+    "SM_AskirDeliveryCart_Preview.png": {
+      "bytes": 1054114,
+      "sha256": "1c78750702c96d63fb6ecd62ed60e55395e496c9d2f674d64d4ec0cf6e468f47"
+    },
+    "SM_AskirSupplyCrate.blend": {
+      "bytes": 960544,
+      "sha256": "b7a20af9d280263e0640fa88a6d885f24656b6a2042f32331248a37936e726f8"
+    },
+    "SM_AskirSupplyCrate.glb": {
+      "bytes": 250476,
+      "sha256": "fac3baa5e12146aa0efc15b0d7322901637407bba5737053f6ba479d2dfc021f"
+    },
+    "SM_AskirSupplyCrate.mtl": {
+      "bytes": 712,
+      "sha256": "fa8f7a9ab8cef7b0655a84e6917f3e7ba06e5f9a68af22b46e2956d9c1d91624"
+    },
+    "SM_AskirSupplyCrate.obj": {
+      "bytes": 303348,
+      "sha256": "a66fdd353f1f59bc8452daaebf38baa81cca7318912e1bc3dac64499cdf2afa7"
+    },
+    "SM_AskirSupplyCrate_Preview.png": {
+      "bytes": 1049211,
+      "sha256": "a7d25cda82c38cc0d43f5ec740ca6c282cbf15cf84f90817faa0d8365027223a"
+    }
+  },
+  "unreal_import": "Nicht ausgeführt",
+  "runtime_collision": "Nicht ausgeführt"
+}
