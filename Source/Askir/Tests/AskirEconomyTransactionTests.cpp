@@ -99,4 +99,67 @@ bool FAskirCraftingAtomicRecipeTest::RunTest(const FString& Parameters)
  TestEqual(TEXT("GatherMaterials saturates"),Crafting->Materials,MAX_int32);
  return true;
 }
+
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FAskirMerchantQuoteValidationTest,"Askir.Economy.QuotesAndMalformedCatalog",EAutomationTestFlags::EditorContext|EAutomationTestFlags::EngineFilter)
+bool FAskirMerchantQuoteValidationTest::RunTest(const FString& Parameters)
+{
+ auto* Merchant=NewObject<UAskirMerchantComponent>();auto* Bag=NewObject<UAskirInventoryComponent>();auto* Bridge=NewObject<UAskirTradeBridgeComponent>();
+ auto* Ore=Item(TEXT("QuoteOre"));
+ FAskirShopItem Stock;Stock.ItemID=Ore->ItemID;Stock.BasePrice=11;Stock.Stock=3;Merchant->Inventory.Add(Stock);Merchant->MerchantGold=100;
+ FAskirTradeCatalogEntry Catalog;Catalog.ItemID=Ore->ItemID;Catalog.Item=Ore;Bridge->Catalog.Add(Catalog);
+ int32 Gold=50;
+ TestTrue(TEXT("A quote succeeds without transfer"),Bridge->CanBuyItem(Merchant,Bag,Ore->ItemID,2,Gold));
+ TestEqual(TEXT("Quote preserves wallet"),Gold,50);TestEqual(TEXT("Quote preserves stock"),Merchant->Inventory[0].Stock,3);
+ TestEqual(TEXT("Quote preserves bag"),Bag->GetItemCount(Ore),0);
+ FAskirShopItem InvalidStock;InvalidStock.ItemID=TEXT("MalformedOtherSKU");InvalidStock.Stock=-1;Merchant->Inventory.Add(InvalidStock);
+ TestFalse(TEXT("Quote rejects malformed stock in another SKU"),Bridge->CanBuyItem(Merchant,Bag,Ore->ItemID,1,Gold));
+ TestFalse(TEXT("Commit also rejects malformed stock in another SKU"),Bridge->BuyItem(Merchant,Bag,Ore->ItemID,1,Gold));
+ Merchant->Inventory.RemoveAt(1);
+ TestFalse(TEXT("Zero multiplier is invalid"),Bridge->CanBuyItem(Merchant,Bag,Ore->ItemID,1,Gold,0.f));
+ TestFalse(TEXT("Negative multiplier is invalid"),Bridge->BuyItem(Merchant,Bag,Ore->ItemID,1,Gold,-1.f));
+ TestFalse(TEXT("Cannot alias buyer and merchant wallets"),Bridge->BuyItem(Merchant,Bag,Ore->ItemID,1,Merchant->MerchantGold));
+ TestEqual(TEXT("Rejected wallet alias preserves merchant"),Merchant->MerchantGold,100);
+ Merchant->Inventory.Add(Stock);
+ TestFalse(TEXT("Duplicate shop IDs cannot be priced or bought"),Bridge->BuyItem(Merchant,Bag,Ore->ItemID,1,Gold));
+ TestEqual(TEXT("Duplicate shop price is unavailable"),Merchant->GetUnitBuyPrice(Ore->ItemID),0);
+ Merchant->Inventory.RemoveAt(1);Bridge->Catalog.Add(Catalog);
+ TestNull(TEXT("Duplicate catalog is ambiguous"),Bridge->FindItem(Ore->ItemID));
+ TestFalse(TEXT("Ambiguous catalog cannot transfer"),Bridge->BuyItem(Merchant,Bag,Ore->ItemID,1,Gold));
+ Bridge->Catalog.RemoveAt(1);
+ TestTrue(TEXT("Valid purchase after malformed catalog rejection"),Bridge->BuyItem(Merchant,Bag,Ore->ItemID,2,Gold));
+ TestEqual(TEXT("Committed wallet matches quote"),Gold,28);
+ TestTrue(TEXT("Sale quote uses owned inventory"),Bridge->CanSellItem(Merchant,Bag,Ore->ItemID,2,Gold));
+ TestEqual(TEXT("Sale quote preserves owned goods"),Bag->GetItemCount(Ore),2);
+ TestFalse(TEXT("Sale quote cannot include missing goods"),Bridge->CanSellItem(Merchant,Bag,Ore->ItemID,3,Gold));
+ TestFalse(TEXT("Wallet cannot alias an inventory stack that commit replaces"),Bridge->SellItem(Merchant,Bag,Ore->ItemID,1,Bag->Items[0].Quantity));
+ TestEqual(TEXT("Rejected stack alias preserves owned goods"),Bag->GetItemCount(Ore),2);
+ return true;
+}
+
+IMPLEMENT_SIMPLE_AUTOMATION_TEST(FAskirCraftingQuoteValidationTest,"Askir.Crafting.QuotesAndMalformedRecipes",EAutomationTestFlags::EditorContext|EAutomationTestFlags::EngineFilter)
+bool FAskirCraftingQuoteValidationTest::RunTest(const FString& Parameters)
+{
+ auto* Crafting=NewObject<UAskirCraftingComponent>();auto* Bag=NewObject<UAskirInventoryComponent>();
+ auto* Ore=Item(TEXT("RecipeOre"));auto* DuplicateOre=Item(Ore->ItemID);auto* Sword=Item(TEXT("RecipeSword"),1);
+ FAskirCraftingRecipe Recipe;Recipe.RecipeID=TEXT("QuoteSword");Recipe.bKnownByDefault=true;
+ Recipe.Ingredients={Entry(Ore,2)};Recipe.Result=Entry(Sword,1);Crafting->Recipes.Add(Recipe);Bag->AddItem(Ore,4);
+ TestTrue(TEXT("Valid quote includes ingredients and output capacity"),Crafting->CanCraftRecipe(Bag,Recipe.RecipeID,2));
+ TestEqual(TEXT("Quote does not consume ingredients"),Bag->GetItemCount(Ore),4);
+ TestEqual(TEXT("Quote does not produce output"),Bag->GetItemCount(Sword),0);TestEqual(TEXT("Quote does not alter total"),Crafting->CraftedItems,0);
+ Crafting->Recipes[0].RequiredSkill=101;Crafting->CraftSkill=101;
+ TestFalse(TEXT("Corrupt skill range cannot authorize craft"),Crafting->CraftRecipe(Bag,Recipe.RecipeID));
+ Crafting->CraftSkill=1;Crafting->Recipes[0].RequiredSkill=1;
+ Crafting->Recipes[0].Ingredients.Add(Entry(DuplicateOre,1));
+ TestFalse(TEXT("Different assets sharing ingredient ID are ambiguous"),Crafting->CanCraftRecipe(Bag,Recipe.RecipeID));
+ Crafting->Recipes[0].Ingredients.RemoveAt(1);Crafting->Recipes.Add(Recipe);
+ TestNull(TEXT("Duplicate recipe ID is ambiguous"),Crafting->FindRecipe(Recipe.RecipeID));
+ TestFalse(TEXT("Ambiguous recipe cannot be known"),Crafting->IsRecipeKnown(Recipe.RecipeID));
+ Crafting->Recipes.RemoveAt(1);Bag->MaxInventorySlots=1;
+ TestFalse(TEXT("Quote rejects insufficient output slots"),Crafting->CanCraftRecipe(Bag,Recipe.RecipeID,2));
+ TestEqual(TEXT("Rejected quote preserves all ingredients"),Bag->GetItemCount(Ore),4);
+ Bag->MaxInventorySlots=2;
+ TestTrue(TEXT("Craft uses same validated plan as quote"),Crafting->CraftRecipe(Bag,Recipe.RecipeID,2));
+ TestEqual(TEXT("Batch consumes inputs"),Bag->GetItemCount(Ore),0);TestEqual(TEXT("Batch produces two outputs"),Bag->GetItemCount(Sword),2);
+ return true;
+}
 #endif

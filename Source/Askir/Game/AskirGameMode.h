@@ -19,6 +19,10 @@ public:
     UAskirSaveGame* CaptureSnapshot();
     bool RestoreSnapshot(UAskirSaveGame* Snapshot, bool bRestorePosition=true);
     bool IsPersistenceBusy() const {return bPersistenceOperation;}
+    /** Recovery keeps the captured timeline until it has been restored. */
+    UFUNCTION(BlueprintCallable,Category="Askir|World") bool RetryPendingArrival();
+    UFUNCTION(BlueprintPure,Category="Askir|World") bool CanReturnToSavedWorld() const;
+    UFUNCTION(BlueprintCallable,Category="Askir|World") bool ReturnToSavedWorld();
     UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="Askir|Demo") bool bEnableLegacyDemo=false;
     UFUNCTION(BlueprintCallable) void DemoInteract();
     UFUNCTION(BlueprintCallable) void DemoQuickSave();

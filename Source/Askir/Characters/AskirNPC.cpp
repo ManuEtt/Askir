@@ -24,7 +24,6 @@ AAskirNPC::AAskirNPC()
     if(AnimationPlayback)AnimationPlayback->ConfigureCharacterVisual(TEXT("Guard"));
     CreateDefaultSubobject<UAskirDailyRoutineComponent>(TEXT("DailyRoutine"));
     CreateDefaultSubobject<UAskirNPCInteractionComponent>(TEXT("Interaction"));
-    CreateDefaultSubobject<UAskirDialogueComponent>(TEXT("Dialogue"));
 
     AutoPossessAI = EAutoPossessAI::PlacedInWorldOrSpawned;
 }
@@ -55,6 +54,12 @@ void AAskirNPC::ConfigureCombatStyle()
 void AAskirNPC::Tick(float DeltaSeconds)
 {
     Super::Tick(DeltaSeconds);
+    if(IsWorldTravelPending())
+    {
+        CancelPendingAttack();AbortPendingAttack();
+        if(auto* AI=Cast<AAIController>(GetController()))AI->StopMovement();
+        return;
+    }
     if (!bHostile || !bEncounterActive || IsDead() || !GetWorld()) return;
     // A dedicated controller owns decisions and attack timing; do not run two AIs.
     if(Cast<AAskirEnemyAIController>(GetController()))return;

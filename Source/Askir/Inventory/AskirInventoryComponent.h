@@ -27,6 +27,7 @@ public:
     UFUNCTION(BlueprintCallable) bool UseItem(UAskirItemData* Item);
     UFUNCTION(BlueprintPure) int32 GetItemCount(UAskirItemData* Item)const;
     UFUNCTION(BlueprintPure) float GetTotalWeight()const;
+    bool IsTransactionInProgress() const {return bTransactionInProgress;}
     UPROPERTY(BlueprintAssignable) FAskirInventoryChanged OnInventoryChanged;
     UPROPERTY(EditAnywhere,BlueprintReadOnly) TArray<FAskirInventoryEntry> Items;
     // Prevent corrupted quantities or tiny stacks from allocating an unbounded array.

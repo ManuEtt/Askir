@@ -32,6 +32,10 @@ public:
     UFUNCTION(BlueprintCallable,Category="Askir|Crafting") void UnlockRecipe(FName RecipeID);
     UFUNCTION(BlueprintPure,Category="Askir|Crafting") bool IsRecipeKnown(FName RecipeID) const;
     UFUNCTION(BlueprintCallable,Category="Askir|Crafting") bool CraftRecipe(UAskirInventoryComponent* Inventory,FName RecipeID,int32 Quantity=1);
+    UFUNCTION(BlueprintPure,Category="Askir|Crafting") bool CanCraftRecipe(UAskirInventoryComponent* Inventory,FName RecipeID,int32 Quantity=1) const;
+    const FAskirCraftingRecipe* FindRecipe(FName RecipeID) const;
+    bool IsTransactionInProgress() const{return bCraftInProgress;}
 private:
+    bool PrepareRecipe(UAskirInventoryComponent* Inventory,FName RecipeID,int32 Quantity,TArray<FAskirInventoryEntry>& PreparedItems,int32& NewCraftedItems) const;
     bool bCraftInProgress=false;
 };

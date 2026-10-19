@@ -1,0 +1,44 @@
+{
+  "status": "Bestanden",
+  "coverage": "Actual OBJ/GLB vertices, nondegenerate triangles, material topology/colors, source bounds and all SHA256 hashes",
+  "unreal_import": "Nicht ausgeführt",
+  "runtime_collision": "Nicht ausgeführt",
+  "props": {
+    "SM_AskirDeliveryCart": {
+      "vertices": 2400,
+      "triangles": 4532,
+      "materials": 5,
+      "bounds_metres_z_up": [
+        [
+          -1.100000024,
+          -0.868499994,
+          0.000999987
+        ],
+        [
+          1.884186745,
+          0.868500054,
+          1.282500029
+        ]
+      ],
+      "glb_obj_triangle_geometry": "Bestanden"
+    },
+    "SM_AskirSupplyCrate": {
+      "vertices": 1744,
+      "triangles": 3232,
+      "materials": 5,
+      "bounds_metres_z_up": [
+        [
+          -0.503425002,
+          -0.428050041,
+          0.0075
+        ],
+        [
+          0.503425002,
+          0.428050041,
+          0.768000007
+        ]
+      ],
+      "glb_obj_triangle_geometry": "Bestanden"
+    }
+  }
+}

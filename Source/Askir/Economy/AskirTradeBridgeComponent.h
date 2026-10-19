@@ -1,6 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "Economy/AskirEconomyRules.h"
+#include "Inventory/AskirInventoryComponent.h"
 #include "AskirTradeBridgeComponent.generated.h"
 class UAskirInventoryComponent;
 class UAskirItemData;
@@ -19,8 +21,12 @@ class ASKIR_API UAskirTradeBridgeComponent:public UActorComponent
 public:
  UAskirTradeBridgeComponent();
  UPROPERTY(EditAnywhere,BlueprintReadWrite,Category="Askir|Trade") TArray<FAskirTradeCatalogEntry> Catalog;
+ UFUNCTION(BlueprintPure,Category="Askir|Trade") UAskirItemData* FindItem(FName ItemID) const;
+ UFUNCTION(BlueprintPure,Category="Askir|Trade") bool CanBuyItem(UAskirMerchantComponent* Merchant,UAskirInventoryComponent* PlayerInventory,FName ItemID,int32 Quantity,int32 PlayerGold,float PriceMultiplier=1.f) const;
+ UFUNCTION(BlueprintPure,Category="Askir|Trade") bool CanSellItem(UAskirMerchantComponent* Merchant,UAskirInventoryComponent* PlayerInventory,FName ItemID,int32 Quantity,int32 PlayerGold,float PriceMultiplier=1.f) const;
  UFUNCTION(BlueprintCallable,Category="Askir|Trade") bool BuyItem(UAskirMerchantComponent* Merchant,UAskirInventoryComponent* PlayerInventory,FName ItemID,int32 Quantity,UPARAM(ref) int32& PlayerGold,float PriceMultiplier=1.f);
  UFUNCTION(BlueprintCallable,Category="Askir|Trade") bool SellItem(UAskirMerchantComponent* Merchant,UAskirInventoryComponent* PlayerInventory,FName ItemID,int32 Quantity,UPARAM(ref) int32& PlayerGold,float PriceMultiplier=1.f);
 private:
- UAskirItemData* FindItem(FName ItemID) const;
+ bool PrepareTrade(UAskirMerchantComponent* Merchant,UAskirInventoryComponent* PlayerInventory,FName ItemID,int32 Quantity,int32 PlayerGold,float PriceMultiplier,AskirEconomyRules::Direction Operation,AskirEconomyRules::TradePlan& Plan,int32& StockIndex,TArray<FAskirInventoryEntry>& PreparedInventory) const;
+ bool bTradeInProgress=false;
 };

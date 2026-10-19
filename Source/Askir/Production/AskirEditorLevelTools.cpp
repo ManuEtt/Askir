@@ -1,4 +1,7 @@
 #include "Production/AskirEditorLevelTools.h"
+#include "Characters/AskirCharacter.h"
+#include "Components/CapsuleComponent.h"
+#include "CollisionShape.h"
 
 #include "Engine/Engine.h"
 #include "Engine/World.h"
@@ -72,10 +75,35 @@ bool UAskirEditorLevelTools::HasWalkableGroundBelow(AActor* SpawnPoint)
 {
     if (!IsValid(SpawnPoint) || !SpawnPoint->GetWorld()) return false;
     const FVector Start = SpawnPoint->GetActorLocation();
+    if (!FMath::IsFinite(Start.X) || !FMath::IsFinite(Start.Y) || !FMath::IsFinite(Start.Z)) return false;
     FHitResult Hit;
     FCollisionQueryParams Params(SCENE_QUERY_STAT(AskirSpawnGroundValidation), false, SpawnPoint);
     return SpawnPoint->GetWorld()->LineTraceSingleByChannel(Hit, Start, Start - FVector(0.f, 0.f, 500.f), ECC_Visibility, Params)
         && Hit.bBlockingHit && Hit.ImpactNormal.Z >= 0.7f;
+}
+
+FVector UAskirEditorLevelTools::GetPlayerCapsuleExtent()
+{
+    const AAskirCharacter* Character = GetDefault<AAskirCharacter>();
+    const UCapsuleComponent* Capsule = Character ? Character->GetCapsuleComponent() : nullptr;
+    if (!Capsule) return FVector::ZeroVector;
+    return FVector(Capsule->GetUnscaledCapsuleRadius(), Capsule->GetUnscaledCapsuleRadius(), Capsule->GetUnscaledCapsuleHalfHeight());
+}
+
+bool UAskirEditorLevelTools::IsPlayerArrivalClear(UObject* WorldContextObject, FVector Location)
+{
+    UWorld* World = GEngine ? GEngine->GetWorldFromContextObject(WorldContextObject, EGetWorldErrorMode::ReturnNull) : nullptr;
+    const FVector Extent = GetPlayerCapsuleExtent();
+    if (!World || Location.ContainsNaN() || !FMath::IsFinite(Location.X) || !FMath::IsFinite(Location.Y)
+        || !FMath::IsFinite(Location.Z) || !FMath::IsFinite(Extent.X) || !FMath::IsFinite(Extent.Z)
+        || Extent.X <= 0.f || Extent.Z < Extent.X || Extent.Z > 500.f) return false;
+    FCollisionQueryParams Params(SCENE_QUERY_STAT(AskirArrivalValidation), false);
+    if (World->OverlapBlockingTestByChannel(Location, FQuat::Identity, ECC_Pawn,
+        FCollisionShape::MakeCapsule(Extent.X, Extent.Z), Params)) return false;
+    FHitResult Hit;
+    return World->LineTraceSingleByChannel(Hit, Location, Location - FVector(0.f, 0.f, Extent.Z + 20.f), ECC_Visibility, Params)
+        && Hit.bBlockingHit && Hit.ImpactNormal.Z >= 0.7f
+        && Hit.Distance >= Extent.Z - 2.f && Hit.Distance <= Extent.Z + 20.f;
 }
 
 bool UAskirEditorLevelTools::ConfigureEditorGameMode(UObject* WorldContextObject, TSubclassOf<AGameModeBase> GameModeClass, bool bApply)

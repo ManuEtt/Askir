@@ -1,6 +1,7 @@
 #include "AskirEquipmentComponent.h"
 #include "Inventory/AskirInventoryComponent.h"
 #include "Inventory/AskirItemData.h"
+#include "GameFramework/Actor.h"
 
 void UAskirEquipmentComponent::EquipArmor(float Rating) { ArmorRating=FMath::Max(0.f,Rating); }
 void UAskirEquipmentComponent::EquipWeapon(float Rating) { WeaponRating=FMath::Max(0.f,Rating); }

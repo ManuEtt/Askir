@@ -14,6 +14,8 @@
 #include "Inventory/AskirItemData.h"
 #include "Quest/AskirQuestComponent.h"
 #include "Trade/AskirTradeComponent.h"
+#include "Economy/AskirMerchantComponent.h"
+#include "Economy/AskirMerchantStateRules.h"
 #include "Simulation/AskirSimulationSubsystem.h"
 #include "Simulation/AskirNeedsComponent.h"
 #include "World/AskirVillageDirector.h"
@@ -24,6 +26,9 @@
 #include "NPC/AskirDialogueComponent.h"
 #include "Mission/AskirDornfeldMissionComponent.h"
 #include "Mission/AskirDornfeldMissionRelay.h"
+#include "Mission/AskirDeliveryMissionComponent.h"
+#include "Mission/AskirDeliveryBanditRelay.h"
+#include "Mission/AskirDeliveryQuestActor.h"
 #include "Loot/AskirLootPickup.h"
 #include "Loot/AskirLootChest.h"
 #include "Survival/AskirSurvivalComponent.h"
@@ -43,6 +48,7 @@
 #include "UObject/Package.h"
 #include "UObject/StrongObjectPtr.h"
 #include "GameFramework/PlayerController.h"
+#include "GameFramework/CharacterMovementComponent.h"
 
 namespace
 {
@@ -56,6 +62,33 @@ namespace
   if(!Save->SavedMapPackageName.IsEmpty())return Save->SavedMapPackageName;
   return Save->SavedMapName.IsNone()?FString():FString::Printf(TEXT("/Game/Askir/WorldV42/%s"),*Save->SavedMapName.ToString());
  }
+ bool HasOpenTransactions(UWorld* World,const AAskirCharacter* Player)
+ {
+  if(Player && ((Player->InventoryComponent && Player->InventoryComponent->IsTransactionInProgress())
+    || (Player->CraftingComponent && Player->CraftingComponent->IsTransactionInProgress())
+    || (Player->QuestComponent && Player->QuestComponent->IsTransactionInProgress())
+    || (Player->DeliveryMission && Player->DeliveryMission->IsTransactionInProgress())))return true;
+  if(World)for(TActorIterator<AActor> It(World);It;++It)
+  {
+   TArray<UAskirMerchantComponent*> Components;It->GetComponents(Components);
+   for(const auto* Merchant:Components)if(Merchant && Merchant->IsTransactionInProgress())return true;
+  }
+  return false;
+ }
+ bool CollectPersistentMerchants(UWorld* World,TArray<UAskirMerchantComponent*>& OutMerchants)
+ {
+  TSet<FName> Seen;
+  for(TActorIterator<AActor> It(World);It;++It)
+  {
+   TArray<UAskirMerchantComponent*> Components;It->GetComponents(Components);
+   for(auto* Merchant:Components)
+   {
+    if(!IsValid(Merchant) || Merchant->MerchantID.IsNone() || Seen.Contains(Merchant->MerchantID) || Merchant->IsTransactionInProgress())return false;
+    Seen.Add(Merchant->MerchantID);OutMerchants.Add(Merchant);
+   }
+  }
+  return static_cast<size_t>(OutMerchants.Num())<=AskirMerchantStateRules::MaxMerchantsPerMap;
+ }
 }
 
 AAskirGameMode::AAskirGameMode()
@@ -68,7 +101,9 @@ AAskirGameMode::AAskirGameMode()
 UAskirSaveGame* AAskirGameMode::CaptureSnapshot()
 {
  AAskirCharacter* Player=Cast<AAskirCharacter>(UGameplayStatics::GetPlayerPawn(this,0));
- if(!Player || !GetWorld())return nullptr;
+ if(!Player || !GetWorld() || HasOpenTransactions(GetWorld(),Player))return nullptr;
+ TArray<UAskirMerchantComponent*> Merchants;
+ if(!CollectPersistentMerchants(GetWorld(),Merchants))return nullptr;
  UAskirSaveGame* Save=Cast<UAskirSaveGame>(UGameplayStatics::CreateSaveGameObject(UAskirSaveGame::StaticClass()));
  if(!Save)return nullptr;
  Save->SavedMapName=FName(*UGameplayStatics::GetCurrentLevelName(this,true));
@@ -143,7 +178,20 @@ UAskirSaveGame* AAskirGameMode::CaptureSnapshot()
   break;
  }
  Save->DemoStage=DemoStage;Save->DemoSupplies=DemoSupplies;Save->bDemoFinished=bDemoFinished;Save->bDemoEnemyDefeated=DemoEnemy && DemoEnemy->IsDead();
- if(const auto* State=TravelState(this))Save->SavedLootByMap=State->LootByMap;
+ if(const auto* State=TravelState(this))
+ {
+  Save->SavedLootByMap=State->LootByMap;
+  Save->SavedMerchantsByMap=State->MerchantsByMap;
+ }
+ FAskirMapMerchantState& MerchantState=Save->SavedMerchantsByMap.FindOrAdd(Save->SavedMapName);
+ // Replace the active map's ledger when rewinding or leaving this timeline.
+ MerchantState.Merchants.Reset();
+ for(auto* Merchant:Merchants)
+ {
+  FAskirMerchantSnapshot Snapshot;
+  if(!Merchant->CaptureInitialState() || !Merchant->CaptureSnapshot(Snapshot))return nullptr;
+  MerchantState.Merchants.Add(Merchant->MerchantID,MoveTemp(Snapshot));
+ }
  FAskirLootState& LootState=Save->SavedLootByMap.FindOrAdd(Save->SavedMapName);
  // Replace this map's state, allowing an older load to rewind the active timeline.
  LootState=FAskirLootState();
@@ -170,16 +218,23 @@ UAskirSaveGame* AAskirGameMode::CaptureSnapshot()
 bool AAskirGameMode::SaveGame(const FString& SlotName)
 {
  if(bPersistenceOperation || !UAskirSaveGame::IsSafeSlotName(SlotName))return false;
+ if(const auto* State=TravelState(this);State && State->HasPendingTravel())return false;
  TGuardValue<bool> OperationGuard(bPersistenceOperation,true);
  UAskirSaveGame* Save=CaptureSnapshot();
  if(!Save || !AskirSaveSlots::WriteNext(SlotName,Save))return false;
- if(auto* State=TravelState(this))State->LootByMap=Save->SavedLootByMap;
+ if(auto* State=TravelState(this))
+ {
+  State->LootByMap=Save->SavedLootByMap;
+  State->MerchantsByMap=Save->SavedMerchantsByMap;
+ }
  return true;
 }
 
 bool AAskirGameMode::LoadGame(const FString& SlotName,bool bRestorePosition)
 {
  if(bPersistenceOperation || !GetWorld() || !UAskirSaveGame::IsSafeSlotName(SlotName))return false;
+ if(const auto* State=TravelState(this);State && State->HasPendingTravel())return false;
+ if(HasOpenTransactions(GetWorld(),Cast<AAskirCharacter>(UGameplayStatics::GetPlayerPawn(this,0))))return false;
  UAskirSaveGame* Save=AskirSaveSlots::ReadLatest(SlotName);
  if(!Save)return false;
  TStrongObjectPtr<UAskirSaveGame> SnapshotLifetime(Save);
@@ -188,9 +243,13 @@ bool AAskirGameMode::LoadGame(const FString& SlotName,bool bRestorePosition)
  {
   const FString Package=ResolveSavedPackage(Save);
   auto* State=TravelState(this);
-  if(!State || !FPackageName::IsValidLongPackageName(Package) || !FPackageName::DoesPackageExist(Package))return false;
+  if(!State || !UAskirWorldTravelSubsystem::IsUsableWorldPackage(Package,Save->SavedMapName))return false;
   for(const auto& Entry:Save->SavedInventory)if(!Cast<UAskirItemData>(Entry.ItemAsset.TryLoad()))return false;
-  State->QueueSnapshot(Save->SavedMapName,NAME_None,Save,true);
+  if(!State->QueueSnapshot(Save->SavedMapName,NAME_None,Save,true))return false;
+  if(auto* Player=Cast<AAskirCharacter>(UGameplayStatics::GetPlayerPawn(this,0)))
+  {
+   Player->SuspendForWorldTravel();
+  }
   UGameplayStatics::OpenLevel(this,FName(*Package));
   return true; // Request accepted; arrival restore is asynchronous.
  }
@@ -203,7 +262,7 @@ bool AAskirGameMode::RestoreSnapshot(UAskirSaveGame* Save,bool bRestorePosition)
  TStrongObjectPtr<UAskirSaveGame> SnapshotLifetime(Save);
  AAskirCharacter* Player=Cast<AAskirCharacter>(UGameplayStatics::GetPlayerPawn(this,0));
  FString Reason;
- if(!Player || !Save->ValidateSnapshot(Reason))return false;
+ if(!Player || HasOpenTransactions(GetWorld(),Player) || !Save->ValidateSnapshot(Reason))return false;
  FAskirMagicSnapshot RestoredMagic=Save->SaveFormatVersion>=4?Save->SavedMagic:FAskirMagicSnapshot();
  if(Save->SaveFormatVersion<4&&Player->MagicComponent)RestoredMagic.Mana=Player->MagicComponent->MaxMana;
  if(Player->MagicComponent&&!Player->MagicComponent->CanRestoreSnapshot(RestoredMagic))return false;
@@ -240,9 +299,34 @@ bool AAskirGameMode::RestoreSnapshot(UAskirSaveGame* Save,bool bRestorePosition)
   if(SeenIDs.Contains(It->PersistentLootID))return false;
   SeenIDs.Add(It->PersistentLootID);
  }
+ TArray<UAskirMerchantComponent*> Merchants;
+ if(!CollectPersistentMerchants(GetWorld(),Merchants))return false;
+ const FName CurrentMap(*UGameplayStatics::GetCurrentLevelName(this,true));
+ const FAskirMapMerchantState* SavedMerchantMap=Save->SaveFormatVersion>=5?Save->SavedMerchantsByMap.Find(CurrentMap):nullptr;
+ // A v5 save captured on this same map must contain every authored merchant.
+ // Missing receipts may initialize a newly visited map during travel, but may
+ // never reset traded stock while loading the map that was actually saved.
+ const bool bRequireMerchantReceipts=Save->SaveFormatVersion>=5 && (Save->SavedMapName.IsNone() || Save->SavedMapName==CurrentMap);
+ TArray<FAskirMerchantSnapshot> PreparedMerchants;
+ for(auto* Merchant:Merchants)
+ {
+  const FAskirMerchantSnapshot* SavedMerchant=SavedMerchantMap?SavedMerchantMap->Merchants.Find(Merchant->MerchantID):nullptr;
+  if(bRequireMerchantReceipts && !SavedMerchant)return false;
+  FAskirMerchantSnapshot Prepared;
+  if(AskirMerchantStateRules::RestoreInitialState(Save->SaveFormatVersion,SavedMerchant!=nullptr))
+  {
+   if(!Merchant->CaptureInitialState() || !Merchant->GetInitialSnapshot(Prepared))return false;
+  }
+  else Prepared=*SavedMerchant;
+  if(!Merchant->CanRestoreSnapshot(Prepared))return false;
+  PreparedMerchants.Add(MoveTemp(Prepared));
+ }
  FVector RestoreLocation=Save->PlayerLocation;
  if(bRestorePosition && !GetWorld()->FindTeleportSpot(Player,RestoreLocation,Save->PlayerRotation))return false;
  TGuardValue<bool> OperationGuard(bPersistenceOperation,true);
+ // The complete map set was validated first; no partially installed merchant
+ // wallet can become visible to a player or inventory delegate.
+ for(int32 Index=0;Index<Merchants.Num();++Index)Merchants[Index]->RestoreSnapshot(PreparedMerchants[Index]);
  // In-flight projectiles belong to the outgoing timeline, never a loaded save.
  for(TActorIterator<AAskirSpellProjectile> It(GetWorld());It;++It)It->Destroy();
  if(Player->MagicComponent)Player->MagicComponent->RestoreSnapshot(RestoredMagic);
@@ -289,8 +373,11 @@ bool AAskirGameMode::RestoreSnapshot(UAskirSaveGame* Save,bool bRestorePosition)
  DemoStage=FMath::Clamp(Save->DemoStage,0,4);DemoSupplies=FMath::Max(0,Save->DemoSupplies);bDemoFinished=Save->bDemoFinished;
  if(DemoEnemy && DemoEnemy->CombatComponent)DemoEnemy->CombatComponent->RestoreHealth(Save->bDemoEnemyDefeated?0.f:DemoEnemy->CombatComponent->GetMaxHealth());
  for(AAskirDemoInteractable* Obj:DemoObjects)if(Obj)Obj->SetUsed(Obj->Kind==EAskirDemoObject::Supplies && DemoSupplies>0);
- if(auto* State=TravelState(this))State->LootByMap=Save->SavedLootByMap;
- const FName CurrentMap(*UGameplayStatics::GetCurrentLevelName(this,true));
+ if(auto* State=TravelState(this))
+ {
+  State->LootByMap=Save->SavedLootByMap;
+  State->MerchantsByMap=Save->SaveFormatVersion>=5?Save->SavedMerchantsByMap:TMap<FName,FAskirMapMerchantState>();
+ }
  const FAskirLootState* Loot=Save->SavedLootByMap.Find(CurrentMap);
  for(TActorIterator<AAskirLootPickup> It(GetWorld());It;++It)
   if(!It->PersistentLootID.IsNone())It->RestoreLootState(Loot && Loot->CollectedPickups.Contains(It->PersistentLootID));
@@ -299,6 +386,11 @@ bool AAskirGameMode::RestoreSnapshot(UAskirSaveGame* Save,bool bRestorePosition)
  if(Player->QuestComponent)Player->QuestComponent->NormalizeRestoredState(false);
  if(Player->DornfeldMission)Player->DornfeldMission->RestoreMission(Save->SavedDornfeldMission,false);
  for(TActorIterator<AAskirDornfeldMissionRelay> It(GetWorld());It;++It)It->RefreshMissionState();
+ if(Player->DeliveryMission)Player->DeliveryMission->RefreshFromQuestLedger();
+ // Install encounter and cargo visibility quietly before the first restore
+ // notification. Progression/inventory observers must see the loaded timeline.
+ for(TActorIterator<AAskirDeliveryBanditRelay> It(GetWorld());It;++It)It->RefreshMissionState();
+ for(TActorIterator<AAskirDeliveryQuestActor> It(GetWorld());It;++It)It->RefreshMissionState();
  if(Player->CombatComponent)Player->CombatComponent->RestoreHealth(Save->PlayerHealth);
  Player->Stamina=FMath::Clamp(Save->PlayerStamina,0.f,Player->MaxStamina);
  Player->RestoreAfterLoad();
@@ -308,6 +400,9 @@ bool AAskirGameMode::RestoreSnapshot(UAskirSaveGame* Save,bool bRestorePosition)
   if(auto* Controller=Cast<APlayerController>(Player->GetController()))Controller->SetControlRotation(Save->PlayerRotation);
  }
  // Notify only after inventory, resources and reward ledgers have been installed.
+ // A menu belongs to the outgoing timeline. Invalidate its buttons before any
+ // restore delegates can observe or act on the newly installed inventory.
+ if(auto* Controller=Cast<AAskirPlayerController>(Player->GetController()))Controller->CloseAnyMenu();
  if(Player->ProgressionComponent)Player->ProgressionComponent->OnProgressionChanged.Broadcast();
  if(auto* Sim=GetWorld()->GetSubsystem<UAskirSimulationSubsystem>())Sim->RestoreWorldState(Save->WorldState);
  for(TActorIterator<AAskirVillageDirector> It(GetWorld());It;++It)

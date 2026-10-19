@@ -1,0 +1,34 @@
+{
+  "version": "V80",
+  "chapter": 1,
+  "continent": "Ardem",
+  "quest_id": "SQ_001",
+  "reward_item_id": "item_002",
+  "reward_asset": "/Game/Askir/V80/Items/item_002",
+  "maps": [
+    {
+      "package": "/Game/Askir/Maps/Dornfeld_V80",
+      "name": "Dornfeld",
+      "function": "Startdorf mit Brunnenmission, Handel, Werkbank und Torbens verlorener Lieferung",
+      "start": [0, -1700, 100],
+      "ground_center": [0, 500, -50],
+      "ground_extent": [2400, 3200, 50],
+      "portal": {"id": "DORNFELD_TO_UMLAND_V80", "destination_id": "UMLAND_TO_DORNFELD_V80", "destination_package": "/Game/Askir/Maps/Dornfelder_Umland_V80", "position": [0, -2300, 100], "arrival_offset": [0, 420, 0], "trigger_extent": [120, 220, 220], "interaction_label": "Dornfelder Umland betreten"}
+    },
+    {
+      "package": "/Game/Askir/Maps/Dornfelder_Umland_V80",
+      "name": "Dornfelder Umland",
+      "function": "Bewaldete Bauernstraße und überfallenes Lager; zwei Banditen bewachen Torbens Fracht",
+      "start": [0, -1780, 100],
+      "ground_center": [0, 1600, -50],
+      "ground_extent": [3200, 4500, 50],
+      "portal": {"id": "UMLAND_TO_DORNFELD_V80", "destination_id": "DORNFELD_TO_UMLAND_V80", "destination_package": "/Game/Askir/Maps/Dornfeld_V80", "position": [0, -2200, 100], "arrival_offset": [0, 420, 0], "trigger_extent": [120, 220, 220], "interaction_label": "Nach Dornfeld zurückkehren"}
+    }
+  ],
+  "giver": {"label": "Torben", "event_id": "SQ_001_TORBEN", "position": [-500, -1700, 90]},
+  "bandits": [
+    {"id": "SQ_001_BANDIT_1", "position": [-350, 1900, 96]},
+    {"id": "SQ_001_BANDIT_2", "position": [350, 1900, 96]}
+  ],
+  "cargo": {"label": "Torbens_Lieferung", "event_id": "SQ_001_CARGO", "position": [0, 2300, 65]}
+}

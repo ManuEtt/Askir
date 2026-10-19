@@ -1,0 +1,13 @@
+{
+  "status": "Bestanden",
+  "maps": [
+    "/Game/Askir/Maps/Dornfeld_V80",
+    "/Game/Askir/Maps/Dornfelder_Umland_V80"
+  ],
+  "quest_id": "SQ_001",
+  "bandit_count": 2,
+  "original_prop_count": 2,
+  "editor_status": "Nicht ausgeführt",
+  "gameplay_status": "Nicht ausgeführt",
+  "coverage": "source schema, reciprocal route geometry, canonical reward and inherited input contracts only"
+}

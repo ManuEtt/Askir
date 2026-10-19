@@ -1,0 +1,5 @@
+CC0 1.0 Universal
+
+Original ASKIR procedural 3D props generated with the project-owned Tools/build_delivery_props_v80.py; no downloaded models, textures or external artwork.
+To the extent possible under law, the creators have waived all copyright and related or neighboring rights to these original mesh, material and preview assets.
+https://creativecommons.org/publicdomain/zero/1.0/
