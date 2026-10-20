@@ -13,6 +13,11 @@ Updated: 2026-10-20
 - Tests not executed in this run: GitHub source editing does not execute C++ tests, and no Unreal Engine compilation occurred. Assertions are added but not claimed passing.
 - Next: run `python Tools/verify_v82.py` in a checkout with Python and g++; inspect exact failures before merging PR #3.
 
+## 2026-10-20 additional regression cases
+- Commit `71937160291e2b75dfb2a390ffb20c17e237f0e6` adds comparisons against infinite scores, NaN distances, and infinite distances, including reverse ordering and reflexivity.
+- Tooling check: Python 3.13.5 and g++ 14.2.0 are installed in the isolated container, but `git ls-remote` failed because github.com DNS resolution is unavailable. Repository files can be edited through the connected GitHub tool, but a full checkout and exact-source test run were not possible in this session. No tests were executed and no engine build was attempted.
+- Next task: run portable regression suite against the real checkout in an environment with repository download access; resolve any failures and document results.
+
 ## Verification in this run
 - GitHub README.md read successfully.
 - AGENTS.md and DEVELOPMENT_STATUS.md were absent on the default branch when checked.
