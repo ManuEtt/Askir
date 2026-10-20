@@ -92,6 +92,15 @@ int main()
         "nonpositive target distance cannot win ranking");
     Metrics Invalid=NearCenter;Invalid.Score=NaN;
     Expect(CompareRank(NearCenter,Invalid)<0&&CompareRank(Invalid,NearCenter)>0,"invalid rank cannot beat a valid target");
+    Metrics InvalidInfiniteScore=NearCenter;InvalidInfiniteScore.Score=Infinity;
+    Metrics InvalidNanDistance=NearCenter;InvalidNanDistance.Distance=NaN;
+    Metrics InvalidInfiniteDistance=NearCenter;InvalidInfiniteDistance.Distance=Infinity;
+    for(const Metrics& Bad:{InvalidInfiniteScore,InvalidNanDistance,InvalidInfiniteDistance})
+    {
+        Expect(CompareRank(NearCenter,Bad)<0,"finite target outranks nonfinite ranking metric");
+        Expect(CompareRank(Bad,NearCenter)>0,"nonfinite ranking metric loses symmetrically");
+        Expect(CompareRank(Bad,Bad)==0,"invalid metric comparison remains reflexive");
+    }
     for(int A=0;A<72;++A)for(int B=0;B<72;++B)for(int DirectionSign:{-1,1})
     {
         const double Current=(-180.+A*5.)*Pi/180.;const double Candidate=(-180.+B*5.)*Pi/180.;
