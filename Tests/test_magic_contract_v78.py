@@ -22,7 +22,7 @@ class MagicContracts(unittest.TestCase):
     def test_projectile_credits_instigator_and_sweeps(self):
         text=(ROOT/'Source/Askir/Magic/AskirSpellProjectile.cpp').read_text()
         self.assertIn('SetInstigator(Caster)',text);self.assertIn('SweepSingleByChannel',text);self.assertIn('ApplySpellHit(GetInstigator()',text)
-    def test_ordinary_magic_does_not_damage_civilians(self):
-        text=(ROOT/'Source/Askir/Magic/AskirMagicComponent.cpp').read_text().split('bool UAskirMagicComponent::IsValidTarget',1)[1].split('float UAskirMagicComponent::ApplySpellHit',1)[0]
-        self.assertIn('Enemy->bHostile&&Enemy->IsEncounterActive()',text);self.assertIn('Victim->IsDead()',text);self.assertIn('Victim->IsDamageEnabled()',text)
+    # V82 civilian protection is exercised against the shared production rules in
+    # test_combat_target_rules_v82.cpp and registered native integration tests.
+    # A substring check against the former inline implementation adds no coverage.
 if __name__=='__main__':unittest.main()

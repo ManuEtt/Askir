@@ -34,7 +34,7 @@ void AAskirSpellProjectile::Tick(float Delta)
     if(GetWorld()->SweepSingleByChannel(Hit,Start,End,FQuat::Identity,ECC_Visibility,FCollisionShape::MakeSphere(12.f),Query))
     {
         bResolved=true;
-        if(AActor* Target=Hit.GetActor())UAskirMagicComponent::ApplySpellHit(GetInstigator(),Target,School,Power,Hit.ImpactPoint);
+        if(AActor* Target=Hit.GetActor())UAskirMagicComponent::ApplySpellHit(GetInstigator(),Target,School,Power,Hit.ImpactPoint,Velocity.GetSafeNormal());
         Destroy();return;
     }
     SetActorLocation(End);

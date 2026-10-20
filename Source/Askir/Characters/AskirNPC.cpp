@@ -8,6 +8,7 @@
 #include "AI/AskirEnemyAIController.h"
 #include "AIController.h"
 #include "Combat/AskirCombatComponent.h"
+#include "Combat/AskirCombatTargetPolicy.h"
 #include "Quest/AskirQuestComponent.h"
 #include "Engine/World.h"
 #include "GameFramework/CharacterMovementComponent.h"
@@ -233,6 +234,7 @@ void AAskirNPC::ResolvePendingAttack(float Now)
     PendingAttackTarget.Reset();
     AttackResolveTime = -1.f;
     if (!Target || !bEncounterActive || IsDead() || IsStaggered() || !GetWorld()) return;
+    if(!AskirCombatTargetPolicy::CanDamage(this,Target)){OnAttackAvoided();return;}
     if (const AAskirCharacter* Character = Cast<AAskirCharacter>(Target))
     {
         if (Character->IsDead()) return;

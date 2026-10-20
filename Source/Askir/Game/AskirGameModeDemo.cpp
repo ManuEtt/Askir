@@ -3,6 +3,7 @@
 #include "Characters/AskirCharacter.h"
 #include "Characters/AskirNPC.h"
 #include "Combat/AskirCombatComponent.h"
+#include "Combat/AskirTargetLockComponent.h"
 #include "Progression/AskirProgressionComponent.h"
 #include "Camp/AskirCampComponent.h"
 #include "Engine/StaticMeshActor.h"
@@ -45,12 +46,18 @@ void AAskirGameMode::LogRuntimeReadiness()
  auto* Player=Cast<AAskirCharacter>(UGameplayStatics::GetPlayerPawn(this,0));
  if(Player&&Player->IsPlayerControlled())
  {
+  // Frontend polling may pause this world only after arrival restoration and
+  // possession have completed. Blocked/missing-player paths never set this.
+  bRuntimeReadyForFrontend=true;
   const FString Map=UGameplayStatics::GetCurrentLevelName(this,true);
   const TCHAR* Marker=(Map==TEXT("Dornfeld_V80")||Map==TEXT("Dornfelder_Umland_V80"))?TEXT("ASKIR_V80_RUNTIME_READY"):
     (Map==TEXT("Dornfeld_V79")?TEXT("ASKIR_V79_RUNTIME_READY"):
     (Map==TEXT("Dornfeld_V78")?TEXT("ASKIR_V78_RUNTIME_READY"):
     (Map==TEXT("Dornfeld_V77")?TEXT("ASKIR_V77_RUNTIME_READY"):TEXT("ASKIR_RUNTIME_READY"))));
   UE_LOG(LogTemp,Display,TEXT("%s map=%s player=%s"),Marker,*Map,*Player->GetName());
+  if(IsValid(Player->TargetLockComponent)&&Player->TargetLockComponent->IsRegistered()&&Player->TargetLockComponent->GetOwner()==Player)
+   UE_LOG(LogTemp,Display,TEXT("ASKIR_V82_TARGETING_READY map=%s player=%s component=AskirTargetLockComponent"),*Map,*Player->GetName());
+  else UE_LOG(LogTemp,Error,TEXT("ASKIR_V82_TARGETING_BLOCKED: configured player target-lock component missing"));
  }
  else UE_LOG(LogTemp,Error,TEXT("ASKIR_V80_RUNTIME_BLOCKED: player or native controller not initialized"));
 }

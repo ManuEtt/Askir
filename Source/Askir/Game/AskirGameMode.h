@@ -19,6 +19,8 @@ public:
     UAskirSaveGame* CaptureSnapshot();
     bool RestoreSnapshot(UAskirSaveGame* Snapshot, bool bRestorePosition=true);
     bool IsPersistenceBusy() const {return bPersistenceOperation;}
+    /** The title screen must not pause the next-tick arrival restoration. */
+    UFUNCTION(BlueprintPure,Category="Askir|UI") bool IsRuntimeReadyForFrontend() const {return bRuntimeReadyForFrontend;}
     /** Recovery keeps the captured timeline until it has been restored. */
     UFUNCTION(BlueprintCallable,Category="Askir|World") bool RetryPendingArrival();
     UFUNCTION(BlueprintPure,Category="Askir|World") bool CanReturnToSavedWorld() const;
@@ -42,6 +44,7 @@ private:
     float HudAccumulator=0.f;
     bool bDemoSceneReady=false;
     bool bPersistenceOperation=false;
+    bool bRuntimeReadyForFrontend=false;
     int32 ArrivalRestoreAttempts=0;
 
 };

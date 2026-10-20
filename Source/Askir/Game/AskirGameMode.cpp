@@ -1,4 +1,5 @@
 #include "Game/AskirGameMode.h"
+#include "Frontend/AskirFrontendSubsystem.h"
 #include "Game/AskirPlayerController.h"
 #include "Magic/AskirMagicComponent.h"
 #include "Magic/AskirSpellProjectile.h"
@@ -217,6 +218,7 @@ UAskirSaveGame* AAskirGameMode::CaptureSnapshot()
 
 bool AAskirGameMode::SaveGame(const FString& SlotName)
 {
+ if(const auto* Instance=GetGameInstance())if(const auto* Frontend=Instance->GetSubsystem<UAskirFrontendSubsystem>())if(Frontend->IsFreshStartPending())return false;
  if(bPersistenceOperation || !UAskirSaveGame::IsSafeSlotName(SlotName))return false;
  if(const auto* State=TravelState(this);State && State->HasPendingTravel())return false;
  TGuardValue<bool> OperationGuard(bPersistenceOperation,true);
@@ -232,6 +234,7 @@ bool AAskirGameMode::SaveGame(const FString& SlotName)
 
 bool AAskirGameMode::LoadGame(const FString& SlotName,bool bRestorePosition)
 {
+ if(const auto* Instance=GetGameInstance())if(const auto* Frontend=Instance->GetSubsystem<UAskirFrontendSubsystem>())if(Frontend->IsFreshStartPending())return false;
  if(bPersistenceOperation || !GetWorld() || !UAskirSaveGame::IsSafeSlotName(SlotName))return false;
  if(const auto* State=TravelState(this);State && State->HasPendingTravel())return false;
  if(HasOpenTransactions(GetWorld(),Cast<AAskirCharacter>(UGameplayStatics::GetPlayerPawn(this,0))))return false;

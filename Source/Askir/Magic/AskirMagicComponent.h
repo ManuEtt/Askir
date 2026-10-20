@@ -45,7 +45,8 @@ public:
     static bool ValidateSnapshotData(const FAskirMagicSnapshot& Snapshot,float ManaCapacity);
     bool RestoreSnapshot(const FAskirMagicSnapshot& Snapshot);
     static bool IsValidTarget(AActor* Caster,AActor* Target);
-    static float ApplySpellHit(AActor* Caster,AActor* Target,AskirMagicRules::Element School,float Power,const FVector& Location);
+    /** Projectile callers supply actual travel direction; area effects use the caster bearing. */
+    static float ApplySpellHit(AActor* Caster,AActor* Target,AskirMagicRules::Element School,float Power,const FVector& Location,const FVector& TravelDirection=FVector::ZeroVector);
 private:
     double Now() const;
     float Mana=100.f;

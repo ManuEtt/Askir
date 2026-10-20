@@ -26,6 +26,7 @@ public:
     bool OpenDeliveryDialogue(AAskirDeliveryQuestActor* Giver);
     void SetMenuInput(bool bOpen, bool bPause);
     bool IsMenuOpen() const {return bMenuOpen;}
+    bool HasRuntimeHUD() const {return RuntimeHUD!=nullptr;}
     void RefreshInventoryPanel();
 private:
     UPROPERTY(Transient) TObjectPtr<UAskirHUDWidget> RuntimeHUD;

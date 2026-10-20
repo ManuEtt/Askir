@@ -1,12 +1,13 @@
 #include "Combat/AskirCombatComponent.h"
 #include "Combat/AskirGuardComponent.h"
+#include "Combat/AskirCombatTargetPolicy.h"
 #include "Magic/AskirMagicComponent.h"
 #include "Characters/AskirCharacter.h"
 #include "Engine/World.h"
 #include "GameFramework/Controller.h"
 #include "GameFramework/Pawn.h"
 UAskirCombatComponent::UAskirCombatComponent(){PrimaryComponentTick.bCanEverTick=false;}
-float UAskirCombatComponent::ApplyDamage(const FAskirDamageInfo& Info)
+float UAskirCombatComponent::ApplyDamage(const FAskirDamageInfo& Info,bool bSkipLegacyGuard)
 {
     if(const auto* Character=Cast<AAskirCharacter>(GetOwner()))
         if(Character->IsPlayerControlled()&&Character->IsWorldTravelPending())return 0.f;
@@ -17,8 +18,12 @@ float UAskirCombatComponent::ApplyDamage(const FAskirDamageInfo& Info)
     if(GetOwner())
     {
         if(UAskirMagicComponent* Shield=GetOwner()->FindComponentByClass<UAskirMagicComponent>())D=Shield->AbsorbIncomingDamage(D,Info.DamageType==EAskirDamageType::TrueDamage);
-        if(UAskirGuardComponent* Guard=GetOwner()->FindComponentByClass<UAskirGuardComponent>())
-            D=Guard->AbsorbIncomingDamage(D);
+        // Native character blocking has already paid its stamina cost. Legacy
+        // guard components may protect other actors, but never stack both paths
+        // or absorb a rear/unknown-direction/true-damage hit.
+        const auto* Character=Cast<AAskirCharacter>(GetOwner());
+        if(!bSkipLegacyGuard&&(!Character||!Character->IsBlocking())&&AskirCombatTargetPolicy::IsFrontalBlock(GetOwner(),Info))
+            if(UAskirGuardComponent* Guard=GetOwner()->FindComponentByClass<UAskirGuardComponent>())D=Guard->AbsorbIncomingDamage(D);
     }
     // No delegate, stagger or attribution update for zero/fully blocked hits.
     if(D<=0.f)return 0.f;

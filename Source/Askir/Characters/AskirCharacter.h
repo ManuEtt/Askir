@@ -23,6 +23,7 @@ class UAskirAnimationPlaybackComponent;
 class UAskirDeliveryMissionComponent;
 class UAskirDialogueComponent;
 class UAskirReputationComponent;
+class UAskirTargetLockComponent;
 class UInputAction;
 class UInputMappingContext;
 class UStaticMeshComponent;
@@ -46,6 +47,7 @@ public:
     UFUNCTION(BlueprintPure, Category="Askir|Combat") bool IsBlocking() const {return bBlocking;}
     UFUNCTION(BlueprintCallable, Category="Askir|Input") void CancelGameplayActions();
     UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Askir|Magic") TObjectPtr<UAskirMagicComponent> MagicComponent;
+    UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Askir|Combat") TObjectPtr<UAskirTargetLockComponent> TargetLockComponent;
     UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Askir|Quest") TObjectPtr<UAskirDeliveryMissionComponent> DeliveryMission;
     UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Askir|Dialogue") TObjectPtr<UAskirDialogueComponent> DialogueComponent;
     UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Askir|Faction") TObjectPtr<UAskirReputationComponent> ReputationComponent;
@@ -188,6 +190,8 @@ private:
     void InputMagicMenu();
     void InputCast();
     void InputCycleSpell(const FInputActionValue& Value);
+    void InputTargetLock();
+    void InputCycleTarget();
     UPROPERTY(Transient) TObjectPtr<UInputMappingContext> RuntimeInputMapping;
     UPROPERTY(Transient) TArray<TObjectPtr<UInputAction>> RuntimeInputActions;
     bool bSprinting=false;

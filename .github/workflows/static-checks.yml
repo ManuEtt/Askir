@@ -13,9 +13,9 @@ jobs:
         with:
           python-version: '3.11'
       - run: python -m pip install -r requirements-dev.txt
-      - run: python Tools/verify_v80.py
+      - run: python Tools/verify_v82.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: Askir-V80-offline-verification
-          path: Reports/V80_verification.json
+          name: Askir-V82-offline-verification
+          path: Reports/V82_verification.json

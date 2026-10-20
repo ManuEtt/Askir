@@ -33,6 +33,8 @@ public:
  bool QueueSnapshot(FName Destination,FName FromMap,UAskirSaveGame* Snapshot,bool bRestorePosition);
  void MarkArrivalFailed(FText Reason);
  void ResumeArrival();
+ /** A replacement world cannot stand in for the captured source timeline. */
+ void MarkSourceStateUnavailable() { bSourceStateAuthoritative=false; }
  /** Preserve the authoritative handoff while returning to its captured world. */
  bool RedirectToSavedWorld(FString& OutPackage);
  UFUNCTION(BlueprintCallable, Category="Askir|World") void QueueArrival(FName Destination, FName FromMap);

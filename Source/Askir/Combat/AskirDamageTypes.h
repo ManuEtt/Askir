@@ -14,5 +14,6 @@ struct FAskirDamageInfo
     UPROPERTY(BlueprintReadWrite) EAskirHitZone HitZone=EAskirHitZone::Torso;
     UPROPERTY(BlueprintReadWrite) TObjectPtr<AActor> DamageCauser=nullptr;
     UPROPERTY(BlueprintReadWrite) FVector HitLocation=FVector::ZeroVector;
-    UPROPERTY(BlueprintReadWrite) FVector HitDirection=FVector::ForwardVector;
+    /** Direction of incoming travel (attacker toward victim); zero means unknown. */
+    UPROPERTY(BlueprintReadWrite) FVector HitDirection=FVector::ZeroVector;
 };

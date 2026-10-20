@@ -1,32 +1,30 @@
-# ASKIR RPG · V80 Entwicklungsstand
+# ASKIR RPG · V82 Entwicklungsstand
 
 Unreal Engine 5.6, C++ und Third Person, Zielplattform Windows 64 Bit.
 
-**Quellprojekt und echte Original-Assetquellen. Unreal Engine 5.6 und ein Windows-Buildhost fehlen hier weiterhin. C++-/UHT-Kompilierung, Kartenproduktion und Spielbarkeit sind nicht nachgewiesen. Das Archiv enthält keine `.umap`, `.uasset` oder Spiel-EXE.**
+**Quellprojekt mit Original-Assetquellen. Unreal Engine 5.6 und ein Windows-Buildhost fehlen in dieser Umgebung. Native Kompilierung, Engine-Import und Spielbarkeit sind nicht nachgewiesen. Das Archiv enthält derzeit keine `.umap`, `.uasset` oder Spiel-EXE.**
 
-V80 erweitert den Quellcode um Torbens kanonische Nebenquest **„Die verlorene Lieferung“ (SQ_001)**: Entscheidung im Dialog, zwei eindeutig zugeordnete Banditen, Sicherung der Fracht und Rückgabe gegen einmalig 100 XP, 16 Gold und den kanonischen Gegenstand `item_002`. Die Entscheidung verändert einmalig die Beziehung zu Waldhütern oder Freien Händlern. Questbelege, Entscheidungen und Fraktionswerte verwenden die vorhandenen persistenten Speicherdaten.
+V82 ergänzt die native Zielerfassung: mittlere Maustaste erfasst einen sichtbaren aktiven Gegner oder löst die Auswahl; `R` wechselt zum nächsten Gegner. Kamera und Figur richten sich zum Ziel, während der Spieler seitlich laufen kann. Eine UMG-Anzeige zeigt Name, Lebenspunkte und Körpermarkierung. Nahkampf und Zauber verwenden bei freier Sicht dieselbe Zielrichtung. Deckung verhindert neue Zielrichtungen sofort; Tod, Menüs, Laden, Reisen und ungültige Ziele lösen die Auswahl.
 
-Die neue Editorpipeline verbindet Dornfeld und das Dornfelder Umland. Sie erhält die Brunnenmission sowie Händler und Werkbank aus V79 und ergänzt Torben, die Bauernstraße, das Banditenlager und Hin-/Rückreise per E. Reisesnapshots bleiben bis zur bestätigten Ankunft erhalten. Fehlgeschlagene Ankünfte bieten Wiederholung oder die Rückkehr zum gesicherten Ort; noch ausstehende Reisen blockieren Eingaben, Physik, Schaden und konkurrierende Transaktionen.
+Normale Angriffe und offensive Magie verwenden gemeinsame Kampfregeln zum Schutz ziviler, inaktiver und toter Figuren. Blocken schützt vor Angriffen aus einem Frontkegel. Native und ältere Guard-Ausdauer werden nicht für denselben Treffer kombiniert. Projektiltreffer berücksichtigen die tatsächliche Flugrichtung; eine Prüfung des Startwegs verhindert das Erscheinen hinter naher Deckung.
 
-Zwei originale 3D-Requisiten wurden tatsächlich mit Blender erzeugt, exportiert und gerendert: Handwagen und Warenkiste. BLEND, GLB, OBJ, MTL, Vorschauen und CC0-Nachweis sind enthalten. Die binären Geometrien wurden geprüft. Ihre Unreal-Importschnittstelle ist integriert, der Engine-Import wurde noch nicht ausgeführt.
-
-Die erhaltenen V77–V79-Systeme umfassen die Dorfmission „Das Flüstern im Brunnen“, Magie mit 24 kanonischen Zaubern, Inventar/Ausrüstung, native UMG-Menüs, Handel/Crafting und Saveformat 5 mit zwei Sicherungsbänken. Originale Rigs und zwölf Clips pro Figur sowie neun WAV-Dateien sind vorhanden. Diese Unreal-Integrationen bleiben unkompiliert.
+V77–V81 bleiben erhalten: Mara-Brunnenmission, Torbens „Die verlorene Lieferung“, Dorf-/Umland-Reise, Händler/Crafting, 24 Zauber, Inventar/Ausrüstung, versionierte Zwei-Bank-Spielstände sowie Hauptmenü und persistente Einstellungen. Originale geriggte Figuren mit Animationen, neun WAV-Dateien sowie Handwagen-/Warenkistenquellen sind enthalten. Die V80-Kartenpfade bleiben bestehen; V82 zählt keine neuen Kartenkopien.
 
 Offline prüfen:
 
 ```bash
 python -m pip install -r requirements-dev.txt
-python Tools/verify_v80.py
+python Tools/verify_v82.py
 ```
 
-Der Prüfer führt Python-Regressionen, direkt verwendete portable C++-Produktionsregeln mit g++/UBSan sowie binäre Assetprüfungen aus. `Reports/V80_verification.json` enthält Befehle, tatsächliche Ausgaben und Quelldateihashes. Er trennt erfolgreiche Offline-Prüfungen von blockierten Unreal-/Windows-Tests. ZIP-Erstellung verlangt unveränderte geprüfte Quellen und verifiziert sämtliche Einträge.
+Der Prüfer führt Python-Regressionen, direkt verwendete portable C++-Produktionsregeln mit g++/UBSan sowie binäre Assetprüfungen aus. `Reports/V82_verification.json` enthält die Befehle, tatsächlichen Ergebnisse und geprüften Quelldateihashes. Die ZIP-Erstellung verlangt unveränderte geprüfte Quellen und prüft alle Archiveinträge.
 
 Windows mit UE 5.6, Visual-Studio-C++-Buildwerkzeugen/Windows SDK und Python 3.10+:
 
 ```powershell
-.\Scripts\Build-AskirV80.ps1 -EngineRoot "C:\Program Files\Epic Games\UE_5.6" -OutputDirectory "C:\AskirBuilds\V80"
+.\Scripts\Build-AskirV82.ps1 -EngineRoot "C:\Program Files\Epic Games\UE_5.6" -OutputDirectory "C:\AskirBuilds\V82"
 ```
 
-Der Ausgabeordner muss neu sein und außerhalb des Projekts liegen. Die Pipeline sichert vor Änderungen, kompiliert den Editor, importiert Assets, erzeugt und validiert beide gespeicherten Karten, führt native Automation aus, erstellt das Win64-Paket und prüft seine Starts. Sie ändert den Startlevel erst nach erfolgreicher Validierung beider Karten. Ein Starttest ersetzt kein manuelles Durchspielen.
+Der Ausgabeordner muss neu sein und außerhalb des Projekts liegen. Die Pipeline sichert vor Änderungen, kompiliert, importiert Assets, erzeugt und validiert beide V80-Karten, führt native Automation aus, erstellt das Win64-Paket und prüft seine Starts. Die Welt-, Titel- und Zielkomponenten-Marker belegen nur den jeweiligen Startzustand. Kamera, Bedienung, Kampf und vollständiges Durchspielen benötigen zusätzliche Engine-Abnahme.
 
-Details: [V80-Änderungen und Grenzen](Docs/V80_CHANGES.md), [Weltpipeline](Docs/V80_WORLD_PIPELINE.md), [Originalmodelle](Docs/V80_DELIVERY_PROP_ASSETS.md), [Teststatus](Docs/V80_VERIFICATION.md). Die vollständige Kampagne, 30 abgenommene Levels und ein getesteter Windows-Build bleiben offen.
+Details: [Änderungen](Docs/V82_CHANGES.md), [Zielerfassung](Docs/V82_TARGETING.md), [Kampfregeln](Docs/V82_COMBAT_POLICY.md), [HUD](Docs/V82_TARGET_HUD.md), [Pipeline](Docs/V82_PIPELINE.md), [Prüfstatus](Docs/V82_VERIFICATION.md). Die vollständige Kampagne, 30 abgenommene Levels und ein getesteter Windows-Build bleiben offen.
