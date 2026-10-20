@@ -7,6 +7,12 @@ Updated: 2026-10-20
 - Branch: `codex/askir-target-rank-20261020` (separate from `main`).
 - Previously reported baseline commit: `b44d936ae7ad0417e34181ad700db1997d7bfa26` (not independently revalidated in this run).
 
+## 2026-10-20 targeting regression update
+- Added portable C++ regression assertions for equal-geometry ranking, equal-score distance tie-breaking, and nonpositive distances in `Tests/cpp/test_targeting_rules_v82.cpp`.
+- Code commit: `e278d629d52bce972170ebb0f4e58a56f4d38535`.
+- Tests not executed in this run: GitHub source editing does not execute C++ tests, and no Unreal Engine compilation occurred. Assertions are added but not claimed passing.
+- Next: run `python Tools/verify_v82.py` in a checkout with Python and g++; inspect exact failures before merging PR #3.
+
 ## Verification in this run
 - GitHub README.md read successfully.
 - AGENTS.md and DEVELOPMENT_STATUS.md were absent on the default branch when checked.
