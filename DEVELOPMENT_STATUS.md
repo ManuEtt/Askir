@@ -1,0 +1,36 @@
+# ASKIR development status
+
+Updated: 2026-10-20
+
+## Baseline
+- V82, Unreal Engine 5.6 C++, Windows 64-bit target.
+- Branch: `codex/askir-target-rank-20261020` (separate from `main`).
+- Previously reported baseline commit: `b44d936ae7ad0417e34181ad700db1997d7bfa26` (not independently revalidated in this run).
+
+## 2026-10-20 targeting regression update
+- Added portable C++ regression assertions for equal-geometry ranking, equal-score distance tie-breaking, and nonpositive distances in `Tests/cpp/test_targeting_rules_v82.cpp`.
+- Code commit: `e278d629d52bce972170ebb0f4e58a56f4d38535`.
+- Tests not executed in this run: GitHub source editing does not execute C++ tests, and no Unreal Engine compilation occurred. Assertions are added but not claimed passing.
+- Next: run `python Tools/verify_v82.py` in a checkout with Python and g++; inspect exact failures before merging PR #3.
+
+## 2026-10-20 additional regression cases
+- Commit `71937160291e2b75dfb2a390ffb20c17e237f0e6` adds comparisons against infinite scores, NaN distances, and infinite distances, including reverse ordering and reflexivity.
+- Tooling check: Python 3.13.5 and g++ 14.2.0 are installed in the isolated container, but `git ls-remote` failed because github.com DNS resolution is unavailable. Repository files can be edited through the connected GitHub tool, but a full checkout and exact-source test run were not possible in this session. No tests were executed and no engine build was attempted.
+- Next task: run portable regression suite against the real checkout in an environment with repository download access; resolve any failures and document results.
+
+## Verification in this run
+- GitHub README.md read successfully.
+- AGENTS.md and DEVELOPMENT_STATUS.md were absent on the default branch when checked.
+- Existing development branch located using GitHub branch search.
+- No Unreal Engine build, Windows package, C++ compilation, or test suite was run in this session. Do not interpret this status update as a gameplay fix or passing test.
+
+## Open blockers
+- Unreal Engine 5.6 and Windows build host are unavailable in this session; no playable Windows build is verified.
+- Native targeting needs an engine-side acceptance test; prior target-ranking change is not confirmed implemented.
+
+## Next small task
+- Inspect native targeting source and existing regression tests; add a deterministic target-order regression covering equal distance and invalid targets. Run only available local checks and record exact results.
+- Keep implementation on a feature branch and use a PR; never merge automatically into main.
+
+## Commit
+- This file is introduced by the GitHub commit returned from the create-file operation. Consult the branch history for its exact SHA.

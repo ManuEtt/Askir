@@ -79,8 +79,28 @@ int main()
     Expect(CompareRank(NearCenter,FarCenter)<0,"same angle prefers closer enemy");
     Expect(CompareRank(NearCenter,Side)<0,"same distance prefers camera center");
     Expect(CompareRank(NearCenter,NearCenter)==0,"exact geometry tie is delegated to stable actor path");
+    // Equal geometry must compare equally so the native caller can apply its stable actor-path tie-break.
+    Metrics EqualGeometry=NearCenter;
+    Expect(CompareRank(NearCenter,EqualGeometry)==0&&CompareRank(EqualGeometry,NearCenter)==0,
+        "equal geometry leaves ordering to stable actor path");
+    Metrics SameScoreFarther=NearCenter;
+    SameScoreFarther.Distance+=1.;
+    Expect(CompareRank(NearCenter,SameScoreFarther)<0&&CompareRank(SameScoreFarther,NearCenter)>0,
+        "equal scores prefer the nearer target in both comparison directions");
+    Metrics InvalidDistance=NearCenter;InvalidDistance.Distance=0.;
+    Expect(CompareRank(NearCenter,InvalidDistance)<0&&CompareRank(InvalidDistance,NearCenter)>0,
+        "nonpositive target distance cannot win ranking");
     Metrics Invalid=NearCenter;Invalid.Score=NaN;
     Expect(CompareRank(NearCenter,Invalid)<0&&CompareRank(Invalid,NearCenter)>0,"invalid rank cannot beat a valid target");
+    Metrics InvalidInfiniteScore=NearCenter;InvalidInfiniteScore.Score=Infinity;
+    Metrics InvalidNanDistance=NearCenter;InvalidNanDistance.Distance=NaN;
+    Metrics InvalidInfiniteDistance=NearCenter;InvalidInfiniteDistance.Distance=Infinity;
+    for(const Metrics& Bad:{InvalidInfiniteScore,InvalidNanDistance,InvalidInfiniteDistance})
+    {
+        Expect(CompareRank(NearCenter,Bad)<0,"finite target outranks nonfinite ranking metric");
+        Expect(CompareRank(Bad,NearCenter)>0,"nonfinite ranking metric loses symmetrically");
+        Expect(CompareRank(Bad,Bad)==0,"invalid metric comparison remains reflexive");
+    }
     for(int A=0;A<72;++A)for(int B=0;B<72;++B)for(int DirectionSign:{-1,1})
     {
         const double Current=(-180.+A*5.)*Pi/180.;const double Candidate=(-180.+B*5.)*Pi/180.;
