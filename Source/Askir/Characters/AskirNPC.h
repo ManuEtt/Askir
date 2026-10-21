@@ -38,6 +38,8 @@ public:
     UFUNCTION(BlueprintCallable, Category="Askir|NPC|Encounter") void RestoreEncounterState(bool bDefeated);
 
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Askir|NPC") FText NPCName;
+    /** Optional compiled dialogue graph; NAME_None uses the actor's authored legacy nodes. */
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Askir|Dialogue") FName ConversationID=NAME_None;
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Askir|Quest") FName DefeatObjectiveID;
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Askir|Rewards", meta=(ClampMin="0")) int32 KillExperience=20;
     UPROPERTY(EditAnywhere, BlueprintReadWrite, Category="Askir|Rewards") TObjectPtr<UAskirItemData> GuaranteedDrop=nullptr;

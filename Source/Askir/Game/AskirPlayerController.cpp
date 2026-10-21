@@ -1,6 +1,7 @@
 #include "Game/AskirPlayerController.h"
 #include "UI/AskirHUDWidget.h"
 #include "Characters/AskirCharacter.h"
+#include "Dialogue/AskirConversationComponent.h"
 #include "Frontend/AskirFrontendSubsystem.h"
 #include "Travel/AskirWorldTravelSubsystem.h"
 #include "Engine/GameInstance.h"
@@ -22,13 +23,23 @@ void AAskirPlayerController::TogglePauseMenu(){if(RuntimeHUD)RuntimeHUD->ToggleP
 void AAskirPlayerController::ToggleInventory(){if(RuntimeHUD)RuntimeHUD->TogglePanel(EAskirUIPanel::Inventory);}
 void AAskirPlayerController::ToggleJournal(){if(RuntimeHUD)RuntimeHUD->TogglePanel(EAskirUIPanel::Journal);}
 void AAskirPlayerController::ToggleMagic(){if(RuntimeHUD)RuntimeHUD->TogglePanel(EAskirUIPanel::Magic);}
-void AAskirPlayerController::CloseAnyMenu(){if(RuntimeHUD)RuntimeHUD->CloseMenu();else SetMenuInput(false,false);}
+void AAskirPlayerController::CloseAnyMenu()
+{
+    if(RuntimeHUD)RuntimeHUD->CloseMenu();
+    else
+    {
+        if(auto* Player=Cast<AAskirCharacter>(GetPawn()))
+            if(Player->ConversationComponent)Player->ConversationComponent->EndConversation();
+        SetMenuInput(false,false);
+    }
+}
 void AAskirPlayerController::ShowNotification(FText Text){if(RuntimeHUD)RuntimeHUD->Notify(Text);}
 void AAskirPlayerController::RefreshInventoryPanel(){if(RuntimeHUD)RuntimeHUD->RefreshInventoryPanel();}
 bool AAskirPlayerController::OpenElderDialogue(AAskirDornfeldEventActor* Elder){return RuntimeHUD&&RuntimeHUD->ShowElderDialogue(Elder);}
 bool AAskirPlayerController::OpenMerchant(AAskirMerchantActor* Merchant){return RuntimeHUD&&RuntimeHUD->ShowMerchant(Merchant);}
 bool AAskirPlayerController::OpenCraftingStation(AAskirCraftingStationActor* Station){return RuntimeHUD&&RuntimeHUD->ShowCraftingStation(Station);}
 bool AAskirPlayerController::OpenDeliveryDialogue(AAskirDeliveryQuestActor* Giver){return RuntimeHUD&&RuntimeHUD->ShowDeliveryDialogue(Giver);}
+bool AAskirPlayerController::OpenConversation(AActor* Speaker,FName DialogueID){return RuntimeHUD&&RuntimeHUD->ShowConversation(Speaker,DialogueID);}
 void AAskirPlayerController::SetMenuInput(bool bOpen,bool bPause)
 {
     bMenuOpen=bOpen;

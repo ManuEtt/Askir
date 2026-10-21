@@ -4,6 +4,7 @@
 #include "Characters/AskirNPC.h"
 #include "Combat/AskirCombatComponent.h"
 #include "Combat/AskirTargetLockComponent.h"
+#include "Dialogue/AskirConversationComponent.h"
 #include "Progression/AskirProgressionComponent.h"
 #include "Camp/AskirCampComponent.h"
 #include "Engine/StaticMeshActor.h"
@@ -58,6 +59,9 @@ void AAskirGameMode::LogRuntimeReadiness()
   if(IsValid(Player->TargetLockComponent)&&Player->TargetLockComponent->IsRegistered()&&Player->TargetLockComponent->GetOwner()==Player)
    UE_LOG(LogTemp,Display,TEXT("ASKIR_V82_TARGETING_READY map=%s player=%s component=AskirTargetLockComponent"),*Map,*Player->GetName());
   else UE_LOG(LogTemp,Error,TEXT("ASKIR_V82_TARGETING_BLOCKED: configured player target-lock component missing"));
+  if(IsValid(Player->ConversationComponent)&&Player->ConversationComponent->IsRegistered()&&Player->ConversationComponent->GetOwner()==Player)
+   UE_LOG(LogTemp,Display,TEXT("ASKIR_V83_CONVERSATION_READY map=%s player=%s component=AskirConversationComponent"),*Map,*Player->GetName());
+  else UE_LOG(LogTemp,Error,TEXT("ASKIR_V83_CONVERSATION_BLOCKED: configured player conversation component missing"));
  }
  else UE_LOG(LogTemp,Error,TEXT("ASKIR_V80_RUNTIME_BLOCKED: player or native controller not initialized"));
 }

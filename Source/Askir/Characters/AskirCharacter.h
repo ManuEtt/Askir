@@ -24,6 +24,7 @@ class UAskirDeliveryMissionComponent;
 class UAskirDialogueComponent;
 class UAskirReputationComponent;
 class UAskirTargetLockComponent;
+class UAskirConversationComponent;
 class UInputAction;
 class UInputMappingContext;
 class UStaticMeshComponent;
@@ -48,6 +49,7 @@ public:
     UFUNCTION(BlueprintCallable, Category="Askir|Input") void CancelGameplayActions();
     UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Askir|Magic") TObjectPtr<UAskirMagicComponent> MagicComponent;
     UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Askir|Combat") TObjectPtr<UAskirTargetLockComponent> TargetLockComponent;
+    UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Askir|Dialogue") TObjectPtr<UAskirConversationComponent> ConversationComponent;
     UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Askir|Quest") TObjectPtr<UAskirDeliveryMissionComponent> DeliveryMission;
     UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Askir|Dialogue") TObjectPtr<UAskirDialogueComponent> DialogueComponent;
     UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Askir|Faction") TObjectPtr<UAskirReputationComponent> ReputationComponent;

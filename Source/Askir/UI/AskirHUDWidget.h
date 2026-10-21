@@ -18,7 +18,7 @@ class AAskirDeliveryQuestActor;
 class UAskirHUDWidget;
 
 UENUM()
-enum class EAskirUIPanel : uint8 { None, Pause, Inventory, Journal, Dialogue, Magic, Merchant, Crafting, Delivery, TravelRecovery, Title, ConfirmNewGame, Settings, VideoConfirm, FreshStart };
+enum class EAskirUIPanel : uint8 { None, Pause, Inventory, Journal, Dialogue, Magic, Merchant, Crafting, TravelRecovery, Title, ConfirmNewGame, Settings, VideoConfirm, FreshStart, Conversation };
 
 UCLASS()
 class ASKIR_API UAskirNarrativeButton : public UButton
@@ -27,6 +27,19 @@ class ASKIR_API UAskirNarrativeButton : public UButton
 public:
     TWeakObjectPtr<UAskirHUDWidget> HUD;
     FName ActionID;
+    uint64 ContextGeneration=0;
+    UFUNCTION() void Activate();
+};
+
+/** Stable backend choice identity and revision protect against stale dialogue buttons. */
+UCLASS()
+class ASKIR_API UAskirConversationButton : public UButton
+{
+    GENERATED_BODY()
+public:
+    TWeakObjectPtr<UAskirHUDWidget> HUD;
+    FName ChoiceID;
+    int64 ConversationRevision=0;
     uint64 ContextGeneration=0;
     UFUNCTION() void Activate();
 };
@@ -84,6 +97,8 @@ public:
     bool ShowMerchant(AAskirMerchantActor* Merchant);
     bool ShowCraftingStation(AAskirCraftingStationActor* Station);
     bool ShowDeliveryDialogue(AAskirDeliveryQuestActor* Giver);
+    bool ShowConversation(AActor* Speaker,FName DialogueID=NAME_None);
+    void ExecuteConversationChoice(FName ChoiceID,int64 ExpectedRevision,uint64 ExpectedGeneration);
     void ExecuteNarrativeAction(FName ActionID,uint64 ExpectedGeneration);
     void ExecuteEconomyAction(FName EntryID,bool bSell,bool bCraft,uint64 ExpectedGeneration);
     bool IsActionContextCurrent(uint64 ExpectedGeneration,EAskirUIPanel ExpectedPanel,AAskirCharacter* Player) const;
@@ -98,6 +113,7 @@ private:
     void RefreshTargetHUD(const FGeometry& Geometry);
     void HideTargetHUD();
     void BuildPanel();
+    void BuildConversationPanel();
     void UpdateFrontend();
     void ShowTitle();
     void OpenSettings();
@@ -135,8 +151,7 @@ private:
     TWeakObjectPtr<AAskirDornfeldEventActor> CurrentElder;
     TWeakObjectPtr<AAskirMerchantActor> CurrentMerchant;
     TWeakObjectPtr<AAskirCraftingStationActor> CurrentStation;
-    TWeakObjectPtr<AAskirDeliveryQuestActor> CurrentDeliveryGiver;
-    bool bDeliveryDetails=false;
+    int64 ConversationRevision=-1;
     EAskirUIPanel Panel=EAskirUIPanel::None;
     EAskirUIPanel SettingsReturnPanel=EAskirUIPanel::Title;
     FAskirSettingsDraft SettingsDraft;

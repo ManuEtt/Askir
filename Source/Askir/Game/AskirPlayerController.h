@@ -24,6 +24,7 @@ public:
     bool OpenMerchant(AAskirMerchantActor* Merchant);
     bool OpenCraftingStation(AAskirCraftingStationActor* Station);
     bool OpenDeliveryDialogue(AAskirDeliveryQuestActor* Giver);
+    bool OpenConversation(AActor* Speaker,FName DialogueID=NAME_None);
     void SetMenuInput(bool bOpen, bool bPause);
     bool IsMenuOpen() const {return bMenuOpen;}
     bool HasRuntimeHUD() const {return RuntimeHUD!=nullptr;}
