@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "overrides": [
+    {
+      "id": "D_SQ_001",
+      "npc": "Torben",
+      "start": "n1",
+      "entries": [
+        {"delivery_stage": 0, "node": "n1"},
+        {"delivery_stage": 1, "node": "active"},
+        {"delivery_stage": 2, "node": "cargo"},
+        {"delivery_stage": 3, "node": "return"},
+        {"delivery_stage": 4, "required_flags": ["SQ_001_CHOICE_help"], "node": "thanks_help"},
+        {"delivery_stage": 4, "required_flags": ["SQ_001_CHOICE_bargain"], "node": "thanks_bargain"},
+        {"delivery_stage": 4, "node": "thanks"}
+      ],
+      "nodes": [
+        {
+          "id": "n1",
+          "text": "Mein Wagen steht noch draußen am Weg. Zwei Banditen haben die Lieferung geraubt. Ohne diese Vorräte werden die nächsten Tage hart für Dornfeld.",
+          "choices": [
+            {"id": "more", "text": "Erzähl mir, was geschehen ist.", "next": "n2"},
+            {"id": "road_history", "text": "Warum ist dir dieser Handelsweg so wichtig?", "forbidden_flags": ["TORBEN_ROAD_HISTORY"], "granted_flag": "TORBEN_ROAD_HISTORY", "next": "roads"},
+            {"id": "road_remembered", "text": "Du sprachst von den Menschen entlang des Weges.", "required_flags": ["TORBEN_ROAD_HISTORY"], "next": "roads_known"},
+            {"id": "later", "text": "Nicht jetzt.", "next": "end"}
+          ]
+        },
+        {
+          "id": "n2",
+          "text": "Sie lagern im Dornfelder Umland. Besiege die beiden Banditen, sichere die versiegelten Waren und bringe sie mir zurück. Du erhältst 16 Gold, 100 Erfahrung und eine Handwerkszutat.",
+          "choices": [
+            {"id": "help", "text": "Ich helfe dir. Die Wege müssen sicher bleiben. (Waldhüter +2)", "action": "accept_delivery", "payload": "help", "next": "end"},
+            {"id": "bargain", "text": "Einverstanden, wenn der Lohn fair bleibt. (Freie Händler +2)", "action": "accept_delivery", "payload": "bargain", "next": "end"},
+            {"id": "think", "text": "Ich muss darüber nachdenken.", "next": "n1"}
+          ]
+        },
+        {
+          "id": "roads",
+          "text": "Ein Wagen bringt mehr als Waren. Mit jedem Händler erreichen Nachrichten, Heilmittel und Saatgut das nächste Dorf. Falkenwacht mag Mauern besitzen; wir in Dornfeld sind auf offene Wege angewiesen.",
+          "choices": [{"id": "back", "text": "Dann erzähl mir von deiner Lieferung.", "next": "n2"}]
+        },
+        {
+          "id": "roads_known",
+          "text": "Du hast dir gemerkt, was ich über unsere Wege sagte. Solange wir einander erreichen, bleibt Dornfeld mehr als ein einsamer Punkt auf der Karte.",
+          "choices": [{"id": "back", "text": "Was muss ich für dich tun?", "next": "n2"}]
+        },
+        {
+          "id": "active",
+          "text": "Die beiden Banditen halten den Weg im Dornfelder Umland besetzt. Erst wenn sie geschlagen sind, kannst du meine versiegelte Lieferung sicher bergen.",
+          "choices": [{"id": "leave", "text": "Ich kümmere mich darum.", "next": "end"}]
+        },
+        {
+          "id": "cargo",
+          "text": "Du hast die Banditen bezwungen. Beim Wagen im Umland liegt noch meine versiegelte Kiste. Sichere die Lieferung, bevor du zu mir zurückkehrst.",
+          "choices": [{"id": "leave", "text": "Ich hole die Waren.", "next": "end"}]
+        },
+        {
+          "id": "return",
+          "text": "Du hast die Waren gefunden! Damit kommen wir über die nächsten Tage. Übergib mir die Lieferung, dann erhältst du den vereinbarten Lohn.",
+          "choices": [
+            {"id": "turn_in", "text": "Hier ist deine Lieferung. Schließen wir den Auftrag ab.", "action": "return_delivery", "next": "thanks"},
+            {"id": "wait", "text": "Einen Augenblick noch.", "next": "end"}
+          ]
+        },
+        {"id": "thanks", "text": "Die Vorräte sind zurück, und dein Lohn ist ausgezahlt. Dornfeld wird diese Hilfe nicht vergessen.", "choices": []},
+        {"id": "thanks_help", "text": "Du hast geholfen, weil die Menschen hier sichere Wege brauchen. Die Waldhüter haben davon erfahren. Mein Wagen und ich verdanken dir viel.", "choices": []},
+        {"id": "thanks_bargain", "text": "Wir haben einen fairen Handel geschlossen, und beide Seiten haben Wort gehalten. Die Freien Händler schätzen solche Verlässlichkeit.", "choices": []},
+        {"id": "end", "text": "Gib auf dich acht, wenn du Dornfeld verlässt.", "choices": []}
+      ]
+    }
+  ],
+  "additional": [
+    {
+      "id": "D_DORNFELD_RURIK",
+      "npc": "Rurik",
+      "start": "greeting",
+      "entries": [
+        {"required_flags": ["RURIK_WELL_LORE"], "node": "remembered"},
+        {"forbidden_flags": ["RURIK_WELL_LORE"], "node": "greeting"}
+      ],
+      "nodes": [
+        {
+          "id": "greeting",
+          "text": "Du hörst es auch, nicht wahr? Nachts trägt der Wind ein Flüstern vom Brunnen herüber. Mara kennt die Sorgen des Dorfes besser als ich. Doch wenn du alte Geschichten hören willst, setz dich einen Augenblick zu mir.",
+          "choices": [
+            {"id": "well", "text": "Welche Geschichten ranken sich um den Brunnen?", "granted_flag": "RURIK_WELL_LORE", "next": "well"},
+            {"id": "road", "text": "Was liegt jenseits von Dornfeld?", "next": "roads"},
+            {"id": "woods", "text": "Erzähl mir vom Grauwald.", "next": "grauwald"},
+            {"id": "leave", "text": "Ein andermal, Rurik.", "next": "end"}
+          ]
+        },
+        {
+          "id": "remembered",
+          "text": "Du bist zurück. Seit unserem Gespräch über den Brunnen höre ich genauer hin. Vergiss nicht: Eine alte Geschichte ist ein Hinweis, kein Beweis. Was möchtest du noch wissen?",
+          "choices": [
+            {"id": "well_again", "text": "Ich möchte noch einmal über das Siegel sprechen.", "next": "well"},
+            {"id": "road", "text": "Was verbindet Dornfeld mit Falkenwacht?", "next": "roads"},
+            {"id": "woods", "text": "Was weißt du über den Grauwald?", "next": "grauwald"},
+            {"id": "leave", "text": "Danke für deine Geschichten.", "next": "end"}
+          ]
+        },
+        {
+          "id": "well",
+          "text": "Man erzählt, unter dem Dorfbrunnen ruhe ein vergessenes Siegel. Seit die Nächte unruhig wurden, klingen selbst die alten Erzählungen anders. Wenn du Gewissheit suchst, sprich mit Mara und untersuche den Brunnen. Ich kann dir nur sagen, was überliefert wurde.",
+          "choices": [
+            {"id": "crown", "text": "Was hat dieses Siegel mit der zerbrochenen Krone zu tun?", "next": "crown"},
+            {"id": "other", "text": "Lass uns über etwas anderes sprechen.", "next": "remembered"},
+            {"id": "leave", "text": "Ich werde mit Mara sprechen.", "next": "end"}
+          ]
+        },
+        {
+          "id": "crown",
+          "text": "Die Krone Askirs, so heißt es, zerfiel in fünf Siegel. Jedes bewahrt eine Erinnerung, und jede Erinnerung fordert ein Opfer. Ob der Brunnen eines dieser Siegel birgt, muss sich erst zeigen. Aber ich fürchte Menschen, die nach seiner Macht greifen, ohne nach dem Preis zu fragen.",
+          "choices": [
+            {"id": "price", "text": "Dann sollte niemand leichtfertig nach dieser Macht greifen.", "next": "remembered"},
+            {"id": "roads", "text": "Hören auch die Händler solche Geschichten?", "next": "roads"}
+          ]
+        },
+        {
+          "id": "roads",
+          "text": "Wir leben auf Ardem. Dornfeld ist klein, Falkenwacht eine der Städte, deren Namen jeder Händler kennt. Über die Wege kommen Waren und Nachrichten zu uns. Wenn ein Wagen ausbleibt, fehlt nicht nur einem Kaufmann sein Gewinn. Dann fehlen dem Dorf Dinge, die es selbst nicht herstellen kann.",
+          "choices": [
+            {"id": "woods", "text": "Und der Grauwald?", "next": "grauwald"},
+            {"id": "well", "text": "Zurück zur Geschichte vom Brunnen.", "granted_flag": "RURIK_WELL_LORE", "next": "well"},
+            {"id": "leave", "text": "Ich werde unterwegs die Augen offen halten.", "next": "end"}
+          ]
+        },
+        {
+          "id": "grauwald",
+          "text": "Der Grauwald gehört zu Ardem, genau wie unser Dorf. Auf Karten ist er eine grüne Fläche. Wer zwischen seinen Bäumen steht, versteht, wie wenig eine Karte über einen Ort verrät. Nimm die Warnungen der Waldhüter ernst und halte dich an Wege, die du wiederfinden kannst.",
+          "choices": [
+            {"id": "well", "text": "Was hat es mit dem Flüstern im Dorf auf sich?", "granted_flag": "RURIK_WELL_LORE", "next": "well"},
+            {"id": "roads", "text": "Erzähl mir noch etwas über Ardem und seine Wege.", "next": "roads"},
+            {"id": "leave", "text": "Deine Warnung werde ich mir merken.", "next": "end"}
+          ]
+        },
+        {"id": "end", "text": "Komm heil zurück. Eine Geschichte hört man lieber von denen, die sie selbst erlebt haben.", "choices": []}
+      ]
+    }
+  ]
+}

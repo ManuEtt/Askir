@@ -30,6 +30,8 @@ public:
     UFUNCTION(BlueprintPure,Category="Askir|Delivery") bool HasRecoveredCargo(FName CargoID) const;
     UFUNCTION(BlueprintPure,Category="Askir|Delivery") FText GetObjectiveText() const;
     UFUNCTION(BlueprintPure,Category="Askir|Delivery") FText GetLastFailureText() const {return LastFailureText;}
+    /** Lazily reconstruct canonical reward data after travel/load; grants no rewards or quest receipts. */
+    UAskirQuestData* ResolveQuestData();
     /** Repairs objective mirrors from the persistent receipts; does not grant rewards. */
     UFUNCTION(BlueprintCallable,Category="Askir|Delivery|Save") void RefreshFromQuestLedger();
     bool IsTransactionInProgress() const {return bTransactionInProgress;}
@@ -40,7 +42,6 @@ protected:
 private:
     UFUNCTION() void OnQuestProgressChanged(FName QuestID,FName ObjectiveID);
     UAskirQuestComponent* GetJournal() const;
-    UAskirQuestData* ResolveQuestData();
     bool CanMutate() const;
     bool HasCargoReceipt() const;
     bool SyncObjectives(bool bReturned=false);

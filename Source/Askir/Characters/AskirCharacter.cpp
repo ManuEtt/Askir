@@ -51,6 +51,8 @@
 #include "Combat/AskirCombatComponent.h"
 #include "Combat/AskirCombatTargetPolicy.h"
 #include "Combat/AskirTargetLockComponent.h"
+#include "Dialogue/AskirConversationComponent.h"
+#include "Characters/AskirNPC.h"
 #include "Inventory/AskirInventoryComponent.h"
 #include "Quest/AskirQuestComponent.h"
 AAskirCharacter::AAskirCharacter()
@@ -61,6 +63,7 @@ AAskirCharacter::AAskirCharacter()
     ReputationComponent=CreateDefaultSubobject<UAskirReputationComponent>(TEXT("Reputation"));
     MagicComponent=CreateDefaultSubobject<UAskirMagicComponent>(TEXT("Magic"));
     TargetLockComponent=CreateDefaultSubobject<UAskirTargetLockComponent>(TEXT("TargetLock"));
+    ConversationComponent=CreateDefaultSubobject<UAskirConversationComponent>(TEXT("Conversation"));
     AnimationPlayback=CreateDefaultSubobject<UAskirAnimationPlaybackComponent>(TEXT("AnimationPlayback"));
     SurvivalComponent=CreateDefaultSubobject<UAskirSurvivalComponent>(TEXT("Survival"));
     EquipmentComponent=CreateDefaultSubobject<UAskirEquipmentComponent>(TEXT("Equipment"));
@@ -225,6 +228,7 @@ bool AAskirCharacter::IsWorldTravelPending() const
 }
 void AAskirCharacter::SuspendForWorldTravel()
 {
+    if(ConversationComponent)ConversationComponent->EndConversation();
     if(!IsWorldTravelPending())return;
     auto* Movement=GetCharacterMovement();if(!Movement)return;
     if(!bTravelMovementSuspended)
@@ -237,6 +241,7 @@ void AAskirCharacter::SuspendForWorldTravel()
 }
 bool AAskirCharacter::CanUseGameplayInput() const
 {
+    if(ConversationComponent&&ConversationComponent->IsActive())return false;
     if(IsWorldTravelPending())return false;
     if(IsDead()||!CombatComponent||!CombatComponent->IsDamageEnabled()||!GetWorld()||UGameplayStatics::IsGamePaused(this))return false;
     if(const auto* GM=Cast<AAskirGameMode>(UGameplayStatics::GetGameMode(this)))if(GM->IsPersistenceBusy())return false;
@@ -408,9 +413,10 @@ void AAskirCharacter::ReceiveAskirDamage(const FAskirDamageInfo&I)
     if(AnimationState&&DamageReceived>0.f)AnimationState->RegisterHit();
 }
 bool AAskirCharacter::IsDead()const{return CombatComponent&&CombatComponent->IsDead();}
-void AAskirCharacter::HandleDeath(){CancelGameplayActions();if(AnimationState)AnimationState->RegisterDeath();GetCharacterMovement()->DisableMovement();GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);}
+void AAskirCharacter::HandleDeath(){if(ConversationComponent)ConversationComponent->EndConversation();CancelGameplayActions();if(AnimationState)AnimationState->RegisterDeath();GetCharacterMovement()->DisableMovement();GetCapsuleComponent()->SetCollisionEnabled(ECollisionEnabled::NoCollision);}
 void AAskirCharacter::RestoreAfterLoad()
 {
+    if(ConversationComponent)ConversationComponent->EndConversation();
     CancelGameplayActions();
     bTravelMovementSuspended=false;
     LastAttackTime=LastDodgeTime=LastStaminaUseTime=NextAttackAllowedTime=-1000.f;
@@ -441,9 +447,14 @@ void AAskirCharacter::DemoInteractInput()
    }
    if(UAskirNPCInteractionComponent* Interaction=Target->FindComponentByClass<UAskirNPCInteractionComponent>())
    {
-    if(Interaction->Interact(this))
+    if(Interaction->CanInteract(this))
     {
-     if(UAskirDialogueComponent* Dialogue=Target->FindComponentByClass<UAskirDialogueComponent>())Dialogue->BeginDialogue();
+     if(auto* PC=Cast<AAskirPlayerController>(Controller))
+     {
+      const auto* NPC=Cast<AAskirNPC>(Target);
+      if(PC->OpenConversation(Target,NPC?NPC->ConversationID:NAME_None))Interaction->Interact(this);
+      else PC->ShowNotification(NSLOCTEXT("AskirUI","ConversationUnavailable","Ein Gespräch ist gerade nicht möglich."));
+     }
      return;
     }
    }

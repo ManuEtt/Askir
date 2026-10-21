@@ -4,6 +4,7 @@
 #include "Magic/AskirMagicComponent.h"
 #include "Magic/AskirSpellProjectile.h"
 #include "Characters/AskirCharacter.h"
+#include "Dialogue/AskirConversationComponent.h"
 #include "Characters/AskirNPC.h"
 #include "Demo/AskirDemoInteractable.h"
 #include "Save/AskirSaveGame.h"
@@ -68,7 +69,8 @@ namespace
   if(Player && ((Player->InventoryComponent && Player->InventoryComponent->IsTransactionInProgress())
     || (Player->CraftingComponent && Player->CraftingComponent->IsTransactionInProgress())
     || (Player->QuestComponent && Player->QuestComponent->IsTransactionInProgress())
-    || (Player->DeliveryMission && Player->DeliveryMission->IsTransactionInProgress())))return true;
+    || (Player->DeliveryMission && Player->DeliveryMission->IsTransactionInProgress())
+    || (Player->ConversationComponent && Player->ConversationComponent->IsTransactionInProgress())))return true;
   if(World)for(TActorIterator<AActor> It(World);It;++It)
   {
    TArray<UAskirMerchantComponent*> Components;It->GetComponents(Components);

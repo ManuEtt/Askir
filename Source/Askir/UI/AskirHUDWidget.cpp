@@ -1,6 +1,7 @@
 #include "UI/AskirHUDWidget.h"
 #include "Magic/AskirMagicComponent.h"
 #include "Frontend/AskirFrontendSubsystem.h"
+#include "Dialogue/AskirConversationComponent.h"
 #include "Settings/AskirGameUserSettings.h"
 #include "Magic/AskirSpellCatalog.h"
 #include "Blueprint/WidgetTree.h"
@@ -25,6 +26,8 @@
 #include "Mission/AskirDornfeldEventActor.h"
 #include "Mission/AskirDeliveryMissionComponent.h"
 #include "Mission/AskirDeliveryQuestActor.h"
+#include "NPC/AskirDialogueComponent.h"
+#include "NPC/AskirNPCInteractionComponent.h"
 #include "Social/AskirReputationComponent.h"
 #include "Travel/AskirWorldTravelSubsystem.h"
 #include "Engine/GameInstance.h"
@@ -58,6 +61,10 @@ namespace
     }
 }
 void UAskirNarrativeButton::Activate(){if(HUD.IsValid())HUD->ExecuteNarrativeAction(ActionID,ContextGeneration);}
+void UAskirConversationButton::Activate()
+{
+    if(HUD.IsValid())HUD->ExecuteConversationChoice(ChoiceID,ConversationRevision,ContextGeneration);
+}
 void UAskirEconomyButton::Activate()
 {
     if(HUD.IsValid())HUD->ExecuteEconomyAction(EntryID,bSell,bCraft,ContextGeneration);
@@ -165,6 +172,8 @@ void UAskirHUDWidget::NativeConstruct(){Super::NativeConstruct();SetIsFocusable(
 void UAskirHUDWidget::NativeDestruct()
 {
     ++ContextGeneration;
+    if(auto* Player=Cast<AAskirCharacter>(GetOwningPlayerPawn()))
+        if(Player->ConversationComponent)Player->ConversationComponent->EndConversation();
     if(Panel==EAskirUIPanel::Settings||Panel==EAskirUIPanel::VideoConfirm)
         if(auto* Settings=UAskirGameUserSettings::Get())Settings->CancelEdit();
     Super::NativeDestruct();
@@ -188,8 +197,17 @@ void UAskirHUDWidget::NativeTick(const FGeometry& Geometry,float DeltaSeconds)
     if(NotificationSeconds>0){NotificationSeconds-=DeltaSeconds;if(NotificationSeconds<=0&&Notification)Notification->SetText(FText::GetEmpty());}
     auto* Pawn=Cast<AAskirCharacter>(GetOwningPlayerPawn());
     if((Panel==EAskirUIPanel::Merchant&&(!CurrentMerchant.IsValid()||!CurrentMerchant->CanInteract(Pawn)))||
-       (Panel==EAskirUIPanel::Crafting&&(!CurrentStation.IsValid()||!CurrentStation->CanInteract(Pawn)))||
-       (Panel==EAskirUIPanel::Delivery&&(!CurrentDeliveryGiver.IsValid()||!CurrentDeliveryGiver->CanInteractWith(Pawn))))ClosePanel();
+       (Panel==EAskirUIPanel::Crafting&&(!CurrentStation.IsValid()||!CurrentStation->CanInteract(Pawn))))ClosePanel();
+    if(Panel==EAskirUIPanel::Conversation)
+    {
+        auto* Conversation=Pawn?Pawn->ConversationComponent.Get():nullptr;
+        if(!Conversation)ClosePanel();
+        else if(!Conversation->IsTransactionInProgress())
+        {
+            if(!Conversation->IsActive()||!Conversation->CanContinueConversation())ClosePanel();
+            else if(ConversationRevision!=Conversation->GetRevision())BuildPanel();
+        }
+    }
     if(const auto* State=TravelState(this))
         if(State->bArrivalFailed&&Panel!=EAskirUIPanel::TravelRecovery&&MenuBody)
         {
@@ -271,7 +289,23 @@ void UAskirHUDWidget::RefreshHUD()
     FHitResult Hit;FCollisionQueryParams Params(SCENE_QUERY_STAT(AskirUIPrompt),false,Pawn);
     if(GetWorld()->LineTraceSingleByChannel(Hit,Start,Start+GetOwningPlayer()->GetControlRotation().Vector()*250.f,ECC_Visibility,Params))
         if(AActor* Target=Hit.GetActor())
-            if(Target->GetClass()->ImplementsInterface(UAskirInteractable::StaticClass()))Prompt->SetText(FText::FromString(TEXT("E · ")+IAskirInteractable::Execute_GetInteractionText(Target).ToString()));
+        {
+            if(Target->GetClass()->ImplementsInterface(UAskirInteractable::StaticClass()))
+            {
+                Prompt->SetText(FText::FromString(TEXT("E · ")+IAskirInteractable::Execute_GetInteractionText(Target).ToString()));return;
+            }
+            const auto* Interaction=Target->FindComponentByClass<UAskirNPCInteractionComponent>();
+            if(!Interaction||!Interaction->CanInteract(Pawn))return;
+            const auto* Dialogue=Target->FindComponentByClass<UAskirDialogueComponent>();
+            const bool bHasLegacyDialogue=Dialogue&&!Dialogue->Nodes.IsEmpty();
+            if(const auto* NPC=Cast<AAskirNPC>(Target))
+            {
+                if(!NPC->bHostile&&!NPC->IsDead()&&NPC->IsEncounterActive()&&(!NPC->ConversationID.IsNone()||bHasLegacyDialogue))
+                    Prompt->SetText(FText::Format(NSLOCTEXT("AskirUI","NPCConversationPrompt","E · Mit {0} sprechen"),
+                        NPC->NPCName.IsEmpty()?NSLOCTEXT("AskirUI","UnnamedResident","Bewohner"):NPC->NPCName));
+            }
+            else if(bHasLegacyDialogue)Prompt->SetText(NSLOCTEXT("AskirUI","ActorConversationPrompt","E · Gespräch beginnen"));
+        }
 }
 void UAskirHUDWidget::Notify(FText Text){if(Notification)Notification->SetText(Text);NotificationSeconds=4.f;}
 void UAskirHUDWidget::TogglePanel(EAskirUIPanel NewPanel)
@@ -295,6 +329,10 @@ void UAskirHUDWidget::BuildPanel()
     if(IsFrontendPanel())
     {
         BuildSettingsPanel();return;
+    }
+    if(Panel==EAskirUIPanel::Conversation)
+    {
+        BuildConversationPanel();return;
     }
     if(Panel==EAskirUIPanel::Pause)
     {
@@ -393,32 +431,6 @@ void UAskirHUDWidget::BuildPanel()
         }
         if(!bHasRecipe)AddText(MenuBody,TEXT("Du kennst noch keine Rezepte für diese Werkbank."));
     }
-    else if(Panel==EAskirUIPanel::Delivery&&Pawn&&Pawn->DeliveryMission&&CurrentDeliveryGiver.IsValid())
-    {
-        AddText(MenuBody,TEXT("Torben · Die verlorene Lieferung"),28);
-        const auto Stage=Pawn->DeliveryMission->GetStage();
-        if(Stage==EAskirDeliveryStage::NotStarted)
-        {
-            if(!bDeliveryDetails)
-            {
-                AddText(MenuBody,TEXT("Mein Wagen steht noch draußen am Weg. Zwei Banditen haben die Lieferung geraubt. Ohne sie gehen hier bald die Vorräte aus."));
-                AddNarrativeButton(TEXT("delivery_more"),NSLOCTEXT("AskirUI","DeliveryMore","Erzähl mir, was geschehen ist."));
-            }
-            else
-            {
-                AddText(MenuBody,TEXT("Sie lagern im Dornfelder Umland. Besiege die beiden Banditen, sichere die Waren und kehre zu mir zurück. Ich zahle dir 16 Gold und gebe dir einen Teil der Vorräte."));
-                AddText(MenuBody,TEXT("Belohnung: 100 Erfahrung, 16 Gold und eine Handwerkszutat."),16);
-                AddNarrativeButton(TEXT("delivery_help"),NSLOCTEXT("AskirUI","DeliveryHelp","Ich helfe dir. Die Wege müssen sicher bleiben. (Waldhüter +2)"));
-                AddNarrativeButton(TEXT("delivery_bargain"),NSLOCTEXT("AskirUI","DeliveryBargain","Einverstanden, wenn der Lohn fair bleibt. (Freie Händler +2)"));
-            }
-        }
-        else if(Stage==EAskirDeliveryStage::ReturnToTorben)
-        {
-            AddText(MenuBody,TEXT("Du hast die Waren gefunden! Jetzt können die Händler wieder durch Dornfeld ziehen. Hier ist dein versprochener Lohn."));
-            AddNarrativeButton(TEXT("delivery_turnin"),NSLOCTEXT("AskirUI","DeliveryTurnIn","Die Lieferung übergeben und den Auftrag abschließen."));
-        }
-        else AddText(MenuBody,Stage==EAskirDeliveryStage::Completed?TEXT("Dank dir sind unsere Vorräte zurück. Dornfeld steht in deiner Schuld."):Pawn->DeliveryMission->GetObjectiveText().ToString());
-    }
     else if(Panel==EAskirUIPanel::TravelRecovery)
     {
         AddText(MenuBody,TEXT("Reise unterbrochen"),28);
@@ -433,12 +445,63 @@ void UAskirHUDWidget::BuildPanel()
 }
 bool UAskirHUDWidget::ShowDeliveryDialogue(AAskirDeliveryQuestActor* Giver)
 {
-    if(const auto* State=TravelState(this))if(State->HasPendingTravel())return false;
-    auto* Pawn=Cast<AAskirCharacter>(GetOwningPlayerPawn());
-    if(!IsValid(Giver)||!Giver->CanInteractWith(Pawn)||!Pawn->DeliveryMission||!MenuBody)return false;
-    ClosePanel();CurrentDeliveryGiver=Giver;Panel=EAskirUIPanel::Delivery;BuildPanel();Menu->SetVisibility(ESlateVisibility::Visible);
-    if(auto* PC=Cast<AAskirPlayerController>(GetOwningPlayer()))PC->SetMenuInput(true,false);
+    return ShowConversation(Giver,FName(TEXT("D_SQ_001")));
+}
+bool UAskirHUDWidget::ShowConversation(AActor* Speaker,FName DialogueID)
+{
+    auto* Player=Cast<AAskirCharacter>(GetOwningPlayerPawn());
+    if(!IsValid(Speaker)||!Player||!Player->ConversationComponent||!Player->CanUseGameplayInput()||!MenuBody||!Menu)return false;
+    ClosePanel();
+    auto* Conversation=Player->ConversationComponent.Get();
+    if(!Conversation->BeginConversation(Speaker,DialogueID))
+    {
+        Notify(Conversation->GetLastFailureText());return false;
+    }
+    Panel=EAskirUIPanel::Conversation;BuildPanel();
+    if(Panel!=EAskirUIPanel::Conversation)return false;
+    Menu->SetVisibility(ESlateVisibility::Visible);
+    if(auto* Controller=Cast<AAskirPlayerController>(GetOwningPlayer()))Controller->SetMenuInput(true,false);
     return true;
+}
+void UAskirHUDWidget::BuildConversationPanel()
+{
+    auto* Player=Cast<AAskirCharacter>(GetOwningPlayerPawn());
+    auto* Conversation=Player?Player->ConversationComponent.Get():nullptr;
+    if(!Conversation||!Conversation->IsActive()||!Conversation->CanContinueConversation())
+    {
+        ClosePanel();return;
+    }
+    const auto Node=Conversation->GetCurrentNode();
+    const auto Choices=Conversation->GetAvailableChoices();
+    ConversationRevision=Conversation->GetRevision();
+    AddText(MenuBody,TEXT(""),26)->SetText(Node.Speaker);
+    AddText(MenuBody,TEXT(""),20)->SetText(Node.Text);
+    for(const auto& Choice:Choices)
+    {
+        auto* Button=WidgetTree->ConstructWidget<UAskirConversationButton>();
+        Button->HUD=this;Button->ChoiceID=Choice.ChoiceID;Button->ConversationRevision=ConversationRevision;
+        Button->ContextGeneration=ContextGeneration;Button->SetIsEnabled(Choice.bEnabled);
+        auto* Label=WidgetTree->ConstructWidget<UTextBlock>();
+        Label->SetFont(FCoreStyle::GetDefaultFontStyle("Regular",18));Label->SetAutoWrapText(true);Label->SetText(Choice.Label);
+        Button->AddChild(Label);Button->OnClicked.AddDynamic(Button,&UAskirConversationButton::Activate);
+        MenuBody->AddChildToVerticalBox(Button);
+    }
+    AddNarrativeButton(TEXT("menu_close"),NSLOCTEXT("AskirUI","ConversationLeave","Gespräch beenden"));
+}
+void UAskirHUDWidget::ExecuteConversationChoice(FName ChoiceID,int64 ExpectedRevision,uint64 ExpectedGeneration)
+{
+    auto* Player=Cast<AAskirCharacter>(GetOwningPlayerPawn());
+    if(!IsActionContextCurrent(ExpectedGeneration,EAskirUIPanel::Conversation,Player)||
+       !Player||!Player->ConversationComponent)return;
+    auto* Conversation=Player->ConversationComponent.Get();
+    if(!Conversation->IsActive()||!Conversation->CanContinueConversation())
+    {
+        ClosePanel();return;
+    }
+    const bool bSelected=Conversation->SelectChoice(ChoiceID,ExpectedRevision);
+    if(!bSelected)Notify(Conversation->GetLastFailureText());
+    if(!Conversation->IsActive()||!Conversation->CanContinueConversation())ClosePanel();
+    else BuildPanel();
 }
 void UAskirHUDWidget::ExecuteNarrativeAction(FName ActionID,uint64 ExpectedGeneration)
 {
@@ -467,15 +530,6 @@ void UAskirHUDWidget::ExecuteNarrativeAction(FName ActionID,uint64 ExpectedGener
         return;
     }
     if(Panel==EAskirUIPanel::Dialogue&&ActionID==FName(TEXT("mara_confirm"))){ConfirmDialogue();return;}
-    if(Panel!=EAskirUIPanel::Delivery||!Pawn->DeliveryMission||!CurrentDeliveryGiver.IsValid()||!CurrentDeliveryGiver->CanInteractWith(Pawn))return;
-    if(ActionID==FName(TEXT("delivery_more"))&&Pawn->DeliveryMission->GetStage()==EAskirDeliveryStage::NotStarted)
-    {bDeliveryDetails=true;BuildPanel();return;}
-    bool bOK=false;
-    if(ActionID==FName(TEXT("delivery_help")))bOK=Pawn->DeliveryMission->AcceptDelivery(TEXT("help"));
-    else if(ActionID==FName(TEXT("delivery_bargain")))bOK=Pawn->DeliveryMission->AcceptDelivery(TEXT("bargain"));
-    else if(ActionID==FName(TEXT("delivery_turnin")))bOK=Pawn->DeliveryMission->ReturnToTorben();
-    if(bOK){ClosePanel();Notify(NSLOCTEXT("AskirUI","DeliveryUpdated","Die verlorene Lieferung: Auftrag aktualisiert."));}
-    else {Notify(Pawn->DeliveryMission->GetLastFailureText());BuildPanel();}
 }
 bool UAskirHUDWidget::ShowMerchant(AAskirMerchantActor* Merchant)
 {
@@ -551,10 +605,12 @@ bool UAskirHUDWidget::ShowElderDialogue(AAskirDornfeldEventActor* Elder)
 }
 void UAskirHUDWidget::ClosePanel()
 {
+    if(auto* Player=Cast<AAskirCharacter>(GetOwningPlayerPawn()))
+        if(Player->ConversationComponent)Player->ConversationComponent->EndConversation();
     if(Panel==EAskirUIPanel::Settings||Panel==EAskirUIPanel::VideoConfirm)
         if(auto* Settings=UAskirGameUserSettings::Get())Settings->CancelEdit();
     ++ContextGeneration;
-    Panel=EAskirUIPanel::None;CurrentElder.Reset();CurrentMerchant.Reset();CurrentStation.Reset();CurrentDeliveryGiver.Reset();bDeliveryDetails=false;if(Menu)Menu->SetVisibility(ESlateVisibility::Collapsed);
+    Panel=EAskirUIPanel::None;CurrentElder.Reset();CurrentMerchant.Reset();CurrentStation.Reset();ConversationRevision=-1;if(Menu)Menu->SetVisibility(ESlateVisibility::Collapsed);
     if(auto* PC=Cast<AAskirPlayerController>(GetOwningPlayer()))PC->SetMenuInput(false,false);
 }
 void UAskirHUDWidget::ConfirmDialogue()
