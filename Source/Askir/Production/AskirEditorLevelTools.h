@@ -37,4 +37,8 @@ public:
     /** Checks the native player capsule against blocking collision and a walkable floor. */
     UFUNCTION(BlueprintPure, Category="Askir|Editor", meta=(WorldContext="WorldContextObject"))
     static bool IsPlayerArrivalClear(UObject* WorldContextObject, FVector Location);
+
+    /** Require the first real visibility hit to belong to the expected interaction actor. */
+    UFUNCTION(BlueprintPure, Category="Askir|Editor", meta=(WorldContext="WorldContextObject"))
+    static bool HasVisibilityLineToActor(UObject* WorldContextObject, FVector Start, FVector End, AActor* Target);
 };

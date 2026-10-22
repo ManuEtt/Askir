@@ -21,6 +21,7 @@ class UAskirAnimationStateComponent;
 class UAskirMagicComponent;
 class UAskirAnimationPlaybackComponent;
 class UAskirDeliveryMissionComponent;
+class UAskirHerbMissionComponent;
 class UAskirDialogueComponent;
 class UAskirReputationComponent;
 class UAskirTargetLockComponent;
@@ -51,6 +52,7 @@ public:
     UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Askir|Combat") TObjectPtr<UAskirTargetLockComponent> TargetLockComponent;
     UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Askir|Dialogue") TObjectPtr<UAskirConversationComponent> ConversationComponent;
     UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Askir|Quest") TObjectPtr<UAskirDeliveryMissionComponent> DeliveryMission;
+    UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Askir|Quest") TObjectPtr<UAskirHerbMissionComponent> HerbMission;
     UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Askir|Dialogue") TObjectPtr<UAskirDialogueComponent> DialogueComponent;
     UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Askir|Faction") TObjectPtr<UAskirReputationComponent> ReputationComponent;
     UPROPERTY(VisibleAnywhere,BlueprintReadOnly,Category="Askir|Animation") TObjectPtr<UAskirAnimationPlaybackComponent> AnimationPlayback;

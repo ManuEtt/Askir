@@ -126,7 +126,7 @@ def normalize_choice(raw, node_id, index, quests):
         if "action" in raw or "payload" in raw:
             fail(f"{context}: quest_start cannot be combined with action/payload")
         action, payload = "quest_start", raw["quest_start"]
-    if action not in ("", "quest_start", "accept_delivery", "return_delivery"):
+    if action not in ("", "quest_start", "accept_delivery", "return_delivery", "accept_herbs", "return_herbs"):
         fail(f"{context}: unsupported action {action!r}")
     if not isinstance(payload, str):
         fail(f"{context}: payload must be a string")
@@ -134,16 +134,16 @@ def normalize_choice(raw, node_id, index, quests):
         identifier(payload, context + " quest")
         if payload not in quests:
             fail(f"{context}: unknown quest {payload}")
-    elif action == "accept_delivery":
+    elif action in ("accept_delivery", "accept_herbs"):
         if payload not in ("help", "bargain"):
-            fail(f"{context}: invalid delivery choice payload")
+            fail(f"{context}: invalid mission choice payload")
     elif payload:
         fail(f"{context}: action {action!r} does not accept a payload")
     enabled = raw.get("enabled", True)
     if type(enabled) is not bool:
         fail(f"{context}: enabled must be boolean")
-    # Import all source declarations honestly; only the existing implemented quest is callable.
-    result.update(action=action, payload=payload, enabled=enabled and (action != "quest_start" or payload == "SQ_001"))
+    # Only quests with real native runtime implementations are callable.
+    result.update(action=action, payload=payload, enabled=enabled and (action != "quest_start" or payload in ("SQ_001", "SQ_003")))
     return result
 
 
@@ -195,6 +195,9 @@ def load_catalog(root):
     delivery = next((quest for quest in quest_data if quest["id"] == "SQ_001"), None)
     if delivery is None or delivery.get("giver") != "Torben" or delivery.get("rewards") != {"xp": 100, "gold": 16, "item": "item_002"}:
         fail("Canonical SQ_001 giver/rewards must remain Torben, 100 XP, 16 Gold, item_002")
+    herbs = next((quest for quest in quest_data if quest["id"] == "SQ_003"), None)
+    if herbs is None or herbs.get("giver") != "Rurik" or herbs.get("rewards") != {"xp": 150, "gold": 24, "item": "item_004"}:
+        fail("Canonical SQ_003 giver/rewards must remain Rurik, 150 XP, 24 Gold, item_004")
     sources = [normalize_graph(raw, quests) for raw in sequence(read_json(root / INPUTS[0]), "source conversations", MAX_GRAPHS, False)]
     unique_ids([graph["id"] for graph in sources], "source conversations")
     overrides = read_json(root / INPUTS[1])
