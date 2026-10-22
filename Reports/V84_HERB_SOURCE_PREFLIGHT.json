@@ -1,0 +1,124 @@
+{
+  "status": "Bestanden",
+  "coverage": "All source SHA256/byte sizes; actual OBJ indices, nondegenerate triangles, unit normals, safe managed MTL and PBR values, counts, finite coordinates/bounds; GLB/FBX/Blender/preview headers. Cross-format GLB/OBJ topology requires the full offline validator.",
+  "props": {
+    "SM_AskirHealingHerbs": {
+      "vertices": 1150,
+      "triangles": 1848,
+      "materials": 6,
+      "bounds_metres_z_up": [
+        [
+          -0.2841479778289795,
+          -0.28730353713035583,
+          0.0
+        ],
+        [
+          0.29193809628486633,
+          0.28119438886642456,
+          0.593000054359436
+        ]
+      ],
+      "dimensions_centimetres": [
+        57.60860741138458,
+        56.84979259967804,
+        59.3000054359436
+      ]
+    }
+  },
+  "materials": {
+    "Askir_HealingHerbs_Soil": {
+      "base_color": [
+        0.10999999940395355,
+        0.07500000298023224,
+        0.03500000014901161,
+        1.0
+      ],
+      "roughness": 0.949999988079071,
+      "metallic": 0.0
+    },
+    "Askir_HealingHerbs_Stem": {
+      "base_color": [
+        0.08500000089406967,
+        0.1899999976158142,
+        0.06499999761581421,
+        1.0
+      ],
+      "roughness": 0.8600000143051147,
+      "metallic": 0.0
+    },
+    "Askir_HealingHerbs_YoungLeaf": {
+      "base_color": [
+        0.23000000417232513,
+        0.38999998569488525,
+        0.12999999523162842,
+        1.0
+      ],
+      "roughness": 0.7599999904632568,
+      "metallic": 0.0
+    },
+    "Askir_HealingHerbs_Leaf": {
+      "base_color": [
+        0.09000000357627869,
+        0.27000001072883606,
+        0.10499999672174454,
+        1.0
+      ],
+      "roughness": 0.7900000214576721,
+      "metallic": 0.0
+    },
+    "Askir_HealingHerbs_Petal": {
+      "base_color": [
+        0.33000001311302185,
+        0.28999999165534973,
+        0.5799999833106995,
+        1.0
+      ],
+      "roughness": 0.7200000286102295,
+      "metallic": 0.0
+    },
+    "Askir_HealingHerbs_Heart": {
+      "base_color": [
+        0.6800000071525574,
+        0.49000000953674316,
+        0.1599999964237213,
+        1.0
+      ],
+      "roughness": 0.8199999928474426,
+      "metallic": 0.0
+    }
+  },
+  "files": {
+    "Askir_HealingHerbs.blend": {
+      "bytes": 737564,
+      "sha256": "212e7d3044f9ef6276e9f2675ad7f57c33ef1702ed7991654a098fe78c618b7f"
+    },
+    "Askir_HealingHerbs.fbx": {
+      "bytes": 71772,
+      "sha256": "6637d971fe489cd88c5d5171c31eb534f660bdfc7f06b9b3ce7fd1e4c6a934bc"
+    },
+    "Askir_HealingHerbs.glb": {
+      "bytes": 180448,
+      "sha256": "58ffe731410089bda642a0d3b8e62db85169f18d31ad87954647fe070be4b738"
+    },
+    "Askir_HealingHerbs.mtl": {
+      "bytes": 890,
+      "sha256": "0fcb79966ab5c92c9c4a43664ee07c83a6a735972469c8fbf042a8ab53d441fb"
+    },
+    "Askir_HealingHerbs.obj": {
+      "bytes": 177222,
+      "sha256": "9c0e24c39f65272aa8e455a63ebc558104df0eb11700a99febff5e9818a097a6"
+    },
+    "Askir_HealingHerbs_Preview.png": {
+      "bytes": 920239,
+      "sha256": "bd8346a5e0426c61f4432f8dabc31bdeca35d5ef9503dc1076c81d1fb48ab142"
+    },
+    "LICENSE_CC0.txt": {
+      "bytes": 337,
+      "sha256": "bed0533285661fdef86b8d6847383805e7dee07d4805da652578760c5e90806a"
+    }
+  },
+  "asset": "/Game/Askir/V84/Props/SM_AskirHealingHerbs",
+  "editor_status": "Nicht ausgeführt",
+  "unreal_import": "Nicht ausgeführt",
+  "runtime_collision": "Nicht ausgeführt"
+}

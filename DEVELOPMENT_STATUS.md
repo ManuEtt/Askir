@@ -34,3 +34,22 @@ Updated: 2026-10-20
 
 ## Commit
 - This file is introduced by the GitHub commit returned from the create-file operation. Consult the branch history for its exact SHA.
+
+
+## 2026-10-22 V84 checkpoint verification
+
+The merged target-ranking regression assertions above were retained and executed
+against the actual production rules. The targeting binary passed 28,883 checks.
+V84 adds the canonical SQ_003 Rurik exploration/return mission, saved choices and
+atomic rewards, stage-aware dialogue, HUD/journal integration, and original CC0
+herb model sources. Details: `Docs/V84_CHANGES.md`.
+
+`python Tools/verify_v84.py` passed 708 Python tests and 457,277 portable C++ checks
+in 15 executables with UBSan, plus source/catalog/asset validation. The report
+hashes all executable inputs. 80 Unreal tests are registered and unexecuted.
+UE 5.6 and a Windows host remain unavailable; no native Unreal compilation,
+real map creation, playthrough or Windows package is claimed.
+
+The requested pause follows the verified V84 source ZIP/GitHub checkpoint.
+Resume from `Docs/NEXT_SESSION.md` and the delivery manifest, checking current
+main/PR state before publishing further changes. Do not merge automatically.

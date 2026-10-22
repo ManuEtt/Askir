@@ -106,6 +106,17 @@ bool UAskirEditorLevelTools::IsPlayerArrivalClear(UObject* WorldContextObject, F
         && Hit.Distance >= Extent.Z - 2.f && Hit.Distance <= Extent.Z + 20.f;
 }
 
+bool UAskirEditorLevelTools::HasVisibilityLineToActor(UObject* WorldContextObject, FVector Start, FVector End, AActor* Target)
+{
+    UWorld* World=GEngine?GEngine->GetWorldFromContextObject(WorldContextObject,EGetWorldErrorMode::ReturnNull):nullptr;
+    if(!World||World->bIsTearingDown||!IsValid(Target)||Target->IsActorBeingDestroyed()||Target->GetWorld()!=World||
+        Start.ContainsNaN()||End.ContainsNaN()||!FMath::IsFinite(Start.X)||!FMath::IsFinite(Start.Y)||!FMath::IsFinite(Start.Z)||
+        !FMath::IsFinite(End.X)||!FMath::IsFinite(End.Y)||!FMath::IsFinite(End.Z)||Start.Equals(End))return false;
+    FHitResult Hit;
+    FCollisionQueryParams Params(SCENE_QUERY_STAT(AskirInteractionVisibilityValidation),false);
+    return World->LineTraceSingleByChannel(Hit,Start,End,ECC_Visibility,Params)&&Hit.bBlockingHit&&Hit.GetActor()==Target;
+}
+
 bool UAskirEditorLevelTools::ConfigureEditorGameMode(UObject* WorldContextObject, TSubclassOf<AGameModeBase> GameModeClass, bool bApply)
 {
 #if WITH_EDITOR

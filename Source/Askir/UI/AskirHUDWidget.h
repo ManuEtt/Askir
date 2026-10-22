@@ -133,6 +133,7 @@ private:
     UPROPERTY(Transient) TObjectPtr<UTextBlock> Stats;
     UPROPERTY(Transient) TObjectPtr<UTextBlock> Objective;
     UPROPERTY(Transient) TObjectPtr<UTextBlock> DeliveryObjective;
+    UPROPERTY(Transient) TObjectPtr<UTextBlock> HerbObjective;
     UPROPERTY(Transient) TObjectPtr<UTextBlock> Prompt;
     UPROPERTY(Transient) TObjectPtr<UTextBlock> Notification;
     UPROPERTY(Transient) TObjectPtr<UProgressBar> Health;

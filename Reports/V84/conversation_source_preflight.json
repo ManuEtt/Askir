@@ -1,0 +1,28 @@
+{
+  "status": "Bestanden",
+  "version": "V83",
+  "world_contract_version": "V80",
+  "map_package": "/Game/Askir/Maps/Dornfeld_V80",
+  "actor_label": "Dornfeld_Rurik_V83",
+  "stable_tag": "ASKIR_V83_NPC_RURIK",
+  "dialogue_id": "D_DORNFELD_RURIK",
+  "position": [
+    500,
+    -1550,
+    100
+  ],
+  "navigation_center": [
+    0,
+    450,
+    150
+  ],
+  "navigation_extent": [
+    2350,
+    3100,
+    350
+  ],
+  "native_catalog_source": "Bestanden",
+  "editor_status": "Nicht ausgeführt",
+  "gameplay_status": "Nicht ausgeführt",
+  "coverage": "native catalog freshness and authored floor/navigation source bounds only; physical collision/accessibility untested"
+}

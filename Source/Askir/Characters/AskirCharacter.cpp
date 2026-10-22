@@ -3,6 +3,7 @@
 #include "Settings/AskirGameUserSettings.h"
 #include "Settings/AskirSettingsRules.h"
 #include "Mission/AskirDeliveryMissionComponent.h"
+#include "Mission/AskirHerbMissionComponent.h"
 #include "Social/AskirReputationComponent.h"
 #include "Travel/AskirWorldTravelSubsystem.h"
 #include "Engine/GameInstance.h"
@@ -59,6 +60,7 @@ AAskirCharacter::AAskirCharacter()
 {
     ProgressionComponent=CreateDefaultSubobject<UAskirProgressionComponent>(TEXT("Progression"));
     DeliveryMission=CreateDefaultSubobject<UAskirDeliveryMissionComponent>(TEXT("DeliveryMission"));
+    HerbMission=CreateDefaultSubobject<UAskirHerbMissionComponent>(TEXT("HerbMission"));
     DialogueComponent=CreateDefaultSubobject<UAskirDialogueComponent>(TEXT("Dialogue"));
     ReputationComponent=CreateDefaultSubobject<UAskirReputationComponent>(TEXT("Reputation"));
     MagicComponent=CreateDefaultSubobject<UAskirMagicComponent>(TEXT("Magic"));

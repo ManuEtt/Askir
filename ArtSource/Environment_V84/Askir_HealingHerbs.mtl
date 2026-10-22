@@ -1,0 +1,60 @@
+# Original ASKIR V84 texture-free materials
+newmtl Askir_HealingHerbs_Soil
+Kd 0.110000 0.075000 0.035000
+Ka 0.02 0.02 0.02
+Ks 0.12 0.12 0.12
+Ns 32
+d 1.0
+illum 2
+Pr 0.95000
+Pm 0.00000
+
+newmtl Askir_HealingHerbs_Stem
+Kd 0.085000 0.190000 0.065000
+Ka 0.02 0.02 0.02
+Ks 0.12 0.12 0.12
+Ns 32
+d 1.0
+illum 2
+Pr 0.86000
+Pm 0.00000
+
+newmtl Askir_HealingHerbs_YoungLeaf
+Kd 0.230000 0.390000 0.130000
+Ka 0.02 0.02 0.02
+Ks 0.12 0.12 0.12
+Ns 32
+d 1.0
+illum 2
+Pr 0.76000
+Pm 0.00000
+
+newmtl Askir_HealingHerbs_Leaf
+Kd 0.090000 0.270000 0.105000
+Ka 0.02 0.02 0.02
+Ks 0.12 0.12 0.12
+Ns 32
+d 1.0
+illum 2
+Pr 0.79000
+Pm 0.00000
+
+newmtl Askir_HealingHerbs_Petal
+Kd 0.330000 0.290000 0.580000
+Ka 0.02 0.02 0.02
+Ks 0.12 0.12 0.12
+Ns 32
+d 1.0
+illum 2
+Pr 0.72000
+Pm 0.00000
+
+newmtl Askir_HealingHerbs_Heart
+Kd 0.680000 0.490000 0.160000
+Ka 0.02 0.02 0.02
+Ks 0.12 0.12 0.12
+Ns 32
+d 1.0
+illum 2
+Pr 0.82000
+Pm 0.00000
