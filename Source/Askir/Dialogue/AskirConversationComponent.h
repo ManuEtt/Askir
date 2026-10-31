@@ -42,6 +42,7 @@ private:
     bool Fail(const FText& Text);
     void ClearCursor();
     bool IsContextValid(AActor* Speaker) const;
+    TArray<FName> GetEffectiveConversationFlags() const;
     bool ConditionsMatch(const TArray<FName>& Required,const TArray<FName>& Forbidden) const;
     bool IsActionReady(const FAskirConversationChoice& Choice) const;
     bool ExecuteAction(const FAskirConversationChoice& Choice);

@@ -25,6 +25,7 @@
 #include "Mission/AskirDornfeldMissionComponent.h"
 #include "Mission/AskirDornfeldEventActor.h"
 #include "Mission/AskirDeliveryMissionComponent.h"
+#include "Mission/AskirHerbMissionComponent.h"
 #include "Mission/AskirDeliveryQuestActor.h"
 #include "NPC/AskirDialogueComponent.h"
 #include "NPC/AskirNPCInteractionComponent.h"
@@ -137,6 +138,7 @@ TSharedRef<SWidget> UAskirHUDWidget::RebuildWidget()
     SelectedSpell=AddText(StatusBox,TEXT(""),16);
     Objective=AddText(StatusBox,TEXT(""),18);
     DeliveryObjective=AddText(StatusBox,TEXT(""),18);
+    HerbObjective=AddText(StatusBox,TEXT(""),18);
     TargetPanel=WidgetTree->ConstructWidget<UBorder>();
     TargetPanel->SetBrushColor(FLinearColor(.035f,.02f,.025f,.88f));TargetPanel->SetPadding(FMargin(12.f,8.f));
     TargetPanelSlot=Canvas->AddChildToCanvas(TargetPanel);
@@ -283,6 +285,9 @@ void UAskirHUDWidget::RefreshHUD()
     }
     Objective->SetText(Pawn->IsDead()?NSLOCTEXT("AskirUI","Dead","Du bist gefallen. Lade mit F9 einen Spielstand."):Pawn->DornfeldMission?Pawn->DornfeldMission->GetObjectiveText():FText::GetEmpty());
     DeliveryObjective->SetText(Pawn->DeliveryMission&&Pawn->DeliveryMission->GetStage()!=EAskirDeliveryStage::NotStarted&&Pawn->DeliveryMission->GetStage()!=EAskirDeliveryStage::Completed?Pawn->DeliveryMission->GetObjectiveText():FText::GetEmpty());
+    const bool bHerbActive=Pawn->HerbMission&&(Pawn->HerbMission->GetStage()==EAskirHerbStage::ExploreMeadow||Pawn->HerbMission->GetStage()==EAskirHerbStage::ReturnToRurik);
+    HerbObjective->SetText(bHerbActive?Pawn->HerbMission->GetObjectiveText():FText::GetEmpty());
+    HerbObjective->SetVisibility(bHerbActive?ESlateVisibility::HitTestInvisible:ESlateVisibility::Collapsed);
     Prompt->SetText(FText::GetEmpty());
     if(Panel!=EAskirUIPanel::None||Pawn->IsDead())return;
     const FVector Start=Pawn->GetActorLocation()+FVector(0,0,50);
@@ -372,6 +377,15 @@ void UAskirHUDWidget::BuildPanel()
             for(const auto& Goal:Pawn->QuestComponent->GetObjectivesForQuest(FName(TEXT("SQ_001"))))
                 AddText(MenuBody,FString::Printf(TEXT("%s  %d/%d"),*Goal.Description.ToString(),Goal.CurrentCount,Goal.RequiredCount));
             const FName Choice=Pawn->DeliveryMission->GetAcceptedChoice();
+            if(!Choice.IsNone())AddText(MenuBody,Choice==FName(TEXT("help"))?TEXT("Entscheidung: Hilfsbereitschaft · Waldhüter +2"):TEXT("Entscheidung: Fairer Handel · Freie Händler +2"),16);
+        }
+        if(Pawn->HerbMission)
+        {
+            AddText(MenuBody,TEXT("Heilkräuter für Mara"),22);
+            AddText(MenuBody,Pawn->HerbMission->GetObjectiveText().ToString());
+            for(const auto& Goal:Pawn->QuestComponent->GetObjectivesForQuest(FName(TEXT("SQ_003"))))
+                AddText(MenuBody,FString::Printf(TEXT("%s  %d/%d"),*Goal.Description.ToString(),Goal.CurrentCount,Goal.RequiredCount));
+            const FName Choice=Pawn->HerbMission->GetAcceptedChoice();
             if(!Choice.IsNone())AddText(MenuBody,Choice==FName(TEXT("help"))?TEXT("Entscheidung: Hilfsbereitschaft · Waldhüter +2"):TEXT("Entscheidung: Fairer Handel · Freie Händler +2"),16);
         }
         if(Pawn->ReputationComponent)

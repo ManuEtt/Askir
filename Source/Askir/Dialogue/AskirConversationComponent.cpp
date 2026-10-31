@@ -1,5 +1,6 @@
 #include "Dialogue/AskirConversationComponent.h"
 #include "Dialogue/AskirConversationRules.h"
+#include "Dialogue/AskirHerbConversationRules.h"
 #include "Dialogue/AskirConversationCatalog.h"
 #include "Characters/AskirCharacter.h"
 #include "Characters/AskirNPC.h"
@@ -8,6 +9,7 @@
 #include "NPC/AskirNPCInteractionComponent.h"
 #include "Mission/AskirDeliveryQuestActor.h"
 #include "Mission/AskirDeliveryMissionComponent.h"
+#include "Mission/AskirHerbMissionComponent.h"
 #include "Game/AskirGameMode.h"
 #include "Inventory/AskirInventoryComponent.h"
 #include "Quest/AskirQuestComponent.h"
@@ -153,7 +155,7 @@ bool UAskirConversationComponent::BeginConversation(AActor* Speaker,FName Dialog
     const bool bBuilt=DialogueID.IsNone()?BuildLegacyGraph(Speaker,Graph):AskirConversationCatalog::Build(DialogueID,Graph);
     if(!bBuilt||!ValidateGraph(Graph)||(!DialogueID.IsNone()&&Graph.ID!=DialogueID))
         return Fail(NSLOCTEXT("AskirConversation","InvalidGraph","Die Gesprächsdaten sind nicht verfügbar oder ungültig."));
-    const auto* Flags=GetFlagLedger();const std::string Entry=AskirConversationRules::ChooseEntry(Portable(Graph),DeliveryStage(Player),Keys(Flags->GetFlags()));
+    const std::string Entry=AskirConversationRules::ChooseEntry(Portable(Graph),DeliveryStage(Player),Keys(GetEffectiveConversationFlags()));
     FName Start=NAME_None;
     for(const auto& Node:Graph.Nodes)if(Key(Node.NodeID)==Entry){Start=Node.NodeID;break;}
     if(Start.IsNone()||!Advance(Revision))
@@ -169,9 +171,19 @@ FAskirConversationNode UAskirConversationComponent::GetCurrentNode() const
 {
     const auto* Node=bActive?FindNode(CurrentNode):nullptr;return Node?*Node:FAskirConversationNode();
 }
+TArray<FName> UAskirConversationComponent::GetEffectiveConversationFlags() const
+{
+    const auto* Ledger=GetFlagLedger();const auto* Player=GetPlayer();
+    const auto* Herbs=Player?Player->FindComponentByClass<UAskirHerbMissionComponent>():nullptr;
+    const auto Effective=AskirHerbConversationRules::EffectiveFlags(Ledger?Keys(Ledger->GetFlags()):std::vector<std::string>(),
+        Herbs?static_cast<int>(Herbs->GetStage()):-1);
+    TArray<FName> Result;Result.Reserve(static_cast<int32>(Effective.size()));
+    for(const auto& Flag:Effective)Result.Add(FName(UTF8_TO_TCHAR(Flag.c_str())));
+    return Result; // Virtual SQ_003_STAGE_* flags are never written to the save ledger.
+}
 bool UAskirConversationComponent::ConditionsMatch(const TArray<FName>& Required,const TArray<FName>& Forbidden) const
 {
-    const auto* Flags=GetFlagLedger();return Flags&&AskirConversationRules::ConditionsMatch(Keys(Required),Keys(Forbidden),Keys(Flags->GetFlags()));
+    return GetFlagLedger()&&AskirConversationRules::ConditionsMatch(Keys(Required),Keys(Forbidden),Keys(GetEffectiveConversationFlags()));
 }
 bool UAskirConversationComponent::IsActionReady(const FAskirConversationChoice& Choice) const
 {
@@ -183,6 +195,24 @@ bool UAskirConversationComponent::IsActionReady(const FAskirConversationChoice& 
     const bool bGiver=Giver&&Giver->Role==EAskirDeliveryQuestRole::Giver&&Giver->CanInteractWith(const_cast<AAskirCharacter*>(Player));
     const bool bDomainReady=Delivery&&!Delivery->IsTransactionInProgress()&&Journal&&!Journal->IsTransactionInProgress()&&Bag&&!Bag->IsTransactionInProgress()&&
         Player->FindComponentByClass<UAskirReputationComponent>()&&Player->FindComponentByClass<UAskirTradeComponent>()&&Player->FindComponentByClass<UAskirProgressionComponent>();
+    if(AskirHerbConversationRules::IsHerbAction(Key(Choice.Action),Key(Choice.Payload)))
+    {
+        auto* Herbs=Player?Player->FindComponentByClass<UAskirHerbMissionComponent>():nullptr;
+        const auto* Rurik=Cast<AAskirNPC>(SpeakerActor.Get());
+        const bool bRurik=IsValid(Rurik)&&Rurik->ConversationID==FName(TEXT("D_DORNFELD_RURIK"))&&
+            Rurik->ActorHasTag(FName(TEXT("ASKIR_V84_RURIK_GIVER")))&&!Rurik->bHostile&&Rurik->IsEncounterActive();
+        const bool bHerbDomainReady=Herbs&&!Herbs->IsTransactionInProgress()&&Journal&&!Journal->IsTransactionInProgress()&&Bag&&!Bag->IsTransactionInProgress()&&
+            Player->FindComponentByClass<UAskirReputationComponent>()&&Player->FindComponentByClass<UAskirTradeComponent>()&&Player->FindComponentByClass<UAskirProgressionComponent>();
+        if(!AskirHerbConversationRules::ActionReady(Key(Choice.Action),Key(Choice.Payload),Herbs?static_cast<int>(Herbs->GetStage()):-1,bRurik,bHerbDomainReady))return false;
+        if(Choice.Action==FName(TEXT("return_herbs")))
+        {
+            const UAskirQuestData* Data=Herbs->ResolveQuestData();
+            if(!IsValid(Data)||!IsValid(Data->RewardItem)||Data->RewardItemQuantity<=0)return false;
+            FAskirInventoryEntry Reward;Reward.Item=Data->RewardItem;Reward.Quantity=Data->RewardItemQuantity;
+            if(!Bag->CanExchangeItems({}, {Reward}))return false;
+        }
+        return true;
+    }
     if(!AskirConversationRules::ActionReady(Key(Choice.Action),Key(Choice.Payload),DeliveryStage(Player),bGiver,bDomainReady))return false;
     if(Choice.Action==FName(TEXT("return_delivery")))
     {
@@ -210,6 +240,14 @@ TArray<FAskirConversationChoice> UAskirConversationComponent::GetAvailableChoice
 bool UAskirConversationComponent::ExecuteAction(const FAskirConversationChoice& Choice)
 {
     if(Choice.Action.IsNone())return true;
+    if(AskirHerbConversationRules::IsHerbAction(Key(Choice.Action),Key(Choice.Payload)))
+    {
+        auto* Herbs=GetPlayer()?GetPlayer()->FindComponentByClass<UAskirHerbMissionComponent>():nullptr;
+        if(!Herbs)return false;
+        const bool bResult=Choice.Action==FName(TEXT("return_herbs"))?Herbs->ReturnToRurik():
+            Herbs->AcceptHerbs(Choice.Action==FName(TEXT("quest_start"))?FName(TEXT("help")):Choice.Payload);
+        if(!bResult&&IsValid(Herbs))LastFailureText=Herbs->GetLastFailureText();return bResult;
+    }
     auto* Delivery=GetPlayer()?GetPlayer()->FindComponentByClass<UAskirDeliveryMissionComponent>():nullptr;
     if(!Delivery)return false;
     bool bResult=false;

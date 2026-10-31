@@ -31,6 +31,8 @@
 #include "Mission/AskirDeliveryMissionComponent.h"
 #include "Mission/AskirDeliveryBanditRelay.h"
 #include "Mission/AskirDeliveryQuestActor.h"
+#include "Mission/AskirHerbMissionComponent.h"
+#include "Mission/AskirHerbPatchActor.h"
 #include "Loot/AskirLootPickup.h"
 #include "Loot/AskirLootChest.h"
 #include "Survival/AskirSurvivalComponent.h"
@@ -70,6 +72,7 @@ namespace
     || (Player->CraftingComponent && Player->CraftingComponent->IsTransactionInProgress())
     || (Player->QuestComponent && Player->QuestComponent->IsTransactionInProgress())
     || (Player->DeliveryMission && Player->DeliveryMission->IsTransactionInProgress())
+    || (Player->HerbMission && Player->HerbMission->IsTransactionInProgress())
     || (Player->ConversationComponent && Player->ConversationComponent->IsTransactionInProgress())))return true;
   if(World)for(TActorIterator<AActor> It(World);It;++It)
   {
@@ -392,10 +395,12 @@ bool AAskirGameMode::RestoreSnapshot(UAskirSaveGame* Save,bool bRestorePosition)
  if(Player->DornfeldMission)Player->DornfeldMission->RestoreMission(Save->SavedDornfeldMission,false);
  for(TActorIterator<AAskirDornfeldMissionRelay> It(GetWorld());It;++It)It->RefreshMissionState();
  if(Player->DeliveryMission)Player->DeliveryMission->RefreshFromQuestLedger();
+ if(Player->HerbMission)Player->HerbMission->RefreshFromQuestLedger();
  // Install encounter and cargo visibility quietly before the first restore
  // notification. Progression/inventory observers must see the loaded timeline.
  for(TActorIterator<AAskirDeliveryBanditRelay> It(GetWorld());It;++It)It->RefreshMissionState();
  for(TActorIterator<AAskirDeliveryQuestActor> It(GetWorld());It;++It)It->RefreshMissionState();
+ for(TActorIterator<AAskirHerbPatchActor> It(GetWorld());It;++It)It->RefreshMissionState();
  if(Player->CombatComponent)Player->CombatComponent->RestoreHealth(Save->PlayerHealth);
  Player->Stamina=FMath::Clamp(Save->PlayerStamina,0.f,Player->MaxStamina);
  Player->RestoreAfterLoad();

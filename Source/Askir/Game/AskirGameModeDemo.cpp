@@ -5,6 +5,7 @@
 #include "Combat/AskirCombatComponent.h"
 #include "Combat/AskirTargetLockComponent.h"
 #include "Dialogue/AskirConversationComponent.h"
+#include "Mission/AskirHerbMissionComponent.h"
 #include "Progression/AskirProgressionComponent.h"
 #include "Camp/AskirCampComponent.h"
 #include "Engine/StaticMeshActor.h"
@@ -62,6 +63,9 @@ void AAskirGameMode::LogRuntimeReadiness()
   if(IsValid(Player->ConversationComponent)&&Player->ConversationComponent->IsRegistered()&&Player->ConversationComponent->GetOwner()==Player)
    UE_LOG(LogTemp,Display,TEXT("ASKIR_V83_CONVERSATION_READY map=%s player=%s component=AskirConversationComponent"),*Map,*Player->GetName());
   else UE_LOG(LogTemp,Error,TEXT("ASKIR_V83_CONVERSATION_BLOCKED: configured player conversation component missing"));
+  if(IsValid(Player->HerbMission)&&Player->HerbMission->IsRegistered()&&Player->HerbMission->GetOwner()==Player)
+   UE_LOG(LogTemp,Display,TEXT("ASKIR_V84_HERBS_READY map=%s player=%s component=AskirHerbMissionComponent"),*Map,*Player->GetName());
+  else UE_LOG(LogTemp,Error,TEXT("ASKIR_V84_HERBS_BLOCKED: configured player herb mission component missing"));
  }
  else UE_LOG(LogTemp,Error,TEXT("ASKIR_V80_RUNTIME_BLOCKED: player or native controller not initialized"));
 }

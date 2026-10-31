@@ -1,0 +1,62 @@
+{
+  "status": "Bestanden",
+  "version": "V84",
+  "world_contract_version": "V80",
+  "quest_id": "SQ_003",
+  "source_id": "SQ003_Meadow_V84",
+  "map_package": "/Game/Askir/Maps/Dornfeld_V80",
+  "patch_map": "/Game/Askir/Maps/Dornfelder_Umland_V80",
+  "position": [
+    1100,
+    900,
+    100
+  ],
+  "visual_offset": [
+    0,
+    0,
+    -100
+  ],
+  "approach": [
+    900,
+    900,
+    100
+  ],
+  "navigation_center": [
+    0,
+    1600,
+    150
+  ],
+  "navigation_extent": [
+    3100,
+    4400,
+    350
+  ],
+  "mesh_package": "/Game/Askir/V84/Props/SM_AskirHealingHerbs",
+  "reward_package": "/Game/Askir/V84/Items/item_004",
+  "reward": {
+    "id": "item_004",
+    "name": "Material von Askir 4",
+    "description": "Ein material-Gegenstand aus den Regionen Askirs. Seine Herkunft erzählt von vergangenen Zeiten.",
+    "type": "Misc",
+    "stack": 99,
+    "weight": 1.1,
+    "value": 31,
+    "damage": 0,
+    "heal": 0,
+    "attack_range": 150,
+    "attack_cooldown": 0.7
+  },
+  "material_packages": [
+    "/Game/Askir/V84/Props/Materials/M_Askir_HealingHerbs_Heart",
+    "/Game/Askir/V84/Props/Materials/M_Askir_HealingHerbs_Leaf",
+    "/Game/Askir/V84/Props/Materials/M_Askir_HealingHerbs_Petal",
+    "/Game/Askir/V84/Props/Materials/M_Askir_HealingHerbs_Soil",
+    "/Game/Askir/V84/Props/Materials/M_Askir_HealingHerbs_Stem",
+    "/Game/Askir/V84/Props/Materials/M_Askir_HealingHerbs_YoungLeaf"
+  ],
+  "giver_tag": "ASKIR_V84_RURIK_GIVER",
+  "original_asset_sources": "Bestanden",
+  "editor_status": "Nicht ausgeführt",
+  "gameplay_status": "Nicht ausgeführt",
+  "coverage": "canonical quest/reward and original source files plus authored floor/navigation bounds only; physical accessibility untested"
+}

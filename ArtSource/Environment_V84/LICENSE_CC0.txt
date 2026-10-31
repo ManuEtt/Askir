@@ -1,0 +1,4 @@
+CC0 1.0 Universal
+
+Original ASKIR healing herb mesh, material values and authoring preview, created by Tools/build_herb_assets_v84.py. No downloaded models, textures or artwork.
+To the extent possible under law, the creators waive copyright and related rights to these original assets. https://creativecommons.org/publicdomain/zero/1.0/

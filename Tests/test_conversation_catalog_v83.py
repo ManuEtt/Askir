@@ -43,7 +43,7 @@ class ConversationCatalogTests(unittest.TestCase):
         graphs = CATALOG.generate(self.root)
         self.assertEqual(len(graphs), 25)
         disabled = [(graph["id"], choice["payload"]) for graph in graphs for node in graph["nodes"] for choice in node["choices"] if not choice["enabled"]]
-        self.assertEqual(disabled, [(f"D_SQ_{index:03}", f"SQ_{index:03}") for index in range(2, 25)])
+        self.assertEqual(disabled, [(f"D_SQ_{index:03}", f"SQ_{index:03}") for index in range(2, 25) if index != 3])
         self.assertEqual(before, {path: (self.root / path).read_bytes() for path in CATALOG.INPUTS})
         CATALOG.generate(self.root, check=True)
 
@@ -57,14 +57,17 @@ class ConversationCatalogTests(unittest.TestCase):
         actions = [(choice["action"], choice["payload"]) for node in graph["nodes"] for choice in node["choices"] if choice["action"]]
         self.assertEqual(actions, [("accept_delivery", "help"), ("accept_delivery", "bargain"), ("return_delivery", "")])
 
-    def test_rurik_lore_contains_no_quest_or_reward_action(self):
+    def test_rurik_lore_is_preserved_alongside_explicit_herb_actions(self):
         graph = CATALOG.load_catalog(self.root)[-1]
         self.assertEqual(graph["id"], "D_DORNFELD_RURIK")
-        self.assertTrue(5 <= len(graph["nodes"]) <= 8)
+        self.assertEqual(len(graph["nodes"]), 11)
         text = " ".join(node["text"] for node in graph["nodes"])
         for canon in ("Ardem", "Falkenwacht", "Grauwald", "fünf Siegel", "Erinnerung", "Mara"):
             self.assertIn(canon, text)
-        self.assertTrue(all(not choice["action"] for node in graph["nodes"] for choice in node["choices"]))
+        lore_ids = {"greeting", "remembered", "well", "crown", "roads", "grauwald", "end"}
+        self.assertTrue(all(not choice["action"] for node in graph["nodes"] if node["id"] in lore_ids for choice in node["choices"]))
+        self.assertEqual([(choice["action"], choice["payload"]) for node in graph["nodes"] for choice in node["choices"] if choice["action"]],
+                         [("accept_herbs", "help"), ("accept_herbs", "bargain"), ("return_herbs", "")])
         self.assertEqual(graph["entries"][0]["required_flags"], ["RURIK_WELL_LORE"])
 
     def test_duplicate_source_graph_is_case_insensitive(self):
@@ -221,7 +224,7 @@ struct FAskirConversationGraph {FName ID,StartNode;TArray<FAskirConversationEntr
 int main(){FAskirConversationGraph Graph;
 if(!AskirConversationCatalog::Build(FName(TEXT("D_SQ_001")),Graph)||Graph.Nodes.size()!=11||Graph.Entries.size()!=7)return 1;
 if(Graph.Nodes[0].Text.Value!=L"\u00dcber \"Krone\" \\ Pfad\n\t\u2604 \U0001f600")return 5;
-if(!AskirConversationCatalog::Build(FName(TEXT("D_DORNFELD_RURIK")),Graph)||Graph.Nodes.size()!=7)return 2;
+if(!AskirConversationCatalog::Build(FName(TEXT("D_DORNFELD_RURIK")),Graph)||Graph.Nodes.size()!=11)return 2;
 if(!AskirConversationCatalog::Build(FName(TEXT("D_SQ_024")),Graph)||Graph.Nodes[1].Choices[0].bEnabled)return 3;
 if(AskirConversationCatalog::Build(FName(TEXT("UNKNOWN")),Graph)||!Graph.Nodes.empty()||!Graph.Entries.empty())return 4;
 return 0;}

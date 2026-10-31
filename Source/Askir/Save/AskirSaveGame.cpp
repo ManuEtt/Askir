@@ -1,6 +1,7 @@
 #include "Save/AskirSaveGame.h"
 #include "Economy/AskirMerchantStateRules.h"
 #include "Mission/AskirDeliveryRules.h"
+#include "Mission/AskirHerbRules.h"
 
 bool UAskirSaveGame::IsSafeSlotName(const FString& SlotName)
 {
@@ -162,6 +163,39 @@ bool UAskirSaveGame::ValidateSnapshot(FString& OutReason) const
    if(!Kills || !Cargo || !Return || !AskirDeliveryRules::ValidateActiveObjectiveMirror(
      Kills->RequiredCount,Kills->CurrentCount,Cargo->RequiredCount,Cargo->CurrentCount,
      Return->RequiredCount,Return->CurrentCount,DeliveryKills,bDeliveryCargo))return Fail(TEXT("Delivery objective progress contradicts its receipts"));
+  }
+  const FName HerbID(TEXT("SQ_003"));
+  const EAskirQuestState* HerbState=SavedQuestStates.Find(HerbID);
+  const bool bHerbActive=HerbState && *HerbState==EAskirQuestState::Active;
+  const bool bHerbCompleted=HerbState && *HerbState==EAskirQuestState::Completed;
+  const bool bHerbAccepted=SavedConsumedQuestTriggers.Contains(FName(TEXT("SQ_003_ACCEPTED")));
+  const bool bHerbExplored=SavedConsumedQuestTriggers.Contains(FName(TEXT("SQ_003_EXPLORED")));
+  if(!AskirHerbRules::ValidateReceipt(bHerbAccepted,
+    SavedDialogueFlags.Contains(FName(TEXT("SQ_003_CHOICE_help"))),SavedDialogueFlags.Contains(FName(TEXT("SQ_003_CHOICE_bargain"))),
+    bHerbActive,bHerbCompleted,SavedClaimedRewards.Contains(HerbID)))return Fail(TEXT("Conflicting herb choice or reward receipt"));
+  int32 HerbSources=0;
+  const FName HerbAcceptedReceipt(TEXT("SQ_003_ACCEPTED")),HerbExploredReceipt(TEXT("SQ_003_EXPLORED"));
+  const FString HerbSourcePrefix(TEXT("SQ_003_EXPLORED_SOURCE_"));
+  const FName HerbSourceReceipt(TEXT("SQ_003_EXPLORED_SOURCE_SQ003_Meadow_V84"));
+  for(FName Receipt:SavedConsumedQuestTriggers)
+  {
+   if(Receipt.ToString().StartsWith(TEXT("SQ_003_")) && Receipt!=HerbAcceptedReceipt && Receipt!=HerbExploredReceipt && Receipt!=HerbSourceReceipt)
+     return Fail(TEXT("Unknown herb mission receipt"));
+   if(!Receipt.ToString().StartsWith(HerbSourcePrefix))continue;
+   if(Receipt!=HerbSourceReceipt)return Fail(TEXT("Unknown herb exploration source identity"));
+   ++HerbSources;
+  }
+  if(!AskirHerbRules::ValidateExplorationReceipts(bHerbAccepted,bHerbExplored,HerbSources,bHerbCompleted))
+    return Fail(TEXT("Conflicting herb exploration receipts"));
+  if(bHerbActive)
+  {
+   const auto& Objectives=SavedObjectivesByQuest.FindChecked(HerbID).Objectives;
+   if(Objectives.Num()!=2)return Fail(TEXT("Herb objectives differ from canonical receipts"));
+   const auto* Explore=Objectives.FindByPredicate([](const FAskirQuestObjective& O){return O.ObjectiveID==FName(TEXT("SQ_003_A"));});
+   const auto* Return=Objectives.FindByPredicate([](const FAskirQuestObjective& O){return O.ObjectiveID==FName(TEXT("SQ_003_B"));});
+   if(!Explore || !Return || !AskirHerbRules::ValidateActiveObjectiveMirror(
+     Explore->RequiredCount,Explore->CurrentCount,Return->RequiredCount,Return->CurrentCount,bHerbExplored))
+       return Fail(TEXT("Herb objective progress contradicts its receipts"));
   }
   for(const auto& Pair:SavedLootByMap)
   {
